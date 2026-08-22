@@ -30,6 +30,9 @@ from ..ffmpeg_utils import find_ffmpeg, find_ffprobe, probe
 from ..pipeline import PipelineInput, PipelineResult, run_pipeline
 
 
+APP_DISPLAY_NAME = "VuxGM Media"
+
+
 class PipelineWorker(QObject):
     log = pyqtSignal(str)
     progress = pyqtSignal(str, int)
@@ -70,7 +73,7 @@ class MainWindow(QMainWindow):
         self._thread: Optional[QThread] = None
         self._worker: Optional[PipelineWorker] = None
 
-        self.setWindowTitle(f"PeiPei Rebuild {APP_VERSION}")
+        self.setWindowTitle(f"{APP_DISPLAY_NAME} {APP_VERSION}")
         self.resize(920, 700)
         self._build_ui()
         self._update_runtime_status()
@@ -80,7 +83,7 @@ class MainWindow(QMainWindow):
         root = QVBoxLayout(central)
 
         title_row = QHBoxLayout()
-        title_row.addWidget(QLabel(f"<b>PeiPei Rebuild</b> <span style='color:#777'>{APP_VERSION}</span>"))
+        title_row.addWidget(QLabel(f"<b>{APP_DISPLAY_NAME}</b> <span style='color:#777'>{APP_VERSION}</span>"))
         title_row.addStretch(1)
         site_button = QPushButton(APP_SITE_URL)
         site_button.clicked.connect(lambda: QDesktopServices.openUrl(QUrl(APP_SITE_URL)))
@@ -205,7 +208,7 @@ class MainWindow(QMainWindow):
         self.video_edit.setText(path)
         if not self.output_edit.text().strip():
             p = Path(path)
-            self.output_edit.setText(str(p.with_name(f"{p.stem}_peipei_rebuild.mp4")))
+            self.output_edit.setText(str(p.with_name(f"{p.stem}_vuxgm_media.mp4")))
 
     def _choose_srt(self) -> None:
         path, _ = QFileDialog.getOpenFileName(self, "Chọn SRT", "", "SubRip (*.srt);;Tất cả (*.*)")
@@ -213,7 +216,7 @@ class MainWindow(QMainWindow):
             self.srt_edit.setText(path)
 
     def _choose_output(self) -> None:
-        suggested = self.output_edit.text().strip() or "output_peipei_rebuild.mp4"
+        suggested = self.output_edit.text().strip() or "output_vuxgm_media.mp4"
         path, _ = QFileDialog.getSaveFileName(self, "Lưu video", suggested, "MP4 (*.mp4);;MKV (*.mkv)")
         if path:
             self.output_edit.setText(path)
@@ -340,7 +343,7 @@ class MainWindow(QMainWindow):
 
 def main() -> int:
     app = QApplication.instance() or QApplication(sys.argv)
-    app.setApplicationName("PeiPei Rebuild")
+    app.setApplicationName(APP_DISPLAY_NAME)
     window = MainWindow()
     window.show()
     return app.exec()
