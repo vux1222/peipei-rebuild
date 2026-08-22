@@ -1,0 +1,22 @@
+# Native / binary nặng
+*.exe
+*.dll
+*.pyd
+*.pt
+*.onnx
+*.bin
+
+# Bí mật / dữ liệu runtime
+license.json
+.env
+*.pem
+
+# Build
+__pycache__/
+build/
+dist/
+
+# Bỏ toàn bộ PYZ extracted trước
+PYZ.pyz_897b1401-dd14-414c-8f2c-6777fcd43367_extracted/*
+!PYZ.pyz_897b1401-dd14-414c-8f2c-6777fcd43367_extracted/bilisub/
+!PYZ.pyz_897b1401-dd14-414c-8f2c-6777fcd43367_extracted/bilisub/**

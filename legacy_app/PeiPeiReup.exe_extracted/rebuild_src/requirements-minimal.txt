@@ -1,0 +1,4 @@
+# Current editable rebuild baseline.
+# Use Python 3.13 x64 to stay ABI-compatible with the preserved original runtime.
+PyQt6
+faster-whisper==1.2.1

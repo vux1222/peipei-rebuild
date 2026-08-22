@@ -1,0 +1,114 @@
+../../Scripts/vieneu-stream.exe,sha256=dneyFSSboEIVA1-df-xlfFdt_4fU511Jr6Pk8AcjWkA,108389
+../../Scripts/vieneu-web.exe,sha256=FLA-ogeKNh6uWgHYuAsG-lt3KLm6OwvpvYQu9a2Mm98,108390
+apps/__init__.py,sha256=UmnIT17oIOWE8Fd5uBMZkn955z4XGHriR3NZj-Bw2P8,26
+apps/__pycache__/__init__.cpython-313.pyc,,
+apps/__pycache__/gradio_main.cpython-313.pyc,,
+apps/__pycache__/gradio_xpu.cpython-313.pyc,,
+apps/__pycache__/ui_constants.cpython-313.pyc,,
+apps/__pycache__/ui_utils.cpython-313.pyc,,
+apps/__pycache__/web_stream.cpython-313.pyc,,
+apps/gradio_main.py,sha256=RcHSYeeP8Iq6T1pa6izExKJvnhixnyGWBzAz7OMEs3w,115492
+apps/gradio_xpu.py,sha256=BDYL9Cwat6AK5CF_jeh5hX19YHqL7km6DE9u8DDwGZI,37003
+apps/ui_constants.py,sha256=3RJ2aUYZJfoQiA-rDKzGudJrnrEV1hRfSBlmtkqvGlY,5959
+apps/ui_utils.py,sha256=DiD-SAbDnqR4wphjl7GCALWMeKLGGYM6p1v1zA069so,5603
+apps/web_stream.py,sha256=iSUfW4yj0vLPPFyDYDLz2wM3wYUT_InaofinAVUh7eQ,4471
+examples/__init__.py,sha256=K2iNUs3hpzNp533_QCt-3pX7gfGeVAvhMowHqJiUpzY,30
+examples/__pycache__/__init__.cpython-313.pyc,,
+examples/__pycache__/main.cpython-313.pyc,,
+examples/__pycache__/main_remote.cpython-313.pyc,,
+examples/__pycache__/main_v3turbo.cpython-313.pyc,,
+examples/main.py,sha256=oRAHU7809xe0ZOzdQ0NAIDTpT2j4pBfhAQf857KRynw,4273
+examples/main_remote.py,sha256=zN4-atUeSVgaXdnR4Bqd7yeDLqDDvbmCPAUQUeiV_9Q,8415
+examples/main_v3turbo.py,sha256=7gLWfn-EwOBKSlQ2gXNTUY9lboXkHmwWkJvfe_cJfTU,1304
+vieneu-3.2.4.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+vieneu-3.2.4.dist-info/METADATA,sha256=bIaez9xQL6PTdeaL6WaHCF_qrW5PJy5-DpxuoTml3b4,21900
+vieneu-3.2.4.dist-info/RECORD,,
+vieneu-3.2.4.dist-info/REQUESTED,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+vieneu-3.2.4.dist-info/WHEEL,sha256=K260EYznzXsJYBQGqmI8VTxEdiZYNvDZwW9cBh9-_MA,91
+vieneu-3.2.4.dist-info/entry_points.txt,sha256=Bo76RfpUqBzC5k5fxq-nPa3XpKfzvGDR_MGOkntEzZQ,90
+vieneu-3.2.4.dist-info/licenses/LICENSE,sha256=xx0jnfkXJvxRnG63LTGOxlggYnIysveWIZ6H3PNdCrQ,11357
+vieneu-3.2.4.dist-info/top_level.txt,sha256=jai8MESOD83_pTStF0LNc29bGMtc0IMCkGRROmsADyY,34
+vieneu/__init__.py,sha256=QEBgqXGINZZ74mrQIiYdzQjViWBfDiTAJFY3RpsQQ5s,50
+vieneu/__pycache__/__init__.cpython-313.pyc,,
+vieneu/__pycache__/base.cpython-313.pyc,,
+vieneu/__pycache__/core_xpu.cpython-313.pyc,,
+vieneu/__pycache__/factory.cpython-313.pyc,,
+vieneu/__pycache__/fast.cpython-313.pyc,,
+vieneu/__pycache__/remote.cpython-313.pyc,,
+vieneu/__pycache__/serve.cpython-313.pyc,,
+vieneu/__pycache__/standard.cpython-313.pyc,,
+vieneu/__pycache__/turbo.cpython-313.pyc,,
+vieneu/__pycache__/utils.cpython-313.pyc,,
+vieneu/__pycache__/v3turbo.cpython-313.pyc,,
+vieneu/_v3_turbo_engine/__init__.py,sha256=U6PiS4kU0rwJ709Ba0NJiOwsBOVwAHw6uT1ro5i0ywc,1029
+vieneu/_v3_turbo_engine/__pycache__/__init__.cpython-313.pyc,,
+vieneu/_v3_turbo_engine/__pycache__/configuration_v3_turbo.cpython-313.pyc,,
+vieneu/_v3_turbo_engine/__pycache__/hub_load_v3_turbo.cpython-313.pyc,,
+vieneu/_v3_turbo_engine/__pycache__/inference_v3_turbo.cpython-313.pyc,,
+vieneu/_v3_turbo_engine/__pycache__/modeling_v3_turbo.cpython-313.pyc,,
+vieneu/_v3_turbo_engine/__pycache__/onnx_denoiser.cpython-313.pyc,,
+vieneu/_v3_turbo_engine/__pycache__/onnx_runtime_lite.cpython-313.pyc,,
+vieneu/_v3_turbo_engine/__pycache__/prompt_v3_turbo.cpython-313.pyc,,
+vieneu/_v3_turbo_engine/configuration_v3_turbo.py,sha256=jSwi0VzidgAXvVmmDo19oN12ey5NhlGMFL8p5Jtz4Ts,5109
+vieneu/_v3_turbo_engine/hub_load_v3_turbo.py,sha256=eCwiEeYHeYBPcL6w7fYhYFaWlkMsiVKYrgGra-m2CrI,2687
+vieneu/_v3_turbo_engine/inference_v3_turbo.py,sha256=lpWZ2DIECn58eC4FFQTNZcCSbIw6KHA2woclNMZY8C0,21048
+vieneu/_v3_turbo_engine/modeling_v3_turbo.py,sha256=G9E6kiAGSxs6rfCUFbUC9HMwMSCJvtDwq3XSqUX4VpM,13882
+vieneu/_v3_turbo_engine/onnx_denoiser.py,sha256=b_CEwodt-B-TtFQMnGXqBc7D3mh3ko0zzJ-i4rXNtTs,5234
+vieneu/_v3_turbo_engine/onnx_runtime_lite.py,sha256=XDeGhSQxE7evGb0dgJB1I9JQSZlVjQCBSJFjA2Va6bE,29529
+vieneu/_v3_turbo_engine/prompt_v3_turbo.py,sha256=9XaucCskQ_L_PywgjjF6eEBPVXsqBh50dRR46WlQx1U,1281
+vieneu/_v3_turbo_engine/speaker/__init__.py,sha256=TRfcoff_VZRXmtr2sV2i_CfIQ9KFAJU3PyP5OIx8uPE,665
+vieneu/_v3_turbo_engine/speaker/__pycache__/__init__.cpython-313.pyc,,
+vieneu/_v3_turbo_engine/speaker/__pycache__/audio_utils.cpython-313.pyc,,
+vieneu/_v3_turbo_engine/speaker/__pycache__/fbank.cpython-313.pyc,,
+vieneu/_v3_turbo_engine/speaker/__pycache__/onnx_extractor.cpython-313.pyc,,
+vieneu/_v3_turbo_engine/speaker/audio_utils.py,sha256=gTKroLx9nZWp11vKEPOwbArpyZKXOLQLbfy640tOy6s,1173
+vieneu/_v3_turbo_engine/speaker/fbank.py,sha256=UhFhbnabFy6abwn97tHdKOrLfLUVTJhHHl7Z-p6E730,804
+vieneu/_v3_turbo_engine/speaker/onnx_extractor.py,sha256=uqaxxfPFfYdp5G_3y3RukS1sO256eKCzn_xtFC0dpFE,5193
+vieneu/assets/samples/Bình (nam miền Bắc).pt,sha256=H4ltYY_EbD4THtp7QWjiXpwvstfqDoZL7f8ld_vQvTA,2089
+vieneu/assets/samples/Bình (nam miền Bắc).txt,sha256=P_UT1k-cjZheFd-neuTDsRBOXa1ETwUIC9TnsMm1zRo,75
+vieneu/assets/samples/Bình (nam miền Bắc).wav,sha256=E18IfO1IYGxNQGt3ChHjRNTZqmvXrfs-XCb2nNnMbfE,127054
+vieneu/assets/samples/Ly (nữ miền Bắc).pt,sha256=aba8m7EGISLcN1W-kH2H8jL6i-USm1T2mU3q019JNcY,2153
+vieneu/assets/samples/Ly (nữ miền Bắc).txt,sha256=UZwnLdalYoIovRIHrWoq-dQlce0nBT93inO936MwoV0,71
+vieneu/assets/samples/Ly (nữ miền Bắc).wav,sha256=DU5Hz6XtC3U8K-0HxY4m2onuKXfKXpQSRKa7r9iGnV4,147534
+vieneu/assets/samples/Ngọc (nữ miền Bắc).pt,sha256=eKtnDxdwktyFhuRVNvrqIP24RHHcjYqLG5XddqTtPQ0,2281
+vieneu/assets/samples/Ngọc (nữ miền Bắc).txt,sha256=a_kZyNsSvfS3Vxjni_zNxJBGvyCE2N431CGk8JtUSgk,68
+vieneu/assets/samples/Ngọc (nữ miền Bắc).wav,sha256=R1pzKY--huXZLn-5XGwm6Jflov-9w_qeBi30Aldnr5M,174956
+vieneu/assets/samples/Tuyên (nam miền Bắc).pt,sha256=GYY_xmUtIRFZ26vMQxaFS3OtaDiK1O68M1fgQoc3zrE,2473
+vieneu/assets/samples/Tuyên (nam miền Bắc).txt,sha256=wH7mFtXNPX4Ie9l-2ga9NDAxy-I7oJfijOjNB6SRNmo,87
+vieneu/assets/samples/Tuyên (nam miền Bắc).wav,sha256=9resJgXbCiz2NM4POlWoeon0wuO8Bvg0M-avWDwfNpI,217166
+vieneu/assets/samples/Vĩnh (nam miền Nam).pt,sha256=yHNC06aoy6ryE5wh51VO6hmrpqoDJI5EJiOKHCUH5Ec,2217
+vieneu/assets/samples/Vĩnh (nam miền Nam).txt,sha256=6AcA5VDmffBatOhr08MhAZ1y8r267F3_0yIPgS8e8_E,82
+vieneu/assets/samples/Vĩnh (nam miền Nam).wav,sha256=Yypcj6NP4DABzDxEQnteDucPdnN3vHiLWaXcmvqfukk,164492
+vieneu/assets/samples/Đoan (nữ miền Nam).pt,sha256=KLSNuuGTrciKomJDCGujzoYt73A12Xk2E8KWffKfmv4,2793
+vieneu/assets/samples/Đoan (nữ miền Nam).txt,sha256=s7SRsSdWhZ16ZC1AGcO3z7sThG2gciLDKzXS2FUi0KA,118
+vieneu/assets/samples/Đoan (nữ miền Nam).wav,sha256=PjGe1F3SoUWKUu3-Q6g6Nu_4E_GTmawuWe4_k8rOdL4,294830
+vieneu/assets/voices.json,sha256=Zwy-Cfkm86arwq3Kr3-ijoV4AaoSFsWlXnWXIOBnN-4,18915
+vieneu/assets/voices_v3_turbo.json,sha256=8ibcdevU-FL-I8JWWA8QHg4qzO7UYXjV18OHm2vxtcg,235683
+vieneu/base.py,sha256=xg1LT8iSYHiRLAoFjlBdPIbAf1iOz5I4RyNilEY9YEo,18694
+vieneu/core_xpu.py,sha256=5lGiYS2pGNLGdXpmvwQ8WhCNLiMFrOgUyqMun3UaQRc,8145
+vieneu/factory.py,sha256=LzUQkvF9MSYBImw4o0WpJkr5faAgyPQ2IFwn_BBeThg,1621
+vieneu/fast.py,sha256=T_Disz5TPzzUz1wjjyiKOQv2hpOe_oB5lZbTJ7nBm-A,13211
+vieneu/remote.py,sha256=J_mj3h88DHroA2mTzea5w_Irs12-30FBdmaIK1yTsWM,15756
+vieneu/serve.py,sha256=ajeA227Kv5cmgNxMn8bcDPY5ZymEVxgSPNAwh3HQFLA,4581
+vieneu/standard.py,sha256=-zTKIBO31NXBuMWxBdCzTN2PSQ1MO0CXl_qd3zGamF4,21139
+vieneu/turbo.py,sha256=UnPYdG_Zn5YYXxR1fg_VMOenM-m6ORG5CccasSar7YM,19495
+vieneu/utils.py,sha256=-LEgqoJYdN5Dp0Z-CLQUtnakFfrUbYTUnzdUHmno8fM,5550
+vieneu/v3_turbo_serve/__init__.py,sha256=LGgVpj8_oiud82NNLEI_6yYfdLa-MwLrkG35eOGxWPs,366
+vieneu/v3_turbo_serve/__pycache__/__init__.cpython-313.pyc,,
+vieneu/v3_turbo_serve/__pycache__/batched_acoustic.cpython-313.pyc,,
+vieneu/v3_turbo_serve/__pycache__/batched_backbone.cpython-313.pyc,,
+vieneu/v3_turbo_serve/__pycache__/cudagraph.cpython-313.pyc,,
+vieneu/v3_turbo_serve/__pycache__/engine.cpython-313.pyc,,
+vieneu/v3_turbo_serve/batched_acoustic.py,sha256=ZEJ5FP5DdWy9iCC0DIeNW_p4pHLYEOk8i3O_LInvfvY,5357
+vieneu/v3_turbo_serve/batched_backbone.py,sha256=f-0iRpAOHfnMfyzZdpJaYDXiwvgqhNSpqavNhhRCucI,2729
+vieneu/v3_turbo_serve/cudagraph.py,sha256=jjA3SNq9HYNfzIlm53A8u_sAB-qygES4iSlXI9LKIn8,2543
+vieneu/v3_turbo_serve/engine.py,sha256=Zn0d6YfqqE8XeNZvFOV50Rrc340-55s49Cpn3QKuqN0,9574
+vieneu/v3turbo.py,sha256=TdSvBHunoThvzipKa-dDAwEuu8z6y083Pz8Ky3WxpMs,24098
+vieneu_utils/__init__.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+vieneu_utils/__pycache__/__init__.cpython-313.pyc,,
+vieneu_utils/__pycache__/core_utils.cpython-313.pyc,,
+vieneu_utils/__pycache__/phonemize_text.cpython-313.pyc,,
+vieneu_utils/__pycache__/url_extract.cpython-313.pyc,,
+vieneu_utils/core_utils.py,sha256=Ta4xAAqo7zL3Y7_VEH99D-tv9gFMg0BegiaTWx6NaEk,14336
+vieneu_utils/phonemize_text.py,sha256=d-nL9rd9bcuI5jZ2scmnFmbOAWmbPzsAgntWX4uhpCE,16719
+vieneu_utils/url_extract.py,sha256=Y-AT7pQSKpxvCmig77OzKbClI7nyAqRUlZgq8TbKlHg,2118

@@ -1,0 +1,17 @@
+sea_g2p-0.8.4.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+sea_g2p-0.8.4.dist-info/METADATA,sha256=gY5bT30FKsSrjX6tZMI_IQSS7MsRr7sogqYpPeEFmlI,11031
+sea_g2p-0.8.4.dist-info/RECORD,,
+sea_g2p-0.8.4.dist-info/REQUESTED,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+sea_g2p-0.8.4.dist-info/WHEEL,sha256=_qjkWZs5yrFgc7wGyX42BWq6PiACrY0XI82VSrZ_57E,96
+sea_g2p-0.8.4.dist-info/licenses/LICENSE,sha256=HrhfyXIkWY2tGFK11kg7vPCqhgh5DcxleloqdhrpyMY,11558
+sea_g2p-0.8.4.dist-info/sboms/sea-g2p-rs.cyclonedx.json,sha256=XBb6uOuUb_j9-v8A4iE0q7nxl1ngoIYUo-o5munzJLo,48315
+sea_g2p/__init__.py,sha256=g0ENVXkOyycZoVayTtRijQhnlMeiBbJq94s545foYAU,191
+sea_g2p/__pycache__/__init__.cpython-313.pyc,,
+sea_g2p/__pycache__/g2p.cpython-313.pyc,,
+sea_g2p/__pycache__/normalizer.cpython-313.pyc,,
+sea_g2p/__pycache__/pipeline.cpython-313.pyc,,
+sea_g2p/g2p.py,sha256=Jio3Z_4Sdgyw-wFSPJThTg1QeOqCjzTodwKj22KnoAc,2698
+sea_g2p/normalizer.py,sha256=GFLkI-W0-fNBLVvh2iJ2LNrzeKbOGAVg7v-XYLTgIuQ,4173
+sea_g2p/pipeline.py,sha256=xqFswihvYKRiimtlj9ydejxo_UJP6yyhrdIO0kminBc,1569
+sea_g2p/sea_g2p.bin,sha256=Q0bmkNBxHrxSMeekLFyIqvbkA3folLRhfAGP2BxvQJY,62829820
+sea_g2p/sea_g2p_rs.pyd,sha256=Zt0IBcubj88Bevo4Hvy8R3WPySiEoH3Na-vlsgLqXjw,5711360

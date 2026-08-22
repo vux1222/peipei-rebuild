@@ -1,0 +1,395 @@
+Metadata-Version: 2.4
+Name: vieneu
+Version: 3.2.4
+Summary: Advanced on-device Vietnamese TTS with instant voice cloning
+Author-email: Phạm Nguyễn Ngọc Bảo <pnnbao@gmail.com>
+License:                                  Apache License
+                                   Version 2.0, January 2004
+                                http://www.apache.org/licenses/
+        
+           TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+        
+           1. Definitions.
+        
+              "License" shall mean the terms and conditions for use, reproduction,
+              and distribution as defined by Sections 1 through 9 of this document.
+        
+              "Licensor" shall mean the copyright owner or entity authorized by
+              the copyright owner that is granting the License.
+        
+              "Legal Entity" shall mean the union of the acting entity and all
+              other entities that control, are controlled by, or are under common
+              control with that entity. For the purposes of this definition,
+              "control" means (i) the power, direct or indirect, to cause the
+              direction or management of such entity, whether by contract or
+              otherwise, or (ii) ownership of fifty percent (50%) or more of the
+              outstanding shares, or (iii) beneficial ownership of such entity.
+        
+              "You" (or "Your") shall mean an individual or Legal Entity
+              exercising permissions granted by this License.
+        
+              "Source" form shall mean the preferred form for making modifications,
+              including but not limited to software source code, documentation
+              source, and configuration files.
+        
+              "Object" form shall mean any form resulting from mechanical
+              transformation or translation of a Source form, including but
+              not limited to compiled object code, generated documentation,
+              and conversions to other media types.
+        
+              "Work" shall mean the work of authorship, whether in Source or
+              Object form, made available under the License, as indicated by a
+              copyright notice that is included in or attached to the work
+              (an example is provided in the Appendix below).
+        
+              "Derivative Works" shall mean any work, whether in Source or Object
+              form, that is based on (or derived from) the Work and for which the
+              editorial revisions, annotations, elaborations, or other modifications
+              represent, as a whole, an original work of authorship. For the purposes
+              of this License, Derivative Works shall not include works that remain
+              separable from, or merely link (or bind by name) to the interfaces of,
+              the Work and Derivative Works thereof.
+        
+              "Contribution" shall mean any work of authorship, including
+              the original version of the Work and any modifications or additions
+              to that Work or Derivative Works thereof, that is intentionally
+              submitted to Licensor for inclusion in the Work by the copyright owner
+              or by an individual or Legal Entity authorized to submit on behalf of
+              the copyright owner. For the purposes of this definition, "submitted"
+              means any form of electronic, verbal, or written communication sent
+              to the Licensor or its representatives, including but not limited to
+              communication on electronic mailing lists, source code control systems,
+              and issue tracking systems that are managed by, or on behalf of, the
+              Licensor for the purpose of discussing and improving the Work, but
+              excluding communication that is conspicuously marked or otherwise
+              designated in writing by the copyright owner as "Not a Contribution."
+        
+              "Contributor" shall mean Licensor and any individual or Legal Entity
+              on behalf of whom a Contribution has been received by Licensor and
+              subsequently incorporated within the Work.
+        
+           2. Grant of Copyright License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              copyright license to reproduce, prepare Derivative Works of,
+              publicly display, publicly perform, sublicense, and distribute the
+              Work and such Derivative Works in Source or Object form.
+        
+           3. Grant of Patent License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              (except as stated in this section) patent license to make, have made,
+              use, offer to sell, sell, import, and otherwise transfer the Work,
+              where such license applies only to those patent claims licensable
+              by such Contributor that are necessarily infringed by their
+              Contribution(s) alone or by combination of their Contribution(s)
+              with the Work to which such Contribution(s) was submitted. If You
+              institute patent litigation against any entity (including a
+              cross-claim or counterclaim in a lawsuit) alleging that the Work
+              or a Contribution incorporated within the Work constitutes direct
+              or contributory patent infringement, then any patent licenses
+              granted to You under this License for that Work shall terminate
+              as of the date such litigation is filed.
+        
+           4. Redistribution. You may reproduce and distribute copies of the
+              Work or Derivative Works thereof in any medium, with or without
+              modifications, and in Source or Object form, provided that You
+              meet the following conditions:
+        
+              (a) You must give any other recipients of the Work or
+                  Derivative Works a copy of this License; and
+        
+              (b) You must cause any modified files to carry prominent notices
+                  stating that You changed the files; and
+        
+              (c) You must retain, in the Source form of any Derivative Works
+                  that You distribute, all copyright, patent, trademark, and
+                  attribution notices from the Source form of the Work,
+                  excluding those notices that do not pertain to any part of
+                  the Derivative Works; and
+        
+              (d) If the Work includes a "NOTICE" text file as part of its
+                  distribution, then any Derivative Works that You distribute must
+                  include a readable copy of the attribution notices contained
+                  within such NOTICE file, excluding those notices that do not
+                  pertain to any part of the Derivative Works, in at least one
+                  of the following places: within a NOTICE text file distributed
+                  as part of the Derivative Works; within the Source form or
+                  documentation, if provided along with the Derivative Works; or,
+                  within a display generated by the Derivative Works, if and
+                  wherever such third-party notices normally appear. The contents
+                  of the NOTICE file are for informational purposes only and
+                  do not modify the License. You may add Your own attribution
+                  notices within Derivative Works that You distribute, alongside
+                  or as an addendum to the NOTICE text from the Work, provided
+                  that such additional attribution notices cannot be construed
+                  as modifying the License.
+        
+              You may add Your own copyright statement to Your modifications and
+              may provide additional or different license terms and conditions
+              for use, reproduction, or distribution of Your modifications, or
+              for any such Derivative Works as a whole, provided Your use,
+              reproduction, and distribution of the Work otherwise complies with
+              the conditions stated in this License.
+        
+           5. Submission of Contributions. Unless You explicitly state otherwise,
+              any Contribution intentionally submitted for inclusion in the Work
+              by You to the Licensor shall be under the terms and conditions of
+              this License, without any additional terms or conditions.
+              Notwithstanding the above, nothing herein shall supersede or modify
+              the terms of any separate license agreement you may have executed
+              with Licensor regarding such Contributions.
+        
+           6. Trademarks. This License does not grant permission to use the trade
+              names, trademarks, service marks, or product names of the Licensor,
+              except as required for reasonable and customary use in describing the
+              origin of the Work and reproducing the content of the NOTICE file.
+        
+           7. Disclaimer of Warranty. Unless required by applicable law or
+              agreed to in writing, Licensor provides the Work (and each
+              Contributor provides its Contributions) on an "AS IS" BASIS,
+              WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+              implied, including, without limitation, any warranties or conditions
+              of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+              PARTICULAR PURPOSE. You are solely responsible for determining the
+              appropriateness of using or redistributing the Work and assume any
+              risks associated with Your exercise of permissions under this License.
+        
+           8. Limitation of Liability. In no event and under no legal theory,
+              whether in tort (including negligence), contract, or otherwise,
+              unless required by applicable law (such as deliberate and grossly
+              negligent acts) or agreed to in writing, shall any Contributor be
+              liable to You for damages, including any direct, indirect, special,
+              incidental, or consequential damages of any character arising as a
+              result of this License or out of the use or inability to use the
+              Work (including but not limited to damages for loss of goodwill,
+              work stoppage, computer failure or malfunction, or any and all
+              other commercial damages or losses), even if such Contributor
+              has been advised of the possibility of such damages.
+        
+           9. Accepting Warranty or Additional Liability. While redistributing
+              the Work or Derivative Works thereof, You may choose to offer,
+              and charge a fee for, acceptance of support, warranty, indemnity,
+              or other liability obligations and/or rights consistent with this
+              License. However, in accepting such obligations, You may act only
+              on Your own behalf and on Your sole responsibility, not on behalf
+              of any other Contributor, and only if You agree to indemnify,
+              defend, and hold each Contributor harmless for any liability
+              incurred by, or claims asserted against, such Contributor by reason
+              of your accepting any such warranty or additional liability.
+        
+           END OF TERMS AND CONDITIONS
+        
+           APPENDIX: How to apply the Apache License to your work.
+        
+              To apply the Apache License to your work, attach the following
+              boilerplate notice, with the fields enclosed by brackets "[]"
+              replaced with your own identifying information. (Don't include
+              the brackets!)  The text should be enclosed in the appropriate
+              comment syntax for the file format. We also recommend that a
+              file or class name and description of purpose be included on the
+              same "printed page" as the copyright notice for easier
+              identification within third-party archives.
+        
+           Copyright [yyyy] [name of copyright owner]
+        
+           Licensed under the Apache License, Version 2.0 (the "License");
+           you may not use this file except in compliance with the License.
+           You may obtain a copy of the License at
+        
+               http://www.apache.org/licenses/LICENSE-2.0
+        
+           Unless required by applicable law or agreed to in writing, software
+           distributed under the License is distributed on an "AS IS" BASIS,
+           WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+           See the License for the specific language governing permissions and
+           limitations under the License.
+        
+Project-URL: Homepage, https://github.com/pnnbao97/VieNeu-TTS
+Project-URL: Repository, https://github.com/pnnbao97/VieNeu-TTS
+Project-URL: Bug Tracker, https://github.com/pnnbao97/VieNeu-TTS/issues
+Project-URL: Documentation, https://github.com/pnnbao97/VieNeu-TTS/blob/main/README.md
+Project-URL: Source Code, https://github.com/pnnbao97/VieNeu-TTS
+Project-URL: Changelog, https://github.com/pnnbao97/VieNeu-TTS/releases
+Keywords: text-to-speech,tts,vietnamese,voice-cloning,speech-synthesis,real-time,on-device
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Topic :: Multimedia :: Sound/Audio :: Speech
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: sea-g2p>=0.7.31
+Requires-Dist: onnxruntime>=1.20.0
+Requires-Dist: numpy
+Requires-Dist: soundfile
+Requires-Dist: soxr
+Requires-Dist: tokenizers>=0.20
+Requires-Dist: huggingface_hub
+Requires-Dist: PyYAML
+Requires-Dist: gradio>=5.49.1
+Requires-Dist: librosa>=0.11.0
+Requires-Dist: perth>=0.2.0
+Provides-Extra: legacy
+Requires-Dist: torch; extra == "legacy"
+Requires-Dist: torchaudio; extra == "legacy"
+Requires-Dist: transformers; extra == "legacy"
+Requires-Dist: neucodec>=0.0.4; extra == "legacy"
+Requires-Dist: lmdeploy; sys_platform != "darwin" and extra == "legacy"
+Requires-Dist: triton-windows; sys_platform == "win32" and extra == "legacy"
+Requires-Dist: triton; sys_platform == "linux" and extra == "legacy"
+Requires-Dist: accelerate; sys_platform == "darwin" and extra == "legacy"
+Requires-Dist: llama-cpp-python==0.3.16; extra == "legacy"
+Provides-Extra: pdf
+Requires-Dist: PyMuPDF>=1.25.0; extra == "pdf"
+Dynamic: license-file
+
+# 🦜 VieNeu-TTS
+
+**VieNeu-TTS** is an advanced on-device Vietnamese Text-to-Speech (TTS) with **instant voice cloning** and **English–Vietnamese bilingual** support. The SDK **defaults to VieNeu-TTS v3 Turbo (48 kHz)** and the minimal install is **torch-free** — on CPU it runs entirely on ONNX Runtime.
+
+[![Hugging Face v3 Turbo](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-v3%20Turbo-red)](https://huggingface.co/pnnbao-ump/VieNeu-TTS-v3-Turbo)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
+
+## ✨ Key Features
+- **v3 Turbo, 48 kHz** — high-fidelity, natural Vietnamese speech (default).
+- **Torch-free on CPU** — minimal install runs on ONNX Runtime; PyTorch is never imported.
+- **int8 backbone by default on CPU** — ~1.6× faster & ~4× smaller than fp32, quality preserved. Use `Vieneu(precision="fp32")` for max fidelity.
+- **Built-in default voices** — call them by name, no reference clip needed.
+- **Instant voice cloning** — clone any voice from 3–5s of audio.
+- **Emotion cues** *(experimental)* — drop `[cười]`, `[thở dài]`, `[hắng giọng]` into the text.
+- **Bilingual (En–Vi) code-switching**, fully offline.
+
+---
+
+## 📦 Install
+
+**CPU (default)** — torch-free, runs v3 Turbo via ONNX Runtime. Most users want this:
+
+```bash
+pip install vieneu
+```
+
+**GPU (CUDA)** — only if you have an NVIDIA GPU. Install a CUDA build of PyTorch
+**yourself first**. Batching then turns on automatically on CUDA — same API, no code change:
+
+```bash
+pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+pip install "transformers==4.57.6"   # Qwen3 backbone + MOSS codec (pinned — most stable for the GPU SDK)
+pip install vieneu
+```
+
+> ℹ️ **When is GPU actually worth it?** The GPU win comes from **batching**, so it
+> only pays off on **long text** (many chunks generated together in one forward —
+> long-form or bulk synthesis). For **short text** the torch-free **CPU/ONNX** path
+> is usually *faster* (there's no batch to fill). Use CPU for short, interactive
+> calls; reach for GPU for long-form or high-throughput work.
+
+---
+
+## 🚀 Quick Start (Python SDK)
+
+```python
+from vieneu import Vieneu
+
+# Default = v3 Turbo (48 kHz). GPU → PyTorch (auto-detected).
+# On CPU the backbone runs int8 by default (fastest); pass precision="fp32" for max quality.
+vieneu = Vieneu()                    # int8 backbone (default, fastest on CPU)
+# vieneu = Vieneu(precision="fp32")  # fp32 backbone (max quality, slower on CPU)
+# 💡 On a GPU machine you can still switch to ONNX/CPU if you prefer: Vieneu(backend="onnx")
+
+# 1. Built-in voice by name — no reference needed
+print("🔊 Generating speech...")
+audio = vieneu.infer("Xin chào, đây là VieNeu-TTS.", voice="Trúc Ly")
+vieneu.save(audio, "output.wav")
+print("✅ Saved to output.wav")
+
+# List the built-in voices
+voices = vieneu.list_preset_voices()
+print(f"\n🎙️  {len(voices)} built-in voices available:")
+for label, voice_id in voices:
+    print(f"  - {label} ({voice_id})")
+
+# 2. Reading style: "tu_nhien" (natural) | "tin_tuc" (news) | "doc_truyen" (storytelling)
+audio = vieneu.infer("Bản tin sáng nay.", voice="Minh Đức", style="tin_tuc")
+
+# 3. Emotion / non-verbal cues — EXPERIMENTAL: [cười] [thở dài] [hắng giọng]
+audio = vieneu.infer("Nghe hay quá đi [cười].", voice="Trúc Ly")
+
+# 4. ⚡ Batch on GPU: infer_batch() runs many texts in ONE batched forward — same API.
+#    On a CUDA GPU the chunks from every text share each forward step (big throughput
+#    win); on CPU it still works (no error), just sequentially. Batch caps at
+#    max_batch_size (default 32; or infer_batch(..., batch_size=64); batch_size=1
+#    disables). A single long infer() also auto-batches its own chunks. Uncomment to try:
+#
+# import time
+# texts = [
+#     "Chào cả nhà, hôm nay mình sẽ hướng dẫn các bạn cách cài đặt và sử dụng bộ giọng đọc mới.",
+#     "Giọng nghe cực kỳ tự nhiên và truyền cảm, lại có thể chuyển đổi biểu cảm một cách linh hoạt.",
+#     "Nếu thấy hữu ích, các bạn nhớ để lại một lượt thích và chia sẻ video này cho mọi người nhé!",
+# ] * 10   # 30 texts — enough to fill the batch and really show the GPU throughput win
+# t0 = time.time()
+# audios = vieneu.infer_batch(texts, voice="Minh Đức")
+# elapsed = time.time() - t0
+# total_audio = sum(len(a) for a in audios) / 48_000
+# print(f"⚡ {len(texts)} texts | audio {total_audio:.1f}s | wall {elapsed:.1f}s | RTF {elapsed/total_audio:.3f}")
+# for i, a in enumerate(audios):
+#     vieneu.save(a, f"batch_{i}.wav")
+```
+
+### 🔊 Real-time streaming
+
+v3 Turbo streams frame-by-frame (first audio ~300 ms, RTF < 1 on CPU). Streaming runs on the **ONNX/CPU** engine — the GPU/PyTorch engine is for **batch throughput**, not streaming, so pin `backend="onnx"` for realtime. Iterate `infer_stream`:
+
+```python
+vieneu = Vieneu(backend="onnx")   # force ONNX/CPU — the streaming path (int8)
+for chunk in vieneu.infer_stream("Xin chào các bạn!", voice="Trúc Ly"):
+    play(chunk)   # np.float32 @ 48 kHz, play/write as it arrives
+```
+
+A full FastAPI web demo is in [`apps/web_stream.py`](apps/web_stream.py) (`uv run python -m apps.web_stream` → http://localhost:8001).
+
+### 🦜 Zero-shot Voice Cloning
+
+Clone from a short clip; the reference is auto-denoised and trimmed to ≤ 8s.
+
+```python
+from vieneu import Vieneu
+vieneu = Vieneu()
+
+# Clone straight from a 3–8s clip
+audio = vieneu.infer("Chào bạn, đây là giọng của tôi.", ref_audio="path/to/voice.wav", denoise=True)
+vieneu.save(audio, "cloned.wav")
+
+# Save a cloned voice and reuse it by name
+vieneu.add_voice("Giọng của tôi", "path/to/voice.wav")
+audio = vieneu.infer("Câu này dùng giọng đã lưu.", voice="Giọng của tôi")
+
+# Just clean up a clip (no synthesis)
+wav, sr = vieneu.denoise("noisy.wav", out_path="clean.wav")
+```
+
+> `denoise`, `add_voice`, and cloning require the PyTorch (GPU) engine; built-in voices work everywhere.
+
+---
+
+## 🔬 Model Overview
+
+| Model | Engine | Device | Sample Rate | Features |
+|---|---|---|---|---|
+| **VieNeu-TTS v3 Turbo** *(default)* | ONNX (CPU) / PyTorch (GPU) | CPU/GPU | 48 kHz | Default voices, cloning, emotion cues |
+
+---
+
+## 🤝 Support & Links
+- **GitHub:** [pnnbao97/VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS)
+- **Discord:** [Join our community](https://discord.gg/yJt8kzjzWZ)
+
+**Made with ❤️ for the Vietnamese TTS community**

@@ -20,3 +20,5 @@ dist/
 PYZ.pyz_897b1401-dd14-414c-8f2c-6777fcd43367_extracted/*
 !PYZ.pyz_897b1401-dd14-414c-8f2c-6777fcd43367_extracted/bilisub/
 !PYZ.pyz_897b1401-dd14-414c-8f2c-6777fcd43367_extracted/bilisub/**
+# Third-party yt-dlp runtime
+legacy_app/_internal/yt_dlp/
