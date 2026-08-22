@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Callable, Optional
 
 from . import srt as srt_mod
+from .asr import WhisperASR
 from .config import APP_VERSION, Settings
 from .ffmpeg_utils import _no_window_kwargs, find_ffmpeg, probe, run as run_ffmpeg
 from .models import SubtitleEntry
@@ -68,7 +69,6 @@ def _trim_for_preview(src: str, work: Path, seconds: int, log: Optional[Log] = N
     if Path(dst).exists() and Path(dst).stat().st_size > 0:
         _emit_log(log, f"Preview {seconds}s: {dst}")
         return dst
-    # Some source containers cannot be stream-copied cleanly; retry with H.264/AAC.
     subprocess.run(
         [ffmpeg, *base, "-c:v", "libx264", "-preset", "veryfast", "-c:a", "aac", "-y", dst],
         capture_output=True,
@@ -83,8 +83,6 @@ def _default_output_path(video_path: str) -> str:
 
 
 def _escape_filter_path(path: str | Path) -> str:
-    # ffmpeg filter parser on Windows treats ':' specially. Forward slashes avoid
-    # most backslash escaping issues; single quotes are escaped for filename='...'.
     value = str(Path(path).resolve()).replace("\\", "/")
     value = value.replace(":", r"\:").replace("'", r"\'")
     return value
@@ -150,11 +148,11 @@ def run_pipeline(
     progress: Optional[Progress] = None,
     should_stop: Optional[Callable[[], bool]] = None,
 ) -> PipelineResult:
-    """Run the currently reconstructed, testable portion of the pipeline.
+    """Run the reconstructed baseline pipeline.
 
-    Working now: SRT import/cleanup, optional short-cue merge, SRT/ASS export,
-    preview trimming, and basic FFmpeg render. ASR, AI translation and TTS remain
-    explicit pending stages instead of being silently faked.
+    Working now: existing SRT import or faster-whisper ASR, subtitle cleanup,
+    optional short-cue merge, SRT/ASS export, preview trimming, and basic FFmpeg
+    render. AI translation and TTS remain explicit pending stages.
     """
     _emit_log(log, f"PeiPei rebuild pipeline {APP_VERSION}")
     _emit_progress(progress, "Chuẩn bị", 0)
@@ -173,34 +171,50 @@ def run_pipeline(
     if inp.do_tts:
         raise NotImplementedError("Khâu TTS đang được phục dựng; hãy tắt 'Tạo giọng' ở bản rebuild hiện tại.")
 
-    entries: list[SubtitleEntry] = []
-    if srt_path:
-        _emit_progress(progress, "Đọc phụ đề", 10)
-        entries = srt_mod.parse_srt(srt_path)
-        _emit_log(log, f"Đã đọc {len(entries)} câu phụ đề từ {Path(srt_path).name}.")
-        if inp.merge_short:
-            before = len(entries)
-            entries = srt_mod.merge_short_entries(entries)
-            _emit_log(log, f"Gộp câu ngắn: {before} → {len(entries)} câu.")
-    elif inp.do_subtitle:
-        # ASR/OCR is intentionally not guessed. Once those modules are reconstructed,
-        # this branch will dispatch to WhisperASR or hard-sub OCR like the original.
-        raise NotImplementedError("Chưa có SRT. Khâu ASR/OCR đang được phục dựng.")
-
-    _check_stop(should_stop)
-
     work_root = Path(tempfile.mkdtemp(prefix="peipei_rebuild_"))
     try:
         working_video = video_path
         if video_path and inp.preview_seconds > 0:
             working_video = _trim_for_preview(video_path, work_root, inp.preview_seconds, log)
 
+        entries: list[SubtitleEntry] = []
+        detected_language: Optional[str] = None
+
+        if srt_path:
+            _emit_progress(progress, "Đọc phụ đề", 10)
+            entries = srt_mod.parse_srt(srt_path)
+            _emit_log(log, f"Đã đọc {len(entries)} câu phụ đề từ {Path(srt_path).name}.")
+        elif inp.do_subtitle:
+            if not working_video:
+                raise ValueError("Cần video hoặc SRT để tạo phụ đề.")
+            _emit_progress(progress, "Tách transcript", 5)
+            asr = WhisperASR(settings.asr_model, settings.asr_device, settings.asr_compute_type, log=log)
+
+            def asr_progress(pct: int) -> None:
+                _check_stop(should_stop)
+                _emit_progress(progress, "Tách transcript", 5 + round(pct * 0.25))
+
+            entries = asr.transcribe(
+                working_video,
+                language=settings.source_language,
+                progress=asr_progress,
+            )
+            detected_language = asr.detected_language
+            _emit_log(log, f"ASR: {len(entries)} câu.")
+
+        if inp.merge_short and entries:
+            before = len(entries)
+            entries = srt_mod.merge_short_entries(entries)
+            _emit_log(log, f"Gộp câu ngắn: {before} → {len(entries)} câu.")
+
+        _check_stop(should_stop)
+
         stem_source = Path(video_path or srt_path or "output")
         base_dir = Path(inp.output_path).parent if inp.output_path else stem_source.parent
         base_stem = Path(inp.output_path).stem if inp.output_path else f"{stem_source.stem}_peipei_rebuild"
         base_dir.mkdir(parents=True, exist_ok=True)
 
-        result = PipelineResult(entries=entries, detected_language=None)
+        result = PipelineResult(entries=entries, detected_language=detected_language)
 
         if entries:
             _emit_progress(progress, "Tạo phụ đề", 35)
@@ -211,7 +225,7 @@ def run_pipeline(
 
             if inp.do_subtitle:
                 width, height = 1920, 1080
-                if video_path:
+                if working_video:
                     info = probe(working_video)
                     width = info.width or width
                     height = info.height or height
