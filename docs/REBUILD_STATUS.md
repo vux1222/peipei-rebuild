@@ -23,6 +23,8 @@ This branch is a clean, editable rebuild workspace. The extracted `.pyc` files r
 - `rebuild_src/bilisub/pipeline.py`
 - `rebuild_src/bilisub/gui/main_window.py`
 - `tools/check_runtime.py`
+- `tests/test_rebuild_core.py`
+- `.github/workflows/rebuild-core.yml`
 
 ## Runnable baseline
 
@@ -38,6 +40,8 @@ The user-owned project domain is configured as:
 
 - `VUXGM_SITE_URL=https://vuxgm.site`
 - `VUXGM_API_BASE=https://vuxgm.site/api`
+
+Local clean-rebuild settings are isolated under `%LOCALAPPDATA%\VuxGM\PeiPeiRebuild` so the reconstruction does not overwrite extracted-app state.
 
 These values are for the clean rebuild website/API and are deliberately separate from third-party licensing code in the extracted reference application.
 
