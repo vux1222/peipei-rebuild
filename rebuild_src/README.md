@@ -26,7 +26,7 @@ VUXGM_SITE_URL=https://vuxgm.site
 VUXGM_API_BASE=https://vuxgm.site/api
 ```
 
-You can override either value with environment variables. These values belong to this clean rebuild and do not replace or bypass any third-party licensing service from the extracted reference application.
+These values belong to this clean rebuild and do not replace or bypass any third-party licensing service from the extracted reference application. Local rebuild settings are isolated under `%LOCALAPPDATA%\VuxGM\PeiPeiRebuild`.
 
 ## Run on Windows
 
@@ -59,6 +59,12 @@ To inspect the larger original runtime tree before rebuilding more features:
 ```powershell
 $env:PEIPEI_APP_ROOT = "D:\innoextract670\extracted\app"
 py -3.13 tools\check_runtime.py
+```
+
+Run the core smoke tests with:
+
+```powershell
+py -3.13 -m unittest -v tests\test_rebuild_core.py
 ```
 
 ## Source layout
