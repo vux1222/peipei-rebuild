@@ -20,6 +20,7 @@ This branch is a clean, editable rebuild workspace. The extracted `.pyc` files r
 - `rebuild_src/bilisub/models.py`
 - `rebuild_src/bilisub/ffmpeg_utils.py`
 - `rebuild_src/bilisub/srt.py`
+- `rebuild_src/bilisub/asr.py`
 - `rebuild_src/bilisub/pipeline.py`
 - `rebuild_src/bilisub/gui/main_window.py`
 - `tools/check_runtime.py`
@@ -28,11 +29,11 @@ This branch is a clean, editable rebuild workspace. The extracted `.pyc` files r
 
 ## Runnable baseline
 
-The current GUI/pipeline supports an existing SRT file through these stages:
+The current GUI/pipeline supports either an existing SRT or faster-whisper ASR:
 
-`video + SRT -> parse/clean -> merge short cues -> export SRT/ASS -> FFmpeg render`
+`video + [SRT or Whisper ASR] -> parse/clean -> merge short cues -> export SRT/ASS -> FFmpeg render`
 
-It also supports FFprobe video inspection and preview trimming. The GUI intentionally leaves ASR/OCR, AI translation and TTS disabled until their source modules are reconstructed.
+It also supports FFprobe video inspection and preview trimming. The GUI intentionally leaves burned-subtitle OCR, AI translation and TTS disabled until their source modules are reconstructed.
 
 ## Clean rebuild website
 
@@ -47,11 +48,11 @@ These values are for the clean rebuild website/API and are deliberately separate
 
 ## Next source modules to reconstruct
 
-1. `bilisub/asr.py` and hard-sub/OCR dispatch.
+1. Hard-sub/OCR dispatch using RapidOCR/ONNX Runtime.
 2. `bilisub/translate/*` translation providers and tiered orchestration.
 3. `bilisub/tts/*` engine abstraction and selected TTS backends.
 4. `bilisub/render.py` and advanced output options.
-5. Advanced ASS/art-text layout from `bilisub/srt.py` and GUI controls from the large original window.
+5. Advanced ASS/art-text layout and additional GUI controls.
 
 ## Runtime policy
 
