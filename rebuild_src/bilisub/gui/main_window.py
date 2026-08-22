@@ -71,7 +71,7 @@ class MainWindow(QMainWindow):
         self._worker: Optional[PipelineWorker] = None
 
         self.setWindowTitle(f"PeiPei Rebuild {APP_VERSION}")
-        self.resize(900, 680)
+        self.resize(920, 700)
         self._build_ui()
         self._update_runtime_status()
 
@@ -80,8 +80,7 @@ class MainWindow(QMainWindow):
         root = QVBoxLayout(central)
 
         title_row = QHBoxLayout()
-        title = QLabel(f"<b>PeiPei Rebuild</b> <span style='color:#777'>{APP_VERSION}</span>")
-        title_row.addWidget(title)
+        title_row.addWidget(QLabel(f"<b>PeiPei Rebuild</b> <span style='color:#777'>{APP_VERSION}</span>"))
         title_row.addStretch(1)
         site_button = QPushButton(APP_SITE_URL)
         site_button.clicked.connect(lambda: QDesktopServices.openUrl(QUrl(APP_SITE_URL)))
@@ -89,14 +88,13 @@ class MainWindow(QMainWindow):
         root.addLayout(title_row)
 
         note = QLabel(
-            "Bản phục dựng hiện chạy được nhập SRT → làm sạch/gộp → xuất SRT/ASS → render FFmpeg. "
-            "ASR/OCR, dịch AI và TTS sẽ được nối vào sau khi các module tương ứng được phục dựng."
+            "Đã chạy được: video + SRT hoặc Whisper ASR → làm sạch/gộp → xuất SRT/ASS → render FFmpeg. "
+            "Dịch AI, OCR phụ đề cứng và TTS vẫn đang tiếp tục phục dựng."
         )
         note.setWordWrap(True)
         root.addWidget(note)
 
         form = QFormLayout()
-
         self.video_edit = QLineEdit()
         video_row = QHBoxLayout()
         video_row.addWidget(self.video_edit, 1)
@@ -106,6 +104,7 @@ class MainWindow(QMainWindow):
         form.addRow("Video", video_row)
 
         self.srt_edit = QLineEdit()
+        self.srt_edit.setPlaceholderText("Để trống nếu muốn Whisper tự tách transcript")
         srt_row = QHBoxLayout()
         srt_row.addWidget(self.srt_edit, 1)
         srt_btn = QPushButton("Chọn SRT…")
@@ -125,42 +124,33 @@ class MainWindow(QMainWindow):
         self.preview_spin.setRange(0, 3600)
         self.preview_spin.setSuffix(" giây (0 = toàn bộ)")
         form.addRow("Preview", self.preview_spin)
-
         root.addLayout(form)
 
         option_row = QHBoxLayout()
         self.subtitle_check = QCheckBox("Tạo phụ đề / burn ASS")
         self.subtitle_check.setChecked(True)
         option_row.addWidget(self.subtitle_check)
-
+        self.asr_check = QCheckBox("Dùng Whisper nếu không có SRT")
+        self.asr_check.setChecked(True)
+        option_row.addWidget(self.asr_check)
         self.merge_check = QCheckBox("Gộp câu quá ngắn")
         self.merge_check.setChecked(True)
         option_row.addWidget(self.merge_check)
-
-        self.render_check = QCheckBox("Render video")
-        self.render_check.setChecked(True)
-        option_row.addWidget(self.render_check)
-
-        self.srt_only_check = QCheckBox("Chỉ xuất phụ đề")
-        option_row.addWidget(self.srt_only_check)
         root.addLayout(option_row)
 
-        pending_row = QHBoxLayout()
+        output_options = QHBoxLayout()
+        self.render_check = QCheckBox("Render video")
+        self.render_check.setChecked(True)
+        output_options.addWidget(self.render_check)
+        self.srt_only_check = QCheckBox("Chỉ xuất phụ đề")
+        output_options.addWidget(self.srt_only_check)
         self.translate_check = QCheckBox("Dịch AI (đang phục dựng)")
-        self.translate_check.setChecked(False)
         self.translate_check.setEnabled(False)
-        pending_row.addWidget(self.translate_check)
-
-        self.tts_check = QCheckBox("Tạo giọng TTS (đang phục dựng)")
-        self.tts_check.setChecked(False)
+        output_options.addWidget(self.translate_check)
+        self.tts_check = QCheckBox("TTS (đang phục dựng)")
         self.tts_check.setEnabled(False)
-        pending_row.addWidget(self.tts_check)
-
-        self.asr_check = QCheckBox("ASR/OCR nếu không có SRT (đang phục dựng)")
-        self.asr_check.setChecked(False)
-        self.asr_check.setEnabled(False)
-        pending_row.addWidget(self.asr_check)
-        root.addLayout(pending_row)
+        output_options.addWidget(self.tts_check)
+        root.addLayout(output_options)
 
         self.runtime_label = QLabel()
         self.runtime_label.setWordWrap(True)
@@ -170,11 +160,9 @@ class MainWindow(QMainWindow):
         self.inspect_btn = QPushButton("Kiểm tra video")
         self.inspect_btn.clicked.connect(self._inspect_video)
         button_row.addWidget(self.inspect_btn)
-
         self.run_btn = QPushButton("Chạy")
         self.run_btn.clicked.connect(self._run_pipeline)
         button_row.addWidget(self.run_btn)
-
         self.stop_btn = QPushButton("Dừng")
         self.stop_btn.setEnabled(False)
         self.stop_btn.clicked.connect(self._stop_pipeline)
@@ -184,9 +172,7 @@ class MainWindow(QMainWindow):
 
         self.progress = QProgressBar()
         self.progress.setRange(0, 100)
-        self.progress.setValue(0)
         root.addWidget(self.progress)
-
         self.stage_label = QLabel("Sẵn sàng")
         root.addWidget(self.stage_label)
 
@@ -194,9 +180,7 @@ class MainWindow(QMainWindow):
         self.log_box.setReadOnly(True)
         self.log_box.setPlaceholderText("Log xử lý sẽ hiện ở đây…")
         root.addWidget(self.log_box, 1)
-
         self.setCentralWidget(central)
-
         self.srt_only_check.toggled.connect(self._sync_options)
 
     def _sync_options(self, checked: bool) -> None:
@@ -207,9 +191,7 @@ class MainWindow(QMainWindow):
             self.render_check.setEnabled(True)
 
     def _update_runtime_status(self) -> None:
-        ffmpeg = find_ffmpeg()
-        ffprobe = find_ffprobe()
-        self.runtime_label.setText(f"FFmpeg: {ffmpeg}   |   FFprobe: {ffprobe}")
+        self.runtime_label.setText(f"FFmpeg: {find_ffmpeg()}   |   FFprobe: {find_ffprobe()}")
 
     def _choose_video(self) -> None:
         path, _ = QFileDialog.getOpenFileName(
@@ -252,13 +234,17 @@ class MainWindow(QMainWindow):
 
     def _build_input(self) -> PipelineInput:
         srt_only = self.srt_only_check.isChecked()
+        srt_path = self.srt_edit.text().strip()
+        do_subtitle = self.subtitle_check.isChecked()
+        if not srt_path and not self.asr_check.isChecked():
+            do_subtitle = False
         return PipelineInput(
             video_path=self.video_edit.text().strip() or None,
-            srt_path=self.srt_edit.text().strip() or None,
+            srt_path=srt_path or None,
             output_path=self.output_edit.text().strip() or None,
-            source="srt" if self.srt_edit.text().strip() else "auto",
+            source="srt" if srt_path else "asr",
             voice=None,
-            do_subtitle=self.subtitle_check.isChecked(),
+            do_subtitle=do_subtitle,
             do_translate=False,
             do_review=False,
             do_tts=False,
@@ -271,14 +257,12 @@ class MainWindow(QMainWindow):
     def _run_pipeline(self) -> None:
         if self._thread is not None:
             return
-
         inp = self._build_input()
-        if not inp.srt_path:
-            QMessageBox.information(
-                self,
-                "Cần SRT ở giai đoạn này",
-                "ASR/OCR chưa được nối vào bản rebuild. Hãy chọn một file SRT để test pipeline hiện tại.",
-            )
+        if not inp.srt_path and inp.do_subtitle and not inp.video_path:
+            QMessageBox.information(self, "Thiếu video", "Whisper ASR cần một video hoặc file âm thanh đầu vào.")
+            return
+        if inp.export_srt_only and not inp.srt_path and not inp.video_path:
+            QMessageBox.information(self, "Thiếu đầu vào", "Hãy chọn video để chạy ASR hoặc chọn một file SRT.")
             return
         if inp.do_render and not inp.video_path:
             QMessageBox.information(self, "Thiếu video", "Render video cần một file video đầu vào.")
@@ -303,7 +287,6 @@ class MainWindow(QMainWindow):
         worker.finished.connect(worker.deleteLater)
         thread.finished.connect(thread.deleteLater)
         thread.finished.connect(self._thread_finished)
-
         self._thread = thread
         self._worker = worker
         thread.start()
@@ -328,11 +311,9 @@ class MainWindow(QMainWindow):
     def _on_done(self, result: PipelineResult) -> None:
         self.progress.setValue(100)
         self.stage_label.setText("Hoàn tất")
-        outputs = [
-            value
-            for value in (result.srt_out, result.ass_out, result.audio_out, result.video_out)
-            if value
-        ]
+        if result.detected_language:
+            self._append_log(f"Ngôn ngữ ASR: {result.detected_language}")
+        outputs = [v for v in (result.srt_out, result.ass_out, result.audio_out, result.video_out) if v]
         if outputs:
             self._append_log("Đầu ra:\n" + "\n".join(outputs))
         QMessageBox.information(self, "Hoàn tất", "Xử lý xong." + ("\n\n" + "\n".join(outputs) if outputs else ""))
@@ -341,8 +322,7 @@ class MainWindow(QMainWindow):
     def _on_failed(self, message: str) -> None:
         self.stage_label.setText("Lỗi")
         self._append_log(message)
-        short = message.split("\n", 1)[0]
-        QMessageBox.critical(self, "Xử lý thất bại", short)
+        QMessageBox.critical(self, "Xử lý thất bại", message.split("\n", 1)[0])
 
     @pyqtSlot()
     def _thread_finished(self) -> None:
