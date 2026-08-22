@@ -2,18 +2,6 @@ from __future__ import annotations
 
 import sys
 
-from PyQt6.QtCore import QTimer
-from PyQt6.QtGui import QIcon
-from PyQt6.QtWidgets import (
-    QApplication,
-    QCheckBox,
-    QGroupBox,
-    QLabel,
-    QMessageBox,
-    QPushButton,
-    QWidget,
-)
-
 from ..legacy_bridge import prepare_legacy_runtime
 
 
@@ -31,7 +19,9 @@ def _brand_text(text: str) -> str:
     )
 
 
-def _rebrand_static_widgets(window: QWidget) -> None:
+def _rebrand_static_widgets(window) -> None:
+    from PyQt6.QtWidgets import QCheckBox, QGroupBox, QLabel, QPushButton
+
     window.setWindowTitle(f"{APP_DISPLAY_NAME} {APP_VERSION} — Dịch & lồng tiếng video")
     for cls in (QLabel, QPushButton, QCheckBox, QGroupBox):
         for widget in window.findChildren(cls):
@@ -53,7 +43,7 @@ def _rebrand_static_widgets(window: QWidget) -> None:
                 pass
 
 
-def _disable_old_credit_ui(window: QWidget) -> None:
+def _disable_old_credit_ui(window) -> None:
     settings = getattr(window, "settings", None)
     if settings is not None and hasattr(settings, "ai_credit_mode"):
         try:
@@ -61,8 +51,6 @@ def _disable_old_credit_ui(window: QWidget) -> None:
         except Exception:
             pass
 
-    # These controls belong to the retired PeiPei credit service.  They stay
-    # hidden until the VuxGM web API adapter is implemented.
     for name in ("_credit_bar", "credit_lbl", "credit_topup_btn"):
         widget = getattr(window, name, None)
         if widget is not None:
@@ -73,24 +61,37 @@ def _disable_old_credit_ui(window: QWidget) -> None:
 
 
 def main() -> int:
+    # First make the extracted _internal runtime available. This allows the app
+    # to reuse its original PyQt/native packages even on a clean Python install.
+    try:
+        paths, legacy_main = prepare_legacy_runtime()
+    except Exception as exc:
+        # PyQt may not be importable if runtime preparation itself failed, so use
+        # a console message as a guaranteed fallback.
+        print(f"{APP_DISPLAY_NAME}: không nạp được legacy runtime: {exc}", file=sys.stderr)
+        try:
+            from PyQt6.QtWidgets import QApplication, QMessageBox
+
+            app = QApplication.instance() or QApplication(sys.argv)
+            QMessageBox.critical(
+                None,
+                f"{APP_DISPLAY_NAME} — lỗi runtime cũ",
+                "Không nạp được bộ chức năng gốc từ legacy_app.\n\n" + str(exc),
+            )
+        except Exception:
+            pass
+        return 1
+
+    from PyQt6.QtCore import QTimer
+    from PyQt6.QtGui import QIcon
+    from PyQt6.QtWidgets import QApplication, QDialog, QMessageBox
+
     app = QApplication.instance() or QApplication(sys.argv)
     app.setApplicationName(APP_DISPLAY_NAME)
     app.setApplicationDisplayName(APP_DISPLAY_NAME)
     app.setOrganizationName("VuxGM")
     app.setOrganizationDomain("vuxgm.site")
 
-    try:
-        paths, legacy_main = prepare_legacy_runtime()
-    except Exception as exc:
-        QMessageBox.critical(
-            None,
-            f"{APP_DISPLAY_NAME} — lỗi runtime cũ",
-            "Không nạp được bộ chức năng gốc từ legacy_app.\n\n" + str(exc),
-        )
-        return 1
-
-    # Import after prepare_legacy_runtime(): canonical legacy imports are now
-    # routed to VuxGM-owned license/credit modules.
     from ..license_client import LicenseError as SourceLicenseError
     from ..vuxgm_license import get_client
     from .license_dialog import LicenseController, LicenseDialog
@@ -109,7 +110,7 @@ def main() -> int:
 
     if state is None:
         dialog = LicenseDialog(client)
-        if dialog.exec() != dialog.DialogCode.Accepted:
+        if dialog.exec() != QDialog.DialogCode.Accepted:
             return 0
 
     try:
@@ -134,7 +135,7 @@ def main() -> int:
         window.setEnabled(False)
         QMessageBox.warning(window, "License không còn hợp lệ", message)
         dialog = LicenseDialog(client, window)
-        if dialog.exec() == dialog.DialogCode.Accepted:
+        if dialog.exec() == QDialog.DialogCode.Accepted:
             window.setEnabled(True)
             controller.start()
         else:
@@ -143,7 +144,6 @@ def main() -> int:
     controller.invalidated.connect(invalidated)
     controller.start()
 
-    # Some controls are created/refreshed shortly after MainWindow.__init__.
     QTimer.singleShot(0, lambda: _rebrand_static_widgets(window))
     QTimer.singleShot(500, lambda: _disable_old_credit_ui(window))
 
