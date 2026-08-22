@@ -52,7 +52,6 @@ def find_legacy_paths() -> LegacyPaths:
 
     internal = repo / "legacy_app" / "_internal"
     if not internal.exists():
-        # Some extraction layouts keep _internal beside the extracted EXE tree.
         alt = extracted / "_internal"
         if alt.exists():
             internal = alt
@@ -82,7 +81,6 @@ def _prepare_native_runtime(paths: LegacyPaths) -> None:
     if not internal.is_dir():
         return
 
-    # Python packages and .pyd extensions from the user's extracted runtime.
     value = str(internal)
     if value not in sys.path:
         sys.path.insert(0, value)
@@ -97,7 +95,6 @@ def _prepare_native_runtime(paths: LegacyPaths) -> None:
         _prepend_env_path(d)
         if sys.platform == "win32" and d.is_dir() and hasattr(os, "add_dll_directory"):
             try:
-                # Keep handles alive for the life of the process.
                 handle = os.add_dll_directory(str(d))
                 _DLL_HANDLES.append(handle)
             except OSError:
@@ -128,11 +125,11 @@ def _replace_package_path(package: ModuleType, first: Path, second: Path) -> Non
 
 
 def prepare_legacy_runtime() -> tuple[LegacyPaths, ModuleType]:
-    """Load the original application bytecode while keeping VuxGM-owned hooks.
+    """Load original bytecode while replacing owned service integrations.
 
-    The legacy package is used as the behavioral reference so all old features
-    remain available immediately.  VuxGM source modules are preloaded for license
-    and credit before the legacy package path becomes first in import resolution.
+    Legacy modules provide the old UI/feature behavior.  VuxGM source modules are
+    preloaded for license, credit and renewal before legacy paths become first in
+    module resolution, so the retired services are never imported.
     """
     paths = find_legacy_paths()
     _prepare_native_runtime(paths)
@@ -142,9 +139,6 @@ def prepare_legacy_runtime() -> tuple[LegacyPaths, ModuleType]:
     source_bilisub = Path(__file__).resolve().parent
     source_gui = source_bilisub / "gui"
 
-    # Preload the VuxGM-owned modules while source_bilisub is still the only
-    # package path.  Their imported classes/constants stay bound even after the
-    # canonical config module is replaced by legacy config below.
     from . import config as source_config
 
     source_config.APP_VERSION = "1.0.0"
@@ -152,26 +146,25 @@ def prepare_legacy_runtime() -> tuple[LegacyPaths, ModuleType]:
     from . import license_bootstrap as source_license_bootstrap  # noqa: F401
     from . import vuxgm_license as license_facade
     from . import credit as credit_adapter
+    from . import giahan as renewal_adapter
     from . import gui as gui_pkg
     from .gui import license_dialog as source_license_dialog
 
-    # Core restored modules should resolve from the original bytecode first.
     _replace_package_path(bilisub, paths.bilisub_root, source_bilisub)
-    # GUI has a deliberate exception: VuxGM license_dialog source must win, while
-    # every other missing GUI module falls back to original bytecode.
     _replace_package_path(gui_pkg, source_gui, paths.gui_root)
 
     legacy_config = _load_pyc("bilisub.config", paths.bilisub_root / "config.pyc")
     legacy_config.APP_VERSION = "1.0.0"
     legacy_config.LICENSE_ENABLED = True
 
-    # Prevent any restored module from importing the old license/credit clients.
     sys.modules["bilisub.license_client"] = license_facade
     sys.modules["bilisub.credit"] = credit_adapter
+    sys.modules["bilisub.giahan"] = renewal_adapter
     sys.modules["bilisub.gui.license_dialog"] = source_license_dialog
     setattr(bilisub, "config", legacy_config)
     setattr(bilisub, "license_client", license_facade)
     setattr(bilisub, "credit", credit_adapter)
+    setattr(bilisub, "giahan", renewal_adapter)
     setattr(gui_pkg, "license_dialog", source_license_dialog)
 
     legacy_main = _load_pyc(
@@ -180,7 +173,6 @@ def prepare_legacy_runtime() -> tuple[LegacyPaths, ModuleType]:
     )
     legacy_main.APP_VERSION = "1.0.0"
 
-    # Reuse the VuxGM icon for calls that asked for the old application icon/logo.
     original_asset_path = legacy_main.asset_path
     vux_icon = paths.repo_root / "rebuild_src" / "assets" / "vuxgm_icon.svg"
 
