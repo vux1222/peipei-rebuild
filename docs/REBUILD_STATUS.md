@@ -1,6 +1,6 @@
 # PeiPei rebuild status
 
-This branch is a clean rebuild workspace. The original extracted `.pyc` files remain untouched on `main`/as reference material.
+This branch is a clean, editable rebuild workspace. The extracted `.pyc` files remain untouched as reference material.
 
 ## Confirmed architecture
 
@@ -13,21 +13,41 @@ This branch is a clean rebuild workspace. The original extracted `.pyc` files re
 - OCR uses RapidOCR/ONNX Runtime.
 - TTS/runtime assets include Edge TTS, VieNeu and SEA G2P components.
 
-## Current reconstructed files
+## Current reconstructed source
 
 - `rebuild_src/peipei_launch.py`
-- `rebuild_src/bilisub/__init__.py`
+- `rebuild_src/bilisub/config.py`
+- `rebuild_src/bilisub/models.py`
+- `rebuild_src/bilisub/ffmpeg_utils.py`
+- `rebuild_src/bilisub/srt.py`
+- `rebuild_src/bilisub/pipeline.py`
+- `rebuild_src/bilisub/gui/main_window.py`
 - `tools/check_runtime.py`
+
+## Runnable baseline
+
+The current GUI/pipeline supports an existing SRT file through these stages:
+
+`video + SRT -> parse/clean -> merge short cues -> export SRT/ASS -> FFmpeg render`
+
+It also supports FFprobe video inspection and preview trimming. The GUI intentionally leaves ASR/OCR, AI translation and TTS disabled until their source modules are reconstructed.
+
+## Clean rebuild website
+
+The user-owned project domain is configured as:
+
+- `VUXGM_SITE_URL=https://vuxgm.site`
+- `VUXGM_API_BASE=https://vuxgm.site/api`
+
+These values are for the clean rebuild website/API and are deliberately separate from third-party licensing code in the extracted reference application.
 
 ## Next source modules to reconstruct
 
-1. `bilisub/config.py`
-2. `bilisub/ffmpeg_utils.py`
-3. `bilisub/srt.py`
-4. `bilisub/pipeline.py`
-5. `bilisub/gui/main_window.py`
-
-The large GUI/pipeline modules should be reconstructed from their disassembly text rather than guessed from bytecode metadata alone.
+1. `bilisub/asr.py` and hard-sub/OCR dispatch.
+2. `bilisub/translate/*` translation providers and tiered orchestration.
+3. `bilisub/tts/*` engine abstraction and selected TTS backends.
+4. `bilisub/render.py` and advanced output options.
+5. Advanced ASS/art-text layout from `bilisub/srt.py` and GUI controls from the large original window.
 
 ## Runtime policy
 
