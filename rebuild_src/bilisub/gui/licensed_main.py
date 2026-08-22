@@ -1,14 +1,28 @@
 from __future__ import annotations
 
 import sys
+from pathlib import Path
 
 from PyQt6.QtCore import QUrl
-from PyQt6.QtGui import QDesktopServices
+from PyQt6.QtGui import QDesktopServices, QIcon
 from PyQt6.QtWidgets import QApplication, QLabel, QMessageBox, QPushButton
 
 from ..license_client import LicenseClient, LicenseError
 from .license_dialog import LicenseController, LicenseDialog
-from .main_window import MainWindow
+from .main_window import APP_DISPLAY_NAME, MainWindow
+
+
+def _asset_path(name: str) -> Path:
+    candidates: list[Path] = []
+    meipass = getattr(sys, "_MEIPASS", None)
+    if meipass:
+        candidates.append(Path(meipass) / "assets" / name)
+    candidates.append(Path(__file__).resolve().parents[2] / "assets" / name)
+    candidates.append(Path(sys.executable).resolve().parent / "assets" / name)
+    for path in candidates:
+        if path.exists():
+            return path
+    return candidates[0] if candidates else Path(name)
 
 
 def _request_license(client: LicenseClient, parent=None) -> bool:
@@ -18,19 +32,27 @@ def _request_license(client: LicenseClient, parent=None) -> bool:
 
 def main() -> int:
     app = QApplication.instance() or QApplication(sys.argv)
-    app.setApplicationName("VuxGM")
+    app.setApplicationName(APP_DISPLAY_NAME)
+    app.setApplicationDisplayName(APP_DISPLAY_NAME)
+
+    icon_path = _asset_path("vuxgm_icon.svg")
+    if icon_path.exists():
+        app.setWindowIcon(QIcon(str(icon_path)))
 
     client = LicenseClient()
     try:
         state = client.startup()
     except LicenseError as exc:
         state = None
-        QMessageBox.warning(None, "VuxGM License", str(exc))
+        QMessageBox.warning(None, f"{APP_DISPLAY_NAME} License", str(exc))
 
     if state is None and not _request_license(client):
         return 0
 
     window = MainWindow()
+    if icon_path.exists():
+        window.setWindowIcon(QIcon(str(icon_path)))
+
     status = window.statusBar()
     license_label = QLabel(client.status_text())
     status.addPermanentWidget(license_label, 1)
