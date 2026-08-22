@@ -10,16 +10,19 @@ from ..config import APP_SITE_URL
 from ..license_client import HEARTBEAT_SECONDS, LicenseClient, LicenseError
 
 
+APP_DISPLAY_NAME = "VuxGM Media"
+
+
 class LicenseDialog(QDialog):
     def __init__(self, client: LicenseClient, parent=None) -> None:
         super().__init__(parent)
         self.client = client
-        self.setWindowTitle("Kích hoạt VuxGM")
+        self.setWindowTitle(f"Kích hoạt {APP_DISPLAY_NAME}")
         self.setModal(True)
         self.setMinimumWidth(470)
 
         root = QVBoxLayout(self)
-        title = QLabel("<b>VuxGM License</b>")
+        title = QLabel(f"<b>{APP_DISPLAY_NAME} License</b>")
         title.setStyleSheet("font-size:20px")
         root.addWidget(title)
 
@@ -56,7 +59,7 @@ class LicenseDialog(QDialog):
     def _activate(self) -> None:
         key = self.key_edit.text().strip().upper()
         self.activate_btn.setEnabled(False)
-        self.status.setText("Đang kết nối máy chủ VuxGM…")
+        self.status.setText(f"Đang kết nối máy chủ {APP_DISPLAY_NAME}…")
         try:
             state = self.client.activate(key)
             self.status.setText(f"Kích hoạt thành công. Hết hạn: {state.expires_at}")
@@ -91,7 +94,7 @@ class LicenseController(QObject):
         if self._busy:
             return
         self._busy = True
-        threading.Thread(target=self._heartbeat_worker, name="VuxGMLicenseHeartbeat", daemon=True).start()
+        threading.Thread(target=self._heartbeat_worker, name="VuxGMMediaLicenseHeartbeat", daemon=True).start()
 
     def _heartbeat_worker(self) -> None:
         try:
