@@ -24,11 +24,11 @@ def load_pyc(path: Path) -> CodeType:
     return code
 
 
-def render_code(path: Path, code: CodeType) -> str:
+def render_code(display_path: Path, source_path: Path, code: CodeType) -> str:
     out = io.StringIO()
-    print(f"=== FILE: {path} ===", file=out)
+    print(f"=== FILE: {display_path} ===", file=out)
     print(f"python: {sys.version}", file=out)
-    print(f"magic: {path.read_bytes()[:4].hex()}", file=out)
+    print(f"magic: {source_path.read_bytes()[:4].hex()}", file=out)
     print(file=out)
     # depth=None makes dis recurse through nested classes/functions, preserving
     # the original qualnames, local names, constants and instruction stream.
@@ -65,7 +65,7 @@ def main() -> int:
         target.parent.mkdir(parents=True, exist_ok=True)
         try:
             code = load_pyc(pyc)
-            target.write_text(render_code(rel, code), encoding="utf-8")
+            target.write_text(render_code(rel, pyc, code), encoding="utf-8")
             print(f"OK   {rel} -> {target.relative_to(out_root)}")
             ok += 1
         except Exception as exc:
