@@ -1,0 +1,493 @@
+=== FILE: bilisub\translate\limiter.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('Rate-limiter chủ động: token-bucket theo RPM (request/phút) và TPM (token/phút).\n\nMỗi lane (provider + key) có 1 limiter riêng. ``acquire()`` sẽ tự chờ đến khi\nđủ hạn mức, nhờ đó không bao giờ đâm vào lỗi 429 do vượt tốc độ.\n')
+              STORE_NAME               0 (__doc__)
+
+  6           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+  8           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (threading)
+              STORE_NAME               3 (threading)
+
+  9           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (time)
+              STORE_NAME               4 (time)
+
+ 12           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST               4 (<code object RateLimiter at 0x0000016DC8EA3470, file "bilisub\translate\limiter.py", line 12>)
+              MAKE_FUNCTION
+              LOAD_CONST               5 ('RateLimiter')
+              CALL                     2
+              STORE_NAME               5 (RateLimiter)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object RateLimiter at 0x0000016DC8EA3470, file "bilisub\translate\limiter.py", line 12>:
+ 12           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('RateLimiter')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (12)
+              STORE_NAME               3 (__firstlineno__)
+
+ 13           LOAD_CONST              12 ((0, 0))
+              LOAD_CONST              13 (('rpm', 'int', 'tpm', 'int'))
+              LOAD_CONST               2 (<code object __init__ at 0x0000016DC8E06830, file "bilisub\translate\limiter.py", line 13>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME               4 (__init__)
+
+ 21           LOAD_CONST              14 (('return', 'float'))
+              LOAD_CONST               3 (<code object _now at 0x0000016DC90E1930, file "bilisub\translate\limiter.py", line 21>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               5 (_now)
+
+ 24           LOAD_CONST              15 (('now', 'float', 'return', 'None'))
+              LOAD_CONST               4 (<code object _prune at 0x0000016DC8EA5D70, file "bilisub\translate\limiter.py", line 24>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               6 (_prune)
+
+ 29           LOAD_CONST              16 (('now', 'float', 'est_tokens', 'int', 'return', 'float'))
+              LOAD_CONST               5 (<code object _wait_needed at 0x0000016DC8D278B0, file "bilisub\translate\limiter.py", line 29>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               7 (_wait_needed)
+
+ 40           LOAD_CONST              17 ((0,))
+              LOAD_CONST               6 (300.0)
+              LOAD_CONST               7 (('timeout',))
+              BUILD_CONST_KEY_MAP      1
+              LOAD_CONST              18 (('est_tokens', 'int', 'timeout', 'float', 'return', 'bool'))
+              LOAD_CONST               8 (<code object acquire at 0x0000016DC8F62610, file "bilisub\translate\limiter.py", line 40>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME               8 (acquire)
+
+ 57           LOAD_CONST              17 ((0,))
+              LOAD_CONST              19 (('actual_tokens', 'int', 'est_tokens', 'int', 'return', 'None'))
+              LOAD_CONST               9 (<code object record_tokens at 0x0000016DC90E5E90, file "bilisub\translate\limiter.py", line 57>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME               9 (record_tokens)
+              LOAD_CONST              10 (('_lock', '_req_times', '_tok_events', 'rpm', 'tpm'))
+              STORE_NAME              10 (__static_attributes__)
+              RETURN_CONST            11 (None)
+
+Disassembly of <code object __init__ at 0x0000016DC8E06830, file "bilisub\translate\limiter.py", line 13>:
+ 13           RESUME                   0
+
+ 15           LOAD_FAST_LOAD_FAST     16 (rpm, self)
+              STORE_ATTR               0 (rpm)
+
+ 16           LOAD_FAST_LOAD_FAST     32 (tpm, self)
+              STORE_ATTR               1 (tpm)
+
+ 17           LOAD_GLOBAL              4 (threading)
+              LOAD_ATTR                6 (Lock)
+              PUSH_NULL
+              CALL                     0
+              LOAD_FAST                0 (self)
+              STORE_ATTR               4 (_lock)
+
+ 18           BUILD_LIST               0
+              LOAD_FAST                0 (self)
+              STORE_ATTR               5 (_req_times)
+
+ 19           BUILD_LIST               0
+              LOAD_FAST                0 (self)
+              STORE_ATTR               6 (_tok_events)
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _now at 0x0000016DC90E1930, file "bilisub\translate\limiter.py", line 21>:
+ 21           RESUME                   0
+
+ 22           LOAD_GLOBAL              0 (time)
+              LOAD_ATTR                2 (monotonic)
+              PUSH_NULL
+              CALL                     0
+              RETURN_VALUE
+
+Disassembly of <code object _prune at 0x0000016DC8EA5D70, file "bilisub\translate\limiter.py", line 24>:
+  24            RESUME                   0
+
+  25            LOAD_FAST                1 (now)
+                LOAD_CONST               1 (60.0)
+                BINARY_OP               10 (-)
+                STORE_FAST               2 (cutoff)
+
+  26            LOAD_FAST                0 (self)
+                LOAD_ATTR                0 (_req_times)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      3 (t)
+                SWAP                     2
+        L1:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L2:     FOR_ITER                12 (to L5)
+                STORE_FAST_LOAD_FAST    51 (t, t)
+                LOAD_FAST                2 (cutoff)
+                COMPARE_OP             148 (bool(>))
+        L3:     POP_JUMP_IF_TRUE         2 (to L4)
+                JUMP_BACKWARD           10 (to L2)
+        L4:     LOAD_FAST                3 (t)
+                LIST_APPEND              2
+                JUMP_BACKWARD           14 (to L2)
+        L5:     END_FOR
+                POP_TOP
+        L6:     SWAP                     2
+                STORE_FAST               3 (t)
+                LOAD_FAST                0 (self)
+                STORE_ATTR               0 (_req_times)
+
+  27            LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (_tok_events)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      3 (t)
+                LOAD_FAST_AND_CLEAR      4 (n)
+                SWAP                     3
+        L7:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L8:     FOR_ITER                15 (to L11)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST   52 (t, n)
+                LOAD_FAST_LOAD_FAST     50 (t, cutoff)
+                COMPARE_OP             148 (bool(>))
+        L9:     POP_JUMP_IF_TRUE         2 (to L10)
+                JUMP_BACKWARD           12 (to L8)
+       L10:     LOAD_FAST_LOAD_FAST     52 (t, n)
+                BUILD_TUPLE              2
+                LIST_APPEND              2
+                JUMP_BACKWARD           17 (to L8)
+       L11:     END_FOR
+                POP_TOP
+       L12:     SWAP                     3
+                STORE_FAST               4 (n)
+                STORE_FAST               3 (t)
+                LOAD_FAST                0 (self)
+                STORE_ATTR               1 (_tok_events)
+                RETURN_CONST             0 (None)
+
+  --   L13:     SWAP                     2
+                POP_TOP
+
+  26            SWAP                     2
+                STORE_FAST               3 (t)
+                RERAISE                  0
+
+  --   L14:     SWAP                     2
+                POP_TOP
+
+  27            SWAP                     3
+                STORE_FAST               4 (n)
+                STORE_FAST               3 (t)
+                RERAISE                  0
+ExceptionTable:
+  L1 to L3 -> L13 [2]
+  L4 to L6 -> L13 [2]
+  L7 to L9 -> L14 [3]
+  L10 to L12 -> L14 [3]
+
+Disassembly of <code object _wait_needed at 0x0000016DC8D278B0, file "bilisub\translate\limiter.py", line 29>:
+ 29           RESUME                   0
+
+ 31           LOAD_CONST               1 (0.0)
+              STORE_FAST               3 (wait)
+
+ 32           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (rpm)
+              LOAD_CONST               2 (0)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE       65 (to L1)
+              LOAD_GLOBAL              3 (len + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (_req_times)
+              CALL                     1
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (rpm)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_FALSE       30 (to L1)
+
+ 33           LOAD_GLOBAL              7 (max + NULL)
+              LOAD_FAST                3 (wait)
+              LOAD_CONST               3 (60.0)
+              LOAD_FAST_LOAD_FAST     16 (now, self)
+              LOAD_ATTR                4 (_req_times)
+              LOAD_CONST               2 (0)
+              BINARY_SUBSCR
+              BINARY_OP               10 (-)
+              BINARY_OP               10 (-)
+              CALL                     2
+              STORE_FAST               3 (wait)
+
+ 34   L1:     LOAD_FAST                0 (self)
+              LOAD_ATTR                8 (tpm)
+              LOAD_CONST               2 (0)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE      106 (to L2)
+
+ 35           LOAD_GLOBAL              7 (max + NULL)
+              LOAD_CONST               2 (0)
+              LOAD_GLOBAL             11 (sum + NULL)
+              LOAD_CONST               4 (<code object <genexpr> at 0x0000016DC90E2530, file "bilisub\translate\limiter.py", line 35>)
+              MAKE_FUNCTION
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               12 (_tok_events)
+              GET_ITER
+              CALL                     0
+              CALL                     1
+              CALL                     2
+              STORE_FAST               4 (used)
+
+ 36           LOAD_FAST_LOAD_FAST     66 (used, est_tokens)
+              BINARY_OP                0 (+)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                8 (tpm)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE       50 (to L2)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               12 (_tok_events)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       33 (to L2)
+
+ 37           LOAD_GLOBAL              7 (max + NULL)
+              LOAD_FAST                3 (wait)
+              LOAD_CONST               3 (60.0)
+              LOAD_FAST_LOAD_FAST     16 (now, self)
+              LOAD_ATTR               12 (_tok_events)
+              LOAD_CONST               2 (0)
+              BINARY_SUBSCR
+              LOAD_CONST               2 (0)
+              BINARY_SUBSCR
+              BINARY_OP               10 (-)
+              BINARY_OP               10 (-)
+              CALL                     2
+              STORE_FAST               3 (wait)
+
+ 38   L2:     LOAD_GLOBAL              7 (max + NULL)
+              LOAD_CONST               1 (0.0)
+              LOAD_FAST                3 (wait)
+              CALL                     2
+              RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E2530, file "bilisub\translate\limiter.py", line 35>:
+  35           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                 9 (to L3)
+               UNPACK_SEQUENCE          2
+               STORE_FAST_STORE_FAST   18 (_, n)
+               LOAD_FAST                2 (n)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           11 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object acquire at 0x0000016DC8F62610, file "bilisub\translate\limiter.py", line 40>:
+  40            RESUME                   0
+
+  42            LOAD_FAST                0 (self)
+                LOAD_ATTR                1 (_now + NULL|self)
+                CALL                     0
+                LOAD_FAST                2 (timeout)
+                BINARY_OP                0 (+)
+                STORE_FAST               3 (deadline)
+
+  43            NOP
+
+  44    L1:     LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (_lock)
+                BEFORE_WITH
+        L2:     POP_TOP
+
+  45            LOAD_FAST                0 (self)
+                LOAD_ATTR                1 (_now + NULL|self)
+                CALL                     0
+                STORE_FAST               4 (now)
+
+  46            LOAD_FAST                0 (self)
+                LOAD_ATTR                5 (_prune + NULL|self)
+                LOAD_FAST                4 (now)
+                CALL                     1
+                POP_TOP
+
+  47            LOAD_FAST                0 (self)
+                LOAD_ATTR                7 (_wait_needed + NULL|self)
+                LOAD_FAST_LOAD_FAST     65 (now, est_tokens)
+                CALL                     2
+                STORE_FAST               5 (wait)
+
+  48            LOAD_FAST                5 (wait)
+                LOAD_CONST               2 (0.0)
+                COMPARE_OP              58 (bool(<=))
+                POP_JUMP_IF_FALSE       72 (to L5)
+
+  49            LOAD_FAST                0 (self)
+                LOAD_ATTR                8 (_req_times)
+                LOAD_ATTR               11 (append + NULL|self)
+                LOAD_FAST                4 (now)
+                CALL                     1
+                POP_TOP
+
+  50            LOAD_FAST                1 (est_tokens)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       28 (to L3)
+
+  51            LOAD_FAST                0 (self)
+                LOAD_ATTR               12 (_tok_events)
+                LOAD_ATTR               11 (append + NULL|self)
+                LOAD_FAST_LOAD_FAST     65 (now, est_tokens)
+                BUILD_TUPLE              2
+                CALL                     1
+                POP_TOP
+
+  52    L3:     NOP
+
+  44    L4:     LOAD_CONST               3 (None)
+                LOAD_CONST               3 (None)
+                LOAD_CONST               3 (None)
+                CALL                     2
+                POP_TOP
+                RETURN_CONST             1 (True)
+
+  48    L5:     NOP
+
+  44            LOAD_CONST               3 (None)
+                LOAD_CONST               3 (None)
+                LOAD_CONST               3 (None)
+                CALL                     2
+                POP_TOP
+
+  53    L6:     LOAD_FAST                0 (self)
+                LOAD_ATTR                1 (_now + NULL|self)
+                CALL                     0
+                LOAD_FAST_CHECK          5 (wait)
+                BINARY_OP                0 (+)
+                LOAD_FAST                3 (deadline)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE        1 (to L7)
+
+  54            RETURN_CONST             4 (False)
+
+  55    L7:     LOAD_GLOBAL             14 (time)
+                LOAD_ATTR               16 (sleep)
+                PUSH_NULL
+                LOAD_GLOBAL             19 (min + NULL)
+                LOAD_FAST                5 (wait)
+                LOAD_CONST               5 (2.0)
+                CALL                     2
+                CALL                     1
+                POP_TOP
+
+  43            JUMP_BACKWARD          208 (to L1)
+
+  44    L8:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L9)
+                RERAISE                  2
+        L9:     POP_TOP
+       L10:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                JUMP_BACKWARD_NO_INTERRUPT 72 (to L6)
+
+  --   L11:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L4 -> L8 [1] lasti
+  L8 to L10 -> L11 [3] lasti
+
+Disassembly of <code object record_tokens at 0x0000016DC90E5E90, file "bilisub\translate\limiter.py", line 57>:
+  57           RESUME                   0
+
+  61           LOAD_FAST                1 (actual_tokens)
+               LOAD_CONST               1 (0)
+               COMPARE_OP              58 (bool(<=))
+               POP_JUMP_IF_FALSE        1 (to L1)
+
+  62           RETURN_CONST             2 (None)
+
+  63   L1:     LOAD_FAST                1 (actual_tokens)
+               LOAD_GLOBAL              1 (max + NULL)
+               LOAD_CONST               1 (0)
+               LOAD_FAST                2 (est_tokens)
+               CALL                     2
+               BINARY_OP               10 (-)
+               STORE_FAST               3 (delta)
+
+  64           LOAD_FAST                3 (delta)
+               LOAD_CONST               1 (0)
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_FALSE        1 (to L2)
+
+  65           RETURN_CONST             2 (None)
+
+  66   L2:     LOAD_FAST                0 (self)
+               LOAD_ATTR                2 (_lock)
+               BEFORE_WITH
+       L3:     POP_TOP
+
+  67           LOAD_FAST                0 (self)
+               LOAD_ATTR                4 (_tok_events)
+               LOAD_ATTR                7 (append + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR                9 (_now + NULL|self)
+               CALL                     0
+               LOAD_FAST                3 (delta)
+               BUILD_TUPLE              2
+               CALL                     1
+               POP_TOP
+
+  66   L4:     LOAD_CONST               2 (None)
+               LOAD_CONST               2 (None)
+               LOAD_CONST               2 (None)
+               CALL                     2
+               POP_TOP
+               RETURN_CONST             2 (None)
+       L5:     PUSH_EXC_INFO
+               WITH_EXCEPT_START
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L6)
+               RERAISE                  2
+       L6:     POP_TOP
+       L7:     POP_EXCEPT
+               POP_TOP
+               POP_TOP
+               RETURN_CONST             2 (None)
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L3 to L4 -> L5 [1] lasti
+  L5 to L7 -> L8 [3] lasti

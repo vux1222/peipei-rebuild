@@ -1,0 +1,866 @@
+=== FILE: bilisub\comic\pipeline.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('Orchestrator: (link|folder) → ảnh → panel → Gemini đọc → kịch bản review → list[SubtitleEntry].\n\nTái dùng ``script.vision.describe_scenes`` (đọc panel) + ``script.generator.generate_script``\n(viết theo style). Truyền PROMPT vision riêng để Gemini ĐỌC LỜI THOẠI trong bong bóng chat\n(khác autoscript vốn bỏ qua chữ). Đầu ra chảy thẳng vào TTS/render như autoscript, hoặc xuất\n``.txt`` kịch bản voiceover-ready.\n')
+              STORE_NAME               0 (__doc__)
+
+  8           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 10           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (tempfile)
+              STORE_NAME               3 (tempfile)
+
+ 11           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('dataclass', 'field'))
+              IMPORT_NAME              4 (dataclasses)
+              IMPORT_FROM              5 (dataclass)
+              STORE_NAME               5 (dataclass)
+              IMPORT_FROM              6 (field)
+              STORE_NAME               6 (field)
+              POP_TOP
+
+ 12           LOAD_CONST               1 (0)
+              LOAD_CONST               5 (('Path',))
+              IMPORT_NAME              7 (pathlib)
+              IMPORT_FROM              8 (Path)
+              STORE_NAME               8 (Path)
+              POP_TOP
+
+ 13           LOAD_CONST               1 (0)
+              LOAD_CONST               6 (('Callable', 'Optional'))
+              IMPORT_NAME              9 (typing)
+              IMPORT_FROM             10 (Callable)
+              STORE_NAME              10 (Callable)
+              IMPORT_FROM             11 (Optional)
+              STORE_NAME              11 (Optional)
+              POP_TOP
+
+ 15           LOAD_CONST               7 (2)
+              LOAD_CONST               8 (('SubtitleEntry',))
+              IMPORT_NAME             12 (models)
+              IMPORT_FROM             13 (SubtitleEntry)
+              STORE_NAME              13 (SubtitleEntry)
+              POP_TOP
+
+ 16           LOAD_CONST               7 (2)
+              LOAD_CONST               9 (('StylePack',))
+              IMPORT_NAME             14 (script.styles)
+              IMPORT_FROM             15 (StylePack)
+              STORE_NAME              15 (StylePack)
+              POP_TOP
+
+ 17           LOAD_CONST               7 (2)
+              LOAD_CONST              10 (('describe_scenes',))
+              IMPORT_NAME             16 (script.vision)
+              IMPORT_FROM             17 (describe_scenes)
+              STORE_NAME              17 (describe_scenes)
+              POP_TOP
+
+ 18           LOAD_CONST              11 (1)
+              LOAD_CONST              12 (('downloader', 'panels'))
+              IMPORT_NAME             18
+              IMPORT_FROM             19 (downloader)
+              STORE_NAME              19 (downloader)
+              IMPORT_FROM             20 (panels)
+              STORE_NAME              20 (panels)
+              POP_TOP
+
+ 19           LOAD_CONST              11 (1)
+              LOAD_CONST              13 (('generate_comic_script',))
+              IMPORT_NAME             21 (script)
+              IMPORT_FROM             22 (generate_comic_script)
+              STORE_NAME              22 (generate_comic_script)
+              POP_TOP
+
+ 20           LOAD_CONST              11 (1)
+              LOAD_CONST              14 (('build_comic_style',))
+              IMPORT_NAME             23 (styles)
+              IMPORT_FROM             24 (build_comic_style)
+              STORE_NAME              24 (build_comic_style)
+              POP_TOP
+
+ 23           LOAD_CONST              15 ('QUẢNG CÁO')
+              STORE_NAME              25 (_AD_TAG)
+
+ 25           LOAD_CONST              16 ("Đây là MỘT KHUNG (panel) truyện tranh. Hãy mô tả KHÁCH QUAN {lang}, 2-4 câu: (1) nhân vật xuất hiện — ngoại hình/biểu cảm/tư thế; (2) hành động, diễn biến đang xảy ra; (3) bối cảnh nơi chốn. ★ QUAN TRỌNG: ĐỌC và ghi lại NỘI DUNG mọi LỜI THOẠI trong bong bóng chat và ô narration/khung chữ (chuyển {lang}, giữ đúng ý; ghi rõ 'Nhân vật nói: …'). Nếu khung không có chữ thì thôi. CHỈ mô tả thứ nhìn thấy, không suy diễn thêm tình tiết. ★★ WATERMARK/QUẢNG BÁ CỦA WEB — tên miền (vd 'abc.net'), dòng 'truy cập… / xem truyện tại… / bộ truyện này thực hiện bởi… / ủng hộ nhóm dịch / theo dõi fanpage', chữ chèn ĐÈ lên tranh: LỜ ĐI hoàn toàn — KHÔNG đọc vào mô tả, KHÔNG coi là lời thoại, và KHÔNG vì nó mà coi cả khung là quảng cáo. ★★★ CHỈ khi khung KHÔNG HỀ có nội dung truyện (không nhân vật đang diễn, không cảnh, không diễn biến) mà TOÀN BỘ chỉ là ảnh quảng cáo / banner / logo trang web / mã QR / ảnh kêu gọi ủng hộ / TRANG THÔNG BÁO CỦA WEBSITE (đổi tên miền, 'hãy tìm từ khoá…', thuật toán Google, bảo trì, kêu gọi bookmark — kể cả khi có hình mascot/nhân vật minh hoạ đứng cạnh khối chữ thông báo) → mới trả về đúng cụm: ")
+
+ 38           LOAD_NAME               25 (_AD_TAG)
+
+ 25           BINARY_OP                0 (+)
+
+ 38           LOAD_CONST              17 (' (không mô tả gì thêm). Khung CÓ tranh truyện thật thì TUYỆT ĐỐI KHÔNG trả ')
+
+ 25           BINARY_OP                0 (+)
+
+ 39           LOAD_NAME               25 (_AD_TAG)
+
+ 25           BINARY_OP                0 (+)
+
+ 39           LOAD_CONST              18 (', dù trên đó có watermark quảng bá.')
+
+ 25           BINARY_OP                0 (+)
+
+ 24           STORE_NAME              26 (COMIC_VISION_PROMPT)
+
+ 45           LOAD_CONST              19 ("Đây là MỘT KHUNG (panel) truyện tranh. Hãy mô tả KHÁCH QUAN {lang}, 2-4 câu: (1) nhân vật xuất hiện — ngoại hình/biểu cảm/tư thế; (2) hành động, diễn biến đang xảy ra; (3) bối cảnh nơi chốn. ★ ĐỌC và ghi lại NỘI DUNG mọi LỜI THOẠI trong bong bóng chat và ô narration (chuyển {lang}, giữ đúng ý; ghi rõ 'Nhân vật nói: …'). ★★ Trên ảnh CÓ THỂ có watermark/dòng quảng bá của web (tên miền, 'truy cập…', 'bộ truyện này thực hiện bởi…', 'ủng hộ nhóm dịch'): LỜ ĐI, KHÔNG đọc vào mô tả. ★★★ BẮT BUỘC mô tả phần TRANH TRUYỆN — TUYỆT ĐỐI KHÔNG được trả lời bằng cụm '")
+
+ 51           LOAD_NAME               25 (_AD_TAG)
+
+ 45           BINARY_OP                0 (+)
+
+ 52           LOAD_CONST              20 ("' hay từ chối mô tả. Nếu ảnh gần như trống thì cứ tả đúng thứ nhìn thấy (màu nền, mảng tối…).")
+
+ 45           BINARY_OP                0 (+)
+
+ 44           STORE_NAME              27 (COMIC_VISION_PROMPT_STRICT)
+
+ 56           LOAD_CONST              35 (('desc', 'str', 'return', 'bool'))
+              LOAD_CONST              21 (<code object _is_ad at 0x0000016DC8EAE010, file "bilisub\comic\pipeline.py", line 56>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              28 (_is_ad)
+
+ 61           LOAD_NAME                5 (dataclass)
+
+ 62           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              22 (<code object ComicResult at 0x0000016DC8EA2FB0, file "bilisub\comic\pipeline.py", line 61>)
+              MAKE_FUNCTION
+              LOAD_CONST              23 ('ComicResult')
+              CALL                     2
+
+ 61           CALL                     0
+
+ 62           STORE_NAME              29 (ComicResult)
+
+ 71           LOAD_CONST               3 (None)
+
+ 72           LOAD_CONST              24 ('serious')
+              LOAD_CONST              25 ('co_trang')
+
+ 73           LOAD_CONST              26 ('vi')
+              LOAD_CONST               3 (None)
+
+ 74           LOAD_CONST               3 (None)
+              LOAD_CONST              27 (6.0)
+
+ 75           LOAD_CONST              28 (60)
+              LOAD_CONST              29 (4)
+              LOAD_CONST              30 ('')
+
+ 76           LOAD_CONST              31 ('standalone')
+
+ 77           LOAD_CONST               3 (None)
+
+ 78           LOAD_CONST               3 (None)
+
+ 70           LOAD_CONST              32 (('style', 'tone', 'setting', 'target_language', 'provider', 'work_dir', 'seconds_per_panel', 'max_panels', 'vision_threads', 'series_context', 'seam', 'progress', 'log'))
+              BUILD_CONST_KEY_MAP     13
+
+ 71           NOP
+
+ 70           NOP
+
+ 71           NOP
+
+ 70           NOP
+
+ 72           NOP
+
+ 70           NOP
+
+ 72           NOP
+
+ 70           NOP
+
+ 73           NOP
+
+ 70           NOP
+
+ 73           NOP
+
+ 70           NOP
+
+ 74           NOP
+
+ 70           NOP
+
+ 74           NOP
+
+ 70           NOP
+
+ 75           NOP
+
+ 70           NOP
+
+ 75           NOP
+
+ 70           NOP
+
+ 75           NOP
+
+ 70           NOP
+
+ 76           NOP
+
+ 70           NOP
+
+ 77           NOP
+
+ 70           NOP
+
+ 78           NOP
+
+ 70           NOP
+
+ 79           NOP
+
+ 70           LOAD_CONST              36 (('source', 'str', 'style', 'Optional[StylePack]', 'tone', 'str', 'setting', 'str', 'target_language', 'str', 'provider', 'Optional[str]', 'work_dir', 'Optional[str]', 'seconds_per_panel', 'float', 'max_panels', 'int', 'vision_threads', 'int', 'series_context', 'str', 'seam', 'str', 'progress', 'Optional[Callable[[str, int], None]]', 'log', 'Optional[Callable[[str], None]]', 'return', 'list[SubtitleEntry]'))
+              LOAD_CONST              33 (<code object run_comic_review at 0x0000016DC8F8F600, file "bilisub\comic\pipeline.py", line 70>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              30 (run_comic_review)
+
+162           LOAD_CONST              37 (('entries', 'list[SubtitleEntry]', 'path', 'str', 'return', 'str'))
+              LOAD_CONST              34 (<code object export_txt at 0x0000016DC8EA56F0, file "bilisub\comic\pipeline.py", line 162>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              31 (export_txt)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object _is_ad at 0x0000016DC8EAE010, file "bilisub\comic\pipeline.py", line 56>:
+ 56           RESUME                   0
+
+ 58           LOAD_GLOBAL              0 (_AD_TAG)
+              LOAD_FAST                0 (desc)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     LOAD_CONST               2 (None)
+              LOAD_CONST               3 (40)
+              BINARY_SLICE
+              LOAD_ATTR                3 (upper + NULL|self)
+              CALL                     0
+              CONTAINS_OP              0
+              RETURN_VALUE
+
+Disassembly of <code object ComicResult at 0x0000016DC8EA2FB0, file "bilisub\comic\pipeline.py", line 61>:
+ 61           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('ComicResult')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (61)
+              STORE_NAME               3 (__firstlineno__)
+              SETUP_ANNOTATIONS
+
+ 63           LOAD_CONST               2 ('Kết quả review 1 chương: kịch bản + ẢNH PANEL align 1:1 với entries (cho P3 dựng video).')
+              STORE_NAME               4 (__doc__)
+
+ 64           LOAD_NAME                5 (field)
+              PUSH_NULL
+              LOAD_NAME                6 (list)
+              LOAD_CONST               3 (('default_factory',))
+              CALL_KW                  1
+              STORE_NAME               7 (entries)
+              LOAD_CONST               4 ('list')
+              LOAD_NAME                8 (__annotations__)
+              LOAD_CONST               5 ('entries')
+              STORE_SUBSCR
+
+ 65           LOAD_NAME                5 (field)
+              PUSH_NULL
+              LOAD_NAME                6 (list)
+              LOAD_CONST               3 (('default_factory',))
+              CALL_KW                  1
+              STORE_NAME               9 (panels)
+              LOAD_CONST               4 ('list')
+              LOAD_NAME                8 (__annotations__)
+              LOAD_CONST               6 ('panels')
+              STORE_SUBSCR
+
+ 66           LOAD_CONST               7 ('')
+              STORE_NAME              10 (work_dir)
+              LOAD_CONST               8 ('str')
+              LOAD_NAME                8 (__annotations__)
+              LOAD_CONST               9 ('work_dir')
+              STORE_SUBSCR
+
+ 67           LOAD_CONST               7 ('')
+              STORE_NAME              11 (summary)
+              LOAD_CONST               8 ('str')
+              LOAD_NAME                8 (__annotations__)
+              LOAD_CONST              10 ('summary')
+              STORE_SUBSCR
+              LOAD_CONST              11 (())
+              STORE_NAME              12 (__static_attributes__)
+              RETURN_CONST            12 (None)
+
+Disassembly of <code object run_comic_review at 0x0000016DC8F8F600, file "bilisub\comic\pipeline.py", line 70>:
+  --            MAKE_CELL               13 (progress)
+
+  70            RESUME                   0
+
+  85            LOAD_FAST               14 (log)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         3 (to L1)
+                POP_TOP
+                LOAD_CONST               1 (<code object <lambda> at 0x0000016DC9134510, file "bilisub\comic\pipeline.py", line 85>)
+                MAKE_FUNCTION
+        L1:     STORE_FAST              14 (log)
+
+  86            LOAD_FAST                2 (style)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        11 (to L2)
+                POP_TOP
+                LOAD_GLOBAL              1 (build_comic_style + NULL)
+                LOAD_FAST_LOAD_FAST     52 (tone, setting)
+                CALL                     2
+        L2:     STORE_FAST               2 (style)
+
+  87            LOAD_GLOBAL              3 (Path + NULL)
+                LOAD_FAST                7 (work_dir)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        20 (to L3)
+                POP_TOP
+                LOAD_GLOBAL              4 (tempfile)
+                LOAD_ATTR                6 (mkdtemp)
+                PUSH_NULL
+                LOAD_CONST               2 ('comic_')
+                LOAD_CONST               3 (('prefix',))
+                CALL_KW                  1
+        L3:     CALL                     1
+                STORE_FAST              15 (wd)
+
+  89            LOAD_FAST               13 (progress)
+                BUILD_TUPLE              1
+                LOAD_CONST               4 (<code object _p at 0x0000016DC90F0B70, file "bilisub\comic\pipeline.py", line 89>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                STORE_FAST              16 (_p)
+
+  93            LOAD_DEREF              13 (progress)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        9 (to L4)
+
+  94            LOAD_DEREF              13 (progress)
+                PUSH_NULL
+                LOAD_CONST               5 ('download')
+                LOAD_CONST               6 (0)
+                CALL                     2
+                POP_TOP
+
+  95    L4:     LOAD_GLOBAL              8 (downloader)
+                LOAD_ATTR               10 (get_comic_images)
+                PUSH_NULL
+
+  96            LOAD_FAST                0 (source)
+                LOAD_GLOBAL             13 (str + NULL)
+                LOAD_FAST               15 (wd)
+                LOAD_CONST               7 ('raw')
+                BINARY_OP               11 (/)
+                CALL                     1
+
+  97            LOAD_GLOBAL             15 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST               8 ('comic_resolver_url')
+                LOAD_CONST               9 ('')
+                CALL                     3
+
+  98            LOAD_GLOBAL             15 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST              10 ('comic_site_cookie')
+                LOAD_CONST               9 ('')
+                CALL                     3
+                LOAD_FAST               14 (log)
+
+  95            LOAD_CONST              11 (('resolver_url', 'cookie', 'log'))
+                CALL_KW                  5
+                STORE_FAST              17 (images)
+
+ 101            LOAD_GLOBAL              8 (downloader)
+                LOAD_ATTR               16 (drop_repeated_banners)
+                PUSH_NULL
+                LOAD_FAST               17 (images)
+                LOAD_FAST               14 (log)
+                LOAD_CONST              12 (('log',))
+                CALL_KW                  2
+                STORE_FAST              17 (images)
+
+ 107            LOAD_GLOBAL             19 (bool + NULL)
+                LOAD_GLOBAL             15 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST              13 ('comic_hide_watermark')
+                LOAD_CONST              14 (True)
+                CALL                     3
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE       35 (to L5)
+
+ 108            LOAD_CONST              15 (1)
+                LOAD_CONST              16 (('watermark',))
+                IMPORT_NAME             10
+                IMPORT_FROM             11 (watermark)
+                STORE_FAST              18 (watermark)
+                POP_TOP
+
+ 109            LOAD_FAST               18 (watermark)
+                LOAD_ATTR               25 (clean_images + NULL|self)
+                LOAD_FAST               17 (images)
+                LOAD_GLOBAL             13 (str + NULL)
+                LOAD_FAST               15 (wd)
+                LOAD_CONST              17 ('clean')
+                BINARY_OP               11 (/)
+                CALL                     1
+                LOAD_FAST               14 (log)
+                LOAD_CONST              12 (('log',))
+                CALL_KW                  3
+                STORE_FAST              17 (images)
+
+ 112    L5:     LOAD_GLOBAL             26 (panels)
+                LOAD_ATTR               28 (prepare_panels)
+                PUSH_NULL
+                LOAD_FAST               17 (images)
+                LOAD_GLOBAL             13 (str + NULL)
+                LOAD_FAST               15 (wd)
+                LOAD_CONST              18 ('panels')
+                BINARY_OP               11 (/)
+                CALL                     1
+
+ 113            LOAD_FAST_LOAD_FAST    158 (max_panels, log)
+
+ 112            LOAD_CONST              19 (('max_panels', 'log'))
+                CALL_KW                  4
+                STORE_FAST              19 (panel_paths)
+
+ 114            LOAD_GLOBAL             26 (panels)
+                LOAD_ATTR               30 (to_scenes)
+                PUSH_NULL
+                LOAD_FAST               19 (panel_paths)
+                LOAD_FAST                8 (seconds_per_panel)
+                LOAD_CONST              20 (('seconds_per',))
+                CALL_KW                  2
+                STORE_FAST              20 (scenes)
+
+ 118            LOAD_GLOBAL             15 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST              21 ('comic_vision_model')
+                LOAD_CONST               9 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L6)
+                POP_TOP
+                LOAD_CONST               9 ('')
+        L6:     LOAD_ATTR               33 (strip + NULL|self)
+                CALL                     0
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L7)
+                POP_TOP
+                LOAD_CONST              22 (None)
+        L7:     STORE_FAST              21 (comic_model)
+
+ 121            LOAD_GLOBAL             35 (describe_scenes + NULL)
+                LOAD_FAST               20 (scenes)
+                LOAD_FAST_LOAD_FAST     21 (settings, target_language)
+
+ 122            LOAD_FAST               21 (comic_model)
+                LOAD_CONST              23 (512)
+
+ 123            LOAD_GLOBAL             36 (COMIC_VISION_PROMPT)
+                LOAD_FAST               10 (vision_threads)
+
+ 124            LOAD_FAST               16 (_p)
+                PUSH_NULL
+                LOAD_CONST              24 ('vision')
+                CALL                     1
+                LOAD_FAST               14 (log)
+
+ 121            LOAD_CONST              25 (('settings', 'target_language', 'model', 'max_out', 'prompt', 'threads', 'progress', 'log'))
+                CALL_KW                  9
+                STORE_FAST              20 (scenes)
+
+ 127            LOAD_GLOBAL             39 (sum + NULL)
+                LOAD_CONST              26 (<code object <genexpr> at 0x0000016DC8EA2E80, file "bilisub\comic\pipeline.py", line 127>)
+                MAKE_FUNCTION
+                LOAD_FAST               20 (scenes)
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                STORE_FAST              22 (n_ad)
+
+ 128            LOAD_FAST               22 (n_ad)
+                TO_BOOL
+                POP_JUMP_IF_FALSE      158 (to L9)
+                LOAD_FAST               22 (n_ad)
+                LOAD_GLOBAL             41 (len + NULL)
+                LOAD_FAST               20 (scenes)
+                CALL                     1
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE      143 (to L9)
+
+ 134            LOAD_FAST               14 (log)
+                PUSH_NULL
+                LOAD_CONST              27 ('⚠ Cả ')
+                LOAD_FAST               22 (n_ad)
+                FORMAT_SIMPLE
+                LOAD_CONST              28 ('/')
+                LOAD_GLOBAL             41 (len + NULL)
+                LOAD_FAST               20 (scenes)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              29 (' panel bị nhận là quảng cáo — nghi NHẬN NHẦM (trang truyện có watermark quảng bá). Đang đọc lại bằng chế độ nghiêm ngặt...')
+                BUILD_STRING             5
+                CALL                     1
+                POP_TOP
+
+ 136            LOAD_GLOBAL             35 (describe_scenes + NULL)
+                LOAD_FAST               20 (scenes)
+                LOAD_FAST_LOAD_FAST     21 (settings, target_language)
+
+ 137            LOAD_FAST               21 (comic_model)
+                LOAD_CONST              23 (512)
+
+ 138            LOAD_GLOBAL             42 (COMIC_VISION_PROMPT_STRICT)
+                LOAD_FAST               10 (vision_threads)
+
+ 139            LOAD_FAST               16 (_p)
+                PUSH_NULL
+                LOAD_CONST              24 ('vision')
+                CALL                     1
+                LOAD_FAST               14 (log)
+
+ 136            LOAD_CONST              25 (('settings', 'target_language', 'model', 'max_out', 'prompt', 'threads', 'progress', 'log'))
+                CALL_KW                  9
+                STORE_FAST              20 (scenes)
+
+ 140            LOAD_GLOBAL             39 (sum + NULL)
+                LOAD_CONST              30 (<code object <genexpr> at 0x0000016DC8EA35A0, file "bilisub\comic\pipeline.py", line 140>)
+                MAKE_FUNCTION
+                LOAD_FAST               20 (scenes)
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                STORE_FAST              22 (n_ad)
+
+ 141            LOAD_FAST               22 (n_ad)
+                LOAD_GLOBAL             41 (len + NULL)
+                LOAD_FAST               20 (scenes)
+                CALL                     1
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       24 (to L8)
+
+ 142            LOAD_GLOBAL             45 (ValueError + NULL)
+
+ 143            LOAD_CONST              31 ('Cả ')
+                LOAD_GLOBAL             41 (len + NULL)
+                LOAD_FAST               20 (scenes)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              32 (' ảnh tải về đều là quảng cáo/banner, không có nội dung truyện. Nguồn có thể sai trang, hoặc site chặn nên tool chỉ lấy được banner. Cách xử lý: thử truyện đó ở SITE KHÁC, hoặc tải ảnh chương về một THƯ MỤC rồi chọn thư mục đó ở ô Nguồn.')
+                BUILD_STRING             3
+
+ 142            CALL                     1
+                RAISE_VARARGS            1
+
+ 147    L8:     LOAD_FAST               14 (log)
+                PUSH_NULL
+                LOAD_CONST              33 ('✅ Đọc lại xong — ')
+                LOAD_GLOBAL             41 (len + NULL)
+                LOAD_FAST               20 (scenes)
+                CALL                     1
+                LOAD_FAST               22 (n_ad)
+                BINARY_OP               10 (-)
+                FORMAT_SIMPLE
+                LOAD_CONST              28 ('/')
+                LOAD_GLOBAL             41 (len + NULL)
+                LOAD_FAST               20 (scenes)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              34 (' panel có nội dung truyện thật.')
+                BUILD_STRING             5
+                CALL                     1
+                POP_TOP
+
+ 148    L9:     LOAD_FAST               22 (n_ad)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       58 (to L16)
+
+ 149            LOAD_FAST               20 (scenes)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     23 (s)
+                SWAP                     2
+       L10:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L11:     FOR_ITER                33 (to L14)
+                STORE_FAST              23 (s)
+                LOAD_GLOBAL             47 (_is_ad + NULL)
+                LOAD_FAST               23 (s)
+                LOAD_ATTR               48 (description)
+                CALL                     1
+                TO_BOOL
+       L12:     POP_JUMP_IF_FALSE        2 (to L13)
+                JUMP_BACKWARD           31 (to L11)
+       L13:     LOAD_FAST               23 (s)
+                LIST_APPEND              2
+                JUMP_BACKWARD           35 (to L11)
+       L14:     END_FOR
+                POP_TOP
+       L15:     STORE_FAST              20 (scenes)
+                STORE_FAST              23 (s)
+
+ 150            LOAD_FAST               14 (log)
+                PUSH_NULL
+                LOAD_CONST              35 ('Bỏ ')
+                LOAD_FAST               22 (n_ad)
+                FORMAT_SIMPLE
+                LOAD_CONST              36 (' panel quảng cáo/banner (không đưa vào review).')
+                BUILD_STRING             3
+                CALL                     1
+                POP_TOP
+
+ 153   L16:     LOAD_GLOBAL             51 (generate_comic_script + NULL)
+                LOAD_FAST               20 (scenes)
+                LOAD_FAST_LOAD_FAST     33 (style, settings)
+
+ 154            LOAD_FAST_LOAD_FAST     86 (target_language, provider)
+
+ 155            LOAD_FAST_LOAD_FAST    188 (series_context, seam)
+
+ 156            LOAD_FAST               16 (_p)
+                PUSH_NULL
+                LOAD_CONST              37 ('script')
+                CALL                     1
+                LOAD_FAST               14 (log)
+
+ 153            LOAD_CONST              38 (('style', 'settings', 'target_language', 'provider', 'series_context', 'seam', 'progress', 'log'))
+                CALL_KW                  9
+                UNPACK_SEQUENCE          2
+                STORE_FAST              24 (entries)
+                STORE_FAST              25 (summary)
+
+ 158            LOAD_FAST               20 (scenes)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     23 (s)
+                SWAP                     2
+       L17:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L18:     FOR_ITER                34 (to L21)
+                STORE_FAST              23 (s)
+                LOAD_FAST               23 (s)
+                LOAD_ATTR               48 (description)
+                TO_BOOL
+       L19:     POP_JUMP_IF_TRUE         2 (to L20)
+                JUMP_BACKWARD           22 (to L18)
+       L20:     LOAD_FAST               23 (s)
+                LOAD_ATTR               52 (frame_path)
+                LIST_APPEND              2
+                JUMP_BACKWARD           36 (to L18)
+       L21:     END_FOR
+                POP_TOP
+       L22:     STORE_FAST              26 (panels_used)
+                STORE_FAST              23 (s)
+
+ 159            LOAD_GLOBAL             55 (ComicResult + NULL)
+                LOAD_FAST               24 (entries)
+                LOAD_FAST               26 (panels_used)
+                LOAD_GLOBAL             13 (str + NULL)
+                LOAD_FAST               15 (wd)
+                CALL                     1
+                LOAD_FAST               25 (summary)
+                LOAD_CONST              39 (('entries', 'panels', 'work_dir', 'summary'))
+                CALL_KW                  4
+                RETURN_VALUE
+
+  --   L23:     SWAP                     2
+                POP_TOP
+
+ 149            SWAP                     2
+                STORE_FAST              23 (s)
+                RERAISE                  0
+
+  --   L24:     SWAP                     2
+                POP_TOP
+
+ 158            SWAP                     2
+                STORE_FAST              23 (s)
+                RERAISE                  0
+ExceptionTable:
+  L10 to L12 -> L23 [2]
+  L13 to L15 -> L23 [2]
+  L17 to L19 -> L24 [2]
+  L20 to L22 -> L24 [2]
+
+Disassembly of <code object <lambda> at 0x0000016DC9134510, file "bilisub\comic\pipeline.py", line 85>:
+ 85           RESUME                   0
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _p at 0x0000016DC90F0B70, file "bilisub\comic\pipeline.py", line 89>:
+  --           COPY_FREE_VARS           1
+               MAKE_CELL                0 (stage)
+
+  89           RESUME                   0
+
+  90           LOAD_DEREF               1 (progress)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        7 (to L1)
+               LOAD_FAST                1 (progress)
+               LOAD_FAST                0 (stage)
+               BUILD_TUPLE              2
+               LOAD_CONST               1 (<code object <lambda> at 0x0000016DC8EAD9B0, file "bilisub\comic\pipeline.py", line 90>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               RETURN_VALUE
+       L1:     LOAD_CONST               0 (None)
+               RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC8EAD9B0, file "bilisub\comic\pipeline.py", line 90>:
+  --           COPY_FREE_VARS           2
+
+  90           RESUME                   0
+               LOAD_DEREF               3 (progress)
+               PUSH_NULL
+               LOAD_DEREF               4 (stage)
+               LOAD_GLOBAL              1 (int + NULL)
+               LOAD_FAST                0 (c)
+               LOAD_CONST               1 (100)
+               BINARY_OP                5 (*)
+               LOAD_GLOBAL              3 (max + NULL)
+               LOAD_FAST                1 (t)
+               LOAD_CONST               2 (1)
+               CALL                     2
+               BINARY_OP               11 (/)
+               CALL                     1
+               CALL                     2
+               RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC8EA2E80, file "bilisub\comic\pipeline.py", line 127>:
+ 127           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                35 (to L5)
+               STORE_FAST               1 (s)
+               LOAD_GLOBAL              1 (_is_ad + NULL)
+               LOAD_FAST                1 (s)
+               LOAD_ATTR                2 (description)
+               CALL                     1
+               TO_BOOL
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           31 (to L2)
+       L4:     LOAD_CONST               0 (1)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           37 (to L2)
+       L5:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L6:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L6 [0] lasti
+  L4 to L6 -> L6 [0] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC8EA35A0, file "bilisub\comic\pipeline.py", line 140>:
+ 140           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                35 (to L5)
+               STORE_FAST               1 (s)
+               LOAD_GLOBAL              1 (_is_ad + NULL)
+               LOAD_FAST                1 (s)
+               LOAD_ATTR                2 (description)
+               CALL                     1
+               TO_BOOL
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           31 (to L2)
+       L4:     LOAD_CONST               0 (1)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           37 (to L2)
+       L5:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L6:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L6 [0] lasti
+  L4 to L6 -> L6 [0] lasti
+
+Disassembly of <code object export_txt at 0x0000016DC8EA56F0, file "bilisub\comic\pipeline.py", line 162>:
+ 162           RESUME                   0
+
+ 164           LOAD_FAST                0 (entries)
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      2 (e)
+               SWAP                     2
+       L1:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L2:     FOR_ITER                41 (to L5)
+               STORE_FAST_LOAD_FAST    34 (e, e)
+               LOAD_ATTR                1 (speak_text + NULL|self)
+               CALL                     0
+               TO_BOOL
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           25 (to L2)
+       L4:     LOAD_FAST                2 (e)
+               LOAD_ATTR                1 (speak_text + NULL|self)
+               CALL                     0
+               LIST_APPEND              2
+               JUMP_BACKWARD           43 (to L2)
+       L5:     END_FOR
+               POP_TOP
+       L6:     STORE_FAST               3 (lines)
+               STORE_FAST               2 (e)
+
+ 165           LOAD_GLOBAL              3 (Path + NULL)
+               LOAD_FAST                1 (path)
+               CALL                     1
+               LOAD_ATTR                5 (write_text + NULL|self)
+               LOAD_CONST               1 ('\n')
+               LOAD_ATTR                7 (join + NULL|self)
+               LOAD_FAST                3 (lines)
+               CALL                     1
+               LOAD_CONST               2 ('utf-8')
+               LOAD_CONST               3 (('encoding',))
+               CALL_KW                  2
+               POP_TOP
+
+ 166           LOAD_FAST                1 (path)
+               RETURN_VALUE
+
+  --   L7:     SWAP                     2
+               POP_TOP
+
+ 164           SWAP                     2
+               STORE_FAST               2 (e)
+               RERAISE                  0
+ExceptionTable:
+  L1 to L3 -> L7 [2]
+  L4 to L6 -> L7 [2]

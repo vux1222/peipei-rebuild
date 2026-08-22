@@ -1,0 +1,1844 @@
+=== FILE: bilisub\retime.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('Bản đồ thời gian GIÃN VIDEO CỤC BỘ — chế độ "🎯 Khớp giọng" (★30/07).\n\nBài toán (Boss chốt 30/07): giọng đọc GIỮ NGUYÊN đúng tốc độ user chọn (1,2× là\n1,2× — không nén, không giãn từng câu), video nhanh chậm không quan trọng, NHƯNG\ngiọng phải khớp hình — không sớm hơn, không muộn hơn.\n\n★30/07 CHIỀU — NÂNG TỪ GIÃN-THEO-CỤM LÊN GIÃN-THEO-TỪNG-CÂU (tai Boss bắt được):\nbản giãn-theo-cụm cân TỔNG cả cụm nên trong cụm dày câu sau vẫn "dồn toa" trễ tới\n3s so với cảnh của nó (đo E2E 30\': 201/1040 câu trễ >0,4s) — Boss nghe ra ngay\n"chưa khớp với nhân vật". Nay MỖI CÂU một khúc video [s0_i, s0_{i+1}): khúc nào tự\nchậm vừa đủ cho ĐÚNG câu của nó ⇒ mốc cảnh của câu sau LUÔN được giữ ⇒ trễ dồn toa\n= 0 (trừ câu chạm sàn tốc độ). Số khúc nhiều hơn (mỗi câu ~1 khúc) — đo thật máy\ndev: split=900 nhánh chỉ +1s/2phút phim ⇒ trần nâng 240 → 600; quá trần thì rơi\ndần về giãn-theo-cụm với lưới thô dần (_COARSEN_LADDER).\n\nToàn bộ hàm THUẦN (không I/O, không settings) — test offline (quy tắc 45).\n\nHai trục thời gian:\n  * trục NGUỒN  — ms trên video gốc (timing OCR/SRT, vùng che, chữ nghệ thuật)\n  * trục ĐÍCH   — ms trên video thành phẩm đã co giãn\n`RetimePlan.blocks` phủ KÍN [0, video_ms] trên trục nguồn, ĐƠN ĐIỆU, không hở\nkhông chờm; render dựng trim+setpts+concat đúng theo blocks nên map_ms() và hình\nảnh thật LUÔN khớp nhau từng ms.\n')
+              STORE_NAME               0 (__doc__)
+
+ 25           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 27           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (math)
+              STORE_NAME               3 (math)
+
+ 28           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('dataclass', 'field'))
+              IMPORT_NAME              4 (dataclasses)
+              IMPORT_FROM              5 (dataclass)
+              STORE_NAME               5 (dataclass)
+              IMPORT_FROM              6 (field)
+              STORE_NAME               6 (field)
+              POP_TOP
+
+ 32           LOAD_CONST               5 (900)
+              STORE_NAME               7 (GAP_SPLIT_MS)
+
+ 34           LOAD_CONST               6 (220)
+              STORE_NAME               8 (GAP_KEEP_MS)
+
+ 40           LOAD_CONST               7 (0.6)
+              STORE_NAME               9 (MIN_SPEED)
+
+ 53           LOAD_CONST               8 (0.05)
+              STORE_NAME              10 (SPEED_STEP)
+
+ 62           LOAD_CONST               1 (0)
+              STORE_NAME              11 (MAX_BLOCKS)
+
+ 63           LOAD_CONST               5 (900)
+              LOAD_NAME               10 (SPEED_STEP)
+              BUILD_TUPLE              2
+              LOAD_CONST               9 (1300)
+              LOAD_NAME               10 (SPEED_STEP)
+              BUILD_TUPLE              2
+              LOAD_CONST              10 (1800)
+              LOAD_NAME               10 (SPEED_STEP)
+              BUILD_TUPLE              2
+
+ 64           LOAD_CONST              11 ((2500, 0.1))
+              LOAD_CONST              12 ((3500, 0.1))
+              LOAD_CONST              13 ((5000, 0.1))
+              LOAD_CONST              14 ((8000, 0.1))
+
+ 63           BUILD_LIST               7
+              STORE_NAME              12 (_COARSEN_LADDER)
+
+ 67           LOAD_NAME                5 (dataclass)
+
+ 68           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              15 (<code object RetimePlan at 0x0000016DC8EA3CC0, file "bilisub\retime.py", line 67>)
+              MAKE_FUNCTION
+              LOAD_CONST              16 ('RetimePlan')
+              CALL                     2
+
+ 67           CALL                     0
+
+ 68           STORE_NAME              13 (RetimePlan)
+
+ 78           LOAD_NAME                7 (GAP_SPLIT_MS)
+              BUILD_TUPLE              1
+              LOAD_CONST              26 (('items', 'list', 'gap_split_ms', 'int', 'return', 'list'))
+              LOAD_CONST              17 (<code object split_clusters at 0x0000016DC8EC5B60, file "bilisub\retime.py", line 78>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              14 (split_clusters)
+
+102           LOAD_CONST              27 (('base', 'float', 'min_speed', 'float', 'step', 'float', 'return', 'list'))
+              LOAD_CONST              18 (<code object _speed_grid at 0x0000016DC90E5E90, file "bilisub\retime.py", line 102>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              15 (_speed_grid)
+
+115           LOAD_CONST              28 (('v', 'float', 'base', 'float', 'min_speed', 'float', 'step', 'float', 'return', 'float'))
+              LOAD_CONST              19 (<code object _snap_speed at 0x0000016DC8EB5C50, file "bilisub\retime.py", line 115>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              16 (_snap_speed)
+
+135           NOP
+
+136           NOP
+
+135           NOP
+
+136           NOP
+
+135           NOP
+
+136           NOP
+
+135           LOAD_CONST              29 (('cluster', 'list', 'c0', 'int', 'sp', 'float', 'block_start', 'float', 'voice_cursor', 'float', 'gap_keep_ms', 'int', 'return', 'tuple'))
+              LOAD_CONST              20 (<code object _place_cluster at 0x0000016DC8EA5BD0, file "bilisub\retime.py", line 135>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              17 (_place_cluster)
+
+154           LOAD_NAME                7 (GAP_SPLIT_MS)
+              LOAD_NAME                8 (GAP_KEEP_MS)
+
+155           LOAD_NAME                9 (MIN_SPEED)
+              LOAD_NAME               10 (SPEED_STEP)
+
+156           LOAD_NAME               11 (MAX_BLOCKS)
+
+153           LOAD_CONST              21 (('gap_split_ms', 'gap_keep_ms', 'min_speed', 'speed_step', 'max_blocks'))
+              BUILD_CONST_KEY_MAP      5
+
+154           NOP
+
+153           NOP
+
+154           NOP
+
+153           NOP
+
+155           NOP
+
+153           NOP
+
+155           NOP
+
+153           NOP
+
+156           NOP
+
+153           NOP
+
+156           NOP
+
+153           LOAD_CONST              30 (('items', 'list', 'video_ms', 'int', 'base_speed', 'float', 'gap_split_ms', 'int', 'gap_keep_ms', 'int', 'min_speed', 'float', 'speed_step', 'float', 'max_blocks', 'int', 'return', 'RetimePlan'))
+              LOAD_CONST              22 (<code object build_plan at 0x0000016DC8ED8920, file "bilisub\retime.py", line 153>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              18 (build_plan)
+
+185           NOP
+
+186           NOP
+
+185           NOP
+
+186           NOP
+
+185           NOP
+
+186           NOP
+
+185           NOP
+
+187           NOP
+
+185           NOP
+
+187           NOP
+
+185           NOP
+
+187           NOP
+
+185           LOAD_CONST              31 (('items', 'list', 'video_ms', 'int', 'base_speed', 'float', 'gap_split_ms', 'int', 'gap_keep_ms', 'int', 'min_speed', 'float', 'speed_step', 'float', 'per_sentence', 'bool', 'return', 'RetimePlan'))
+              LOAD_CONST              23 (<code object _build_plan_once at 0x0000016DC8EDEA00, file "bilisub\retime.py", line 185>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              19 (_build_plan_once)
+
+294           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              24 (<code object TimeMap at 0x0000016DC91298F0, file "bilisub\retime.py", line 294>)
+              MAKE_FUNCTION
+              LOAD_CONST              25 ('TimeMap')
+              CALL                     2
+              STORE_NAME              20 (TimeMap)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object RetimePlan at 0x0000016DC8EA3CC0, file "bilisub\retime.py", line 67>:
+ 67           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('RetimePlan')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (67)
+              STORE_NAME               3 (__firstlineno__)
+              SETUP_ANNOTATIONS
+
+ 71           LOAD_NAME                4 (field)
+              PUSH_NULL
+              LOAD_NAME                5 (list)
+              LOAD_CONST               2 (('default_factory',))
+              CALL_KW                  1
+              STORE_NAME               6 (blocks)
+              LOAD_CONST               3 ('list')
+              LOAD_NAME                7 (__annotations__)
+              LOAD_CONST               4 ('blocks')
+              STORE_SUBSCR
+
+ 73           LOAD_NAME                4 (field)
+              PUSH_NULL
+              LOAD_NAME                8 (dict)
+              LOAD_CONST               2 (('default_factory',))
+              CALL_KW                  1
+              STORE_NAME               9 (new_pos)
+              LOAD_CONST               5 ('dict')
+              LOAD_NAME                7 (__annotations__)
+              LOAD_CONST               6 ('new_pos')
+              STORE_SUBSCR
+
+ 74           LOAD_CONST               7 (0)
+              STORE_NAME              10 (total_ms)
+              LOAD_CONST               8 ('int')
+              LOAD_NAME                7 (__annotations__)
+              LOAD_CONST               9 ('total_ms')
+              STORE_SUBSCR
+
+ 75           LOAD_NAME                4 (field)
+              PUSH_NULL
+              LOAD_NAME                8 (dict)
+              LOAD_CONST               2 (('default_factory',))
+              CALL_KW                  1
+              STORE_NAME              11 (stats)
+              LOAD_CONST               5 ('dict')
+              LOAD_NAME                7 (__annotations__)
+              LOAD_CONST              10 ('stats')
+              STORE_SUBSCR
+              LOAD_CONST              11 (())
+              STORE_NAME              12 (__static_attributes__)
+              RETURN_CONST            12 (None)
+
+Disassembly of <code object split_clusters at 0x0000016DC8EC5B60, file "bilisub\retime.py", line 78>:
+ 78           RESUME                   0
+
+ 86           LOAD_FAST                0 (items)
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+
+ 87           BUILD_LIST               0
+              RETURN_VALUE
+
+ 88   L1:     BUILD_LIST               0
+              LOAD_FAST                0 (items)
+              LOAD_CONST               1 (0)
+              BINARY_SUBSCR
+              BUILD_LIST               1
+              STORE_FAST_STORE_FAST   50 (cur, out)
+
+ 89           LOAD_FAST                0 (items)
+              LOAD_CONST               1 (0)
+              BINARY_SUBSCR
+              LOAD_CONST               2 (2)
+              BINARY_SUBSCR
+              STORE_FAST               4 (tail)
+
+ 90           LOAD_FAST                0 (items)
+              LOAD_CONST               3 (1)
+              LOAD_CONST               4 (None)
+              BINARY_SLICE
+              GET_ITER
+      L2:     FOR_ITER                73 (to L4)
+              STORE_FAST               5 (it)
+
+ 91           LOAD_FAST                5 (it)
+              LOAD_CONST               3 (1)
+              BINARY_SUBSCR
+              LOAD_FAST                4 (tail)
+              BINARY_OP               10 (-)
+              LOAD_FAST                1 (gap_split_ms)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_FALSE       27 (to L3)
+
+ 92           LOAD_FAST                2 (out)
+              LOAD_ATTR                1 (append + NULL|self)
+              LOAD_FAST                3 (cur)
+              CALL                     1
+              POP_TOP
+
+ 93           LOAD_FAST                5 (it)
+              BUILD_LIST               1
+              STORE_FAST               3 (cur)
+
+ 94           LOAD_FAST                5 (it)
+              LOAD_CONST               2 (2)
+              BINARY_SUBSCR
+              STORE_FAST               4 (tail)
+              JUMP_BACKWARD           42 (to L2)
+
+ 96   L3:     LOAD_FAST                3 (cur)
+              LOAD_ATTR                1 (append + NULL|self)
+              LOAD_FAST                5 (it)
+              CALL                     1
+              POP_TOP
+
+ 97           LOAD_GLOBAL              3 (max + NULL)
+              LOAD_FAST_LOAD_FAST     69 (tail, it)
+              LOAD_CONST               2 (2)
+              BINARY_SUBSCR
+              CALL                     2
+              STORE_FAST               4 (tail)
+              JUMP_BACKWARD           75 (to L2)
+
+ 90   L4:     END_FOR
+              POP_TOP
+
+ 98           LOAD_FAST                2 (out)
+              LOAD_ATTR                1 (append + NULL|self)
+              LOAD_FAST                3 (cur)
+              CALL                     1
+              POP_TOP
+
+ 99           LOAD_FAST                2 (out)
+              RETURN_VALUE
+
+Disassembly of <code object _speed_grid at 0x0000016DC90E5E90, file "bilisub\retime.py", line 102>:
+102           RESUME                   0
+
+104           LOAD_FAST                0 (base)
+              BUILD_LIST               1
+              STORE_FAST               3 (out)
+
+105           LOAD_GLOBAL              1 (int + NULL)
+              LOAD_FAST_LOAD_FAST      2 (base, step)
+              BINARY_OP               11 (/)
+              CALL                     1
+              LOAD_FAST                2 (step)
+              BINARY_OP                5 (*)
+              STORE_FAST               4 (g)
+
+106           LOAD_FAST_LOAD_FAST     64 (g, base)
+              LOAD_CONST               1 (1e-09)
+              BINARY_OP               10 (-)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_FALSE        4 (to L1)
+
+107           LOAD_FAST_LOAD_FAST     66 (g, step)
+              BINARY_OP               23 (-=)
+              STORE_FAST               4 (g)
+
+108   L1:     LOAD_FAST_LOAD_FAST     65 (g, min_speed)
+              LOAD_CONST               1 (1e-09)
+              BINARY_OP                0 (+)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE       41 (to L3)
+
+109   L2:     LOAD_FAST                3 (out)
+              LOAD_ATTR                3 (append + NULL|self)
+              LOAD_GLOBAL              5 (round + NULL)
+              LOAD_FAST                4 (g)
+              LOAD_CONST               2 (4)
+              CALL                     2
+              CALL                     1
+              POP_TOP
+
+110           LOAD_FAST_LOAD_FAST     66 (g, step)
+              BINARY_OP               23 (-=)
+              STORE_FAST               4 (g)
+
+108           LOAD_FAST_LOAD_FAST     65 (g, min_speed)
+              LOAD_CONST               1 (1e-09)
+              BINARY_OP                0 (+)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE        2 (to L3)
+              JUMP_BACKWARD           41 (to L2)
+
+111   L3:     LOAD_FAST                3 (out)
+              LOAD_ATTR                3 (append + NULL|self)
+              LOAD_GLOBAL              5 (round + NULL)
+              LOAD_FAST                1 (min_speed)
+              LOAD_CONST               2 (4)
+              CALL                     2
+              CALL                     1
+              POP_TOP
+
+112           LOAD_FAST                3 (out)
+              RETURN_VALUE
+
+Disassembly of <code object _snap_speed at 0x0000016DC8EB5C50, file "bilisub\retime.py", line 115>:
+115           RESUME                   0
+
+128           LOAD_FAST_LOAD_FAST      1 (v, base)
+              LOAD_CONST               1 (1e-09)
+              BINARY_OP               10 (-)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_FALSE        2 (to L1)
+
+129           LOAD_FAST                1 (base)
+              RETURN_VALUE
+
+130   L1:     LOAD_GLOBAL              1 (max + NULL)
+              LOAD_CONST               2 (1e-06)
+              LOAD_GLOBAL              3 (float + NULL)
+              LOAD_FAST                3 (step)
+              CALL                     1
+              CALL                     2
+              STORE_FAST               4 (st)
+
+131           LOAD_GLOBAL              4 (math)
+              LOAD_ATTR                6 (floor)
+              PUSH_NULL
+              LOAD_FAST_LOAD_FAST      4 (v, st)
+              BINARY_OP               11 (/)
+              LOAD_CONST               1 (1e-09)
+              BINARY_OP                0 (+)
+              CALL                     1
+              LOAD_FAST                4 (st)
+              BINARY_OP                5 (*)
+              STORE_FAST               5 (g)
+
+132           LOAD_GLOBAL              1 (max + NULL)
+              LOAD_GLOBAL              9 (round + NULL)
+              LOAD_FAST                2 (min_speed)
+              LOAD_CONST               3 (4)
+              CALL                     2
+              LOAD_GLOBAL              9 (round + NULL)
+              LOAD_FAST                5 (g)
+              LOAD_CONST               3 (4)
+              CALL                     2
+              CALL                     2
+              RETURN_VALUE
+
+Disassembly of <code object _place_cluster at 0x0000016DC8EA5BD0, file "bilisub\retime.py", line 135>:
+135           RESUME                   0
+
+142           LOAD_GLOBAL              1 (max + NULL)
+              LOAD_FAST_LOAD_FAST     52 (block_start, voice_cursor)
+              CALL                     2
+              STORE_FAST               6 (t)
+
+143           BUILD_LIST               0
+              LOAD_CONST               1 (0.0)
+              STORE_FAST_STORE_FAST  135 (push, poss)
+
+144           LOAD_FAST                0 (cluster)
+              GET_ITER
+      L1:     FOR_ITER                75 (to L2)
+              UNPACK_SEQUENCE          4
+              STORE_FAST_STORE_FAST  154 (_i, s0)
+              STORE_FAST_STORE_FAST  188 (_e0, dur)
+
+145           LOAD_FAST                3 (block_start)
+              LOAD_GLOBAL              1 (max + NULL)
+              LOAD_FAST_LOAD_FAST    161 (s0, c0)
+              CALL                     2
+              LOAD_FAST                1 (c0)
+              BINARY_OP               10 (-)
+              LOAD_FAST                2 (sp)
+              BINARY_OP               11 (/)
+              BINARY_OP                0 (+)
+              STORE_FAST              13 (anchor)
+
+146           LOAD_GLOBAL              1 (max + NULL)
+              LOAD_FAST_LOAD_FAST    109 (t, anchor)
+              CALL                     2
+              STORE_FAST              14 (pos)
+
+147           LOAD_GLOBAL              1 (max + NULL)
+              LOAD_FAST_LOAD_FAST    142 (push, pos)
+              LOAD_FAST               13 (anchor)
+              BINARY_OP               10 (-)
+              CALL                     2
+              STORE_FAST               8 (push)
+
+148           LOAD_FAST                7 (poss)
+              LOAD_ATTR                3 (append + NULL|self)
+              LOAD_FAST               14 (pos)
+              CALL                     1
+              POP_TOP
+
+149           LOAD_FAST_LOAD_FAST    236 (pos, dur)
+              BINARY_OP                0 (+)
+              LOAD_FAST                5 (gap_keep_ms)
+              BINARY_OP                0 (+)
+              STORE_FAST               6 (t)
+              JUMP_BACKWARD           77 (to L1)
+
+144   L2:     END_FOR
+              POP_TOP
+
+150           LOAD_FAST_LOAD_FAST    118 (poss, t)
+              LOAD_FAST                5 (gap_keep_ms)
+              BINARY_OP               10 (-)
+              LOAD_FAST                8 (push)
+              BUILD_TUPLE              3
+              RETURN_VALUE
+
+Disassembly of <code object build_plan at 0x0000016DC8ED8920, file "bilisub\retime.py", line 153>:
+153           RESUME                   0
+
+167           LOAD_GLOBAL              1 (_build_plan_once + NULL)
+              LOAD_FAST_LOAD_FAST      1 (items, video_ms)
+              LOAD_FAST_LOAD_FAST     35 (base_speed, gap_split_ms)
+
+168           LOAD_FAST_LOAD_FAST     69 (gap_keep_ms, min_speed)
+
+169           LOAD_FAST                6 (speed_step)
+              LOAD_CONST               1 (True)
+
+167           LOAD_CONST               2 (('gap_split_ms', 'gap_keep_ms', 'min_speed', 'speed_step', 'per_sentence'))
+              CALL_KW                  8
+              STORE_FAST               8 (plan)
+
+170           LOAD_CONST               3 ('sentence')
+              LOAD_FAST                8 (plan)
+              LOAD_ATTR                2 (stats)
+              LOAD_CONST               4 ('granularity')
+              STORE_SUBSCR
+
+171           LOAD_FAST_LOAD_FAST     56 (gap_split_ms, plan)
+              LOAD_ATTR                2 (stats)
+              LOAD_CONST               5 ('gap_split_used')
+              STORE_SUBSCR
+
+172           LOAD_FAST                7 (max_blocks)
+              TO_BOOL
+              POP_JUMP_IF_FALSE      112 (to L4)
+              LOAD_GLOBAL              5 (len + NULL)
+              LOAD_FAST                8 (plan)
+              LOAD_ATTR                6 (blocks)
+              CALL                     1
+              LOAD_FAST                7 (max_blocks)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE       87 (to L4)
+
+173           LOAD_GLOBAL              8 (_COARSEN_LADDER)
+              GET_ITER
+      L1:     FOR_ITER                77 (to L3)
+              UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST  154 (g, st)
+
+174           LOAD_GLOBAL              1 (_build_plan_once + NULL)
+              LOAD_FAST_LOAD_FAST      1 (items, video_ms)
+              LOAD_FAST_LOAD_FAST     41 (base_speed, g)
+
+175           LOAD_FAST_LOAD_FAST     69 (gap_keep_ms, min_speed)
+
+176           LOAD_FAST               10 (st)
+              LOAD_CONST               6 (False)
+
+174           LOAD_CONST               2 (('gap_split_ms', 'gap_keep_ms', 'min_speed', 'speed_step', 'per_sentence'))
+              CALL_KW                  8
+              STORE_FAST              11 (cand)
+
+177           LOAD_CONST               7 ('cluster')
+              LOAD_FAST               11 (cand)
+              LOAD_ATTR                2 (stats)
+              LOAD_CONST               4 ('granularity')
+              STORE_SUBSCR
+
+178           LOAD_FAST_LOAD_FAST    155 (g, cand)
+              LOAD_ATTR                2 (stats)
+              LOAD_CONST               5 ('gap_split_used')
+              STORE_SUBSCR
+
+179           LOAD_FAST               11 (cand)
+              STORE_FAST               8 (plan)
+
+180           LOAD_GLOBAL              5 (len + NULL)
+              LOAD_FAST               11 (cand)
+              LOAD_ATTR                6 (blocks)
+              CALL                     1
+              LOAD_FAST                7 (max_blocks)
+              COMPARE_OP              58 (bool(<=))
+              POP_JUMP_IF_TRUE         2 (to L2)
+              JUMP_BACKWARD           76 (to L1)
+
+181   L2:     POP_TOP
+
+182           LOAD_FAST                8 (plan)
+              RETURN_VALUE
+
+173   L3:     END_FOR
+              POP_TOP
+
+182   L4:     LOAD_FAST                8 (plan)
+              RETURN_VALUE
+
+Disassembly of <code object _build_plan_once at 0x0000016DC8EDEA00, file "bilisub\retime.py", line 185>:
+  --            MAKE_CELL                1 (video_ms)
+                MAKE_CELL               46 (base)
+
+ 185            RESUME                   0
+
+ 188            LOAD_GLOBAL              1 (max + NULL)
+                LOAD_FAST                5 (min_speed)
+                LOAD_GLOBAL              3 (min + NULL)
+                LOAD_CONST               1 (2.0)
+                LOAD_GLOBAL              5 (float + NULL)
+                LOAD_FAST                2 (base_speed)
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                LOAD_CONST               2 (1.0)
+        L1:     CALL                     2
+                CALL                     2
+                STORE_DEREF             46 (base)
+
+ 189            LOAD_GLOBAL              7 (int + NULL)
+                LOAD_GLOBAL              1 (max + NULL)
+                LOAD_CONST               3 (1)
+                LOAD_DEREF               1 (video_ms)
+                CALL                     2
+                CALL                     1
+                STORE_DEREF              1 (video_ms)
+
+ 190            LOAD_GLOBAL              9 (RetimePlan + NULL)
+                CALL                     0
+                STORE_FAST               8 (plan)
+
+ 193            LOAD_GLOBAL             11 (sorted + NULL)
+                LOAD_FAST                1 (video_ms)
+                BUILD_TUPLE              1
+                LOAD_CONST               4 (<code object <genexpr> at 0x0000016DC91C05F0, file "bilisub\retime.py", line 193>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+
+ 194            LOAD_FAST                0 (items)
+                GET_ITER
+
+ 193            CALL                     0
+
+ 194            LOAD_CONST               5 (<code object <lambda> at 0x0000016DC8EB90D0, file "bilisub\retime.py", line 194>)
+                MAKE_FUNCTION
+
+ 193            LOAD_CONST               6 (('key',))
+                CALL_KW                  2
+                STORE_FAST               9 (its)
+
+ 195            LOAD_GLOBAL             13 (split_clusters + NULL)
+                LOAD_FAST_LOAD_FAST    147 (its, gap_split_ms)
+                CALL                     2
+                STORE_FAST              10 (clusters)
+
+ 197            BUILD_LIST               0
+                STORE_FAST              11 (blocks)
+
+ 198            LOAD_CONST               7 (0.0)
+                STORE_FAST              12 (timeline)
+
+ 199            LOAD_CONST               7 (0.0)
+                STORE_FAST              13 (vcursor)
+
+ 200            LOAD_CONST               8 (0)
+                STORE_FAST              14 (prev_end)
+
+ 201            LOAD_CONST               7 (0.0)
+                STORE_FAST              15 (max_push)
+
+ 202            LOAD_CONST               8 (0)
+                STORE_FAST              16 (n_push400)
+
+ 203            LOAD_CONST               8 (0)
+                STORE_FAST              17 (n_floor)
+
+ 204            LOAD_GLOBAL             15 (_speed_grid + NULL)
+                LOAD_DEREF              46 (base)
+                LOAD_FAST_LOAD_FAST     86 (min_speed, speed_step)
+                CALL                     3
+                STORE_FAST              18 (grid)
+
+ 205            LOAD_FAST               10 (clusters)
+                GET_ITER
+        L2:     EXTENDED_ARG             2
+                FOR_ITER               599 (to L21)
+                STORE_FAST              19 (cl)
+
+ 206            LOAD_FAST               19 (cl)
+                LOAD_CONST               8 (0)
+                BINARY_SUBSCR
+                LOAD_CONST               3 (1)
+                BINARY_SUBSCR
+                LOAD_GLOBAL              1 (max + NULL)
+                LOAD_CONST               9 (<code object <genexpr> at 0x0000016DC90E1F30, file "bilisub\retime.py", line 206>)
+                MAKE_FUNCTION
+                LOAD_FAST               19 (cl)
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                STORE_FAST              21 (c1)
+                STORE_FAST              20 (c0)
+
+ 210            LOAD_GLOBAL              1 (max + NULL)
+                LOAD_FAST               20 (c0)
+                LOAD_FAST               14 (prev_end)
+                CALL                     2
+                STORE_FAST              20 (c0)
+
+ 211            LOAD_GLOBAL              1 (max + NULL)
+                LOAD_FAST               21 (c1)
+                LOAD_FAST               20 (c0)
+                LOAD_CONST               3 (1)
+                BINARY_OP                0 (+)
+                CALL                     2
+                STORE_FAST              21 (c1)
+
+ 212            LOAD_FAST               20 (c0)
+                LOAD_FAST               14 (prev_end)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       31 (to L3)
+
+ 213            LOAD_FAST               11 (blocks)
+                LOAD_ATTR               17 (append + NULL|self)
+                LOAD_FAST               14 (prev_end)
+                LOAD_FAST               20 (c0)
+                LOAD_DEREF              46 (base)
+                BUILD_TUPLE              3
+                CALL                     1
+                POP_TOP
+
+ 214            LOAD_FAST               12 (timeline)
+                LOAD_FAST               20 (c0)
+                LOAD_FAST               14 (prev_end)
+                BINARY_OP               10 (-)
+                LOAD_DEREF              46 (base)
+                BINARY_OP               11 (/)
+                BINARY_OP               13 (+=)
+                STORE_FAST              12 (timeline)
+
+ 216    L3:     LOAD_FAST                7 (per_sentence)
+                TO_BOOL
+                EXTENDED_ARG             1
+                POP_JUMP_IF_FALSE      265 (to L12)
+
+ 220            LOAD_FAST               19 (cl)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     22 (x)
+                SWAP                     2
+        L4:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L5:     FOR_ITER                31 (to L6)
+                STORE_FAST              22 (x)
+                LOAD_GLOBAL              3 (min + NULL)
+                LOAD_GLOBAL              1 (max + NULL)
+                LOAD_FAST               22 (x)
+                LOAD_CONST               3 (1)
+                BINARY_SUBSCR
+                LOAD_FAST               20 (c0)
+                CALL                     2
+                LOAD_FAST               21 (c1)
+                LOAD_CONST               3 (1)
+                BINARY_OP               10 (-)
+                CALL                     2
+                LIST_APPEND              2
+                JUMP_BACKWARD           33 (to L5)
+        L6:     END_FOR
+                POP_TOP
+        L7:     SWAP                     2
+                STORE_FAST              22 (x)
+                LOAD_FAST               21 (c1)
+                BUILD_LIST               1
+                BINARY_OP                0 (+)
+                STORE_FAST              23 (starts)
+
+ 221            LOAD_GLOBAL             19 (enumerate + NULL)
+                LOAD_FAST               19 (cl)
+                CALL                     1
+                GET_ITER
+        L8:     FOR_ITER               186 (to L11)
+                UNPACK_SEQUENCE          2
+                STORE_FAST              24 (k)
+                UNPACK_SEQUENCE          4
+                STORE_FAST              25 (i)
+                STORE_FAST              26 (_s0)
+                STORE_FAST              27 (_e0)
+                STORE_FAST              28 (dur)
+
+ 222            LOAD_FAST               23 (starts)
+                LOAD_FAST               24 (k)
+                BINARY_SUBSCR
+                STORE_FAST              29 (seg0)
+
+ 223            LOAD_GLOBAL              1 (max + NULL)
+                LOAD_FAST               23 (starts)
+                LOAD_FAST               24 (k)
+                LOAD_CONST               3 (1)
+                BINARY_OP                0 (+)
+                BINARY_SUBSCR
+                LOAD_FAST               29 (seg0)
+                LOAD_CONST               3 (1)
+                BINARY_OP                0 (+)
+                CALL                     2
+                STORE_FAST              30 (seg1)
+
+ 224            LOAD_FAST               30 (seg1)
+                LOAD_FAST               29 (seg0)
+                BINARY_OP               10 (-)
+                STORE_FAST              31 (span)
+
+ 225            LOAD_GLOBAL              1 (max + NULL)
+                LOAD_CONST               3 (1)
+                LOAD_FAST               28 (dur)
+                LOAD_FAST                4 (gap_keep_ms)
+                BINARY_OP                0 (+)
+                CALL                     2
+                STORE_FAST              32 (need)
+
+ 226            LOAD_GLOBAL             21 (_snap_speed + NULL)
+                LOAD_FAST               31 (span)
+                LOAD_FAST               32 (need)
+                BINARY_OP               11 (/)
+                LOAD_DEREF              46 (base)
+                LOAD_FAST_LOAD_FAST     86 (min_speed, speed_step)
+                CALL                     4
+                STORE_FAST              33 (sp)
+
+ 227            LOAD_FAST               31 (span)
+                LOAD_FAST               33 (sp)
+                BINARY_OP               11 (/)
+                LOAD_FAST               32 (need)
+                LOAD_CONST              10 (0.5)
+                BINARY_OP               10 (-)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        5 (to L9)
+
+ 228            LOAD_FAST               17 (n_floor)
+                LOAD_CONST               3 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST              17 (n_floor)
+
+ 229    L9:     LOAD_FAST               12 (timeline)
+                STORE_FAST              34 (anchor)
+
+ 230            LOAD_GLOBAL              1 (max + NULL)
+                LOAD_FAST               34 (anchor)
+                LOAD_FAST               13 (vcursor)
+                CALL                     2
+                STORE_FAST              35 (pos)
+
+ 231            LOAD_FAST               35 (pos)
+                LOAD_FAST               34 (anchor)
+                BINARY_OP               10 (-)
+                LOAD_CONST              11 (400)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE        5 (to L10)
+
+ 232            LOAD_FAST               16 (n_push400)
+                LOAD_CONST               3 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST              16 (n_push400)
+
+ 233   L10:     LOAD_GLOBAL              1 (max + NULL)
+                LOAD_FAST               15 (max_push)
+                LOAD_FAST               35 (pos)
+                LOAD_FAST               34 (anchor)
+                BINARY_OP               10 (-)
+                CALL                     2
+                STORE_FAST              15 (max_push)
+
+ 234            LOAD_FAST               35 (pos)
+                LOAD_FAST                8 (plan)
+                LOAD_ATTR               22 (new_pos)
+                LOAD_FAST               25 (i)
+                STORE_SUBSCR
+
+ 235            LOAD_FAST               35 (pos)
+                LOAD_FAST               28 (dur)
+                BINARY_OP                0 (+)
+                LOAD_FAST                4 (gap_keep_ms)
+                BINARY_OP                0 (+)
+                STORE_FAST              13 (vcursor)
+
+ 236            LOAD_FAST               11 (blocks)
+                LOAD_ATTR               17 (append + NULL|self)
+                LOAD_FAST               29 (seg0)
+                LOAD_FAST               30 (seg1)
+                LOAD_FAST               33 (sp)
+                BUILD_TUPLE              3
+                CALL                     1
+                POP_TOP
+
+ 237            LOAD_FAST               12 (timeline)
+                LOAD_FAST               31 (span)
+                LOAD_FAST               33 (sp)
+                BINARY_OP               11 (/)
+                BINARY_OP               13 (+=)
+                STORE_FAST              12 (timeline)
+
+ 238            LOAD_FAST               30 (seg1)
+                STORE_FAST              14 (prev_end)
+                JUMP_BACKWARD          188 (to L8)
+
+ 221   L11:     END_FOR
+                POP_TOP
+
+ 239            LOAD_GLOBAL              1 (max + NULL)
+                LOAD_FAST               14 (prev_end)
+                LOAD_FAST               21 (c1)
+                CALL                     2
+                STORE_FAST              14 (prev_end)
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          367 (to L2)
+
+ 243   L12:     LOAD_FAST               21 (c1)
+                LOAD_FAST               20 (c0)
+                BINARY_OP               10 (-)
+                STORE_FAST              31 (span)
+
+ 244            LOAD_CONST               0 (None)
+                STORE_FAST              36 (chosen)
+
+ 245            LOAD_FAST               18 (grid)
+                GET_ITER
+       L13:     FOR_ITER                45 (to L15)
+                STORE_FAST              33 (sp)
+
+ 246            LOAD_GLOBAL             25 (_place_cluster + NULL)
+                LOAD_FAST               19 (cl)
+                LOAD_FAST               20 (c0)
+                LOAD_FAST               33 (sp)
+                LOAD_FAST_LOAD_FAST    205 (timeline, vcursor)
+
+ 247            LOAD_FAST                4 (gap_keep_ms)
+
+ 246            CALL                     6
+                UNPACK_SEQUENCE          3
+                STORE_FAST              37 (poss)
+                STORE_FAST              38 (end_voice)
+                STORE_FAST              39 (push)
+
+ 248            LOAD_FAST               38 (end_voice)
+                LOAD_FAST               12 (timeline)
+                LOAD_FAST               31 (span)
+                LOAD_FAST               33 (sp)
+                BINARY_OP               11 (/)
+                BINARY_OP                0 (+)
+                LOAD_CONST               2 (1.0)
+                BINARY_OP                0 (+)
+                COMPARE_OP              58 (bool(<=))
+                POP_JUMP_IF_TRUE         2 (to L14)
+                JUMP_BACKWARD           39 (to L13)
+
+ 249   L14:     LOAD_FAST               33 (sp)
+                LOAD_FAST               37 (poss)
+                LOAD_FAST               38 (end_voice)
+                LOAD_FAST               39 (push)
+                BUILD_TUPLE              4
+                STORE_FAST              36 (chosen)
+
+ 250            POP_TOP
+                JUMP_FORWARD             2 (to L16)
+
+ 245   L15:     END_FOR
+                POP_TOP
+
+ 251   L16:     LOAD_FAST               36 (chosen)
+                POP_JUMP_IF_NOT_NONE    35 (to L17)
+
+ 252            LOAD_FAST               18 (grid)
+                LOAD_CONST              12 (-1)
+                BINARY_SUBSCR
+                STORE_FAST              33 (sp)
+
+ 253            LOAD_GLOBAL             25 (_place_cluster + NULL)
+                LOAD_FAST               19 (cl)
+                LOAD_FAST               20 (c0)
+                LOAD_FAST               33 (sp)
+                LOAD_FAST_LOAD_FAST    205 (timeline, vcursor)
+
+ 254            LOAD_FAST                4 (gap_keep_ms)
+
+ 253            CALL                     6
+                UNPACK_SEQUENCE          3
+                STORE_FAST              37 (poss)
+                STORE_FAST              38 (end_voice)
+                STORE_FAST              39 (push)
+
+ 255            LOAD_FAST               33 (sp)
+                LOAD_FAST               37 (poss)
+                LOAD_FAST               38 (end_voice)
+                LOAD_FAST               39 (push)
+                BUILD_TUPLE              4
+                STORE_FAST              36 (chosen)
+
+ 256            LOAD_FAST               17 (n_floor)
+                LOAD_CONST               3 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST              17 (n_floor)
+
+ 257   L17:     LOAD_FAST               36 (chosen)
+                UNPACK_SEQUENCE          4
+                STORE_FAST              33 (sp)
+                STORE_FAST              37 (poss)
+                STORE_FAST              38 (end_voice)
+                STORE_FAST              39 (push)
+
+ 258            LOAD_FAST               11 (blocks)
+                LOAD_ATTR               17 (append + NULL|self)
+                LOAD_FAST               20 (c0)
+                LOAD_FAST               21 (c1)
+                LOAD_FAST               33 (sp)
+                BUILD_TUPLE              3
+                CALL                     1
+                POP_TOP
+
+ 259            LOAD_GLOBAL             19 (enumerate + NULL)
+                LOAD_FAST               19 (cl)
+                CALL                     1
+                GET_ITER
+       L18:     FOR_ITER                67 (to L20)
+                UNPACK_SEQUENCE          2
+                STORE_FAST              24 (k)
+                UNPACK_SEQUENCE          4
+                STORE_FAST              25 (i)
+                STORE_FAST              40 (s0)
+                STORE_FAST              27 (_e0)
+                STORE_FAST              41 (_d)
+
+ 260            LOAD_FAST               37 (poss)
+                LOAD_FAST               24 (k)
+                BINARY_SUBSCR
+                LOAD_FAST                8 (plan)
+                LOAD_ATTR               22 (new_pos)
+                LOAD_FAST               25 (i)
+                STORE_SUBSCR
+
+ 261            LOAD_FAST               37 (poss)
+                LOAD_FAST               24 (k)
+                BINARY_SUBSCR
+                LOAD_FAST               12 (timeline)
+                LOAD_GLOBAL              1 (max + NULL)
+                LOAD_FAST               40 (s0)
+                LOAD_FAST               20 (c0)
+                CALL                     2
+                LOAD_FAST               20 (c0)
+                BINARY_OP               10 (-)
+                LOAD_FAST               33 (sp)
+                BINARY_OP               11 (/)
+                BINARY_OP                0 (+)
+                BINARY_OP               10 (-)
+                LOAD_CONST              11 (400)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_TRUE         2 (to L19)
+                JUMP_BACKWARD           62 (to L18)
+
+ 262   L19:     LOAD_FAST               16 (n_push400)
+                LOAD_CONST               3 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST              16 (n_push400)
+                JUMP_BACKWARD           69 (to L18)
+
+ 259   L20:     END_FOR
+                POP_TOP
+
+ 263            LOAD_GLOBAL              1 (max + NULL)
+                LOAD_FAST               15 (max_push)
+                LOAD_FAST               39 (push)
+                CALL                     2
+                STORE_FAST              15 (max_push)
+
+ 266            LOAD_FAST               38 (end_voice)
+                LOAD_FAST                4 (gap_keep_ms)
+                BINARY_OP                0 (+)
+                STORE_FAST              13 (vcursor)
+
+ 267            LOAD_FAST               12 (timeline)
+                LOAD_FAST               31 (span)
+                LOAD_FAST               33 (sp)
+                BINARY_OP               11 (/)
+                BINARY_OP               13 (+=)
+                STORE_FAST              12 (timeline)
+
+ 268            LOAD_FAST               21 (c1)
+                STORE_FAST              14 (prev_end)
+                EXTENDED_ARG             2
+                JUMP_BACKWARD          602 (to L2)
+
+ 205   L21:     END_FOR
+                POP_TOP
+
+ 270            LOAD_DEREF               1 (video_ms)
+                LOAD_FAST               14 (prev_end)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       31 (to L22)
+
+ 271            LOAD_FAST               11 (blocks)
+                LOAD_ATTR               17 (append + NULL|self)
+                LOAD_FAST               14 (prev_end)
+                LOAD_DEREF               1 (video_ms)
+                LOAD_DEREF              46 (base)
+                BUILD_TUPLE              3
+                CALL                     1
+                POP_TOP
+
+ 272            LOAD_FAST               12 (timeline)
+                LOAD_DEREF               1 (video_ms)
+                LOAD_FAST               14 (prev_end)
+                BINARY_OP               10 (-)
+                LOAD_DEREF              46 (base)
+                BINARY_OP               11 (/)
+                BINARY_OP               13 (+=)
+                STORE_FAST              12 (timeline)
+
+ 275   L22:     BUILD_LIST               0
+                STORE_FAST              42 (merged)
+
+ 276            LOAD_FAST               11 (blocks)
+                GET_ITER
+       L23:     FOR_ITER               103 (to L25)
+                STORE_FAST              43 (b)
+
+ 277            LOAD_FAST               42 (merged)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       64 (to L24)
+                LOAD_GLOBAL             27 (abs + NULL)
+                LOAD_FAST               42 (merged)
+                LOAD_CONST              12 (-1)
+                BINARY_SUBSCR
+                LOAD_CONST              13 (2)
+                BINARY_SUBSCR
+                LOAD_FAST               43 (b)
+                LOAD_CONST              13 (2)
+                BINARY_SUBSCR
+                BINARY_OP               10 (-)
+                CALL                     1
+                LOAD_CONST              14 (1e-09)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       37 (to L24)
+                LOAD_FAST               42 (merged)
+                LOAD_CONST              12 (-1)
+                BINARY_SUBSCR
+                LOAD_CONST               3 (1)
+                BINARY_SUBSCR
+                LOAD_FAST               43 (b)
+                LOAD_CONST               8 (0)
+                BINARY_SUBSCR
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       22 (to L24)
+
+ 278            LOAD_FAST               42 (merged)
+                LOAD_CONST              12 (-1)
+                BINARY_SUBSCR
+                LOAD_CONST               8 (0)
+                BINARY_SUBSCR
+                LOAD_FAST               43 (b)
+                LOAD_CONST               3 (1)
+                BINARY_SUBSCR
+                LOAD_FAST               43 (b)
+                LOAD_CONST              13 (2)
+                BINARY_SUBSCR
+                BUILD_TUPLE              3
+                LOAD_FAST               42 (merged)
+                LOAD_CONST              12 (-1)
+                STORE_SUBSCR
+                JUMP_BACKWARD           74 (to L23)
+
+ 280   L24:     LOAD_FAST               42 (merged)
+                LOAD_ATTR               17 (append + NULL|self)
+                LOAD_FAST               43 (b)
+                LOAD_CONST               8 (0)
+                BINARY_SUBSCR
+                LOAD_FAST               43 (b)
+                LOAD_CONST               3 (1)
+                BINARY_SUBSCR
+                LOAD_FAST               43 (b)
+                LOAD_CONST              13 (2)
+                BINARY_SUBSCR
+                BUILD_TUPLE              3
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD          105 (to L23)
+
+ 276   L25:     END_FOR
+                POP_TOP
+
+ 281            LOAD_FAST               42 (merged)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     44 (a)
+                LOAD_FAST_AND_CLEAR     43 (b)
+                LOAD_FAST_AND_CLEAR     33 (sp)
+                SWAP                     4
+       L26:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L27:     FOR_ITER                39 (to L28)
+                UNPACK_SEQUENCE          3
+                STORE_FAST              44 (a)
+                STORE_FAST              43 (b)
+                STORE_FAST              33 (sp)
+                LOAD_GLOBAL              7 (int + NULL)
+                LOAD_FAST               44 (a)
+                CALL                     1
+                LOAD_GLOBAL              7 (int + NULL)
+                LOAD_FAST               43 (b)
+                CALL                     1
+                LOAD_GLOBAL              5 (float + NULL)
+                LOAD_FAST               33 (sp)
+                CALL                     1
+                BUILD_TUPLE              3
+                LIST_APPEND              2
+                JUMP_BACKWARD           41 (to L27)
+       L28:     END_FOR
+                POP_TOP
+       L29:     SWAP                     4
+                STORE_FAST              33 (sp)
+                STORE_FAST              43 (b)
+                STORE_FAST              44 (a)
+                LOAD_FAST                8 (plan)
+                STORE_ATTR              14 (blocks)
+
+ 282            LOAD_GLOBAL              7 (int + NULL)
+                LOAD_GLOBAL              1 (max + NULL)
+                LOAD_FAST_LOAD_FAST    205 (timeline, vcursor)
+                CALL                     2
+                CALL                     1
+                LOAD_CONST               3 (1)
+                BINARY_OP                0 (+)
+                LOAD_FAST                8 (plan)
+                STORE_ATTR              15 (total_ms)
+
+ 283            LOAD_GLOBAL             33 (sum + NULL)
+                LOAD_FAST               46 (base)
+                BUILD_TUPLE              1
+                LOAD_CONST              15 (<code object <genexpr> at 0x0000016DC8EAE670, file "bilisub\retime.py", line 283>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                LOAD_FAST                8 (plan)
+                LOAD_ATTR               28 (blocks)
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                STORE_FAST              45 (n_stretch)
+
+ 285            LOAD_GLOBAL             35 (len + NULL)
+                LOAD_FAST                9 (its)
+                CALL                     1
+                LOAD_GLOBAL             35 (len + NULL)
+                LOAD_FAST               10 (clusters)
+                CALL                     1
+
+ 286            LOAD_GLOBAL             35 (len + NULL)
+                LOAD_FAST                8 (plan)
+                LOAD_ATTR               28 (blocks)
+                CALL                     1
+                LOAD_FAST               45 (n_stretch)
+
+ 287            LOAD_GLOBAL              3 (min + NULL)
+                LOAD_CONST              16 (<code object <genexpr> at 0x0000016DC90E1630, file "bilisub\retime.py", line 287>)
+                MAKE_FUNCTION
+                LOAD_FAST                8 (plan)
+                LOAD_ATTR               28 (blocks)
+                GET_ITER
+                CALL                     0
+                LOAD_DEREF              46 (base)
+                LOAD_CONST              17 (('default',))
+                CALL_KW                  2
+
+ 288            LOAD_GLOBAL              7 (int + NULL)
+                LOAD_FAST               15 (max_push)
+                CALL                     1
+                LOAD_FAST               16 (n_push400)
+                LOAD_FAST               17 (n_floor)
+
+ 289            LOAD_DEREF               1 (video_ms)
+                LOAD_DEREF              46 (base)
+
+ 284            LOAD_CONST              18 (('n_items', 'n_clusters', 'n_blocks', 'n_stretch', 'min_speed', 'max_push_ms', 'n_push400', 'n_floor', 'src_ms', 'base_speed'))
+                BUILD_CONST_KEY_MAP     10
+                LOAD_FAST                8 (plan)
+                STORE_ATTR              18 (stats)
+
+ 291            LOAD_FAST                8 (plan)
+                RETURN_VALUE
+
+  --   L30:     SWAP                     2
+                POP_TOP
+
+ 220            SWAP                     2
+                STORE_FAST              22 (x)
+                RERAISE                  0
+
+  --   L31:     SWAP                     2
+                POP_TOP
+
+ 281            SWAP                     4
+                STORE_FAST              33 (sp)
+                STORE_FAST              43 (b)
+                STORE_FAST              44 (a)
+                RERAISE                  0
+ExceptionTable:
+  L4 to L7 -> L30 [3]
+  L26 to L29 -> L31 [4]
+
+Disassembly of <code object <genexpr> at 0x0000016DC91C05F0, file "bilisub\retime.py", line 193>:
+  --           COPY_FREE_VARS           1
+
+ 193           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+
+ 194           GET_ITER
+       L2:     FOR_ITER                64 (to L3)
+               UNPACK_SEQUENCE          4
+               STORE_FAST_STORE_FAST   18 (i, s0)
+               STORE_FAST_STORE_FAST   52 (e0, dur)
+
+ 193           LOAD_FAST                1 (i)
+               LOAD_GLOBAL              1 (min + NULL)
+               LOAD_GLOBAL              3 (int + NULL)
+               LOAD_FAST                2 (s0)
+               CALL                     1
+               LOAD_DEREF               5 (video_ms)
+               LOAD_CONST               0 (1)
+               BINARY_OP               10 (-)
+               CALL                     2
+               LOAD_GLOBAL              1 (min + NULL)
+               LOAD_GLOBAL              3 (int + NULL)
+               LOAD_FAST                3 (e0)
+               CALL                     1
+               LOAD_DEREF               5 (video_ms)
+               CALL                     2
+               LOAD_GLOBAL              3 (int + NULL)
+               LOAD_FAST                4 (dur)
+               CALL                     1
+               BUILD_TUPLE              4
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           66 (to L2)
+
+ 194   L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object <lambda> at 0x0000016DC8EB90D0, file "bilisub\retime.py", line 194>:
+194           RESUME                   0
+              LOAD_FAST                0 (x)
+              LOAD_CONST               1 (1)
+              BINARY_SUBSCR
+              RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E1F30, file "bilisub\retime.py", line 206>:
+ 206           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                 9 (to L3)
+               STORE_FAST_LOAD_FAST    17 (x, x)
+               LOAD_CONST               0 (2)
+               BINARY_SUBSCR
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           11 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC8EAE670, file "bilisub\retime.py", line 283>:
+  --           COPY_FREE_VARS           1
+
+ 283           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                20 (to L5)
+               UNPACK_SEQUENCE          3
+               STORE_FAST_STORE_FAST   18 (_a, _b)
+               STORE_FAST_LOAD_FAST    51 (sp, sp)
+               LOAD_DEREF               4 (base)
+               LOAD_CONST               0 (1e-09)
+               BINARY_OP               10 (-)
+               COMPARE_OP              18 (bool(<))
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           16 (to L2)
+       L4:     LOAD_CONST               1 (1)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           22 (to L2)
+       L5:     END_FOR
+               POP_TOP
+               RETURN_CONST             2 (None)
+
+  --   L6:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L6 [0] lasti
+  L4 to L6 -> L6 [0] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E1630, file "bilisub\retime.py", line 287>:
+ 287           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                 9 (to L3)
+               UNPACK_SEQUENCE          3
+               STORE_FAST_STORE_FAST   18 (_a, _b)
+               STORE_FAST_LOAD_FAST    51 (sp, sp)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           11 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object TimeMap at 0x0000016DC91298F0, file "bilisub\retime.py", line 294>:
+294           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('TimeMap')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (294)
+              STORE_NAME               3 (__firstlineno__)
+
+295           LOAD_CONST               2 ('Map mốc ms trục NGUỒN → trục ĐÍCH theo blocks (tuyến tính từng khúc, đơn điệu).')
+              STORE_NAME               4 (__doc__)
+
+297           LOAD_CONST              10 (('blocks', 'list'))
+              LOAD_CONST               3 (<code object __init__ at 0x0000016DC8F4ADB0, file "bilisub\retime.py", line 297>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               5 (__init__)
+
+308           LOAD_CONST              11 (('t_ms', 'float', 'return', 'float'))
+              LOAD_CONST               4 (<code object map at 0x0000016DC8E4E430, file "bilisub\retime.py", line 308>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               6 (map)
+
+317           LOAD_CONST              12 (('ivs', 'list', 'return', 'list'))
+              LOAD_CONST               5 (<code object map_intervals at 0x0000016DC8F58B00, file "bilisub\retime.py", line 317>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               7 (map_intervals)
+
+329           LOAD_CONST              13 (('z', 'dict', 'return', 'dict'))
+              LOAD_CONST               6 (<code object map_zone at 0x0000016DC8F582C0, file "bilisub\retime.py", line 329>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               8 (map_zone)
+
+342           LOAD_CONST              14 (('zones', 'list', 'return', 'list'))
+              LOAD_CONST               7 (<code object map_zones at 0x0000016DC8EA29C0, file "bilisub\retime.py", line 342>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               9 (map_zones)
+              LOAD_CONST               8 (('_b', '_end', '_last_sp', '_last_t1'))
+              STORE_NAME              10 (__static_attributes__)
+              RETURN_CONST             9 (None)
+
+Disassembly of <code object __init__ at 0x0000016DC8F4ADB0, file "bilisub\retime.py", line 297>:
+297           RESUME                   0
+
+298           BUILD_LIST               0
+              LOAD_FAST                0 (self)
+              STORE_ATTR               0 (_b)
+
+299           LOAD_CONST               1 (0.0)
+              STORE_FAST               2 (acc)
+
+300           LOAD_FAST                1 (blocks)
+              GET_ITER
+      L1:     FOR_ITER                85 (to L2)
+              UNPACK_SEQUENCE          3
+              STORE_FAST_STORE_FAST   52 (t0, t1)
+              STORE_FAST               5 (sp)
+
+301           LOAD_GLOBAL              3 (max + NULL)
+              LOAD_CONST               2 (0.05)
+              LOAD_GLOBAL              5 (float + NULL)
+              LOAD_FAST                5 (sp)
+              CALL                     1
+              CALL                     2
+              STORE_FAST               5 (sp)
+
+302           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (_b)
+              LOAD_ATTR                7 (append + NULL|self)
+              LOAD_GLOBAL              5 (float + NULL)
+              LOAD_FAST                3 (t0)
+              CALL                     1
+              LOAD_GLOBAL              5 (float + NULL)
+              LOAD_FAST                4 (t1)
+              CALL                     1
+              LOAD_FAST_LOAD_FAST     82 (sp, acc)
+              BUILD_TUPLE              4
+              CALL                     1
+              POP_TOP
+
+303           LOAD_FAST_LOAD_FAST     36 (acc, t1)
+              LOAD_FAST                3 (t0)
+              BINARY_OP               10 (-)
+              LOAD_FAST                5 (sp)
+              BINARY_OP               11 (/)
+              BINARY_OP               13 (+=)
+              STORE_FAST               2 (acc)
+              JUMP_BACKWARD           87 (to L1)
+
+300   L2:     END_FOR
+              POP_TOP
+
+304           LOAD_FAST_LOAD_FAST     32 (acc, self)
+              STORE_ATTR               4 (_end)
+
+305           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (_b)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       18 (to L3)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (_b)
+              LOAD_CONST               3 (-1)
+              BINARY_SUBSCR
+              LOAD_CONST               4 (2)
+              BINARY_SUBSCR
+              JUMP_FORWARD             1 (to L4)
+      L3:     LOAD_CONST               5 (1.0)
+      L4:     LOAD_FAST                0 (self)
+              STORE_ATTR               5 (_last_sp)
+
+306           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (_b)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       24 (to L5)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (_b)
+              LOAD_CONST               3 (-1)
+              BINARY_SUBSCR
+              LOAD_CONST               6 (1)
+              BINARY_SUBSCR
+              LOAD_FAST                0 (self)
+              STORE_ATTR               6 (_last_t1)
+              RETURN_CONST             0 (None)
+      L5:     LOAD_CONST               1 (0.0)
+              LOAD_FAST                0 (self)
+              STORE_ATTR               6 (_last_t1)
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object map at 0x0000016DC8E4E430, file "bilisub\retime.py", line 308>:
+308           RESUME                   0
+
+309           LOAD_GLOBAL              1 (float + NULL)
+              LOAD_FAST                1 (t_ms)
+              CALL                     1
+              STORE_FAST               2 (t)
+
+310           LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (_b)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       21 (to L1)
+              LOAD_FAST_LOAD_FAST     32 (t, self)
+              LOAD_ATTR                2 (_b)
+              LOAD_CONST               1 (0)
+              BINARY_SUBSCR
+              LOAD_CONST               1 (0)
+              BINARY_SUBSCR
+              COMPARE_OP              58 (bool(<=))
+              POP_JUMP_IF_FALSE       12 (to L2)
+
+311   L1:     LOAD_GLOBAL              5 (max + NULL)
+              LOAD_CONST               2 (0.0)
+              LOAD_FAST                2 (t)
+              CALL                     2
+              RETURN_VALUE
+
+312   L2:     LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (_b)
+              GET_ITER
+      L3:     FOR_ITER                33 (to L5)
+              UNPACK_SEQUENCE          4
+              STORE_FAST_STORE_FAST   52 (t0, t1)
+              STORE_FAST_STORE_FAST   86 (sp, acc)
+
+313           LOAD_FAST_LOAD_FAST     36 (t, t1)
+              COMPARE_OP              58 (bool(<=))
+              POP_JUMP_IF_TRUE         2 (to L4)
+              JUMP_BACKWARD           13 (to L3)
+
+314   L4:     LOAD_FAST                6 (acc)
+              LOAD_GLOBAL              5 (max + NULL)
+              LOAD_FAST_LOAD_FAST     35 (t, t0)
+              CALL                     2
+              LOAD_FAST                3 (t0)
+              BINARY_OP               10 (-)
+              LOAD_FAST                5 (sp)
+              BINARY_OP               11 (/)
+              BINARY_OP                0 (+)
+              SWAP                     2
+              POP_TOP
+              RETURN_VALUE
+
+312   L5:     END_FOR
+              POP_TOP
+
+315           LOAD_FAST                0 (self)
+              LOAD_ATTR                6 (_end)
+              LOAD_FAST_LOAD_FAST     32 (t, self)
+              LOAD_ATTR                8 (_last_t1)
+              BINARY_OP               10 (-)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (_last_sp)
+              BINARY_OP               11 (/)
+              BINARY_OP                0 (+)
+              RETURN_VALUE
+
+Disassembly of <code object map_intervals at 0x0000016DC8F58B00, file "bilisub\retime.py", line 317>:
+ 317           RESUME                   0
+
+ 319           BUILD_LIST               0
+               STORE_FAST               2 (out)
+
+ 320           LOAD_FAST                1 (ivs)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L1)
+               POP_TOP
+               BUILD_LIST               0
+       L1:     GET_ITER
+       L2:     FOR_ITER               112 (to L5)
+               STORE_FAST               3 (iv)
+
+ 321           NOP
+
+ 322   L3:     LOAD_GLOBAL              1 (float + NULL)
+               LOAD_FAST                3 (iv)
+               LOAD_CONST               1 (0)
+               BINARY_SUBSCR
+               CALL                     1
+               LOAD_GLOBAL              1 (float + NULL)
+               LOAD_FAST                3 (iv)
+               LOAD_CONST               2 (1)
+               BINARY_SUBSCR
+               CALL                     1
+               STORE_FAST_STORE_FAST   84 (b, a)
+
+ 325   L4:     LOAD_FAST                2 (out)
+               LOAD_ATTR                9 (append + NULL|self)
+               LOAD_GLOBAL             11 (round + NULL)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               13 (map + NULL|self)
+               LOAD_FAST                4 (a)
+               LOAD_CONST               3 (1000.0)
+               BINARY_OP                5 (*)
+               CALL                     1
+               LOAD_CONST               3 (1000.0)
+               BINARY_OP               11 (/)
+               LOAD_CONST               4 (3)
+               CALL                     2
+
+ 326           LOAD_GLOBAL             11 (round + NULL)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               13 (map + NULL|self)
+               LOAD_FAST                5 (b)
+               LOAD_CONST               3 (1000.0)
+               BINARY_OP                5 (*)
+               CALL                     1
+               LOAD_CONST               3 (1000.0)
+               BINARY_OP               11 (/)
+               LOAD_CONST               4 (3)
+               CALL                     2
+
+ 325           BUILD_LIST               2
+               CALL                     1
+               POP_TOP
+               JUMP_BACKWARD          114 (to L2)
+
+ 320   L5:     END_FOR
+               POP_TOP
+
+ 327           LOAD_FAST                2 (out)
+               RETURN_VALUE
+
+  --   L6:     PUSH_EXC_INFO
+
+ 323           LOAD_GLOBAL              2 (TypeError)
+               LOAD_GLOBAL              4 (ValueError)
+               LOAD_GLOBAL              6 (IndexError)
+               BUILD_TUPLE              3
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        4 (to L8)
+               POP_TOP
+
+ 324   L7:     POP_EXCEPT
+               JUMP_BACKWARD          142 (to L2)
+
+ 323   L8:     RERAISE                  0
+
+  --   L9:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L3 to L4 -> L6 [1]
+  L6 to L7 -> L9 [2] lasti
+  L8 to L9 -> L9 [2] lasti
+
+Disassembly of <code object map_zone at 0x0000016DC8F582C0, file "bilisub\retime.py", line 329>:
+ 329            RESUME                   0
+
+ 331            LOAD_GLOBAL              1 (dict + NULL)
+                LOAD_FAST                1 (z)
+                CALL                     1
+                STORE_FAST               2 (nz)
+
+ 332            LOAD_FAST                1 (z)
+                LOAD_ATTR                3 (get + NULL|self)
+                LOAD_CONST               1 ('intervals')
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE       23 (to L1)
+
+ 333            LOAD_FAST                0 (self)
+                LOAD_ATTR                5 (map_intervals + NULL|self)
+                LOAD_FAST                1 (z)
+                LOAD_CONST               1 ('intervals')
+                BINARY_SUBSCR
+                CALL                     1
+                LOAD_FAST                2 (nz)
+                LOAD_CONST               1 ('intervals')
+                STORE_SUBSCR
+
+ 334    L1:     LOAD_CONST               2 (('t0', 't1'))
+                GET_ITER
+        L2:     FOR_ITER                70 (to L6)
+                STORE_FAST               3 (k)
+
+ 335            LOAD_FAST                1 (z)
+                LOAD_ATTR                3 (get + NULL|self)
+                LOAD_FAST                3 (k)
+                CALL                     1
+                POP_JUMP_IF_NOT_NONE     2 (to L3)
+                JUMP_BACKWARD           23 (to L2)
+
+ 336    L3:     NOP
+
+ 337    L4:     LOAD_GLOBAL              7 (round + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR                9 (map + NULL|self)
+                LOAD_GLOBAL             11 (float + NULL)
+                LOAD_FAST_LOAD_FAST     19 (z, k)
+                BINARY_SUBSCR
+                CALL                     1
+                LOAD_CONST               3 (1000.0)
+                BINARY_OP                5 (*)
+                CALL                     1
+                LOAD_CONST               3 (1000.0)
+                BINARY_OP               11 (/)
+                LOAD_CONST               4 (3)
+                CALL                     2
+                LOAD_FAST_LOAD_FAST     35 (nz, k)
+                STORE_SUBSCR
+        L5:     JUMP_BACKWARD           72 (to L2)
+
+ 334    L6:     END_FOR
+                POP_TOP
+
+ 340            LOAD_FAST                2 (nz)
+                RETURN_VALUE
+
+  --    L7:     PUSH_EXC_INFO
+
+ 338            LOAD_GLOBAL             12 (TypeError)
+                LOAD_GLOBAL             14 (ValueError)
+                BUILD_TUPLE              2
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L9)
+                POP_TOP
+
+ 339    L8:     POP_EXCEPT
+                JUMP_BACKWARD           95 (to L2)
+
+ 338    L9:     RERAISE                  0
+
+  --   L10:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L4 to L5 -> L7 [1]
+  L7 to L8 -> L10 [2] lasti
+  L9 to L10 -> L10 [2] lasti
+
+Disassembly of <code object map_zones at 0x0000016DC8EA29C0, file "bilisub\retime.py", line 342>:
+ 342           RESUME                   0
+
+ 343           LOAD_FAST                1 (zones)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L1)
+               POP_TOP
+               BUILD_LIST               0
+       L1:     GET_ITER
+               LOAD_FAST_AND_CLEAR      2 (z)
+               SWAP                     2
+       L2:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L3:     FOR_ITER                19 (to L4)
+               STORE_FAST_LOAD_FAST    32 (z, self)
+               LOAD_ATTR                1 (map_zone + NULL|self)
+               LOAD_FAST                2 (z)
+               CALL                     1
+               LIST_APPEND              2
+               JUMP_BACKWARD           21 (to L3)
+       L4:     END_FOR
+               POP_TOP
+       L5:     SWAP                     2
+               STORE_FAST               2 (z)
+               RETURN_VALUE
+
+  --   L6:     SWAP                     2
+               POP_TOP
+
+ 343           SWAP                     2
+               STORE_FAST               2 (z)
+               RERAISE                  0
+ExceptionTable:
+  L2 to L5 -> L6 [2]

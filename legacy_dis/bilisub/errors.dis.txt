@@ -1,0 +1,473 @@
+=== FILE: bilisub\errors.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  2           LOAD_CONST               0 ('★2026-08-05 (Boss chốt #6) — BÁO LỖI THÂN THIỆN.\n\nMọi lỗi pipeline (tải/ASR/OCR/dịch/TTS/render) đổ về MỘT chỗ hiển thị (Worker.run →\n_on_failed) rồi in `str(e)` THÔ: khách thấy traceback tiếng Anh / WinError khó hiểu\n(\'[WinError 1455] The paging file is too small\', \'CUDA error: invalid argument\',\n\'not supported for this language\', \'Key đã đạt giới hạn số thiết bị\'). `humanize_error`\nmap các dấu hiệu đó thành câu tiếng Việt kèm HÀNH ĐỘNG cụ thể, VẪN giữ 1 dòng "chi tiết\nkỹ thuật" để hỗ trợ đọc được. KHÔNG khớp dấu hiệu nào → trả nguyên văn (không nuốt thông\ntin). Nhận cả Exception lẫn chuỗi để tái dùng ở license_dialog / các dialog phụ.')
+              STORE_NAME               0 (__doc__)
+
+ 11           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 13           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (re)
+              STORE_NAME               3 (re)
+
+ 19           LOAD_NAME                3 (re)
+              LOAD_ATTR                8 (compile)
+              PUSH_NULL
+              LOAD_CONST               4 ('(?:winerror|os ?error|error)\\W{0,3}1455\\b')
+              CALL                     1
+              STORE_NAME               5 (_RE_LOI_1455)
+
+ 24           LOAD_CONST               5 (('đổi sang giọng', 'cập nhật driver', 'bộ nhớ ảo', '→ ', 'nhờ người bán', '👉'))
+              STORE_NAME               6 (_ALREADY_FRIENDLY)
+
+ 28           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST               6 (<code object HuyBoiNguoiDung at 0x0000016DC8EB9D10, file "bilisub\errors.py", line 28>)
+              MAKE_FUNCTION
+              LOAD_CONST               7 ('HuyBoiNguoiDung')
+              LOAD_NAME                7 (BaseException)
+              CALL                     3
+              STORE_NAME               8 (HuyBoiNguoiDung)
+
+ 41           LOAD_CONST              10 (('đọc chữ (OCR)',))
+              LOAD_CONST              11 (('feature', 'str', 'return', 'str'))
+              LOAD_CONST               8 (<code object onnx_load_error_msg at 0x0000016DC8EB5AC0, file "bilisub\errors.py", line 41>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME               9 (onnx_load_error_msg)
+
+ 67           LOAD_CONST              12 (('return', 'str'))
+              LOAD_CONST               9 (<code object humanize_error at 0x0000016DC8FE2350, file "bilisub\errors.py", line 67>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              10 (humanize_error)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object HuyBoiNguoiDung at 0x0000016DC8EB9D10, file "bilisub\errors.py", line 28>:
+ 28           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('HuyBoiNguoiDung')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (28)
+              STORE_NAME               3 (__firstlineno__)
+
+ 29           LOAD_CONST               2 ('★10/08 Người dùng bấm ⏹ Dừng giữa chừng — KHÔNG phải lỗi.\n\nVì sao kế thừa ``BaseException`` chứ không ``Exception`` (cùng lý do CPython cho\nKeyboardInterrupt): pipeline có nhiều ``except Exception`` phòng thủ (một khâu hỏng\nkhông được giết cả job). Nếu tín hiệu dừng là ``Exception`` thì chính các lưới đó sẽ\nNUỐT nó và job... chạy tiếp — nút Dừng thành nút giả. ``BaseException`` xuyên qua mọi\nlưới phòng thủ, chỉ ai CHỦ ĐÍCH bắt (Worker.run) mới bắt được.\n⚠ Ai viết ``except BaseException`` / ``except:`` trần trong pipeline sẽ vô hiệu nút\nDừng — đừng làm thế.\n')
+              STORE_NAME               4 (__doc__)
+              LOAD_CONST               3 (())
+              STORE_NAME               5 (__static_attributes__)
+              RETURN_CONST             4 (None)
+
+Disassembly of <code object onnx_load_error_msg at 0x0000016DC8EB5AC0, file "bilisub\errors.py", line 41>:
+  41            RESUME                   0
+
+  48            NOP
+
+  49    L1:     LOAD_CONST               1 (1)
+                LOAD_CONST               2 (('import_error_message',))
+                IMPORT_NAME              0 (diag_onnx)
+                IMPORT_FROM              1 (import_error_message)
+                STORE_FAST               2 (import_error_message)
+                POP_TOP
+
+  50            LOAD_FAST                2 (import_error_message)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST      1 (exc, feature)
+                LOAD_CONST               3 (('feature',))
+                CALL_KW                  2
+        L2:     RETURN_VALUE
+
+  --    L3:     PUSH_EXC_INFO
+
+  51            LOAD_GLOBAL              4 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       68 (to L16)
+                POP_TOP
+
+  52            LOAD_CONST               4 ('')
+                STORE_FAST               3 (raw)
+
+  53    L4:     NOP
+
+  54    L5:     LOAD_GLOBAL              7 (str + NULL)
+                LOAD_FAST                0 (exc)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L6)
+                POP_TOP
+                LOAD_CONST               4 ('')
+        L6:     CALL                     1
+                LOAD_CONST               5 (None)
+                LOAD_CONST               6 (200)
+                BINARY_SLICE
+                STORE_FAST               3 (raw)
+        L7:     JUMP_FORWARD            16 (to L12)
+
+  --    L8:     PUSH_EXC_INFO
+
+  55            LOAD_GLOBAL              4 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L10)
+                POP_TOP
+
+  56    L9:     POP_EXCEPT
+                JUMP_FORWARD             4 (to L12)
+
+  55   L10:     RERAISE                  0
+
+  --   L11:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+  59   L12:     LOAD_CONST               7 ('Không nạp được thư viện ')
+                LOAD_FAST                1 (feature)
+                FORMAT_SIMPLE
+                LOAD_CONST               8 (" trên máy này. Nếu CHƯA cài 'Microsoft Visual C++ Redistributable x64' thì cài tại https://aka.ms/vs/17/release/vc_redist.x64.exe rồi KHỞI ĐỘNG LẠI MÁY. Nếu ĐÃ CÀI RỒI mà vẫn lỗi: khởi động lại máy 1 lần, vẫn lỗi thì gửi lỗi gốc bên dưới cho người bán (đừng cài lại nhiều lần vô ích).")
+                BUILD_STRING             3
+
+  64            LOAD_FAST                3 (raw)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        6 (to L13)
+                LOAD_CONST               9 (' (Lỗi gốc: ')
+                LOAD_FAST                3 (raw)
+                FORMAT_SIMPLE
+                LOAD_CONST              10 (')')
+                BUILD_STRING             3
+                JUMP_FORWARD             1 (to L14)
+       L13:     LOAD_CONST               4 ('')
+
+  59   L14:     BINARY_OP                0 (+)
+                SWAP                     2
+       L15:     POP_EXCEPT
+                RETURN_VALUE
+
+  51   L16:     RERAISE                  0
+
+  --   L17:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L17 [1] lasti
+  L5 to L7 -> L8 [1]
+  L7 to L8 -> L17 [1] lasti
+  L8 to L9 -> L11 [2] lasti
+  L9 to L10 -> L17 [1] lasti
+  L10 to L11 -> L11 [2] lasti
+  L11 to L15 -> L17 [1] lasti
+  L16 to L17 -> L17 [1] lasti
+
+Disassembly of <code object humanize_error at 0x0000016DC8FE2350, file "bilisub\errors.py", line 67>:
+  --            MAKE_CELL                2 (low)
+                MAKE_CELL                3 (raw)
+
+  67            RESUME                   0
+
+  70            LOAD_GLOBAL              1 (isinstance + NULL)
+                LOAD_FAST                0 (exc)
+                LOAD_GLOBAL              2 (str)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L1)
+                LOAD_FAST                0 (exc)
+                JUMP_FORWARD             2 (to L2)
+        L1:     LOAD_FAST                0 (exc)
+                FORMAT_SIMPLE
+        L2:     LOAD_ATTR                5 (strip + NULL|self)
+                CALL                     0
+                STORE_DEREF              3 (raw)
+
+  71            LOAD_DEREF               3 (raw)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L3)
+
+  72            RETURN_CONST             1 ('Đã xảy ra lỗi không rõ.')
+
+  73    L3:     LOAD_DEREF               3 (raw)
+                LOAD_ATTR                7 (lower + NULL|self)
+                CALL                     0
+                STORE_DEREF              2 (low)
+
+  74            LOAD_GLOBAL              9 (any + NULL)
+                LOAD_FAST                2 (low)
+                BUILD_TUPLE              1
+                LOAD_CONST               2 (<code object <genexpr> at 0x0000016DC90E2530, file "bilisub\errors.py", line 74>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                LOAD_GLOBAL             10 (_ALREADY_FRIENDLY)
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L4)
+
+  75            LOAD_DEREF               3 (raw)
+                RETURN_VALUE
+
+  77    L4:     LOAD_CONST              34 (('friendly', 'str', 'return', 'str'))
+                LOAD_FAST                3 (raw)
+                BUILD_TUPLE              1
+                LOAD_CONST               3 (<code object wrap at 0x0000016DC8CBEB50, file "bilisub\errors.py", line 77>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                SET_FUNCTION_ATTRIBUTE   4 (annotations)
+                STORE_FAST               1 (wrap)
+
+  82            LOAD_GLOBAL             12 (_RE_LOI_1455)
+                LOAD_ATTR               15 (search + NULL|self)
+                LOAD_DEREF               2 (low)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        12 (to L5)
+                LOAD_CONST               4 ('paging file')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_TRUE         6 (to L5)
+                LOAD_CONST               5 ('bộ nhớ ảo')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE        8 (to L6)
+
+  83    L5:     LOAD_FAST                1 (wrap)
+                PUSH_NULL
+
+  84            LOAD_CONST               6 ('Bộ nhớ ảo (paging file) của Windows quá nhỏ để nạp model giọng clone. Khắc phục: tăng Virtual Memory ≥16GB (Control Panel → System → Advanced system settings → Performance Settings → Advanced → Virtual memory) + dọn trống ổ C; hoặc đổi sang giọng thường (Edge/Vbee) — không cần GPU.')
+
+  83            CALL                     1
+                RETURN_VALUE
+
+  89    L6:     LOAD_CONST               7 ('out of memory')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       26 (to L8)
+                LOAD_CONST               8 ('cuda')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_TRUE        12 (to L7)
+                LOAD_CONST               9 ('gpu')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_TRUE         6 (to L7)
+                LOAD_CONST              10 ('vram')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE        8 (to L8)
+
+  90    L7:     LOAD_FAST                1 (wrap)
+                PUSH_NULL
+
+  91            LOAD_CONST              11 ('Card đồ hoạ HẾT VRAM khi tạo giọng clone. Đóng các app đang dùng GPU (game/trình duyệt nặng), giảm số luồng, hoặc đổi sang giọng thường (Edge/Vbee).')
+
+  90            CALL                     1
+                RETURN_VALUE
+
+  99    L8:     LOAD_CONST              12 ('libass')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_TRUE         6 (to L9)
+                LOAD_CONST              13 ('ass_read_file')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE        8 (to L10)
+
+ 100    L9:     LOAD_FAST                1 (wrap)
+                PUSH_NULL
+
+ 101            LOAD_CONST              14 ('Không đọc được file phụ đề khi cháy chữ vào video — thường do ĐƯỜNG DẪN QUÁ DÀI (Windows chỉ cho 260 ký tự) hoặc thư mục chứa video bị xoá/khoá giữa chừng. Cách xử lý: đặt lại tên thư mục chứa video NGẮN hơn (đừng dán cả đoạn mô tả phim làm tên thư mục), hoặc chuyển video ra thư mục gần gốc ổ đĩa như D:\\Video.')
+
+ 100            CALL                     1
+                RETURN_VALUE
+
+ 110   L10:     LOAD_GLOBAL              9 (any + NULL)
+                LOAD_FAST                2 (low)
+                BUILD_TUPLE              1
+                LOAD_CONST              15 (<code object <genexpr> at 0x0000016DC90E1E30, file "bilisub\errors.py", line 110>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                LOAD_CONST              16 (('cuda', 'cublas', 'cudnn', 'device-side assert', 'illegal memory access'))
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        18 (to L11)
+
+ 112            LOAD_CONST              17 ('invalid argument')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       20 (to L12)
+                LOAD_CONST               8 ('cuda')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_TRUE         6 (to L11)
+                LOAD_CONST               9 ('gpu')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE        8 (to L12)
+
+ 113   L11:     LOAD_FAST                1 (wrap)
+                PUSH_NULL
+
+ 114            LOAD_CONST              18 ('Lỗi GPU khi tạo giọng clone (driver/VRAM). Cập nhật driver NVIDIA + đóng app dùng GPU khác rồi thử lại; hoặc đổi sang giọng thường (Edge/Vbee). (Tool đã tự khởi động lại engine giọng nhưng vẫn lỗi.)')
+
+ 113            CALL                     1
+                RETURN_VALUE
+
+ 118   L12:     LOAD_CONST              19 ('not supported for this language')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_TRUE        12 (to L13)
+                LOAD_CONST              20 ('not supported')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       14 (to L14)
+                LOAD_CONST              21 ('language')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE        8 (to L14)
+
+ 119   L13:     LOAD_FAST                1 (wrap)
+                PUSH_NULL
+
+ 120            LOAD_CONST              22 ('Giọng TikTok/CapCut này KHÔNG đọc được ngôn ngữ hiện tại. Chọn giọng khác (Edge/Vbee/giọng clone) hoặc kiểm tra ngôn ngữ phụ đề.')
+
+ 119            CALL                     1
+                RETURN_VALUE
+
+ 123   L14:     LOAD_CONST              23 ('số thiết bị')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_TRUE        18 (to L15)
+                LOAD_CONST              24 ('device')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       20 (to L16)
+                LOAD_CONST              25 ('limit')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_TRUE         6 (to L15)
+                LOAD_CONST              26 ('giới hạn')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE        8 (to L16)
+
+ 124   L15:     LOAD_FAST                1 (wrap)
+                PUSH_NULL
+
+ 125            LOAD_CONST              27 ('Key đã đạt GIỚI HẠN SỐ THIẾT BỊ. Nếu bạn vừa đổi máy / cài lại Windows / dùng VPN–card mạng ảo, hãy nhờ người bán RESET thiết bị cho key; hoặc dùng đúng máy đã kích hoạt trước đó.')
+
+ 124            CALL                     1
+                RETURN_VALUE
+
+ 129   L16:     LOAD_CONST              28 ('no space left')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_TRUE        12 (to L17)
+                LOAD_CONST              29 ('errno 28')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_TRUE         6 (to L17)
+                LOAD_CONST              30 ('enospc')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE        8 (to L18)
+
+ 130   L17:     LOAD_FAST                1 (wrap)
+                PUSH_NULL
+
+ 131            LOAD_CONST              31 ("Ổ đĩa ĐẦY khi xử lý/render. Dọn bớt ổ hoặc đổi 'Thư mục lưu video' sang ổ còn trống.")
+
+ 130            CALL                     1
+                RETURN_VALUE
+
+ 133   L18:     LOAD_CONST              32 ('moov atom not found')
+                LOAD_DEREF               2 (low)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE        8 (to L19)
+
+ 134            LOAD_FAST                1 (wrap)
+                PUSH_NULL
+
+ 135            LOAD_CONST              33 ('File video hỏng / chưa hoàn tất (thường do render bị ngắt giữa chừng vì hết ổ hoặc tắt máy). Chạy lại để render lại — phần dịch đã xong được nhớ sẵn, không tốn credit.')
+
+ 134            CALL                     1
+                RETURN_VALUE
+
+ 137   L19:     LOAD_DEREF               3 (raw)
+                RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E2530, file "bilisub\errors.py", line 74>:
+  --           COPY_FREE_VARS           1
+
+  74           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                 9 (to L3)
+               STORE_FAST_LOAD_FAST    17 (m, m)
+               LOAD_DEREF               2 (low)
+               CONTAINS_OP              0
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           11 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object wrap at 0x0000016DC8CBEB50, file "bilisub\errors.py", line 77>:
+  --           COPY_FREE_VARS           1
+
+  77           RESUME                   0
+
+  78           LOAD_FAST                0 (friendly)
+               FORMAT_SIMPLE
+               LOAD_CONST               1 ('\n(Chi tiết kỹ thuật: ')
+               LOAD_DEREF               1 (raw)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               2 (220)
+               BINARY_SLICE
+               FORMAT_SIMPLE
+               LOAD_CONST               3 (')')
+               BUILD_STRING             4
+               RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E1E30, file "bilisub\errors.py", line 110>:
+  --           COPY_FREE_VARS           1
+
+ 110           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                 9 (to L3)
+               STORE_FAST_LOAD_FAST    17 (s, s)
+               LOAD_DEREF               2 (low)
+               CONTAINS_OP              0
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           11 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti

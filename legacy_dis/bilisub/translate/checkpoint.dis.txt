@@ -1,0 +1,952 @@
+=== FILE: bilisub\translate\checkpoint.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('Checkpoint/resume cho dịch: lưu kết quả từng batch theo chữ ký nội dung.\n\nNếu dịch video dài bị dừng giữa chừng (hết quota, tắt máy), lần sau chạy lại sẽ\nbỏ qua các batch đã xong -> không mất công, không tốn quota lặp lại.\n')
+              STORE_NAME               0 (__doc__)
+
+  6           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+  8           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (hashlib)
+              STORE_NAME               3 (hashlib)
+
+  9           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (json)
+              STORE_NAME               4 (json)
+
+ 10           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              5 (threading)
+              STORE_NAME               5 (threading)
+
+ 11           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Path',))
+              IMPORT_NAME              6 (pathlib)
+              IMPORT_FROM              7 (Path)
+              STORE_NAME               7 (Path)
+              POP_TOP
+
+ 12           LOAD_CONST               1 (0)
+              LOAD_CONST               5 (('Optional',))
+              IMPORT_NAME              8 (typing)
+              IMPORT_FROM              9 (Optional)
+              STORE_NAME               9 (Optional)
+              POP_TOP
+
+ 14           LOAD_CONST               6 (2)
+              LOAD_CONST               7 (('app_data_dir',))
+              IMPORT_NAME             10 (config)
+              IMPORT_FROM             11 (app_data_dir)
+              STORE_NAME              11 (app_data_dir)
+              POP_TOP
+
+ 15           LOAD_CONST               6 (2)
+              LOAD_CONST               8 (('SubtitleEntry',))
+              IMPORT_NAME             12 (models)
+              IMPORT_FROM             13 (SubtitleEntry)
+              STORE_NAME              13 (SubtitleEntry)
+              POP_TOP
+
+ 18           LOAD_CONST              17 (('entries', 'list[SubtitleEntry]', 'return', 'str'))
+              LOAD_CONST               9 (<code object batch_signature at 0x0000016DC8CABE00, file "bilisub\translate\checkpoint.py", line 18>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              14 (batch_signature)
+
+ 26           LOAD_CONST              10 ('v5')
+              STORE_NAME              15 (_PROMPT_VERSION)
+
+ 29           LOAD_CONST              11 ('')
+              LOAD_CONST              12 (('fingerprint',))
+              BUILD_CONST_KEY_MAP      1
+              LOAD_CONST              18 (('video_or_srt', 'str', 'target_lang', 'str', 'fingerprint', 'str', 'return', 'Path'))
+              LOAD_CONST              13 (<code object job_path_for at 0x0000016DC8EC5990, file "bilisub\translate\checkpoint.py", line 29>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              16 (job_path_for)
+
+ 45           LOAD_CONST              19 (('return', 'str'))
+              LOAD_CONST              14 (<code object config_fingerprint at 0x0000016DC87BBF80, file "bilisub\translate\checkpoint.py", line 45>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              17 (config_fingerprint)
+
+ 87           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              15 (<code object Checkpoint at 0x0000016DC8EC3B40, file "bilisub\translate\checkpoint.py", line 87>)
+              MAKE_FUNCTION
+              LOAD_CONST              16 ('Checkpoint')
+              CALL                     2
+              STORE_NAME              18 (Checkpoint)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object batch_signature at 0x0000016DC8CABE00, file "bilisub\translate\checkpoint.py", line 18>:
+ 18           RESUME                   0
+
+ 19           LOAD_CONST               1 ('\n')
+              LOAD_ATTR                1 (join + NULL|self)
+              LOAD_CONST               2 (<code object <genexpr> at 0x0000016DC9129350, file "bilisub\translate\checkpoint.py", line 19>)
+              MAKE_FUNCTION
+              LOAD_FAST                0 (entries)
+              GET_ITER
+              CALL                     0
+              CALL                     1
+              STORE_FAST               1 (raw)
+
+ 20           LOAD_GLOBAL              2 (hashlib)
+              LOAD_ATTR                4 (sha1)
+              PUSH_NULL
+              LOAD_FAST                1 (raw)
+              LOAD_ATTR                7 (encode + NULL|self)
+              LOAD_CONST               3 ('utf-8')
+              CALL                     1
+              CALL                     1
+              LOAD_ATTR                9 (hexdigest + NULL|self)
+              CALL                     0
+              LOAD_CONST               0 (None)
+              LOAD_CONST               4 (16)
+              BINARY_SLICE
+              RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC9129350, file "bilisub\translate\checkpoint.py", line 19>:
+  19           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                31 (to L3)
+               STORE_FAST_LOAD_FAST    17 (e, e)
+               LOAD_ATTR                0 (index)
+               FORMAT_SIMPLE
+               LOAD_CONST               0 ('|')
+               LOAD_FAST                1 (e)
+               LOAD_ATTR                2 (text)
+               FORMAT_SIMPLE
+               BUILD_STRING             3
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           33 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object job_path_for at 0x0000016DC8EC5990, file "bilisub\translate\checkpoint.py", line 29>:
+ 29           RESUME                   0
+
+ 38           LOAD_GLOBAL              0 (hashlib)
+              LOAD_ATTR                2 (sha1)
+              PUSH_NULL
+              LOAD_GLOBAL              5 (Path + NULL)
+              LOAD_FAST                0 (video_or_srt)
+              CALL                     1
+              LOAD_ATTR                7 (resolve + NULL|self)
+              CALL                     0
+              FORMAT_SIMPLE
+              LOAD_CONST               1 ('|')
+              LOAD_FAST                1 (target_lang)
+              FORMAT_SIMPLE
+              LOAD_CONST               1 ('|')
+              LOAD_GLOBAL              8 (_PROMPT_VERSION)
+              FORMAT_SIMPLE
+
+ 39           LOAD_CONST               1 ('|')
+              LOAD_FAST                2 (fingerprint)
+              FORMAT_SIMPLE
+
+ 38           BUILD_STRING             7
+
+ 39           LOAD_ATTR               11 (encode + NULL|self)
+              LOAD_CONST               2 ('utf-8')
+              CALL                     1
+
+ 38           CALL                     1
+
+ 39           LOAD_ATTR               13 (hexdigest + NULL|self)
+              CALL                     0
+              LOAD_CONST               3 (None)
+              LOAD_CONST               4 (16)
+
+ 38           BINARY_SLICE
+              STORE_FAST               3 (key)
+
+ 40           LOAD_GLOBAL             15 (app_data_dir + NULL)
+              CALL                     0
+              LOAD_CONST               5 ('checkpoints')
+              BINARY_OP               11 (/)
+              STORE_FAST               4 (d)
+
+ 41           LOAD_FAST                4 (d)
+              LOAD_ATTR               17 (mkdir + NULL|self)
+              LOAD_CONST               6 (True)
+              LOAD_CONST               6 (True)
+              LOAD_CONST               7 (('parents', 'exist_ok'))
+              CALL_KW                  2
+              POP_TOP
+
+ 42           LOAD_FAST_LOAD_FAST     67 (d, key)
+              FORMAT_SIMPLE
+              LOAD_CONST               8 ('.json')
+              BUILD_STRING             2
+              BINARY_OP               11 (/)
+              RETURN_VALUE
+
+Disassembly of <code object config_fingerprint at 0x0000016DC87BBF80, file "bilisub\translate\checkpoint.py", line 45>:
+  45            RESUME                   0
+
+  47            NOP
+
+  48    L1:     LOAD_GLOBAL              1 (getattr + NULL)
+                LOAD_FAST                0 (settings)
+                LOAD_CONST               1 ('provider')
+                LOAD_CONST               2 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                LOAD_CONST               2 ('')
+        L2:     STORE_FAST               1 (prov)
+
+  55    L3:     NOP
+
+  56    L4:     LOAD_CONST               3 (2)
+                LOAD_CONST               4 (('credit',))
+                IMPORT_NAME              1
+                IMPORT_FROM              2 (credit)
+                STORE_FAST               2 (_credit)
+                POP_TOP
+
+  57            LOAD_GLOBAL              7 (str + NULL)
+                LOAD_FAST                2 (_credit)
+                LOAD_ATTR                9 (active_provider + NULL|self)
+                LOAD_FAST                0 (settings)
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L5)
+                POP_TOP
+                LOAD_CONST               2 ('')
+        L5:     CALL                     1
+                STORE_FAST               3 (act)
+
+  61    L6:     LOAD_GLOBAL              7 (str + NULL)
+                LOAD_GLOBAL              1 (getattr + NULL)
+                LOAD_FAST                0 (settings)
+                LOAD_CONST               5 ('video_genre')
+                LOAD_CONST               2 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L7)
+                POP_TOP
+                LOAD_CONST               2 ('')
+        L7:     CALL                     1
+
+  62            LOAD_FAST                1 (prov)
+
+  63            LOAD_GLOBAL             13 (hasattr + NULL)
+                LOAD_FAST                0 (settings)
+                LOAD_CONST               6 ('model_for')
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       26 (to L8)
+                LOAD_GLOBAL              7 (str + NULL)
+                LOAD_FAST                0 (settings)
+                LOAD_ATTR               15 (model_for + NULL|self)
+                LOAD_FAST                1 (prov)
+                CALL                     1
+                CALL                     1
+                JUMP_FORWARD             1 (to L9)
+        L8:     LOAD_CONST               2 ('')
+
+  64    L9:     LOAD_GLOBAL              1 (getattr + NULL)
+                LOAD_FAST                0 (settings)
+                LOAD_CONST               7 ('sequential_quality')
+                LOAD_CONST               8 (False)
+                CALL                     3
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L10)
+                LOAD_CONST               9 ('seq')
+                JUMP_FORWARD             1 (to L11)
+       L10:     LOAD_CONST              10 ('par')
+
+  65   L11:     LOAD_GLOBAL              1 (getattr + NULL)
+                LOAD_FAST                0 (settings)
+                LOAD_CONST              11 ('ai_credit_mode')
+                LOAD_CONST               8 (False)
+                CALL                     3
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L12)
+                LOAD_CONST              12 ('credit')
+                JUMP_FORWARD             1 (to L13)
+       L12:     LOAD_CONST              13 ('byok')
+
+  66   L13:     LOAD_FAST                3 (act)
+
+  67            LOAD_FAST                3 (act)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       43 (to L14)
+                LOAD_GLOBAL             13 (hasattr + NULL)
+                LOAD_FAST                0 (settings)
+                LOAD_CONST               6 ('model_for')
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       26 (to L14)
+                LOAD_GLOBAL              7 (str + NULL)
+                LOAD_FAST                0 (settings)
+                LOAD_ATTR               15 (model_for + NULL|self)
+                LOAD_FAST                3 (act)
+                CALL                     1
+                CALL                     1
+                JUMP_FORWARD             1 (to L15)
+       L14:     LOAD_CONST               2 ('')
+
+  60   L15:     BUILD_LIST               7
+                STORE_FAST               4 (parts)
+
+  75   L16:     NOP
+
+  76   L17:     LOAD_CONST               3 (2)
+                LOAD_CONST              14 (('user_prompt_for',))
+                IMPORT_NAME              8 (user_prompt)
+                IMPORT_FROM              9 (user_prompt_for)
+                STORE_FAST               5 (user_prompt_for)
+                POP_TOP
+
+  77            LOAD_FAST                5 (user_prompt_for)
+                PUSH_NULL
+                LOAD_FAST                0 (settings)
+                LOAD_GLOBAL              7 (str + NULL)
+                LOAD_GLOBAL              1 (getattr + NULL)
+                LOAD_FAST                0 (settings)
+                LOAD_CONST               5 ('video_genre')
+                LOAD_CONST               2 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L18)
+                POP_TOP
+                LOAD_CONST               2 ('')
+       L18:     CALL                     1
+                CALL                     2
+                STORE_FAST               6 (_up)
+
+  80   L19:     LOAD_FAST                6 (_up)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       72 (to L20)
+
+  81            LOAD_FAST                4 (parts)
+                LOAD_ATTR               21 (append + NULL|self)
+                LOAD_CONST              15 ('up:')
+                LOAD_GLOBAL             22 (hashlib)
+                LOAD_ATTR               24 (sha1)
+                PUSH_NULL
+                LOAD_FAST                6 (_up)
+                LOAD_ATTR               27 (encode + NULL|self)
+                LOAD_CONST              16 ('utf-8')
+                CALL                     1
+                CALL                     1
+                LOAD_ATTR               29 (hexdigest + NULL|self)
+                CALL                     0
+                LOAD_CONST              17 (None)
+                LOAD_CONST              18 (10)
+                BINARY_SLICE
+                BINARY_OP                0 (+)
+                CALL                     1
+                POP_TOP
+
+  84   L20:     LOAD_GLOBAL             22 (hashlib)
+                LOAD_ATTR               24 (sha1)
+                PUSH_NULL
+                LOAD_CONST              20 ('|')
+                LOAD_ATTR               31 (join + NULL|self)
+                LOAD_FAST                4 (parts)
+                CALL                     1
+                LOAD_ATTR               27 (encode + NULL|self)
+                LOAD_CONST              16 ('utf-8')
+                CALL                     1
+                CALL                     1
+                LOAD_ATTR               29 (hexdigest + NULL|self)
+                CALL                     0
+                LOAD_CONST              17 (None)
+                LOAD_CONST              21 (12)
+                BINARY_SLICE
+                RETURN_VALUE
+
+  --   L21:     PUSH_EXC_INFO
+
+  58            LOAD_GLOBAL             10 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        6 (to L23)
+                POP_TOP
+
+  59            LOAD_CONST               2 ('')
+                STORE_FAST               3 (act)
+       L22:     POP_EXCEPT
+                EXTENDED_ARG             1
+                JUMP_BACKWARD_NO_INTERRUPT 379 (to L6)
+
+  58   L23:     RERAISE                  0
+
+  --   L24:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L25:     PUSH_EXC_INFO
+
+  78            LOAD_GLOBAL             10 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        5 (to L27)
+                POP_TOP
+
+  79            LOAD_CONST               2 ('')
+                STORE_FAST               6 (_up)
+       L26:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 181 (to L19)
+
+  78   L27:     RERAISE                  0
+
+  --   L28:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L29:     PUSH_EXC_INFO
+
+  82            LOAD_GLOBAL             10 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L31)
+                POP_TOP
+
+  83   L30:     POP_EXCEPT
+                RETURN_CONST            19 ('na')
+
+  82   L31:     RERAISE                  0
+
+  --   L32:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L29 [0]
+  L4 to L6 -> L21 [0]
+  L6 to L16 -> L29 [0]
+  L17 to L19 -> L25 [0]
+  L19 to L20 -> L29 [0]
+  L21 to L22 -> L24 [1] lasti
+  L22 to L23 -> L29 [0]
+  L23 to L24 -> L24 [1] lasti
+  L24 to L25 -> L29 [0]
+  L25 to L26 -> L28 [1] lasti
+  L26 to L27 -> L29 [0]
+  L27 to L28 -> L28 [1] lasti
+  L28 to L29 -> L29 [0]
+  L29 to L30 -> L32 [1] lasti
+  L31 to L32 -> L32 [1] lasti
+
+Disassembly of <code object Checkpoint at 0x0000016DC8EC3B40, file "bilisub\translate\checkpoint.py", line 87>:
+ 87           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('Checkpoint')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (87)
+              STORE_NAME               3 (__firstlineno__)
+
+ 88           LOAD_CONST              13 (('',))
+              LOAD_CONST              14 (('path', 'Optional[str | Path]', 'target_lang', 'str'))
+              LOAD_CONST               2 (<code object __init__ at 0x0000016DC8E0BDB0, file "bilisub\translate\checkpoint.py", line 88>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME               4 (__init__)
+
+ 95           LOAD_CONST              15 (('return', 'None'))
+              LOAD_CONST               3 (<code object _load at 0x0000016DC8E4E630, file "bilisub\translate\checkpoint.py", line 95>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               5 (_load)
+
+104           LOAD_CONST              16 (('sig', 'str', 'return', 'Optional[list]'))
+              LOAD_CONST               4 (<code object get at 0x0000016DC90EE130, file "bilisub\translate\checkpoint.py", line 104>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               6 (get)
+
+108           LOAD_CONST              17 (('sig', 'str', 'items', 'list', 'return', 'None'))
+              LOAD_CONST               5 (<code object put at 0x0000016DC8E0B7B0, file "bilisub\translate\checkpoint.py", line 108>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               7 (put)
+
+115           LOAD_CONST              15 (('return', 'None'))
+              LOAD_CONST               6 (<code object _flush at 0x0000016DC8EA5BD0, file "bilisub\translate\checkpoint.py", line 115>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               8 (_flush)
+
+124           LOAD_CONST              18 ((None,))
+              LOAD_CONST              19 (('key', 'str'))
+              LOAD_CONST               8 (<code object get_meta at 0x0000016DC8EA5D70, file "bilisub\translate\checkpoint.py", line 124>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME               9 (get_meta)
+
+129           LOAD_CONST              20 (('key', 'str', 'return', 'None'))
+              LOAD_CONST               9 (<code object put_meta at 0x0000016DC90DD770, file "bilisub\translate\checkpoint.py", line 129>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              10 (put_meta)
+
+140           LOAD_NAME               11 (property)
+
+141           LOAD_CONST              21 (('return', 'int'))
+              LOAD_CONST              10 (<code object done_count at 0x0000016DC90E1C30, file "bilisub\translate\checkpoint.py", line 140>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+
+140           CALL                     0
+
+141           STORE_NAME              12 (done_count)
+
+144           LOAD_CONST              15 (('return', 'None'))
+              LOAD_CONST              11 (<code object clear at 0x0000016DC8E90D50, file "bilisub\translate\checkpoint.py", line 144>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              13 (clear)
+              LOAD_CONST              12 (('_data', '_lock', 'path', 'target_lang'))
+              STORE_NAME              14 (__static_attributes__)
+              RETURN_CONST             7 (None)
+
+Disassembly of <code object __init__ at 0x0000016DC8E0BDB0, file "bilisub\translate\checkpoint.py", line 88>:
+ 88           RESUME                   0
+
+ 89           LOAD_FAST                1 (path)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       11 (to L1)
+              LOAD_GLOBAL              1 (Path + NULL)
+              LOAD_FAST                1 (path)
+              CALL                     1
+              JUMP_FORWARD             1 (to L2)
+      L1:     LOAD_CONST               0 (None)
+      L2:     LOAD_FAST                0 (self)
+              STORE_ATTR               1 (path)
+
+ 90           LOAD_FAST_LOAD_FAST     32 (target_lang, self)
+              STORE_ATTR               2 (target_lang)
+
+ 91           LOAD_GLOBAL              6 (threading)
+              LOAD_ATTR                8 (Lock)
+              PUSH_NULL
+              CALL                     0
+              LOAD_FAST                0 (self)
+              STORE_ATTR               5 (_lock)
+
+ 92           LOAD_FAST                2 (target_lang)
+              BUILD_MAP                0
+              LOAD_CONST               1 (('target', 'batches'))
+              BUILD_CONST_KEY_MAP      2
+              LOAD_FAST                0 (self)
+              STORE_ATTR               6 (_data)
+
+ 93           LOAD_FAST                0 (self)
+              LOAD_ATTR               15 (_load + NULL|self)
+              CALL                     0
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _load at 0x0000016DC8E4E630, file "bilisub\translate\checkpoint.py", line 95>:
+  95           RESUME                   0
+
+  96           LOAD_FAST                0 (self)
+               LOAD_ATTR                0 (path)
+               TO_BOOL
+               POP_JUMP_IF_FALSE      117 (to L5)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR                0 (path)
+               LOAD_ATTR                3 (exists + NULL|self)
+               CALL                     0
+               TO_BOOL
+               POP_JUMP_IF_FALSE       85 (to L4)
+
+  97           NOP
+
+  98   L1:     LOAD_GLOBAL              4 (json)
+               LOAD_ATTR                6 (loads)
+               PUSH_NULL
+               LOAD_FAST                0 (self)
+               LOAD_ATTR                0 (path)
+               LOAD_ATTR                9 (read_text + NULL|self)
+               LOAD_CONST               1 ('utf-8')
+               LOAD_CONST               2 (('encoding',))
+               CALL_KW                  1
+               CALL                     1
+               STORE_FAST               1 (d)
+
+  99           LOAD_FAST                1 (d)
+               LOAD_ATTR               11 (get + NULL|self)
+               LOAD_CONST               3 ('target')
+               CALL                     1
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               12 (target_lang)
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_FALSE        7 (to L3)
+
+ 100           LOAD_FAST_LOAD_FAST     16 (d, self)
+               STORE_ATTR               7 (_data)
+       L2:     RETURN_CONST             0 (None)
+
+  99   L3:     RETURN_CONST             0 (None)
+
+  96   L4:     RETURN_CONST             0 (None)
+       L5:     RETURN_CONST             0 (None)
+
+  --   L6:     PUSH_EXC_INFO
+
+ 101           LOAD_GLOBAL             16 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L8)
+               POP_TOP
+
+ 102   L7:     POP_EXCEPT
+               RETURN_CONST             0 (None)
+
+ 101   L8:     RERAISE                  0
+
+  --   L9:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L6 [0]
+  L6 to L7 -> L9 [1] lasti
+  L8 to L9 -> L9 [1] lasti
+
+Disassembly of <code object get at 0x0000016DC90EE130, file "bilisub\translate\checkpoint.py", line 104>:
+ 104           RESUME                   0
+
+ 105           LOAD_FAST                0 (self)
+               LOAD_ATTR                0 (_lock)
+               BEFORE_WITH
+       L1:     POP_TOP
+
+ 106           LOAD_FAST                0 (self)
+               LOAD_ATTR                2 (_data)
+               LOAD_CONST               1 ('batches')
+               BINARY_SUBSCR
+               LOAD_ATTR                5 (get + NULL|self)
+               LOAD_FAST                1 (sig)
+               CALL                     1
+
+ 105   L2:     SWAP                     2
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               CALL                     2
+               POP_TOP
+               RETURN_VALUE
+       L3:     PUSH_EXC_INFO
+               WITH_EXCEPT_START
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L4)
+               RERAISE                  2
+       L4:     POP_TOP
+       L5:     POP_EXCEPT
+               POP_TOP
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [1] lasti
+  L3 to L5 -> L6 [3] lasti
+
+Disassembly of <code object put at 0x0000016DC8E0B7B0, file "bilisub\translate\checkpoint.py", line 108>:
+ 108           RESUME                   0
+
+ 109           LOAD_FAST                0 (self)
+               LOAD_ATTR                0 (path)
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L1)
+
+ 110           RETURN_CONST             0 (None)
+
+ 111   L1:     LOAD_FAST                0 (self)
+               LOAD_ATTR                2 (_lock)
+               BEFORE_WITH
+       L2:     POP_TOP
+
+ 112           LOAD_FAST_LOAD_FAST     32 (items, self)
+               LOAD_ATTR                4 (_data)
+               LOAD_CONST               1 ('batches')
+               BINARY_SUBSCR
+               LOAD_FAST                1 (sig)
+               STORE_SUBSCR
+
+ 113           LOAD_FAST                0 (self)
+               LOAD_ATTR                7 (_flush + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 111   L3:     LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               CALL                     2
+               POP_TOP
+               RETURN_CONST             0 (None)
+       L4:     PUSH_EXC_INFO
+               WITH_EXCEPT_START
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L5)
+               RERAISE                  2
+       L5:     POP_TOP
+       L6:     POP_EXCEPT
+               POP_TOP
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L7:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L4 [1] lasti
+  L4 to L6 -> L7 [3] lasti
+
+Disassembly of <code object _flush at 0x0000016DC8EA5BD0, file "bilisub\translate\checkpoint.py", line 115>:
+115           RESUME                   0
+
+117           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (path)
+              LOAD_ATTR                3 (with_suffix + NULL|self)
+              LOAD_CONST               1 ('.tmp')
+              CALL                     1
+              STORE_FAST               1 (tmp)
+
+118           LOAD_FAST                1 (tmp)
+              LOAD_ATTR                5 (write_text + NULL|self)
+              LOAD_GLOBAL              6 (json)
+              LOAD_ATTR                8 (dumps)
+              PUSH_NULL
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (_data)
+              LOAD_CONST               2 (False)
+              LOAD_CONST               3 (('ensure_ascii',))
+              CALL_KW                  2
+              LOAD_CONST               4 ('utf-8')
+              LOAD_CONST               5 (('encoding',))
+              CALL_KW                  2
+              POP_TOP
+
+119           LOAD_FAST                1 (tmp)
+              LOAD_ATTR               13 (replace + NULL|self)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (path)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             6 (None)
+
+Disassembly of <code object get_meta at 0x0000016DC8EA5D70, file "bilisub\translate\checkpoint.py", line 124>:
+ 124           RESUME                   0
+
+ 125           LOAD_FAST                0 (self)
+               LOAD_ATTR                0 (_lock)
+               BEFORE_WITH
+       L1:     POP_TOP
+
+ 126           LOAD_FAST                0 (self)
+               LOAD_ATTR                2 (_data)
+               LOAD_ATTR                5 (get + NULL|self)
+               LOAD_CONST               1 ('meta')
+               CALL                     1
+               STORE_FAST               3 (m)
+
+ 127           LOAD_GLOBAL              7 (isinstance + NULL)
+               LOAD_FAST                3 (m)
+               LOAD_GLOBAL              8 (dict)
+               CALL                     2
+               TO_BOOL
+               POP_JUMP_IF_FALSE       17 (to L2)
+               LOAD_FAST                3 (m)
+               LOAD_ATTR                5 (get + NULL|self)
+               LOAD_FAST_LOAD_FAST     18 (key, default)
+               CALL                     2
+               JUMP_FORWARD             1 (to L3)
+       L2:     LOAD_FAST                2 (default)
+
+ 125   L3:     SWAP                     2
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               CALL                     2
+               POP_TOP
+               RETURN_VALUE
+       L4:     PUSH_EXC_INFO
+               WITH_EXCEPT_START
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L5)
+               RERAISE                  2
+       L5:     POP_TOP
+       L6:     POP_EXCEPT
+               POP_TOP
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L7:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L4 [1] lasti
+  L4 to L6 -> L7 [3] lasti
+
+Disassembly of <code object put_meta at 0x0000016DC90DD770, file "bilisub\translate\checkpoint.py", line 129>:
+ 129           RESUME                   0
+
+ 130           LOAD_FAST                0 (self)
+               LOAD_ATTR                0 (path)
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L1)
+
+ 131           RETURN_CONST             0 (None)
+
+ 132   L1:     LOAD_FAST                0 (self)
+               LOAD_ATTR                2 (_lock)
+               BEFORE_WITH
+       L2:     POP_TOP
+
+ 133           LOAD_FAST                0 (self)
+               LOAD_ATTR                4 (_data)
+               LOAD_ATTR                7 (get + NULL|self)
+               LOAD_CONST               1 ('meta')
+               CALL                     1
+               STORE_FAST               3 (m)
+
+ 134           LOAD_GLOBAL              9 (isinstance + NULL)
+               LOAD_FAST                3 (m)
+               LOAD_GLOBAL             10 (dict)
+               CALL                     2
+               TO_BOOL
+               POP_JUMP_IF_TRUE        16 (to L3)
+
+ 135           BUILD_MAP                0
+               STORE_FAST               3 (m)
+
+ 136           LOAD_FAST_LOAD_FAST     48 (m, self)
+               LOAD_ATTR                4 (_data)
+               LOAD_CONST               1 ('meta')
+               STORE_SUBSCR
+
+ 137   L3:     LOAD_FAST_LOAD_FAST     35 (value, m)
+               LOAD_FAST                1 (key)
+               STORE_SUBSCR
+
+ 138           LOAD_FAST                0 (self)
+               LOAD_ATTR               13 (_flush + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 132   L4:     LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               CALL                     2
+               POP_TOP
+               RETURN_CONST             0 (None)
+       L5:     PUSH_EXC_INFO
+               WITH_EXCEPT_START
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L6)
+               RERAISE                  2
+       L6:     POP_TOP
+       L7:     POP_EXCEPT
+               POP_TOP
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L2 to L4 -> L5 [1] lasti
+  L5 to L7 -> L8 [3] lasti
+
+Disassembly of <code object done_count at 0x0000016DC90E1C30, file "bilisub\translate\checkpoint.py", line 140>:
+140           RESUME                   0
+
+142           LOAD_GLOBAL              1 (len + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (_data)
+              LOAD_CONST               1 ('batches')
+              BINARY_SUBSCR
+              CALL                     1
+              RETURN_VALUE
+
+Disassembly of <code object clear at 0x0000016DC8E90D50, file "bilisub\translate\checkpoint.py", line 144>:
+ 144           RESUME                   0
+
+ 145           LOAD_FAST                0 (self)
+               LOAD_ATTR                0 (_lock)
+               BEFORE_WITH
+       L1:     POP_TOP
+
+ 146           LOAD_FAST                0 (self)
+               LOAD_ATTR                2 (target_lang)
+               BUILD_MAP                0
+               LOAD_CONST               1 (('target', 'batches'))
+               BUILD_CONST_KEY_MAP      2
+               LOAD_FAST                0 (self)
+               STORE_ATTR               2 (_data)
+
+ 147           LOAD_FAST                0 (self)
+               LOAD_ATTR                6 (path)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       57 (to L2)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR                6 (path)
+               LOAD_ATTR                9 (exists + NULL|self)
+               CALL                     0
+               TO_BOOL
+               POP_JUMP_IF_FALSE       26 (to L2)
+
+ 148           LOAD_FAST                0 (self)
+               LOAD_ATTR                6 (path)
+               LOAD_ATTR               11 (unlink + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 145   L2:     LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               CALL                     2
+               POP_TOP
+               RETURN_CONST             0 (None)
+       L3:     PUSH_EXC_INFO
+               WITH_EXCEPT_START
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L4)
+               RERAISE                  2
+       L4:     POP_TOP
+       L5:     POP_EXCEPT
+               POP_TOP
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [1] lasti
+  L3 to L5 -> L6 [3] lasti

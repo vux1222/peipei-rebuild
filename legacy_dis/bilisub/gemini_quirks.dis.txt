@@ -1,0 +1,168 @@
+=== FILE: bilisub\gemini_quirks.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  2           SETUP_ANNOTATIONS
+              LOAD_CONST               0 ('Chống Google đổi tính nết model Gemini mà không báo trước.\n\nBài học 22/07/2026: Google trỏ alias ``-latest`` (flash-lite-latest, flash-latest) sang\nmodel THINKING mới TỪ CHỐI ``generationConfig.thinkingConfig{thinkingBudget:0}`` → mọi\ncall native trả 400 INVALID_ARGUMENT ("Request contains an invalid argument", KHÔNG nói\nfield nào) → arttext + đọc truyện + bảng nhân vật chết TOÀN TUYẾN. (Trước đó 2.5-flash/\nflash-lite từng bị 404 thẳng — cùng họ sự cố "Google tự đổi".)\n\nChiến lược: cứ gửi kèm thinkingConfig như cũ (model nhận thì tiết kiệm token suy nghĩ);\ndính 400 → bỏ thinkingConfig thử lại NGAY + NHỚ model đó suốt process để các call sau\nbỏ từ đầu. Cứu cả BYOK (gọi thẳng Google); credit đã có hotfix server-side tương tự\ntrên proxy (22/07) nên tầng này là đai an toàn thứ hai.\n\nDùng ở MỌI call site native generateContent:\n    body["generationConfig"] = gemini_quirks.gen_config(model, _GC)   # build mỗi lượt\n    ...\n    if r.status_code == 400 and gemini_quirks.mark_no_think(model, body):\n        body["generationConfig"] = gemini_quirks.gen_config(model, _GC)\n        continue                                    # thử lại không-thinking\n')
+              STORE_NAME               0 (__doc__)
+
+ 22           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 24           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (threading)
+              STORE_NAME               3 (threading)
+
+ 26           LOAD_NAME                3 (threading)
+              LOAD_ATTR                8 (Lock)
+              PUSH_NULL
+              CALL                     0
+              STORE_NAME               5 (_lock)
+
+ 27           LOAD_NAME                6 (set)
+              PUSH_NULL
+              CALL                     0
+              STORE_NAME               7 (_NO_THINK)
+              LOAD_CONST               4 ('set[str]')
+              LOAD_NAME                8 (__annotations__)
+              LOAD_CONST               5 ('_NO_THINK')
+              STORE_SUBSCR
+
+ 30           LOAD_CONST               8 (('model', 'str', 'gc', 'dict', 'return', 'dict'))
+              LOAD_CONST               6 (<code object gen_config at 0x0000016DC8CABE00, file "bilisub\gemini_quirks.py", line 30>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               9 (gen_config)
+
+ 37           LOAD_CONST               9 (('model', 'str', 'body', 'dict', 'return', 'bool'))
+              LOAD_CONST               7 (<code object mark_no_think at 0x0000016DC8EB5DE0, file "bilisub\gemini_quirks.py", line 37>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              10 (mark_no_think)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object gen_config at 0x0000016DC8CABE00, file "bilisub\gemini_quirks.py", line 30>:
+  30           RESUME                   0
+
+  32           LOAD_FAST                0 (model)
+               LOAD_GLOBAL              0 (_NO_THINK)
+               CONTAINS_OP              0
+               POP_JUMP_IF_FALSE       51 (to L7)
+               LOAD_CONST               1 ('thinkingConfig')
+               LOAD_FAST                1 (gc)
+               CONTAINS_OP              0
+               POP_JUMP_IF_FALSE       45 (to L7)
+
+  33           LOAD_FAST                1 (gc)
+               LOAD_ATTR                3 (items + NULL|self)
+               CALL                     0
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      2 (k)
+               LOAD_FAST_AND_CLEAR      3 (v)
+               SWAP                     3
+       L1:     BUILD_MAP                0
+               SWAP                     2
+               GET_ITER
+       L2:     FOR_ITER                15 (to L5)
+               UNPACK_SEQUENCE          2
+               STORE_FAST_STORE_FAST   35 (k, v)
+               LOAD_FAST                2 (k)
+               LOAD_CONST               1 ('thinkingConfig')
+               COMPARE_OP             119 (bool(!=))
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           13 (to L2)
+       L4:     LOAD_FAST_LOAD_FAST     35 (k, v)
+               MAP_ADD                  2
+               JUMP_BACKWARD           17 (to L2)
+       L5:     END_FOR
+               POP_TOP
+       L6:     SWAP                     3
+               STORE_FAST               3 (v)
+               STORE_FAST               2 (k)
+               RETURN_VALUE
+
+  34   L7:     LOAD_GLOBAL              5 (dict + NULL)
+               LOAD_FAST                1 (gc)
+               CALL                     1
+               RETURN_VALUE
+
+  --   L8:     SWAP                     2
+               POP_TOP
+
+  33           SWAP                     3
+               STORE_FAST               3 (v)
+               STORE_FAST               2 (k)
+               RERAISE                  0
+ExceptionTable:
+  L1 to L3 -> L8 [3]
+  L4 to L6 -> L8 [3]
+
+Disassembly of <code object mark_no_think at 0x0000016DC8EB5DE0, file "bilisub\gemini_quirks.py", line 37>:
+  37           RESUME                   0
+
+  42           LOAD_FAST                1 (body)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L1)
+               POP_TOP
+               BUILD_MAP                0
+       L1:     LOAD_ATTR                1 (get + NULL|self)
+               LOAD_CONST               1 ('generationConfig')
+               CALL                     1
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L2)
+               POP_TOP
+               BUILD_MAP                0
+       L2:     STORE_FAST               2 (gc)
+
+  43           LOAD_CONST               2 ('thinkingConfig')
+               LOAD_FAST                2 (gc)
+               CONTAINS_OP              1
+               POP_JUMP_IF_FALSE        1 (to L3)
+
+  44           RETURN_CONST             3 (False)
+
+  45   L3:     LOAD_GLOBAL              2 (_lock)
+               BEFORE_WITH
+       L4:     POP_TOP
+
+  46           LOAD_GLOBAL              4 (_NO_THINK)
+               LOAD_ATTR                7 (add + NULL|self)
+               LOAD_FAST                0 (model)
+               CALL                     1
+               POP_TOP
+
+  45   L5:     LOAD_CONST               4 (None)
+               LOAD_CONST               4 (None)
+               LOAD_CONST               4 (None)
+               CALL                     2
+               POP_TOP
+
+  47           RETURN_CONST             5 (True)
+
+  45   L6:     PUSH_EXC_INFO
+               WITH_EXCEPT_START
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L7)
+               RERAISE                  2
+       L7:     POP_TOP
+       L8:     POP_EXCEPT
+               POP_TOP
+               POP_TOP
+
+  47           RETURN_CONST             5 (True)
+
+  --   L9:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L4 to L5 -> L6 [1] lasti
+  L6 to L8 -> L9 [3] lasti

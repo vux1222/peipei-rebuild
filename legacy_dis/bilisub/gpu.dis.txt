@@ -1,0 +1,942 @@
+=== FILE: bilisub\gpu.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           SETUP_ANNOTATIONS
+              LOAD_CONST               0 ("★1.5.11 Tiện ích TĂNG TỐC GPU (NVIDIA/CUDA) dùng chung cho ASR (Whisper) và OCR (RapidOCR).\n\nBản .exe giao khách KHÔNG nhồi thư viện CUDA (giữ .exe gọn). Máy có card NVIDIA bấm '⚡ Tăng\ntốc GPU' tải GÓI cuBLAS+cuDNN (~1.5GB) về data dir → tự bật GPU. Máy không card → chạy CPU\nbình thường (mọi hàm ở đây fail an toàn về False/no-op).\n\n⚠ DLL CUDA phải vào PATH TRƯỚC khi native lib (CTranslate2 / onnxruntime) nạp CUDA —\nos.add_dll_directory một mình KHÔNG đủ cho dependency (đã kiểm chứng: vẫn 'cublas64_12.dll\nnot found'), phải set os.environ['PATH'].\n")
+              STORE_NAME               0 (__doc__)
+
+ 11           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 13           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (os)
+              STORE_NAME               3 (os)
+
+ 14           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (shutil)
+              STORE_NAME               4 (shutil)
+
+ 15           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              5 (sys)
+              STORE_NAME               5 (sys)
+
+ 16           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Path',))
+              IMPORT_NAME              6 (pathlib)
+              IMPORT_FROM              7 (Path)
+              STORE_NAME               7 (Path)
+              POP_TOP
+
+ 17           LOAD_CONST               1 (0)
+              LOAD_CONST               5 (('Optional',))
+              IMPORT_NAME              8 (typing)
+              IMPORT_FROM              9 (Optional)
+              STORE_NAME               9 (Optional)
+              POP_TOP
+
+ 19           LOAD_CONST               6 (False)
+              STORE_GLOBAL            10 (_CUDA_DLL_READY)
+
+ 20           LOAD_CONST               3 (None)
+              STORE_GLOBAL            11 (_HAS_NVIDIA)
+              LOAD_CONST               7 ('Optional[bool]')
+              LOAD_NAME               12 (__annotations__)
+              LOAD_CONST               8 ('_HAS_NVIDIA')
+              STORE_SUBSCR
+
+ 23           LOAD_CONST              26 (('return', 'Path'))
+              LOAD_CONST               9 (<code object gpu_pack_dir at 0x0000016DC8CBEB50, file "bilisub\gpu.py", line 23>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              13 (gpu_pack_dir)
+
+ 29           LOAD_CONST              26 (('return', 'Path'))
+              LOAD_CONST              10 (<code object clone_pack_dir at 0x0000016DC90F15C0, file "bilisub\gpu.py", line 29>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              14 (clone_pack_dir)
+
+ 40           LOAD_CONST              26 (('return', 'Path'))
+              LOAD_CONST              11 (<code object vieneu_pack_dir at 0x0000016DC90F1B60, file "bilisub\gpu.py", line 40>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              15 (vieneu_pack_dir)
+
+ 52           LOAD_CONST              27 (('return', 'bool'))
+              LOAD_CONST              12 (<code object vieneu_pack_installed at 0x0000016DC8EC1A70, file "bilisub\gpu.py", line 52>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              16 (vieneu_pack_installed)
+
+ 59           LOAD_CONST              28 ((None,))
+              LOAD_CONST              29 (('d', 'Optional[Path]', 'return', 'Optional[Path]'))
+              LOAD_CONST              13 (<code object clone_pack_python at 0x0000016DC90ED4D0, file "bilisub\gpu.py", line 59>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              17 (clone_pack_python)
+
+ 74           LOAD_CONST              27 (('return', 'bool'))
+              LOAD_CONST              14 (<code object clone_pack_installed at 0x0000016DC8EA2AF0, file "bilisub\gpu.py", line 74>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              18 (clone_pack_installed)
+
+ 80           LOAD_CONST              27 (('return', 'bool'))
+              LOAD_CONST              15 (<code object gpu_pack_installed at 0x0000016DC8EAE450, file "bilisub\gpu.py", line 80>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              19 (gpu_pack_installed)
+
+ 86           LOAD_CONST              27 (('return', 'bool'))
+              LOAD_CONST              16 (<code object gpu_pack_has_ocr at 0x0000016DC90E2530, file "bilisub\gpu.py", line 86>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              20 (gpu_pack_has_ocr)
+
+ 91           LOAD_CONST              27 (('return', 'bool'))
+              LOAD_CONST              17 (<code object has_nvidia_gpu at 0x0000016DC8EF4780, file "bilisub\gpu.py", line 91>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              21 (has_nvidia_gpu)
+
+106           LOAD_CONST              30 (('return', 'list[str]'))
+              LOAD_CONST              18 (<code object _cuda_dll_dirs at 0x0000016DC8DB2280, file "bilisub\gpu.py", line 106>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              22 (_cuda_dll_dirs)
+
+131           BUILD_LIST               0
+              STORE_NAME              23 (CUDA_DLL_MISSING)
+              LOAD_CONST              19 ('list')
+              LOAD_NAME               12 (__annotations__)
+              LOAD_CONST              20 ('CUDA_DLL_MISSING')
+              STORE_SUBSCR
+
+134           LOAD_CONST              27 (('return', 'bool'))
+              LOAD_CONST              21 (<code object prepare_cuda at 0x0000016DC8F82420, file "bilisub\gpu.py", line 134>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              24 (prepare_cuda)
+
+154           LOAD_CONST              31 (('return', 'str'))
+              LOAD_CONST              22 (<code object cuda_dll_report at 0x0000016DC8E91110, file "bilisub\gpu.py", line 154>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              25 (cuda_dll_report)
+
+166           LOAD_CONST              32 (('dirs', 'list[str]', 'return', 'tuple[int, list[str]]'))
+              LOAD_CONST              23 (<code object _preload_cuda_dlls at 0x0000016DC87D9480, file "bilisub\gpu.py", line 166>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              26 (_preload_cuda_dlls)
+
+214           LOAD_CONST              27 (('return', 'bool'))
+              LOAD_CONST              24 (<code object has_cuda_gpu at 0x0000016DC9128A50, file "bilisub\gpu.py", line 214>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              27 (has_cuda_gpu)
+
+223           LOAD_CONST              27 (('return', 'bool'))
+              LOAD_CONST              25 (<code object onnx_cuda_available at 0x0000016DC9128C90, file "bilisub\gpu.py", line 223>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              28 (onnx_cuda_available)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object gpu_pack_dir at 0x0000016DC8CBEB50, file "bilisub\gpu.py", line 23>:
+ 23           RESUME                   0
+
+ 25           LOAD_CONST               1 (1)
+              LOAD_CONST               2 (('pack_root',))
+              IMPORT_NAME              0 (config)
+              IMPORT_FROM              1 (pack_root)
+              STORE_FAST               0 (pack_root)
+              POP_TOP
+
+ 26           LOAD_FAST                0 (pack_root)
+              PUSH_NULL
+              CALL                     0
+              LOAD_CONST               3 ('gpu')
+              BINARY_OP               11 (/)
+              RETURN_VALUE
+
+Disassembly of <code object clone_pack_dir at 0x0000016DC90F15C0, file "bilisub\gpu.py", line 29>:
+ 29           RESUME                   0
+
+ 36           LOAD_CONST               1 (1)
+              LOAD_CONST               2 (('pack_root',))
+              IMPORT_NAME              0 (config)
+              IMPORT_FROM              1 (pack_root)
+              STORE_FAST               0 (pack_root)
+              POP_TOP
+
+ 37           LOAD_FAST                0 (pack_root)
+              PUSH_NULL
+              CALL                     0
+              LOAD_CONST               3 ('clone')
+              BINARY_OP               11 (/)
+              RETURN_VALUE
+
+Disassembly of <code object vieneu_pack_dir at 0x0000016DC90F1B60, file "bilisub\gpu.py", line 40>:
+ 40           RESUME                   0
+
+ 48           LOAD_CONST               1 (1)
+              LOAD_CONST               2 (('pack_root',))
+              IMPORT_NAME              0 (config)
+              IMPORT_FROM              1 (pack_root)
+              STORE_FAST               0 (pack_root)
+              POP_TOP
+
+ 49           LOAD_FAST                0 (pack_root)
+              PUSH_NULL
+              CALL                     0
+              LOAD_CONST               3 ('vieneu')
+              BINARY_OP               11 (/)
+              RETURN_VALUE
+
+Disassembly of <code object vieneu_pack_installed at 0x0000016DC8EC1A70, file "bilisub\gpu.py", line 52>:
+ 52           RESUME                   0
+
+ 54           LOAD_GLOBAL              1 (vieneu_pack_dir + NULL)
+              CALL                     0
+              STORE_FAST               0 (d)
+
+ 55           LOAD_FAST                0 (d)
+              LOAD_CONST               1 ('onnx_int8')
+              BINARY_OP               11 (/)
+              LOAD_CONST               2 ('vieneu_backbone_shared.data')
+              BINARY_OP               11 (/)
+              LOAD_ATTR                3 (exists + NULL|self)
+              CALL                     0
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE       22 (to L1)
+              POP_TOP
+
+ 56           LOAD_FAST                0 (d)
+              LOAD_CONST               3 ('codec')
+              BINARY_OP               11 (/)
+              LOAD_CONST               4 ('moss_audio_tokenizer_decode_full.onnx')
+              BINARY_OP               11 (/)
+              LOAD_ATTR                3 (exists + NULL|self)
+              CALL                     0
+
+ 55   L1:     RETURN_VALUE
+
+Disassembly of <code object clone_pack_python at 0x0000016DC90ED4D0, file "bilisub\gpu.py", line 59>:
+ 59           RESUME                   0
+
+ 67           LOAD_FAST                0 (d)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE        10 (to L1)
+              POP_TOP
+              LOAD_GLOBAL              1 (clone_pack_dir + NULL)
+              CALL                     0
+      L1:     STORE_FAST               0 (d)
+
+ 68           LOAD_FAST                0 (d)
+              LOAD_CONST               1 ('python')
+              BINARY_OP               11 (/)
+              LOAD_CONST               2 ('python.exe')
+              BINARY_OP               11 (/)
+              LOAD_FAST                0 (d)
+              LOAD_CONST               3 ('venv')
+              BINARY_OP               11 (/)
+              LOAD_CONST               4 ('Scripts')
+              BINARY_OP               11 (/)
+              LOAD_CONST               2 ('python.exe')
+              BINARY_OP               11 (/)
+              BUILD_TUPLE              2
+              GET_ITER
+      L2:     FOR_ITER                28 (to L4)
+              STORE_FAST               1 (p)
+
+ 69           LOAD_FAST                1 (p)
+              LOAD_ATTR                3 (is_file + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+              JUMP_BACKWARD           26 (to L2)
+
+ 70   L3:     LOAD_FAST                1 (p)
+              SWAP                     2
+              POP_TOP
+              RETURN_VALUE
+
+ 68   L4:     END_FOR
+              POP_TOP
+
+ 71           RETURN_CONST             5 (None)
+
+Disassembly of <code object clone_pack_installed at 0x0000016DC8EA2AF0, file "bilisub\gpu.py", line 74>:
+ 74           RESUME                   0
+
+ 76           LOAD_GLOBAL              1 (clone_pack_dir + NULL)
+              CALL                     0
+              STORE_FAST               0 (d)
+
+ 77           LOAD_GLOBAL              3 (clone_pack_python + NULL)
+              LOAD_FAST                0 (d)
+              CALL                     1
+              LOAD_CONST               1 (None)
+              IS_OP                    1
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE       19 (to L1)
+              POP_TOP
+              LOAD_FAST                0 (d)
+              LOAD_CONST               2 ('app')
+              BINARY_OP               11 (/)
+              LOAD_ATTR                5 (is_dir + NULL|self)
+              CALL                     0
+      L1:     RETURN_VALUE
+
+Disassembly of <code object gpu_pack_installed at 0x0000016DC8EAE450, file "bilisub\gpu.py", line 80>:
+ 80           RESUME                   0
+
+ 82           LOAD_GLOBAL              1 (gpu_pack_dir + NULL)
+              CALL                     0
+              STORE_FAST               0 (d)
+
+ 83           LOAD_FAST                0 (d)
+              LOAD_CONST               1 ('cublas64_12.dll')
+              BINARY_OP               11 (/)
+              LOAD_ATTR                3 (exists + NULL|self)
+              CALL                     0
+              RETURN_VALUE
+
+Disassembly of <code object gpu_pack_has_ocr at 0x0000016DC90E2530, file "bilisub\gpu.py", line 86>:
+ 86           RESUME                   0
+
+ 88           LOAD_GLOBAL              1 (gpu_pack_dir + NULL)
+              CALL                     0
+              LOAD_CONST               1 ('cudnn64_9.dll')
+              BINARY_OP               11 (/)
+              LOAD_ATTR                3 (exists + NULL|self)
+              CALL                     0
+              RETURN_VALUE
+
+Disassembly of <code object has_nvidia_gpu at 0x0000016DC8EF4780, file "bilisub\gpu.py", line 91>:
+  91           RESUME                   0
+
+  96           LOAD_GLOBAL              0 (_HAS_NVIDIA)
+               POP_JUMP_IF_NOT_NONE   137 (to L4)
+
+  97           NOP
+
+  98   L1:     LOAD_GLOBAL              3 (bool + NULL)
+               LOAD_GLOBAL              4 (shutil)
+               LOAD_ATTR                6 (which)
+               PUSH_NULL
+               LOAD_CONST               1 ('nvidia-smi')
+               CALL                     1
+               CALL                     1
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE        92 (to L2)
+               POP_TOP
+               LOAD_GLOBAL              8 (os)
+               LOAD_ATTR               10 (path)
+               LOAD_ATTR               13 (exists + NULL|self)
+
+  99           LOAD_GLOBAL              8 (os)
+               LOAD_ATTR               10 (path)
+               LOAD_ATTR               15 (join + NULL|self)
+               LOAD_GLOBAL              8 (os)
+               LOAD_ATTR               16 (environ)
+               LOAD_ATTR               19 (get + NULL|self)
+               LOAD_CONST               2 ('SystemRoot')
+               LOAD_CONST               3 ('C:\\Windows')
+               CALL                     2
+
+ 100           LOAD_CONST               4 ('System32')
+               LOAD_CONST               5 ('nvidia-smi.exe')
+
+  99           CALL                     3
+
+  98           CALL                     1
+       L2:     STORE_GLOBAL             0 (_HAS_NVIDIA)
+
+ 103   L3:     LOAD_GLOBAL              0 (_HAS_NVIDIA)
+               RETURN_VALUE
+       L4:     LOAD_GLOBAL              0 (_HAS_NVIDIA)
+               RETURN_VALUE
+
+  --   L5:     PUSH_EXC_INFO
+
+ 101           LOAD_GLOBAL             20 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       10 (to L7)
+               POP_TOP
+
+ 102           LOAD_CONST               6 (False)
+               STORE_GLOBAL             0 (_HAS_NVIDIA)
+       L6:     POP_EXCEPT
+
+ 103           LOAD_GLOBAL              0 (_HAS_NVIDIA)
+               RETURN_VALUE
+
+ 101   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L5 [0]
+  L5 to L6 -> L8 [1] lasti
+  L7 to L8 -> L8 [1] lasti
+
+Disassembly of <code object _cuda_dll_dirs at 0x0000016DC8DB2280, file "bilisub\gpu.py", line 106>:
+ 106            RESUME                   0
+
+ 108            BUILD_LIST               0
+                STORE_FAST               0 (out)
+
+ 109            LOAD_GLOBAL              1 (gpu_pack_dir + NULL)
+                CALL                     0
+                STORE_FAST               1 (gp)
+
+ 110            LOAD_FAST                1 (gp)
+                LOAD_ATTR                3 (is_dir + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_FALSE       26 (to L1)
+
+ 111            LOAD_FAST                0 (out)
+                LOAD_ATTR                5 (append + NULL|self)
+                LOAD_GLOBAL              7 (str + NULL)
+                LOAD_FAST                1 (gp)
+                CALL                     1
+                CALL                     1
+                POP_TOP
+
+ 112    L1:     NOP
+
+ 113    L2:     LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              4 (sysconfig)
+                STORE_FAST               2 (sysconfig)
+
+ 114            LOAD_GLOBAL             11 (Path + NULL)
+                LOAD_FAST                2 (sysconfig)
+                LOAD_ATTR               13 (get_paths + NULL|self)
+                CALL                     0
+                LOAD_CONST               3 ('purelib')
+                BINARY_SUBSCR
+                CALL                     1
+                LOAD_CONST               4 ('nvidia')
+                BINARY_OP               11 (/)
+                STORE_FAST               3 (nv)
+
+ 115            LOAD_CONST               5 (('cublas', 'cudnn', 'cuda_runtime', 'cufft', 'cuda_nvrtc'))
+                GET_ITER
+        L3:     FOR_ITER                59 (to L6)
+                STORE_FAST               4 (sub)
+
+ 116            LOAD_FAST_LOAD_FAST     52 (nv, sub)
+                BINARY_OP               11 (/)
+                LOAD_CONST               6 ('bin')
+                BINARY_OP               11 (/)
+                STORE_FAST               5 (d)
+
+ 117            LOAD_FAST                5 (d)
+                LOAD_ATTR                3 (is_dir + NULL|self)
+                CALL                     0
+                TO_BOOL
+        L4:     POP_JUMP_IF_TRUE         2 (to L5)
+                JUMP_BACKWARD           33 (to L3)
+
+ 118    L5:     LOAD_FAST                0 (out)
+                LOAD_ATTR                5 (append + NULL|self)
+                LOAD_GLOBAL              7 (str + NULL)
+                LOAD_FAST                5 (d)
+                CALL                     1
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD           61 (to L3)
+
+ 115    L6:     END_FOR
+                POP_TOP
+
+ 121    L7:     LOAD_FAST                0 (out)
+                RETURN_VALUE
+
+  --    L8:     PUSH_EXC_INFO
+
+ 119            LOAD_GLOBAL             14 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L10)
+                POP_TOP
+
+ 120    L9:     POP_EXCEPT
+
+ 121            LOAD_FAST                0 (out)
+                RETURN_VALUE
+
+ 119   L10:     RERAISE                  0
+
+  --   L11:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L4 -> L8 [0]
+  L5 to L7 -> L8 [0]
+  L8 to L9 -> L11 [1] lasti
+  L10 to L11 -> L11 [1] lasti
+
+Disassembly of <code object prepare_cuda at 0x0000016DC8F82420, file "bilisub\gpu.py", line 134>:
+ 134            RESUME                   0
+
+ 137            LOAD_GLOBAL              0 (_CUDA_DLL_READY)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        1 (to L1)
+
+ 138            RETURN_CONST             1 (True)
+
+ 139    L1:     LOAD_GLOBAL              3 (_cuda_dll_dirs + NULL)
+                CALL                     0
+                STORE_FAST               0 (dirs)
+
+ 140            LOAD_FAST                0 (dirs)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L2)
+
+ 141            RETURN_CONST             2 (False)
+
+ 142    L2:     LOAD_FAST                0 (dirs)
+                GET_ITER
+        L3:     FOR_ITER                26 (to L6)
+                STORE_FAST               1 (d)
+
+ 143            NOP
+
+ 144    L4:     LOAD_GLOBAL              4 (os)
+                LOAD_ATTR                6 (add_dll_directory)
+                PUSH_NULL
+                LOAD_FAST                1 (d)
+                CALL                     1
+                POP_TOP
+        L5:     JUMP_BACKWARD           28 (to L3)
+
+ 142    L6:     END_FOR
+                POP_TOP
+
+ 147            LOAD_GLOBAL              4 (os)
+                LOAD_ATTR               12 (pathsep)
+                LOAD_ATTR               15 (join + NULL|self)
+                LOAD_FAST                0 (dirs)
+                CALL                     1
+                LOAD_GLOBAL              4 (os)
+                LOAD_ATTR               12 (pathsep)
+                BINARY_OP                0 (+)
+                LOAD_GLOBAL              4 (os)
+                LOAD_ATTR               16 (environ)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST               3 ('PATH')
+                LOAD_CONST               4 ('')
+                CALL                     2
+                BINARY_OP                0 (+)
+                LOAD_GLOBAL              4 (os)
+                LOAD_ATTR               16 (environ)
+                LOAD_CONST               3 ('PATH')
+                STORE_SUBSCR
+
+ 148            LOAD_GLOBAL             21 (_preload_cuda_dlls + NULL)
+                LOAD_FAST                0 (dirs)
+                CALL                     1
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST   35 (_done, missing)
+
+ 149            LOAD_FAST                3 (missing)
+                LOAD_GLOBAL             22 (CUDA_DLL_MISSING)
+                LOAD_CONST               5 (None)
+                LOAD_CONST               5 (None)
+                STORE_SLICE
+
+ 150            LOAD_CONST               1 (True)
+                STORE_GLOBAL             0 (_CUDA_DLL_READY)
+
+ 151            RETURN_CONST             1 (True)
+
+  --    L7:     PUSH_EXC_INFO
+
+ 145            LOAD_GLOBAL              8 (OSError)
+                LOAD_GLOBAL             10 (AttributeError)
+                BUILD_TUPLE              2
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L9)
+                POP_TOP
+
+ 146    L8:     POP_EXCEPT
+                JUMP_BACKWARD          172 (to L3)
+
+ 145    L9:     RERAISE                  0
+
+  --   L10:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L4 to L5 -> L7 [1]
+  L7 to L8 -> L10 [2] lasti
+  L9 to L10 -> L10 [2] lasti
+
+Disassembly of <code object cuda_dll_report at 0x0000016DC8E91110, file "bilisub\gpu.py", line 154>:
+ 154           RESUME                   0
+
+ 156           LOAD_GLOBAL              0 (CUDA_DLL_MISSING)
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L1)
+
+ 157           RETURN_CONST             1 ('')
+
+ 158   L1:     LOAD_CONST               2 (0)
+               LOAD_CONST               3 (('Path',))
+               IMPORT_NAME              1 (pathlib)
+               IMPORT_FROM              2 (Path)
+               STORE_FAST               0 (_P)
+               POP_TOP
+
+ 159           LOAD_GLOBAL              0 (CUDA_DLL_MISSING)
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      1 (f)
+               SWAP                     2
+       L2:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L3:     FOR_ITER                20 (to L4)
+               STORE_FAST_LOAD_FAST    16 (f, _P)
+               PUSH_NULL
+               LOAD_FAST                1 (f)
+               CALL                     1
+               LOAD_ATTR                6 (name)
+               LIST_APPEND              2
+               JUMP_BACKWARD           22 (to L3)
+       L4:     END_FOR
+               POP_TOP
+       L5:     STORE_FAST               2 (names)
+               STORE_FAST               1 (f)
+
+ 160           LOAD_CONST               4 (', ')
+               LOAD_ATTR                9 (join + NULL|self)
+               LOAD_FAST                2 (names)
+               LOAD_CONST               5 (None)
+               LOAD_CONST               6 (6)
+               BINARY_SLICE
+               CALL                     1
+               LOAD_GLOBAL             11 (len + NULL)
+               LOAD_FAST                2 (names)
+               CALL                     1
+               LOAD_CONST               6 (6)
+               COMPARE_OP             148 (bool(>))
+               POP_JUMP_IF_FALSE       18 (to L6)
+               LOAD_CONST               7 (', … (+')
+               LOAD_GLOBAL             11 (len + NULL)
+               LOAD_FAST                2 (names)
+               CALL                     1
+               LOAD_CONST               6 (6)
+               BINARY_OP               10 (-)
+               FORMAT_SIMPLE
+               LOAD_CONST               8 (')')
+               BUILD_STRING             3
+               JUMP_FORWARD             1 (to L7)
+       L6:     LOAD_CONST               1 ('')
+       L7:     BINARY_OP                0 (+)
+               STORE_FAST               3 (head)
+
+ 161           LOAD_CONST               9 ('gói ⚡ Tăng tốc GPU nạp TRƯỢT ')
+               LOAD_GLOBAL             11 (len + NULL)
+               LOAD_FAST                2 (names)
+               CALL                     1
+               FORMAT_SIMPLE
+               LOAD_CONST              10 (' file: ')
+               LOAD_FAST                3 (head)
+               FORMAT_SIMPLE
+               LOAD_CONST              11 ('. Thiếu đúng một thư viện con của cuDNN là GPU chạy lỗi ngay ở lớp tích chập đầu tiên — tải/giải nén lại gói ⚡, hoặc đổi tên thư mục gpu thành gpu_off để chạy CPU cho chắc.')
+               BUILD_STRING             5
+               RETURN_VALUE
+
+  --   L8:     SWAP                     2
+               POP_TOP
+
+ 159           SWAP                     2
+               STORE_FAST               1 (f)
+               RERAISE                  0
+ExceptionTable:
+  L2 to L5 -> L8 [2]
+
+Disassembly of <code object _preload_cuda_dlls at 0x0000016DC87D9480, file "bilisub\gpu.py", line 166>:
+ 166            RESUME                   0
+
+ 187            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              0 (ctypes)
+                STORE_FAST               1 (ctypes)
+
+ 188            LOAD_CONST               1 (0)
+                LOAD_CONST               3 (('Path',))
+                IMPORT_NAME              1 (pathlib)
+                IMPORT_FROM              2 (Path)
+                STORE_FAST               2 (_P)
+                POP_TOP
+
+ 190            BUILD_LIST               0
+                STORE_FAST               3 (names)
+
+ 191            LOAD_FAST                0 (dirs)
+                GET_ITER
+        L1:     FOR_ITER                65 (to L8)
+                STORE_FAST               4 (d)
+
+ 192            NOP
+
+ 193    L2:     LOAD_FAST                3 (names)
+                LOAD_GLOBAL              7 (sorted + NULL)
+                LOAD_FAST                2 (_P)
+                PUSH_NULL
+                LOAD_FAST                4 (d)
+                CALL                     1
+                LOAD_ATTR                9 (glob + NULL|self)
+                LOAD_CONST               4 ('*.dll')
+                CALL                     1
+                CALL                     1
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      5 (p)
+                SWAP                     2
+        L3:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L4:     FOR_ITER                14 (to L5)
+                STORE_FAST               5 (p)
+                LOAD_GLOBAL             11 (str + NULL)
+                LOAD_FAST                5 (p)
+                CALL                     1
+                LIST_APPEND              2
+                JUMP_BACKWARD           16 (to L4)
+        L5:     END_FOR
+                POP_TOP
+        L6:     SWAP                     2
+                STORE_FAST               5 (p)
+                BINARY_OP               13 (+=)
+                STORE_FAST               3 (names)
+        L7:     JUMP_BACKWARD           67 (to L1)
+
+ 191    L8:     END_FOR
+                POP_TOP
+
+ 196            LOAD_FAST                3 (names)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         4 (to L9)
+
+ 197            LOAD_CONST               1 (0)
+                BUILD_LIST               0
+                BUILD_TUPLE              2
+                RETURN_VALUE
+
+ 198    L9:     LOAD_GLOBAL             15 (list + NULL)
+                LOAD_FAST                3 (names)
+                CALL                     1
+                LOAD_CONST               1 (0)
+                STORE_FAST_STORE_FAST  118 (done, todo)
+
+ 199            LOAD_GLOBAL             17 (range + NULL)
+                LOAD_CONST               5 (3)
+                CALL                     1
+                GET_ITER
+       L10:     FOR_ITER                74 (to L17)
+                STORE_FAST               8 (_)
+
+ 200            BUILD_LIST               0
+                STORE_FAST               9 (again)
+
+ 201            LOAD_FAST                6 (todo)
+                GET_ITER
+       L11:     FOR_ITER                26 (to L14)
+                STORE_FAST              10 (f)
+
+ 202            NOP
+
+ 203   L12:     LOAD_FAST                1 (ctypes)
+                LOAD_ATTR               19 (WinDLL + NULL|self)
+                LOAD_FAST               10 (f)
+                CALL                     1
+                POP_TOP
+
+ 204            LOAD_FAST                7 (done)
+                LOAD_CONST               6 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST               7 (done)
+       L13:     JUMP_BACKWARD           28 (to L11)
+
+ 201   L14:     END_FOR
+                POP_TOP
+
+ 207            LOAD_FAST                9 (again)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       24 (to L15)
+                LOAD_GLOBAL             23 (len + NULL)
+                LOAD_FAST                9 (again)
+                CALL                     1
+                LOAD_GLOBAL             23 (len + NULL)
+                LOAD_FAST                6 (todo)
+                CALL                     1
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE        4 (to L16)
+
+ 208   L15:     LOAD_FAST                9 (again)
+                STORE_FAST               6 (todo)
+
+ 209            POP_TOP
+                JUMP_FORWARD             6 (to L18)
+
+ 210   L16:     LOAD_FAST                9 (again)
+                STORE_FAST               6 (todo)
+                JUMP_BACKWARD           76 (to L10)
+
+ 199   L17:     END_FOR
+                POP_TOP
+
+ 211   L18:     LOAD_FAST                7 (done)
+                LOAD_GLOBAL             15 (list + NULL)
+                LOAD_FAST                6 (todo)
+                CALL                     1
+                BUILD_TUPLE              2
+                RETURN_VALUE
+
+  --   L19:     SWAP                     2
+                POP_TOP
+
+ 193            SWAP                     2
+                STORE_FAST               5 (p)
+                RERAISE                  0
+
+  --   L20:     PUSH_EXC_INFO
+
+ 194            LOAD_GLOBAL             12 (OSError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L22)
+                POP_TOP
+
+ 195   L21:     POP_EXCEPT
+                JUMP_BACKWARD          212 (to L1)
+
+ 194   L22:     RERAISE                  0
+
+  --   L23:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L24:     PUSH_EXC_INFO
+
+ 205            LOAD_GLOBAL             12 (OSError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       21 (to L26)
+                POP_TOP
+
+ 206            LOAD_FAST                9 (again)
+                LOAD_ATTR               21 (append + NULL|self)
+                LOAD_FAST               10 (f)
+                CALL                     1
+                POP_TOP
+       L25:     POP_EXCEPT
+                JUMP_BACKWARD          136 (to L11)
+
+ 205   L26:     RERAISE                  0
+
+  --   L27:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L20 [1]
+  L3 to L6 -> L19 [4]
+  L6 to L7 -> L20 [1]
+  L12 to L13 -> L24 [2]
+  L19 to L20 -> L20 [1]
+  L20 to L21 -> L23 [2] lasti
+  L22 to L23 -> L23 [2] lasti
+  L24 to L25 -> L27 [3] lasti
+  L26 to L27 -> L27 [3] lasti
+
+Disassembly of <code object has_cuda_gpu at 0x0000016DC9128A50, file "bilisub\gpu.py", line 214>:
+ 214           RESUME                   0
+
+ 216           NOP
+
+ 217   L1:     LOAD_CONST               1 (0)
+               LOAD_CONST               2 (None)
+               IMPORT_NAME              0 (ctranslate2)
+               STORE_FAST               0 (ctranslate2)
+
+ 218           LOAD_FAST                0 (ctranslate2)
+               LOAD_ATTR                3 (get_cuda_device_count + NULL|self)
+               CALL                     0
+               LOAD_CONST               1 (0)
+               COMPARE_OP             132 (>)
+       L2:     RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+ 219           LOAD_GLOBAL              4 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L5)
+               POP_TOP
+
+ 220   L4:     POP_EXCEPT
+               RETURN_CONST             3 (False)
+
+ 219   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object onnx_cuda_available at 0x0000016DC9128C90, file "bilisub\gpu.py", line 223>:
+ 223           RESUME                   0
+
+ 225           NOP
+
+ 226   L1:     LOAD_CONST               1 (0)
+               LOAD_CONST               2 (None)
+               IMPORT_NAME              0 (onnxruntime)
+               STORE_FAST               0 (ort)
+
+ 227           LOAD_CONST               3 ('CUDAExecutionProvider')
+               LOAD_FAST                0 (ort)
+               LOAD_ATTR                3 (get_available_providers + NULL|self)
+               CALL                     0
+               CONTAINS_OP              0
+       L2:     RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+ 228           LOAD_GLOBAL              4 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L5)
+               POP_TOP
+
+ 229   L4:     POP_EXCEPT
+               RETURN_CONST             4 (False)
+
+ 228   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti

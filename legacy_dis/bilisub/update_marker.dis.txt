@@ -1,0 +1,797 @@
+=== FILE: bilisub\update_marker.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  2           LOAD_CONST               0 ('★B2 06/08 — MỐC "ĐANG CẬP NHẬT": bắt ca cập-nhật-1-click IM LẶNG THẤT BẠI.\n\nVÌ SAO CÓ FILE NÀY (đừng xoá):\n    `_on_update_downloaded` chạy `Popen(setup, /SILENT…)` rồi `QApplication.quit()` NGAY —\n    không chờ, không đọc mã thoát, không xác nhận gì sau đó. Bộ cài Inno chạy với\n    `PrivilegesRequired=admin` nên LUÔN hiện cửa sổ UAC; khách bấm "No" (hoặc phần mềm diệt\n    virus chặn) thì KHÔNG có gì được cài — mà app thì đã tự đóng "như thể đã cài xong".\n    Đây là đường THẬT dẫn tới "khách tưởng mình đang chạy bản mới" (và ta chẩn đoán sai vì\n    tin lời khách về số bản).\n\nCách bắt: ghi 1 mốc {bản kỳ vọng, thời điểm, file cài} TRƯỚC khi thoát. Lần mở sau, nếu số\nbản đang chạy VẪN KHÁC bản kỳ vọng ⇒ nói thẳng "CẬP NHẬT CHƯA THÀNH CÔNG" + cho cài lại.\n\nModule thuần (không Qt, không I/O mạng) để test được mà KHÔNG phải dựng MainWindow — dựng\nMainWindow trong test từng làm BẨN hàng chờ thật của Boss.\n')
+              STORE_NAME               0 (__doc__)
+
+ 18           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 20           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (json)
+              STORE_NAME               3 (json)
+
+ 21           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (os)
+              STORE_NAME               4 (os)
+
+ 22           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              5 (time)
+              STORE_NAME               5 (time)
+
+ 23           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Path',))
+              IMPORT_NAME              6 (pathlib)
+              IMPORT_FROM              7 (Path)
+              STORE_NAME               7 (Path)
+              POP_TOP
+
+ 25           LOAD_CONST               5 ('update_pending.json')
+              STORE_NAME               8 (MARKER_NAME)
+
+ 27           LOAD_CONST               6 (3)
+              STORE_NAME               9 (MAX_NOTIFY)
+
+ 29           LOAD_CONST               7 (1209600)
+              STORE_NAME              10 (MAX_AGE_SEC)
+
+ 31           LOAD_CONST               8 (1223)
+              STORE_NAME              11 (EXIT_UAC_DENIED)
+
+ 34           LOAD_CONST              18 (('return', 'str'))
+              LOAD_CONST               9 (<code object marker_path at 0x0000016DC8E06FB0, file "bilisub\update_marker.py", line 34>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              12 (marker_path)
+
+ 42           LOAD_CONST              19 (('',))
+              LOAD_CONST              20 (('expected_version', 'str', 'setup_path', 'str', 'return', 'bool'))
+              LOAD_CONST              10 (<code object write_pending at 0x0000016DC8CE7CC0, file "bilisub\update_marker.py", line 42>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              13 (write_pending)
+
+ 60           LOAD_CONST              21 (('return', 'dict | None'))
+              LOAD_CONST              11 (<code object read_pending at 0x0000016DC8E4EE30, file "bilisub\update_marker.py", line 60>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              14 (read_pending)
+
+ 73           LOAD_CONST              22 (('return', 'None'))
+              LOAD_CONST              12 (<code object clear_pending at 0x0000016DC8EB5C50, file "bilisub\update_marker.py", line 73>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              15 (clear_pending)
+
+ 82           LOAD_CONST              23 (('a', 'str', 'b', 'str', 'return', 'bool'))
+              LOAD_CONST              13 (<code object _same_version at 0x0000016DC90E2130, file "bilisub\update_marker.py", line 82>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              16 (_same_version)
+
+ 96           LOAD_CONST              14 (True)
+              LOAD_CONST              15 (('notify',))
+              BUILD_CONST_KEY_MAP      1
+              LOAD_CONST              24 (('current_version', 'str', 'notify', 'bool', 'return', 'dict | None'))
+              LOAD_CONST              16 (<code object check_after_restart at 0x0000016DC8FAD850, file "bilisub\update_marker.py", line 96>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              17 (check_after_restart)
+
+140           LOAD_CONST              18 (('return', 'str'))
+              LOAD_CONST              17 (<code object exit_code_message at 0x0000016DC8E06AB0, file "bilisub\update_marker.py", line 140>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              18 (exit_code_message)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object marker_path at 0x0000016DC8E06FB0, file "bilisub\update_marker.py", line 34>:
+  34           RESUME                   0
+
+  35           NOP
+
+  36   L1:     LOAD_CONST               1 (1)
+               LOAD_CONST               2 (('DATA_DIR',))
+               IMPORT_NAME              0 (config)
+               IMPORT_FROM              1 (DATA_DIR)
+               STORE_FAST               0 (DATA_DIR)
+               POP_TOP
+
+  37           LOAD_GLOBAL              5 (str + NULL)
+               LOAD_GLOBAL              7 (Path + NULL)
+               LOAD_GLOBAL              5 (str + NULL)
+               LOAD_FAST                0 (DATA_DIR)
+               CALL                     1
+               CALL                     1
+               LOAD_GLOBAL              8 (MARKER_NAME)
+               BINARY_OP               11 (/)
+               CALL                     1
+       L2:     RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+  38           LOAD_GLOBAL             10 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L5)
+               POP_TOP
+
+  39   L4:     POP_EXCEPT
+               RETURN_CONST             3 ('')
+
+  38   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object write_pending at 0x0000016DC8CE7CC0, file "bilisub\update_marker.py", line 42>:
+  42           RESUME                   0
+
+  44           LOAD_GLOBAL              1 (marker_path + NULL)
+               CALL                     0
+               STORE_FAST               2 (p)
+
+  45           LOAD_FAST                2 (p)
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L1)
+
+  46           RETURN_CONST             1 (False)
+
+  47   L1:     NOP
+
+  48   L2:     LOAD_GLOBAL              3 (Path + NULL)
+               LOAD_FAST                2 (p)
+               CALL                     1
+               LOAD_ATTR                4 (parent)
+               LOAD_ATTR                7 (mkdir + NULL|self)
+               LOAD_CONST               2 (True)
+               LOAD_CONST               2 (True)
+               LOAD_CONST               3 (('parents', 'exist_ok'))
+               CALL_KW                  2
+               POP_TOP
+
+  49           LOAD_GLOBAL              3 (Path + NULL)
+               LOAD_FAST                2 (p)
+               CALL                     1
+               LOAD_ATTR                9 (write_text + NULL|self)
+               LOAD_GLOBAL             10 (json)
+               LOAD_ATTR               12 (dumps)
+               PUSH_NULL
+
+  50           LOAD_GLOBAL             15 (str + NULL)
+               LOAD_FAST                0 (expected_version)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L3)
+               POP_TOP
+               LOAD_CONST               4 ('')
+       L3:     CALL                     1
+               LOAD_ATTR               17 (strip + NULL|self)
+               CALL                     0
+
+  51           LOAD_GLOBAL             15 (str + NULL)
+               LOAD_FAST                1 (setup_path)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L4)
+               POP_TOP
+               LOAD_CONST               4 ('')
+       L4:     CALL                     1
+
+  52           LOAD_GLOBAL             19 (int + NULL)
+               LOAD_GLOBAL             20 (time)
+               LOAD_ATTR               20 (time)
+               PUSH_NULL
+               CALL                     0
+               CALL                     1
+
+  53           LOAD_CONST               5 (0)
+
+  49           LOAD_CONST               6 (('expected', 'setup', 'ts', 'notified'))
+               BUILD_CONST_KEY_MAP      4
+
+  54           LOAD_CONST               1 (False)
+
+  49           LOAD_CONST               7 (('ensure_ascii',))
+               CALL_KW                  2
+
+  54           LOAD_CONST               8 ('utf-8')
+
+  49           LOAD_CONST               9 (('encoding',))
+               CALL_KW                  2
+               POP_TOP
+
+  55   L5:     RETURN_CONST             2 (True)
+
+  --   L6:     PUSH_EXC_INFO
+
+  56           LOAD_GLOBAL             22 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L8)
+               POP_TOP
+
+  57   L7:     POP_EXCEPT
+               RETURN_CONST             1 (False)
+
+  56   L8:     RERAISE                  0
+
+  --   L9:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L2 to L5 -> L6 [0]
+  L6 to L7 -> L9 [1] lasti
+  L8 to L9 -> L9 [1] lasti
+
+Disassembly of <code object read_pending at 0x0000016DC8E4EE30, file "bilisub\update_marker.py", line 60>:
+  60            RESUME                   0
+
+  61            LOAD_GLOBAL              1 (marker_path + NULL)
+                CALL                     0
+                STORE_FAST               0 (p)
+
+  62            LOAD_FAST                0 (p)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L1)
+
+  63            RETURN_CONST             0 (None)
+
+  64    L1:     NOP
+
+  65    L2:     LOAD_GLOBAL              2 (os)
+                LOAD_ATTR                4 (path)
+                LOAD_ATTR                7 (exists + NULL|self)
+                LOAD_FAST                0 (p)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L4)
+
+  66    L3:     RETURN_CONST             0 (None)
+
+  67    L4:     LOAD_GLOBAL              8 (json)
+                LOAD_ATTR               10 (loads)
+                PUSH_NULL
+                LOAD_GLOBAL             13 (Path + NULL)
+                LOAD_FAST                0 (p)
+                CALL                     1
+                LOAD_ATTR               15 (read_text + NULL|self)
+                LOAD_CONST               1 ('utf-8')
+                LOAD_CONST               2 ('ignore')
+                LOAD_CONST               3 (('encoding', 'errors'))
+                CALL_KW                  2
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L5)
+                POP_TOP
+                LOAD_CONST               4 ('{}')
+        L5:     CALL                     1
+                STORE_FAST               1 (d)
+
+  68            LOAD_GLOBAL             17 (isinstance + NULL)
+                LOAD_FAST                1 (d)
+                LOAD_GLOBAL             18 (dict)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L7)
+                LOAD_FAST                1 (d)
+        L6:     RETURN_VALUE
+        L7:     LOAD_CONST               0 (None)
+        L8:     RETURN_VALUE
+
+  --    L9:     PUSH_EXC_INFO
+
+  69            LOAD_GLOBAL             20 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L11)
+                POP_TOP
+
+  70   L10:     POP_EXCEPT
+                RETURN_CONST             0 (None)
+
+  69   L11:     RERAISE                  0
+
+  --   L12:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L9 [0]
+  L4 to L6 -> L9 [0]
+  L7 to L8 -> L9 [0]
+  L9 to L10 -> L12 [1] lasti
+  L11 to L12 -> L12 [1] lasti
+
+Disassembly of <code object clear_pending at 0x0000016DC8EB5C50, file "bilisub\update_marker.py", line 73>:
+  73           RESUME                   0
+
+  74           NOP
+
+  75   L1:     LOAD_GLOBAL              1 (marker_path + NULL)
+               CALL                     0
+               STORE_FAST               0 (p)
+
+  76           LOAD_FAST                0 (p)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       60 (to L4)
+               LOAD_GLOBAL              2 (os)
+               LOAD_ATTR                4 (path)
+               LOAD_ATTR                7 (exists + NULL|self)
+               LOAD_FAST                0 (p)
+               CALL                     1
+               TO_BOOL
+               POP_JUMP_IF_FALSE       23 (to L3)
+
+  77           LOAD_GLOBAL              2 (os)
+               LOAD_ATTR                8 (unlink)
+               PUSH_NULL
+               LOAD_FAST                0 (p)
+               CALL                     1
+               POP_TOP
+       L2:     RETURN_CONST             0 (None)
+
+  76   L3:     RETURN_CONST             0 (None)
+       L4:     RETURN_CONST             0 (None)
+
+  --   L5:     PUSH_EXC_INFO
+
+  78           LOAD_GLOBAL             10 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L7)
+               POP_TOP
+
+  79   L6:     POP_EXCEPT
+               RETURN_CONST             0 (None)
+
+  78   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L5 [0]
+  L5 to L6 -> L8 [1] lasti
+  L7 to L8 -> L8 [1] lasti
+
+Disassembly of <code object _same_version at 0x0000016DC90E2130, file "bilisub\update_marker.py", line 82>:
+ 82           RESUME                   0
+
+ 83           LOAD_CONST               1 (<code object t at 0x0000016DC8DB2B80, file "bilisub\update_marker.py", line 83>)
+              MAKE_FUNCTION
+              STORE_FAST               2 (t)
+
+ 93           LOAD_FAST                2 (t)
+              PUSH_NULL
+              LOAD_FAST                0 (a)
+              CALL                     1
+              LOAD_FAST                2 (t)
+              PUSH_NULL
+              LOAD_FAST                1 (b)
+              CALL                     1
+              COMPARE_OP              72 (==)
+              RETURN_VALUE
+
+Disassembly of <code object t at 0x0000016DC8DB2B80, file "bilisub\update_marker.py", line 83>:
+  83            RESUME                   0
+
+  84            BUILD_LIST               0
+                STORE_FAST               1 (out)
+
+  85            LOAD_GLOBAL              1 (str + NULL)
+                LOAD_FAST                0 (s)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                LOAD_CONST               1 ('')
+        L1:     CALL                     1
+                LOAD_ATTR                3 (strip + NULL|self)
+                CALL                     0
+                LOAD_ATTR                5 (split + NULL|self)
+                LOAD_CONST               2 ('.')
+                CALL                     1
+                GET_ITER
+        L2:     FOR_ITER                30 (to L5)
+                STORE_FAST               2 (x)
+
+  86            NOP
+
+  87    L3:     LOAD_FAST                1 (out)
+                LOAD_ATTR                7 (append + NULL|self)
+                LOAD_GLOBAL              9 (int + NULL)
+                LOAD_FAST                2 (x)
+                CALL                     1
+                CALL                     1
+                POP_TOP
+        L4:     JUMP_BACKWARD           32 (to L2)
+
+  85    L5:     END_FOR
+                POP_TOP
+
+  90            LOAD_GLOBAL             13 (len + NULL)
+                LOAD_FAST                1 (out)
+                CALL                     1
+                LOAD_CONST               4 (3)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       34 (to L7)
+
+  91    L6:     LOAD_FAST                1 (out)
+                LOAD_ATTR                7 (append + NULL|self)
+                LOAD_CONST               3 (0)
+                CALL                     1
+                POP_TOP
+
+  90            LOAD_GLOBAL             13 (len + NULL)
+                LOAD_FAST                1 (out)
+                CALL                     1
+                LOAD_CONST               4 (3)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        2 (to L7)
+                JUMP_BACKWARD           34 (to L6)
+
+  92    L7:     LOAD_GLOBAL             15 (tuple + NULL)
+                LOAD_FAST                1 (out)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               4 (3)
+                BINARY_SLICE
+                CALL                     1
+                RETURN_VALUE
+
+  --    L8:     PUSH_EXC_INFO
+
+  88            LOAD_GLOBAL             10 (ValueError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       21 (to L10)
+                POP_TOP
+
+  89            LOAD_FAST                1 (out)
+                LOAD_ATTR                7 (append + NULL|self)
+                LOAD_CONST               3 (0)
+                CALL                     1
+                POP_TOP
+        L9:     POP_EXCEPT
+                JUMP_BACKWARD          127 (to L2)
+
+  88   L10:     RERAISE                  0
+
+  --   L11:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L3 to L4 -> L8 [1]
+  L8 to L9 -> L11 [2] lasti
+  L10 to L11 -> L11 [2] lasti
+
+Disassembly of <code object check_after_restart at 0x0000016DC8FAD850, file "bilisub\update_marker.py", line 96>:
+  96            RESUME                   0
+
+ 103            LOAD_GLOBAL              1 (read_pending + NULL)
+                CALL                     0
+                STORE_FAST               2 (d)
+
+ 104            LOAD_GLOBAL              3 (isinstance + NULL)
+                LOAD_FAST                2 (d)
+                LOAD_GLOBAL              4 (dict)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L1)
+
+ 105            RETURN_CONST             1 (None)
+
+ 106    L1:     LOAD_GLOBAL              7 (str + NULL)
+                LOAD_FAST                2 (d)
+                LOAD_ATTR                9 (get + NULL|self)
+                LOAD_CONST               2 ('expected')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                LOAD_CONST               3 ('')
+        L2:     CALL                     1
+                LOAD_ATTR               11 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               3 (exp)
+
+ 107            LOAD_GLOBAL              7 (str + NULL)
+                LOAD_FAST                0 (current_version)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L3)
+                POP_TOP
+                LOAD_CONST               3 ('')
+        L3:     CALL                     1
+                LOAD_ATTR               11 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               4 (cur)
+
+ 108            LOAD_FAST                3 (exp)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        11 (to L4)
+
+ 109            LOAD_GLOBAL             13 (clear_pending + NULL)
+                CALL                     0
+                POP_TOP
+
+ 110            RETURN_CONST             1 (None)
+
+ 111    L4:     LOAD_GLOBAL             15 (_same_version + NULL)
+                LOAD_FAST_LOAD_FAST     52 (exp, cur)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       11 (to L5)
+
+ 112            LOAD_GLOBAL             13 (clear_pending + NULL)
+                CALL                     0
+                POP_TOP
+
+ 113            RETURN_CONST             1 (None)
+
+ 114    L5:     NOP
+
+ 115    L6:     LOAD_GLOBAL             16 (time)
+                LOAD_ATTR               16 (time)
+                PUSH_NULL
+                CALL                     0
+                LOAD_GLOBAL             19 (float + NULL)
+                LOAD_FAST                2 (d)
+                LOAD_ATTR                9 (get + NULL|self)
+                LOAD_CONST               4 ('ts')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L7)
+                POP_TOP
+                LOAD_CONST               5 (0)
+        L7:     CALL                     1
+                BINARY_OP               10 (-)
+                LOAD_GLOBAL             20 (MAX_AGE_SEC)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       11 (to L9)
+
+ 116            LOAD_GLOBAL             13 (clear_pending + NULL)
+                CALL                     0
+                POP_TOP
+
+ 117    L8:     RETURN_CONST             1 (None)
+
+ 115    L9:     NOP
+
+ 120   L10:     LOAD_CONST               5 (0)
+                STORE_FAST               5 (n)
+
+ 121            NOP
+
+ 122   L11:     LOAD_GLOBAL             25 (int + NULL)
+                LOAD_FAST                2 (d)
+                LOAD_ATTR                9 (get + NULL|self)
+                LOAD_CONST               6 ('notified')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L12)
+                POP_TOP
+                LOAD_CONST               5 (0)
+       L12:     CALL                     1
+                STORE_FAST               5 (n)
+
+ 125   L13:     LOAD_FAST                5 (n)
+                LOAD_GLOBAL             26 (MAX_NOTIFY)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE       11 (to L14)
+
+ 126            LOAD_GLOBAL             13 (clear_pending + NULL)
+                CALL                     0
+                POP_TOP
+
+ 127            RETURN_CONST             1 (None)
+
+ 128   L14:     LOAD_FAST                1 (notify)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       61 (to L16)
+
+ 129            NOP
+
+ 130   L15:     LOAD_FAST                5 (n)
+                LOAD_CONST               7 (1)
+                BINARY_OP                0 (+)
+                LOAD_FAST                2 (d)
+                LOAD_CONST               6 ('notified')
+                STORE_SUBSCR
+
+ 131            LOAD_GLOBAL             29 (Path + NULL)
+                LOAD_GLOBAL             31 (marker_path + NULL)
+                CALL                     0
+                CALL                     1
+                LOAD_ATTR               33 (write_text + NULL|self)
+                LOAD_GLOBAL             34 (json)
+                LOAD_ATTR               36 (dumps)
+                PUSH_NULL
+                LOAD_FAST                2 (d)
+                LOAD_CONST               8 (False)
+                LOAD_CONST               9 (('ensure_ascii',))
+                CALL_KW                  2
+                LOAD_CONST              10 ('utf-8')
+                LOAD_CONST              11 (('encoding',))
+                CALL_KW                  2
+                POP_TOP
+
+ 134   L16:     LOAD_GLOBAL              7 (str + NULL)
+                LOAD_FAST                2 (d)
+                LOAD_ATTR                9 (get + NULL|self)
+                LOAD_CONST              12 ('setup')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L17)
+                POP_TOP
+                LOAD_CONST               3 ('')
+       L17:     CALL                     1
+                STORE_FAST               6 (setup)
+
+ 135            LOAD_FAST_LOAD_FAST     52 (exp, cur)
+                LOAD_FAST                2 (d)
+                LOAD_ATTR                9 (get + NULL|self)
+                LOAD_CONST               4 ('ts')
+                CALL                     1
+
+ 136            LOAD_FAST                6 (setup)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       38 (to L18)
+                LOAD_GLOBAL             38 (os)
+                LOAD_ATTR               40 (path)
+                LOAD_ATTR               43 (exists + NULL|self)
+                LOAD_FAST                6 (setup)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L18)
+                LOAD_FAST                6 (setup)
+                JUMP_FORWARD             1 (to L19)
+       L18:     LOAD_CONST               3 ('')
+
+ 137   L19:     LOAD_FAST                1 (notify)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        7 (to L20)
+                LOAD_FAST                5 (n)
+                LOAD_CONST               7 (1)
+                BINARY_OP                0 (+)
+
+ 135            LOAD_CONST              13 (('expected', 'current', 'ts', 'setup', 'notified'))
+                BUILD_CONST_KEY_MAP      5
+                RETURN_VALUE
+
+ 137   L20:     LOAD_FAST                5 (n)
+
+ 135            LOAD_CONST              13 (('expected', 'current', 'ts', 'setup', 'notified'))
+                BUILD_CONST_KEY_MAP      5
+                RETURN_VALUE
+
+  --   L21:     PUSH_EXC_INFO
+
+ 118            LOAD_GLOBAL             22 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L23)
+                POP_TOP
+
+ 119   L22:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 255 (to L10)
+
+ 118   L23:     RERAISE                  0
+
+  --   L24:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L25:     PUSH_EXC_INFO
+
+ 123            LOAD_GLOBAL             22 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        5 (to L27)
+                POP_TOP
+
+ 124            LOAD_CONST               5 (0)
+                STORE_FAST               5 (n)
+       L26:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 235 (to L13)
+
+ 123   L27:     RERAISE                  0
+
+  --   L28:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L29:     PUSH_EXC_INFO
+
+ 132            LOAD_GLOBAL             22 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L31)
+                POP_TOP
+
+ 133   L30:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 162 (to L16)
+
+ 132   L31:     RERAISE                  0
+
+  --   L32:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L6 to L8 -> L21 [0]
+  L11 to L13 -> L25 [0]
+  L15 to L16 -> L29 [0]
+  L21 to L22 -> L24 [1] lasti
+  L23 to L24 -> L24 [1] lasti
+  L25 to L26 -> L28 [1] lasti
+  L27 to L28 -> L28 [1] lasti
+  L29 to L30 -> L32 [1] lasti
+  L31 to L32 -> L32 [1] lasti
+
+Disassembly of <code object exit_code_message at 0x0000016DC8E06AB0, file "bilisub\update_marker.py", line 140>:
+ 140           RESUME                   0
+
+ 142           NOP
+
+ 143   L1:     LOAD_GLOBAL              1 (int + NULL)
+               LOAD_FAST                0 (rc)
+               CALL                     1
+               STORE_FAST               0 (rc)
+
+ 146   L2:     LOAD_FAST                0 (rc)
+               LOAD_CONST               2 (0)
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_FALSE        1 (to L3)
+
+ 147           RETURN_CONST             1 ('')
+
+ 148   L3:     LOAD_FAST                0 (rc)
+               LOAD_GLOBAL              4 (EXIT_UAC_DENIED)
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_FALSE        1 (to L4)
+
+ 149           RETURN_CONST             3 ("Bộ cài KHÔNG chạy được vì cửa sổ xin quyền Administrator bị từ chối (bấm 'No'). Hãy bấm 'Cập nhật ngay' lại rồi chọn 'Yes', hoặc chuột phải file cài → 'Run as administrator'.")
+
+ 152   L4:     LOAD_FAST                0 (rc)
+               LOAD_CONST               4 ((2, 5))
+               CONTAINS_OP              0
+               POP_JUMP_IF_FALSE        1 (to L5)
+
+ 153           RETURN_CONST             5 ('Bộ cài bị DỪNG GIỮA CHỪNG (bị huỷ hoặc có file đang bị khoá). Hãy đóng hết tool + phần mềm diệt virus tạm 1 phút rồi chạy lại bộ cài.')
+
+ 155   L5:     LOAD_CONST               6 ('Bộ cài kết thúc bất thường (mã ')
+               LOAD_FAST                0 (rc)
+               FORMAT_SIMPLE
+               LOAD_CONST               7 (') — bản mới CHƯA được cài. Hãy chạy lại bộ cài, nếu vẫn lỗi thì tải bản cài mới từ trang bán và cài tay.')
+               BUILD_STRING             3
+               RETURN_VALUE
+
+  --   L6:     PUSH_EXC_INFO
+
+ 144           LOAD_GLOBAL              2 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L8)
+               POP_TOP
+
+ 145   L7:     POP_EXCEPT
+               RETURN_CONST             1 ('')
+
+ 144   L8:     RERAISE                  0
+
+  --   L9:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L6 [0]
+  L6 to L7 -> L9 [1] lasti
+  L8 to L9 -> L9 [1] lasti

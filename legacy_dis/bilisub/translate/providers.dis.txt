@@ -1,0 +1,800 @@
+=== FILE: bilisub\translate\providers.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           SETUP_ANNOTATIONS
+              LOAD_CONST               0 ('Lớp gọi LLM dùng chung cho mọi provider OpenAI-compatible + phân loại lỗi\n+ bảng giới hạn tốc độ mặc định (RPM/TPM) để rate-limiter dùng.')
+              STORE_NAME               0 (__doc__)
+
+  3           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+  5           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (re)
+              STORE_NAME               3 (re)
+
+  6           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('dataclass',))
+              IMPORT_NAME              4 (dataclasses)
+              IMPORT_FROM              5 (dataclass)
+              STORE_NAME               5 (dataclass)
+              POP_TOP
+
+  8           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              6 (requests)
+              STORE_NAME               6 (requests)
+
+ 10           LOAD_CONST               5 (2)
+              LOAD_CONST               6 (('LLM_PROVIDERS',))
+              IMPORT_NAME              7 (config)
+              IMPORT_FROM              8 (LLM_PROVIDERS)
+              STORE_NAME               8 (LLM_PROVIDERS)
+              POP_TOP
+
+ 13           LOAD_NAME                5 (dataclass)
+              PUSH_NULL
+              LOAD_CONST               7 (True)
+              LOAD_CONST               8 (('frozen',))
+              CALL_KW                  1
+
+ 14           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST               9 (<code object Limits at 0x0000016DC90E1430, file "bilisub\translate\providers.py", line 13>)
+              MAKE_FUNCTION
+              LOAD_CONST              10 ('Limits')
+              CALL                     2
+
+ 13           CALL                     0
+
+ 14           STORE_NAME               9 (Limits)
+
+ 21           LOAD_NAME                9 (Limits)
+              PUSH_NULL
+              LOAD_CONST              11 (14)
+              LOAD_CONST              12 (200000)
+              LOAD_CONST              13 (('rpm', 'tpm'))
+              CALL_KW                  2
+
+ 22           LOAD_NAME                9 (Limits)
+              PUSH_NULL
+              LOAD_CONST              14 (28)
+              LOAD_CONST              15 (6000)
+              LOAD_CONST              13 (('rpm', 'tpm'))
+              CALL_KW                  2
+
+ 23           LOAD_NAME                9 (Limits)
+              PUSH_NULL
+              LOAD_CONST              14 (28)
+              LOAD_CONST              16 (60000)
+              LOAD_CONST              13 (('rpm', 'tpm'))
+              CALL_KW                  2
+
+ 24           LOAD_NAME                9 (Limits)
+              PUSH_NULL
+              LOAD_CONST              17 (18)
+              LOAD_CONST              18 (100000)
+              LOAD_CONST              13 (('rpm', 'tpm'))
+              CALL_KW                  2
+
+ 25           LOAD_NAME                9 (Limits)
+              PUSH_NULL
+              LOAD_CONST              17 (18)
+              LOAD_CONST               1 (0)
+              LOAD_CONST              13 (('rpm', 'tpm'))
+              CALL_KW                  2
+
+ 26           LOAD_NAME                9 (Limits)
+              PUSH_NULL
+              LOAD_CONST               1 (0)
+              LOAD_CONST               1 (0)
+              LOAD_CONST              13 (('rpm', 'tpm'))
+              CALL_KW                  2
+
+ 27           LOAD_NAME                9 (Limits)
+              PUSH_NULL
+              LOAD_CONST               1 (0)
+              LOAD_CONST               1 (0)
+              LOAD_CONST              13 (('rpm', 'tpm'))
+              CALL_KW                  2
+
+ 28           LOAD_NAME                9 (Limits)
+              PUSH_NULL
+              LOAD_CONST               1 (0)
+              LOAD_CONST               1 (0)
+              LOAD_CONST              13 (('rpm', 'tpm'))
+              CALL_KW                  2
+
+ 20           LOAD_CONST              19 (('gemini', 'groq', 'cerebras', 'sambanova', 'openrouter', 'lmstudio', 'ollama', 'custom'))
+              BUILD_CONST_KEY_MAP      8
+              STORE_NAME              10 (PROVIDER_LIMITS)
+              LOAD_CONST              20 ('dict[str, Limits]')
+              LOAD_NAME               11 (__annotations__)
+              LOAD_CONST              21 ('PROVIDER_LIMITS')
+              STORE_SUBSCR
+
+ 32           LOAD_CONST              35 (('provider', 'str', 'return', 'Limits'))
+              LOAD_CONST              22 (<code object limits_for at 0x0000016DC8EAE780, file "bilisub\translate\providers.py", line 32>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              12 (limits_for)
+
+ 36           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              23 (<code object ProviderError at 0x0000016DC90E2530, file "bilisub\translate\providers.py", line 36>)
+              MAKE_FUNCTION
+              LOAD_CONST              24 ('ProviderError')
+              LOAD_NAME               13 (Exception)
+              CALL                     3
+              STORE_NAME              14 (ProviderError)
+
+ 52           LOAD_NAME                3 (re)
+              LOAD_ATTR               30 (compile)
+              PUSH_NULL
+              LOAD_CONST              25 ('\\b(rate[ _-]?limit(ed|ing)?|too many requests|slow down)\\b')
+              CALL                     1
+              STORE_NAME              16 (_RE_RATE)
+
+ 53           LOAD_NAME                3 (re)
+              LOAD_ATTR               30 (compile)
+              PUSH_NULL
+              LOAD_CONST              26 ('\\b(quota|resource[_ ]exhausted|insufficient[_ ](quota|credit|balance)|exceeded your current|per[_ ]day|rpd|tpd|out of credit)\\b')
+              CALL                     1
+              STORE_NAME              17 (_RE_QUOTA)
+
+ 58           LOAD_NAME                3 (re)
+              LOAD_ATTR               30 (compile)
+              PUSH_NULL
+              LOAD_CONST              27 ('\\b(insufficient[_ ](balance|credit)|out of credit)\\b')
+              CALL                     1
+              STORE_NAME              18 (_RE_MONEY)
+
+ 61           LOAD_CONST              36 (('status', 'int', 'body', 'str', 'return', 'str'))
+              LOAD_CONST              28 (<code object _classify at 0x0000016DC8FB6410, file "bilisub\translate\providers.py", line 61>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              19 (_classify)
+
+100           LOAD_CONST              37 (('text', 'str', 'return', 'int'))
+              LOAD_CONST              29 (<code object estimate_tokens at 0x0000016DC8EAE340, file "bilisub\translate\providers.py", line 100>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              20 (estimate_tokens)
+
+112           LOAD_CONST              30 (4096)
+
+113           LOAD_CONST              31 (0.3)
+
+114           LOAD_CONST              32 (180)
+
+115           LOAD_CONST               3 (None)
+
+105           LOAD_CONST              33 (('max_tokens', 'temperature', 'timeout', 'extra_headers'))
+              BUILD_CONST_KEY_MAP      4
+
+106           NOP
+
+105           NOP
+
+108           NOP
+
+105           NOP
+
+109           NOP
+
+105           NOP
+
+110           NOP
+
+105           NOP
+
+111           NOP
+
+105           NOP
+
+112           NOP
+
+105           NOP
+
+113           NOP
+
+105           NOP
+
+114           NOP
+
+105           NOP
+
+115           NOP
+
+105           NOP
+
+116           NOP
+
+105           LOAD_CONST              38 (('provider', 'str', 'base_url', 'str', 'model', 'str', 'api_key', 'str', 'messages', 'list[dict]', 'max_tokens', 'int', 'temperature', 'float', 'timeout', 'int', 'extra_headers', 'dict | None', 'return', 'tuple[str, int]'))
+              LOAD_CONST              34 (<code object chat_completion at 0x0000016DC8EF00D0, file "bilisub\translate\providers.py", line 105>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              21 (chat_completion)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object Limits at 0x0000016DC90E1430, file "bilisub\translate\providers.py", line 13>:
+ 13           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('Limits')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (13)
+              STORE_NAME               3 (__firstlineno__)
+              SETUP_ANNOTATIONS
+
+ 15           LOAD_CONST               2 (0)
+              STORE_NAME               4 (rpm)
+              LOAD_CONST               3 ('int')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               4 ('rpm')
+              STORE_SUBSCR
+
+ 16           LOAD_CONST               2 (0)
+              STORE_NAME               6 (tpm)
+              LOAD_CONST               3 ('int')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               5 ('tpm')
+              STORE_SUBSCR
+              LOAD_CONST               6 (())
+              STORE_NAME               7 (__static_attributes__)
+              RETURN_CONST             7 (None)
+
+Disassembly of <code object limits_for at 0x0000016DC8EAE780, file "bilisub\translate\providers.py", line 32>:
+ 32           RESUME                   0
+
+ 33           LOAD_GLOBAL              0 (PROVIDER_LIMITS)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_FAST                0 (provider)
+              LOAD_GLOBAL              5 (Limits + NULL)
+              CALL                     0
+              CALL                     2
+              RETURN_VALUE
+
+Disassembly of <code object ProviderError at 0x0000016DC90E2530, file "bilisub\translate\providers.py", line 36>:
+  --           MAKE_CELL                0 (__class__)
+
+  36           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('ProviderError')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (36)
+               STORE_NAME               3 (__firstlineno__)
+
+  37           LOAD_CONST               2 ('category: \'conn\' | \'rate\' | \'quota\' | \'money\' | \'auth\' | \'other\'.\n\n★07/08 (phản biện lỗi ①) THÊM ``\'conn\'`` = **KHÔNG NỐI ĐƯỢC tới máy chủ** (connection\nrefused / DNS hỏng / connect-timeout) — KHÁC hẳn ``\'rate\'`` (nối được, máy chủ đang\nnghẽn/đang nghĩ lâu). Vì sao phải tách: khách bấm \'Offline (Local)\' mà chưa mở Ollama thì\nmọi call ném ConnectionError; gộp chung vào ``\'rate\'`` là tool coi như "nghẽn tạm thời",\nretry 4 lượt rồi ÂM THẦM điền text gốc ⇒ ra video 100% chữ Trung + giọng đọc chữ Trung mà\njob vẫn báo XONG. Lane cloud KHÔNG đổi hành vi: ``\'conn\'`` cũng không nằm trong\n``(\'quota\',\'auth\')`` và không phải ``\'other\'`` nên vẫn rơi đúng nhánh retry như trước.\n')
+               STORE_NAME               4 (__doc__)
+
+  47           LOAD_CONST               5 (('other',))
+               LOAD_CONST               6 (('message', 'str', 'category', 'str'))
+               LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               3 (<code object __init__ at 0x0000016DC90E1F30, file "bilisub\translate\providers.py", line 47>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME               5 (__init__)
+               LOAD_CONST               4 (('category',))
+               STORE_NAME               6 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME               7 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC90E1F30, file "bilisub\translate\providers.py", line 47>:
+  --           COPY_FREE_VARS           1
+
+  47           RESUME                   0
+
+  48           LOAD_GLOBAL              0 (super)
+               LOAD_DEREF               3 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+               LOAD_FAST                1 (message)
+               CALL                     1
+               POP_TOP
+
+  49           LOAD_FAST_LOAD_FAST     32 (category, self)
+               STORE_ATTR               2 (category)
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object _classify at 0x0000016DC8FB6410, file "bilisub\translate\providers.py", line 61>:
+ 61            RESUME                   0
+
+ 70            LOAD_FAST                1 (body)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L1)
+               POP_TOP
+               LOAD_CONST               1 ('')
+       L1:     LOAD_ATTR                1 (lower + NULL|self)
+               CALL                     0
+               STORE_FAST               2 (b)
+
+ 72            LOAD_FAST                0 (status)
+               LOAD_CONST               2 (404)
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_TRUE        30 (to L2)
+               LOAD_CONST               3 ('does not exist')
+               LOAD_FAST                2 (b)
+               CONTAINS_OP              0
+               POP_JUMP_IF_TRUE        24 (to L2)
+               LOAD_CONST               4 ('not_found')
+               LOAD_FAST                2 (b)
+               CONTAINS_OP              0
+               POP_JUMP_IF_TRUE        18 (to L2)
+               LOAD_CONST               5 ('model_not_found')
+               LOAD_FAST                2 (b)
+               CONTAINS_OP              0
+               POP_JUMP_IF_TRUE        12 (to L2)
+
+ 73            LOAD_CONST               6 ('do not have access')
+               LOAD_FAST                2 (b)
+               CONTAINS_OP              0
+               POP_JUMP_IF_TRUE         6 (to L2)
+               LOAD_CONST               7 ('no access')
+               LOAD_FAST                2 (b)
+               CONTAINS_OP              0
+               POP_JUMP_IF_FALSE        1 (to L3)
+
+ 74    L2:     RETURN_CONST             8 ('auth')
+
+ 75    L3:     LOAD_FAST                0 (status)
+               LOAD_CONST               9 ((401, 403))
+               CONTAINS_OP              0
+               POP_JUMP_IF_TRUE        18 (to L4)
+               LOAD_CONST              10 ('unauthorized')
+               LOAD_FAST                2 (b)
+               CONTAINS_OP              0
+               POP_JUMP_IF_TRUE        12 (to L4)
+               LOAD_CONST              11 ('invalid api key')
+               LOAD_FAST                2 (b)
+               CONTAINS_OP              0
+               POP_JUMP_IF_TRUE         6 (to L4)
+               LOAD_CONST              12 ('api key not valid')
+               LOAD_FAST                2 (b)
+               CONTAINS_OP              0
+               POP_JUMP_IF_FALSE        1 (to L5)
+
+ 76    L4:     RETURN_CONST             8 ('auth')
+
+ 82    L5:     LOAD_FAST                0 (status)
+               LOAD_CONST              13 (429)
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_FALSE       30 (to L7)
+
+ 83            LOAD_GLOBAL              2 (_RE_QUOTA)
+               LOAD_ATTR                5 (search + NULL|self)
+               LOAD_FAST                2 (b)
+               CALL                     1
+               TO_BOOL
+               POP_JUMP_IF_FALSE        2 (to L6)
+               LOAD_CONST              14 ('quota')
+               RETURN_VALUE
+       L6:     LOAD_CONST              15 ('rate')
+               RETURN_VALUE
+
+ 84    L7:     LOAD_FAST                0 (status)
+               LOAD_CONST              16 ((500, 502, 503, 504))
+               CONTAINS_OP              0
+               POP_JUMP_IF_FALSE       30 (to L9)
+
+ 85            LOAD_GLOBAL              2 (_RE_QUOTA)
+               LOAD_ATTR                5 (search + NULL|self)
+               LOAD_FAST                2 (b)
+               CALL                     1
+               TO_BOOL
+               POP_JUMP_IF_FALSE        2 (to L8)
+               LOAD_CONST              14 ('quota')
+               RETURN_VALUE
+       L8:     LOAD_CONST              15 ('rate')
+               RETURN_VALUE
+
+ 86    L9:     LOAD_FAST                0 (status)
+               LOAD_CONST              17 (402)
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_TRUE        26 (to L10)
+               LOAD_GLOBAL              6 (_RE_MONEY)
+               LOAD_ATTR                5 (search + NULL|self)
+               LOAD_FAST                2 (b)
+               CALL                     1
+               TO_BOOL
+               POP_JUMP_IF_FALSE        1 (to L11)
+
+ 90   L10:     RETURN_CONST            18 ('money')
+
+ 91   L11:     LOAD_GLOBAL              2 (_RE_QUOTA)
+               LOAD_ATTR                5 (search + NULL|self)
+               LOAD_FAST                2 (b)
+               CALL                     1
+               TO_BOOL
+               POP_JUMP_IF_FALSE        1 (to L12)
+
+ 92            RETURN_CONST            14 ('quota')
+
+ 93   L12:     LOAD_GLOBAL              8 (_RE_RATE)
+               LOAD_ATTR                5 (search + NULL|self)
+               LOAD_FAST                2 (b)
+               CALL                     1
+               TO_BOOL
+               POP_JUMP_IF_FALSE        1 (to L13)
+
+ 94            RETURN_CONST            15 ('rate')
+
+ 95   L13:     LOAD_CONST              19 ('overload')
+               LOAD_FAST                2 (b)
+               CONTAINS_OP              0
+               POP_JUMP_IF_TRUE         6 (to L14)
+               LOAD_CONST              20 ('unavailable')
+               LOAD_FAST                2 (b)
+               CONTAINS_OP              0
+               POP_JUMP_IF_FALSE        1 (to L15)
+
+ 96   L14:     RETURN_CONST            15 ('rate')
+
+ 97   L15:     RETURN_CONST            21 ('other')
+
+Disassembly of <code object estimate_tokens at 0x0000016DC8EAE340, file "bilisub\translate\providers.py", line 100>:
+100           RESUME                   0
+
+102           LOAD_GLOBAL              1 (max + NULL)
+              LOAD_CONST               1 (1)
+              LOAD_GLOBAL              3 (int + NULL)
+              LOAD_GLOBAL              5 (len + NULL)
+              LOAD_FAST                0 (text)
+              CALL                     1
+              LOAD_CONST               2 (3.5)
+              BINARY_OP               11 (/)
+              CALL                     1
+              CALL                     2
+              RETURN_VALUE
+
+Disassembly of <code object chat_completion at 0x0000016DC8EF00D0, file "bilisub\translate\providers.py", line 105>:
+ 105            RESUME                   0
+
+ 118            LOAD_FAST                1 (base_url)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        19 (to L1)
+                POP_TOP
+                LOAD_GLOBAL              0 (LLM_PROVIDERS)
+                LOAD_FAST                0 (provider)
+                BINARY_SUBSCR
+                LOAD_ATTR                2 (base_url)
+        L1:     LOAD_ATTR                5 (rstrip + NULL|self)
+                LOAD_CONST               1 ('/')
+                CALL                     1
+                STORE_FAST               9 (base)
+
+ 119            LOAD_FAST_LOAD_FAST    153 (base, base)
+                LOAD_ATTR                7 (endswith + NULL|self)
+                LOAD_CONST               2 ('/chat/completions')
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                LOAD_CONST               2 ('/chat/completions')
+                JUMP_FORWARD             1 (to L3)
+        L2:     LOAD_CONST               3 ('')
+        L3:     BINARY_OP                0 (+)
+                STORE_FAST              10 (url)
+
+ 120            LOAD_CONST               4 ('Content-Type')
+                LOAD_CONST               5 ('application/json')
+                BUILD_MAP                1
+                STORE_FAST              11 (headers)
+
+ 121            LOAD_FAST                3 (api_key)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        8 (to L4)
+
+ 122            LOAD_CONST               6 ('Bearer ')
+                LOAD_FAST                3 (api_key)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                LOAD_FAST               11 (headers)
+                LOAD_CONST               7 ('Authorization')
+                STORE_SUBSCR
+
+ 123    L4:     LOAD_FAST                8 (extra_headers)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       71 (to L9)
+
+ 124            LOAD_FAST               11 (headers)
+                LOAD_ATTR                9 (update + NULL|self)
+                LOAD_FAST                8 (extra_headers)
+                LOAD_ATTR               11 (items + NULL|self)
+                CALL                     0
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     12 (k)
+                LOAD_FAST_AND_CLEAR     13 (v)
+                SWAP                     3
+        L5:     BUILD_MAP                0
+                SWAP                     2
+                GET_ITER
+        L6:     FOR_ITER                26 (to L7)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  205 (k, v)
+                LOAD_GLOBAL             13 (str + NULL)
+                LOAD_FAST               12 (k)
+                CALL                     1
+                LOAD_GLOBAL             13 (str + NULL)
+                LOAD_FAST               13 (v)
+                CALL                     1
+                MAP_ADD                  2
+                JUMP_BACKWARD           28 (to L6)
+        L7:     END_FOR
+                POP_TOP
+        L8:     SWAP                     3
+                STORE_FAST              13 (v)
+                STORE_FAST              12 (k)
+                CALL                     1
+                POP_TOP
+
+ 125    L9:     LOAD_FAST                0 (provider)
+                LOAD_CONST               8 ('openrouter')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       10 (to L10)
+
+ 126            LOAD_CONST               9 ('https://local.bilisub')
+                LOAD_FAST               11 (headers)
+                LOAD_CONST              10 ('HTTP-Referer')
+                STORE_SUBSCR
+
+ 127            LOAD_CONST              11 ('PeiPeiReup')
+                LOAD_FAST               11 (headers)
+                LOAD_CONST              12 ('X-Title')
+                STORE_SUBSCR
+
+ 130   L10:     LOAD_FAST                2 (model)
+
+ 131            LOAD_FAST                4 (messages)
+
+ 132            LOAD_FAST                6 (temperature)
+
+ 133            LOAD_FAST                5 (max_tokens)
+
+ 134            LOAD_CONST              13 ('type')
+                LOAD_CONST              14 ('json_object')
+                BUILD_MAP                1
+
+ 129            LOAD_CONST              15 (('model', 'messages', 'temperature', 'max_tokens', 'response_format'))
+                BUILD_CONST_KEY_MAP      5
+                STORE_FAST              14 (payload)
+
+ 142            LOAD_GLOBAL             13 (str + NULL)
+                LOAD_FAST                2 (model)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L11)
+                POP_TOP
+                LOAD_CONST               3 ('')
+       L11:     CALL                     1
+                LOAD_ATTR               15 (lower + NULL|self)
+                CALL                     0
+                LOAD_ATTR               17 (startswith + NULL|self)
+                LOAD_CONST              16 ('deepseek')
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE        7 (to L12)
+
+ 143            LOAD_CONST              13 ('type')
+                LOAD_CONST              17 ('disabled')
+                BUILD_MAP                1
+                LOAD_FAST               14 (payload)
+                LOAD_CONST              18 ('thinking')
+                STORE_SUBSCR
+
+ 144   L12:     NOP
+
+ 145   L13:     LOAD_GLOBAL             18 (requests)
+                LOAD_ATTR               20 (post)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST    171 (url, headers)
+                LOAD_FAST_LOAD_FAST    231 (payload, timeout)
+                LOAD_CONST              19 (('headers', 'json', 'timeout'))
+                CALL_KW                  4
+                STORE_FAST              15 (r)
+
+ 146            LOAD_FAST               15 (r)
+                LOAD_ATTR               22 (status_code)
+                LOAD_CONST              20 (400)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       45 (to L14)
+                LOAD_CONST              21 ('response_format')
+                LOAD_FAST               14 (payload)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       39 (to L14)
+
+ 147            LOAD_FAST               14 (payload)
+                LOAD_ATTR               25 (pop + NULL|self)
+                LOAD_CONST              21 ('response_format')
+                LOAD_CONST              22 (None)
+                CALL                     2
+                POP_TOP
+
+ 148            LOAD_GLOBAL             18 (requests)
+                LOAD_ATTR               20 (post)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST    171 (url, headers)
+                LOAD_FAST_LOAD_FAST    231 (payload, timeout)
+                LOAD_CONST              19 (('headers', 'json', 'timeout'))
+                CALL_KW                  4
+                STORE_FAST              15 (r)
+
+ 155   L14:     LOAD_FAST               15 (r)
+                LOAD_ATTR               22 (status_code)
+                LOAD_CONST              26 (200)
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE       73 (to L15)
+
+ 156            LOAD_GLOBAL             33 (ProviderError + NULL)
+                LOAD_FAST                0 (provider)
+                FORMAT_SIMPLE
+                LOAD_CONST              27 (' HTTP ')
+                LOAD_FAST               15 (r)
+                LOAD_ATTR               22 (status_code)
+                FORMAT_SIMPLE
+                LOAD_CONST              28 (': ')
+                LOAD_FAST               15 (r)
+                LOAD_ATTR               34 (text)
+                LOAD_CONST              22 (None)
+                LOAD_CONST              26 (200)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             5
+
+ 157            LOAD_GLOBAL             37 (_classify + NULL)
+                LOAD_FAST               15 (r)
+                LOAD_ATTR               22 (status_code)
+                LOAD_FAST               15 (r)
+                LOAD_ATTR               34 (text)
+                CALL                     2
+
+ 156            CALL                     2
+                RAISE_VARARGS            1
+
+ 158   L15:     NOP
+
+ 159   L16:     LOAD_FAST               15 (r)
+                LOAD_ATTR               39 (json + NULL|self)
+                CALL                     0
+                STORE_FAST              18 (data)
+
+ 160            LOAD_FAST               18 (data)
+                LOAD_CONST              29 ('choices')
+                BINARY_SUBSCR
+                LOAD_CONST              30 (0)
+                BINARY_SUBSCR
+                LOAD_CONST              31 ('message')
+                BINARY_SUBSCR
+                LOAD_CONST              32 ('content')
+                BINARY_SUBSCR
+                STORE_FAST              19 (content)
+
+ 163   L17:     LOAD_FAST               18 (data)
+                LOAD_ATTR               47 (get + NULL|self)
+                LOAD_CONST              35 ('usage')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L18)
+                POP_TOP
+                BUILD_MAP                0
+       L18:     LOAD_ATTR               47 (get + NULL|self)
+                LOAD_CONST              36 ('total_tokens')
+                LOAD_CONST              30 (0)
+                CALL                     2
+                STORE_FAST              20 (usage)
+
+ 164            LOAD_FAST               19 (content)
+                LOAD_GLOBAL             49 (int + NULL)
+                LOAD_FAST               20 (usage)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L19)
+                POP_TOP
+                LOAD_CONST              30 (0)
+       L19:     CALL                     1
+                BUILD_TUPLE              2
+                RETURN_VALUE
+
+  --   L20:     SWAP                     2
+                POP_TOP
+
+ 124            SWAP                     3
+                STORE_FAST              13 (v)
+                STORE_FAST              12 (k)
+                RERAISE                  0
+
+  --   L21:     PUSH_EXC_INFO
+
+ 149            LOAD_GLOBAL             18 (requests)
+                LOAD_ATTR               26 (RequestException)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       57 (to L26)
+                STORE_FAST              16 (e)
+
+ 152   L22:     LOAD_GLOBAL             29 (isinstance + NULL)
+                LOAD_FAST               16 (e)
+                LOAD_GLOBAL             18 (requests)
+                LOAD_ATTR               30 (ConnectionError)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L23)
+                LOAD_CONST              23 ('conn')
+                JUMP_FORWARD             1 (to L24)
+       L23:     LOAD_CONST              24 ('rate')
+       L24:     STORE_FAST              17 (_cat)
+
+ 153            LOAD_GLOBAL             33 (ProviderError + NULL)
+                LOAD_FAST                0 (provider)
+                FORMAT_SIMPLE
+                LOAD_CONST              25 (' lỗi kết nối: ')
+                LOAD_FAST               16 (e)
+                FORMAT_SIMPLE
+                BUILD_STRING             3
+                LOAD_FAST               17 (_cat)
+                CALL                     2
+                RAISE_VARARGS            1
+
+  --   L25:     LOAD_CONST              22 (None)
+                STORE_FAST              16 (e)
+                DELETE_FAST             16 (e)
+                RERAISE                  1
+
+ 149   L26:     RERAISE                  0
+
+  --   L27:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L28:     PUSH_EXC_INFO
+
+ 161            LOAD_GLOBAL             40 (KeyError)
+                LOAD_GLOBAL             42 (IndexError)
+                LOAD_GLOBAL             44 (ValueError)
+                BUILD_TUPLE              3
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       31 (to L29)
+                POP_TOP
+
+ 162            LOAD_GLOBAL             33 (ProviderError + NULL)
+                LOAD_FAST                0 (provider)
+                FORMAT_SIMPLE
+                LOAD_CONST              33 (' phản hồi không hợp lệ: ')
+                LOAD_FAST               15 (r)
+                LOAD_ATTR               34 (text)
+                LOAD_CONST              22 (None)
+                LOAD_CONST              26 (200)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             3
+                LOAD_CONST              34 ('other')
+                CALL                     2
+                RAISE_VARARGS            1
+
+ 161   L29:     RERAISE                  0
+
+  --   L30:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L5 to L8 -> L20 [5]
+  L13 to L14 -> L21 [0]
+  L16 to L17 -> L28 [0]
+  L21 to L22 -> L27 [1] lasti
+  L22 to L25 -> L25 [1] lasti
+  L25 to L27 -> L27 [1] lasti
+  L28 to L30 -> L30 [1] lasti

@@ -1,0 +1,1759 @@
+=== FILE: bilisub\gui\vieneu_dialog.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('🗣 Dialog TẢI BỘ GIỌNG VIỆT OFFLINE (VieNeu) — 14 giọng, KHÔNG cần card, KHÔNG cần mạng.\n\nCùng cơ chế nút ⚡ Tăng tốc GPU / 🔥 Giọng clone: bản .exe giữ nhẹ, MÃ thư viện đã đóng sẵn\ntrong .exe, chỉ MODEL (~185 MB nén / 244 MB giải nén) là tải riêng một lần về\n``%LOCALAPPDATA%\\PeiPeiReup\\vieneu`` (user chọn ổ khác được).\n\n★ KHÁC gói ⚡ GPU một điểm QUAN TRỌNG: **KHÔNG phải khởi động lại tool**. Gói GPU phải nạp\nDLL CUDA vào PATH ngay lúc app mở nên bắt buộc mở lại; còn VieNeu chỉ đọc thư mục model lúc\n``ensure_ready()`` — tức là NGAY LẦN LỒNG TIẾNG KẾ TIẾP. Tải xong bấm 🔊 Nghe thử là ra tiếng.\n\n🔴 Hai cái bẫy đã chặn ở đây (đều là ca thật của các gói trước):\n  • zip tải DỞ / giải nén THIẾU file ⇒ lỗi ONNX khó hiểu giữa lúc lồng tiếng 2.000 câu.\n    ⇒ giải nén xong SOÁT ĐỦ 13 file bằng chính ``vieneu.missing_files()`` (cùng một nguồn\n    sự thật với engine), thiếu là báo tên file ra màn hình.\n  • zip đóng gói có/không có THƯ MỤC BỌC ngoài (``vieneu/onnx_int8`` vs ``onnx_int8``)\n    ⇒ tự dò và kéo lên đúng chỗ, không bắt Boss đóng gói theo đúng một kiểu duy nhất.\n')
+              STORE_NAME               0 (__doc__)
+
+ 18           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 20           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (shutil)
+              STORE_NAME               3 (shutil)
+
+ 21           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (zipfile)
+              STORE_NAME               4 (zipfile)
+
+ 22           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Path',))
+              IMPORT_NAME              5 (pathlib)
+              IMPORT_FROM              6 (Path)
+              STORE_NAME               6 (Path)
+              POP_TOP
+
+ 24           LOAD_CONST               1 (0)
+              LOAD_CONST               5 (('QThread', 'pyqtSignal'))
+              IMPORT_NAME              7 (PyQt6.QtCore)
+              IMPORT_FROM              8 (QThread)
+              STORE_NAME               8 (QThread)
+              IMPORT_FROM              9 (pyqtSignal)
+              STORE_NAME               9 (pyqtSignal)
+              POP_TOP
+
+ 25           LOAD_CONST               1 (0)
+              LOAD_CONST               6 (('QDialog', 'QFileDialog', 'QHBoxLayout', 'QLabel', 'QLineEdit', 'QProgressBar', 'QPushButton', 'QVBoxLayout'))
+              IMPORT_NAME             10 (PyQt6.QtWidgets)
+              IMPORT_FROM             11 (QDialog)
+              STORE_NAME              11 (QDialog)
+              IMPORT_FROM             12 (QFileDialog)
+              STORE_NAME              12 (QFileDialog)
+              IMPORT_FROM             13 (QHBoxLayout)
+              STORE_NAME              13 (QHBoxLayout)
+              IMPORT_FROM             14 (QLabel)
+              STORE_NAME              14 (QLabel)
+              IMPORT_FROM             15 (QLineEdit)
+              STORE_NAME              15 (QLineEdit)
+              IMPORT_FROM             16 (QProgressBar)
+              STORE_NAME              16 (QProgressBar)
+              IMPORT_FROM             17 (QPushButton)
+              STORE_NAME              17 (QPushButton)
+              IMPORT_FROM             18 (QVBoxLayout)
+              STORE_NAME              18 (QVBoxLayout)
+              POP_TOP
+
+ 29           LOAD_CONST               7 (2)
+              LOAD_CONST               8 (('pack_root', 'set_pack_root'))
+              IMPORT_NAME             19 (config)
+              IMPORT_FROM             20 (pack_root)
+              STORE_NAME              20 (pack_root)
+              IMPORT_FROM             21 (set_pack_root)
+              STORE_NAME              21 (set_pack_root)
+              POP_TOP
+
+ 30           LOAD_CONST               7 (2)
+              LOAD_CONST               9 (('vieneu',))
+              IMPORT_NAME             22 (tts)
+              IMPORT_FROM             23 (vieneu)
+              STORE_NAME              24 (_vn)
+              POP_TOP
+
+ 32           LOAD_CONST              10 ('https://github.com/LeeJiHoon0112/peipei-downloads/releases/download/v1.0/peipei_vieneu_pack.zip')
+              STORE_NAME              25 (_PACK_URL)
+
+ 35           LOAD_CONST              11 (1.2)
+              STORE_NAME              26 (_NEED_GB)
+
+ 38           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              12 (<code object _At at 0x0000016DC90F2010, file "bilisub\gui\vieneu_dialog.py", line 38>)
+              MAKE_FUNCTION
+              LOAD_CONST              13 ('_At')
+              CALL                     2
+              STORE_NAME              27 (_At)
+
+ 49           LOAD_CONST              19 (('dst', 'Path', 'return', 'None'))
+              LOAD_CONST              14 (<code object _flatten at 0x0000016DC8F7EDC0, file "bilisub\gui\vieneu_dialog.py", line 49>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              28 (_flatten)
+
+ 67           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              15 (<code object _VieNeuWorker at 0x0000016DC8E06FB0, file "bilisub\gui\vieneu_dialog.py", line 67>)
+              MAKE_FUNCTION
+              LOAD_CONST              16 ('_VieNeuWorker')
+              LOAD_NAME                8 (QThread)
+              CALL                     3
+              STORE_NAME              29 (_VieNeuWorker)
+
+144           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              17 (<code object VieNeuPackDialog at 0x0000016DC8E07230, file "bilisub\gui\vieneu_dialog.py", line 144>)
+              MAKE_FUNCTION
+              LOAD_CONST              18 ('VieNeuPackDialog')
+              LOAD_NAME               11 (QDialog)
+              CALL                     3
+              STORE_NAME              30 (VieNeuPackDialog)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object _At at 0x0000016DC90F2010, file "bilisub\gui\vieneu_dialog.py", line 38>:
+ 38           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('_At')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (38)
+              STORE_NAME               3 (__firstlineno__)
+
+ 39           LOAD_CONST               2 ('Vỏ settings tối giản để hỏi ``vieneu.missing_files`` về ĐÚNG thư mục vừa giải nén.\n\n(Không dùng ``missing_files(None)``: khách ép ``settings.vieneu_pack_dir`` sang chỗ khác\nthì hàm đó soi nhầm thư mục ⇒ báo "đã cài" trong khi gói vừa tải nằm nơi khác.)\n')
+              STORE_NAME               4 (__doc__)
+
+ 45           LOAD_CONST               6 (('d', 'Path'))
+              LOAD_CONST               3 (<code object __init__ at 0x0000016DC90F1110, file "bilisub\gui\vieneu_dialog.py", line 45>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               5 (__init__)
+              LOAD_CONST               4 (('vieneu_pack_dir',))
+              STORE_NAME               6 (__static_attributes__)
+              RETURN_CONST             5 (None)
+
+Disassembly of <code object __init__ at 0x0000016DC90F1110, file "bilisub\gui\vieneu_dialog.py", line 45>:
+ 45           RESUME                   0
+
+ 46           LOAD_GLOBAL              1 (str + NULL)
+              LOAD_FAST                1 (d)
+              CALL                     1
+              LOAD_FAST                0 (self)
+              STORE_ATTR               1 (vieneu_pack_dir)
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _flatten at 0x0000016DC8F7EDC0, file "bilisub\gui\vieneu_dialog.py", line 49>:
+  49            RESUME                   0
+
+  51            LOAD_FAST                0 (dst)
+                LOAD_CONST               1 ('onnx_int8')
+                BINARY_OP               11 (/)
+                LOAD_ATTR                1 (is_dir + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_FALSE       25 (to L1)
+                LOAD_FAST                0 (dst)
+                LOAD_CONST               2 ('codec')
+                BINARY_OP               11 (/)
+                LOAD_ATTR                1 (is_dir + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_FALSE        1 (to L1)
+
+  52            RETURN_CONST             3 (None)
+
+  53    L1:     LOAD_GLOBAL              3 (sorted + NULL)
+                LOAD_CONST               4 (<code object <genexpr> at 0x0000016DC9129FB0, file "bilisub\gui\vieneu_dialog.py", line 53>)
+                MAKE_FUNCTION
+                LOAD_FAST                0 (dst)
+                LOAD_ATTR                5 (iterdir + NULL|self)
+                CALL                     0
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                GET_ITER
+        L2:     FOR_ITER               173 (to L10)
+                STORE_FAST               1 (sub)
+
+  54            LOAD_FAST                1 (sub)
+                LOAD_CONST               1 ('onnx_int8')
+                BINARY_OP               11 (/)
+                LOAD_ATTR                1 (is_dir + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L3)
+                JUMP_BACKWARD           29 (to L2)
+        L3:     LOAD_FAST                1 (sub)
+                LOAD_CONST               2 ('codec')
+                BINARY_OP               11 (/)
+                LOAD_ATTR                1 (is_dir + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L4)
+                JUMP_BACKWARD           55 (to L2)
+
+  55    L4:     LOAD_FAST                1 (sub)
+                LOAD_ATTR                5 (iterdir + NULL|self)
+                CALL                     0
+                GET_ITER
+        L5:     FOR_ITER                81 (to L7)
+                STORE_FAST               2 (item)
+
+  56            LOAD_FAST_LOAD_FAST      2 (dst, item)
+                LOAD_ATTR                6 (name)
+                BINARY_OP               11 (/)
+                STORE_FAST               3 (target)
+
+  57            LOAD_FAST                3 (target)
+                LOAD_ATTR                9 (exists + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L6)
+
+  58            JUMP_BACKWARD           40 (to L5)
+
+  59    L6:     LOAD_GLOBAL             10 (shutil)
+                LOAD_ATTR               12 (move)
+                PUSH_NULL
+                LOAD_GLOBAL             15 (str + NULL)
+                LOAD_FAST                2 (item)
+                CALL                     1
+                LOAD_GLOBAL             15 (str + NULL)
+                LOAD_FAST                3 (target)
+                CALL                     1
+                CALL                     2
+                POP_TOP
+                JUMP_BACKWARD           83 (to L5)
+
+  55    L7:     END_FOR
+                POP_TOP
+
+  60            NOP
+
+  61    L8:     LOAD_FAST                1 (sub)
+                LOAD_ATTR               17 (rmdir + NULL|self)
+                CALL                     0
+                POP_TOP
+
+  64    L9:     POP_TOP
+                RETURN_CONST             3 (None)
+
+  53   L10:     END_FOR
+                POP_TOP
+                RETURN_CONST             3 (None)
+
+  --   L11:     PUSH_EXC_INFO
+
+  62            LOAD_GLOBAL             18 (OSError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L13)
+                POP_TOP
+
+  63   L12:     POP_EXCEPT
+
+  64            POP_TOP
+                RETURN_CONST             3 (None)
+
+  62   L13:     RERAISE                  0
+
+  --   L14:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L8 to L9 -> L11 [1]
+  L11 to L12 -> L14 [2] lasti
+  L13 to L14 -> L14 [2] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC9129FB0, file "bilisub\gui\vieneu_dialog.py", line 53>:
+  53           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                29 (to L5)
+               STORE_FAST_LOAD_FAST    17 (p, p)
+               LOAD_ATTR                1 (is_dir + NULL|self)
+               CALL                     0
+               TO_BOOL
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           25 (to L2)
+       L4:     LOAD_FAST                1 (p)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           31 (to L2)
+       L5:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L6:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L6 [0] lasti
+  L4 to L6 -> L6 [0] lasti
+
+Disassembly of <code object _VieNeuWorker at 0x0000016DC8E06FB0, file "bilisub\gui\vieneu_dialog.py", line 67>:
+  --           MAKE_CELL                0 (__class__)
+
+  67           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('_VieNeuWorker')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (67)
+               STORE_NAME               3 (__firstlineno__)
+
+  68           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                5 (int)
+               CALL                     1
+               STORE_NAME               6 (prog)
+
+  69           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                7 (str)
+               CALL                     1
+               STORE_NAME               8 (stage)
+
+  70           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               CALL                     0
+               STORE_NAME               9 (done)
+
+  71           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                7 (str)
+               CALL                     1
+               STORE_NAME              10 (failed)
+
+  73           LOAD_CONST               5 (('', None))
+               LOAD_CONST               6 (('dst', 'Path', 'local_zip', 'str'))
+               LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               2 (<code object __init__ at 0x0000016DC8EC3360, file "bilisub\gui\vieneu_dialog.py", line 73>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              11 (__init__)
+
+  78           LOAD_CONST               3 (<code object run at 0x0000016DC8CE9CF0, file "bilisub\gui\vieneu_dialog.py", line 78>)
+               MAKE_FUNCTION
+               STORE_NAME              12 (run)
+               LOAD_CONST               4 (('dst', 'local_zip'))
+               STORE_NAME              13 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME              14 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC8EC3360, file "bilisub\gui\vieneu_dialog.py", line 73>:
+  --           COPY_FREE_VARS           1
+
+  73           RESUME                   0
+
+  74           LOAD_GLOBAL              0 (super)
+               LOAD_DEREF               4 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+               LOAD_FAST                3 (parent)
+               CALL                     1
+               POP_TOP
+
+  75           LOAD_GLOBAL              5 (Path + NULL)
+               LOAD_FAST                1 (dst)
+               CALL                     1
+               LOAD_FAST                0 (self)
+               STORE_ATTR               3 (dst)
+
+  76           LOAD_FAST                2 (local_zip)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L1)
+               POP_TOP
+               LOAD_CONST               1 ('')
+       L1:     LOAD_ATTR                9 (strip + NULL|self)
+               CALL                     0
+               LOAD_FAST                0 (self)
+               STORE_ATTR               5 (local_zip)
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object run at 0x0000016DC8CE9CF0, file "bilisub\gui\vieneu_dialog.py", line 78>:
+  78            RESUME                   0
+
+  79            LOAD_CONST               1 (0)
+                LOAD_CONST               0 (None)
+                IMPORT_NAME              0 (requests)
+                STORE_FAST               1 (requests)
+
+  80            LOAD_CONST               0 (None)
+                STORE_FAST               2 (tmp)
+
+  81            NOP
+
+  82    L1:     LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (dst)
+                STORE_FAST               3 (dst)
+
+  83            LOAD_FAST                3 (dst)
+                LOAD_ATTR                5 (mkdir + NULL|self)
+                LOAD_CONST               2 (True)
+                LOAD_CONST               2 (True)
+                LOAD_CONST               3 (('parents', 'exist_ok'))
+                CALL_KW                  2
+                POP_TOP
+
+  84    L2:     NOP
+
+  85    L3:     LOAD_GLOBAL              6 (shutil)
+                LOAD_ATTR                8 (disk_usage)
+                PUSH_NULL
+                LOAD_FAST                3 (dst)
+                CALL                     1
+                LOAD_ATTR               10 (free)
+                LOAD_CONST               4 (1073741824)
+                BINARY_OP               11 (/)
+                STORE_FAST               4 (free_gb)
+
+  88    L4:     LOAD_FAST                4 (free_gb)
+                LOAD_GLOBAL             14 (_NEED_GB)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       46 (to L6)
+
+  89            LOAD_GLOBAL             17 (RuntimeError + NULL)
+
+  90            LOAD_CONST               6 ('Ổ chứa gói (')
+                LOAD_FAST                3 (dst)
+                LOAD_ATTR               18 (drive)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L5)
+                POP_TOP
+                LOAD_FAST                3 (dst)
+        L5:     FORMAT_SIMPLE
+                LOAD_CONST               7 (') chỉ còn ')
+                LOAD_FAST                4 (free_gb)
+                LOAD_CONST               8 ('.1f')
+                FORMAT_WITH_SPEC
+                LOAD_CONST               9 (' GB trống — cần khoảng ')
+
+  91            LOAD_GLOBAL             14 (_NEED_GB)
+                LOAD_CONST               8 ('.1f')
+                FORMAT_WITH_SPEC
+                LOAD_CONST              10 (" GB (tải ~185 MB + giải nén ~244 MB). Bấm '…' chọn ổ khác còn nhiều chỗ rồi tải lại.")
+
+  90            BUILD_STRING             7
+
+  89            CALL                     1
+                RAISE_VARARGS            1
+
+  94    L6:     LOAD_FAST                0 (self)
+                LOAD_ATTR               20 (local_zip)
+                TO_BOOL
+                POP_JUMP_IF_FALSE      112 (to L8)
+
+  95            LOAD_GLOBAL             23 (Path + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               20 (local_zip)
+                CALL                     1
+                STORE_FAST               5 (src_zip)
+
+  96            LOAD_FAST                5 (src_zip)
+                LOAD_ATTR               25 (is_file + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_TRUE        14 (to L7)
+
+  97            LOAD_GLOBAL             17 (RuntimeError + NULL)
+                LOAD_CONST              11 ('Không thấy file: ')
+                LOAD_FAST                5 (src_zip)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                CALL                     1
+                RAISE_VARARGS            1
+
+  98    L7:     LOAD_FAST                0 (self)
+                LOAD_ATTR               26 (stage)
+                LOAD_ATTR               29 (emit + NULL|self)
+                LOAD_CONST              12 ('Đang giải nén từ file có sẵn…')
+                CALL                     1
+                POP_TOP
+
+  99            LOAD_FAST                0 (self)
+                LOAD_ATTR               30 (prog)
+                LOAD_ATTR               29 (emit + NULL|self)
+                LOAD_CONST              13 (50)
+                CALL                     1
+                POP_TOP
+                EXTENDED_ARG             1
+                JUMP_FORWARD           301 (to L21)
+
+ 103    L8:     LOAD_FAST                3 (dst)
+                LOAD_CONST              14 ('_vieneu_download.zip')
+                BINARY_OP               11 (/)
+                STORE_FAST               2 (tmp)
+
+ 104            LOAD_FAST                2 (tmp)
+                STORE_FAST               5 (src_zip)
+
+ 105            LOAD_FAST                0 (self)
+                LOAD_ATTR               26 (stage)
+                LOAD_ATTR               29 (emit + NULL|self)
+                LOAD_CONST              15 ('Đang tải bộ giọng Việt offline (~185 MB)… (chỉ tải một lần)')
+                CALL                     1
+                POP_TOP
+
+ 106            LOAD_FAST                1 (requests)
+                LOAD_ATTR               33 (get + NULL|self)
+                LOAD_GLOBAL             34 (_PACK_URL)
+                LOAD_CONST               2 (True)
+                LOAD_CONST              16 ((15, 120))
+                LOAD_CONST              17 (('stream', 'timeout'))
+                CALL_KW                  3
+                BEFORE_WITH
+        L9:     STORE_FAST               6 (r)
+
+ 107            LOAD_FAST                6 (r)
+                LOAD_ATTR               37 (raise_for_status + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 108            LOAD_GLOBAL             39 (int + NULL)
+                LOAD_FAST                6 (r)
+                LOAD_ATTR               40 (headers)
+                LOAD_ATTR               33 (get + NULL|self)
+                LOAD_CONST              18 ('Content-Length')
+                LOAD_CONST               1 (0)
+                CALL                     2
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L10)
+                POP_TOP
+                LOAD_CONST               1 (0)
+       L10:     CALL                     1
+                STORE_FAST               7 (total)
+
+ 109            LOAD_CONST               1 (0)
+                STORE_FAST               8 (got)
+
+ 110            LOAD_GLOBAL             43 (open + NULL)
+                LOAD_FAST                2 (tmp)
+                LOAD_CONST              19 ('wb')
+                CALL                     2
+                BEFORE_WITH
+       L11:     STORE_FAST               9 (f)
+
+ 111            LOAD_FAST                6 (r)
+                LOAD_ATTR               45 (iter_content + NULL|self)
+                LOAD_CONST              20 (1048576)
+                CALL                     1
+                GET_ITER
+       L12:     FOR_ITER               104 (to L17)
+                STORE_FAST              10 (chunk)
+
+ 112            LOAD_FAST               10 (chunk)
+                TO_BOOL
+       L13:     POP_JUMP_IF_TRUE         2 (to L14)
+                JUMP_BACKWARD           12 (to L12)
+
+ 113   L14:     LOAD_FAST                9 (f)
+                LOAD_ATTR               47 (write + NULL|self)
+                LOAD_FAST               10 (chunk)
+                CALL                     1
+                POP_TOP
+
+ 114            LOAD_FAST                8 (got)
+                LOAD_GLOBAL             49 (len + NULL)
+                LOAD_FAST               10 (chunk)
+                CALL                     1
+                BINARY_OP               13 (+=)
+                STORE_FAST               8 (got)
+
+ 115            LOAD_FAST                7 (total)
+                TO_BOOL
+       L15:     POP_JUMP_IF_TRUE         2 (to L16)
+                JUMP_BACKWARD           52 (to L12)
+
+ 116   L16:     LOAD_FAST                0 (self)
+                LOAD_ATTR               30 (prog)
+                LOAD_ATTR               29 (emit + NULL|self)
+                LOAD_GLOBAL             51 (min + NULL)
+                LOAD_CONST              21 (95)
+                LOAD_GLOBAL             39 (int + NULL)
+                LOAD_FAST                8 (got)
+                LOAD_CONST              21 (95)
+                BINARY_OP                5 (*)
+                LOAD_FAST                7 (total)
+                BINARY_OP               11 (/)
+                CALL                     1
+                CALL                     2
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD          106 (to L12)
+
+ 111   L17:     END_FOR
+                POP_TOP
+
+ 110   L18:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+
+ 106   L19:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+
+ 117   L20:     LOAD_FAST                0 (self)
+                LOAD_ATTR               26 (stage)
+                LOAD_ATTR               29 (emit + NULL|self)
+                LOAD_CONST              22 ('Đang giải nén…')
+                CALL                     1
+                POP_TOP
+
+ 119   L21:     LOAD_GLOBAL             52 (zipfile)
+                LOAD_ATTR               54 (ZipFile)
+                PUSH_NULL
+                LOAD_FAST                5 (src_zip)
+                CALL                     1
+                BEFORE_WITH
+       L22:     STORE_FAST              11 (z)
+
+ 120            LOAD_FAST               11 (z)
+                LOAD_ATTR               57 (extractall + NULL|self)
+                LOAD_FAST                3 (dst)
+                CALL                     1
+                POP_TOP
+
+ 119   L23:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+
+ 121   L24:     LOAD_FAST                2 (tmp)
+                POP_JUMP_IF_NONE        15 (to L25)
+
+ 122            LOAD_FAST                2 (tmp)
+                LOAD_ATTR               59 (unlink + NULL|self)
+                LOAD_CONST               2 (True)
+                LOAD_CONST              23 (('missing_ok',))
+                CALL_KW                  1
+                POP_TOP
+
+ 123   L25:     LOAD_GLOBAL             61 (_flatten + NULL)
+                LOAD_FAST                3 (dst)
+                CALL                     1
+                POP_TOP
+
+ 126            LOAD_GLOBAL             62 (_vn)
+                LOAD_ATTR               64 (missing_files)
+                PUSH_NULL
+                LOAD_GLOBAL             67 (_At + NULL)
+                LOAD_FAST                3 (dst)
+                CALL                     1
+                CALL                     1
+                STORE_FAST              12 (miss)
+
+ 127            LOAD_FAST               12 (miss)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       94 (to L28)
+
+ 128            LOAD_CONST              24 (', ')
+                LOAD_ATTR               69 (join + NULL|self)
+                LOAD_CONST              25 (<code object <genexpr> at 0x0000016DC91297D0, file "bilisub\gui\vieneu_dialog.py", line 128>)
+                MAKE_FUNCTION
+                LOAD_FAST               12 (miss)
+                LOAD_CONST               0 (None)
+                LOAD_CONST              26 (3)
+                BINARY_SLICE
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                STORE_FAST              13 (head)
+
+ 129            LOAD_GLOBAL             49 (len + NULL)
+                LOAD_FAST               12 (miss)
+                CALL                     1
+                LOAD_CONST              26 (3)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       18 (to L26)
+                LOAD_CONST              27 (' (+')
+                LOAD_GLOBAL             49 (len + NULL)
+                LOAD_FAST               12 (miss)
+                CALL                     1
+                LOAD_CONST              26 (3)
+                BINARY_OP               10 (-)
+                FORMAT_SIMPLE
+                LOAD_CONST              28 (' file nữa)')
+                BUILD_STRING             3
+                JUMP_FORWARD             1 (to L27)
+       L26:     LOAD_CONST              29 ('')
+       L27:     STORE_FAST              14 (more)
+
+ 130            LOAD_GLOBAL             17 (RuntimeError + NULL)
+
+ 131            LOAD_CONST              30 ('Giải nén xong nhưng THIẾU ')
+                LOAD_GLOBAL             49 (len + NULL)
+                LOAD_FAST               12 (miss)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              31 (' file model: ')
+                LOAD_FAST               13 (head)
+                FORMAT_SIMPLE
+                LOAD_FAST               14 (more)
+                FORMAT_SIMPLE
+                LOAD_CONST              32 ('. Gói tải dở hoặc hỏng — xoá thư mục ')
+
+ 132            LOAD_FAST                3 (dst)
+                FORMAT_SIMPLE
+                LOAD_CONST              33 (' rồi tải lại.')
+
+ 131            BUILD_STRING             8
+
+ 130            CALL                     1
+                RAISE_VARARGS            1
+
+ 133   L28:     LOAD_FAST                0 (self)
+                LOAD_ATTR               30 (prog)
+                LOAD_ATTR               29 (emit + NULL|self)
+                LOAD_CONST              34 (100)
+                CALL                     1
+                POP_TOP
+
+ 134            LOAD_FAST                0 (self)
+                LOAD_ATTR               70 (done)
+                LOAD_ATTR               29 (emit + NULL|self)
+                CALL                     0
+                POP_TOP
+       L29:     RETURN_CONST             0 (None)
+
+  --   L30:     PUSH_EXC_INFO
+
+  86            LOAD_GLOBAL             12 (OSError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        6 (to L32)
+                POP_TOP
+
+  87            LOAD_CONST               5 (999.0)
+                STORE_FAST               4 (free_gb)
+       L31:     POP_EXCEPT
+                EXTENDED_ARG             2
+                JUMP_BACKWARD_NO_INTERRUPT 764 (to L4)
+
+  86   L32:     RERAISE                  0
+
+  --   L33:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+ 110   L34:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L35)
+                RERAISE                  2
+       L35:     POP_TOP
+       L36:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                EXTENDED_ARG             1
+                JUMP_BACKWARD_NO_INTERRUPT 332 (to L19)
+
+  --   L37:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+ 106   L38:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L39)
+                RERAISE                  2
+       L39:     POP_TOP
+       L40:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                EXTENDED_ARG             1
+                JUMP_BACKWARD_NO_INTERRUPT 342 (to L20)
+
+  --   L41:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+ 119   L42:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L43)
+                RERAISE                  2
+       L43:     POP_TOP
+       L44:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                EXTENDED_ARG             1
+                JUMP_BACKWARD_NO_INTERRUPT 285 (to L24)
+
+  --   L45:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L46:     PUSH_EXC_INFO
+
+ 135            LOAD_GLOBAL             72 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       85 (to L57)
+                STORE_FAST              15 (e)
+
+ 136   L47:     NOP
+
+ 137   L48:     LOAD_FAST                2 (tmp)
+                POP_JUMP_IF_NONE        15 (to L49)
+
+ 138            LOAD_FAST                2 (tmp)
+                LOAD_ATTR               59 (unlink + NULL|self)
+                LOAD_CONST               2 (True)
+                LOAD_CONST              23 (('missing_ok',))
+                CALL_KW                  1
+                POP_TOP
+
+  --   L49:     JUMP_FORWARD            16 (to L54)
+       L50:     PUSH_EXC_INFO
+
+ 139            LOAD_GLOBAL             12 (OSError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L52)
+                POP_TOP
+
+ 140   L51:     POP_EXCEPT
+                JUMP_FORWARD             4 (to L54)
+
+ 139   L52:     RERAISE                  0
+
+  --   L53:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+ 141   L54:     LOAD_FAST                0 (self)
+                LOAD_ATTR               74 (failed)
+                LOAD_ATTR               29 (emit + NULL|self)
+                LOAD_GLOBAL             77 (str + NULL)
+                LOAD_FAST               15 (e)
+                CALL                     1
+                LOAD_CONST               0 (None)
+                LOAD_CONST              35 (300)
+                BINARY_SLICE
+                CALL                     1
+                POP_TOP
+       L55:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST              15 (e)
+                DELETE_FAST             15 (e)
+                RETURN_CONST             0 (None)
+
+  --   L56:     LOAD_CONST               0 (None)
+                STORE_FAST              15 (e)
+                DELETE_FAST             15 (e)
+                RERAISE                  1
+
+ 135   L57:     RERAISE                  0
+
+  --   L58:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L46 [0]
+  L3 to L4 -> L30 [0]
+  L4 to L9 -> L46 [0]
+  L9 to L11 -> L38 [1] lasti
+  L11 to L13 -> L34 [2] lasti
+  L14 to L15 -> L34 [2] lasti
+  L16 to L18 -> L34 [2] lasti
+  L18 to L19 -> L38 [1] lasti
+  L19 to L22 -> L46 [0]
+  L22 to L23 -> L42 [1] lasti
+  L23 to L29 -> L46 [0]
+  L30 to L31 -> L33 [1] lasti
+  L31 to L32 -> L46 [0]
+  L32 to L33 -> L33 [1] lasti
+  L33 to L34 -> L46 [0]
+  L34 to L36 -> L37 [4] lasti
+  L36 to L38 -> L38 [1] lasti
+  L38 to L40 -> L41 [3] lasti
+  L40 to L42 -> L46 [0]
+  L42 to L44 -> L45 [3] lasti
+  L44 to L46 -> L46 [0]
+  L46 to L47 -> L58 [1] lasti
+  L48 to L49 -> L50 [1]
+  L49 to L50 -> L56 [1] lasti
+  L50 to L51 -> L53 [2] lasti
+  L51 to L52 -> L56 [1] lasti
+  L52 to L53 -> L53 [2] lasti
+  L53 to L55 -> L56 [1] lasti
+  L56 to L58 -> L58 [1] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC91297D0, file "bilisub\gui\vieneu_dialog.py", line 128>:
+ 128           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                26 (to L3)
+               STORE_FAST               1 (m)
+               LOAD_GLOBAL              1 (Path + NULL)
+               LOAD_FAST                1 (m)
+               CALL                     1
+               LOAD_ATTR                2 (name)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           28 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object VieNeuPackDialog at 0x0000016DC8E07230, file "bilisub\gui\vieneu_dialog.py", line 144>:
+  --           MAKE_CELL                0 (__class__)
+
+ 144           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('VieNeuPackDialog')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (144)
+               STORE_NAME               3 (__firstlineno__)
+
+ 145           LOAD_CONST               2 ('Hộp tải gói giọng Việt offline. ``settings`` chỉ dùng để tôn trọng ``vieneu_pack_dir``.')
+               STORE_NAME               4 (__doc__)
+
+ 147           LOAD_CONST              13 ((None, None))
+               LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               3 (<code object __init__ at 0x0000016DC8FE10E0, file "bilisub\gui\vieneu_dialog.py", line 147>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME               5 (__init__)
+
+ 222           LOAD_CONST               4 (<code object _choose_dir at 0x0000016DC90D0030, file "bilisub\gui\vieneu_dialog.py", line 222>)
+               MAKE_FUNCTION
+               STORE_NAME               6 (_choose_dir)
+
+ 228           LOAD_CONST              14 (('return', 'bool'))
+               LOAD_CONST               5 (<code object _busy at 0x0000016DC8EA2AF0, file "bilisub\gui\vieneu_dialog.py", line 228>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME               7 (_busy)
+
+ 231           LOAD_CONST              15 (('',))
+               LOAD_CONST              16 (('local_zip', 'str'))
+               LOAD_CONST               6 (<code object _begin at 0x0000016DC8CEA580, file "bilisub\gui\vieneu_dialog.py", line 231>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME               8 (_begin)
+
+ 250           LOAD_CONST               7 (<code object _start at 0x0000016DC90F1E30, file "bilisub\gui\vieneu_dialog.py", line 250>)
+               MAKE_FUNCTION
+               STORE_NAME               9 (_start)
+
+ 253           LOAD_CONST               8 (<code object _start_local at 0x0000016DC90EE290, file "bilisub\gui\vieneu_dialog.py", line 253>)
+               MAKE_FUNCTION
+               STORE_NAME              10 (_start_local)
+
+ 261           LOAD_CONST               9 (<code object _done at 0x0000016DC8F4F3E0, file "bilisub\gui\vieneu_dialog.py", line 261>)
+               MAKE_FUNCTION
+               STORE_NAME              11 (_done)
+
+ 280           LOAD_CONST              17 (('msg', 'str'))
+               LOAD_CONST              10 (<code object _failed at 0x0000016DC8EC5080, file "bilisub\gui\vieneu_dialog.py", line 280>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              12 (_failed)
+
+ 287           LOAD_CONST              11 (<code object closeEvent at 0x0000016DC8EC30C0, file "bilisub\gui\vieneu_dialog.py", line 287>)
+               MAKE_FUNCTION
+               STORE_NAME              13 (closeEvent)
+               LOAD_CONST              12 (('_forced', 'bar', 'btn', 'btn_local', 'dir_edit', 'path_lb', 'settings', 'stage', 'worker'))
+               STORE_NAME              14 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME              15 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC8FE10E0, file "bilisub\gui\vieneu_dialog.py", line 147>:
+  --           COPY_FREE_VARS           1
+
+ 147           RESUME                   0
+
+ 148           LOAD_GLOBAL              0 (super)
+               LOAD_DEREF              11 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+               LOAD_FAST                1 (parent)
+               CALL                     1
+               POP_TOP
+
+ 149           LOAD_FAST_LOAD_FAST     32 (settings, self)
+               STORE_ATTR               2 (settings)
+
+ 150           LOAD_CONST               0 (None)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               3 (worker)
+
+ 151           LOAD_FAST                0 (self)
+               LOAD_ATTR                9 (setWindowTitle + NULL|self)
+               LOAD_CONST               1 ('🗣 Bộ giọng Việt offline (14 giọng, miễn phí)')
+               CALL                     1
+               POP_TOP
+
+ 152           LOAD_FAST                0 (self)
+               LOAD_ATTR               11 (resize + NULL|self)
+               LOAD_CONST               2 (560)
+               LOAD_CONST               3 (300)
+               CALL                     2
+               POP_TOP
+
+ 153           LOAD_GLOBAL             13 (QVBoxLayout + NULL)
+               LOAD_FAST                0 (self)
+               CALL                     1
+               STORE_FAST               3 (lay)
+
+ 155           LOAD_GLOBAL             14 (_vn)
+               LOAD_ATTR               16 (pack_installed)
+               PUSH_NULL
+               LOAD_FAST                2 (settings)
+               CALL                     1
+               STORE_FAST               4 (installed)
+
+ 157           LOAD_GLOBAL             19 (bool + NULL)
+               LOAD_GLOBAL             21 (str + NULL)
+               LOAD_GLOBAL             23 (getattr + NULL)
+               LOAD_FAST                2 (settings)
+               LOAD_CONST               4 ('vieneu_pack_dir')
+               LOAD_CONST               5 ('')
+               CALL                     3
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L1)
+               POP_TOP
+               LOAD_CONST               5 ('')
+       L1:     CALL                     1
+               LOAD_ATTR               25 (strip + NULL|self)
+               CALL                     0
+               CALL                     1
+               LOAD_FAST                0 (self)
+               STORE_ATTR              13 (_forced)
+
+ 159           LOAD_FAST                4 (installed)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        3 (to L2)
+
+ 160           LOAD_CONST               6 ('✅ Đã có bộ giọng Việt offline. 14 giọng đang dùng được NGAY — không cần mạng, không cần card đồ hoạ, không tốn credit.')
+               STORE_FAST               5 (head)
+               JUMP_FORWARD             2 (to L3)
+
+ 163   L2:     LOAD_CONST               7 ('Tải MỘT LẦN gói giọng Việt (~185 MB) để có 14 giọng đọc chạy thẳng trên máy bạn: KHÔNG cần mạng, KHÔNG cần card NVIDIA, KHÔNG tốn credit. Máy không có card vẫn lồng tiếng nhanh hơn giọng clone chạy card.')
+               STORE_FAST               5 (head)
+
+ 166   L3:     LOAD_GLOBAL             29 (QLabel + NULL)
+               LOAD_FAST                5 (head)
+               CALL                     1
+               STORE_FAST               6 (lb)
+
+ 167           LOAD_FAST                6 (lb)
+               LOAD_ATTR               31 (setWordWrap + NULL|self)
+               LOAD_CONST               8 (True)
+               CALL                     1
+               POP_TOP
+
+ 168           LOAD_FAST                3 (lay)
+               LOAD_ATTR               33 (addWidget + NULL|self)
+               LOAD_FAST                6 (lb)
+               CALL                     1
+               POP_TOP
+
+ 170           LOAD_GLOBAL             29 (QLabel + NULL)
+               LOAD_CONST               9 ("• Chỉ tải MỘT LẦN, lưu ở máy.\n• Tải xong DÙNG ĐƯỢC NGAY — không phải tắt/mở lại tool.\n• Chọn giọng ở mục '🔊 Giọng & âm thanh' → 'Giọng đọc' (các dòng 🗣).")
+               CALL                     1
+               STORE_FAST               7 (note)
+
+ 173           LOAD_FAST                7 (note)
+               LOAD_ATTR               35 (setStyleSheet + NULL|self)
+               LOAD_CONST              10 ('color:#94a3b8; font-size:12px;')
+               CALL                     1
+               POP_TOP
+
+ 174           LOAD_FAST                3 (lay)
+               LOAD_ATTR               33 (addWidget + NULL|self)
+               LOAD_FAST                7 (note)
+               CALL                     1
+               POP_TOP
+
+ 176           LOAD_CONST               0 (None)
+               LOAD_FAST                0 (self)
+               STORE_ATTR              18 (dir_edit)
+
+ 177           LOAD_FAST                4 (installed)
+               TO_BOOL
+               POP_JUMP_IF_TRUE       240 (to L4)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               26 (_forced)
+               TO_BOOL
+               POP_JUMP_IF_TRUE       223 (to L4)
+
+ 178           LOAD_GLOBAL             39 (QHBoxLayout + NULL)
+               CALL                     0
+               STORE_FAST               8 (row)
+
+ 179           LOAD_FAST                8 (row)
+               LOAD_ATTR               33 (addWidget + NULL|self)
+               LOAD_GLOBAL             29 (QLabel + NULL)
+               LOAD_CONST              11 ('Tải về ổ / thư mục:')
+               CALL                     1
+               CALL                     1
+               POP_TOP
+
+ 180           LOAD_GLOBAL             41 (QLineEdit + NULL)
+               LOAD_GLOBAL             21 (str + NULL)
+               LOAD_GLOBAL             43 (pack_root + NULL)
+               CALL                     0
+               CALL                     1
+               CALL                     1
+               LOAD_FAST                0 (self)
+               STORE_ATTR              18 (dir_edit)
+
+ 181           LOAD_FAST                0 (self)
+               LOAD_ATTR               36 (dir_edit)
+               LOAD_ATTR               45 (setToolTip + NULL|self)
+               LOAD_CONST              12 ('Nơi lưu bộ giọng. Chọn ổ D… nếu ổ C sắp đầy. Mặc định %LOCALAPPDATA% (ổ C).')
+               CALL                     1
+               POP_TOP
+
+ 183           LOAD_FAST                8 (row)
+               LOAD_ATTR               33 (addWidget + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               36 (dir_edit)
+               LOAD_CONST              13 (1)
+               CALL                     2
+               POP_TOP
+
+ 184           LOAD_GLOBAL             47 (QPushButton + NULL)
+               LOAD_CONST              14 ('…')
+               CALL                     1
+               STORE_FAST               9 (b_dir)
+
+ 185           LOAD_FAST                9 (b_dir)
+               LOAD_ATTR               49 (setFixedWidth + NULL|self)
+               LOAD_CONST              15 (36)
+               CALL                     1
+               POP_TOP
+
+ 186           LOAD_FAST                9 (b_dir)
+               LOAD_ATTR               50 (clicked)
+               LOAD_ATTR               53 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               54 (_choose_dir)
+               CALL                     1
+               POP_TOP
+
+ 187           LOAD_FAST                8 (row)
+               LOAD_ATTR               33 (addWidget + NULL|self)
+               LOAD_FAST                9 (b_dir)
+               CALL                     1
+               POP_TOP
+
+ 188           LOAD_FAST                3 (lay)
+               LOAD_ATTR               57 (addLayout + NULL|self)
+               LOAD_FAST                8 (row)
+               CALL                     1
+               POP_TOP
+
+ 190   L4:     LOAD_GLOBAL             29 (QLabel + NULL)
+               LOAD_CONST              16 ('Thư mục: ')
+               LOAD_GLOBAL             14 (_vn)
+               LOAD_ATTR               58 (pack_dir)
+               PUSH_NULL
+               LOAD_FAST                2 (settings)
+               CALL                     1
+               FORMAT_SIMPLE
+               BUILD_STRING             2
+               CALL                     1
+               LOAD_FAST                0 (self)
+               STORE_ATTR              30 (path_lb)
+
+ 191           LOAD_FAST                0 (self)
+               LOAD_ATTR               60 (path_lb)
+               LOAD_ATTR               35 (setStyleSheet + NULL|self)
+               LOAD_CONST              17 ('color:#64748b; font-size:11px;')
+               CALL                     1
+               POP_TOP
+
+ 192           LOAD_FAST                0 (self)
+               LOAD_ATTR               60 (path_lb)
+               LOAD_ATTR               31 (setWordWrap + NULL|self)
+               LOAD_CONST               8 (True)
+               CALL                     1
+               POP_TOP
+
+ 193           LOAD_FAST                3 (lay)
+               LOAD_ATTR               33 (addWidget + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               60 (path_lb)
+               CALL                     1
+               POP_TOP
+
+ 195           LOAD_GLOBAL             63 (QProgressBar + NULL)
+               CALL                     0
+               LOAD_FAST                0 (self)
+               STORE_ATTR              32 (bar)
+
+ 196           LOAD_FAST                3 (lay)
+               LOAD_ATTR               33 (addWidget + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               64 (bar)
+               CALL                     1
+               POP_TOP
+
+ 197           LOAD_GLOBAL             29 (QLabel + NULL)
+               LOAD_CONST               5 ('')
+               CALL                     1
+               LOAD_FAST                0 (self)
+               STORE_ATTR              33 (stage)
+
+ 198           LOAD_FAST                0 (self)
+               LOAD_ATTR               66 (stage)
+               LOAD_ATTR               35 (setStyleSheet + NULL|self)
+               LOAD_CONST              18 ('color:#94a3b8;')
+               CALL                     1
+               POP_TOP
+
+ 199           LOAD_FAST                0 (self)
+               LOAD_ATTR               66 (stage)
+               LOAD_ATTR               31 (setWordWrap + NULL|self)
+               LOAD_CONST               8 (True)
+               CALL                     1
+               POP_TOP
+
+ 200           LOAD_FAST                3 (lay)
+               LOAD_ATTR               33 (addWidget + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               66 (stage)
+               CALL                     1
+               POP_TOP
+
+ 202           LOAD_GLOBAL             39 (QHBoxLayout + NULL)
+               CALL                     0
+               STORE_FAST              10 (btn_row)
+
+ 203           LOAD_GLOBAL             47 (QPushButton + NULL)
+               CALL                     0
+               LOAD_FAST                0 (self)
+               STORE_ATTR              34 (btn)
+
+ 204           LOAD_FAST                0 (self)
+               LOAD_ATTR               68 (btn)
+               LOAD_ATTR               71 (setObjectName + NULL|self)
+               LOAD_CONST              19 ('primary')
+               CALL                     1
+               POP_TOP
+
+ 205           LOAD_FAST                4 (installed)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       75 (to L5)
+
+ 206           LOAD_FAST                0 (self)
+               LOAD_ATTR               68 (btn)
+               LOAD_ATTR               73 (setText + NULL|self)
+               LOAD_CONST              20 ('Đã cài — Đóng')
+               CALL                     1
+               POP_TOP
+
+ 207           LOAD_FAST                0 (self)
+               LOAD_ATTR               68 (btn)
+               LOAD_ATTR               50 (clicked)
+               LOAD_ATTR               53 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               74 (accept)
+               CALL                     1
+               POP_TOP
+               JUMP_FORWARD            74 (to L6)
+
+ 209   L5:     LOAD_FAST                0 (self)
+               LOAD_ATTR               68 (btn)
+               LOAD_ATTR               73 (setText + NULL|self)
+               LOAD_CONST              21 ('⬇ Tải bộ giọng Việt (~185 MB)')
+               CALL                     1
+               POP_TOP
+
+ 210           LOAD_FAST                0 (self)
+               LOAD_ATTR               68 (btn)
+               LOAD_ATTR               50 (clicked)
+               LOAD_ATTR               53 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               76 (_start)
+               CALL                     1
+               POP_TOP
+
+ 211   L6:     LOAD_FAST               10 (btn_row)
+               LOAD_ATTR               33 (addWidget + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               68 (btn)
+               LOAD_CONST              13 (1)
+               CALL                     2
+               POP_TOP
+
+ 212           LOAD_FAST                4 (installed)
+               TO_BOOL
+               POP_JUMP_IF_TRUE       117 (to L7)
+
+ 214           LOAD_GLOBAL             47 (QPushButton + NULL)
+               LOAD_CONST              22 ('📂 Cài từ file .zip')
+               CALL                     1
+               LOAD_FAST                0 (self)
+               STORE_ATTR              39 (btn_local)
+
+ 215           LOAD_FAST                0 (self)
+               LOAD_ATTR               78 (btn_local)
+               LOAD_ATTR               45 (setToolTip + NULL|self)
+               LOAD_CONST              23 ('Đã có sẵn file gói giọng (bạn bè gửi, USB…) thì chọn ở đây, không cần tải mạng.')
+               CALL                     1
+               POP_TOP
+
+ 217           LOAD_FAST                0 (self)
+               LOAD_ATTR               78 (btn_local)
+               LOAD_ATTR               50 (clicked)
+               LOAD_ATTR               53 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               80 (_start_local)
+               CALL                     1
+               POP_TOP
+
+ 218           LOAD_FAST               10 (btn_row)
+               LOAD_ATTR               33 (addWidget + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               78 (btn_local)
+               CALL                     1
+               POP_TOP
+
+ 219   L7:     LOAD_FAST                3 (lay)
+               LOAD_ATTR               57 (addLayout + NULL|self)
+               LOAD_FAST               10 (btn_row)
+               CALL                     1
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object _choose_dir at 0x0000016DC90D0030, file "bilisub\gui\vieneu_dialog.py", line 222>:
+222           RESUME                   0
+
+223           LOAD_GLOBAL              0 (QFileDialog)
+              LOAD_ATTR                2 (getExistingDirectory)
+              PUSH_NULL
+              LOAD_FAST                0 (self)
+              LOAD_CONST               1 ('Chọn ổ / thư mục lưu bộ giọng')
+
+224           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       26 (to L1)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              LOAD_ATTR                7 (text + NULL|self)
+              CALL                     0
+              JUMP_FORWARD             1 (to L2)
+      L1:     LOAD_CONST               2 ('')
+
+223   L2:     CALL                     3
+              STORE_FAST               1 (d)
+
+225           LOAD_FAST                1 (d)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       42 (to L4)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              POP_JUMP_IF_NONE        28 (to L3)
+
+226           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              LOAD_ATTR                9 (setText + NULL|self)
+              LOAD_FAST                1 (d)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+225   L3:     RETURN_CONST             0 (None)
+      L4:     RETURN_CONST             0 (None)
+
+Disassembly of <code object _busy at 0x0000016DC8EA2AF0, file "bilisub\gui\vieneu_dialog.py", line 228>:
+228           RESUME                   0
+
+229           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (worker)
+              LOAD_CONST               0 (None)
+              IS_OP                    1
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE       26 (to L1)
+              POP_TOP
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (worker)
+              LOAD_ATTR                3 (isRunning + NULL|self)
+              CALL                     0
+      L1:     RETURN_VALUE
+
+Disassembly of <code object _begin at 0x0000016DC8CEA580, file "bilisub\gui\vieneu_dialog.py", line 231>:
+231           RESUME                   0
+
+232           LOAD_FAST                0 (self)
+              LOAD_ATTR                1 (_busy + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE        1 (to L1)
+
+233           RETURN_CONST             0 (None)
+
+235   L1:     LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (dir_edit)
+              POP_JUMP_IF_NONE        69 (to L2)
+
+236           LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (dir_edit)
+              LOAD_ATTR                5 (setText + NULL|self)
+              LOAD_GLOBAL              7 (str + NULL)
+              LOAD_GLOBAL              9 (set_pack_root + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (dir_edit)
+              LOAD_ATTR               11 (text + NULL|self)
+              CALL                     0
+              CALL                     1
+              CALL                     1
+              CALL                     1
+              POP_TOP
+
+237   L2:     LOAD_GLOBAL             12 (_vn)
+              LOAD_ATTR               14 (pack_dir)
+              PUSH_NULL
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               16 (settings)
+              CALL                     1
+              STORE_FAST               2 (dst)
+
+238           LOAD_FAST                0 (self)
+              LOAD_ATTR               18 (path_lb)
+              LOAD_ATTR                5 (setText + NULL|self)
+              LOAD_CONST               1 ('Thư mục: ')
+              LOAD_FAST                2 (dst)
+              FORMAT_SIMPLE
+              BUILD_STRING             2
+              CALL                     1
+              POP_TOP
+
+239           LOAD_FAST                0 (self)
+              LOAD_ATTR               20 (btn)
+              LOAD_ATTR               23 (setEnabled + NULL|self)
+              LOAD_CONST               2 (False)
+              CALL                     1
+              POP_TOP
+
+240           LOAD_FAST                0 (self)
+              LOAD_ATTR               20 (btn)
+              LOAD_ATTR                5 (setText + NULL|self)
+              LOAD_CONST               3 ('⏳ Đang xử lý…')
+              CALL                     1
+              POP_TOP
+
+241           LOAD_GLOBAL             25 (hasattr + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_CONST               4 ('btn_local')
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_FALSE       27 (to L3)
+
+242           LOAD_FAST                0 (self)
+              LOAD_ATTR               26 (btn_local)
+              LOAD_ATTR               23 (setEnabled + NULL|self)
+              LOAD_CONST               2 (False)
+              CALL                     1
+              POP_TOP
+
+243   L3:     LOAD_GLOBAL             29 (_VieNeuWorker + NULL)
+              LOAD_FAST_LOAD_FAST     33 (dst, local_zip)
+              LOAD_FAST                0 (self)
+              CALL                     3
+              LOAD_FAST                0 (self)
+              STORE_ATTR              15 (worker)
+
+244           LOAD_FAST                0 (self)
+              LOAD_ATTR               30 (worker)
+              LOAD_ATTR               32 (prog)
+              LOAD_ATTR               35 (connect + NULL|self)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               36 (bar)
+              LOAD_ATTR               38 (setValue)
+              CALL                     1
+              POP_TOP
+
+245           LOAD_FAST                0 (self)
+              LOAD_ATTR               30 (worker)
+              LOAD_ATTR               40 (stage)
+              LOAD_ATTR               35 (connect + NULL|self)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               40 (stage)
+              LOAD_ATTR                4 (setText)
+              CALL                     1
+              POP_TOP
+
+246           LOAD_FAST                0 (self)
+              LOAD_ATTR               30 (worker)
+              LOAD_ATTR               42 (done)
+              LOAD_ATTR               35 (connect + NULL|self)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               44 (_done)
+              CALL                     1
+              POP_TOP
+
+247           LOAD_FAST                0 (self)
+              LOAD_ATTR               30 (worker)
+              LOAD_ATTR               46 (failed)
+              LOAD_ATTR               35 (connect + NULL|self)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               48 (_failed)
+              CALL                     1
+              POP_TOP
+
+248           LOAD_FAST                0 (self)
+              LOAD_ATTR               30 (worker)
+              LOAD_ATTR               51 (start + NULL|self)
+              CALL                     0
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _start at 0x0000016DC90F1E30, file "bilisub\gui\vieneu_dialog.py", line 250>:
+250           RESUME                   0
+
+251           LOAD_FAST                0 (self)
+              LOAD_ATTR                1 (_begin + NULL|self)
+              LOAD_CONST               1 ('')
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _start_local at 0x0000016DC90EE290, file "bilisub\gui\vieneu_dialog.py", line 253>:
+253           RESUME                   0
+
+254           LOAD_FAST                0 (self)
+              LOAD_ATTR                1 (_busy + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE        1 (to L1)
+
+255           RETURN_CONST             0 (None)
+
+256   L1:     LOAD_GLOBAL              2 (QFileDialog)
+              LOAD_ATTR                4 (getOpenFileName)
+              PUSH_NULL
+              LOAD_FAST                0 (self)
+              LOAD_CONST               1 ('Chọn file gói giọng (.zip)')
+              LOAD_CONST               2 ('')
+
+257           LOAD_CONST               3 ('Gói giọng (*.zip)')
+
+256           CALL                     4
+              UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST   18 (f, _)
+
+258           LOAD_FAST                1 (f)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       18 (to L2)
+
+259           LOAD_FAST                0 (self)
+              LOAD_ATTR                7 (_begin + NULL|self)
+              LOAD_FAST                1 (f)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+258   L2:     RETURN_CONST             0 (None)
+
+Disassembly of <code object _done at 0x0000016DC8F4F3E0, file "bilisub\gui\vieneu_dialog.py", line 261>:
+ 261            RESUME                   0
+
+ 264            NOP
+
+ 265    L1:     LOAD_GLOBAL              0 (_vn)
+                LOAD_ATTR                2 (close)
+                PUSH_NULL
+                CALL                     0
+                POP_TOP
+
+ 268    L2:     LOAD_FAST                0 (self)
+                LOAD_ATTR                6 (stage)
+                LOAD_ATTR                9 (setText + NULL|self)
+                LOAD_CONST               1 ('✅ Xong! Dùng được NGAY — chọn giọng 🗣 rồi bấm 🔊 Nghe thử.')
+                CALL                     1
+                POP_TOP
+
+ 269            LOAD_FAST                0 (self)
+                LOAD_ATTR               10 (btn)
+                LOAD_ATTR               13 (setEnabled + NULL|self)
+                LOAD_CONST               2 (True)
+                CALL                     1
+                POP_TOP
+
+ 270            LOAD_FAST                0 (self)
+                LOAD_ATTR               10 (btn)
+                LOAD_ATTR                9 (setText + NULL|self)
+                LOAD_CONST               3 ('Đóng')
+                CALL                     1
+                POP_TOP
+
+ 271            LOAD_GLOBAL             15 (hasattr + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_CONST               4 ('btn_local')
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       53 (to L3)
+
+ 272            LOAD_FAST                0 (self)
+                LOAD_ATTR               16 (btn_local)
+                LOAD_ATTR               13 (setEnabled + NULL|self)
+                LOAD_CONST               5 (False)
+                CALL                     1
+                POP_TOP
+
+ 273            LOAD_FAST                0 (self)
+                LOAD_ATTR               16 (btn_local)
+                LOAD_ATTR               19 (hide + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 274    L3:     NOP
+
+ 275    L4:     LOAD_FAST                0 (self)
+                LOAD_ATTR               10 (btn)
+                LOAD_ATTR               20 (clicked)
+                LOAD_ATTR               23 (disconnect + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 278    L5:     LOAD_FAST                0 (self)
+                LOAD_ATTR               10 (btn)
+                LOAD_ATTR               20 (clicked)
+                LOAD_ATTR               27 (connect + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               28 (accept)
+                CALL                     1
+                POP_TOP
+                RETURN_CONST             0 (None)
+
+  --    L6:     PUSH_EXC_INFO
+
+ 266            LOAD_GLOBAL              4 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L8)
+                POP_TOP
+
+ 267    L7:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 248 (to L2)
+
+ 266    L8:     RERAISE                  0
+
+  --    L9:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L10:     PUSH_EXC_INFO
+
+ 276            LOAD_GLOBAL             24 (TypeError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L12)
+                POP_TOP
+
+ 277   L11:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 76 (to L5)
+
+ 276   L12:     RERAISE                  0
+
+  --   L13:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L6 [0]
+  L4 to L5 -> L10 [0]
+  L6 to L7 -> L9 [1] lasti
+  L8 to L9 -> L9 [1] lasti
+  L10 to L11 -> L13 [1] lasti
+  L12 to L13 -> L13 [1] lasti
+
+Disassembly of <code object _failed at 0x0000016DC8EC5080, file "bilisub\gui\vieneu_dialog.py", line 280>:
+280           RESUME                   0
+
+281           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (stage)
+              LOAD_ATTR                3 (setText + NULL|self)
+              LOAD_CONST               1 ('❌ Lỗi: ')
+              LOAD_FAST                1 (msg)
+              FORMAT_SIMPLE
+              BUILD_STRING             2
+              CALL                     1
+              POP_TOP
+
+282           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (btn)
+              LOAD_ATTR                7 (setEnabled + NULL|self)
+              LOAD_CONST               2 (True)
+              CALL                     1
+              POP_TOP
+
+283           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (btn)
+              LOAD_ATTR                3 (setText + NULL|self)
+              LOAD_CONST               3 ('Thử lại')
+              CALL                     1
+              POP_TOP
+
+284           LOAD_GLOBAL              9 (hasattr + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_CONST               4 ('btn_local')
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_FALSE       28 (to L1)
+
+285           LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (btn_local)
+              LOAD_ATTR                7 (setEnabled + NULL|self)
+              LOAD_CONST               2 (True)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+284   L1:     RETURN_CONST             0 (None)
+
+Disassembly of <code object closeEvent at 0x0000016DC8EC30C0, file "bilisub\gui\vieneu_dialog.py", line 287>:
+287           RESUME                   0
+
+288           LOAD_FAST                0 (self)
+              LOAD_ATTR                1 (_busy + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE       27 (to L1)
+
+289           LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (worker)
+              LOAD_ATTR                5 (wait + NULL|self)
+              LOAD_CONST               1 (2000)
+              CALL                     1
+              POP_TOP
+
+290   L1:     LOAD_FAST                1 (e)
+              LOAD_ATTR                7 (accept + NULL|self)
+              CALL                     0
+              POP_TOP
+              RETURN_CONST             0 (None)

@@ -1,0 +1,1622 @@
+=== FILE: bilisub\tts\vivibe.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           SETUP_ANNOTATIONS
+              LOAD_CONST               0 ('Vivibe TTS (vivibe.app) — giọng đọc tiếng Việt AI, gọi qua JSON-RPC ``api.lucylab.io``.\n\nAPI **BẤT ĐỒNG BỘ 2 BƯỚC** (lấy từ nút "API Code" trên web Vivibe, đọc thật 21/08/2026):\n\n  1) tạo:  ``POST /json-rpc`` ``{"method":"ttsLongText",\n           "input":{"text":…, "userVoiceId":…, "speed":1}}``  → trả về **id lần tạo**\n  2) chờ:  ``POST /json-rpc`` ``{"method":"getExportStatus",\n           "input":{"projectExportId": <id>}}``               → xong thì trả **link tải**\n\nKhác Vbee (cần 2 thứ app_id + access_token), Vivibe chỉ cần **MỘT** ``api_key`` gửi ở header\n``Authorization: Bearer <key>``. Khách tự tạo key tại vivibe.app › API Keys rồi dán vào hộp\n🔑 API Keys của tool — tool KHÔNG giữ key nào sẵn.\n\nMã giọng theo convention ``vivibe:<userVoiceId>`` để không đụng heuristic của\n``base.voice_engine()`` (giống hệt cách Vbee dùng ``vbee:<voice_code>``).\n\n⚠ THIẾT KẾ CHỐNG TREO (bài học Edge bị Microsoft siết 19-20/08): mọi lời gọi mạng ở đây đều\ncó **trần thời gian rõ ràng**; vòng chờ có deadline; hết giờ là ném lỗi tiếng người chứ\nkhông đứng vô hạn.\n')
+              STORE_NAME               0 (__doc__)
+
+ 21           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 23           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (os)
+              STORE_NAME               3 (os)
+
+ 24           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (time)
+              STORE_NAME               4 (time)
+
+ 25           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Path',))
+              IMPORT_NAME              5 (pathlib)
+              IMPORT_FROM              6 (Path)
+              STORE_NAME               6 (Path)
+              POP_TOP
+
+ 26           LOAD_CONST               1 (0)
+              LOAD_CONST               5 (('Callable', 'Optional'))
+              IMPORT_NAME              7 (typing)
+              IMPORT_FROM              8 (Callable)
+              STORE_NAME               8 (Callable)
+              IMPORT_FROM              9 (Optional)
+              STORE_NAME               9 (Optional)
+              POP_TOP
+
+ 28           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME             10 (requests)
+              STORE_NAME              10 (requests)
+
+ 30           LOAD_NAME                3 (os)
+              LOAD_ATTR               22 (environ)
+              LOAD_ATTR               25 (get + NULL|self)
+              LOAD_CONST               6 ('BILISUB_VIVIBE_BASE')
+              LOAD_CONST               7 ('https://api.lucylab.io/json-rpc')
+              CALL                     2
+              LOAD_ATTR               27 (rstrip + NULL|self)
+              LOAD_CONST               8 ('/')
+              CALL                     1
+              STORE_NAME              14 (_BASE)
+
+ 33           BUILD_SET                0
+              LOAD_CONST               9 (frozenset({'DONE', 'COMPLETE', 'FINISHED', 'READY', 'SUCCEEDED', 'SUCCESS', 'COMPLETED'}))
+              SET_UPDATE               1
+              STORE_NAME              15 (_DONE)
+
+ 34           BUILD_SET                0
+              LOAD_CONST              10 (frozenset({'FAILED', 'CANCELLED', 'CANCELED', 'FAILURE', 'ERROR'}))
+              SET_UPDATE               1
+              STORE_NAME              16 (_FAIL)
+
+ 39           BUILD_LIST               0
+              STORE_NAME              17 (VIVIBE_VOICES)
+              LOAD_CONST              11 ('list[tuple[str, str]]')
+              LOAD_NAME               18 (__annotations__)
+              LOAD_CONST              12 ('VIVIBE_VOICES')
+              STORE_SUBSCR
+
+ 42           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              13 (<code object VivibeTTSError at 0x0000016DC90E2530, file "bilisub\tts\vivibe.py", line 42>)
+              MAKE_FUNCTION
+              LOAD_CONST              14 ('VivibeTTSError')
+              LOAD_NAME               19 (Exception)
+              CALL                     3
+              STORE_NAME              20 (VivibeTTSError)
+
+ 51           LOAD_CONST              38 (('ex', 'BaseException', 'return', 'bool'))
+              LOAD_CONST              15 (<code object _tam_thoi at 0x0000016DC8E07230, file "bilisub\tts\vivibe.py", line 51>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              21 (_tam_thoi)
+
+ 57           LOAD_CONST              39 (('code', 'str', 'return', 'str'))
+              LOAD_CONST              16 (<code object voice_code at 0x0000016DC8EA3210, file "bilisub\tts\vivibe.py", line 57>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              22 (voice_code)
+
+ 62           LOAD_CONST              40 (('r', 'requests.Response', 'return', 'dict'))
+              LOAD_CONST              17 (<code object _json at 0x0000016DC9618030, file "bilisub\tts\vivibe.py", line 62>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              23 (_json)
+
+ 70           LOAD_CONST              18 (40.0)
+              LOAD_CONST              19 (('timeout',))
+              BUILD_CONST_KEY_MAP      1
+              LOAD_CONST              41 (('method', 'str', 'payload', 'dict', 'api_key', 'str', 'timeout', 'float', 'return', 'dict'))
+              LOAD_CONST              20 (<code object _rpc at 0x0000016DC936AA10, file "bilisub\tts\vivibe.py", line 70>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              24 (_rpc)
+
+103           LOAD_CONST              42 (('data', 'dict', 'return', 'dict'))
+              LOAD_CONST              21 (<code object _unwrap at 0x0000016DC8E90D50, file "bilisub\tts\vivibe.py", line 103>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              25 (_unwrap)
+
+121           LOAD_CONST              43 (('data', 'dict', 'return', 'str'))
+              LOAD_CONST              22 (<code object _extract_export_id at 0x0000016DC8FE22D0, file "bilisub\tts\vivibe.py", line 121>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              26 (_extract_export_id)
+
+151           LOAD_CONST              44 (('res', 'dict', 'return', 'Optional[str]'))
+              LOAD_CONST              23 (<code object _extract_audio_url at 0x0000016DC8EB5DE0, file "bilisub\tts\vivibe.py", line 151>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              27 (_extract_audio_url)
+
+160           LOAD_CONST              45 (('res', 'dict', 'return', 'str'))
+              LOAD_CONST              24 (<code object _status_of at 0x0000016DC8EB5AC0, file "bilisub\tts\vivibe.py", line 160>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              28 (_status_of)
+
+168           NOP
+
+169           NOP
+
+168           NOP
+
+169           NOP
+
+168           LOAD_CONST              46 (('export_id', 'str', 'api_key', 'str', 'timeout', 'float', 'log', 'Callable[[str], None]', 'return', 'str'))
+              LOAD_CONST              25 (<code object _poll at 0x0000016DC8F87CB0, file "bilisub\tts\vivibe.py", line 168>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              29 (_poll)
+
+205           LOAD_CONST              26 (1.0)
+
+206           LOAD_CONST              27 (180.0)
+              LOAD_CONST               3 (None)
+
+204           LOAD_CONST              28 (('speed', 'timeout', 'log'))
+              BUILD_CONST_KEY_MAP      3
+
+205           NOP
+
+204           NOP
+
+205           NOP
+
+204           NOP
+
+206           NOP
+
+204           NOP
+
+206           NOP
+
+204           NOP
+
+206           NOP
+
+204           LOAD_CONST              47 (('text', 'str', 'voice', 'str', 'out_path', 'str', 'api_key', 'str', 'speed', 'float', 'timeout', 'float', 'log', 'Optional[Callable[[str], None]]', 'return', 'None'))
+              LOAD_CONST              29 (<code object synth at 0x0000016DC8F45C10, file "bilisub\tts\vivibe.py", line 204>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              30 (synth)
+
+237           LOAD_CONST              30 (('listVoices', 'getVoices', 'listUserVoices', 'getUserVoices', 'voices', 'getVoiceLibrary', 'listMyVoices'))
+              STORE_NAME              31 (_VOICE_METHODS)
+
+239           BUILD_MAP                0
+              STORE_NAME              32 (_VOICES_CACHE)
+              LOAD_CONST              31 ('dict[str, tuple[float, list]]')
+              LOAD_NAME               18 (__annotations__)
+              LOAD_CONST              32 ('_VOICES_CACHE')
+              STORE_SUBSCR
+
+240           LOAD_CONST              33 (3600.0)
+              STORE_NAME              33 (_VOICES_TTL)
+
+243           LOAD_CONST              48 (('data', 'dict', 'return', 'list'))
+              LOAD_CONST              34 (<code object _voice_items at 0x0000016DC90D11B0, file "bilisub\tts\vivibe.py", line 243>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              34 (_voice_items)
+
+256           LOAD_CONST              35 (6.0)
+
+257           LOAD_CONST               3 (None)
+
+256           LOAD_CONST              36 (('timeout', 'log'))
+              BUILD_CONST_KEY_MAP      2
+
+257           NOP
+
+256           NOP
+
+257           NOP
+
+256           LOAD_CONST              49 (('api_key', 'str', 'timeout', 'float', 'log', 'Optional[Callable[[str], None]]', 'return', 'list[dict]'))
+              LOAD_CONST              37 (<code object account_voices at 0x0000016DC8F51EC0, file "bilisub\tts\vivibe.py", line 256>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              35 (account_voices)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object VivibeTTSError at 0x0000016DC90E2530, file "bilisub\tts\vivibe.py", line 42>:
+  --           MAKE_CELL                0 (__class__)
+
+  42           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('VivibeTTSError')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (42)
+               STORE_NAME               3 (__firstlineno__)
+
+  43           LOAD_CONST               2 ('Lỗi Vivibe. ``code``: mã HTTP (0 = lỗi mạng/không có mã) — vòng chờ dựa vào SỐ này để\nbiết có nên thử lại không, KHÔNG dò chuỗi tiếng Việt trong thông báo (phản biện lần 11).')
+               STORE_NAME               4 (__doc__)
+
+  46           LOAD_CONST               5 ((-1,))
+               LOAD_CONST               6 (('msg', 'str', 'code', 'int'))
+               LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               3 (<code object __init__ at 0x0000016DC90E2330, file "bilisub\tts\vivibe.py", line 46>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME               5 (__init__)
+               LOAD_CONST               4 (('code',))
+               STORE_NAME               6 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME               7 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC90E2330, file "bilisub\tts\vivibe.py", line 46>:
+  --           COPY_FREE_VARS           1
+
+  46           RESUME                   0
+
+  47           LOAD_GLOBAL              0 (super)
+               LOAD_DEREF               3 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+               LOAD_FAST                1 (msg)
+               CALL                     1
+               POP_TOP
+
+  48           LOAD_FAST_LOAD_FAST     32 (code, self)
+               STORE_ATTR               2 (code)
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object _tam_thoi at 0x0000016DC8E07230, file "bilisub\tts\vivibe.py", line 51>:
+ 51           RESUME                   0
+
+ 53           LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                0 (ex)
+              LOAD_CONST               1 ('code')
+              LOAD_CONST               2 (-1)
+              CALL                     3
+              STORE_FAST               1 (c)
+
+ 54           LOAD_FAST                1 (c)
+              LOAD_CONST               3 (0)
+              COMPARE_OP              72 (==)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE        33 (to L2)
+              POP_TOP
+              LOAD_FAST                1 (c)
+              LOAD_CONST               4 (429)
+              COMPARE_OP              72 (==)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE        21 (to L2)
+              POP_TOP
+              LOAD_CONST               5 (500)
+              LOAD_FAST                1 (c)
+              SWAP                     2
+              COPY                     2
+              COMPARE_OP              42 (<=)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE        5 (to L1)
+              POP_TOP
+              LOAD_CONST               6 (504)
+              COMPARE_OP              42 (<=)
+              RETURN_VALUE
+      L1:     SWAP                     2
+              POP_TOP
+      L2:     RETURN_VALUE
+
+Disassembly of <code object voice_code at 0x0000016DC8EA3210, file "bilisub\tts\vivibe.py", line 57>:
+ 57           RESUME                   0
+
+ 59           LOAD_FAST                0 (code)
+              LOAD_ATTR                1 (startswith + NULL|self)
+              LOAD_CONST               1 ('vivibe:')
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE       21 (to L1)
+              LOAD_FAST                0 (code)
+              LOAD_ATTR                3 (split + NULL|self)
+              LOAD_CONST               2 (':')
+              LOAD_CONST               3 (1)
+              CALL                     2
+              LOAD_CONST               3 (1)
+              BINARY_SUBSCR
+              RETURN_VALUE
+      L1:     LOAD_FAST                0 (code)
+              RETURN_VALUE
+
+Disassembly of <code object _json at 0x0000016DC9618030, file "bilisub\tts\vivibe.py", line 62>:
+  62           RESUME                   0
+
+  63           NOP
+
+  64   L1:     LOAD_FAST                0 (r)
+               LOAD_ATTR                1 (json + NULL|self)
+               CALL                     0
+               STORE_FAST               1 (d)
+
+  65           LOAD_GLOBAL              3 (isinstance + NULL)
+               LOAD_FAST                1 (d)
+               LOAD_GLOBAL              4 (dict)
+               CALL                     2
+               TO_BOOL
+               POP_JUMP_IF_FALSE        2 (to L3)
+               LOAD_FAST                1 (d)
+       L2:     RETURN_VALUE
+       L3:     LOAD_CONST               1 ('_raw')
+               LOAD_FAST                1 (d)
+               BUILD_MAP                1
+       L4:     RETURN_VALUE
+
+  --   L5:     PUSH_EXC_INFO
+
+  66           LOAD_GLOBAL              6 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       20 (to L7)
+               POP_TOP
+
+  67           LOAD_CONST               1 ('_raw')
+               LOAD_FAST                0 (r)
+               LOAD_ATTR                8 (text)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               2 (200)
+               BINARY_SLICE
+               BUILD_MAP                1
+               SWAP                     2
+       L6:     POP_EXCEPT
+               RETURN_VALUE
+
+  66   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L5 [0]
+  L3 to L4 -> L5 [0]
+  L5 to L6 -> L8 [1] lasti
+  L7 to L8 -> L8 [1] lasti
+
+Disassembly of <code object _rpc at 0x0000016DC936AA10, file "bilisub\tts\vivibe.py", line 70>:
+  70            RESUME                   0
+
+  72            LOAD_FAST                2 (api_key)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                LOAD_CONST               1 ('')
+        L1:     LOAD_ATTR                1 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               4 (key)
+
+  73            LOAD_FAST                4 (key)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        11 (to L2)
+
+  74            LOAD_GLOBAL              3 (VivibeTTSError + NULL)
+
+  75            LOAD_CONST               2 ('Thiếu Vivibe API key — tạo tại vivibe.app › API Keys rồi dán vào 🔑 API Keys.')
+
+  74            CALL                     1
+                RAISE_VARARGS            1
+
+  77    L2:     NOP
+
+  78    L3:     LOAD_GLOBAL              4 (requests)
+                LOAD_ATTR                6 (post)
+                PUSH_NULL
+
+  79            LOAD_GLOBAL              8 (_BASE)
+
+  80            LOAD_CONST               3 ('Bearer ')
+                LOAD_FAST                4 (key)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                LOAD_CONST               4 ('application/json')
+                LOAD_CONST               5 (('Authorization', 'Content-Type'))
+                BUILD_CONST_KEY_MAP      2
+
+  81            LOAD_FAST_LOAD_FAST      1 (method, payload)
+                LOAD_CONST               6 (('method', 'input'))
+                BUILD_CONST_KEY_MAP      2
+
+  82            LOAD_FAST                3 (timeout)
+
+  78            LOAD_CONST               7 (('headers', 'json', 'timeout'))
+                CALL_KW                  4
+                STORE_FAST               5 (r)
+
+  86    L4:     LOAD_GLOBAL             15 (_json + NULL)
+                LOAD_FAST                5 (r)
+                CALL                     1
+                STORE_FAST               7 (data)
+
+  87            LOAD_FAST                5 (r)
+                LOAD_ATTR               16 (status_code)
+                LOAD_CONST              13 ((401, 403))
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       22 (to L5)
+
+  88            LOAD_GLOBAL              3 (VivibeTTSError + NULL)
+                LOAD_CONST              14 ('Vivibe 401/403: API key sai, đã xoá hoặc hết quyền.')
+                LOAD_FAST                5 (r)
+                LOAD_ATTR               16 (status_code)
+                CALL                     2
+                RAISE_VARARGS            1
+
+  89    L5:     LOAD_FAST                5 (r)
+                LOAD_ATTR               16 (status_code)
+                LOAD_CONST              15 (429)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       12 (to L6)
+
+  90            LOAD_GLOBAL              3 (VivibeTTSError + NULL)
+                LOAD_CONST              16 ('Vivibe 429: gọi quá nhanh / hết lượt — chờ rồi thử lại.')
+                LOAD_CONST              15 (429)
+                CALL                     2
+                RAISE_VARARGS            1
+
+  91    L6:     LOAD_FAST                5 (r)
+                LOAD_ATTR               16 (status_code)
+                LOAD_CONST              17 (400)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE      140 (to L8)
+
+  92            LOAD_FAST                7 (data)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST              18 ('error')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        63 (to L7)
+                POP_TOP
+                LOAD_FAST                7 (data)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST              19 ('message')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        39 (to L7)
+                POP_TOP
+
+  93            LOAD_FAST                7 (data)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST              20 ('_raw')
+                CALL                     1
+
+  92            COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        15 (to L7)
+                POP_TOP
+
+  93            LOAD_FAST                5 (r)
+                LOAD_ATTR               20 (text)
+                LOAD_CONST              10 (None)
+                LOAD_CONST              21 (160)
+                BINARY_SLICE
+
+  92    L7:     STORE_FAST               8 (msg)
+
+  94            LOAD_GLOBAL              3 (VivibeTTSError + NULL)
+                LOAD_CONST              22 ('Vivibe ')
+                LOAD_FAST                0 (method)
+                FORMAT_SIMPLE
+                LOAD_CONST              23 (' lỗi [')
+                LOAD_FAST                5 (r)
+                LOAD_ATTR               16 (status_code)
+                FORMAT_SIMPLE
+                LOAD_CONST              24 (']: ')
+                LOAD_GLOBAL             13 (str + NULL)
+                LOAD_FAST                8 (msg)
+                CALL                     1
+                LOAD_CONST              10 (None)
+                LOAD_CONST              25 (200)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             6
+
+  95            LOAD_FAST                5 (r)
+                LOAD_ATTR               16 (status_code)
+
+  94            CALL                     2
+                RAISE_VARARGS            1
+
+  97    L8:     LOAD_FAST                7 (data)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST              18 ('error')
+                CALL                     1
+                STORE_FAST               9 (err)
+
+  98            LOAD_GLOBAL             23 (isinstance + NULL)
+                LOAD_FAST                9 (err)
+                LOAD_GLOBAL             24 (dict)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       97 (to L11)
+                LOAD_FAST                9 (err)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST              19 ('message')
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        22 (to L9)
+                LOAD_FAST                9 (err)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST              26 ('code')
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE       53 (to L11)
+
+  99    L9:     LOAD_GLOBAL              3 (VivibeTTSError + NULL)
+                LOAD_CONST              22 ('Vivibe ')
+                LOAD_FAST                0 (method)
+                FORMAT_SIMPLE
+                LOAD_CONST              27 (' báo lỗi: ')
+                LOAD_GLOBAL             13 (str + NULL)
+                LOAD_FAST                9 (err)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST              19 ('message')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L10)
+                POP_TOP
+                LOAD_FAST                9 (err)
+       L10:     CALL                     1
+                LOAD_CONST              10 (None)
+                LOAD_CONST              25 (200)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             4
+                CALL                     1
+                RAISE_VARARGS            1
+
+ 100   L11:     LOAD_FAST                7 (data)
+                RETURN_VALUE
+
+  --   L12:     PUSH_EXC_INFO
+
+  84            LOAD_GLOBAL              4 (requests)
+                LOAD_ATTR               10 (RequestException)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       36 (to L15)
+                STORE_FAST               6 (ex)
+
+  85   L13:     LOAD_GLOBAL              3 (VivibeTTSError + NULL)
+                LOAD_CONST               8 ('Vivibe: lỗi mạng khi gọi ')
+                LOAD_FAST                0 (method)
+                FORMAT_SIMPLE
+                LOAD_CONST               9 (': ')
+                LOAD_GLOBAL             13 (str + NULL)
+                LOAD_FAST                6 (ex)
+                CALL                     1
+                LOAD_CONST              10 (None)
+                LOAD_CONST              11 (120)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             4
+                LOAD_CONST              12 (0)
+                CALL                     2
+                LOAD_FAST                6 (ex)
+                RAISE_VARARGS            2
+
+  --   L14:     LOAD_CONST              10 (None)
+                STORE_FAST               6 (ex)
+                DELETE_FAST              6 (ex)
+                RERAISE                  1
+
+  84   L15:     RERAISE                  0
+
+  --   L16:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L3 to L4 -> L12 [0]
+  L12 to L13 -> L16 [1] lasti
+  L13 to L14 -> L14 [1] lasti
+  L14 to L16 -> L16 [1] lasti
+
+Disassembly of <code object _unwrap at 0x0000016DC8E90D50, file "bilisub\tts\vivibe.py", line 103>:
+103           RESUME                   0
+
+105           LOAD_FAST                0 (data)
+              STORE_FAST               1 (cur)
+
+106           LOAD_GLOBAL              1 (range + NULL)
+              LOAD_CONST               1 (3)
+              CALL                     1
+              GET_ITER
+      L1:     FOR_ITER                90 (to L8)
+              STORE_FAST               2 (_)
+
+107           LOAD_GLOBAL              3 (isinstance + NULL)
+              LOAD_FAST                1 (cur)
+              LOAD_GLOBAL              4 (dict)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_TRUE         4 (to L2)
+
+108           BUILD_MAP                0
+              SWAP                     2
+              POP_TOP
+              RETURN_VALUE
+
+109   L2:     LOAD_CONST               2 (None)
+              STORE_FAST               3 (nxt)
+
+110           LOAD_CONST               3 (('result', 'data', 'output'))
+              GET_ITER
+      L3:     FOR_ITER                45 (to L5)
+              STORE_FAST               4 (k)
+
+111           LOAD_FAST                1 (cur)
+              LOAD_ATTR                7 (get + NULL|self)
+              LOAD_FAST                4 (k)
+              CALL                     1
+              STORE_FAST               5 (v)
+
+112           LOAD_GLOBAL              3 (isinstance + NULL)
+              LOAD_FAST                5 (v)
+              LOAD_GLOBAL              4 (dict)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L4)
+              JUMP_BACKWARD           43 (to L3)
+
+113   L4:     LOAD_FAST                5 (v)
+              STORE_FAST               3 (nxt)
+
+114           POP_TOP
+              JUMP_FORWARD             2 (to L6)
+
+110   L5:     END_FOR
+              POP_TOP
+
+115   L6:     LOAD_FAST                3 (nxt)
+              POP_JUMP_IF_NOT_NONE     4 (to L7)
+
+116           LOAD_FAST                1 (cur)
+              SWAP                     2
+              POP_TOP
+              RETURN_VALUE
+
+117   L7:     LOAD_FAST                3 (nxt)
+              STORE_FAST               1 (cur)
+              JUMP_BACKWARD           92 (to L1)
+
+106   L8:     END_FOR
+              POP_TOP
+
+118           LOAD_GLOBAL              3 (isinstance + NULL)
+              LOAD_FAST                1 (cur)
+              LOAD_GLOBAL              4 (dict)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_FALSE        2 (to L9)
+              LOAD_FAST                1 (cur)
+              RETURN_VALUE
+      L9:     BUILD_MAP                0
+              RETURN_VALUE
+
+Disassembly of <code object _extract_export_id at 0x0000016DC8FE22D0, file "bilisub\tts\vivibe.py", line 121>:
+121            RESUME                   0
+
+130            LOAD_CONST               1 (('projectExportId', 'project_export_id', 'exportId', 'export_id', 'requestId', 'request_id'))
+               STORE_FAST               1 (_dac_trung)
+
+132            LOAD_GLOBAL              1 (_unwrap + NULL)
+               LOAD_FAST                0 (data)
+               CALL                     1
+               STORE_FAST               2 (ruot)
+
+133            LOAD_FAST_LOAD_FAST     32 (ruot, data)
+               BUILD_TUPLE              2
+               GET_ITER
+       L1:     FOR_ITER               140 (to L7)
+               STORE_FAST               3 (src)
+
+134            LOAD_GLOBAL              3 (isinstance + NULL)
+               LOAD_FAST                3 (src)
+               LOAD_GLOBAL              4 (dict)
+               CALL                     2
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L2)
+
+135            JUMP_BACKWARD           26 (to L1)
+
+136    L2:     LOAD_FAST                1 (_dac_trung)
+               GET_ITER
+       L3:     FOR_ITER               108 (to L6)
+               STORE_FAST               4 (k)
+
+137            LOAD_FAST                3 (src)
+               LOAD_ATTR                7 (get + NULL|self)
+               LOAD_FAST                4 (k)
+               CALL                     1
+               STORE_FAST               5 (v)
+
+138            LOAD_GLOBAL              3 (isinstance + NULL)
+               LOAD_FAST                5 (v)
+               LOAD_GLOBAL              8 (str)
+               LOAD_GLOBAL             10 (int)
+               BUILD_TUPLE              2
+               CALL                     2
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           49 (to L3)
+       L4:     LOAD_GLOBAL              9 (str + NULL)
+               LOAD_FAST                5 (v)
+               CALL                     1
+               LOAD_ATTR               13 (strip + NULL|self)
+               CALL                     0
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L5)
+               JUMP_BACKWARD           81 (to L3)
+
+139    L5:     LOAD_GLOBAL              9 (str + NULL)
+               LOAD_FAST                5 (v)
+               CALL                     1
+               LOAD_ATTR               13 (strip + NULL|self)
+               CALL                     0
+               SWAP                     2
+               POP_TOP
+               SWAP                     2
+               POP_TOP
+               RETURN_VALUE
+
+136    L6:     END_FOR
+               POP_TOP
+               JUMP_BACKWARD          142 (to L1)
+
+133    L7:     END_FOR
+               POP_TOP
+
+140            LOAD_GLOBAL              3 (isinstance + NULL)
+               LOAD_FAST                2 (ruot)
+               LOAD_GLOBAL              4 (dict)
+               CALL                     2
+               TO_BOOL
+               POP_JUMP_IF_FALSE      116 (to L12)
+               LOAD_FAST_LOAD_FAST     32 (ruot, data)
+               IS_OP                    1
+               POP_JUMP_IF_FALSE      112 (to L12)
+
+141            LOAD_CONST               2 (('id', '_id'))
+               GET_ITER
+       L8:     FOR_ITER               106 (to L11)
+               STORE_FAST               4 (k)
+
+142            LOAD_FAST                2 (ruot)
+               LOAD_ATTR                7 (get + NULL|self)
+               LOAD_FAST                4 (k)
+               CALL                     1
+               STORE_FAST               5 (v)
+
+143            LOAD_GLOBAL              3 (isinstance + NULL)
+               LOAD_FAST                5 (v)
+               LOAD_GLOBAL              8 (str)
+               LOAD_GLOBAL             10 (int)
+               BUILD_TUPLE              2
+               CALL                     2
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L9)
+               JUMP_BACKWARD           49 (to L8)
+       L9:     LOAD_GLOBAL              9 (str + NULL)
+               LOAD_FAST                5 (v)
+               CALL                     1
+               LOAD_ATTR               13 (strip + NULL|self)
+               CALL                     0
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L10)
+               JUMP_BACKWARD           81 (to L8)
+
+144   L10:     LOAD_GLOBAL              9 (str + NULL)
+               LOAD_FAST                5 (v)
+               CALL                     1
+               LOAD_ATTR               13 (strip + NULL|self)
+               CALL                     0
+               SWAP                     2
+               POP_TOP
+               RETURN_VALUE
+
+141   L11:     END_FOR
+               POP_TOP
+
+145   L12:     LOAD_FAST                0 (data)
+               LOAD_ATTR                7 (get + NULL|self)
+               LOAD_CONST               3 ('result')
+               CALL                     1
+               STORE_FAST               6 (res)
+
+146            LOAD_GLOBAL              3 (isinstance + NULL)
+               LOAD_FAST                6 (res)
+               LOAD_GLOBAL              8 (str)
+               CALL                     2
+               TO_BOOL
+               POP_JUMP_IF_FALSE       37 (to L13)
+               LOAD_FAST                6 (res)
+               LOAD_ATTR               13 (strip + NULL|self)
+               CALL                     0
+               TO_BOOL
+               POP_JUMP_IF_FALSE       16 (to L13)
+
+147            LOAD_FAST                6 (res)
+               LOAD_ATTR               13 (strip + NULL|self)
+               CALL                     0
+               RETURN_VALUE
+
+148   L13:     LOAD_GLOBAL             15 (VivibeTTSError + NULL)
+               LOAD_CONST               4 ('Vivibe: không tìm thấy id lần tạo trong phản hồi: ')
+               LOAD_GLOBAL              9 (str + NULL)
+               LOAD_FAST                0 (data)
+               CALL                     1
+               LOAD_CONST               5 (None)
+               LOAD_CONST               6 (200)
+               BINARY_SLICE
+               FORMAT_SIMPLE
+               BUILD_STRING             2
+               CALL                     1
+               RAISE_VARARGS            1
+
+Disassembly of <code object _extract_audio_url at 0x0000016DC8EB5DE0, file "bilisub\tts\vivibe.py", line 151>:
+151           RESUME                   0
+
+152           LOAD_CONST               1 (('audioUrl', 'audio_url', 'downloadUrl', 'download_url', 'fileUrl', 'file_url', 'audioLink', 'audio_link', 'url', 'link', 'output', 'result'))
+              GET_ITER
+      L1:     FOR_ITER                92 (to L6)
+              STORE_FAST               1 (k)
+
+154           LOAD_GLOBAL              1 (isinstance + NULL)
+              LOAD_FAST                0 (res)
+              LOAD_GLOBAL              2 (dict)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_FALSE       17 (to L2)
+              LOAD_FAST                0 (res)
+              LOAD_ATTR                5 (get + NULL|self)
+              LOAD_FAST                1 (k)
+              CALL                     1
+              JUMP_FORWARD             1 (to L3)
+      L2:     LOAD_CONST               0 (None)
+      L3:     STORE_FAST               2 (v)
+
+155           LOAD_GLOBAL              1 (isinstance + NULL)
+              LOAD_FAST                2 (v)
+              LOAD_GLOBAL              6 (str)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L4)
+              JUMP_BACKWARD           66 (to L1)
+      L4:     LOAD_FAST                2 (v)
+              LOAD_ATTR                9 (startswith + NULL|self)
+              LOAD_CONST               2 ('http')
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L5)
+              JUMP_BACKWARD           90 (to L1)
+
+156   L5:     LOAD_FAST                2 (v)
+              SWAP                     2
+              POP_TOP
+              RETURN_VALUE
+
+152   L6:     END_FOR
+              POP_TOP
+
+157           RETURN_CONST             0 (None)
+
+Disassembly of <code object _status_of at 0x0000016DC8EB5AC0, file "bilisub\tts\vivibe.py", line 160>:
+160           RESUME                   0
+
+161           LOAD_CONST               1 (('status', 'state', 'exportStatus'))
+              GET_ITER
+      L1:     FOR_ITER                91 (to L6)
+              STORE_FAST               1 (k)
+
+162           LOAD_GLOBAL              1 (isinstance + NULL)
+              LOAD_FAST                0 (res)
+              LOAD_GLOBAL              2 (dict)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_FALSE       17 (to L2)
+              LOAD_FAST                0 (res)
+              LOAD_ATTR                5 (get + NULL|self)
+              LOAD_FAST                1 (k)
+              CALL                     1
+              JUMP_FORWARD             1 (to L3)
+      L2:     LOAD_CONST               0 (None)
+      L3:     STORE_FAST               2 (v)
+
+163           LOAD_GLOBAL              1 (isinstance + NULL)
+              LOAD_FAST                2 (v)
+              LOAD_GLOBAL              6 (str)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L4)
+              JUMP_BACKWARD           66 (to L1)
+      L4:     LOAD_FAST                2 (v)
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L5)
+              JUMP_BACKWARD           75 (to L1)
+
+164   L5:     LOAD_FAST                2 (v)
+              LOAD_ATTR                9 (upper + NULL|self)
+              CALL                     0
+              SWAP                     2
+              POP_TOP
+              RETURN_VALUE
+
+161   L6:     END_FOR
+              POP_TOP
+
+165           RETURN_CONST             2 ('')
+
+Disassembly of <code object _poll at 0x0000016DC8F87CB0, file "bilisub\tts\vivibe.py", line 168>:
+ 168            RESUME                   0
+
+ 171            LOAD_GLOBAL              0 (time)
+                LOAD_ATTR                0 (time)
+                PUSH_NULL
+                CALL                     0
+                LOAD_FAST                2 (timeout)
+                BINARY_OP                0 (+)
+                STORE_FAST               4 (deadline)
+
+ 172            LOAD_CONST               1 (1.0)
+                STORE_FAST               5 (delay)
+
+ 173    L1:     LOAD_GLOBAL              0 (time)
+                LOAD_ATTR                0 (time)
+                PUSH_NULL
+                CALL                     0
+                LOAD_FAST                4 (deadline)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE      239 (to L10)
+
+ 174    L2:     NOP
+
+ 175    L3:     LOAD_GLOBAL              3 (_rpc + NULL)
+                LOAD_CONST               2 ('getExportStatus')
+                LOAD_CONST               3 ('projectExportId')
+                LOAD_FAST                0 (export_id)
+                BUILD_MAP                1
+                LOAD_FAST                1 (api_key)
+                LOAD_CONST               4 (30)
+                LOAD_CONST               5 (('timeout',))
+                CALL_KW                  4
+                STORE_FAST               6 (data)
+
+ 185    L4:     LOAD_GLOBAL             15 (_unwrap + NULL)
+                LOAD_FAST                6 (data)
+                CALL                     1
+                STORE_FAST               8 (res)
+
+ 186            LOAD_GLOBAL             17 (_status_of + NULL)
+                LOAD_FAST                8 (res)
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        11 (to L5)
+                POP_TOP
+                LOAD_GLOBAL             17 (_status_of + NULL)
+                LOAD_FAST                6 (data)
+                CALL                     1
+        L5:     STORE_FAST               9 (st)
+
+ 189            LOAD_FAST                9 (st)
+                LOAD_GLOBAL             18 (_FAIL)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       29 (to L6)
+
+ 190            LOAD_GLOBAL              5 (VivibeTTSError + NULL)
+                LOAD_CONST              12 ('Vivibe tổng hợp thất bại (status=')
+                LOAD_FAST                9 (st)
+                FORMAT_SIMPLE
+                LOAD_CONST              13 ('): ')
+                LOAD_GLOBAL              9 (str + NULL)
+                LOAD_FAST                8 (res)
+                CALL                     1
+                LOAD_CONST               7 (None)
+                LOAD_CONST              14 (160)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             4
+                CALL                     1
+                RAISE_VARARGS            1
+
+ 191    L6:     LOAD_GLOBAL             21 (_extract_audio_url + NULL)
+                LOAD_FAST                8 (res)
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        11 (to L7)
+                POP_TOP
+                LOAD_GLOBAL             21 (_extract_audio_url + NULL)
+                LOAD_FAST                6 (data)
+                CALL                     1
+        L7:     STORE_FAST              10 (url)
+
+ 192            LOAD_FAST               10 (url)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L8)
+
+ 193            LOAD_FAST               10 (url)
+                RETURN_VALUE
+
+ 194    L8:     LOAD_FAST                9 (st)
+                LOAD_GLOBAL             22 (_DONE)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       33 (to L9)
+                LOAD_FAST               10 (url)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        26 (to L9)
+
+ 195            LOAD_GLOBAL              5 (VivibeTTSError + NULL)
+                LOAD_CONST              15 ('Vivibe: báo xong nhưng thiếu link tải: ')
+                LOAD_GLOBAL              9 (str + NULL)
+                LOAD_FAST                8 (res)
+                CALL                     1
+                LOAD_CONST               7 (None)
+                LOAD_CONST              16 (200)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                CALL                     1
+                RAISE_VARARGS            1
+
+ 196    L9:     LOAD_GLOBAL              0 (time)
+                LOAD_ATTR               10 (sleep)
+                PUSH_NULL
+                LOAD_FAST                5 (delay)
+                CALL                     1
+                POP_TOP
+
+ 197            LOAD_GLOBAL             13 (min + NULL)
+                LOAD_CONST              17 (4.0)
+                LOAD_FAST                5 (delay)
+                LOAD_CONST              18 (1.3)
+                BINARY_OP                5 (*)
+                CALL                     2
+                STORE_FAST               5 (delay)
+
+ 173            LOAD_GLOBAL              0 (time)
+                LOAD_ATTR                0 (time)
+                PUSH_NULL
+                CALL                     0
+                LOAD_FAST                4 (deadline)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        2 (to L10)
+                JUMP_BACKWARD          239 (to L2)
+
+ 198   L10:     LOAD_GLOBAL              5 (VivibeTTSError + NULL)
+
+ 199            LOAD_CONST              19 ('Vivibe: hết ')
+                LOAD_FAST                2 (timeout)
+                LOAD_CONST              20 ('.0f')
+                FORMAT_WITH_SPEC
+                LOAD_CONST              21 ('s chờ tổng hợp (id=')
+                LOAD_FAST                0 (export_id)
+                FORMAT_SIMPLE
+                LOAD_CONST              22 (') — máy chủ Vivibe đang chậm hoặc quá tải; thử lại sau hoặc đổi giọng khác.')
+                BUILD_STRING             5
+
+ 198            CALL                     1
+                RAISE_VARARGS            1
+
+  --   L11:     PUSH_EXC_INFO
+
+ 176            LOAD_GLOBAL              4 (VivibeTTSError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       90 (to L16)
+                STORE_FAST               7 (ex)
+
+ 179   L12:     LOAD_GLOBAL              7 (_tam_thoi + NULL)
+                LOAD_FAST                7 (ex)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE       68 (to L14)
+
+ 180            LOAD_FAST                3 (log)
+                PUSH_NULL
+                LOAD_CONST               6 ('  (Vivibe: ')
+                LOAD_GLOBAL              9 (str + NULL)
+                LOAD_FAST                7 (ex)
+                CALL                     1
+                LOAD_CONST               7 (None)
+                LOAD_CONST               8 (70)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                LOAD_CONST               9 (' — chờ rồi thử lại)')
+                BUILD_STRING             3
+                CALL                     1
+                POP_TOP
+
+ 181            LOAD_GLOBAL              0 (time)
+                LOAD_ATTR               10 (sleep)
+                PUSH_NULL
+                LOAD_FAST                5 (delay)
+                CALL                     1
+                POP_TOP
+
+ 182            LOAD_GLOBAL             13 (min + NULL)
+                LOAD_CONST              10 (8.0)
+                LOAD_FAST                5 (delay)
+                LOAD_CONST              11 (1.6)
+                BINARY_OP                5 (*)
+                CALL                     2
+                STORE_FAST               5 (delay)
+
+ 183   L13:     POP_EXCEPT
+                LOAD_CONST               7 (None)
+                STORE_FAST               7 (ex)
+                DELETE_FAST              7 (ex)
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          377 (to L1)
+
+ 184   L14:     RAISE_VARARGS            0
+
+  --   L15:     LOAD_CONST               7 (None)
+                STORE_FAST               7 (ex)
+                DELETE_FAST              7 (ex)
+                RERAISE                  1
+
+ 176   L16:     RERAISE                  0
+
+  --   L17:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L3 to L4 -> L11 [0]
+  L11 to L12 -> L17 [1] lasti
+  L12 to L13 -> L15 [1] lasti
+  L14 to L15 -> L15 [1] lasti
+  L15 to L17 -> L17 [1] lasti
+
+Disassembly of <code object synth at 0x0000016DC8F45C10, file "bilisub\tts\vivibe.py", line 204>:
+ 204            RESUME                   0
+
+ 208            LOAD_FAST                6 (log)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         3 (to L1)
+                POP_TOP
+                LOAD_CONST               1 (<code object <lambda> at 0x0000016DC9135210, file "bilisub\tts\vivibe.py", line 208>)
+                MAKE_FUNCTION
+        L1:     STORE_FAST               6 (log)
+
+ 209            LOAD_GLOBAL              1 (voice_code + NULL)
+                LOAD_FAST                1 (voice)
+                CALL                     1
+                STORE_FAST               7 (vc)
+
+ 210            LOAD_FAST                7 (vc)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        11 (to L2)
+
+ 211            LOAD_GLOBAL              3 (VivibeTTSError + NULL)
+                LOAD_CONST               2 ('Vivibe: thiếu mã giọng (userVoiceId).')
+                CALL                     1
+                RAISE_VARARGS            1
+
+ 215    L2:     LOAD_GLOBAL              5 (_rpc + NULL)
+                LOAD_CONST               3 ('ttsLongText')
+
+ 216            LOAD_FAST_LOAD_FAST      7 (text, vc)
+                LOAD_GLOBAL              7 (round + NULL)
+                LOAD_GLOBAL              9 (float + NULL)
+                LOAD_FAST                4 (speed)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L3)
+                POP_TOP
+                LOAD_CONST               4 (1.0)
+        L3:     CALL                     1
+                LOAD_CONST               5 (2)
+                CALL                     2
+                LOAD_CONST               6 (('text', 'userVoiceId', 'speed'))
+                BUILD_CONST_KEY_MAP      3
+
+ 217            LOAD_FAST                3 (api_key)
+                LOAD_CONST               7 (45)
+
+ 215            LOAD_CONST               8 (('timeout',))
+                CALL_KW                  4
+                STORE_FAST               8 (data)
+
+ 218            LOAD_GLOBAL             11 (_extract_export_id + NULL)
+                LOAD_FAST                8 (data)
+                CALL                     1
+                STORE_FAST               9 (export_id)
+
+ 219            LOAD_GLOBAL             13 (_poll + NULL)
+                LOAD_FAST_LOAD_FAST    147 (export_id, api_key)
+                LOAD_FAST_LOAD_FAST     86 (timeout, log)
+                CALL                     4
+                STORE_FAST              10 (audio_url)
+
+ 221            NOP
+
+ 222    L4:     LOAD_GLOBAL             14 (requests)
+                LOAD_ATTR               16 (get)
+                PUSH_NULL
+                LOAD_FAST               10 (audio_url)
+                LOAD_CONST               9 (60)
+                LOAD_CONST               8 (('timeout',))
+                CALL_KW                  2
+                STORE_FAST              11 (ar)
+
+ 223            LOAD_FAST               11 (ar)
+                LOAD_ATTR               19 (raise_for_status + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 226    L5:     LOAD_FAST               11 (ar)
+                LOAD_ATTR               24 (content)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        11 (to L6)
+
+ 227            LOAD_GLOBAL              3 (VivibeTTSError + NULL)
+                LOAD_CONST              13 ('Vivibe: file audio tải về RỖNG.')
+                CALL                     1
+                RAISE_VARARGS            1
+
+ 228    L6:     LOAD_GLOBAL             27 (Path + NULL)
+                LOAD_FAST                2 (out_path)
+                CALL                     1
+                LOAD_ATTR               29 (write_bytes + NULL|self)
+                LOAD_FAST               11 (ar)
+                LOAD_ATTR               24 (content)
+                CALL                     1
+                POP_TOP
+                RETURN_CONST            11 (None)
+
+  --    L7:     PUSH_EXC_INFO
+
+ 224            LOAD_GLOBAL             14 (requests)
+                LOAD_ATTR               20 (RequestException)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       32 (to L10)
+                STORE_FAST              12 (ex)
+
+ 225    L8:     LOAD_GLOBAL              3 (VivibeTTSError + NULL)
+                LOAD_CONST              10 ('Vivibe: tải file audio lỗi: ')
+                LOAD_GLOBAL             23 (str + NULL)
+                LOAD_FAST               12 (ex)
+                CALL                     1
+                LOAD_CONST              11 (None)
+                LOAD_CONST              12 (120)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                CALL                     1
+                LOAD_FAST               12 (ex)
+                RAISE_VARARGS            2
+
+  --    L9:     LOAD_CONST              11 (None)
+                STORE_FAST              12 (ex)
+                DELETE_FAST             12 (ex)
+                RERAISE                  1
+
+ 224   L10:     RERAISE                  0
+
+  --   L11:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L4 to L5 -> L7 [0]
+  L7 to L8 -> L11 [1] lasti
+  L8 to L9 -> L9 [1] lasti
+  L9 to L11 -> L11 [1] lasti
+
+Disassembly of <code object <lambda> at 0x0000016DC9135210, file "bilisub\tts\vivibe.py", line 208>:
+208           RESUME                   0
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _voice_items at 0x0000016DC90D11B0, file "bilisub\tts\vivibe.py", line 243>:
+243           RESUME                   0
+
+245           LOAD_GLOBAL              1 (_unwrap + NULL)
+              LOAD_FAST                0 (data)
+              CALL                     1
+              LOAD_FAST                0 (data)
+              BUILD_TUPLE              2
+              GET_ITER
+      L1:     FOR_ITER               104 (to L7)
+              STORE_FAST               1 (src)
+
+246           LOAD_GLOBAL              3 (isinstance + NULL)
+              LOAD_FAST                1 (src)
+              LOAD_GLOBAL              4 (list)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_FALSE        4 (to L2)
+
+247           LOAD_FAST                1 (src)
+              SWAP                     2
+              POP_TOP
+              RETURN_VALUE
+
+248   L2:     LOAD_GLOBAL              3 (isinstance + NULL)
+              LOAD_FAST                1 (src)
+              LOAD_GLOBAL              6 (dict)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+              JUMP_BACKWARD           51 (to L1)
+
+249   L3:     LOAD_CONST               1 (('voices', 'items', 'list', 'data', 'result'))
+              GET_ITER
+      L4:     FOR_ITER                47 (to L6)
+              STORE_FAST               2 (k)
+
+250           LOAD_FAST                1 (src)
+              LOAD_ATTR                9 (get + NULL|self)
+              LOAD_FAST                2 (k)
+              CALL                     1
+              STORE_FAST               3 (v)
+
+251           LOAD_GLOBAL              3 (isinstance + NULL)
+              LOAD_FAST                3 (v)
+              LOAD_GLOBAL              4 (list)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L5)
+              JUMP_BACKWARD           43 (to L4)
+
+252   L5:     LOAD_FAST                3 (v)
+              SWAP                     2
+              POP_TOP
+              SWAP                     2
+              POP_TOP
+              RETURN_VALUE
+
+249   L6:     END_FOR
+              POP_TOP
+              JUMP_BACKWARD          106 (to L1)
+
+245   L7:     END_FOR
+              POP_TOP
+
+253           BUILD_LIST               0
+              RETURN_VALUE
+
+Disassembly of <code object account_voices at 0x0000016DC8F51EC0, file "bilisub\tts\vivibe.py", line 256>:
+ 256            RESUME                   0
+
+ 266            LOAD_FAST                2 (log)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         3 (to L1)
+                POP_TOP
+                LOAD_CONST               1 (<code object <lambda> at 0x0000016DC9134370, file "bilisub\tts\vivibe.py", line 266>)
+                MAKE_FUNCTION
+        L1:     STORE_FAST               2 (log)
+
+ 267            LOAD_FAST                0 (api_key)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                LOAD_CONST               2 ('')
+        L2:     LOAD_ATTR                1 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               3 (key)
+
+ 268            LOAD_FAST                3 (key)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       35 (to L3)
+                LOAD_GLOBAL              2 (os)
+                LOAD_ATTR                4 (environ)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST               3 ('BILISUB_VIVIBE_DO_VOICES')
+                CALL                     1
+                LOAD_CONST               4 ('1')
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE        2 (to L4)
+
+ 269    L3:     BUILD_LIST               0
+                RETURN_VALUE
+
+ 270    L4:     LOAD_CONST               5 (0)
+                LOAD_CONST               6 (None)
+                IMPORT_NAME              4 (hashlib)
+                STORE_FAST               4 (hashlib)
+
+ 271            LOAD_FAST                4 (hashlib)
+                LOAD_ATTR               11 (sha1 + NULL|self)
+                LOAD_FAST                3 (key)
+                LOAD_ATTR               13 (encode + NULL|self)
+                LOAD_CONST               7 ('utf-8')
+                CALL                     1
+                CALL                     1
+                LOAD_ATTR               15 (hexdigest + NULL|self)
+                CALL                     0
+                LOAD_CONST               6 (None)
+                LOAD_CONST               8 (16)
+                BINARY_SLICE
+                STORE_FAST               5 (kh)
+
+ 272            LOAD_GLOBAL             16 (time)
+                LOAD_ATTR               16 (time)
+                PUSH_NULL
+                CALL                     0
+                STORE_FAST               6 (now)
+
+ 273            LOAD_GLOBAL             18 (_VOICES_CACHE)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_FAST                5 (kh)
+                CALL                     1
+                STORE_FAST               7 (hit)
+
+ 274            LOAD_FAST                7 (hit)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       14 (to L5)
+                LOAD_FAST                7 (hit)
+                LOAD_CONST               5 (0)
+                BINARY_SUBSCR
+                LOAD_FAST                6 (now)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE        5 (to L5)
+
+ 275            LOAD_FAST                7 (hit)
+                LOAD_CONST               9 (1)
+                BINARY_SUBSCR
+                RETURN_VALUE
+
+ 276    L5:     BUILD_LIST               0
+                STORE_FAST               8 (out)
+
+ 277            LOAD_GLOBAL             20 (_VOICE_METHODS)
+                GET_ITER
+        L6:     FOR_ITER               146 (to L18)
+                STORE_FAST               9 (m)
+
+ 278            NOP
+
+ 279    L7:     LOAD_GLOBAL             23 (_rpc + NULL)
+                LOAD_FAST                9 (m)
+                BUILD_MAP                0
+                LOAD_FAST_LOAD_FAST     49 (key, timeout)
+                LOAD_CONST              10 (('timeout',))
+                CALL_KW                  4
+                STORE_FAST              10 (data)
+
+ 284    L8:     LOAD_GLOBAL             29 (_voice_items + NULL)
+                LOAD_FAST               10 (data)
+                CALL                     1
+                STORE_FAST              12 (items)
+
+ 285            LOAD_FAST               12 (items)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     13 (v)
+                SWAP                     2
+        L9:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L10:     FOR_ITER                96 (to L15)
+                STORE_FAST              13 (v)
+                LOAD_GLOBAL             31 (isinstance + NULL)
+                LOAD_FAST               13 (v)
+                LOAD_GLOBAL             32 (dict)
+                CALL                     2
+                TO_BOOL
+       L11:     POP_JUMP_IF_TRUE         2 (to L12)
+                JUMP_BACKWARD           26 (to L10)
+
+ 286   L12:     LOAD_FAST               13 (v)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST              11 ('id')
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        46 (to L14)
+                LOAD_FAST               13 (v)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST              12 ('userVoiceId')
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        24 (to L14)
+                LOAD_FAST               13 (v)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST              13 ('voiceId')
+                CALL                     1
+                TO_BOOL
+
+ 285   L13:     POP_JUMP_IF_TRUE         2 (to L14)
+                JUMP_BACKWARD           94 (to L10)
+       L14:     LOAD_FAST               13 (v)
+                LIST_APPEND              2
+                JUMP_BACKWARD           98 (to L10)
+       L15:     END_FOR
+                POP_TOP
+       L16:     STORE_FAST              14 (got)
+                STORE_FAST              13 (v)
+
+ 287            LOAD_FAST               14 (got)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L17)
+                JUMP_BACKWARD          144 (to L6)
+
+ 288   L17:     LOAD_FAST               14 (got)
+                STORE_FAST               8 (out)
+
+ 289            POP_TOP
+                JUMP_FORWARD             2 (to L19)
+
+ 277   L18:     END_FOR
+                POP_TOP
+
+ 291   L19:     LOAD_FAST_LOAD_FAST    104 (now, out)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        6 (to L20)
+                LOAD_GLOBAL             34 (_VOICES_TTL)
+                JUMP_FORWARD             1 (to L21)
+       L20:     LOAD_CONST              14 (60.0)
+       L21:     BINARY_OP                0 (+)
+                LOAD_FAST                8 (out)
+                BUILD_TUPLE              2
+                LOAD_GLOBAL             18 (_VOICES_CACHE)
+                LOAD_FAST                5 (kh)
+                STORE_SUBSCR
+
+ 292            LOAD_FAST                8 (out)
+                RETURN_VALUE
+
+  --   L22:     PUSH_EXC_INFO
+
+ 280            LOAD_GLOBAL             24 (VivibeTTSError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       34 (to L27)
+                STORE_FAST              11 (ex)
+
+ 281   L23:     LOAD_GLOBAL             27 (_tam_thoi + NULL)
+                LOAD_FAST               11 (ex)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE        7 (to L25)
+
+ 282   L24:     POP_EXCEPT
+                LOAD_CONST               6 (None)
+                STORE_FAST              11 (ex)
+                DELETE_FAST             11 (ex)
+                POP_TOP
+                JUMP_BACKWARD           61 (to L19)
+
+ 283   L25:     POP_EXCEPT
+                LOAD_CONST               6 (None)
+                STORE_FAST              11 (ex)
+                DELETE_FAST             11 (ex)
+                JUMP_BACKWARD          217 (to L6)
+
+  --   L26:     LOAD_CONST               6 (None)
+                STORE_FAST              11 (ex)
+                DELETE_FAST             11 (ex)
+                RERAISE                  1
+
+ 280   L27:     RERAISE                  0
+
+  --   L28:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L29:     SWAP                     2
+                POP_TOP
+
+ 285            SWAP                     2
+                STORE_FAST              13 (v)
+                RERAISE                  0
+ExceptionTable:
+  L7 to L8 -> L22 [1]
+  L9 to L11 -> L29 [3]
+  L12 to L13 -> L29 [3]
+  L14 to L16 -> L29 [3]
+  L22 to L23 -> L28 [2] lasti
+  L23 to L24 -> L26 [2] lasti
+  L26 to L28 -> L28 [2] lasti
+
+Disassembly of <code object <lambda> at 0x0000016DC9134370, file "bilisub\tts\vivibe.py", line 266>:
+266           RESUME                   0
+              RETURN_CONST             0 (None)

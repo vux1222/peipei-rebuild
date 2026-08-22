@@ -1,0 +1,1897 @@
+=== FILE: bilisub\queue_store.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('Lưu/khôi phục HÀNG CHỜ dịch–render qua tắt máy (★31/07 Boss chốt).\n\nVấn đề: hàng chờ nằm RAM — khách cắm qua đêm mà mất điện/Windows update là mất sạch\ndanh sách (file đã render xong vẫn còn, nhưng phải thêm lại tay từng video). Nay:\n  * mỗi thay đổi hàng chờ (thêm/xoá/đổi trạng thái từng job) đều ghi xuống\n    %LOCALAPPDATA%/PeiPeiReup/queue_pending.json (ghi ATOMIC — .tmp rồi replace,\n    mất điện GIỮA lúc ghi không phá file cũ);\n  * mở tool thấy còn job dở → hỏi "chạy tiếp?".\n\nModule này THUẦN (không Qt) — quy tắc 45: test offline được. GUI tự dựng QueueJob\ntừ dict trả về (tránh import PyQt ở đây).\n')
+              STORE_NAME               0 (__doc__)
+
+ 13           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 15           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (json)
+              STORE_NAME               3 (json)
+
+ 16           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (os)
+              STORE_NAME               4 (os)
+
+ 17           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              5 (threading)
+              STORE_NAME               5 (threading)
+
+ 18           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('asdict',))
+              IMPORT_NAME              6 (dataclasses)
+              IMPORT_FROM              7 (asdict)
+              STORE_NAME               7 (asdict)
+              POP_TOP
+
+ 19           LOAD_CONST               1 (0)
+              LOAD_CONST               5 (('Path',))
+              IMPORT_NAME              8 (pathlib)
+              IMPORT_FROM              9 (Path)
+              STORE_NAME               9 (Path)
+              POP_TOP
+
+ 20           LOAD_CONST               1 (0)
+              LOAD_CONST               6 (('Optional',))
+              IMPORT_NAME             10 (typing)
+              IMPORT_FROM             11 (Optional)
+              STORE_NAME              11 (Optional)
+              POP_TOP
+
+ 22           LOAD_CONST               7 (1)
+              LOAD_CONST               8 (('Settings', 'app_data_dir'))
+              IMPORT_NAME             12 (config)
+              IMPORT_FROM             13 (Settings)
+              STORE_NAME              13 (Settings)
+              IMPORT_FROM             14 (app_data_dir)
+              STORE_NAME              14 (app_data_dir)
+              POP_TOP
+
+ 23           LOAD_CONST               7 (1)
+              LOAD_CONST               9 (('PipelineInput',))
+              IMPORT_NAME             15 (pipeline)
+              IMPORT_FROM             16 (PipelineInput)
+              STORE_NAME              16 (PipelineInput)
+              POP_TOP
+
+ 25           LOAD_NAME                5 (threading)
+              LOAD_ATTR               34 (Lock)
+              PUSH_NULL
+              CALL                     0
+              STORE_NAME              18 (_LOCK)
+
+ 26           LOAD_CONST               7 (1)
+              STORE_NAME              19 (_VER)
+
+ 29           LOAD_CONST              29 (('return', 'Path'))
+              LOAD_CONST              10 (<code object queue_path at 0x0000016DC8CBEB50, file "bilisub\queue_store.py", line 29>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              20 (queue_path)
+
+ 37           LOAD_CONST              11 (('autoscript_text', 'autoscript_outline', 'autoscript_text_video'))
+              STORE_NAME              21 (_TRUONG_KICH_BAN)
+
+ 40           LOAD_CONST              30 (('d', 'dict', 'return', 'dict'))
+              LOAD_CONST              12 (<code object _rut_gon_kich_ban at 0x0000016DC8EB68D0, file "bilisub\queue_store.py", line 40>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              22 (_rut_gon_kich_ban)
+
+ 51           LOAD_CONST              31 ((None,))
+              LOAD_CONST              32 (('jobs', 'list', 'path', 'Optional[Path]', 'return', 'bool'))
+              LOAD_CONST              13 (<code object save_queue at 0x0000016DC9357CE0, file "bilisub\queue_store.py", line 51>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              23 (save_queue)
+
+ 84           LOAD_CONST              31 ((None,))
+              LOAD_CONST              33 (('path', 'Optional[Path]', 'return', 'list[dict]'))
+              LOAD_CONST              14 (<code object load_queue at 0x0000016DC8D2B450, file "bilisub\queue_store.py", line 84>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              24 (load_queue)
+
+123           LOAD_CONST              31 ((None,))
+              LOAD_CONST              34 (('path', 'Optional[Path]', 'return', 'None'))
+              LOAD_CONST              15 (<code object clear_queue at 0x0000016DC8E0B7B0, file "bilisub\queue_store.py", line 123>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              25 (clear_queue)
+
+132           LOAD_CONST              35 (('jobs', 'list', 'return', 'int'))
+              LOAD_CONST              16 (<code object pending_count at 0x0000016DC90F15C0, file "bilisub\queue_store.py", line 132>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              26 (pending_count)
+
+140           LOAD_CONST              29 (('return', 'Path'))
+              LOAD_CONST              17 (<code object active_run_path at 0x0000016DC90F2010, file "bilisub\queue_store.py", line 140>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              27 (active_run_path)
+
+144           LOAD_CONST              36 (('',))
+              LOAD_CONST              37 (('label', 'str', 'return', 'bool'))
+              LOAD_CONST              18 (<code object save_active_run at 0x0000016DC8FE17F0, file "bilisub\queue_store.py", line 144>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              28 (save_active_run)
+
+162           LOAD_CONST              38 (('return', 'Optional[dict]'))
+              LOAD_CONST              19 (<code object load_active_run at 0x0000016DC8FDF9B0, file "bilisub\queue_store.py", line 162>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              29 (load_active_run)
+
+178           LOAD_CONST              39 (('return', 'None'))
+              LOAD_CONST              20 (<code object clear_active_run at 0x0000016DC90EE6B0, file "bilisub\queue_store.py", line 178>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              30 (clear_active_run)
+
+191           LOAD_CONST              40 (('p', 'Path', 'return', 'Optional[int]'))
+              LOAD_CONST              21 (<code object _doc_pid_chu at 0x0000016DC8EA5890, file "bilisub\queue_store.py", line 191>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              31 (_doc_pid_chu)
+
+204           LOAD_CONST              31 ((None,))
+              LOAD_CONST              41 (('path', 'Optional[Path]', 'return', 'Optional[int]'))
+              LOAD_CONST              22 (<code object queue_owner_pid at 0x0000016DC9129110, file "bilisub\queue_store.py", line 204>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              32 (queue_owner_pid)
+
+209           LOAD_CONST              31 ((None,))
+              LOAD_CONST              41 (('path', 'Optional[Path]', 'return', 'Optional[int]'))
+              LOAD_CONST              23 (<code object active_run_owner_pid at 0x0000016DC9129B30, file "bilisub\queue_store.py", line 209>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              33 (active_run_owner_pid)
+
+216           LOAD_CONST              42 (('jobs', 'list', 'return', 'list'))
+              LOAD_CONST              24 (<code object jobs_need_zoning at 0x0000016DC8EC34B0, file "bilisub\queue_store.py", line 216>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              34 (jobs_need_zoning)
+
+227           LOAD_CONST              42 (('jobs', 'list', 'return', 'list'))
+              LOAD_CONST              25 (<code object jobs_need_genre at 0x0000016DC8ED0570, file "bilisub\queue_store.py", line 227>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              35 (jobs_need_genre)
+
+251           LOAD_CONST              43 ((100000,))
+              LOAD_CONST              44 (('existing', 'int', 'files', 'list', 'max_queue', 'int'))
+              LOAD_CONST              26 (<code object clamp_new_videos at 0x0000016DC91C01A0, file "bilisub\queue_store.py", line 251>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              36 (clamp_new_videos)
+
+261           LOAD_CONST              45 (('jobs', 'list', 'keys', 'list', 'return', 'list'))
+              LOAD_CONST              27 (<code object reorder_by_keys at 0x0000016DC90E6040, file "bilisub\queue_store.py", line 261>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              37 (reorder_by_keys)
+
+274           LOAD_CONST              35 (('jobs', 'list', 'return', 'int'))
+              LOAD_CONST              28 (<code object apply_config_to_all at 0x0000016DC8EEE890, file "bilisub\queue_store.py", line 274>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              38 (apply_config_to_all)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object queue_path at 0x0000016DC8CBEB50, file "bilisub\queue_store.py", line 29>:
+ 29           RESUME                   0
+
+ 30           LOAD_GLOBAL              1 (app_data_dir + NULL)
+              CALL                     0
+              LOAD_CONST               1 ('queue_pending.json')
+              BINARY_OP               11 (/)
+              RETURN_VALUE
+
+Disassembly of <code object _rut_gon_kich_ban at 0x0000016DC8EB68D0, file "bilisub\queue_store.py", line 40>:
+  40           RESUME                   0
+
+  46           LOAD_GLOBAL              1 (str + NULL)
+               LOAD_GLOBAL              3 (getattr + NULL)
+               LOAD_FAST                1 (settings)
+               LOAD_CONST               1 ('source_mode')
+               LOAD_CONST               2 ('')
+               CALL                     3
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L1)
+               POP_TOP
+               LOAD_CONST               2 ('')
+       L1:     CALL                     1
+               LOAD_CONST               3 ('autoscript')
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_FALSE        2 (to L2)
+
+  47           LOAD_FAST                0 (d)
+               RETURN_VALUE
+
+  48   L2:     LOAD_FAST                0 (d)
+               LOAD_ATTR                5 (items + NULL|self)
+               CALL                     0
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      2 (k)
+               LOAD_FAST_AND_CLEAR      3 (v)
+               SWAP                     3
+       L3:     BUILD_MAP                0
+               SWAP                     2
+               GET_ITER
+       L4:     FOR_ITER                19 (to L7)
+               UNPACK_SEQUENCE          2
+               STORE_FAST_STORE_FAST   35 (k, v)
+               LOAD_FAST                2 (k)
+               LOAD_GLOBAL              6 (_TRUONG_KICH_BAN)
+               CONTAINS_OP              1
+       L5:     POP_JUMP_IF_TRUE         2 (to L6)
+               JUMP_BACKWARD           17 (to L4)
+       L6:     LOAD_FAST_LOAD_FAST     35 (k, v)
+               MAP_ADD                  2
+               JUMP_BACKWARD           21 (to L4)
+       L7:     END_FOR
+               POP_TOP
+       L8:     SWAP                     3
+               STORE_FAST               3 (v)
+               STORE_FAST               2 (k)
+               RETURN_VALUE
+
+  --   L9:     SWAP                     2
+               POP_TOP
+
+  48           SWAP                     3
+               STORE_FAST               3 (v)
+               STORE_FAST               2 (k)
+               RERAISE                  0
+ExceptionTable:
+  L3 to L5 -> L9 [3]
+  L6 to L8 -> L9 [3]
+
+Disassembly of <code object save_queue at 0x0000016DC9357CE0, file "bilisub\queue_store.py", line 51>:
+  51            RESUME                   0
+
+  57            LOAD_FAST                1 (path)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       11 (to L1)
+                LOAD_GLOBAL              1 (Path + NULL)
+                LOAD_FAST                1 (path)
+                CALL                     1
+                JUMP_FORWARD             9 (to L2)
+        L1:     LOAD_GLOBAL              3 (queue_path + NULL)
+                CALL                     0
+        L2:     STORE_FAST               2 (p)
+
+  58            NOP
+
+  59    L3:     BUILD_LIST               0
+                STORE_FAST               3 (rows)
+
+  60            LOAD_FAST                0 (jobs)
+                GET_ITER
+        L4:     FOR_ITER               236 (to L10)
+                STORE_FAST               4 (j)
+
+  61            LOAD_FAST                3 (rows)
+                LOAD_ATTR                5 (append + NULL|self)
+
+  62            LOAD_GLOBAL              7 (str + NULL)
+                LOAD_GLOBAL              9 (getattr + NULL)
+                LOAD_FAST                4 (j)
+                LOAD_CONST               1 ('label')
+                LOAD_CONST               2 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L5)
+                POP_TOP
+                LOAD_CONST               2 ('')
+        L5:     CALL                     1
+
+  63            LOAD_GLOBAL              7 (str + NULL)
+                LOAD_GLOBAL              9 (getattr + NULL)
+                LOAD_FAST                4 (j)
+                LOAD_CONST               3 ('status')
+                LOAD_CONST               4 ('chờ')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L6)
+                POP_TOP
+                LOAD_CONST               4 ('chờ')
+        L6:     CALL                     1
+
+  64            LOAD_GLOBAL              7 (str + NULL)
+                LOAD_GLOBAL              9 (getattr + NULL)
+                LOAD_FAST                4 (j)
+                LOAD_CONST               5 ('out')
+                LOAD_CONST               2 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L7)
+                POP_TOP
+                LOAD_CONST               2 ('')
+        L7:     CALL                     1
+
+  65            LOAD_GLOBAL              7 (str + NULL)
+                LOAD_GLOBAL              9 (getattr + NULL)
+                LOAD_FAST                4 (j)
+                LOAD_CONST               6 ('err')
+                LOAD_CONST               2 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L8)
+                POP_TOP
+                LOAD_CONST               2 ('')
+        L8:     CALL                     1
+
+  67            LOAD_GLOBAL              7 (str + NULL)
+                LOAD_GLOBAL              9 (getattr + NULL)
+                LOAD_FAST                4 (j)
+                LOAD_CONST               7 ('zone_mode')
+                LOAD_CONST               8 ('none')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L9)
+                POP_TOP
+                LOAD_CONST               8 ('none')
+        L9:     CALL                     1
+
+  68            LOAD_GLOBAL             11 (_rut_gon_kich_ban + NULL)
+                LOAD_FAST                4 (j)
+                LOAD_ATTR               12 (settings)
+                LOAD_ATTR               15 (to_dict + NULL|self)
+                CALL                     0
+                LOAD_FAST                4 (j)
+                LOAD_ATTR               12 (settings)
+                CALL                     2
+
+  69            LOAD_GLOBAL             17 (asdict + NULL)
+                LOAD_FAST                4 (j)
+                LOAD_ATTR               18 (inp)
+                CALL                     1
+
+  61            LOAD_CONST               9 (('label', 'status', 'out', 'err', 'zone_mode', 'settings', 'inp'))
+                BUILD_CONST_KEY_MAP      7
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD          238 (to L4)
+
+  60   L10:     END_FOR
+                POP_TOP
+
+  74            LOAD_GLOBAL             20 (json)
+                LOAD_ATTR               22 (dumps)
+                PUSH_NULL
+                LOAD_GLOBAL             24 (_VER)
+                LOAD_GLOBAL             26 (os)
+                LOAD_ATTR               28 (getpid)
+                PUSH_NULL
+                CALL                     0
+                LOAD_FAST                3 (rows)
+                LOAD_CONST              10 (('v', 'pid', 'jobs'))
+                BUILD_CONST_KEY_MAP      3
+                LOAD_CONST              11 (False)
+                LOAD_CONST              12 (('ensure_ascii',))
+                CALL_KW                  2
+                STORE_FAST               5 (data)
+
+  75            LOAD_GLOBAL             30 (_LOCK)
+                BEFORE_WITH
+       L11:     POP_TOP
+
+  76            LOAD_FAST                2 (p)
+                LOAD_ATTR               33 (with_suffix + NULL|self)
+                LOAD_CONST              13 ('.tmp')
+                CALL                     1
+                STORE_FAST               6 (tmp)
+
+  77            LOAD_FAST                6 (tmp)
+                LOAD_ATTR               35 (write_text + NULL|self)
+                LOAD_FAST                5 (data)
+                LOAD_CONST              14 ('utf-8')
+                LOAD_CONST              15 (('encoding',))
+                CALL_KW                  2
+                POP_TOP
+
+  78            LOAD_FAST                6 (tmp)
+                LOAD_ATTR               37 (replace + NULL|self)
+                LOAD_FAST                2 (p)
+                CALL                     1
+                POP_TOP
+
+  75   L12:     LOAD_CONST              16 (None)
+                LOAD_CONST              16 (None)
+                LOAD_CONST              16 (None)
+                CALL                     2
+                POP_TOP
+
+  79   L13:     RETURN_CONST            17 (True)
+
+  75   L14:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L15)
+                RERAISE                  2
+       L15:     POP_TOP
+       L16:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+
+  79   L17:     RETURN_CONST            17 (True)
+
+  --   L18:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L19:     PUSH_EXC_INFO
+
+  80            LOAD_GLOBAL             38 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L21)
+                POP_TOP
+
+  81   L20:     POP_EXCEPT
+                RETURN_CONST            11 (False)
+
+  80   L21:     RERAISE                  0
+
+  --   L22:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L3 to L11 -> L19 [0]
+  L11 to L12 -> L14 [1] lasti
+  L12 to L13 -> L19 [0]
+  L14 to L16 -> L18 [3] lasti
+  L16 to L17 -> L19 [0]
+  L18 to L19 -> L19 [0]
+  L19 to L20 -> L22 [1] lasti
+  L21 to L22 -> L22 [1] lasti
+
+Disassembly of <code object load_queue at 0x0000016DC8D2B450, file "bilisub\queue_store.py", line 84>:
+  84            RESUME                   0
+
+  91            LOAD_FAST                0 (path)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       11 (to L1)
+                LOAD_GLOBAL              1 (Path + NULL)
+                LOAD_FAST                0 (path)
+                CALL                     1
+                JUMP_FORWARD             9 (to L2)
+        L1:     LOAD_GLOBAL              3 (queue_path + NULL)
+                CALL                     0
+        L2:     STORE_FAST               1 (p)
+
+  92            NOP
+
+  93    L3:     LOAD_FAST                1 (p)
+                LOAD_ATTR                5 (exists + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L5)
+
+  94            BUILD_LIST               0
+        L4:     RETURN_VALUE
+
+  95    L5:     LOAD_GLOBAL              6 (json)
+                LOAD_ATTR                8 (loads)
+                PUSH_NULL
+                LOAD_FAST                1 (p)
+                LOAD_ATTR               11 (read_text + NULL|self)
+                LOAD_CONST               1 ('utf-8-sig')
+                LOAD_CONST               2 (('encoding',))
+                CALL_KW                  1
+                CALL                     1
+                STORE_FAST               2 (d)
+
+  96            BUILD_LIST               0
+                STORE_FAST               3 (out)
+
+  97            LOAD_GLOBAL             13 (set + NULL)
+                LOAD_GLOBAL             14 (PipelineInput)
+                LOAD_ATTR               16 (__dataclass_fields__)
+                CALL                     1
+                STORE_FAST               4 (known_inp)
+
+  98            LOAD_FAST                2 (d)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST               3 ('jobs')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L6)
+                POP_TOP
+                BUILD_LIST               0
+        L6:     GET_ITER
+        L7:     EXTENDED_ARG             1
+                FOR_ITER               366 (to L26)
+                STORE_FAST               5 (r)
+
+  99            LOAD_GLOBAL             21 (isinstance + NULL)
+                LOAD_FAST                5 (r)
+                LOAD_GLOBAL             22 (dict)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L8)
+
+ 100            JUMP_BACKWARD           27 (to L7)
+
+ 101    L8:     LOAD_GLOBAL             25 (str + NULL)
+                LOAD_FAST                5 (r)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST               4 ('status')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L9)
+                POP_TOP
+                LOAD_CONST               5 ('chờ')
+        L9:     CALL                     1
+                STORE_FAST               6 (st)
+
+ 102            LOAD_FAST                6 (st)
+                LOAD_CONST               6 ('đang chạy')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE        2 (to L10)
+
+ 103            LOAD_CONST               5 ('chờ')
+                STORE_FAST               6 (st)
+
+ 104   L10:     LOAD_FAST                5 (r)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST               7 ('inp')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L11)
+                POP_TOP
+                BUILD_MAP                0
+       L11:     LOAD_ATTR               27 (items + NULL|self)
+                CALL                     0
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      7 (k)
+                LOAD_FAST_AND_CLEAR      8 (v)
+                SWAP                     3
+       L12:     BUILD_MAP                0
+                SWAP                     2
+                GET_ITER
+       L13:     FOR_ITER                14 (to L16)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  120 (k, v)
+                LOAD_FAST_LOAD_FAST    116 (k, known_inp)
+                CONTAINS_OP              0
+       L14:     POP_JUMP_IF_TRUE         2 (to L15)
+                JUMP_BACKWARD           12 (to L13)
+       L15:     LOAD_FAST_LOAD_FAST    120 (k, v)
+                MAP_ADD                  2
+                JUMP_BACKWARD           16 (to L13)
+       L16:     END_FOR
+                POP_TOP
+       L17:     STORE_FAST               9 (inp_d)
+                STORE_FAST               7 (k)
+                STORE_FAST               8 (v)
+
+ 108            LOAD_CONST               8 ('zone_mode')
+                LOAD_FAST                5 (r)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       35 (to L19)
+                LOAD_GLOBAL             25 (str + NULL)
+                LOAD_FAST                5 (r)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST               8 ('zone_mode')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L18)
+                POP_TOP
+                LOAD_CONST               9 ('legacy')
+       L18:     CALL                     1
+                JUMP_FORWARD             1 (to L20)
+       L19:     LOAD_CONST               9 ('legacy')
+       L20:     STORE_FAST              10 (zm)
+
+ 109            LOAD_FAST                3 (out)
+                LOAD_ATTR               29 (append + NULL|self)
+
+ 110            LOAD_GLOBAL             25 (str + NULL)
+                LOAD_FAST                5 (r)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST              10 ('label')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L21)
+                POP_TOP
+                LOAD_CONST              11 ('')
+       L21:     CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L22)
+                POP_TOP
+                LOAD_CONST              12 ('job')
+
+ 111   L22:     LOAD_FAST                6 (st)
+
+ 112            LOAD_GLOBAL             25 (str + NULL)
+                LOAD_FAST                5 (r)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST              13 ('out')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L23)
+                POP_TOP
+                LOAD_CONST              11 ('')
+       L23:     CALL                     1
+
+ 113            LOAD_GLOBAL             25 (str + NULL)
+                LOAD_FAST                5 (r)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST              14 ('err')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L24)
+                POP_TOP
+                LOAD_CONST              11 ('')
+       L24:     CALL                     1
+
+ 114            LOAD_FAST               10 (zm)
+
+ 115            LOAD_GLOBAL             30 (Settings)
+                LOAD_ATTR               32 (from_dict)
+                PUSH_NULL
+                LOAD_FAST                5 (r)
+                LOAD_ATTR               19 (get + NULL|self)
+                LOAD_CONST              15 ('settings')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L25)
+                POP_TOP
+                BUILD_MAP                0
+       L25:     CALL                     1
+
+ 116            LOAD_GLOBAL             15 (PipelineInput + NULL)
+                LOAD_CONST              17 (())
+                BUILD_MAP                0
+                LOAD_FAST                9 (inp_d)
+                DICT_MERGE               1
+                CALL_FUNCTION_EX         1
+
+ 109            LOAD_CONST              16 (('label', 'status', 'out', 'err', 'zone_mode', 'settings', 'inp'))
+                BUILD_CONST_KEY_MAP      7
+                CALL                     1
+                POP_TOP
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          369 (to L7)
+
+  98   L26:     END_FOR
+                POP_TOP
+
+ 118            LOAD_FAST                3 (out)
+       L27:     RETURN_VALUE
+
+  --   L28:     SWAP                     2
+                POP_TOP
+
+ 104            SWAP                     3
+                STORE_FAST               8 (v)
+                STORE_FAST               7 (k)
+                RERAISE                  0
+
+  --   L29:     PUSH_EXC_INFO
+
+ 119            LOAD_GLOBAL             34 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        5 (to L31)
+                POP_TOP
+
+ 120            BUILD_LIST               0
+                SWAP                     2
+       L30:     POP_EXCEPT
+                RETURN_VALUE
+
+ 119   L31:     RERAISE                  0
+
+  --   L32:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L3 to L4 -> L29 [0]
+  L5 to L12 -> L29 [0]
+  L12 to L14 -> L28 [4]
+  L15 to L17 -> L28 [4]
+  L17 to L27 -> L29 [0]
+  L28 to L29 -> L29 [0]
+  L29 to L30 -> L32 [1] lasti
+  L31 to L32 -> L32 [1] lasti
+
+Disassembly of <code object clear_queue at 0x0000016DC8E0B7B0, file "bilisub\queue_store.py", line 123>:
+ 123           RESUME                   0
+
+ 124           LOAD_FAST                0 (path)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       11 (to L1)
+               LOAD_GLOBAL              1 (Path + NULL)
+               LOAD_FAST                0 (path)
+               CALL                     1
+               JUMP_FORWARD             9 (to L2)
+       L1:     LOAD_GLOBAL              3 (queue_path + NULL)
+               CALL                     0
+       L2:     STORE_FAST               1 (p)
+
+ 125           NOP
+
+ 126   L3:     LOAD_FAST                1 (p)
+               LOAD_ATTR                5 (unlink + NULL|self)
+               LOAD_CONST               1 (True)
+               LOAD_CONST               2 (('missing_ok',))
+               CALL_KW                  1
+               POP_TOP
+
+ 127           LOAD_FAST                1 (p)
+               LOAD_ATTR                7 (with_suffix + NULL|self)
+               LOAD_CONST               3 ('.tmp')
+               CALL                     1
+               LOAD_ATTR                5 (unlink + NULL|self)
+               LOAD_CONST               1 (True)
+               LOAD_CONST               2 (('missing_ok',))
+               CALL_KW                  1
+               POP_TOP
+       L4:     RETURN_CONST             0 (None)
+
+  --   L5:     PUSH_EXC_INFO
+
+ 128           LOAD_GLOBAL              8 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L7)
+               POP_TOP
+
+ 129   L6:     POP_EXCEPT
+               RETURN_CONST             0 (None)
+
+ 128   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L3 to L4 -> L5 [0]
+  L5 to L6 -> L8 [1] lasti
+  L7 to L8 -> L8 [1] lasti
+
+Disassembly of <code object pending_count at 0x0000016DC90F15C0, file "bilisub\queue_store.py", line 132>:
+132           RESUME                   0
+
+133           LOAD_GLOBAL              1 (sum + NULL)
+              LOAD_CONST               1 (<code object <genexpr> at 0x0000016DC9129FB0, file "bilisub\queue_store.py", line 133>)
+              MAKE_FUNCTION
+              LOAD_FAST                0 (jobs)
+              GET_ITER
+              CALL                     0
+              CALL                     1
+              RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC9129FB0, file "bilisub\queue_store.py", line 133>:
+ 133           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                26 (to L5)
+               STORE_FAST               1 (j)
+               LOAD_GLOBAL              1 (getattr + NULL)
+               LOAD_FAST                1 (j)
+               LOAD_CONST               0 ('status')
+               LOAD_CONST               1 ('')
+               CALL                     3
+               LOAD_CONST               2 ('xong')
+               COMPARE_OP             119 (bool(!=))
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           22 (to L2)
+       L4:     LOAD_CONST               3 (1)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           28 (to L2)
+       L5:     END_FOR
+               POP_TOP
+               RETURN_CONST             4 (None)
+
+  --   L6:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L6 [0] lasti
+  L4 to L6 -> L6 [0] lasti
+
+Disassembly of <code object active_run_path at 0x0000016DC90F2010, file "bilisub\queue_store.py", line 140>:
+140           RESUME                   0
+
+141           LOAD_GLOBAL              1 (app_data_dir + NULL)
+              CALL                     0
+              LOAD_CONST               1 ('active_run.json')
+              BINARY_OP               11 (/)
+              RETURN_VALUE
+
+Disassembly of <code object save_active_run at 0x0000016DC8FE17F0, file "bilisub\queue_store.py", line 144>:
+ 144            RESUME                   0
+
+ 146            LOAD_GLOBAL              1 (active_run_path + NULL)
+                CALL                     0
+                STORE_FAST               3 (p)
+
+ 147            NOP
+
+ 149    L1:     LOAD_GLOBAL              2 (json)
+                LOAD_ATTR                4 (dumps)
+                PUSH_NULL
+                LOAD_GLOBAL              6 (_VER)
+                LOAD_GLOBAL              8 (os)
+                LOAD_ATTR               10 (getpid)
+                PUSH_NULL
+                CALL                     0
+                LOAD_GLOBAL             13 (str + NULL)
+                LOAD_FAST                2 (label)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                LOAD_CONST               1 ('')
+        L2:     CALL                     1
+
+ 150            LOAD_GLOBAL             15 (_rut_gon_kich_ban + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_ATTR               17 (to_dict + NULL|self)
+                CALL                     0
+                LOAD_FAST                1 (settings)
+                CALL                     2
+
+ 151            LOAD_GLOBAL             19 (asdict + NULL)
+                LOAD_FAST                0 (inp)
+                CALL                     1
+
+ 149            LOAD_CONST               2 (('v', 'pid', 'label', 'settings', 'inp'))
+                BUILD_CONST_KEY_MAP      5
+
+ 152            LOAD_CONST               3 (False)
+
+ 149            LOAD_CONST               4 (('ensure_ascii',))
+                CALL_KW                  2
+                STORE_FAST               4 (data)
+
+ 153            LOAD_GLOBAL             20 (_LOCK)
+                BEFORE_WITH
+        L3:     POP_TOP
+
+ 154            LOAD_FAST                3 (p)
+                LOAD_ATTR               23 (with_suffix + NULL|self)
+                LOAD_CONST               5 ('.tmp')
+                CALL                     1
+                STORE_FAST               5 (tmp)
+
+ 155            LOAD_FAST                5 (tmp)
+                LOAD_ATTR               25 (write_text + NULL|self)
+                LOAD_FAST                4 (data)
+                LOAD_CONST               6 ('utf-8')
+                LOAD_CONST               7 (('encoding',))
+                CALL_KW                  2
+                POP_TOP
+
+ 156            LOAD_FAST                5 (tmp)
+                LOAD_ATTR               27 (replace + NULL|self)
+                LOAD_FAST                3 (p)
+                CALL                     1
+                POP_TOP
+
+ 153    L4:     LOAD_CONST               8 (None)
+                LOAD_CONST               8 (None)
+                LOAD_CONST               8 (None)
+                CALL                     2
+                POP_TOP
+
+ 157    L5:     RETURN_CONST             9 (True)
+
+ 153    L6:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L7)
+                RERAISE                  2
+        L7:     POP_TOP
+        L8:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+
+ 157    L9:     RETURN_CONST             9 (True)
+
+  --   L10:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L11:     PUSH_EXC_INFO
+
+ 158            LOAD_GLOBAL             28 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L13)
+                POP_TOP
+
+ 159   L12:     POP_EXCEPT
+                RETURN_CONST             3 (False)
+
+ 158   L13:     RERAISE                  0
+
+  --   L14:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L11 [0]
+  L3 to L4 -> L6 [1] lasti
+  L4 to L5 -> L11 [0]
+  L6 to L8 -> L10 [3] lasti
+  L8 to L9 -> L11 [0]
+  L10 to L11 -> L11 [0]
+  L11 to L12 -> L14 [1] lasti
+  L13 to L14 -> L14 [1] lasti
+
+Disassembly of <code object load_active_run at 0x0000016DC8FDF9B0, file "bilisub\queue_store.py", line 162>:
+ 162            RESUME                   0
+
+ 164            LOAD_GLOBAL              1 (active_run_path + NULL)
+                CALL                     0
+                STORE_FAST               0 (p)
+
+ 165            NOP
+
+ 166    L1:     LOAD_FAST                0 (p)
+                LOAD_ATTR                3 (exists + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L3)
+
+ 167    L2:     RETURN_CONST             1 (None)
+
+ 168    L3:     LOAD_GLOBAL              4 (json)
+                LOAD_ATTR                6 (loads)
+                PUSH_NULL
+                LOAD_FAST                0 (p)
+                LOAD_ATTR                9 (read_text + NULL|self)
+                LOAD_CONST               2 ('utf-8-sig')
+                LOAD_CONST               3 (('encoding',))
+                CALL_KW                  1
+                CALL                     1
+                STORE_FAST               1 (d)
+
+ 169            LOAD_GLOBAL             11 (set + NULL)
+                LOAD_GLOBAL             12 (PipelineInput)
+                LOAD_ATTR               14 (__dataclass_fields__)
+                CALL                     1
+                STORE_FAST               2 (known)
+
+ 170            LOAD_FAST                1 (d)
+                LOAD_ATTR               17 (get + NULL|self)
+                LOAD_CONST               4 ('inp')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L4)
+                POP_TOP
+                BUILD_MAP                0
+        L4:     LOAD_ATTR               19 (items + NULL|self)
+                CALL                     0
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      3 (k)
+                LOAD_FAST_AND_CLEAR      4 (v)
+                SWAP                     3
+        L5:     BUILD_MAP                0
+                SWAP                     2
+                GET_ITER
+        L6:     FOR_ITER                14 (to L9)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST   52 (k, v)
+                LOAD_FAST_LOAD_FAST     50 (k, known)
+                CONTAINS_OP              0
+        L7:     POP_JUMP_IF_TRUE         2 (to L8)
+                JUMP_BACKWARD           12 (to L6)
+        L8:     LOAD_FAST_LOAD_FAST     52 (k, v)
+                MAP_ADD                  2
+                JUMP_BACKWARD           16 (to L6)
+        L9:     END_FOR
+                POP_TOP
+       L10:     STORE_FAST               5 (inp_d)
+                STORE_FAST               3 (k)
+                STORE_FAST               4 (v)
+
+ 171            LOAD_GLOBAL             21 (str + NULL)
+                LOAD_FAST                1 (d)
+                LOAD_ATTR               17 (get + NULL|self)
+                LOAD_CONST               5 ('label')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L11)
+                POP_TOP
+                LOAD_CONST               6 ('')
+       L11:     CALL                     1
+
+ 172            LOAD_GLOBAL             22 (Settings)
+                LOAD_ATTR               24 (from_dict)
+                PUSH_NULL
+                LOAD_FAST                1 (d)
+                LOAD_ATTR               17 (get + NULL|self)
+                LOAD_CONST               7 ('settings')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L12)
+                POP_TOP
+                BUILD_MAP                0
+       L12:     CALL                     1
+
+ 173            LOAD_GLOBAL             13 (PipelineInput + NULL)
+                LOAD_CONST               9 (())
+                BUILD_MAP                0
+                LOAD_FAST                5 (inp_d)
+                DICT_MERGE               1
+                CALL_FUNCTION_EX         1
+
+ 171            LOAD_CONST               8 (('label', 'settings', 'inp'))
+                BUILD_CONST_KEY_MAP      3
+       L13:     RETURN_VALUE
+
+  --   L14:     SWAP                     2
+                POP_TOP
+
+ 170            SWAP                     3
+                STORE_FAST               4 (v)
+                STORE_FAST               3 (k)
+                RERAISE                  0
+
+  --   L15:     PUSH_EXC_INFO
+
+ 174            LOAD_GLOBAL             26 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L17)
+                POP_TOP
+
+ 175   L16:     POP_EXCEPT
+                RETURN_CONST             1 (None)
+
+ 174   L17:     RERAISE                  0
+
+  --   L18:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L15 [0]
+  L3 to L5 -> L15 [0]
+  L5 to L7 -> L14 [3]
+  L8 to L10 -> L14 [3]
+  L10 to L13 -> L15 [0]
+  L14 to L15 -> L15 [0]
+  L15 to L16 -> L18 [1] lasti
+  L17 to L18 -> L18 [1] lasti
+
+Disassembly of <code object clear_active_run at 0x0000016DC90EE6B0, file "bilisub\queue_store.py", line 178>:
+ 178           RESUME                   0
+
+ 179           LOAD_GLOBAL              1 (active_run_path + NULL)
+               CALL                     0
+               STORE_FAST               0 (p)
+
+ 180           NOP
+
+ 181   L1:     LOAD_FAST                0 (p)
+               LOAD_ATTR                3 (unlink + NULL|self)
+               LOAD_CONST               1 (True)
+               LOAD_CONST               2 (('missing_ok',))
+               CALL_KW                  1
+               POP_TOP
+
+ 182           LOAD_FAST                0 (p)
+               LOAD_ATTR                5 (with_suffix + NULL|self)
+               LOAD_CONST               3 ('.tmp')
+               CALL                     1
+               LOAD_ATTR                3 (unlink + NULL|self)
+               LOAD_CONST               1 (True)
+               LOAD_CONST               2 (('missing_ok',))
+               CALL_KW                  1
+               POP_TOP
+       L2:     RETURN_CONST             0 (None)
+
+  --   L3:     PUSH_EXC_INFO
+
+ 183           LOAD_GLOBAL              6 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L5)
+               POP_TOP
+
+ 184   L4:     POP_EXCEPT
+               RETURN_CONST             0 (None)
+
+ 183   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object _doc_pid_chu at 0x0000016DC8EA5890, file "bilisub\queue_store.py", line 191>:
+ 191            RESUME                   0
+
+ 194            NOP
+
+ 195    L1:     LOAD_FAST                0 (p)
+                LOAD_ATTR                1 (exists + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L3)
+
+ 196    L2:     RETURN_CONST             1 (None)
+
+ 197    L3:     LOAD_GLOBAL              2 (json)
+                LOAD_ATTR                4 (loads)
+                PUSH_NULL
+                LOAD_FAST                0 (p)
+                LOAD_ATTR                7 (read_text + NULL|self)
+                LOAD_CONST               2 ('utf-8-sig')
+                LOAD_CONST               3 (('encoding',))
+                CALL_KW                  1
+                CALL                     1
+                STORE_FAST               1 (d)
+
+ 198            LOAD_FAST                1 (d)
+                LOAD_ATTR                9 (get + NULL|self)
+                LOAD_CONST               4 ('pid')
+                CALL                     1
+                STORE_FAST               2 (pid)
+
+ 199            LOAD_FAST                2 (pid)
+                POP_JUMP_IF_NOT_NONE     2 (to L5)
+                LOAD_CONST               1 (None)
+        L4:     RETURN_VALUE
+        L5:     LOAD_GLOBAL             11 (int + NULL)
+                LOAD_FAST                2 (pid)
+                CALL                     1
+        L6:     RETURN_VALUE
+
+  --    L7:     PUSH_EXC_INFO
+
+ 200            LOAD_GLOBAL             12 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L9)
+                POP_TOP
+
+ 201    L8:     POP_EXCEPT
+                RETURN_CONST             1 (None)
+
+ 200    L9:     RERAISE                  0
+
+  --   L10:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L7 [0]
+  L3 to L4 -> L7 [0]
+  L5 to L6 -> L7 [0]
+  L7 to L8 -> L10 [1] lasti
+  L9 to L10 -> L10 [1] lasti
+
+Disassembly of <code object queue_owner_pid at 0x0000016DC9129110, file "bilisub\queue_store.py", line 204>:
+204           RESUME                   0
+
+206           LOAD_GLOBAL              1 (_doc_pid_chu + NULL)
+              LOAD_FAST                0 (path)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       15 (to L1)
+              LOAD_GLOBAL              3 (Path + NULL)
+              LOAD_FAST                0 (path)
+              CALL                     1
+              CALL                     1
+              RETURN_VALUE
+      L1:     LOAD_GLOBAL              5 (queue_path + NULL)
+              CALL                     0
+              CALL                     1
+              RETURN_VALUE
+
+Disassembly of <code object active_run_owner_pid at 0x0000016DC9129B30, file "bilisub\queue_store.py", line 209>:
+209           RESUME                   0
+
+211           LOAD_GLOBAL              1 (_doc_pid_chu + NULL)
+              LOAD_FAST                0 (path)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       15 (to L1)
+              LOAD_GLOBAL              3 (Path + NULL)
+              LOAD_FAST                0 (path)
+              CALL                     1
+              CALL                     1
+              RETURN_VALUE
+      L1:     LOAD_GLOBAL              5 (active_run_path + NULL)
+              CALL                     0
+              CALL                     1
+              RETURN_VALUE
+
+Disassembly of <code object jobs_need_zoning at 0x0000016DC8EC34B0, file "bilisub\queue_store.py", line 216>:
+ 216           RESUME                   0
+
+ 222           LOAD_FAST                0 (jobs)
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      1 (j)
+               SWAP                     2
+       L1:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L2:     FOR_ITER                43 (to L7)
+               STORE_FAST               1 (j)
+
+ 223           LOAD_GLOBAL              1 (getattr + NULL)
+               LOAD_FAST                1 (j)
+               LOAD_CONST               1 ('status')
+               LOAD_CONST               2 ('')
+               CALL                     3
+               LOAD_CONST               3 ('xong')
+               COMPARE_OP             119 (bool(!=))
+
+ 222   L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           22 (to L2)
+
+ 224   L4:     LOAD_GLOBAL              1 (getattr + NULL)
+               LOAD_FAST                1 (j)
+               LOAD_CONST               4 ('zone_mode')
+               LOAD_CONST               5 ('legacy')
+               CALL                     3
+               LOAD_CONST               6 ('none')
+               COMPARE_OP              88 (bool(==))
+
+ 222   L5:     POP_JUMP_IF_TRUE         2 (to L6)
+               JUMP_BACKWARD           41 (to L2)
+       L6:     LOAD_FAST                1 (j)
+               LIST_APPEND              2
+               JUMP_BACKWARD           45 (to L2)
+       L7:     END_FOR
+               POP_TOP
+       L8:     SWAP                     2
+               STORE_FAST               1 (j)
+               RETURN_VALUE
+
+  --   L9:     SWAP                     2
+               POP_TOP
+
+ 222           SWAP                     2
+               STORE_FAST               1 (j)
+               RERAISE                  0
+ExceptionTable:
+  L1 to L3 -> L9 [2]
+  L4 to L5 -> L9 [2]
+  L6 to L8 -> L9 [2]
+
+Disassembly of <code object jobs_need_genre at 0x0000016DC8ED0570, file "bilisub\queue_store.py", line 227>:
+227           RESUME                   0
+
+234           BUILD_LIST               0
+              STORE_FAST               1 (out)
+
+235           LOAD_FAST                0 (jobs)
+              GET_ITER
+      L1:     FOR_ITER               181 (to L8)
+              STORE_FAST               2 (j)
+
+236           LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                2 (j)
+              LOAD_CONST               1 ('status')
+              LOAD_CONST               2 ('')
+              CALL                     3
+              LOAD_CONST               3 ('xong')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE        2 (to L2)
+
+237           JUMP_BACKWARD           22 (to L1)
+
+238   L2:     LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                2 (j)
+              LOAD_CONST               4 ('inp')
+              LOAD_CONST               5 (None)
+              CALL                     3
+              LOAD_CONST               6 ('do_translate')
+              LOAD_CONST               7 (True)
+              CALL                     3
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+
+239           JUMP_BACKWARD           53 (to L1)
+
+244   L3:     LOAD_GLOBAL              3 (str + NULL)
+              LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                2 (j)
+              LOAD_CONST               8 ('settings')
+              LOAD_CONST               5 (None)
+              CALL                     3
+              LOAD_CONST               9 ('source_mode')
+              LOAD_CONST               2 ('')
+              CALL                     3
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L4)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L4:     CALL                     1
+              LOAD_CONST              10 ('autoscript')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE        2 (to L5)
+
+245           JUMP_BACKWARD          101 (to L1)
+
+246   L5:     LOAD_GLOBAL              3 (str + NULL)
+              LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                2 (j)
+              LOAD_CONST               8 ('settings')
+              LOAD_CONST               5 (None)
+              CALL                     3
+              LOAD_CONST              11 ('video_genre')
+              LOAD_CONST               2 ('')
+              CALL                     3
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L6)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L6:     CALL                     1
+              LOAD_ATTR                5 (strip + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE        2 (to L7)
+              JUMP_BACKWARD          164 (to L1)
+
+247   L7:     LOAD_FAST                1 (out)
+              LOAD_ATTR                7 (append + NULL|self)
+              LOAD_FAST                2 (j)
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD          183 (to L1)
+
+235   L8:     END_FOR
+              POP_TOP
+
+248           LOAD_FAST                1 (out)
+              RETURN_VALUE
+
+Disassembly of <code object clamp_new_videos at 0x0000016DC91C01A0, file "bilisub\queue_store.py", line 251>:
+251           RESUME                   0
+
+254           LOAD_FAST                2 (max_queue)
+              LOAD_GLOBAL              1 (int + NULL)
+              LOAD_FAST                0 (existing)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 (0)
+      L1:     CALL                     1
+              BINARY_OP               10 (-)
+              STORE_FAST               3 (remain)
+
+255           LOAD_FAST                3 (remain)
+              LOAD_CONST               1 (0)
+              COMPARE_OP              58 (bool(<=))
+              POP_JUMP_IF_FALSE       13 (to L2)
+
+256           BUILD_LIST               0
+              LOAD_GLOBAL              3 (bool + NULL)
+              LOAD_FAST                1 (files)
+              CALL                     1
+              BUILD_TUPLE              2
+              RETURN_VALUE
+
+257   L2:     LOAD_GLOBAL              5 (list + NULL)
+              LOAD_FAST                1 (files)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+              POP_TOP
+              BUILD_LIST               0
+      L3:     CALL                     1
+              STORE_FAST               4 (fs)
+
+258           LOAD_FAST                4 (fs)
+              LOAD_CONST               2 (None)
+              LOAD_FAST                3 (remain)
+              BINARY_SLICE
+              LOAD_GLOBAL              7 (len + NULL)
+              LOAD_FAST                4 (fs)
+              CALL                     1
+              LOAD_FAST                3 (remain)
+              COMPARE_OP             132 (>)
+              BUILD_TUPLE              2
+              RETURN_VALUE
+
+Disassembly of <code object reorder_by_keys at 0x0000016DC90E6040, file "bilisub\queue_store.py", line 261>:
+ 261            RESUME                   0
+
+ 266            LOAD_FAST                0 (jobs)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      2 (j)
+                SWAP                     2
+        L1:     BUILD_MAP                0
+                SWAP                     2
+                GET_ITER
+        L2:     FOR_ITER                24 (to L3)
+                STORE_FAST               2 (j)
+                LOAD_GLOBAL              1 (str + NULL)
+                LOAD_GLOBAL              3 (id + NULL)
+                LOAD_FAST                2 (j)
+                CALL                     1
+                CALL                     1
+                LOAD_FAST                2 (j)
+                MAP_ADD                  2
+                JUMP_BACKWARD           26 (to L2)
+        L3:     END_FOR
+                POP_TOP
+        L4:     STORE_FAST               3 (by)
+                STORE_FAST               2 (j)
+
+ 267            LOAD_FAST                1 (keys)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      4 (k)
+                SWAP                     2
+        L5:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L6:     FOR_ITER                14 (to L9)
+                STORE_FAST_LOAD_FAST    68 (k, k)
+                LOAD_FAST                3 (by)
+                CONTAINS_OP              0
+        L7:     POP_JUMP_IF_TRUE         2 (to L8)
+                JUMP_BACKWARD           10 (to L6)
+        L8:     LOAD_FAST_LOAD_FAST     52 (by, k)
+                BINARY_SUBSCR
+                LIST_APPEND              2
+                JUMP_BACKWARD           16 (to L6)
+        L9:     END_FOR
+                POP_TOP
+       L10:     STORE_FAST               5 (newq)
+                STORE_FAST               4 (k)
+
+ 268            LOAD_FAST                0 (jobs)
+                GET_ITER
+       L11:     FOR_ITER                27 (to L13)
+                STORE_FAST               2 (j)
+
+ 269            LOAD_FAST_LOAD_FAST     37 (j, newq)
+                CONTAINS_OP              1
+                POP_JUMP_IF_TRUE         2 (to L12)
+                JUMP_BACKWARD           10 (to L11)
+
+ 270   L12:     LOAD_FAST                5 (newq)
+                LOAD_ATTR                5 (append + NULL|self)
+                LOAD_FAST                2 (j)
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD           29 (to L11)
+
+ 268   L13:     END_FOR
+                POP_TOP
+
+ 271            LOAD_FAST                5 (newq)
+                RETURN_VALUE
+
+  --   L14:     SWAP                     2
+                POP_TOP
+
+ 266            SWAP                     2
+                STORE_FAST               2 (j)
+                RERAISE                  0
+
+  --   L15:     SWAP                     2
+                POP_TOP
+
+ 267            SWAP                     2
+                STORE_FAST               4 (k)
+                RERAISE                  0
+ExceptionTable:
+  L1 to L4 -> L14 [2]
+  L5 to L7 -> L15 [2]
+  L8 to L10 -> L15 [2]
+
+Disassembly of <code object apply_config_to_all at 0x0000016DC8EEE890, file "bilisub\queue_store.py", line 274>:
+274            RESUME                   0
+
+302            LOAD_CONST               1 (0)
+               LOAD_CONST               2 (None)
+               IMPORT_NAME              0 (copy)
+               STORE_FAST               2 (_copy)
+
+304            LOAD_CONST              30 (('return', 'str'))
+               LOAD_CONST               3 (<code object _chuan at 0x0000016DC8EC5080, file "bilisub\queue_store.py", line 304>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_FAST               3 (_chuan)
+
+310            LOAD_FAST                1 (src)
+               LOAD_ATTR                2 (settings)
+               STORE_FAST               4 (ss)
+
+311            LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                4 (ss)
+               LOAD_CONST               4 ('video_genre')
+               LOAD_CONST               5 ('')
+               CALL                     3
+               STORE_FAST               5 (g)
+
+312            LOAD_GLOBAL              7 (bool + NULL)
+               LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                4 (ss)
+               LOAD_CONST               6 ('translate_zones')
+               LOAD_CONST               2 (None)
+               CALL                     3
+               CALL                     1
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE        22 (to L1)
+               POP_TOP
+               LOAD_GLOBAL              7 (bool + NULL)
+               LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                4 (ss)
+               LOAD_CONST               7 ('blur_zones')
+               LOAD_CONST               2 (None)
+               CALL                     3
+               CALL                     1
+       L1:     STORE_FAST               6 (_co_vung)
+
+313            LOAD_FAST                3 (_chuan)
+               PUSH_NULL
+               LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                4 (ss)
+               LOAD_CONST               8 ('zones_video')
+               LOAD_CONST               5 ('')
+               CALL                     3
+               CALL                     1
+               STORE_FAST               7 (_zv)
+
+314            LOAD_FAST                3 (_chuan)
+               PUSH_NULL
+               LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                1 (src)
+               LOAD_CONST               9 ('inp')
+               LOAD_CONST               2 (None)
+               CALL                     3
+               LOAD_CONST              10 ('video_path')
+               LOAD_CONST               5 ('')
+               CALL                     3
+               CALL                     1
+               STORE_FAST               8 (_svp)
+
+315            LOAD_FAST                6 (_co_vung)
+               TO_BOOL
+               UNARY_NOT
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE        45 (to L2)
+               POP_TOP
+
+316            LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                1 (src)
+               LOAD_CONST              11 ('zone_mode')
+               LOAD_CONST               5 ('')
+               CALL                     3
+               LOAD_CONST              12 (('manual', 'applied'))
+               CONTAINS_OP              0
+
+315            COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE        22 (to L2)
+               POP_TOP
+
+317            LOAD_GLOBAL              7 (bool + NULL)
+               LOAD_FAST                7 (_zv)
+               CALL                     1
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_FALSE        4 (to L2)
+               POP_TOP
+               LOAD_FAST_LOAD_FAST    120 (_zv, _svp)
+               COMPARE_OP              72 (==)
+
+315    L2:     STORE_FAST               9 (_vung_cua_nguon)
+
+318            LOAD_CONST               1 (0)
+               STORE_FAST              10 (n)
+
+319            LOAD_FAST                0 (jobs)
+               GET_ITER
+       L3:     EXTENDED_ARG             1
+               FOR_ITER               432 (to L14)
+               STORE_FAST              11 (j)
+
+320            LOAD_FAST_LOAD_FAST    177 (j, src)
+               IS_OP                    0
+               POP_JUMP_IF_FALSE        2 (to L4)
+
+321            JUMP_BACKWARD           10 (to L3)
+
+322    L4:     LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST               11 (j)
+               LOAD_CONST              11 ('zone_mode')
+               LOAD_CONST              13 ('none')
+               CALL                     3
+               LOAD_CONST              14 ('manual')
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_FALSE        2 (to L5)
+
+323            JUMP_BACKWARD           29 (to L3)
+
+324    L5:     LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST               11 (j)
+               LOAD_CONST              15 ('status')
+               LOAD_CONST               5 ('')
+               CALL                     3
+               LOAD_CONST              16 ('xong')
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_FALSE        2 (to L6)
+
+325            JUMP_BACKWARD           48 (to L3)
+
+326    L6:     LOAD_GLOBAL              9 (str + NULL)
+               LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST               11 (j)
+               LOAD_ATTR                2 (settings)
+               LOAD_CONST              17 ('source_mode')
+               LOAD_CONST               5 ('')
+               CALL                     3
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L7)
+               POP_TOP
+               LOAD_CONST               5 ('')
+       L7:     CALL                     1
+               LOAD_CONST              18 ('autoscript')
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_FALSE        2 (to L8)
+
+327            JUMP_BACKWARD           95 (to L3)
+
+328    L8:     LOAD_FAST               11 (j)
+               LOAD_ATTR                2 (settings)
+               STORE_FAST              12 (s)
+
+329            LOAD_FAST                5 (g)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       84 (to L10)
+
+330            LOAD_FAST_LOAD_FAST     92 (g, s)
+               STORE_ATTR               5 (video_genre)
+
+336            LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                4 (ss)
+               LOAD_CONST              19 ('user_prompt_scope')
+               LOAD_CONST              20 ('genre')
+               CALL                     3
+               LOAD_FAST               12 (s)
+               STORE_ATTR               6 (user_prompt_scope)
+
+337            LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                4 (ss)
+               LOAD_CONST              21 ('user_prompt_all')
+               LOAD_CONST               5 ('')
+               CALL                     3
+               LOAD_FAST               12 (s)
+               STORE_ATTR               7 (user_prompt_all)
+
+338            LOAD_FAST                2 (_copy)
+               LOAD_ATTR               17 (deepcopy + NULL|self)
+               LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                4 (ss)
+               LOAD_CONST              22 ('user_prompt_by_genre')
+               BUILD_MAP                0
+               CALL                     3
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L9)
+               POP_TOP
+               BUILD_MAP                0
+       L9:     CALL                     1
+               LOAD_FAST               12 (s)
+               STORE_ATTR               9 (user_prompt_by_genre)
+
+339   L10:     LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST               11 (j)
+               LOAD_ATTR               20 (inp)
+               LOAD_CONST              10 ('video_path')
+               LOAD_CONST               2 (None)
+               CALL                     3
+               STORE_FAST              13 (vp)
+
+340            LOAD_FAST                9 (_vung_cua_nguon)
+               TO_BOOL
+               POP_JUMP_IF_FALSE      192 (to L13)
+               LOAD_FAST               13 (vp)
+               TO_BOOL
+               POP_JUMP_IF_FALSE      185 (to L13)
+
+341            LOAD_GLOBAL             23 (tuple + NULL)
+               LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                4 (ss)
+               LOAD_CONST              23 ('subtitle_position')
+               LOAD_CONST              24 ((0.5, 0.88))
+               CALL                     3
+               CALL                     1
+               LOAD_FAST               12 (s)
+               STORE_ATTR              12 (subtitle_position)
+
+342            LOAD_FAST                2 (_copy)
+               LOAD_ATTR               17 (deepcopy + NULL|self)
+               LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                4 (ss)
+               LOAD_CONST               7 ('blur_zones')
+               BUILD_LIST               0
+               CALL                     3
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L11)
+               POP_TOP
+               BUILD_LIST               0
+      L11:     CALL                     1
+               LOAD_FAST               12 (s)
+               STORE_ATTR              13 (blur_zones)
+
+343            LOAD_FAST                2 (_copy)
+               LOAD_ATTR               17 (deepcopy + NULL|self)
+               LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                4 (ss)
+               LOAD_CONST               6 ('translate_zones')
+               BUILD_LIST               0
+               CALL                     3
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L12)
+               POP_TOP
+               BUILD_LIST               0
+      L12:     CALL                     1
+               LOAD_FAST               12 (s)
+               STORE_ATTR              14 (translate_zones)
+
+344            LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                4 (ss)
+               LOAD_CONST              25 ('blur_enabled')
+               LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST               12 (s)
+               LOAD_CONST              25 ('blur_enabled')
+               LOAD_CONST              26 (False)
+               CALL                     3
+               CALL                     3
+               LOAD_FAST               12 (s)
+               STORE_ATTR              15 (blur_enabled)
+
+345            LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                4 (ss)
+               LOAD_CONST              27 ('blur_strength')
+               LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST               12 (s)
+               LOAD_CONST              27 ('blur_strength')
+               LOAD_CONST               5 ('')
+               CALL                     3
+               CALL                     3
+               LOAD_FAST               12 (s)
+               STORE_ATTR              16 (blur_strength)
+
+346            LOAD_GLOBAL              9 (str + NULL)
+               LOAD_FAST               13 (vp)
+               CALL                     1
+               LOAD_FAST               12 (s)
+               STORE_ATTR              17 (zones_video)
+
+347   L13:     LOAD_CONST              28 ('applied')
+               LOAD_FAST               11 (j)
+               STORE_ATTR              18 (zone_mode)
+
+348            LOAD_FAST               10 (n)
+               LOAD_CONST              29 (1)
+               BINARY_OP               13 (+=)
+               STORE_FAST              10 (n)
+               EXTENDED_ARG             1
+               JUMP_BACKWARD          435 (to L3)
+
+319   L14:     END_FOR
+               POP_TOP
+
+351            LOAD_GLOBAL              5 (getattr + NULL)
+               LOAD_FAST                1 (src)
+               LOAD_CONST              11 ('zone_mode')
+               LOAD_CONST              13 ('none')
+               CALL                     3
+               LOAD_CONST              13 ('none')
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_FALSE        7 (to L15)
+
+352            LOAD_CONST              28 ('applied')
+               LOAD_FAST                1 (src)
+               STORE_ATTR              18 (zone_mode)
+
+353   L15:     LOAD_FAST               10 (n)
+               RETURN_VALUE
+
+Disassembly of <code object _chuan at 0x0000016DC8EC5080, file "bilisub\queue_store.py", line 304>:
+ 304           RESUME                   0
+
+ 305           NOP
+
+ 306   L1:     LOAD_FAST                0 (p)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       69 (to L3)
+               LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                2 (path)
+               LOAD_ATTR                5 (normcase + NULL|self)
+               LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                2 (path)
+               LOAD_ATTR                7 (abspath + NULL|self)
+               LOAD_GLOBAL              9 (str + NULL)
+               LOAD_FAST                0 (p)
+               CALL                     1
+               CALL                     1
+               CALL                     1
+       L2:     RETURN_VALUE
+       L3:     LOAD_CONST               1 ('')
+       L4:     RETURN_VALUE
+
+  --   L5:     PUSH_EXC_INFO
+
+ 307           LOAD_GLOBAL             10 (OSError)
+               LOAD_GLOBAL             12 (ValueError)
+               LOAD_GLOBAL             14 (TypeError)
+               BUILD_TUPLE              3
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       23 (to L8)
+               POP_TOP
+
+ 308           LOAD_GLOBAL              9 (str + NULL)
+               LOAD_FAST                0 (p)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L6)
+               POP_TOP
+               LOAD_CONST               1 ('')
+       L6:     CALL                     1
+               SWAP                     2
+       L7:     POP_EXCEPT
+               RETURN_VALUE
+
+ 307   L8:     RERAISE                  0
+
+  --   L9:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L5 [0]
+  L3 to L4 -> L5 [0]
+  L5 to L7 -> L9 [1] lasti
+  L8 to L9 -> L9 [1] lasti

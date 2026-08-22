@@ -1,0 +1,3535 @@
+=== FILE: bilisub\gui\channel_dialog.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           SETUP_ANNOTATIONS
+              LOAD_CONST               0 ('Dialog QUÉT KÊNH (Douyin / Bilibili) → chọn → tải hàng loạt / full kênh.')
+              STORE_NAME               0 (__doc__)
+
+  2           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+  4           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (os)
+              STORE_NAME               3 (os)
+
+  5           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('ThreadPoolExecutor',))
+              IMPORT_NAME              4 (concurrent.futures)
+              IMPORT_FROM              5 (ThreadPoolExecutor)
+              STORE_NAME               5 (ThreadPoolExecutor)
+              POP_TOP
+
+  6           LOAD_CONST               1 (0)
+              LOAD_CONST               5 (('Path',))
+              IMPORT_NAME              6 (pathlib)
+              IMPORT_FROM              7 (Path)
+              STORE_NAME               7 (Path)
+              POP_TOP
+
+  8           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              8 (requests)
+              STORE_NAME               8 (requests)
+
+ 10           LOAD_CONST               1 (0)
+              LOAD_CONST               6 (('Qt', 'QSize', 'QThread', 'pyqtSignal'))
+              IMPORT_NAME              9 (PyQt6.QtCore)
+              IMPORT_FROM             10 (Qt)
+              STORE_NAME              10 (Qt)
+              IMPORT_FROM             11 (QSize)
+              STORE_NAME              11 (QSize)
+              IMPORT_FROM             12 (QThread)
+              STORE_NAME              12 (QThread)
+              IMPORT_FROM             13 (pyqtSignal)
+              STORE_NAME              13 (pyqtSignal)
+              POP_TOP
+
+ 11           LOAD_CONST               1 (0)
+              LOAD_CONST               7 (('QIcon', 'QPixmap'))
+              IMPORT_NAME             14 (PyQt6.QtGui)
+              IMPORT_FROM             15 (QIcon)
+              STORE_NAME              15 (QIcon)
+              IMPORT_FROM             16 (QPixmap)
+              STORE_NAME              16 (QPixmap)
+              POP_TOP
+
+ 12           LOAD_CONST               1 (0)
+              LOAD_CONST               8 (('QComboBox', 'QDialog', 'QFileDialog', 'QHBoxLayout', 'QLabel', 'QLineEdit', 'QListWidget', 'QListWidgetItem', 'QMessageBox', 'QPlainTextEdit', 'QProgressBar', 'QPushButton', 'QSpinBox', 'QVBoxLayout', 'QWidget'))
+              IMPORT_NAME             17 (PyQt6.QtWidgets)
+              IMPORT_FROM             18 (QComboBox)
+              STORE_NAME              18 (QComboBox)
+              IMPORT_FROM             19 (QDialog)
+              STORE_NAME              19 (QDialog)
+              IMPORT_FROM             20 (QFileDialog)
+              STORE_NAME              20 (QFileDialog)
+              IMPORT_FROM             21 (QHBoxLayout)
+              STORE_NAME              21 (QHBoxLayout)
+              IMPORT_FROM             22 (QLabel)
+              STORE_NAME              22 (QLabel)
+              IMPORT_FROM             23 (QLineEdit)
+              STORE_NAME              23 (QLineEdit)
+              IMPORT_FROM             24 (QListWidget)
+              STORE_NAME              24 (QListWidget)
+              IMPORT_FROM             25 (QListWidgetItem)
+              STORE_NAME              25 (QListWidgetItem)
+              IMPORT_FROM             26 (QMessageBox)
+              STORE_NAME              26 (QMessageBox)
+              IMPORT_FROM             27 (QPlainTextEdit)
+              STORE_NAME              27 (QPlainTextEdit)
+              IMPORT_FROM             28 (QProgressBar)
+              STORE_NAME              28 (QProgressBar)
+              IMPORT_FROM             29 (QPushButton)
+              STORE_NAME              29 (QPushButton)
+              IMPORT_FROM             30 (QSpinBox)
+              STORE_NAME              30 (QSpinBox)
+              IMPORT_FROM             31 (QVBoxLayout)
+              STORE_NAME              31 (QVBoxLayout)
+              IMPORT_FROM             32 (QWidget)
+              STORE_NAME              32 (QWidget)
+              POP_TOP
+
+ 18           LOAD_CONST               9 (2)
+              LOAD_CONST              10 (('ChannelVideo', 'detect_platform', 'download_channel_videos', 'scan_channel'))
+              IMPORT_NAME             33 (channel)
+              IMPORT_FROM             34 (ChannelVideo)
+              STORE_NAME              34 (ChannelVideo)
+              IMPORT_FROM             35 (detect_platform)
+              STORE_NAME              35 (detect_platform)
+              IMPORT_FROM             36 (download_channel_videos)
+              STORE_NAME              36 (download_channel_videos)
+              IMPORT_FROM             37 (scan_channel)
+              STORE_NAME              37 (scan_channel)
+              POP_TOP
+
+ 20           LOAD_CONST              11 ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36')
+              STORE_NAME              38 (_THUMB_UA)
+
+ 22           LOAD_NAME               11 (QSize)
+              PUSH_NULL
+              LOAD_CONST              12 (128)
+              LOAD_CONST              13 (72)
+              CALL                     2
+              STORE_NAME              39 (_THUMB_SIZE)
+
+ 26           BUILD_LIST               0
+              STORE_NAME              40 (_ALIVE_WORKERS)
+              LOAD_CONST              14 ('list')
+              LOAD_NAME               41 (__annotations__)
+              LOAD_CONST              15 ('_ALIVE_WORKERS')
+              STORE_SUBSCR
+
+ 29           LOAD_CONST              16 (<code object _keep_alive at 0x0000016DC9160310, file "bilisub\gui\channel_dialog.py", line 29>)
+              MAKE_FUNCTION
+              STORE_NAME              42 (_keep_alive)
+
+ 34           LOAD_CONST              27 ((5000,))
+              LOAD_CONST              28 (('timeout_ms', 'int'))
+              LOAD_CONST              17 (<code object drain_workers at 0x0000016DC8E91110, file "bilisub\gui\channel_dialog.py", line 34>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              43 (drain_workers)
+
+ 49           LOAD_CONST              29 (('return', 'Path'))
+              LOAD_CONST              18 (<code object default_download_dir at 0x0000016DC90F15C0, file "bilisub\gui\channel_dialog.py", line 49>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              44 (default_download_dir)
+
+ 55           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              19 (<code object _ScanWorker at 0x0000016DC8EA2E80, file "bilisub\gui\channel_dialog.py", line 55>)
+              MAKE_FUNCTION
+              LOAD_CONST              20 ('_ScanWorker')
+              LOAD_NAME               12 (QThread)
+              CALL                     3
+              STORE_NAME              45 (_ScanWorker)
+
+ 75           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              21 (<code object _BatchWorker at 0x0000016DC8EC30C0, file "bilisub\gui\channel_dialog.py", line 75>)
+              MAKE_FUNCTION
+              LOAD_CONST              22 ('_BatchWorker')
+              LOAD_NAME               12 (QThread)
+              CALL                     3
+              STORE_NAME              46 (_BatchWorker)
+
+115           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              23 (<code object _ThumbWorker at 0x0000016DC9128B70, file "bilisub\gui\channel_dialog.py", line 115>)
+              MAKE_FUNCTION
+              LOAD_CONST              24 ('_ThumbWorker')
+              LOAD_NAME               12 (QThread)
+              CALL                     3
+              STORE_NAME              47 (_ThumbWorker)
+
+165           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              25 (<code object ChannelDialog at 0x0000016DC90D08F0, file "bilisub\gui\channel_dialog.py", line 165>)
+              MAKE_FUNCTION
+              LOAD_CONST              26 ('ChannelDialog')
+              LOAD_NAME               19 (QDialog)
+              CALL                     3
+              STORE_NAME              48 (ChannelDialog)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object _keep_alive at 0x0000016DC9160310, file "bilisub\gui\channel_dialog.py", line 29>:
+  29           RESUME                   0
+
+  30           LOAD_GLOBAL              0 (_ALIVE_WORKERS)
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      1 (x)
+               SWAP                     2
+       L1:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L2:     FOR_ITER                27 (to L5)
+               STORE_FAST_LOAD_FAST    17 (x, x)
+               LOAD_ATTR                3 (isRunning + NULL|self)
+               CALL                     0
+               TO_BOOL
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           25 (to L2)
+       L4:     LOAD_FAST                1 (x)
+               LIST_APPEND              2
+               JUMP_BACKWARD           29 (to L2)
+       L5:     END_FOR
+               POP_TOP
+       L6:     SWAP                     2
+               STORE_FAST               1 (x)
+               LOAD_GLOBAL              0 (_ALIVE_WORKERS)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               STORE_SLICE
+
+  31           LOAD_GLOBAL              0 (_ALIVE_WORKERS)
+               LOAD_ATTR                5 (append + NULL|self)
+               LOAD_FAST                0 (w)
+               CALL                     1
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L7:     SWAP                     2
+               POP_TOP
+
+  30           SWAP                     2
+               STORE_FAST               1 (x)
+               RERAISE                  0
+ExceptionTable:
+  L1 to L3 -> L7 [2]
+  L4 to L6 -> L7 [2]
+
+Disassembly of <code object drain_workers at 0x0000016DC8E91110, file "bilisub\gui\channel_dialog.py", line 34>:
+  34            RESUME                   0
+
+  38            LOAD_GLOBAL              1 (list + NULL)
+                LOAD_GLOBAL              2 (_ALIVE_WORKERS)
+                CALL                     1
+                GET_ITER
+        L1:     FOR_ITER                82 (to L7)
+                STORE_FAST               1 (w)
+
+  39            NOP
+
+  40    L2:     LOAD_FAST                1 (w)
+                POP_JUMP_IF_NONE        75 (to L6)
+                LOAD_FAST                1 (w)
+                LOAD_ATTR                5 (isRunning + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_FALSE       52 (to L5)
+
+  41            LOAD_GLOBAL              7 (hasattr + NULL)
+                LOAD_FAST                1 (w)
+                LOAD_CONST               2 ('cancel')
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       16 (to L3)
+
+  42            LOAD_FAST                1 (w)
+                LOAD_ATTR                9 (cancel + NULL|self)
+                CALL                     0
+                POP_TOP
+
+  43    L3:     LOAD_FAST                1 (w)
+                LOAD_ATTR               11 (wait + NULL|self)
+                LOAD_FAST                0 (timeout_ms)
+                CALL                     1
+                POP_TOP
+        L4:     JUMP_BACKWARD           80 (to L1)
+
+  40    L5:     JUMP_BACKWARD           82 (to L1)
+        L6:     JUMP_BACKWARD           84 (to L1)
+
+  38    L7:     END_FOR
+                POP_TOP
+
+  46            LOAD_GLOBAL              2 (_ALIVE_WORKERS)
+                LOAD_ATTR               15 (clear + NULL|self)
+                CALL                     0
+                POP_TOP
+                RETURN_CONST             1 (None)
+
+  --    L8:     PUSH_EXC_INFO
+
+  44            LOAD_GLOBAL             12 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L10)
+                POP_TOP
+
+  45    L9:     POP_EXCEPT
+                JUMP_BACKWARD          120 (to L1)
+
+  44   L10:     RERAISE                  0
+
+  --   L11:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L4 -> L8 [1]
+  L8 to L9 -> L11 [2] lasti
+  L10 to L11 -> L11 [2] lasti
+
+Disassembly of <code object default_download_dir at 0x0000016DC90F15C0, file "bilisub\gui\channel_dialog.py", line 49>:
+ 49           RESUME                   0
+
+ 51           LOAD_CONST               1 (2)
+              LOAD_CONST               2 (('default_videos_dir',))
+              IMPORT_NAME              0 (config)
+              IMPORT_FROM              1 (default_videos_dir)
+              STORE_FAST               0 (default_videos_dir)
+              POP_TOP
+
+ 52           LOAD_FAST                0 (default_videos_dir)
+              PUSH_NULL
+              CALL                     0
+              RETURN_VALUE
+
+Disassembly of <code object _ScanWorker at 0x0000016DC8EA2E80, file "bilisub\gui\channel_dialog.py", line 55>:
+  --           MAKE_CELL                0 (__class__)
+
+  55           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('_ScanWorker')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (55)
+               STORE_NAME               3 (__firstlineno__)
+
+  56           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                5 (int)
+               LOAD_NAME                5 (int)
+               LOAD_NAME                6 (str)
+               CALL                     3
+               STORE_NAME               7 (prog)
+
+  57           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                6 (str)
+               LOAD_NAME                8 (object)
+               CALL                     2
+               STORE_NAME               9 (done)
+
+  58           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                6 (str)
+               CALL                     1
+               STORE_NAME              10 (failed)
+
+  60           LOAD_CONST               5 ((None,))
+               LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               2 (<code object __init__ at 0x0000016DC9128C90, file "bilisub\gui\channel_dialog.py", line 60>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              11 (__init__)
+
+  65           LOAD_CONST               3 (<code object run at 0x0000016DC8E4E430, file "bilisub\gui\channel_dialog.py", line 65>)
+               MAKE_FUNCTION
+               STORE_NAME              12 (run)
+               LOAD_CONST               4 (('cookiefile', 'limit', 'platform', 'text'))
+               STORE_NAME              13 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME              14 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC9128C90, file "bilisub\gui\channel_dialog.py", line 60>:
+  --           COPY_FREE_VARS           1
+
+  60           RESUME                   0
+
+  61           LOAD_GLOBAL              0 (super)
+               LOAD_DEREF               5 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+               CALL                     0
+               POP_TOP
+
+  62           LOAD_FAST_LOAD_FAST     18 (text, platform)
+               LOAD_FAST                3 (limit)
+               SWAP                     3
+               LOAD_FAST                0 (self)
+               STORE_ATTR               2 (text)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               3 (platform)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               4 (limit)
+
+  63           LOAD_FAST_LOAD_FAST     64 (cookiefile, self)
+               STORE_ATTR               5 (cookiefile)
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object run at 0x0000016DC8E4E430, file "bilisub\gui\channel_dialog.py", line 65>:
+  --           MAKE_CELL                0 (self)
+
+  65           RESUME                   0
+
+  66           NOP
+
+  67   L1:     LOAD_GLOBAL              1 (scan_channel + NULL)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR                2 (text)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR                4 (platform)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR                6 (limit)
+
+  68           LOAD_DEREF               0 (self)
+               LOAD_ATTR                8 (cookiefile)
+               LOAD_CONST               1 (<code object <lambda> at 0x0000016DC91345E0, file "bilisub\gui\channel_dialog.py", line 68>)
+               MAKE_FUNCTION
+
+  69           LOAD_FAST                0 (self)
+               BUILD_TUPLE              1
+               LOAD_CONST               2 (<code object <lambda> at 0x0000016DC8EAE450, file "bilisub\gui\channel_dialog.py", line 69>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+
+  67           LOAD_CONST               3 (('platform', 'limit', 'cookiefile', 'log', 'on_progress'))
+               CALL_KW                  6
+               UNPACK_SEQUENCE          2
+               STORE_FAST_STORE_FAST   18 (plat, vids)
+
+  70           LOAD_DEREF               0 (self)
+               LOAD_ATTR               10 (done)
+               LOAD_ATTR               13 (emit + NULL|self)
+               LOAD_FAST_LOAD_FAST     18 (plat, vids)
+               CALL                     2
+               POP_TOP
+       L2:     RETURN_CONST             0 (None)
+
+  --   L3:     PUSH_EXC_INFO
+
+  71           LOAD_GLOBAL             14 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       46 (to L7)
+               STORE_FAST               3 (e)
+
+  72   L4:     LOAD_DEREF               0 (self)
+               LOAD_ATTR               16 (failed)
+               LOAD_ATTR               13 (emit + NULL|self)
+               LOAD_GLOBAL             19 (str + NULL)
+               LOAD_FAST                3 (e)
+               CALL                     1
+               CALL                     1
+               POP_TOP
+       L5:     POP_EXCEPT
+               LOAD_CONST               0 (None)
+               STORE_FAST               3 (e)
+               DELETE_FAST              3 (e)
+               RETURN_CONST             0 (None)
+
+  --   L6:     LOAD_CONST               0 (None)
+               STORE_FAST               3 (e)
+               DELETE_FAST              3 (e)
+               RERAISE                  1
+
+  71   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L8 [1] lasti
+  L4 to L5 -> L6 [1] lasti
+  L6 to L8 -> L8 [1] lasti
+
+Disassembly of <code object <lambda> at 0x0000016DC91345E0, file "bilisub\gui\channel_dialog.py", line 68>:
+ 68           RESUME                   0
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object <lambda> at 0x0000016DC8EAE450, file "bilisub\gui\channel_dialog.py", line 69>:
+  --           COPY_FREE_VARS           1
+
+  69           RESUME                   0
+               LOAD_DEREF               3 (self)
+               LOAD_ATTR                0 (prog)
+               LOAD_ATTR                3 (emit + NULL|self)
+               LOAD_FAST_LOAD_FAST      1 (d, t)
+               LOAD_FAST                2 (m)
+               CALL                     3
+               RETURN_VALUE
+
+Disassembly of <code object _BatchWorker at 0x0000016DC8EC30C0, file "bilisub\gui\channel_dialog.py", line 75>:
+  --           MAKE_CELL                0 (__class__)
+
+  75           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('_BatchWorker')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (75)
+               STORE_NAME               3 (__firstlineno__)
+
+  76           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                5 (int)
+               LOAD_NAME                6 (str)
+               LOAD_NAME                7 (object)
+               CALL                     3
+               STORE_NAME               8 (item)
+
+  77           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                5 (int)
+               LOAD_NAME                5 (int)
+               CALL                     2
+               STORE_NAME               9 (overall)
+
+  78           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                6 (str)
+               CALL                     1
+               STORE_NAME              10 (log)
+
+  79           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                5 (int)
+               LOAD_NAME                5 (int)
+               CALL                     2
+               STORE_NAME              11 (finished_all)
+
+  81           LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               2 (<code object __init__ at 0x0000016DC8EA35A0, file "bilisub\gui\channel_dialog.py", line 81>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               STORE_NAME              12 (__init__)
+
+  89           LOAD_CONST               3 (<code object cancel at 0x0000016DC8EB8C70, file "bilisub\gui\channel_dialog.py", line 89>)
+               MAKE_FUNCTION
+               STORE_NAME              13 (cancel)
+
+  92           LOAD_CONST               4 (<code object run at 0x0000016DC8F6CF10, file "bilisub\gui\channel_dialog.py", line 92>)
+               MAKE_FUNCTION
+               STORE_NAME              14 (run)
+               LOAD_CONST               5 (('_cancel', '_done', 'cookiefile', 'items', 'out_dir'))
+               STORE_NAME              15 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME              16 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC8EA35A0, file "bilisub\gui\channel_dialog.py", line 81>:
+  --           COPY_FREE_VARS           1
+
+  81           RESUME                   0
+
+  82           LOAD_GLOBAL              0 (super)
+               LOAD_DEREF               4 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+               CALL                     0
+               POP_TOP
+
+  83           LOAD_FAST_LOAD_FAST     16 (items, self)
+               STORE_ATTR               2 (items)
+
+  84           LOAD_FAST_LOAD_FAST     32 (out_dir, self)
+               STORE_ATTR               3 (out_dir)
+
+  85           LOAD_FAST_LOAD_FAST     48 (cookiefile, self)
+               STORE_ATTR               4 (cookiefile)
+
+  86           LOAD_CONST               1 (0)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               5 (_done)
+
+  87           LOAD_CONST               2 (False)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               6 (_cancel)
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object cancel at 0x0000016DC8EB8C70, file "bilisub\gui\channel_dialog.py", line 89>:
+ 89           RESUME                   0
+
+ 90           LOAD_CONST               1 (True)
+              LOAD_FAST                0 (self)
+              STORE_ATTR               0 (_cancel)
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object run at 0x0000016DC8F6CF10, file "bilisub\gui\channel_dialog.py", line 92>:
+  --            MAKE_CELL                0 (self)
+                MAKE_CELL                9 (rows)
+                MAKE_CELL               10 (total)
+
+  92            RESUME                   0
+
+  93            LOAD_DEREF               0 (self)
+                LOAD_ATTR                0 (items)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      1 (_)
+                LOAD_FAST_AND_CLEAR      2 (v)
+                SWAP                     3
+        L1:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L2:     FOR_ITER                 7 (to L3)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST   18 (_, v)
+                LOAD_FAST                2 (v)
+                LIST_APPEND              2
+                JUMP_BACKWARD            9 (to L2)
+        L3:     END_FOR
+                POP_TOP
+        L4:     STORE_FAST               3 (videos)
+                STORE_FAST               1 (_)
+                STORE_FAST               2 (v)
+
+  94            LOAD_DEREF               0 (self)
+                LOAD_ATTR                0 (items)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      4 (r)
+                LOAD_FAST_AND_CLEAR      1 (_)
+                SWAP                     3
+        L5:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L6:     FOR_ITER                 7 (to L7)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST   65 (r, _)
+                LOAD_FAST                4 (r)
+                LIST_APPEND              2
+                JUMP_BACKWARD            9 (to L6)
+        L7:     END_FOR
+                POP_TOP
+        L8:     SWAP                     3
+                STORE_FAST               1 (_)
+                STORE_FAST               4 (r)
+                STORE_DEREF              9 (rows)
+
+  95            LOAD_GLOBAL              3 (len + NULL)
+                LOAD_FAST                3 (videos)
+                CALL                     1
+                STORE_DEREF             10 (total)
+
+  97            LOAD_FAST                9 (rows)
+                LOAD_FAST                0 (self)
+                LOAD_FAST               10 (total)
+                BUILD_TUPLE              3
+                LOAD_CONST               1 (<code object on_item at 0x0000016DC8EB5DE0, file "bilisub\gui\channel_dialog.py", line 97>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                STORE_FAST               5 (on_item)
+
+ 103            LOAD_CONST               2 (0)
+                STORE_FAST               6 (ok)
+
+ 104            NOP
+
+ 105    L9:     LOAD_GLOBAL              5 (download_channel_videos + NULL)
+
+ 106            LOAD_FAST                3 (videos)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR                6 (out_dir)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR                8 (cookiefile)
+                LOAD_FAST                5 (on_item)
+
+ 107            LOAD_FAST                0 (self)
+                BUILD_TUPLE              1
+                LOAD_CONST               3 (<code object <lambda> at 0x0000016DC90F1E30, file "bilisub\gui\channel_dialog.py", line 107>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                LOAD_FAST                0 (self)
+                BUILD_TUPLE              1
+                LOAD_CONST               4 (<code object <lambda> at 0x0000016DC8EADAC0, file "bilisub\gui\channel_dialog.py", line 107>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+
+ 105            LOAD_CONST               5 (('cookiefile', 'on_item', 'cancel', 'log'))
+                CALL_KW                  6
+                STORE_FAST               7 (paths)
+
+ 108            LOAD_GLOBAL              3 (len + NULL)
+                LOAD_FAST                7 (paths)
+                CALL                     1
+                STORE_FAST               6 (ok)
+
+ 112   L10:     LOAD_DEREF               0 (self)
+                LOAD_ATTR               18 (finished_all)
+                LOAD_ATTR               15 (emit + NULL|self)
+                LOAD_FAST                6 (ok)
+                LOAD_DEREF              10 (total)
+                CALL                     2
+                POP_TOP
+                RETURN_CONST             0 (None)
+
+  --   L11:     SWAP                     2
+                POP_TOP
+
+  93            SWAP                     3
+                STORE_FAST               2 (v)
+                STORE_FAST               1 (_)
+                RERAISE                  0
+
+  --   L12:     SWAP                     2
+                POP_TOP
+
+  94            SWAP                     3
+                STORE_FAST               1 (_)
+                STORE_FAST               4 (r)
+                RERAISE                  0
+
+  --   L13:     PUSH_EXC_INFO
+
+ 109            LOAD_GLOBAL             10 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       52 (to L17)
+                STORE_FAST               8 (e)
+
+ 110   L14:     LOAD_DEREF               0 (self)
+                LOAD_ATTR               12 (log)
+                LOAD_ATTR               15 (emit + NULL|self)
+                LOAD_CONST               6 ('❌ ')
+                LOAD_GLOBAL             17 (str + NULL)
+                LOAD_FAST                8 (e)
+                CALL                     1
+                LOAD_CONST               0 (None)
+                LOAD_CONST               7 (150)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                CALL                     1
+                POP_TOP
+       L15:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST               8 (e)
+                DELETE_FAST              8 (e)
+                JUMP_BACKWARD_NO_INTERRUPT 98 (to L10)
+
+  --   L16:     LOAD_CONST               0 (None)
+                STORE_FAST               8 (e)
+                DELETE_FAST              8 (e)
+                RERAISE                  1
+
+ 109   L17:     RERAISE                  0
+
+  --   L18:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L19:     PUSH_EXC_INFO
+
+ 112            LOAD_DEREF               0 (self)
+                LOAD_ATTR               18 (finished_all)
+                LOAD_ATTR               15 (emit + NULL|self)
+                LOAD_FAST                6 (ok)
+                LOAD_DEREF              10 (total)
+                CALL                     2
+                POP_TOP
+                RERAISE                  0
+
+  --   L20:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L11 [3]
+  L5 to L8 -> L12 [3]
+  L9 to L10 -> L13 [0]
+  L13 to L14 -> L18 [1] lasti
+  L14 to L15 -> L16 [1] lasti
+  L15 to L16 -> L19 [0]
+  L16 to L18 -> L18 [1] lasti
+  L18 to L19 -> L19 [0]
+  L19 to L20 -> L20 [1] lasti
+
+Disassembly of <code object on_item at 0x0000016DC8EB5DE0, file "bilisub\gui\channel_dialog.py", line 97>:
+  --           COPY_FREE_VARS           3
+
+  97           RESUME                   0
+
+  98           LOAD_DEREF               5 (self)
+               LOAD_ATTR                0 (item)
+               LOAD_ATTR                3 (emit + NULL|self)
+               LOAD_DEREF               4 (rows)
+               LOAD_FAST                0 (i)
+               BINARY_SUBSCR
+               LOAD_FAST_LOAD_FAST     35 (ev, data)
+               CALL                     3
+               POP_TOP
+
+  99           LOAD_FAST                2 (ev)
+               LOAD_CONST               1 (('done', 'error'))
+               CONTAINS_OP              0
+               POP_JUMP_IF_FALSE       60 (to L1)
+
+ 100           LOAD_DEREF               5 (self)
+               COPY                     1
+               LOAD_ATTR                4 (_done)
+               LOAD_CONST               2 (1)
+               BINARY_OP               13 (+=)
+               SWAP                     2
+               STORE_ATTR               2 (_done)
+
+ 101           LOAD_DEREF               5 (self)
+               LOAD_ATTR                6 (overall)
+               LOAD_ATTR                3 (emit + NULL|self)
+               LOAD_DEREF               5 (self)
+               LOAD_ATTR                4 (_done)
+               LOAD_DEREF               6 (total)
+               CALL                     2
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  99   L1:     RETURN_CONST             0 (None)
+
+Disassembly of <code object <lambda> at 0x0000016DC90F1E30, file "bilisub\gui\channel_dialog.py", line 107>:
+  --           COPY_FREE_VARS           1
+
+ 107           RESUME                   0
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR                0 (_cancel)
+               RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC8EADAC0, file "bilisub\gui\channel_dialog.py", line 107>:
+  --           COPY_FREE_VARS           1
+
+ 107           RESUME                   0
+               LOAD_DEREF               1 (self)
+               LOAD_ATTR                0 (log)
+               LOAD_ATTR                3 (emit + NULL|self)
+               LOAD_FAST                0 (m)
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object _ThumbWorker at 0x0000016DC9128B70, file "bilisub\gui\channel_dialog.py", line 115>:
+  --           MAKE_CELL                0 (__class__)
+
+ 115           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('_ThumbWorker')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (115)
+               STORE_NAME               3 (__firstlineno__)
+
+ 116           LOAD_CONST               2 ('Tải ảnh thumbnail của các video đã quét ở LUỒNG NỀN (không đơ UI).\n\nChỉ tải BYTES ở đây; việc tạo QPixmap/QIcon phải làm ở luồng GUI (slot _on_thumb).\nMỗi lần quét có `gen` riêng → ảnh của lần quét cũ về trễ sẽ bị bỏ (không rớt nhầm hàng).')
+               STORE_NAME               4 (__doc__)
+
+ 120           LOAD_NAME                5 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                6 (int)
+               LOAD_NAME                6 (int)
+               LOAD_NAME                7 (bytes)
+               CALL                     3
+               STORE_NAME               8 (thumb)
+
+ 122           LOAD_CONST               8 (('gen', 'int', 'jobs', 'list'))
+               LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               3 (<code object __init__ at 0x0000016DC912A0D0, file "bilisub\gui\channel_dialog.py", line 122>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME               9 (__init__)
+
+ 129           LOAD_CONST               4 (<code object cancel at 0x0000016DC8EB8E30, file "bilisub\gui\channel_dialog.py", line 129>)
+               MAKE_FUNCTION
+               STORE_NAME              10 (cancel)
+
+ 132           LOAD_CONST               5 (<code object _fetch at 0x0000016DC87D9480, file "bilisub\gui\channel_dialog.py", line 132>)
+               MAKE_FUNCTION
+               STORE_NAME              11 (_fetch)
+
+ 150           LOAD_CONST               6 (<code object run at 0x0000016DC8F5AEB0, file "bilisub\gui\channel_dialog.py", line 150>)
+               MAKE_FUNCTION
+               STORE_NAME              12 (run)
+               LOAD_CONST               7 (('_cancel', '_session', 'gen', 'jobs'))
+               STORE_NAME              13 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME              14 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC912A0D0, file "bilisub\gui\channel_dialog.py", line 122>:
+  --           COPY_FREE_VARS           1
+
+ 122           RESUME                   0
+
+ 123           LOAD_GLOBAL              0 (super)
+               LOAD_DEREF               3 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 124           LOAD_FAST_LOAD_FAST     16 (gen, self)
+               STORE_ATTR               2 (gen)
+
+ 125           LOAD_FAST_LOAD_FAST     32 (jobs, self)
+               STORE_ATTR               3 (jobs)
+
+ 126           LOAD_CONST               1 (False)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               4 (_cancel)
+
+ 127           LOAD_CONST               0 (None)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               5 (_session)
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object cancel at 0x0000016DC8EB8E30, file "bilisub\gui\channel_dialog.py", line 129>:
+129           RESUME                   0
+
+130           LOAD_CONST               1 (True)
+              LOAD_FAST                0 (self)
+              STORE_ATTR               0 (_cancel)
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _fetch at 0x0000016DC87D9480, file "bilisub\gui\channel_dialog.py", line 132>:
+ 132            RESUME                   0
+
+ 133            LOAD_FAST                1 (job)
+                UNPACK_SEQUENCE          3
+                STORE_FAST_STORE_FAST   35 (row, url)
+                STORE_FAST               4 (plat)
+
+ 134            LOAD_FAST                0 (self)
+                LOAD_ATTR                0 (_cancel)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        20 (to L1)
+                LOAD_FAST                3 (url)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       13 (to L1)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (_session)
+                POP_JUMP_IF_NOT_NONE     1 (to L2)
+
+ 135    L1:     RETURN_CONST             0 (None)
+
+ 136    L2:     NOP
+
+ 137    L3:     LOAD_FAST                4 (plat)
+                LOAD_CONST               1 ('Bilibili')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE        2 (to L4)
+                LOAD_CONST               2 ('https://www.bilibili.com/')
+                JUMP_FORWARD             1 (to L5)
+
+ 138    L4:     LOAD_CONST               3 ('https://www.douyin.com/')
+
+ 137    L5:     STORE_FAST               5 (ref)
+
+ 139            LOAD_FAST                3 (url)
+                LOAD_ATTR                5 (startswith + NULL|self)
+                LOAD_CONST               4 ('http://')
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE        8 (to L6)
+                LOAD_CONST               5 ('https://')
+                LOAD_FAST                3 (url)
+                LOAD_CONST               6 (7)
+                LOAD_CONST               0 (None)
+                BINARY_SLICE
+                BINARY_OP                0 (+)
+                JUMP_FORWARD             1 (to L7)
+        L6:     LOAD_FAST                3 (url)
+        L7:     STORE_FAST               6 (u)
+
+ 141            LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (_session)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_FAST                6 (u)
+                LOAD_GLOBAL              8 (_THUMB_UA)
+                LOAD_FAST                5 (ref)
+                LOAD_CONST               7 (('User-Agent', 'Referer'))
+                BUILD_CONST_KEY_MAP      2
+
+ 142            LOAD_CONST               8 ((5, 8))
+
+ 141            LOAD_CONST               9 (('headers', 'timeout'))
+                CALL_KW                  3
+                STORE_FAST               7 (r)
+
+ 143            LOAD_FAST                7 (r)
+                LOAD_ATTR               10 (content)
+                STORE_FAST               8 (data)
+
+ 144            LOAD_FAST                7 (r)
+                LOAD_ATTR               13 (close + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 145            LOAD_FAST                0 (self)
+                LOAD_ATTR                0 (_cancel)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        82 (to L14)
+                LOAD_FAST                7 (r)
+                LOAD_ATTR               14 (status_code)
+                LOAD_CONST              10 (200)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       65 (to L13)
+                LOAD_CONST              11 (0)
+                LOAD_GLOBAL             17 (len + NULL)
+                LOAD_FAST                8 (data)
+                CALL                     1
+                SWAP                     2
+                COPY                     2
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        6 (to L8)
+                LOAD_CONST              12 (8000000)
+                COMPARE_OP              58 (bool(<=))
+                POP_JUMP_IF_FALSE       42 (to L12)
+                JUMP_FORWARD             2 (to L10)
+        L8:     POP_TOP
+        L9:     RETURN_CONST             0 (None)
+
+ 146   L10:     LOAD_FAST                0 (self)
+                LOAD_ATTR               18 (thumb)
+                LOAD_ATTR               21 (emit + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               22 (gen)
+                LOAD_FAST_LOAD_FAST     40 (row, data)
+                CALL                     3
+                POP_TOP
+       L11:     RETURN_CONST             0 (None)
+
+ 145   L12:     RETURN_CONST             0 (None)
+       L13:     RETURN_CONST             0 (None)
+       L14:     RETURN_CONST             0 (None)
+
+  --   L15:     PUSH_EXC_INFO
+
+ 147            LOAD_GLOBAL             24 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L17)
+                POP_TOP
+
+ 148   L16:     POP_EXCEPT
+                RETURN_CONST             0 (None)
+
+ 147   L17:     RERAISE                  0
+
+  --   L18:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L3 to L9 -> L15 [0]
+  L10 to L11 -> L15 [0]
+  L15 to L16 -> L18 [1] lasti
+  L17 to L18 -> L18 [1] lasti
+
+Disassembly of <code object run at 0x0000016DC8F5AEB0, file "bilisub\gui\channel_dialog.py", line 150>:
+ 150            RESUME                   0
+
+ 151            NOP
+
+ 152    L1:     LOAD_GLOBAL              0 (requests)
+                LOAD_ATTR                2 (Session)
+                PUSH_NULL
+                CALL                     0
+                LOAD_FAST                0 (self)
+                STORE_ATTR               2 (_session)
+
+ 153            LOAD_GLOBAL              7 (ThreadPoolExecutor + NULL)
+                LOAD_CONST               1 (8)
+                LOAD_CONST               2 (('max_workers',))
+                CALL_KW                  1
+                BEFORE_WITH
+        L2:     STORE_FAST               1 (ex)
+
+ 154            LOAD_GLOBAL              9 (list + NULL)
+                LOAD_FAST                1 (ex)
+                LOAD_ATTR               11 (map + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               12 (_fetch)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               14 (jobs)
+                CALL                     2
+                CALL                     1
+                POP_TOP
+
+ 153    L3:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+
+ 158    L4:     NOP
+
+ 159    L5:     LOAD_FAST                0 (self)
+                LOAD_ATTR                4 (_session)
+                POP_JUMP_IF_NONE        27 (to L7)
+
+ 160            LOAD_FAST                0 (self)
+                LOAD_ATTR                4 (_session)
+                LOAD_ATTR               19 (close + NULL|self)
+                CALL                     0
+                POP_TOP
+        L6:     RETURN_CONST             0 (None)
+
+ 159    L7:     RETURN_CONST             0 (None)
+
+ 153    L8:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L9)
+                RERAISE                  2
+        L9:     POP_TOP
+       L10:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+       L11:     JUMP_BACKWARD_NO_INTERRUPT 56 (to L4)
+
+  --   L12:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L13:     PUSH_EXC_INFO
+
+ 155            LOAD_GLOBAL             16 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L15)
+                POP_TOP
+
+ 156   L14:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 71 (to L4)
+
+ 155   L15:     RERAISE                  0
+
+  --   L16:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L17:     PUSH_EXC_INFO
+
+ 161            LOAD_GLOBAL             16 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L19)
+                POP_TOP
+
+ 162   L18:     POP_EXCEPT
+                RETURN_CONST             0 (None)
+
+ 161   L19:     RERAISE                  0
+
+  --   L20:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L21:     PUSH_EXC_INFO
+
+ 158   L22:     NOP
+
+ 159   L23:     LOAD_FAST                0 (self)
+                LOAD_ATTR                4 (_session)
+                POP_JUMP_IF_NONE        27 (to L25)
+
+ 160            LOAD_FAST                0 (self)
+                LOAD_ATTR                4 (_session)
+                LOAD_ATTR               19 (close + NULL|self)
+                CALL                     0
+                POP_TOP
+       L24:     RERAISE                  0
+
+ 159   L25:     RERAISE                  0
+
+  --   L26:     PUSH_EXC_INFO
+
+ 161            LOAD_GLOBAL             16 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L28)
+                POP_TOP
+
+ 162   L27:     POP_EXCEPT
+                RERAISE                  0
+
+ 161   L28:     RERAISE                  0
+
+  --   L29:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L30:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L13 [0]
+  L2 to L3 -> L8 [1] lasti
+  L3 to L4 -> L13 [0]
+  L5 to L6 -> L17 [0]
+  L8 to L10 -> L12 [3] lasti
+  L10 to L11 -> L13 [0]
+  L11 to L12 -> L21 [0]
+  L12 to L13 -> L13 [0]
+  L13 to L14 -> L16 [1] lasti
+  L14 to L15 -> L21 [0]
+  L15 to L16 -> L16 [1] lasti
+  L16 to L17 -> L21 [0]
+  L17 to L18 -> L20 [1] lasti
+  L19 to L20 -> L20 [1] lasti
+  L21 to L22 -> L30 [1] lasti
+  L23 to L24 -> L26 [2]
+  L24 to L26 -> L30 [1] lasti
+  L26 to L27 -> L29 [3] lasti
+  L27 to L28 -> L30 [1] lasti
+  L28 to L29 -> L29 [3] lasti
+  L29 to L30 -> L30 [1] lasti
+
+Disassembly of <code object ChannelDialog at 0x0000016DC90D08F0, file "bilisub\gui\channel_dialog.py", line 165>:
+  --           MAKE_CELL                0 (__class__)
+
+ 165           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('ChannelDialog')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (165)
+               STORE_NAME               3 (__firstlineno__)
+
+ 166           LOAD_CONST              31 ((None,))
+               LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               3 (<code object __init__ at 0x0000016DC8EA5890, file "bilisub\gui\channel_dialog.py", line 166>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME               4 (__init__)
+
+ 177           LOAD_CONST               4 (<code object _build at 0x0000016DC8FE0750, file "bilisub\gui\channel_dialog.py", line 177>)
+               MAKE_FUNCTION
+               STORE_NAME               5 (_build)
+
+ 271           LOAD_CONST               5 (<code object _choose_dir at 0x0000016DC8E0B4B0, file "bilisub\gui\channel_dialog.py", line 271>)
+               MAKE_FUNCTION
+               STORE_NAME               6 (_choose_dir)
+
+ 276           LOAD_CONST               6 (<code object _choose_cookie at 0x0000016DC8EC2790, file "bilisub\gui\channel_dialog.py", line 276>)
+               MAKE_FUNCTION
+               STORE_NAME               7 (_choose_cookie)
+
+ 282           LOAD_CONST              32 (('return', 'bool'))
+               LOAD_CONST               7 (<code object _cookie_hong at 0x0000016DC8E0B7B0, file "bilisub\gui\channel_dialog.py", line 282>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME               8 (_cookie_hong)
+
+ 293           LOAD_CONST               8 (<code object _kiem_cookie at 0x0000016DC90EDBB0, file "bilisub\gui\channel_dialog.py", line 293>)
+               MAKE_FUNCTION
+               STORE_NAME               9 (_kiem_cookie)
+
+ 302           LOAD_CONST               9 (<code object _ve_nhan_cookie at 0x0000016DC8EA3470, file "bilisub\gui\channel_dialog.py", line 302>)
+               MAKE_FUNCTION
+               STORE_NAME              10 (_ve_nhan_cookie)
+
+ 307           LOAD_CONST              32 (('return', 'bool'))
+               LOAD_CONST              10 (<code object _canh_bao_cookie at 0x0000016DC8FCF440, file "bilisub\gui\channel_dialog.py", line 307>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              11 (_canh_bao_cookie)
+
+ 326           LOAD_CONST              33 (('on', 'bool'))
+               LOAD_CONST              11 (<code object _set_dl_enabled at 0x0000016DC8EA36D0, file "bilisub\gui\channel_dialog.py", line 326>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              12 (_set_dl_enabled)
+
+ 330           LOAD_CONST              33 (('on', 'bool'))
+               LOAD_CONST              12 (<code object _check_all at 0x0000016DC90DD1A0, file "bilisub\gui\channel_dialog.py", line 330>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              13 (_check_all)
+
+ 335           LOAD_CONST              13 (<code object _fill_list at 0x0000016DC93B85C0, file "bilisub\gui\channel_dialog.py", line 335>)
+               MAKE_FUNCTION
+               STORE_NAME              14 (_fill_list)
+
+ 358           LOAD_CONST              14 (<code object _on_thumb at 0x0000016DC8F12510, file "bilisub\gui\channel_dialog.py", line 358>)
+               MAKE_FUNCTION
+               STORE_NAME              15 (_on_thumb)
+
+ 371           LOAD_CONST               2 (None)
+               LOAD_CONST               2 (None)
+               LOAD_CONST              15 (('limit', 'then_download'))
+               BUILD_CONST_KEY_MAP      2
+               LOAD_CONST              16 (<code object _scan at 0x0000016DC8FE1620, file "bilisub\gui\channel_dialog.py", line 371>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+               STORE_NAME              16 (_scan)
+
+ 392           LOAD_CONST              17 (<code object _scan_done at 0x0000016DC8FE1F10, file "bilisub\gui\channel_dialog.py", line 392>)
+               MAKE_FUNCTION
+               STORE_NAME              17 (_scan_done)
+
+ 404           LOAD_CONST              18 (<code object _scan_failed at 0x0000016DC90E57D0, file "bilisub\gui\channel_dialog.py", line 404>)
+               MAKE_FUNCTION
+               STORE_NAME              18 (_scan_failed)
+
+ 411           LOAD_CONST              19 (<code object _selected_rows at 0x0000016DC8EC5990, file "bilisub\gui\channel_dialog.py", line 411>)
+               MAKE_FUNCTION
+               STORE_NAME              19 (_selected_rows)
+
+ 415           LOAD_CONST              20 (<code object _download_selected at 0x0000016DC90EDA50, file "bilisub\gui\channel_dialog.py", line 415>)
+               MAKE_FUNCTION
+               STORE_NAME              20 (_download_selected)
+
+ 422           LOAD_CONST              21 (<code object _download_all at 0x0000016DC90EDE70, file "bilisub\gui\channel_dialog.py", line 422>)
+               MAKE_FUNCTION
+               STORE_NAME              21 (_download_all)
+
+ 427           LOAD_CONST              22 (<code object _download_full at 0x0000016DC90DD390, file "bilisub\gui\channel_dialog.py", line 427>)
+               MAKE_FUNCTION
+               STORE_NAME              22 (_download_full)
+
+ 438           LOAD_CONST              34 ((False,))
+               LOAD_CONST              35 (('tu_dong', 'bool'))
+               LOAD_CONST              23 (<code object _start_batch at 0x0000016DC8F5F2E0, file "bilisub\gui\channel_dialog.py", line 438>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              23 (_start_batch)
+
+ 469           LOAD_CONST              24 (<code object _on_item at 0x0000016DC8D26430, file "bilisub\gui\channel_dialog.py", line 469>)
+               MAKE_FUNCTION
+               STORE_NAME              24 (_on_item)
+
+ 486           LOAD_CONST              25 (<code object _on_overall at 0x0000016DC8E06AB0, file "bilisub\gui\channel_dialog.py", line 486>)
+               MAKE_FUNCTION
+               STORE_NAME              25 (_on_overall)
+
+ 489           LOAD_CONST              26 (<code object _on_batch_done at 0x0000016DC8EF4780, file "bilisub\gui\channel_dialog.py", line 489>)
+               MAKE_FUNCTION
+               STORE_NAME              26 (_on_batch_done)
+
+ 496           LOAD_CONST              27 (<code object _cleanup at 0x0000016DC8F586E0, file "bilisub\gui\channel_dialog.py", line 496>)
+               MAKE_FUNCTION
+               STORE_NAME              27 (_cleanup)
+
+ 513           LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST              28 (<code object reject at 0x0000016DC8EAE120, file "bilisub\gui\channel_dialog.py", line 513>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               STORE_NAME              28 (reject)
+
+ 517           LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST              29 (<code object closeEvent at 0x0000016DC8EAE780, file "bilisub\gui\channel_dialog.py", line 517>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               STORE_NAME              29 (closeEvent)
+               LOAD_CONST              30 (('_pending_download', '_thumb_gen', 'bar', 'batch', 'cookie_edit', 'cookie_warn', 'count_lbl', 'dir_edit', 'dl_all', 'dl_full', 'dl_sel', 'limit', 'link', 'list', 'logbox', 'plat', 'scan_btn', 'scan_worker', 'thumb_worker', 'videos'))
+               STORE_NAME              30 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME              31 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC8EA5890, file "bilisub\gui\channel_dialog.py", line 166>:
+  --           COPY_FREE_VARS           1
+
+ 166           RESUME                   0
+
+ 167           LOAD_GLOBAL              0 (super)
+               LOAD_DEREF               2 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+               LOAD_FAST                1 (parent)
+               CALL                     1
+               POP_TOP
+
+ 168           BUILD_LIST               0
+               LOAD_FAST                0 (self)
+               STORE_ATTR               2 (videos)
+
+ 169           LOAD_CONST               0 (None)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               3 (scan_worker)
+
+ 170           LOAD_CONST               0 (None)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               4 (batch)
+
+ 171           LOAD_CONST               0 (None)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               5 (thumb_worker)
+
+ 172           LOAD_CONST               1 (0)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               6 (_thumb_gen)
+
+ 173           LOAD_FAST                0 (self)
+               LOAD_ATTR               15 (setWindowTitle + NULL|self)
+               LOAD_CONST               2 ('📡 Quét kênh — Tải hàng loạt (Douyin / Bilibili)')
+               CALL                     1
+               POP_TOP
+
+ 174           LOAD_FAST                0 (self)
+               LOAD_ATTR               17 (resize + NULL|self)
+               LOAD_CONST               3 (720)
+               LOAD_CONST               4 (640)
+               CALL                     2
+               POP_TOP
+
+ 175           LOAD_FAST                0 (self)
+               LOAD_ATTR               19 (_build + NULL|self)
+               CALL                     0
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object _build at 0x0000016DC8FE0750, file "bilisub\gui\channel_dialog.py", line 177>:
+  --           MAKE_CELL                0 (self)
+
+ 177           RESUME                   0
+
+ 178           LOAD_GLOBAL              1 (QVBoxLayout + NULL)
+               LOAD_DEREF               0 (self)
+               CALL                     1
+               STORE_FAST               1 (lay)
+
+ 181           LOAD_GLOBAL              3 (QHBoxLayout + NULL)
+               CALL                     0
+               STORE_FAST               2 (row)
+
+ 182           LOAD_GLOBAL              5 (QComboBox + NULL)
+               CALL                     0
+               LOAD_DEREF               0 (self)
+               STORE_ATTR               3 (plat)
+
+ 183           LOAD_DEREF               0 (self)
+               LOAD_ATTR                6 (plat)
+               LOAD_ATTR                9 (addItems + NULL|self)
+               BUILD_LIST               0
+               LOAD_CONST               1 (('Tự động', 'Douyin', 'Bilibili'))
+               LIST_EXTEND              1
+               CALL                     1
+               POP_TOP
+
+ 184           LOAD_FAST                2 (row)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR                6 (plat)
+               CALL                     1
+               POP_TOP
+
+ 185           LOAD_GLOBAL             13 (QLineEdit + NULL)
+               CALL                     0
+               LOAD_DEREF               0 (self)
+               STORE_ATTR               7 (link)
+
+ 186           LOAD_DEREF               0 (self)
+               LOAD_ATTR               14 (link)
+               LOAD_ATTR               17 (setPlaceholderText + NULL|self)
+               LOAD_CONST               2 ('Dán link kênh: douyin.com/user/… · space.bilibili.com/UID · hoặc sec_uid/UID')
+               CALL                     1
+               POP_TOP
+
+ 187           LOAD_FAST                2 (row)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               14 (link)
+               LOAD_CONST               3 (1)
+               CALL                     2
+               POP_TOP
+
+ 188           LOAD_FAST                2 (row)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_GLOBAL             19 (QLabel + NULL)
+               LOAD_CONST               4 ('Số lượng:')
+               CALL                     1
+               CALL                     1
+               POP_TOP
+
+ 189           LOAD_GLOBAL             21 (QSpinBox + NULL)
+               CALL                     0
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              11 (limit)
+
+ 190           LOAD_DEREF               0 (self)
+               LOAD_ATTR               22 (limit)
+               LOAD_ATTR               25 (setRange + NULL|self)
+               LOAD_CONST               3 (1)
+               LOAD_CONST               5 (500)
+               CALL                     2
+               POP_TOP
+
+ 191           LOAD_DEREF               0 (self)
+               LOAD_ATTR               22 (limit)
+               LOAD_ATTR               27 (setValue + NULL|self)
+               LOAD_CONST               6 (50)
+               CALL                     1
+               POP_TOP
+
+ 192           LOAD_DEREF               0 (self)
+               LOAD_ATTR               22 (limit)
+               LOAD_ATTR               29 (setToolTip + NULL|self)
+               LOAD_CONST               7 ("Số video muốn quét (tối đa 500). Douyin lấy 20 video/trang nên tăng số này để quét nhiều trang hơn; Bilibili lấy thẳng tới số này. Muốn cả kênh thì bấm '⬇ Tải full kênh' (quét tối đa 500).")
+               CALL                     1
+               POP_TOP
+
+ 195           LOAD_FAST                2 (row)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               22 (limit)
+               CALL                     1
+               POP_TOP
+
+ 196           LOAD_GLOBAL             31 (QPushButton + NULL)
+               LOAD_CONST               8 ('🔍 Quét')
+               CALL                     1
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              16 (scan_btn)
+
+ 197           LOAD_DEREF               0 (self)
+               LOAD_ATTR               32 (scan_btn)
+               LOAD_ATTR               35 (setObjectName + NULL|self)
+               LOAD_CONST               9 ('primary')
+               CALL                     1
+               POP_TOP
+
+ 198           LOAD_DEREF               0 (self)
+               LOAD_ATTR               32 (scan_btn)
+               LOAD_ATTR               36 (clicked)
+               LOAD_ATTR               39 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               40 (_scan)
+               CALL                     1
+               POP_TOP
+
+ 199           LOAD_FAST                2 (row)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               32 (scan_btn)
+               CALL                     1
+               POP_TOP
+
+ 200           LOAD_FAST                1 (lay)
+               LOAD_ATTR               43 (addLayout + NULL|self)
+               LOAD_FAST                2 (row)
+               CALL                     1
+               POP_TOP
+
+ 203           LOAD_GLOBAL              3 (QHBoxLayout + NULL)
+               CALL                     0
+               STORE_FAST               3 (row2)
+
+ 204           LOAD_FAST                3 (row2)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_GLOBAL             19 (QLabel + NULL)
+               LOAD_CONST              10 ('Lưu vào:')
+               CALL                     1
+               CALL                     1
+               POP_TOP
+
+ 205           LOAD_GLOBAL             13 (QLineEdit + NULL)
+               LOAD_GLOBAL             45 (str + NULL)
+               LOAD_GLOBAL             47 (default_download_dir + NULL)
+               CALL                     0
+               CALL                     1
+               CALL                     1
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              24 (dir_edit)
+
+ 206           LOAD_FAST                3 (row2)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               48 (dir_edit)
+               LOAD_CONST               3 (1)
+               CALL                     2
+               POP_TOP
+
+ 207           LOAD_GLOBAL             31 (QPushButton + NULL)
+               LOAD_CONST              11 ('...')
+               CALL                     1
+               STORE_FAST               4 (d_btn)
+
+ 208           LOAD_FAST                4 (d_btn)
+               LOAD_ATTR               51 (setFixedWidth + NULL|self)
+               LOAD_CONST              12 (34)
+               CALL                     1
+               POP_TOP
+
+ 209           LOAD_FAST                4 (d_btn)
+               LOAD_ATTR               36 (clicked)
+               LOAD_ATTR               39 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               52 (_choose_dir)
+               CALL                     1
+               POP_TOP
+
+ 210           LOAD_FAST                3 (row2)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_FAST                4 (d_btn)
+               CALL                     1
+               POP_TOP
+
+ 211           LOAD_FAST                3 (row2)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_GLOBAL             19 (QLabel + NULL)
+               LOAD_CONST              13 ('Cookies:')
+               CALL                     1
+               CALL                     1
+               POP_TOP
+
+ 212           LOAD_GLOBAL             13 (QLineEdit + NULL)
+               CALL                     0
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              27 (cookie_edit)
+
+ 213           LOAD_DEREF               0 (self)
+               LOAD_ATTR               54 (cookie_edit)
+               LOAD_ATTR               17 (setPlaceholderText + NULL|self)
+               LOAD_CONST              14 ('(tuỳ chọn) .txt/.json — Douyin/Bilibili')
+               CALL                     1
+               POP_TOP
+
+ 214           LOAD_DEREF               0 (self)
+               LOAD_ATTR               54 (cookie_edit)
+               LOAD_ATTR               57 (setMaximumWidth + NULL|self)
+               LOAD_CONST              15 (180)
+               CALL                     1
+               POP_TOP
+
+ 215           LOAD_FAST                3 (row2)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               54 (cookie_edit)
+               CALL                     1
+               POP_TOP
+
+ 216           LOAD_GLOBAL             31 (QPushButton + NULL)
+               LOAD_CONST              11 ('...')
+               CALL                     1
+               STORE_FAST               5 (c_btn)
+
+ 217           LOAD_FAST                5 (c_btn)
+               LOAD_ATTR               51 (setFixedWidth + NULL|self)
+               LOAD_CONST              12 (34)
+               CALL                     1
+               POP_TOP
+
+ 218           LOAD_FAST                5 (c_btn)
+               LOAD_ATTR               36 (clicked)
+               LOAD_ATTR               39 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               58 (_choose_cookie)
+               CALL                     1
+               POP_TOP
+
+ 219           LOAD_FAST                3 (row2)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_FAST                5 (c_btn)
+               CALL                     1
+               POP_TOP
+
+ 220           LOAD_FAST                1 (lay)
+               LOAD_ATTR               43 (addLayout + NULL|self)
+               LOAD_FAST                3 (row2)
+               CALL                     1
+               POP_TOP
+
+ 223           LOAD_GLOBAL             19 (QLabel + NULL)
+               LOAD_CONST              16 ('')
+               CALL                     1
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              30 (cookie_warn)
+
+ 224           LOAD_DEREF               0 (self)
+               LOAD_ATTR               60 (cookie_warn)
+               LOAD_ATTR               63 (setWordWrap + NULL|self)
+               LOAD_CONST              17 (True)
+               CALL                     1
+               POP_TOP
+
+ 225           LOAD_DEREF               0 (self)
+               LOAD_ATTR               60 (cookie_warn)
+               LOAD_ATTR               65 (setStyleSheet + NULL|self)
+               LOAD_CONST              18 ('color:#f87171; font-size:11px;')
+               CALL                     1
+               POP_TOP
+
+ 226           LOAD_FAST                1 (lay)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               60 (cookie_warn)
+               CALL                     1
+               POP_TOP
+
+ 227           LOAD_DEREF               0 (self)
+               LOAD_ATTR               54 (cookie_edit)
+               LOAD_ATTR               66 (textChanged)
+               LOAD_ATTR               39 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               BUILD_TUPLE              1
+               LOAD_CONST              19 (<code object <lambda> at 0x0000016DC90F1A70, file "bilisub\gui\channel_dialog.py", line 227>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               CALL                     1
+               POP_TOP
+
+ 230           LOAD_GLOBAL              3 (QHBoxLayout + NULL)
+               CALL                     0
+               STORE_FAST               6 (row3)
+
+ 231           LOAD_GLOBAL             19 (QLabel + NULL)
+               LOAD_CONST              20 ('Chưa quét.')
+               CALL                     1
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              34 (count_lbl)
+
+ 232           LOAD_DEREF               0 (self)
+               LOAD_ATTR               68 (count_lbl)
+               LOAD_ATTR               65 (setStyleSheet + NULL|self)
+               LOAD_CONST              21 ('color:#94a3b8;')
+               CALL                     1
+               POP_TOP
+
+ 233           LOAD_FAST                6 (row3)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               68 (count_lbl)
+               LOAD_CONST               3 (1)
+               CALL                     2
+               POP_TOP
+
+ 234           LOAD_GLOBAL             31 (QPushButton + NULL)
+               LOAD_CONST              22 ('Chọn tất cả')
+               CALL                     1
+               STORE_FAST               7 (b_all)
+
+ 235           LOAD_FAST                7 (b_all)
+               LOAD_ATTR               36 (clicked)
+               LOAD_ATTR               39 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               BUILD_TUPLE              1
+               LOAD_CONST              23 (<code object <lambda> at 0x0000016DC90F1980, file "bilisub\gui\channel_dialog.py", line 235>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               CALL                     1
+               POP_TOP
+
+ 236           LOAD_GLOBAL             31 (QPushButton + NULL)
+               LOAD_CONST              24 ('Bỏ chọn')
+               CALL                     1
+               STORE_FAST               8 (b_none)
+
+ 237           LOAD_FAST                8 (b_none)
+               LOAD_ATTR               36 (clicked)
+               LOAD_ATTR               39 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               BUILD_TUPLE              1
+               LOAD_CONST              25 (<code object <lambda> at 0x0000016DC90F0B70, file "bilisub\gui\channel_dialog.py", line 237>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               CALL                     1
+               POP_TOP
+
+ 238           LOAD_FAST                6 (row3)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_FAST                7 (b_all)
+               CALL                     1
+               POP_TOP
+
+ 239           LOAD_FAST                6 (row3)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_FAST                8 (b_none)
+               CALL                     1
+               POP_TOP
+
+ 240           LOAD_FAST                1 (lay)
+               LOAD_ATTR               43 (addLayout + NULL|self)
+               LOAD_FAST                6 (row3)
+               CALL                     1
+               POP_TOP
+
+ 243           LOAD_GLOBAL             71 (QListWidget + NULL)
+               CALL                     0
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              36 (list)
+
+ 244           LOAD_DEREF               0 (self)
+               LOAD_ATTR               72 (list)
+               LOAD_ATTR               75 (setAlternatingRowColors + NULL|self)
+               LOAD_CONST              26 (False)
+               CALL                     1
+               POP_TOP
+
+ 245           LOAD_DEREF               0 (self)
+               LOAD_ATTR               72 (list)
+               LOAD_ATTR               77 (setIconSize + NULL|self)
+               LOAD_GLOBAL             78 (_THUMB_SIZE)
+               CALL                     1
+               POP_TOP
+
+ 246           LOAD_DEREF               0 (self)
+               LOAD_ATTR               72 (list)
+               LOAD_ATTR               81 (setSpacing + NULL|self)
+               LOAD_CONST              27 (2)
+               CALL                     1
+               POP_TOP
+
+ 247           LOAD_FAST                1 (lay)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               72 (list)
+               LOAD_CONST               3 (1)
+               CALL                     2
+               POP_TOP
+
+ 250           LOAD_GLOBAL              3 (QHBoxLayout + NULL)
+               CALL                     0
+               STORE_FAST               9 (row4)
+
+ 251           LOAD_GLOBAL             31 (QPushButton + NULL)
+               LOAD_CONST              28 ('⬇ Tải video đã chọn')
+               CALL                     1
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              41 (dl_sel)
+
+ 252           LOAD_DEREF               0 (self)
+               LOAD_ATTR               82 (dl_sel)
+               LOAD_ATTR               35 (setObjectName + NULL|self)
+               LOAD_CONST               9 ('primary')
+               CALL                     1
+               POP_TOP
+
+ 253           LOAD_DEREF               0 (self)
+               LOAD_ATTR               82 (dl_sel)
+               LOAD_ATTR               36 (clicked)
+               LOAD_ATTR               39 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               84 (_download_selected)
+               CALL                     1
+               POP_TOP
+
+ 254           LOAD_GLOBAL             31 (QPushButton + NULL)
+               LOAD_CONST              29 ('⬇ Tải tất cả kết quả')
+               CALL                     1
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              43 (dl_all)
+
+ 255           LOAD_DEREF               0 (self)
+               LOAD_ATTR               86 (dl_all)
+               LOAD_ATTR               36 (clicked)
+               LOAD_ATTR               39 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               88 (_download_all)
+               CALL                     1
+               POP_TOP
+
+ 256           LOAD_GLOBAL             31 (QPushButton + NULL)
+               LOAD_CONST              30 ('⬇ Tải full kênh')
+               CALL                     1
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              45 (dl_full)
+
+ 257           LOAD_DEREF               0 (self)
+               LOAD_ATTR               90 (dl_full)
+               LOAD_ATTR               36 (clicked)
+               LOAD_ATTR               39 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               92 (_download_full)
+               CALL                     1
+               POP_TOP
+
+ 258           LOAD_DEREF               0 (self)
+               LOAD_ATTR               82 (dl_sel)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               86 (dl_all)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               90 (dl_full)
+               BUILD_TUPLE              3
+               GET_ITER
+       L1:     FOR_ITER                20 (to L2)
+               STORE_FAST              10 (b)
+
+ 259           LOAD_FAST                9 (row4)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_FAST               10 (b)
+               CALL                     1
+               POP_TOP
+               JUMP_BACKWARD           22 (to L1)
+
+ 258   L2:     END_FOR
+               POP_TOP
+
+ 260           LOAD_FAST                1 (lay)
+               LOAD_ATTR               43 (addLayout + NULL|self)
+               LOAD_FAST                9 (row4)
+               CALL                     1
+               POP_TOP
+
+ 262           LOAD_GLOBAL             95 (QProgressBar + NULL)
+               CALL                     0
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              48 (bar)
+
+ 263           LOAD_FAST                1 (lay)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               96 (bar)
+               CALL                     1
+               POP_TOP
+
+ 264           LOAD_GLOBAL             99 (QPlainTextEdit + NULL)
+               CALL                     0
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              50 (logbox)
+
+ 265           LOAD_DEREF               0 (self)
+               LOAD_ATTR              100 (logbox)
+               LOAD_ATTR              103 (setReadOnly + NULL|self)
+               LOAD_CONST              17 (True)
+               CALL                     1
+               POP_TOP
+
+ 266           LOAD_DEREF               0 (self)
+               LOAD_ATTR              100 (logbox)
+               LOAD_ATTR              105 (setMaximumHeight + NULL|self)
+               LOAD_CONST              31 (120)
+               CALL                     1
+               POP_TOP
+
+ 267           LOAD_FAST                1 (lay)
+               LOAD_ATTR               11 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR              100 (logbox)
+               CALL                     1
+               POP_TOP
+
+ 268           LOAD_DEREF               0 (self)
+               LOAD_ATTR              107 (_set_dl_enabled + NULL|self)
+               LOAD_CONST              26 (False)
+               CALL                     1
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object <lambda> at 0x0000016DC90F1A70, file "bilisub\gui\channel_dialog.py", line 227>:
+  --           COPY_FREE_VARS           1
+
+ 227           RESUME                   0
+               LOAD_DEREF               1 (self)
+               LOAD_ATTR                1 (_kiem_cookie + NULL|self)
+               CALL                     0
+               RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC90F1980, file "bilisub\gui\channel_dialog.py", line 235>:
+  --           COPY_FREE_VARS           1
+
+ 235           RESUME                   0
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR                1 (_check_all + NULL|self)
+               LOAD_CONST               1 (True)
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC90F0B70, file "bilisub\gui\channel_dialog.py", line 237>:
+  --           COPY_FREE_VARS           1
+
+ 237           RESUME                   0
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR                1 (_check_all + NULL|self)
+               LOAD_CONST               1 (False)
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object _choose_dir at 0x0000016DC8E0B4B0, file "bilisub\gui\channel_dialog.py", line 271>:
+271           RESUME                   0
+
+272           LOAD_GLOBAL              0 (QFileDialog)
+              LOAD_ATTR                2 (getExistingDirectory)
+              PUSH_NULL
+              LOAD_FAST                0 (self)
+              LOAD_CONST               1 ('Chọn thư mục lưu')
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              LOAD_ATTR                7 (text + NULL|self)
+              CALL                     0
+              CALL                     3
+              STORE_FAST               1 (d)
+
+273           LOAD_FAST                1 (d)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       28 (to L1)
+
+274           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              LOAD_ATTR                9 (setText + NULL|self)
+              LOAD_FAST                1 (d)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+273   L1:     RETURN_CONST             0 (None)
+
+Disassembly of <code object _choose_cookie at 0x0000016DC8EC2790, file "bilisub\gui\channel_dialog.py", line 276>:
+276           RESUME                   0
+
+277           LOAD_GLOBAL              0 (QFileDialog)
+              LOAD_ATTR                2 (getOpenFileName)
+              PUSH_NULL
+              LOAD_FAST                0 (self)
+              LOAD_CONST               1 ('Chọn cookies')
+              LOAD_CONST               2 ('')
+              LOAD_CONST               3 ('Cookies (*.txt *.json);;Tất cả (*.*)')
+              CALL                     4
+              UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST   18 (p, _)
+
+278           LOAD_FAST                1 (p)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       28 (to L1)
+
+279           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (cookie_edit)
+              LOAD_ATTR                7 (setText + NULL|self)
+              LOAD_FAST                1 (p)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+278   L1:     RETURN_CONST             0 (None)
+
+Disassembly of <code object _cookie_hong at 0x0000016DC8E0B7B0, file "bilisub\gui\channel_dialog.py", line 282>:
+282           RESUME                   0
+
+290           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (cookie_edit)
+              LOAD_ATTR                3 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR                5 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               1 (p)
+
+291           LOAD_GLOBAL              7 (bool + NULL)
+              LOAD_FAST                1 (p)
+              CALL                     1
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE       30 (to L1)
+              POP_TOP
+              LOAD_GLOBAL              9 (Path + NULL)
+              LOAD_FAST                1 (p)
+              CALL                     1
+              LOAD_ATTR               11 (is_file + NULL|self)
+              CALL                     0
+              TO_BOOL
+              UNARY_NOT
+      L1:     RETURN_VALUE
+
+Disassembly of <code object _kiem_cookie at 0x0000016DC90EDBB0, file "bilisub\gui\channel_dialog.py", line 293>:
+ 293           RESUME                   0
+
+ 294           LOAD_GLOBAL              1 (getattr + NULL)
+               LOAD_FAST                0 (self)
+               LOAD_CONST               1 ('cookie_warn')
+               LOAD_CONST               0 (None)
+               CALL                     3
+               STORE_FAST               1 (w)
+
+ 295           LOAD_FAST                1 (w)
+               POP_JUMP_IF_NOT_NONE     1 (to L1)
+
+ 296           RETURN_CONST             0 (None)
+
+ 297   L1:     NOP
+
+ 298   L2:     LOAD_FAST                0 (self)
+               LOAD_ATTR                3 (_ve_nhan_cookie + NULL|self)
+               LOAD_FAST                1 (w)
+               CALL                     1
+               POP_TOP
+       L3:     RETURN_CONST             0 (None)
+
+  --   L4:     PUSH_EXC_INFO
+
+ 299           LOAD_GLOBAL              4 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       20 (to L6)
+               POP_TOP
+
+ 300           LOAD_FAST                1 (w)
+               LOAD_ATTR                7 (setText + NULL|self)
+               LOAD_CONST               2 ('')
+               CALL                     1
+               POP_TOP
+       L5:     POP_EXCEPT
+               RETURN_CONST             0 (None)
+
+ 299   L6:     RERAISE                  0
+
+  --   L7:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L4 [0]
+  L4 to L5 -> L7 [1] lasti
+  L6 to L7 -> L7 [1] lasti
+
+Disassembly of <code object _ve_nhan_cookie at 0x0000016DC8EA3470, file "bilisub\gui\channel_dialog.py", line 302>:
+302           RESUME                   0
+
+303           LOAD_FAST                1 (w)
+              LOAD_ATTR                1 (setText + NULL|self)
+
+305           LOAD_FAST                0 (self)
+              LOAD_ATTR                3 (_cookie_hong + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE        7 (to L1)
+
+303           LOAD_CONST               1 ('⚠ KHÔNG thấy file cookies này — sẽ quét/tải ở chế độ CHƯA ĐĂNG NHẬP (nhiều trang chỉ trả bản xem thử vài phút). Kiểm tra lại đường dẫn.')
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+305   L1:     LOAD_CONST               2 ('')
+
+303           CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _canh_bao_cookie at 0x0000016DC8FCF440, file "bilisub\gui\channel_dialog.py", line 307>:
+307           RESUME                   0
+
+309           LOAD_FAST                0 (self)
+              LOAD_ATTR                1 (_cookie_hong + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE       35 (to L1)
+              LOAD_GLOBAL              2 (os)
+              LOAD_ATTR                4 (environ)
+              LOAD_ATTR                7 (get + NULL|self)
+              LOAD_CONST               1 ('BILISUB_COOKIE_WARN_OFF')
+              CALL                     1
+              LOAD_CONST               2 ('1')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE        1 (to L2)
+
+310   L1:     RETURN_CONST             3 (True)
+
+311   L2:     LOAD_GLOBAL              9 (QMessageBox + NULL)
+              LOAD_FAST                0 (self)
+              CALL                     1
+              STORE_FAST               1 (box)
+
+312           LOAD_FAST                1 (box)
+              LOAD_ATTR               11 (setWindowTitle + NULL|self)
+              LOAD_CONST               4 ('File cookies không tồn tại')
+              CALL                     1
+              POP_TOP
+
+313           LOAD_FAST                1 (box)
+              LOAD_ATTR               13 (setText + NULL|self)
+              LOAD_CONST               5 ('Không tìm thấy file cookies bạn đã chọn.')
+              CALL                     1
+              POP_TOP
+
+314           LOAD_FAST                1 (box)
+              LOAD_ATTR               15 (setInformativeText + NULL|self)
+
+315           LOAD_FAST                0 (self)
+              LOAD_ATTR               16 (cookie_edit)
+              LOAD_ATTR               19 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR               21 (strip + NULL|self)
+              CALL                     0
+              FORMAT_SIMPLE
+              LOAD_GLOBAL             23 (chr + NULL)
+              LOAD_CONST               6 (10)
+              CALL                     1
+              LOAD_CONST               7 (2)
+              BINARY_OP                5 (*)
+              BINARY_OP                0 (+)
+
+316           LOAD_CONST               8 ('Tải tiếp sẽ chạy ở chế độ CHƯA ĐĂNG NHẬP — nhiều trang chỉ trả BẢN XEM THỬ vài phút thay vì phim đầy đủ.')
+
+315           BINARY_OP                0 (+)
+
+314           CALL                     1
+              POP_TOP
+
+318           LOAD_FAST                1 (box)
+              LOAD_ATTR               25 (addButton + NULL|self)
+              LOAD_CONST               9 ('Vẫn tải (không đăng nhập)')
+              LOAD_GLOBAL              8 (QMessageBox)
+              LOAD_ATTR               26 (ButtonRole)
+              LOAD_ATTR               28 (DestructiveRole)
+              CALL                     2
+              STORE_FAST               2 (b_go)
+
+319           LOAD_FAST                1 (box)
+              LOAD_ATTR               25 (addButton + NULL|self)
+              LOAD_CONST              10 ('Quay lại chọn file')
+              LOAD_GLOBAL              8 (QMessageBox)
+              LOAD_ATTR               26 (ButtonRole)
+              LOAD_ATTR               30 (RejectRole)
+              CALL                     2
+              POP_TOP
+
+320           LOAD_FAST                1 (box)
+              LOAD_ATTR               33 (exec + NULL|self)
+              CALL                     0
+              POP_TOP
+
+321           LOAD_FAST                1 (box)
+              LOAD_ATTR               35 (clickedButton + NULL|self)
+              CALL                     0
+              LOAD_FAST                2 (b_go)
+              IS_OP                    0
+              POP_JUMP_IF_FALSE       28 (to L3)
+
+322           LOAD_FAST                0 (self)
+              LOAD_ATTR               36 (logbox)
+              LOAD_ATTR               39 (appendPlainText + NULL|self)
+              LOAD_CONST              11 ('⚠ Không có file cookies — tải KHÔNG đăng nhập.')
+              CALL                     1
+              POP_TOP
+
+323           RETURN_CONST             3 (True)
+
+324   L3:     RETURN_CONST            12 (False)
+
+Disassembly of <code object _set_dl_enabled at 0x0000016DC8EA36D0, file "bilisub\gui\channel_dialog.py", line 326>:
+326           RESUME                   0
+
+327           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (dl_sel)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (dl_all)
+              BUILD_TUPLE              2
+              GET_ITER
+      L1:     FOR_ITER                20 (to L2)
+              STORE_FAST               2 (b)
+
+328           LOAD_FAST                2 (b)
+              LOAD_ATTR                5 (setEnabled + NULL|self)
+              LOAD_FAST                1 (on)
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD           22 (to L1)
+
+327   L2:     END_FOR
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _check_all at 0x0000016DC90DD1A0, file "bilisub\gui\channel_dialog.py", line 330>:
+330           RESUME                   0
+
+331           LOAD_FAST                1 (on)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       26 (to L1)
+              LOAD_GLOBAL              0 (Qt)
+              LOAD_ATTR                2 (CheckState)
+              LOAD_ATTR                4 (Checked)
+              JUMP_FORWARD            25 (to L2)
+      L1:     LOAD_GLOBAL              0 (Qt)
+              LOAD_ATTR                2 (CheckState)
+              LOAD_ATTR                6 (Unchecked)
+      L2:     STORE_FAST               2 (st)
+
+332           LOAD_GLOBAL              9 (range + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (list)
+              LOAD_ATTR               13 (count + NULL|self)
+              CALL                     0
+              CALL                     1
+              GET_ITER
+      L3:     FOR_ITER                45 (to L4)
+              STORE_FAST               3 (i)
+
+333           LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (list)
+              LOAD_ATTR               15 (item + NULL|self)
+              LOAD_FAST                3 (i)
+              CALL                     1
+              LOAD_ATTR               17 (setCheckState + NULL|self)
+              LOAD_FAST                2 (st)
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD           47 (to L3)
+
+332   L4:     END_FOR
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _fill_list at 0x0000016DC93B85C0, file "bilisub\gui\channel_dialog.py", line 335>:
+ 335            RESUME                   0
+
+ 337            LOAD_FAST                0 (self)
+                COPY                     1
+                LOAD_ATTR                0 (_thumb_gen)
+                LOAD_CONST               1 (1)
+                BINARY_OP               13 (+=)
+                SWAP                     2
+                STORE_ATTR               0 (_thumb_gen)
+
+ 338            LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (thumb_worker)
+                POP_JUMP_IF_NONE        84 (to L1)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (thumb_worker)
+                LOAD_ATTR                5 (isRunning + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_FALSE       53 (to L1)
+
+ 339            LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (thumb_worker)
+                LOAD_ATTR                7 (cancel + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 340            LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (thumb_worker)
+                LOAD_ATTR                9 (blockSignals + NULL|self)
+                LOAD_CONST               2 (True)
+                CALL                     1
+                POP_TOP
+
+ 341    L1:     LOAD_GLOBAL             11 (list + NULL)
+                LOAD_FAST                1 (vids)
+                CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR               6 (videos)
+
+ 342            LOAD_FAST                0 (self)
+                LOAD_ATTR               10 (list)
+                LOAD_ATTR               15 (clear + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 343            LOAD_GLOBAL             17 (enumerate + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               12 (videos)
+                CALL                     1
+                GET_ITER
+        L2:     FOR_ITER               236 (to L3)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST   35 (i, v)
+
+ 344            LOAD_GLOBAL             19 (QListWidgetItem + NULL)
+                LOAD_FAST                2 (i)
+                LOAD_CONST               1 (1)
+                BINARY_OP                0 (+)
+                LOAD_CONST               3 ('>3')
+                FORMAT_WITH_SPEC
+                LOAD_CONST               4 ('. ')
+                LOAD_FAST                3 (v)
+                LOAD_ATTR               20 (title)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               5 (70)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                LOAD_CONST               6 ('\n        ')
+                LOAD_FAST                3 (v)
+                LOAD_ATTR               22 (author)
+                FORMAT_SIMPLE
+                LOAD_CONST               7 ('  ·  ')
+                LOAD_FAST                3 (v)
+                LOAD_ATTR               25 (stat_text + NULL|self)
+                CALL                     0
+                FORMAT_SIMPLE
+                BUILD_STRING             7
+                CALL                     1
+                STORE_FAST               4 (it)
+
+ 345            LOAD_FAST                4 (it)
+                LOAD_ATTR               27 (setFlags + NULL|self)
+                LOAD_FAST                4 (it)
+                LOAD_ATTR               29 (flags + NULL|self)
+                CALL                     0
+                LOAD_GLOBAL             30 (Qt)
+                LOAD_ATTR               32 (ItemFlag)
+                LOAD_ATTR               34 (ItemIsUserCheckable)
+                BINARY_OP                7 (|)
+                CALL                     1
+                POP_TOP
+
+ 346            LOAD_FAST                4 (it)
+                LOAD_ATTR               37 (setCheckState + NULL|self)
+                LOAD_GLOBAL             30 (Qt)
+                LOAD_ATTR               38 (CheckState)
+                LOAD_ATTR               40 (Checked)
+                CALL                     1
+                POP_TOP
+
+ 347            LOAD_FAST                4 (it)
+                LOAD_ATTR               43 (setData + NULL|self)
+                LOAD_GLOBAL             30 (Qt)
+                LOAD_ATTR               44 (ItemDataRole)
+                LOAD_ATTR               46 (UserRole)
+                LOAD_FAST                2 (i)
+                CALL                     2
+                POP_TOP
+
+ 348            LOAD_FAST                0 (self)
+                LOAD_ATTR               10 (list)
+                LOAD_ATTR               49 (addItem + NULL|self)
+                LOAD_FAST                4 (it)
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD          238 (to L2)
+
+ 343    L3:     END_FOR
+                POP_TOP
+
+ 349            LOAD_FAST                0 (self)
+                LOAD_ATTR               50 (count_lbl)
+                LOAD_ATTR               53 (setText + NULL|self)
+                LOAD_CONST               8 ('Tìm thấy ')
+                LOAD_GLOBAL             55 (len + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               12 (videos)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST               9 (' video.')
+                BUILD_STRING             3
+                CALL                     1
+                POP_TOP
+
+ 351            LOAD_GLOBAL             17 (enumerate + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               12 (videos)
+                CALL                     1
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      2 (i)
+                LOAD_FAST_AND_CLEAR      3 (v)
+                SWAP                     3
+        L4:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L5:     FOR_ITER                48 (to L8)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST   35 (i, v)
+                LOAD_FAST                3 (v)
+                LOAD_ATTR               56 (thumbnail)
+                TO_BOOL
+        L6:     POP_JUMP_IF_TRUE         2 (to L7)
+                JUMP_BACKWARD           24 (to L5)
+        L7:     LOAD_FAST_LOAD_FAST     35 (i, v)
+                LOAD_ATTR               56 (thumbnail)
+                LOAD_FAST                3 (v)
+                LOAD_ATTR               58 (platform)
+                BUILD_TUPLE              3
+                LIST_APPEND              2
+                JUMP_BACKWARD           50 (to L5)
+        L8:     END_FOR
+                POP_TOP
+        L9:     STORE_FAST               5 (jobs)
+                STORE_FAST               2 (i)
+                STORE_FAST               3 (v)
+
+ 352            LOAD_FAST                5 (jobs)
+                TO_BOOL
+                POP_JUMP_IF_FALSE      122 (to L10)
+
+ 353            LOAD_GLOBAL             61 (_ThumbWorker + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR                0 (_thumb_gen)
+                LOAD_FAST                5 (jobs)
+                CALL                     2
+                LOAD_FAST                0 (self)
+                STORE_ATTR               1 (thumb_worker)
+
+ 354            LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (thumb_worker)
+                LOAD_ATTR               62 (thumb)
+                LOAD_ATTR               65 (connect + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               66 (_on_thumb)
+                CALL                     1
+                POP_TOP
+
+ 355            LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (thumb_worker)
+                LOAD_ATTR               69 (start + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 356            LOAD_GLOBAL             71 (_keep_alive + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (thumb_worker)
+                CALL                     1
+                POP_TOP
+                RETURN_CONST             0 (None)
+
+ 352   L10:     RETURN_CONST             0 (None)
+
+  --   L11:     SWAP                     2
+                POP_TOP
+
+ 351            SWAP                     3
+                STORE_FAST               3 (v)
+                STORE_FAST               2 (i)
+                RERAISE                  0
+ExceptionTable:
+  L4 to L6 -> L11 [3]
+  L7 to L9 -> L11 [3]
+
+Disassembly of <code object _on_thumb at 0x0000016DC8F12510, file "bilisub\gui\channel_dialog.py", line 358>:
+358           RESUME                   0
+
+360           LOAD_FAST_LOAD_FAST     16 (gen, self)
+              LOAD_ATTR                0 (_thumb_gen)
+              COMPARE_OP             119 (bool(!=))
+              POP_JUMP_IF_FALSE        1 (to L1)
+
+361           RETURN_CONST             1 (None)
+
+362   L1:     LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (list)
+              LOAD_ATTR                5 (item + NULL|self)
+              LOAD_FAST                2 (row)
+              CALL                     1
+              STORE_FAST               4 (it)
+
+363           LOAD_FAST                4 (it)
+              POP_JUMP_IF_NOT_NONE     1 (to L2)
+
+364           RETURN_CONST             1 (None)
+
+365   L2:     LOAD_GLOBAL              7 (QPixmap + NULL)
+              CALL                     0
+              STORE_FAST               5 (pix)
+
+366           LOAD_FAST                5 (pix)
+              LOAD_ATTR                9 (loadFromData + NULL|self)
+              LOAD_GLOBAL             11 (bytes + NULL)
+              LOAD_FAST                3 (data)
+              CALL                     1
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE      118 (to L4)
+              LOAD_FAST                5 (pix)
+              LOAD_ATTR               13 (isNull + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_TRUE        96 (to L3)
+
+367           LOAD_FAST                4 (it)
+              LOAD_ATTR               15 (setIcon + NULL|self)
+              LOAD_GLOBAL             17 (QIcon + NULL)
+              LOAD_FAST                5 (pix)
+              LOAD_ATTR               19 (scaled + NULL|self)
+              LOAD_GLOBAL             20 (_THUMB_SIZE)
+              LOAD_GLOBAL             22 (Qt)
+              LOAD_ATTR               24 (AspectRatioMode)
+              LOAD_ATTR               26 (KeepAspectRatio)
+
+368           LOAD_GLOBAL             22 (Qt)
+              LOAD_ATTR               28 (TransformationMode)
+              LOAD_ATTR               30 (SmoothTransformation)
+
+367           CALL                     3
+              CALL                     1
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             1 (None)
+
+366   L3:     RETURN_CONST             1 (None)
+      L4:     RETURN_CONST             1 (None)
+
+Disassembly of <code object _scan at 0x0000016DC8FE1620, file "bilisub\gui\channel_dialog.py", line 371>:
+  --           MAKE_CELL                0 (self)
+
+ 371           RESUME                   0
+
+ 372           LOAD_DEREF               0 (self)
+               LOAD_ATTR                0 (link)
+               LOAD_ATTR                3 (text + NULL|self)
+               CALL                     0
+               LOAD_ATTR                5 (strip + NULL|self)
+               CALL                     0
+               STORE_FAST               3 (text)
+
+ 373           LOAD_FAST                3 (text)
+               TO_BOOL
+               POP_JUMP_IF_TRUE        28 (to L1)
+
+ 374           LOAD_DEREF               0 (self)
+               LOAD_ATTR                6 (logbox)
+               LOAD_ATTR                9 (appendPlainText + NULL|self)
+               LOAD_CONST               1 ('Hãy dán link kênh.')
+               CALL                     1
+               POP_TOP
+
+ 375           RETURN_CONST             0 (None)
+
+ 376   L1:     LOAD_DEREF               0 (self)
+               LOAD_ATTR               10 (plat)
+               LOAD_ATTR               13 (currentText + NULL|self)
+               CALL                     0
+               STORE_FAST               4 (plat)
+
+ 377           LOAD_FAST                4 (plat)
+               LOAD_CONST               2 ('Tự động')
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_FALSE        2 (to L2)
+               LOAD_CONST               0 (None)
+               JUMP_FORWARD             1 (to L3)
+       L2:     LOAD_FAST                4 (plat)
+       L3:     STORE_FAST               4 (plat)
+
+ 378           LOAD_DEREF               0 (self)
+               LOAD_ATTR               14 (scan_btn)
+               LOAD_ATTR               17 (setEnabled + NULL|self)
+               LOAD_CONST               3 (False)
+               CALL                     1
+               POP_TOP
+
+ 379           LOAD_DEREF               0 (self)
+               LOAD_ATTR               19 (_set_dl_enabled + NULL|self)
+               LOAD_CONST               3 (False)
+               CALL                     1
+               POP_TOP
+
+ 380           LOAD_DEREF               0 (self)
+               LOAD_ATTR               20 (dl_full)
+               LOAD_ATTR               17 (setEnabled + NULL|self)
+               LOAD_CONST               3 (False)
+               CALL                     1
+               POP_TOP
+
+ 381           LOAD_DEREF               0 (self)
+               LOAD_ATTR               22 (count_lbl)
+               LOAD_ATTR               25 (setText + NULL|self)
+               LOAD_CONST               4 ('🔍 Đang quét…')
+               CALL                     1
+               POP_TOP
+
+ 382           LOAD_DEREF               0 (self)
+               LOAD_ATTR                6 (logbox)
+               LOAD_ATTR               27 (clear + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 383           LOAD_FAST                2 (then_download)
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              14 (_pending_download)
+
+ 384           LOAD_GLOBAL             31 (_ScanWorker + NULL)
+               LOAD_FAST_LOAD_FAST     52 (text, plat)
+               LOAD_FAST                1 (limit)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE        26 (to L4)
+               POP_TOP
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               32 (limit)
+               LOAD_ATTR               35 (value + NULL|self)
+               CALL                     0
+
+ 385   L4:     LOAD_DEREF               0 (self)
+               LOAD_ATTR               36 (cookie_edit)
+               LOAD_ATTR                3 (text + NULL|self)
+               CALL                     0
+               LOAD_ATTR                5 (strip + NULL|self)
+               CALL                     0
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L5)
+               POP_TOP
+               LOAD_CONST               0 (None)
+
+ 384   L5:     CALL                     4
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              19 (scan_worker)
+
+ 386           LOAD_DEREF               0 (self)
+               LOAD_ATTR               38 (scan_worker)
+               LOAD_ATTR               40 (prog)
+               LOAD_ATTR               43 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               BUILD_TUPLE              1
+               LOAD_CONST               5 (<code object <lambda> at 0x0000016DC8EAD8A0, file "bilisub\gui\channel_dialog.py", line 386>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               CALL                     1
+               POP_TOP
+
+ 387           LOAD_DEREF               0 (self)
+               LOAD_ATTR               38 (scan_worker)
+               LOAD_ATTR               44 (done)
+               LOAD_ATTR               43 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               46 (_scan_done)
+               CALL                     1
+               POP_TOP
+
+ 388           LOAD_DEREF               0 (self)
+               LOAD_ATTR               38 (scan_worker)
+               LOAD_ATTR               48 (failed)
+               LOAD_ATTR               43 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               50 (_scan_failed)
+               CALL                     1
+               POP_TOP
+
+ 389           LOAD_DEREF               0 (self)
+               LOAD_ATTR               38 (scan_worker)
+               LOAD_ATTR               53 (start + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 390           LOAD_GLOBAL             55 (_keep_alive + NULL)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               38 (scan_worker)
+               CALL                     1
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object <lambda> at 0x0000016DC8EAD8A0, file "bilisub\gui\channel_dialog.py", line 386>:
+  --           COPY_FREE_VARS           1
+
+ 386           RESUME                   0
+               LOAD_DEREF               3 (self)
+               LOAD_ATTR                0 (count_lbl)
+               LOAD_ATTR                3 (setText + NULL|self)
+               LOAD_FAST                2 (m)
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object _scan_done at 0x0000016DC8FE1F10, file "bilisub\gui\channel_dialog.py", line 392>:
+392           RESUME                   0
+
+393           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (scan_btn)
+              LOAD_ATTR                3 (setEnabled + NULL|self)
+              LOAD_CONST               1 (True)
+              CALL                     1
+              POP_TOP
+
+394           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dl_full)
+              LOAD_ATTR                3 (setEnabled + NULL|self)
+              LOAD_CONST               1 (True)
+              CALL                     1
+              POP_TOP
+
+395           LOAD_FAST                0 (self)
+              LOAD_ATTR                7 (_fill_list + NULL|self)
+              LOAD_FAST                2 (vids)
+              CALL                     1
+              POP_TOP
+
+396           LOAD_FAST                0 (self)
+              LOAD_ATTR                9 (_set_dl_enabled + NULL|self)
+              LOAD_GLOBAL             11 (bool + NULL)
+              LOAD_FAST                2 (vids)
+              CALL                     1
+              CALL                     1
+              POP_TOP
+
+397           LOAD_FAST                0 (self)
+              LOAD_ATTR               12 (plat)
+              LOAD_ATTR               15 (findText + NULL|self)
+              LOAD_FAST                1 (plat)
+              CALL                     1
+              STORE_FAST               3 (idx)
+
+398           LOAD_FAST                3 (idx)
+              LOAD_CONST               2 (0)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_FALSE       27 (to L1)
+
+399           LOAD_FAST                0 (self)
+              LOAD_ATTR               12 (plat)
+              LOAD_ATTR               17 (setCurrentIndex + NULL|self)
+              LOAD_FAST                3 (idx)
+              CALL                     1
+              POP_TOP
+
+400   L1:     LOAD_GLOBAL             19 (getattr + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_CONST               3 ('_pending_download')
+              LOAD_CONST               0 (None)
+              CALL                     3
+              LOAD_CONST               4 ('all')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       69 (to L3)
+              LOAD_FAST                2 (vids)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       61 (to L2)
+
+401           LOAD_CONST               0 (None)
+              LOAD_FAST                0 (self)
+              STORE_ATTR              10 (_pending_download)
+
+402           LOAD_FAST                0 (self)
+              LOAD_ATTR               23 (_start_batch + NULL|self)
+              LOAD_GLOBAL             25 (list + NULL)
+              LOAD_GLOBAL             27 (range + NULL)
+              LOAD_GLOBAL             29 (len + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               30 (videos)
+              CALL                     1
+              CALL                     1
+              CALL                     1
+              LOAD_CONST               1 (True)
+              LOAD_CONST               5 (('tu_dong',))
+              CALL_KW                  2
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+400   L2:     RETURN_CONST             0 (None)
+      L3:     RETURN_CONST             0 (None)
+
+Disassembly of <code object _scan_failed at 0x0000016DC90E57D0, file "bilisub\gui\channel_dialog.py", line 404>:
+404           RESUME                   0
+
+405           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (scan_btn)
+              LOAD_ATTR                3 (setEnabled + NULL|self)
+              LOAD_CONST               1 (True)
+              CALL                     1
+              POP_TOP
+
+406           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dl_full)
+              LOAD_ATTR                3 (setEnabled + NULL|self)
+              LOAD_CONST               1 (True)
+              CALL                     1
+              POP_TOP
+
+407           LOAD_FAST                0 (self)
+              LOAD_ATTR                6 (count_lbl)
+              LOAD_ATTR                9 (setText + NULL|self)
+              LOAD_CONST               2 ('❌ Quét lỗi.')
+              CALL                     1
+              POP_TOP
+
+408           LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (logbox)
+              LOAD_ATTR               13 (appendPlainText + NULL|self)
+              LOAD_CONST               3 ('❌ ')
+              LOAD_FAST                1 (msg)
+              FORMAT_SIMPLE
+              BUILD_STRING             2
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _selected_rows at 0x0000016DC8EC5990, file "bilisub\gui\channel_dialog.py", line 411>:
+ 411           RESUME                   0
+
+ 412           LOAD_GLOBAL              1 (range + NULL)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR                2 (list)
+               LOAD_ATTR                5 (count + NULL|self)
+               CALL                     0
+               CALL                     1
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      1 (i)
+               SWAP                     2
+       L1:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L2:     FOR_ITER                76 (to L5)
+               STORE_FAST               1 (i)
+
+ 413           LOAD_FAST                0 (self)
+               LOAD_ATTR                2 (list)
+               LOAD_ATTR                7 (item + NULL|self)
+               LOAD_FAST                1 (i)
+               CALL                     1
+               LOAD_ATTR                9 (checkState + NULL|self)
+               CALL                     0
+               LOAD_GLOBAL             10 (Qt)
+               LOAD_ATTR               12 (CheckState)
+               LOAD_ATTR               14 (Checked)
+               COMPARE_OP              88 (bool(==))
+
+ 412   L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           74 (to L2)
+       L4:     LOAD_FAST                1 (i)
+               LIST_APPEND              2
+               JUMP_BACKWARD           78 (to L2)
+       L5:     END_FOR
+               POP_TOP
+       L6:     SWAP                     2
+               STORE_FAST               1 (i)
+               RETURN_VALUE
+
+  --   L7:     SWAP                     2
+               POP_TOP
+
+ 412           SWAP                     2
+               STORE_FAST               1 (i)
+               RERAISE                  0
+ExceptionTable:
+  L1 to L3 -> L7 [2]
+  L4 to L6 -> L7 [2]
+
+Disassembly of <code object _download_selected at 0x0000016DC90EDA50, file "bilisub\gui\channel_dialog.py", line 415>:
+415           RESUME                   0
+
+416           LOAD_FAST                0 (self)
+              LOAD_ATTR                1 (_selected_rows + NULL|self)
+              CALL                     0
+              STORE_FAST               1 (rows)
+
+417           LOAD_FAST                1 (rows)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        28 (to L1)
+
+418           LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (logbox)
+              LOAD_ATTR                5 (appendPlainText + NULL|self)
+              LOAD_CONST               1 ('Chưa chọn video nào.')
+              CALL                     1
+              POP_TOP
+
+419           RETURN_CONST             0 (None)
+
+420   L1:     LOAD_FAST                0 (self)
+              LOAD_ATTR                7 (_start_batch + NULL|self)
+              LOAD_FAST                1 (rows)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _download_all at 0x0000016DC90EDE70, file "bilisub\gui\channel_dialog.py", line 422>:
+422           RESUME                   0
+
+423           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (videos)
+              TO_BOOL
+              POP_JUMP_IF_TRUE         1 (to L1)
+
+424           RETURN_CONST             0 (None)
+
+425   L1:     LOAD_FAST                0 (self)
+              LOAD_ATTR                3 (_start_batch + NULL|self)
+              LOAD_GLOBAL              5 (list + NULL)
+              LOAD_GLOBAL              7 (range + NULL)
+              LOAD_GLOBAL              9 (len + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (videos)
+              CALL                     1
+              CALL                     1
+              CALL                     1
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _download_full at 0x0000016DC90DD390, file "bilisub\gui\channel_dialog.py", line 427>:
+427           RESUME                   0
+
+428           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (link)
+              LOAD_ATTR                3 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR                5 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               1 (text)
+
+429           LOAD_FAST                1 (text)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        28 (to L1)
+
+430           LOAD_FAST                0 (self)
+              LOAD_ATTR                6 (logbox)
+              LOAD_ATTR                9 (appendPlainText + NULL|self)
+              LOAD_CONST               1 ('Hãy dán link kênh.')
+              CALL                     1
+              POP_TOP
+
+431           RETURN_CONST             0 (None)
+
+432   L1:     LOAD_GLOBAL             10 (QMessageBox)
+              LOAD_ATTR               12 (question)
+              PUSH_NULL
+              LOAD_FAST                0 (self)
+              LOAD_CONST               2 ('Tải full kênh')
+
+433           LOAD_CONST               3 ('Quét tối đa 500 video mới nhất của kênh rồi TẢI TẤT CẢ?\n(có thể rất nặng & lâu)')
+
+432           CALL                     3
+              STORE_FAST               2 (ok)
+
+435           LOAD_FAST                2 (ok)
+              LOAD_GLOBAL             10 (QMessageBox)
+              LOAD_ATTR               14 (StandardButton)
+              LOAD_ATTR               16 (Yes)
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       17 (to L2)
+
+436           LOAD_FAST                0 (self)
+              LOAD_ATTR               19 (_scan + NULL|self)
+              LOAD_CONST               4 (500)
+              LOAD_CONST               5 ('all')
+              LOAD_CONST               6 (('limit', 'then_download'))
+              CALL_KW                  2
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+435   L2:     RETURN_CONST             0 (None)
+
+Disassembly of <code object _start_batch at 0x0000016DC8F5F2E0, file "bilisub\gui\channel_dialog.py", line 438>:
+  --            MAKE_CELL                0 (self)
+
+ 438            RESUME                   0
+
+ 439            LOAD_DEREF               0 (self)
+                LOAD_ATTR                0 (batch)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       59 (to L1)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR                0 (batch)
+                LOAD_ATTR                3 (isRunning + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_FALSE       28 (to L1)
+
+ 440            LOAD_DEREF               0 (self)
+                LOAD_ATTR                4 (logbox)
+                LOAD_ATTR                7 (appendPlainText + NULL|self)
+                LOAD_CONST               1 ('Đang tải, đợi xong đã.')
+                CALL                     1
+                POP_TOP
+
+ 441            RETURN_CONST             0 (None)
+
+ 446    L1:     LOAD_FAST                2 (tu_dong)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       49 (to L3)
+
+ 447            LOAD_DEREF               0 (self)
+                LOAD_ATTR                9 (_cookie_hong + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_FALSE       27 (to L2)
+
+ 448            LOAD_DEREF               0 (self)
+                LOAD_ATTR                4 (logbox)
+                LOAD_ATTR                7 (appendPlainText + NULL|self)
+
+ 449            LOAD_CONST               2 ('⚠ KHÔNG thấy file cookies đã chọn — tải ở chế độ CHƯA ĐĂNG NHẬP (nhiều trang chỉ trả bản xem thử vài phút).')
+
+ 448            CALL                     1
+                POP_TOP
+
+  --    L2:     JUMP_FORWARD            39 (to L4)
+
+ 451    L3:     LOAD_DEREF               0 (self)
+                LOAD_ATTR               11 (_canh_bao_cookie + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_TRUE        18 (to L4)
+
+ 452            LOAD_DEREF               0 (self)
+                LOAD_ATTR               13 (_set_dl_enabled + NULL|self)
+                LOAD_CONST               3 (True)
+                CALL                     1
+                POP_TOP
+
+ 453            RETURN_CONST             0 (None)
+
+ 454    L4:     LOAD_FAST                1 (rows)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      3 (r)
+                SWAP                     2
+        L5:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L6:     FOR_ITER                83 (to L7)
+                STORE_FAST_LOAD_FAST    51 (r, r)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR               14 (videos)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR               16 (list)
+                LOAD_ATTR               19 (item + NULL|self)
+                LOAD_FAST                3 (r)
+                CALL                     1
+                LOAD_ATTR               21 (data + NULL|self)
+                LOAD_GLOBAL             22 (Qt)
+                LOAD_ATTR               24 (ItemDataRole)
+                LOAD_ATTR               26 (UserRole)
+                CALL                     1
+                BINARY_SUBSCR
+                BUILD_TUPLE              2
+                LIST_APPEND              2
+                JUMP_BACKWARD           85 (to L6)
+        L7:     END_FOR
+                POP_TOP
+        L8:     STORE_FAST               4 (items)
+                STORE_FAST               3 (r)
+
+ 455            LOAD_DEREF               0 (self)
+                LOAD_ATTR               28 (scan_btn)
+                LOAD_ATTR               31 (setEnabled + NULL|self)
+                LOAD_CONST               4 (False)
+                CALL                     1
+                POP_TOP
+
+ 456            LOAD_DEREF               0 (self)
+                LOAD_ATTR               13 (_set_dl_enabled + NULL|self)
+                LOAD_CONST               4 (False)
+                CALL                     1
+                POP_TOP
+
+ 457            LOAD_DEREF               0 (self)
+                LOAD_ATTR               32 (dl_full)
+                LOAD_ATTR               31 (setEnabled + NULL|self)
+                LOAD_CONST               4 (False)
+                CALL                     1
+                POP_TOP
+
+ 458            LOAD_DEREF               0 (self)
+                LOAD_ATTR               34 (bar)
+                LOAD_ATTR               37 (setValue + NULL|self)
+                LOAD_CONST               5 (0)
+                CALL                     1
+                POP_TOP
+
+ 459            LOAD_DEREF               0 (self)
+                LOAD_ATTR                4 (logbox)
+                LOAD_ATTR                7 (appendPlainText + NULL|self)
+                LOAD_CONST               6 ('⬇ Bắt đầu tải ')
+                LOAD_GLOBAL             39 (len + NULL)
+                LOAD_FAST                4 (items)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST               7 (' video…')
+                BUILD_STRING             3
+                CALL                     1
+                POP_TOP
+
+ 460            LOAD_GLOBAL             41 (_BatchWorker + NULL)
+                LOAD_FAST                4 (items)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR               42 (dir_edit)
+                LOAD_ATTR               45 (text + NULL|self)
+                CALL                     0
+                LOAD_ATTR               47 (strip + NULL|self)
+                CALL                     0
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        19 (to L9)
+                POP_TOP
+                LOAD_GLOBAL             49 (str + NULL)
+                LOAD_GLOBAL             51 (default_download_dir + NULL)
+                CALL                     0
+                CALL                     1
+
+ 461    L9:     LOAD_DEREF               0 (self)
+                LOAD_ATTR               52 (cookie_edit)
+                LOAD_ATTR               45 (text + NULL|self)
+                CALL                     0
+                LOAD_ATTR               47 (strip + NULL|self)
+                CALL                     0
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L10)
+                POP_TOP
+                LOAD_CONST               0 (None)
+
+ 460   L10:     CALL                     3
+                LOAD_DEREF               0 (self)
+                STORE_ATTR               0 (batch)
+
+ 462            LOAD_DEREF               0 (self)
+                LOAD_ATTR                0 (batch)
+                LOAD_ATTR               18 (item)
+                LOAD_ATTR               55 (connect + NULL|self)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR               56 (_on_item)
+                CALL                     1
+                POP_TOP
+
+ 463            LOAD_DEREF               0 (self)
+                LOAD_ATTR                0 (batch)
+                LOAD_ATTR               58 (overall)
+                LOAD_ATTR               55 (connect + NULL|self)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR               60 (_on_overall)
+                CALL                     1
+                POP_TOP
+
+ 464            LOAD_DEREF               0 (self)
+                LOAD_ATTR                0 (batch)
+                LOAD_ATTR               62 (log)
+                LOAD_ATTR               55 (connect + NULL|self)
+                LOAD_FAST                0 (self)
+                BUILD_TUPLE              1
+                LOAD_CONST               8 (<code object <lambda> at 0x0000016DC8EADF00, file "bilisub\gui\channel_dialog.py", line 464>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                CALL                     1
+                POP_TOP
+
+ 465            LOAD_DEREF               0 (self)
+                LOAD_ATTR                0 (batch)
+                LOAD_ATTR               64 (finished_all)
+                LOAD_ATTR               55 (connect + NULL|self)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR               66 (_on_batch_done)
+                CALL                     1
+                POP_TOP
+
+ 466            LOAD_DEREF               0 (self)
+                LOAD_ATTR                0 (batch)
+                LOAD_ATTR               69 (start + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 467            LOAD_GLOBAL             71 (_keep_alive + NULL)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR                0 (batch)
+                CALL                     1
+                POP_TOP
+                RETURN_CONST             0 (None)
+
+  --   L11:     SWAP                     2
+                POP_TOP
+
+ 454            SWAP                     2
+                STORE_FAST               3 (r)
+                RERAISE                  0
+ExceptionTable:
+  L5 to L8 -> L11 [2]
+
+Disassembly of <code object <lambda> at 0x0000016DC8EADF00, file "bilisub\gui\channel_dialog.py", line 464>:
+  --           COPY_FREE_VARS           1
+
+ 464           RESUME                   0
+               LOAD_DEREF               1 (self)
+               LOAD_ATTR                0 (logbox)
+               LOAD_ATTR                3 (appendPlainText + NULL|self)
+               LOAD_FAST                0 (m)
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object _on_item at 0x0000016DC8D26430, file "bilisub\gui\channel_dialog.py", line 469>:
+469           RESUME                   0
+
+470           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (list)
+              LOAD_ATTR                3 (item + NULL|self)
+              LOAD_FAST                1 (row)
+              CALL                     1
+              STORE_FAST               4 (it)
+
+471           LOAD_FAST                4 (it)
+              POP_JUMP_IF_NOT_NONE     1 (to L1)
+
+472           RETURN_CONST             0 (None)
+
+473   L1:     LOAD_FAST                4 (it)
+              LOAD_ATTR                5 (text + NULL|self)
+              CALL                     0
+              STORE_FAST               5 (base)
+
+474           LOAD_CONST               1 (('✅ ', '⏬ ', '❌ '))
+              GET_ITER
+      L2:     FOR_ITER                41 (to L4)
+              STORE_FAST               6 (p)
+
+475           LOAD_FAST                5 (base)
+              LOAD_ATTR                7 (startswith + NULL|self)
+              LOAD_FAST                6 (p)
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+              JUMP_BACKWARD           27 (to L2)
+
+476   L3:     LOAD_FAST                5 (base)
+              LOAD_GLOBAL              9 (len + NULL)
+              LOAD_FAST                6 (p)
+              CALL                     1
+              LOAD_CONST               0 (None)
+              BINARY_SLICE
+              STORE_FAST               5 (base)
+
+477           POP_TOP
+              JUMP_FORWARD             2 (to L5)
+
+474   L4:     END_FOR
+              POP_TOP
+
+478   L5:     LOAD_FAST                2 (ev)
+              LOAD_CONST               2 ('start')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       21 (to L6)
+
+479           LOAD_FAST                4 (it)
+              LOAD_ATTR               11 (setText + NULL|self)
+              LOAD_CONST               3 ('⏬ ')
+              LOAD_FAST                5 (base)
+              BINARY_OP                0 (+)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+480   L6:     LOAD_FAST                2 (ev)
+              LOAD_CONST               4 ('done')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       21 (to L7)
+
+481           LOAD_FAST                4 (it)
+              LOAD_ATTR               11 (setText + NULL|self)
+              LOAD_CONST               5 ('✅ ')
+              LOAD_FAST                5 (base)
+              BINARY_OP                0 (+)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+482   L7:     LOAD_FAST                2 (ev)
+              LOAD_CONST               6 ('error')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       63 (to L8)
+
+483           LOAD_FAST                4 (it)
+              LOAD_ATTR               11 (setText + NULL|self)
+              LOAD_CONST               7 ('❌ ')
+              LOAD_FAST                5 (base)
+              BINARY_OP                0 (+)
+              CALL                     1
+              POP_TOP
+
+484           LOAD_FAST                0 (self)
+              LOAD_ATTR               12 (logbox)
+              LOAD_ATTR               15 (appendPlainText + NULL|self)
+              LOAD_CONST               8 ('❌ Lỗi: ')
+              LOAD_GLOBAL             17 (str + NULL)
+              LOAD_FAST                3 (data)
+              CALL                     1
+              LOAD_CONST               0 (None)
+              LOAD_CONST               9 (120)
+              BINARY_SLICE
+              FORMAT_SIMPLE
+              BUILD_STRING             2
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+482   L8:     RETURN_CONST             0 (None)
+
+Disassembly of <code object _on_overall at 0x0000016DC8E06AB0, file "bilisub\gui\channel_dialog.py", line 486>:
+486           RESUME                   0
+
+487           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (bar)
+              LOAD_ATTR                3 (setValue + NULL|self)
+              LOAD_GLOBAL              5 (int + NULL)
+              LOAD_FAST                1 (done)
+              LOAD_CONST               1 (100)
+              BINARY_OP                5 (*)
+              LOAD_GLOBAL              7 (max + NULL)
+              LOAD_CONST               2 (1)
+              LOAD_FAST                2 (total)
+              CALL                     2
+              BINARY_OP               11 (/)
+              CALL                     1
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _on_batch_done at 0x0000016DC8EF4780, file "bilisub\gui\channel_dialog.py", line 489>:
+489           RESUME                   0
+
+490           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (scan_btn)
+              LOAD_ATTR                3 (setEnabled + NULL|self)
+              LOAD_CONST               1 (True)
+              CALL                     1
+              POP_TOP
+
+491           LOAD_FAST                0 (self)
+              LOAD_ATTR                5 (_set_dl_enabled + NULL|self)
+              LOAD_CONST               1 (True)
+              CALL                     1
+              POP_TOP
+
+492           LOAD_FAST                0 (self)
+              LOAD_ATTR                6 (dl_full)
+              LOAD_ATTR                3 (setEnabled + NULL|self)
+              LOAD_CONST               1 (True)
+              CALL                     1
+              POP_TOP
+
+493           LOAD_FAST                0 (self)
+              LOAD_ATTR                8 (bar)
+              LOAD_ATTR               11 (setValue + NULL|self)
+              LOAD_CONST               2 (100)
+              CALL                     1
+              POP_TOP
+
+494           LOAD_FAST                0 (self)
+              LOAD_ATTR               12 (logbox)
+              LOAD_ATTR               15 (appendPlainText + NULL|self)
+              LOAD_CONST               3 ('✅ Xong: tải được ')
+              LOAD_FAST                1 (ok)
+              FORMAT_SIMPLE
+              LOAD_CONST               4 ('/')
+              LOAD_FAST                2 (total)
+              FORMAT_SIMPLE
+              LOAD_CONST               5 (' video vào ')
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               16 (dir_edit)
+              LOAD_ATTR               19 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR               21 (strip + NULL|self)
+              CALL                     0
+              FORMAT_SIMPLE
+              BUILD_STRING             6
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _cleanup at 0x0000016DC8F586E0, file "bilisub\gui\channel_dialog.py", line 496>:
+ 496            RESUME                   0
+
+ 500            LOAD_GLOBAL              1 (getattr + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_CONST               1 ('scan_worker')
+                LOAD_CONST               2 (None)
+                CALL                     3
+                LOAD_GLOBAL              1 (getattr + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_CONST               3 ('batch')
+                LOAD_CONST               2 (None)
+                CALL                     3
+
+ 501            LOAD_GLOBAL              1 (getattr + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_CONST               4 ('thumb_worker')
+                LOAD_CONST               2 (None)
+                CALL                     3
+
+ 500            BUILD_TUPLE              3
+                GET_ITER
+        L1:     FOR_ITER                83 (to L8)
+                STORE_FAST               1 (w)
+
+ 502            LOAD_FAST                1 (w)
+                POP_JUMP_IF_NOT_NONE     2 (to L2)
+                JUMP_BACKWARD            8 (to L1)
+        L2:     LOAD_FAST                1 (w)
+                LOAD_ATTR                3 (isRunning + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L3)
+                JUMP_BACKWARD           31 (to L1)
+
+ 503    L3:     LOAD_GLOBAL              5 (hasattr + NULL)
+                LOAD_FAST                1 (w)
+                LOAD_CONST               5 ('cancel')
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       17 (to L5)
+
+ 504            NOP
+
+ 505    L4:     LOAD_FAST                1 (w)
+                LOAD_ATTR                7 (cancel + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 508    L5:     NOP
+
+ 509    L6:     LOAD_FAST                1 (w)
+                LOAD_ATTR               11 (blockSignals + NULL|self)
+                LOAD_CONST               6 (True)
+                CALL                     1
+                POP_TOP
+        L7:     JUMP_BACKWARD           85 (to L1)
+
+ 500    L8:     END_FOR
+                POP_TOP
+                RETURN_CONST             2 (None)
+
+  --    L9:     PUSH_EXC_INFO
+
+ 506            LOAD_GLOBAL              8 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L11)
+                POP_TOP
+
+ 507   L10:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 35 (to L5)
+
+ 506   L11:     RERAISE                  0
+
+  --   L12:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L13:     PUSH_EXC_INFO
+
+ 510            LOAD_GLOBAL              8 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L15)
+                POP_TOP
+
+ 511   L14:     POP_EXCEPT
+                JUMP_BACKWARD          117 (to L1)
+
+ 510   L15:     RERAISE                  0
+
+  --   L16:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L4 to L5 -> L9 [1]
+  L6 to L7 -> L13 [1]
+  L9 to L10 -> L12 [2] lasti
+  L11 to L12 -> L12 [2] lasti
+  L13 to L14 -> L16 [2] lasti
+  L15 to L16 -> L16 [2] lasti
+
+Disassembly of <code object reject at 0x0000016DC8EAE120, file "bilisub\gui\channel_dialog.py", line 513>:
+  --           COPY_FREE_VARS           1
+
+ 513           RESUME                   0
+
+ 514           LOAD_FAST                0 (self)
+               LOAD_ATTR                1 (_cleanup + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 515           LOAD_GLOBAL              2 (super)
+               LOAD_DEREF               1 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          9 (reject + NULL|self)
+               CALL                     0
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object closeEvent at 0x0000016DC8EAE780, file "bilisub\gui\channel_dialog.py", line 517>:
+  --           COPY_FREE_VARS           1
+
+ 517           RESUME                   0
+
+ 518           LOAD_FAST                0 (self)
+               LOAD_ATTR                1 (_cleanup + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 519           LOAD_GLOBAL              2 (super)
+               LOAD_DEREF               2 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          9 (closeEvent + NULL|self)
+               LOAD_FAST                1 (e)
+               CALL                     1
+               POP_TOP
+               RETURN_CONST             0 (None)

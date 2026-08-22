@@ -1,0 +1,15 @@
+=== FILE: bilisub\__init__.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('PeiPeiReup — công cụ re-sub / lồng tiếng video (nguồn Trung → Việt/đa ngôn ngữ).\n\nBản nâng cấp của MhVietsubTool: thêm ASR on-device (Whisper), dịch chất lượng cao\n(context + glossary + self-review), lồng tiếng khớp timing, và lớp biến đổi\nchống trùng nội dung. GUI PyQt6.\n')
+              STORE_NAME               0 (__doc__)
+
+  8           LOAD_CONST               1 ('0.1.0')
+              STORE_NAME               1 (__version__)
+
+  9           LOAD_CONST               2 ('PeiPeiReup')
+              STORE_NAME               2 (__app_name__)
+              RETURN_CONST             3 (None)

@@ -1,0 +1,368 @@
+=== FILE: bilisub\genres.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           SETUP_ANNOTATIONS
+              LOAD_CONST               0 ('Thể loại video → gợi ý NGỮ CẢNH + THUẬT NGỮ cho khâu dịch.\n\nCho AI biết video thuộc thể loại gì để dịch đúng thuật ngữ + văn phong (VD tu tiên\ndùng Hán-Việt chuẩn: 法宝→pháp bảo, 金丹→kim đan). Đẩy hint vào prompt dịch.\n\n★2026-08-07 ĐÃ GỠ "MODULE V5" (genre matrix bồi vào 6 hint) — Boss chốt GIỮ PROMPT CŨ.\nLý do gỡ (số đo ở D:\\PeiPeiReup\\temp\\module_v5\\BAOCAO.md + ab_result.json): bản dịch KHÔNG\nhay hơn (chỉ dài thêm 4,2%, p=0,375 = nhiễu), lại THUA ở thuật ngữ (42/42→40/42) và giá trị số\n(6/6→5/6), trong khi đắt thêm +26,5% token/lô. Sáu hint dưới đây nay là NGUYÊN VĂN trước\n06/08 (đối chiếu byte-by-byte với bản build 06/08 18:51 — xem D:\\PeiPeiReup\\temp\\user_prompt\\\ngo_verify.txt). Phần CODE tất định của đợt đó (pinyin_fix, honorific_fix) VẪN GIỮ.\n\n🔴 LUẬT VÀNG KHI SỬA HINT: `prompts.honorific_lock()` CHỈ đọc CÂU ĐẦU của hint\n(`hint.split(".")[0].split(":")[0]`) để chọn bảng gia đình CỔ TRANG hay HIỆN ĐẠI. Mọi chữ mới\nPHẢI nằm SAU dấu chấm đầu tiên, và câu đầu tuyệt đối không được lọt từ khoá của nhóm kia —\nviết "CỔ TRANG" vào câu đầu hint đô thị là tái phát lỗi "Nhi tử của ca ca ta tới rồi" (vá 25/07).\n')
+              STORE_NAME               0 (__doc__)
+
+ 18           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 20           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (os)
+              STORE_NAME               3 (os)
+
+ 22           BUILD_MAP                0
+
+ 25           LOAD_CONST               4 ('')
+              LOAD_CONST               5 ('— Hãy chọn thể loại (bắt buộc) —')
+              LOAD_CONST               4 ('')
+              LOAD_CONST               6 (('name', 'hint'))
+              BUILD_CONST_KEY_MAP      2
+
+ 22           MAP_ADD                  1
+
+ 26           LOAD_CONST               7 ('tu_tien')
+
+ 27           LOAD_CONST               8 ('🗡️ Tu tiên / Tiên hiệp')
+
+ 28           LOAD_CONST               9 ('Video thể loại TU TIÊN / TIÊN HIỆP. Giữ văn phong tiên hiệp, dùng Hán-Việt CHUẨN cho thuật ngữ: 修炼/修仙→tu luyện, 法宝→pháp bảo, 门派→môn phái, 灵气→linh khí, 金丹→kim đan, 元婴→nguyên anh, 修士→tu sĩ, 长老→trưởng lão, 掌门→chưởng môn, 灵石→linh thạch, 渡劫→độ kiếp, 境界→cảnh giới, 灵根→linh căn, 丹药→đan dược, 师尊/师父→sư tôn/sư phụ, 弟子→đệ tử, 前辈→tiền bối, 道友→đạo hữu, 灵剑→linh kiếm, 秘境→bí cảnh, 天劫→thiên kiếp. Tên người / môn phái để dạng Hán-Việt (VD 焚香门→Phần Hương Môn). VĂN PHONG: cổ phong, trang trọng, câu chắc và hào khí; xưng hô cổ trang ta/ngươi/hắn/nàng/lão; TRÁNH từ ngữ hiện đại (ok/cà phê/kiểu).')
+
+ 41           LOAD_CONST              10 ("Video thể loại TU TIÊN / TIÊN HIỆP. Giữ văn phong tiên hiệp, dùng Hán-Việt CHUẨN cho thuật ngữ: 修炼/修仙→tu luyện, 法宝→pháp bảo, 门派→môn phái, 灵气→linh khí, 金丹→kim đan, 元婴→nguyên anh, 修士→tu sĩ, 长老→trưởng lão, 掌门→chưởng môn, 灵石→linh thạch, 渡劫→độ kiếp, 境界→cảnh giới, 灵根→linh căn, 丹药→đan dược, 师尊/师父→sư tôn/sư phụ, 弟子→đệ tử, 前辈→tiền bối, 道友→đạo hữu, 灵剑→linh kiếm, 秘境→bí cảnh, 天劫→thiên kiếp. THANG CẢNH GIỚI (dịch SÁT bậc, sai bậc là hỏng mạch tu luyện): 炼气→luyện khí, 筑基→trúc cơ, 结丹→kết đan, 金丹→kim đan, 元婴→nguyên anh, 化神→hoá thần, 炼虚→luyện hư, 合体→hợp thể, 大乘→đại thừa, 渡劫→độ kiếp, 飞升→phi thăng. Thuật ngữ thêm: 修为→tu vi, 元神→nguyên thần, 神识→thần thức, 灵力/法力→linh lực/pháp lực, 突破→đột phá, 瓶颈→bình cảnh (nút thắt), 闭关→bế quan, 出关→xuất quan, 顿悟→đốn ngộ, 心魔→tâm ma, 夺舍→đoạt xá, 储物戒/储物袋→nhẫn trữ vật/túi trữ vật, 阵法→trận pháp, 符箓→phù lục, 傀儡→khôi lỗi, 灵兽→linh thú, 妖兽→yêu thú, 血脉→huyết mạch, 天赋→thiên phú, 资质→tư chất, 废柴/废物→phế vật, 天骄→thiên kiêu, 老祖→lão tổ, 仙尊→tiên tôn, 魔修→ma tu, 散修→tán tu, 宗门→tông môn, 洞府→động phủ, 丹炉→lò đan, 炼丹→luyện đan. ⚠ 炼器 (rèn pháp khí) dịch là 'luyện chế pháp khí' — phân biệt với cảnh giới 炼气 (luyện khí). ⚠ 修为 là TU VI (mức tu luyện đạt được). Tên người / môn phái để dạng Hán-Việt (VD 焚香门→Phần Hương Môn). VĂN PHONG: cổ phong, trang trọng, câu chắc và hào khí; xưng hô cổ trang ta/ngươi/hắn/nàng/lão; TRÁNH từ ngữ hiện đại (ok/cà phê/kiểu).")
+
+ 26           LOAD_CONST              11 (('name', 'hint', 'hint_v2'))
+              BUILD_CONST_KEY_MAP      3
+
+ 22           MAP_ADD                  1
+
+ 68           LOAD_CONST              12 ('tan_the')
+
+ 69           LOAD_CONST              13 ('🧟 Tận thế / Sinh tồn')
+
+ 70           LOAD_CONST              14 ('Video thể loại TẬN THẾ / SINH TỒN. Thuật ngữ: 丧尸/僵尸→thây ma, 末世→tận thế, 幸存者→người sống sót, 物资→vật tư, 避难所→nơi trú ẩn, 变异→biến dị, 基地→căn cứ, 感染者→người nhiễm. Văn phong căng thẳng, gấp gáp, sinh tồn.')
+
+ 75           LOAD_CONST              15 ("Video thể loại TẬN THẾ / SINH TỒN. Thuật ngữ: 丧尸/僵尸→thây ma, 尸潮→sóng thây ma, 末世→tận thế, 末日→ngày tận thế, 幸存者→người sống sót, 物资→vật tư, 囤货/囤积→tích trữ, 罐头→đồ hộp, 压缩饼干→lương khô, 避难所→nơi trú ẩn, 安全区→khu an toàn, 隔离→cách ly, 基地→căn cứ, 变异→biến dị, 变异体→thể biến dị, 感染者→người nhiễm, 病毒→virus, 疫苗→vắc-xin, 血清→huyết thanh, 解药→thuốc giải, 抗体→kháng thể, 辐射→phóng xạ, 异能→dị năng, 异能者→người có dị năng, 进化→tiến hoá, 晶核→tinh hạch, 觉醒→thức tỉnh, 天灾→thiên tai, 极寒→giá rét cực độ, 干旱→hạn hán, 洪水→lũ lụt, 撤离→di tản, 救援→cứu viện, 军方→phía quân đội, 断水断电→mất nước mất điện, 抢劫→cướp bóc. ⚠ 空间 trong truyện tận thế là KHÔNG GIAN RIÊNG chứa đồ của nhân vật chính — luôn dịch là 'không gian' (空间里的物资→'vật tư trong không gian'). ⚠ Giữ NGUYÊN mọi con số vật tư/ngày tháng (3 thùng mì, 200 cân gạo, ngày thứ 15) — sai số là hỏng mạch sinh tồn. XƯNG HÔ hiện đại: tôi/anh/cô/chú; nhóm sống sót gọi nhau bằng tên; danh xưng anh/chị/em dịch theo ĐÚNG chữ trong câu nguồn (哥→anh, 姐→chị, 弟/妹→em), không tự suy theo cảm nhận về tuổi. VĂN PHONG: căng thẳng, gấp gáp, câu ngắn dứt khoát; cảnh nguy hiểm dồn nhịp; TRÁNH từ cổ trang.")
+
+ 68           LOAD_CONST              11 (('name', 'hint', 'hint_v2'))
+              BUILD_CONST_KEY_MAP      3
+
+ 22           MAP_ADD                  1
+
+ 97           LOAD_CONST              16 ('xuyen_khong')
+
+ 98           LOAD_CONST              17 ('🌀 Xuyên không / Trọng sinh')
+
+ 99           LOAD_CONST              18 ('Video thể loại XUYÊN KHÔNG / TRỌNG SINH. Thuật ngữ: 穿越→xuyên không, 重生→trọng sinh, 系统→hệ thống, 金手指→kim thủ chỉ, 前世/今生→kiếp trước/kiếp này, 剧情→cốt truyện, 宿主→ký chủ. Giữ mạch hồi tưởng kiếp trước ↔ hiện tại rõ ràng. VĂN PHONG: linh hoạt — cảnh cổ trang dùng lối cổ, cảnh hiện đại dùng lối đời thường, đúng theo bối cảnh câu.')
+
+ 97           LOAD_CONST               6 (('name', 'hint'))
+              BUILD_CONST_KEY_MAP      2
+
+ 22           MAP_ADD                  1
+
+105           LOAD_CONST              19 ('kiem_hiep')
+
+106           LOAD_CONST              20 ('⚔️ Kiếm hiệp / Võ hiệp')
+
+107           LOAD_CONST              21 ('Video thể loại KIẾM HIỆP / VÕ HIỆP. Thuật ngữ: 武功→võ công, 内力→nội lực, 江湖→giang hồ, 侠客→hiệp khách, 剑法→kiếm pháp, 高手→cao thủ, 恩怨→ân oán, 门派→môn phái. Văn phong hiệp khách hào sảng.')
+
+111           LOAD_CONST              22 ("Video thể loại KIẾM HIỆP / VÕ HIỆP. Thuật ngữ: 武功→võ công, 内力/内功→nội lực/nội công, 江湖→giang hồ, 武林→võ lâm, 侠客→hiệp khách, 大侠→đại hiệp, 少侠→thiếu hiệp, 女侠→nữ hiệp, 剑法→kiếm pháp, 刀法→đao pháp, 掌法→chưởng pháp, 轻功→khinh công, 暗器→ám khí, 点穴→điểm huyệt, 穴道→huyệt đạo, 内伤→nội thương, 走火入魔→tẩu hoả nhập ma, 秘籍→bí kíp, 高手→cao thủ, 宗师→tông sư, 盟主→minh chủ, 帮主→bang chủ, 掌门→chưởng môn, 门派→môn phái, 帮派→bang phái, 镖局→tiêu cục, 镖师→tiêu sư, 客栈→khách điếm, 小二→tiểu nhị, 酒楼→tửu lâu, 比武→tỷ võ, 切磋→tỷ thí, 报仇→báo thù, 灭门→diệt môn, 恩怨→ân oán, 朝廷→triều đình, 官府→quan phủ, 捕头→bổ đầu, 锦衣卫→Cẩm Y Vệ. Tên người / môn phái / chiêu thức để dạng Hán-Việt (VD 降龙十八掌→Hàng Long Thập Bát Chưởng). ⚠ 江湖 luôn là 'giang hồ' nghĩa võ lâm, không dịch theo nghĩa xã hội đen thời nay. ⚠ 大人 là 'đại nhân' (kính xưng với quan), không phải 'người lớn'. XƯNG HÔ: 在下→tại hạ, 阁下→các hạ, 兄台→huynh đài, 姑娘→cô nương, 前辈→tiền bối, 晚辈→vãn bối, 老夫→lão phu; đại từ cổ trang ta/ngươi/hắn/nàng. VĂN PHONG: hiệp khách hào sảng, khí khái, câu gọn chắc; lời thề/lời thách đấu trang trọng; TRÁNH từ ngữ hiện đại.")
+
+105           LOAD_CONST              11 (('name', 'hint', 'hint_v2'))
+              BUILD_CONST_KEY_MAP      3
+
+ 22           MAP_ADD                  1
+
+133           LOAD_CONST              23 ('do_thi')
+
+134           LOAD_CONST              24 ('🏙️ Đô thị / Hiện đại')
+
+135           LOAD_CONST              25 ('Video thể loại ĐÔ THỊ / HIỆN ĐẠI. Bối cảnh đời thường hiện đại, dịch tự nhiên, xưng hô hiện đại (tôi / anh / cô / em). Tránh dùng từ cổ trang.')
+
+139           LOAD_CONST              26 ("Video thể loại ĐÔ THỊ / HIỆN ĐẠI. Bối cảnh đời thường hiện đại, dịch tự nhiên. Thuật ngữ công sở / làm ăn: 总裁→tổng tài, 董事长→chủ tịch, 总经理→tổng giám đốc, 经理→giám đốc, 秘书→thư ký, 助理→trợ lý, 集团→tập đoàn, 合同→hợp đồng, 项目→dự án, 合作→hợp tác, 谈生意→bàn chuyện làm ăn, 破产→phá sản, 收购→thâu tóm, 股份→cổ phần, 股东→cổ đông, 上市→lên sàn, 加班→tăng ca, 辞职→nghỉ việc, 开除/解雇→đuổi việc/sa thải, 工资→lương, 奖金→thưởng, 面试→phỏng vấn. Đời sống: 房东→chủ nhà, 房租→tiền thuê nhà, 中介→môi giới, 物业→ban quản lý toà nhà, 保安→bảo vệ, 保姆→giúp việc, 外卖→đồ ăn giao tới, 快递→chuyển phát nhanh, 网红→người nổi tiếng trên mạng, 直播→phát trực tiếp, 拆迁→giải toả đền bù, 彩礼→tiền thách cưới, 相亲→xem mắt, 离婚协议→thoả thuận ly hôn, 抚养权→quyền nuôi con, 富二代→con nhà giàu, 暴发户→trọc phú. ⚠ Họ + 总 là GỌI TẮT CHỨC DANH, dịch cố định 'họ + tổng' cho MỌI câu: 王总→'Vương tổng', 李总→'Lý tổng'. ⚠ 老板娘 dịch NGHĨA là 'bà chủ' (vợ ông chủ / chủ quán nữ); 阿姨 → cô/dì (gọi giúp việc, phụ nữ lớn tuổi), 大爷 → ông/bác. XƯNG HÔ hiện đại: tôi/anh/em/cô/chú; nhân viên gọi sếp bằng chức danh, đồng nghiệp gọi tên. VĂN PHONG: đời thường tự nhiên như người Việt nói chuyện, kịch tính vừa phải, không văn vẻ hoá lời thoại thường ngày. Tránh dùng từ cổ trang.")
+
+133           LOAD_CONST              11 (('name', 'hint', 'hint_v2'))
+              BUILD_CONST_KEY_MAP      3
+
+ 22           MAP_ADD                  1
+
+162           LOAD_CONST              27 ('ngon_tinh')
+
+163           LOAD_CONST              28 ('💕 Ngôn tình / Lãng mạn')
+
+164           LOAD_CONST              29 ("Video thể loại NGÔN TÌNH / LÃNG MẠN. Thuật ngữ: 总裁→tổng tài, 霸道→bá đạo, 未婚妻→vị hôn thê, 青梅竹马→thanh mai trúc mã. VĂN PHONG: tình cảm, ngọt ngào, mượt mà, giàu cảm xúc; xưng hô 'anh/em' cho cặp đôi, giữ sự tinh tế trong lời tỏ tình/giận dỗi.")
+
+169           LOAD_CONST              30 ("Video thể loại NGÔN TÌNH / LÃNG MẠN. Thuật ngữ: 总裁→tổng tài, 霸道→bá đạo, 未婚妻/未婚夫→vị hôn thê/vị hôn phu, 青梅竹马→thanh mai trúc mã, 前男友/前女友→bạn trai cũ/bạn gái cũ, 白月光→bạch nguyệt quang (mối tình đầu không quên), 备胎→người dự bị, 渣男→gã tồi, 小三→tiểu tam, 出轨→ngoại tình, 劈腿→bắt cá hai tay, 吃醋→ghen, 撒娇→nũng nịu, 表白/告白→tỏ tình, 求婚→cầu hôn, 订婚→đính hôn, 退婚→huỷ hôn, 逼婚→ép cưới, 闪婚→cưới chớp nhoáng, 领证→đăng ký kết hôn, 隐婚→giấu chuyện đã cưới, 契约婚姻→hôn nhân hợp đồng, 联姻→liên hôn (cưới vì lợi ích hai nhà), 豪门→hào môn, 灰姑娘→lọ lem, 分手→chia tay, 复合→quay lại, 暧昧→mập mờ, 暗恋→yêu thầm, 告吹→đổ vỡ, 老公→ông xã (chồng), 老婆→bà xã (vợ), 宝贝→cưng; 亲爱的 dịch theo NGƯỜI NÓI: nữ nói với người yêu → 'anh yêu', nam nói → 'em yêu'. ⚠ 前妻 là VỢ CŨ (đã ly hôn), 前女友 là BẠN GÁI CŨ — hai quan hệ khác nhau, không dịch lẫn. ⚠ 大叔 khi cô gái gọi người đàn ông lớn tuổi hơn là 'chú' (trêu/thân mật), không phải chú ruột. XƯNG HÔ: cặp đôi 'anh–em' CỐ ĐỊNH ở mọi dòng, kể cả khi cãi nhau hay giận dỗi; bạn thân xưng 'cậu–tớ' hoặc gọi tên; với bố mẹ 'con–bố/mẹ'; với bố mẹ của người yêu 'cháu–bác/cô'. VĂN PHONG: tình cảm, ngọt ngào, mượt mà, giàu cảm xúc; lời tỏ tình/giận dỗi giữ sự tinh tế; thoại đời thường tự nhiên, không sáo rỗng. TRÁNH từ ngữ cổ trang.")
+
+162           LOAD_CONST              11 (('name', 'hint', 'hint_v2'))
+              BUILD_CONST_KEY_MAP      3
+
+ 22           MAP_ADD                  1
+
+215           LOAD_CONST              31 ('he_thong')
+
+220           LOAD_CONST              32 ('⚙️ Hệ thống / Kim thủ chỉ (cổ)')
+
+221           LOAD_CONST              33 ("Video thể loại HỆ THỐNG / KIM THỦ CHỈ — nhân vật XUYÊN KHÔNG / TRỌNG SINH mang theo hệ thống. Thuật ngữ: 系统→hệ thống, 宿主→ký chủ, 绑定→ràng buộc (trói buộc), 金手指→kim thủ chỉ, 任务→nhiệm vụ, 主线任务→nhiệm vụ chính tuyến, 支线任务→nhiệm vụ chi tuyến, 任务完成/任务失败→nhiệm vụ hoàn thành/nhiệm vụ thất bại, 奖励→phần thưởng, 积分→điểm tích luỹ, 商城→cửa hàng, 兑换→đổi (quy đổi), 背包→túi đồ, 签到→điểm danh, 抽奖→quay thưởng, 新手大礼包→gói quà tân thủ, 属性面板→bảng thuộc tính, 等级/升级→cấp độ/thăng cấp, 经验值→điểm kinh nghiệm, 检测到→phát hiện, 触发→kích hoạt, 解锁→mở khoá, 冷却→thời gian hồi, 倒计时→đếm ngược, 强制→cưỡng chế, 惩罚→trừng phạt, 抹杀→xoá sổ, 叮→'Đinh!' (tiếng báo của hệ thống). ⚠ 抹杀 là TIÊU HUỶ ký chủ ('任务失败，宿主将被抹杀' → 'nhiệm vụ thất bại, ký chủ sẽ bị xoá sổ') — TUYỆT ĐỐI không dịch thành 'mạt sát' (tiếng Việt 'mạt sát' nghĩa là chửi mắng, sai hẳn nghĩa). Giữ NGUYÊN mọi con số trong thông báo (+500 điểm, cấp 3, 10 giây). KHÔNG chèn từ game tiếng Anh (level up, quest, shop, inventory, EXP) — dùng đúng chữ Việt ở bảng trên. XƯNG HÔ: lời hệ thống để VÔ NHÂN XƯNG, không tự thêm chủ ngữ ('Phát hiện vật phẩm', 'Nhiệm vụ hoàn thành'); chỉ khi câu nguồn có 我/本系统 mới dịch 'hệ thống'/'bổn hệ thống', không dùng tôi/tớ/mình. Luôn gọi người mang hệ thống là 'ký chủ', không đổi sang 'cậu/bạn'. VĂN PHONG: lời HỆ THỐNG máy móc, cụt, đều đều như thông báo; lời NHÂN VẬT theo bối cảnh câu — cảnh cổ trang/tu tiên dùng lối cổ, cảnh thời nay dùng lối đời thường. Nếu TOÀN BỘ phim là bối cảnh thời nay (công ty, điện thoại, xe hơi, bệnh viện) thì xưng hô phải theo lối thời nay: 他/她→anh ấy/cô ấy, 哥哥/姐姐→anh/chị, 儿子/女儿→con trai/con gái — KHÔNG dùng hắn/nàng/ca ca/nhi tử.")
+
+215           LOAD_CONST               6 (('name', 'hint'))
+              BUILD_CONST_KEY_MAP      2
+
+ 22           MAP_ADD                  1
+
+250           LOAD_CONST              34 ('cung_dau')
+
+254           LOAD_CONST              35 ('👑 Cung đấu / Trạch đấu (phủ đệ)')
+
+255           LOAD_CONST              36 ("Video thể loại CUNG ĐẤU / CỔ TRANG CUNG ĐÌNH. Thuật ngữ: 皇上/陛下→hoàng thượng/bệ hạ, 皇后→hoàng hậu, 太后→thái hậu, 父皇/母后→phụ hoàng/mẫu hậu, 太子→thái tử, 公主→công chúa, 贵妃→quý phi, 嫔妃→phi tần, 娘娘→nương nương, 小主→tiểu chủ, 主子→chủ tử, 后宫→hậu cung, 冷宫→lãnh cung, 侍寝→thị tẩm, 承宠/失宠→được sủng/thất sủng, 选秀→tuyển tú, 太监→thái giám, 公公→công công, 宫女→cung nữ, 嬷嬷→ma ma, 侍卫→thị vệ, 王爷→vương gia, 圣旨→thánh chỉ, 请安→thỉnh an, 跪安→quỳ an, 禁足→cấm túc, 麝香→xạ hương, 株连→liên luỵ (vạ lây cả họ), 诛九族→tru di cửu tộc. THANG BẬC PHI TẦN (dịch SÁT bậc, sai bậc là hỏng cốt truyện tranh sủng): 答应→đáp ứng, 常在→thường tại, 贵人→quý nhân, 婕妤→tiệp dư, 昭仪→chiêu nghi, 嫔→tần, 妃→phi, 贵妃→quý phi, 皇贵妃→hoàng quý phi. PHỦ ĐỆ (宅斗): 主母→chủ mẫu, 姨娘→di nương (vợ lẽ), 侧室→thiếp thất, 嫡出/庶出→con vợ cả/con vợ lẽ, 嫡女/庶女→đích nữ/thứ nữ. ⚠ 姑姑 trong cung là CUNG NỮ BẬC TRÊN có vai vế → 'cô cô', KHÔNG phải cô/dì ruột trong họ. XƯNG HÔ: 朕→trẫm, 哀家→ai gia, 本宫→bản cung, 臣妾→thần thiếp, 微臣→vi thần, 奴婢/奴才→nô tỳ/nô tài; đại từ cổ trang ta/ngươi/hắn/nàng. Tên người / cung điện để dạng Hán-Việt (VD 承乾宫→Thừa Càn Cung). VĂN PHONG: cổ phong cung đình, trang trọng, nhiều kính ngữ; lời thoại ngoài mềm mỏng khách sáo mà trong ẩn ý đâm chọc. TRÁNH TUYỆT ĐỐI từ ngữ thời nay (ok/sếp/kiểu/bạn gái).")
+
+250           LOAD_CONST               6 (('name', 'hint'))
+              BUILD_CONST_KEY_MAP      2
+
+ 22           MAP_ADD                  1
+
+279           LOAD_CONST              37 ('linh_di')
+
+282           LOAD_CONST              38 ('👻 Linh dị / Kinh dị (cổ trang)')
+
+283           LOAD_CONST              39 ("Video thể loại LINH DỊ / KINH DỊ CỔ TRANG — dân gian (đạo sĩ trừ tà, âm dương). Thuật ngữ: 鬼魂→hồn ma, 厉鬼→lệ quỷ, 冤魂→oan hồn, 僵尸→cương thi (thể loại này KHÔNG dịch 'thây ma'), 道士→đạo sĩ, 道长→đạo trưởng, 天师→thiên sư, 阴阳先生→thầy âm dương, 阴阳眼→mắt âm dương, 捉鬼/驱邪→bắt ma/trừ tà, 符咒→phù chú (bùa), 法器→pháp khí, 桃木剑→kiếm gỗ đào, 黑狗血→máu chó mực, 糯米→gạo nếp (thứ khắc cương thi), 纸人→hình nhân giấy, 阴气/阳气→âm khí/dương khí, 附身→nhập xác, 借尸还魂→mượn xác hoàn hồn, 招魂→chiêu hồn, 赶尸→cản thi (lùa xác đi), 尸变→thi biến, 头七→thất đầu (lễ cúng ngày thứ bảy), 冥婚/阴婚→minh hôn/âm hôn (cưới ma), 八字→bát tự, 风水→phong thuỷ, 阴曹地府→âm tào địa phủ, 判官→phán quan, 鬼差→quỷ sai, 孟婆汤→canh Mạnh Bà, 奈何桥→cầu Nại Hà, 黑白无常→Hắc Bạch Vô Thường, 轮回/转世→luân hồi/chuyển thế. Câu chú giữ lối Hán-Việt trang nghiêm (急急如律令→Cấp cấp như luật lệnh). XƯNG HÔ: đạo sĩ tự xưng 贫道→bần đạo, người ngoài gọi 'đạo trưởng' hoặc 'tiên sinh'; đại từ cổ trang ta/ngươi/hắn/nàng. VĂN PHONG: âm u, rùng rợn, câu nén và chậm để dựng không khí sợ. Cảnh thời nay (nhà trọ, bệnh viện) thì lời thoại nói đời thường, nhưng thuật ngữ tâm linh vẫn giữ đúng bảng Hán-Việt trên.")
+
+279           LOAD_CONST               6 (('name', 'hint'))
+              BUILD_CONST_KEY_MAP      2
+
+ 22           MAP_ADD                  1
+
+306           LOAD_CONST              40 ('dien_van')
+
+308           LOAD_CONST              41 ('🌾 Điền văn / Nông thôn (cổ trang)')
+
+309           LOAD_CONST              42 ('Video thể loại ĐIỀN VĂN / NÔNG THÔN CỔ TRANG. Thuật ngữ: 种田→làm ruộng, 庄稼→hoa màu, 开荒/荒地→khai hoang/đất hoang, 收成→thu hoạch, 地契→văn tự đất, 分家→phân gia (chia của), 里正→lý trưởng, 族长→tộc trưởng, 银子→bạc, 铜板→đồng xu, 集市→chợ phiên, 摆摊→bày sạp, 逃荒→chạy nạn đói, 猎户→thợ săn, 佃户→tá điền, 官府→quan phủ, 衙门→nha môn, 秀才→tú tài, 举人→cử nhân, 进士→tiến sĩ, 赶考/科举→đi thi/khoa cử, 嫁妆→của hồi môn, 聘礼→sính lễ, 媒婆→bà mối, 休书→hưu thư (giấy bỏ vợ), 和离→hoà ly, 卖身契→khế bán thân, 童养媳→đồng dưỡng tức (dâu nuôi từ bé). XƯNG HÔ: 爹/娘→cha/nương, 奶奶→nãi nãi, 嫂子→tẩu tử, 婆婆→mẹ chồng, 相公→tướng công (chồng), 娘子→nương tử (vợ); đại từ cổ trang ta/ngươi/hắn/nàng. ĐƠN VỊ ĐO ĐẾM (giữ NGUYÊN chữ, KHÔNG quy ra mét/kg/tiền thời nay): 两→lượng, 文→văn (đồng tiền), 亩→mẫu, 斤→cân, 石→thạch (đong thóc). Tiền bạc giữ NGUYÊN đơn vị cổ (mười lượng bạc, hai trăm đồng), không quy đổi sang tiền thời nay. VĂN PHONG: mộc mạc, ấm áp, nhịp chậm, đậm chuyện bếp núc – ruộng vườn – chợ búa; lời quê mùa nhưng vẫn cổ phong, KHÔNG dùng từ thời nay (siêu thị, tiền mặt, hợp đồng).')
+
+306           LOAD_CONST               6 (('name', 'hint'))
+              BUILD_CONST_KEY_MAP      2
+
+ 22           MAP_ADD                  1
+
+330           LOAD_CONST              43 ('pha_an')
+
+331           LOAD_CONST              44 ('🔍 Phá án / Hình sự (trinh thám)')
+
+332           LOAD_CONST              45 ("Video thể loại PHÁ ÁN / HÌNH SỰ, bối cảnh HIỆN ĐẠI. Thuật ngữ: 案件/案子→vụ án, 命案→án mạng, 现场→hiện trường, 法医→pháp y, 尸检→khám nghiệm tử thi, 证据→chứng cứ, 物证→vật chứng, 口供→lời khai, 笔录→biên bản ghi lời khai, 审讯→thẩm vấn, 嫌疑人→nghi phạm, 凶手→hung thủ, 被害人→người bị hại (nạn nhân), 死者→người chết (tử thi), 证人→nhân chứng, 目击者→người chứng kiến, 动机→động cơ gây án, 死亡时间→thời gian tử vong, 尸斑→vết hoen tử thi, 尸僵→co cứng tử thi, 不在场证明→chứng cứ ngoại phạm, 线索→manh mối, 指纹→dấu vân tay, 监控→camera giám sát, 报案→trình báo, 立案→khởi tố vụ án, 逮捕/抓捕→bắt giữ, 拘留→tạm giữ, 自首→ra đầu thú, 派出所→đồn công an, 公安局→cục công an, 通缉→truy nã, 刑警→cảnh sát hình sự, 队长→đội trưởng, 同志→đồng chí. ⚠ 被害人 và 死者 KHÔNG gộp làm một: câu pháp y nói về xác thì phải là 'người chết' ('死者已经死亡两小时' → 'người chết đã tử vong hai tiếng'), chỉ dùng 'nạn nhân' khi nói về người bị hại nói chung. Chức danh dịch NGHĨA, KHÔNG phiên âm thành tên riêng. Giữ NGUYÊN mọi con số trong lời khai (giờ, ngày, biển số, địa chỉ) — đó là chứng cứ, sai một chữ là hỏng lập luận. VĂN PHONG: lạnh, gọn, chính xác như biên bản; câu ngắn dứt khoát, lời thẩm vấn sắc và ép; xưng hô hiện đại (tôi/anh/chị/cô), cảnh sát gọi nhau 'đồng chí' hoặc theo chức vụ; TRÁNH từ cổ trang và tránh văn vẻ hoá.")
+
+330           LOAD_CONST               6 (('name', 'hint'))
+              BUILD_CONST_KEY_MAP      2
+
+ 22           MAP_ADD                  1
+
+356           LOAD_CONST              46 ('thanh_xuan')
+
+357           LOAD_CONST              47 ('🏫 Thanh xuân / Vườn trường')
+
+358           LOAD_CONST              48 ("Video thể loại THANH XUÂN / VƯỜN TRƯỜNG, học đường HIỆN ĐẠI. Thuật ngữ: 校园→vườn trường, 同桌→bạn cùng bàn, 同学→bạn học, 班主任→giáo viên chủ nhiệm, 班长→lớp trưởng, 教导主任→thầy giám thị (chủ nhiệm giáo vụ), 高考→kỳ thi đại học, 月考→thi tháng, 期中考/期末考→thi giữa kỳ/cuối kỳ, 补课→học thêm, 逃课→trốn học, 处分→kỷ luật, 家长会→họp phụ huynh, 宿舍→ký túc xá, 学霸→học bá, 学渣→học kém (học tra — cặp đối của học bá), 校花→hoa khôi trường, 校草→nam thần của trường, 青梅竹马→thanh mai trúc mã, 社团→câu lạc bộ, 早恋→yêu sớm, 暗恋→thầm thích, 表白→tỏ tình, 情书→thư tình, 校服→đồng phục, 毕业→tốt nghiệp. KHỐI LỚP quy về hệ Việt: 高一/高二/高三→lớp 10/11/12, 初一/初二/初三→lớp 7/8/9, 初中/高中→cấp 2/cấp 3, 年级→khối lớp — đừng để nguyên 'cao tam' hay 'năm ba trung học'. ⚠ 学长/学姐/学弟/学妹 là quan hệ KHOÁ TRÊN – KHOÁ DƯỚI ở trường: 学长→anh khoá trên (NAM), 学姐→chị khoá trên (NỮ), 学弟/学妹→em khoá dưới (NAM/NỮ) — TUYỆT ĐỐI không dịch thành sư huynh/sư tỷ/sư đệ/sư muội (đây là trường học, không phải môn phái). ⚠ 他/她 khi chỉ BẠN HỌC cùng tuổi thì dịch 'cậu ấy / bạn ấy', không dùng 'anh ấy / chị ấy' (nghe già hẳn so với học sinh 16 tuổi); chỉ dùng 'anh ấy / chị ấy' cho khoá trên, thầy cô và người lớn. VĂN PHONG: trong trẻo, tươi, khẩu ngữ tuổi học trò, câu ngắn, có chút ngại ngùng; bạn bè xưng 'tớ – cậu', với thầy cô xưng 'em – thầy/cô', với khoá trên xưng 'em – anh/chị'; TRÁNH từ cổ trang và lối văn nặng nề.")
+
+356           LOAD_CONST               6 (('name', 'hint'))
+              BUILD_CONST_KEY_MAP      2
+
+ 22           MAP_ADD                  1
+
+383           LOAD_CONST              49 ('quan_su')
+
+390           LOAD_CONST              50 ('🎖️ Quân sự / Kháng chiến')
+
+391           LOAD_CONST              51 ("Video thể loại QUÂN SỰ / CHIẾN TRANH, quân đội HIỆN ĐẠI (kháng Nhật, quân ngũ). Thuật ngữ: 部队→đơn vị (bộ đội), 战友→đồng đội, 同志→đồng chí, 首长→thủ trưởng, 班长→tiểu đội trưởng, 排长→trung đội trưởng, 连长→đại đội trưởng, 营长→tiểu đoàn trưởng, 团长→trung đoàn trưởng, 旅长→lữ đoàn trưởng, 师长→sư đoàn trưởng, 军长→quân đoàn trưởng, 司令/司令员→tư lệnh, 参谋长→tham mưu trưởng, 政委→chính uỷ, 指导员→chính trị viên, 命令→mệnh lệnh, 敌军/敌人→quân địch, 鬼子→giặc Nhật (lính Nhật), 八路军→Bát Lộ quân, 游击队→du kích, 根据地→căn cứ địa, 汉奸→Hán gian (kẻ bán nước), 伪军→nguỵ quân, 扫荡→càn quét, 俘虏→tù binh, 埋伏→mai phục, 增援→chi viện, 突围→phá vây, 阵地→trận địa, 侦察→trinh sát, 冲锋→xung phong, 牺牲→hy sinh, 烈士→liệt sĩ. ⚠ 部队 là ĐƠN VỊ nói chung: '他回部队了' → 'anh ấy về đơn vị rồi', không phải 'về bộ đội'. ⚠ Chữ 师 ở đây là SƯ ĐOÀN (đơn vị), không phải sư môn: 师长→sư đoàn trưởng, không ra 'sư phụ/sư huynh'; 班长 trong quân đội là TIỂU ĐỘI TRƯỞNG (không phải lớp trưởng). Giữ NGUYÊN phiên hiệu/cao điểm (三营→tiểu đoàn 3, 597.9高地→cao điểm 597.9). VĂN PHONG: đanh, dứt khoát, câu mệnh lệnh ngắn, bi tráng; cấp dưới xưng 'tôi' và gọi cấp trên bằng chức vụ ('Báo cáo thủ trưởng!'), đồng cấp gọi 'đồng chí'; 卑职/属下→'tôi'; TRÁNH lối kiếm hiệp (tại hạ, thuộc hạ, ta/ngươi) và từ cổ trang.")
+
+383           LOAD_CONST               6 (('name', 'hint'))
+              BUILD_CONST_KEY_MAP      2
+
+ 22           MAP_ADD                  1
+
+416           LOAD_CONST              52 ('huyen_huyen')
+
+426           LOAD_CONST              53 ('🐉 Thần thoại / Phong thần')
+
+427           LOAD_CONST              54 ("Video thể loại HUYỀN HUYỄN / THẦN THOẠI (thần tiên, thiên đình, phong thần). Thuật ngữ: 神仙→thần tiên, 天庭→thiên đình, 玉帝→Ngọc Đế, 王母娘娘→Vương Mẫu nương nương, 天兵天将→thiên binh thiên tướng, 仙界/魔界→tiên giới/ma giới, 凡间→phàm gian, 地府→địa phủ, 阎王→Diêm Vương, 龙王→Long Vương, 妖魔→yêu ma, 法术→pháp thuật, 神通→thần thông, 神器→thần khí, 符咒→phù chú, 转世/轮回→chuyển thế/luân hồi, 天道→thiên đạo, 封神→phong thần, 神位→thần vị. Tên thần/tiên/yêu để dạng Hán-Việt (VD 二郎神→Nhị Lang Thần). Mạch chuyện là THẦN THOẠI (thiên đình, thần vị, yêu ma, luân hồi), KHÔNG phải mạch tu luyện lên cảnh giới: chỉ dùng chữ cảnh giới khi câu nguồn có ĐÚNG chữ đó (炼气/筑基/金丹/元婴→luyện khí/trúc cơ/kim đan/nguyên anh). VĂN PHONG: cổ phong, trang trọng, uy nghiêm thần thoại; xưng hô cổ trang ta/ngươi/hắn/nàng; bậc thần tiên tự xưng 'bổn tòa/bổn tiên', phàm nhân gọi là 'thượng tiên'; TRÁNH từ ngữ hiện đại.")
+
+416           LOAD_CONST               6 (('name', 'hint'))
+              BUILD_CONST_KEY_MAP      2
+
+ 22           MAP_ADD                  1
+
+442           LOAD_CONST              55 ('cam_trai')
+
+443           LOAD_CONST              56 ('🏕️ Cắm trại / Ngoài trời (ASMR)')
+
+444           LOAD_CONST              57 ('Video thể loại CẮM TRẠI / NGOÀI TRỜI, thư giãn/chữa lành. Dịch nhẹ nhàng, êm, mô tả thiên nhiên, nấu ăn, sinh hoạt ngoài trời.')
+
+442           LOAD_CONST               6 (('name', 'hint'))
+              BUILD_CONST_KEY_MAP      2
+
+ 22           MAP_ADD                  1
+
+447           LOAD_CONST              58 ('dong_vat')
+
+448           LOAD_CONST              59 ('🦁 Thế giới động vật')
+
+449           LOAD_CONST              60 ('Video thể loại THẾ GIỚI ĐỘNG VẬT. Văn phong tài liệu thiên nhiên, dùng đúng tên loài + mô tả hành vi động vật chính xác.')
+
+447           LOAD_CONST               6 (('name', 'hint'))
+              BUILD_CONST_KEY_MAP      2
+
+ 22           MAP_ADD                  1
+
+453           LOAD_CONST              61 ('🍜 Ẩm thực / Nấu ăn')
+
+454           LOAD_CONST              62 ('Video thể loại ẨM THỰC / NẤU ĂN. Dùng đúng tên món ăn, nguyên liệu, thao tác nấu; văn phong hấp dẫn, thèm thuồng.')
+
+457           LOAD_CONST              63 ('Video thể loại ẨM THỰC / NẤU ĂN. Dùng đúng tên món ăn, nguyên liệu, thao tác nấu. Thao tác bếp: 焯水→chần qua nước sôi, 腌制→ướp, 爆炒→xào lửa lớn, 红烧→kho/rim, 清蒸→hấp, 油炸→chiên ngập dầu, 炖→hầm, 卤→phá lấu, 勾芡→xuống bột cho sánh, 收汁→rút cạn sốt, 翻炒→đảo đều, 出锅→bắc ra, 摆盘→bày ra đĩa, 火候→độ lửa, 大火/小火→lửa lớn/lửa nhỏ. Nguyên liệu / gia vị: 食材→nguyên liệu, 调料→gia vị, 葱姜蒜→hành gừng tỏi, 生抽→nước tương nhạt, 老抽→nước tương đậm màu, 料酒→rượu nấu ăn, 蚝油→dầu hào, 花椒→hoa tiêu, 麻辣→tê cay, 香菜→rau mùi, 五花肉→thịt ba chỉ, 排骨→sườn, 豆腐→đậu phụ. Món quen: 火锅→lẩu, 烧烤→đồ nướng, 包子→bánh bao, 饺子→sủi cảo, 馄饨→hoành thánh, 月饼→bánh trung thu, 皮蛋→trứng bắc thảo, 小龙虾→tôm hùm đất. Mô tả vị: 入味→ngấm vị, 外酥里嫩→ngoài giòn trong mềm, 香→thơm, 鲜→ngọt thanh. ⚠ Tên món có bản Việt quen thuộc thì dùng bản Việt (lẩu, bánh bao); món không có tên Việt thì dịch mô tả ngắn gọn, KHÔNG phiên âm Hán-Việt vô nghĩa. Giữ NGUYÊN định lượng (3 thìa đường, 500 gam thịt, ướp 20 phút). VĂN PHONG: hấp dẫn, thèm thuồng, khẩu ngữ thân thiện như người dẫn chương trình nấu ăn; câu gọn theo nhịp thao tác.')
+
+452           LOAD_CONST              11 (('name', 'hint', 'hint_v2'))
+              BUILD_CONST_KEY_MAP      3
+
+482           LOAD_CONST              64 ('🎥 Vlog đời thường / Du lịch / Hài')
+
+483           LOAD_CONST              65 ("Video VLOG NGƯỜI THẬT (Douyin/TikTok): du lịch, đời thường, hài hước, cà khịa/tự trào — KHÔNG phải phim, KHÔNG có kịch bản. VĂN PHONG: khẩu ngữ đời thường, câu ngắn, tự nhiên như người Việt nói chuyện; xưng 'tôi/mình/anh em'; giữ giọng cà khịa – tự giễu – than thở; TUYỆT ĐỐI KHÔNG văn vẻ hoá, không kịch tính hoá, không dùng từ cổ trang. Danh từ nghề nghiệp dịch NGHĨA: 保镖→vệ sĩ, 司机→tài xế, 导游→hướng dẫn viên, 老板→ông chủ (KHÔNG phiên âm thành tên riêng). Giữ NGUYÊN con số/giá tiền/địa danh (11 nghìn, Ai Cập, Cairo). Tiếng lóng mạng Trung dịch sang tiếng lóng Việt tương đương, đừng dịch chữ.")
+
+481           LOAD_CONST               6 (('name', 'hint'))
+              BUILD_CONST_KEY_MAP      2
+
+ 22           LOAD_CONST              66 (('am_thuc', 'vlog'))
+              BUILD_CONST_KEY_MAP      2
+              DICT_UPDATE              1
+              STORE_NAME               4 (GENRES)
+              LOAD_CONST              67 ('dict[str, dict[str, str]]')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST              68 ('GENRES')
+              STORE_SUBSCR
+
+495           LOAD_NAME                6 (list)
+              PUSH_NULL
+              LOAD_NAME                4 (GENRES)
+              LOAD_ATTR               15 (keys + NULL|self)
+              CALL                     0
+              CALL                     1
+              STORE_NAME               8 (GENRE_KEYS)
+
+510           LOAD_CONST              69 ("Cho AI biết thể loại để dịch đúng thuật ngữ + văn phong (VD tu tiên: 法宝→pháp bảo, 金丹→kim đan).\n\nVài mục dễ chọn nhầm:\n• Thần thoại / Phong thần = có thiên đình, thần vị, Ngọc Đế, tiên nhân (神话/封神). Phim huyền huyễn kiểu dị giới – đấu khí – LÊN CẢNH GIỚI (玄幻) thì chọn Tu tiên.\n• Linh dị = chỉ có người phàm + đạo sĩ + ma, KHÔNG có thiên đình.\n• Hệ thống = phim NẶNG lời thông báo hệ thống (Đinh! nhiệm vụ, điểm, cửa hàng). Chỉ xuyên không / trọng sinh mà không có bảng thông báo → chọn Xuyên không.\n• Cung đấu / Trạch đấu = tranh đấu trong hoàng cung HOẶC trong phủ đệ (chủ mẫu, di nương, con vợ cả – vợ lẽ).\n• Quân sự / Kháng chiến = thế kỷ 20 (bộ đội, đồng chí, thủ trưởng). Chiến tranh CỔ ĐẠI (Tam Quốc) thì chọn Kiếm hiệp.\n\n⚠ Ba mục ghi '(cổ)' / '(cổ trang)' — Hệ thống, Linh dị, Điền văn — dùng bảng xưng hô CỔ TRANG (hắn/nàng/ca ca/nhi tử). Nếu phim cùng dòng nhưng bối cảnh là ĐÔ THỊ thời nay thì chọn 'Đô thị / Hiện đại' cho đúng giọng.")
+
+509           STORE_NAME               9 (GENRE_TOOLTIP)
+
+547           LOAD_CONST              70 (True)
+              STORE_NAME              10 (BAT_V2_MAC_DINH)
+
+550           LOAD_CONST              74 (('return', 'bool'))
+              LOAD_CONST              71 (<code object hint_v2_bat at 0x0000016DC9160030, file "bilisub\genres.py", line 550>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              11 (hint_v2_bat)
+
+558           LOAD_CONST              75 (('key', 'str', 'return', 'str'))
+              LOAD_CONST              72 (<code object genre_hint at 0x0000016DC8EB5AC0, file "bilisub\genres.py", line 558>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              12 (genre_hint)
+
+567           LOAD_CONST              75 (('key', 'str', 'return', 'str'))
+              LOAD_CONST              73 (<code object genre_name at 0x0000016DC8E06E70, file "bilisub\genres.py", line 567>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              13 (genre_name)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object hint_v2_bat at 0x0000016DC9160030, file "bilisub\genres.py", line 550>:
+550           RESUME                   0
+
+551           LOAD_GLOBAL              0 (os)
+              LOAD_ATTR                2 (environ)
+              LOAD_ATTR                5 (get + NULL|self)
+              LOAD_CONST               1 ('BILISUB_GENRE_V2_OFF')
+              CALL                     1
+              LOAD_CONST               2 ('1')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE        1 (to L1)
+
+552           RETURN_CONST             3 (False)
+
+553   L1:     LOAD_GLOBAL              0 (os)
+              LOAD_ATTR                2 (environ)
+              LOAD_ATTR                5 (get + NULL|self)
+              LOAD_CONST               4 ('BILISUB_GENRE_V2')
+              CALL                     1
+              LOAD_CONST               2 ('1')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE        1 (to L2)
+
+554           RETURN_CONST             5 (True)
+
+555   L2:     LOAD_GLOBAL              6 (BAT_V2_MAC_DINH)
+              RETURN_VALUE
+
+Disassembly of <code object genre_hint at 0x0000016DC8EB5AC0, file "bilisub\genres.py", line 558>:
+558           RESUME                   0
+
+559           LOAD_GLOBAL              0 (GENRES)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_FAST                0 (key)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     LOAD_GLOBAL              0 (GENRES)
+              LOAD_CONST               1 ('')
+              BINARY_SUBSCR
+              CALL                     2
+              STORE_FAST               1 (g)
+
+560           LOAD_GLOBAL              5 (hint_v2_bat + NULL)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE       27 (to L2)
+
+561           LOAD_FAST                1 (g)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_CONST               2 ('hint_v2')
+              LOAD_CONST               1 ('')
+              CALL                     2
+              STORE_FAST               2 (v2)
+
+562           LOAD_FAST                2 (v2)
+              TO_BOOL
+              POP_JUMP_IF_FALSE        2 (to L2)
+
+563           LOAD_FAST                2 (v2)
+              RETURN_VALUE
+
+564   L2:     LOAD_FAST                1 (g)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_CONST               3 ('hint')
+              LOAD_CONST               1 ('')
+              CALL                     2
+              RETURN_VALUE
+
+Disassembly of <code object genre_name at 0x0000016DC8E06E70, file "bilisub\genres.py", line 567>:
+567           RESUME                   0
+
+568           LOAD_GLOBAL              0 (GENRES)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_FAST                0 (key)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     LOAD_GLOBAL              0 (GENRES)
+              LOAD_CONST               1 ('')
+              BINARY_SUBSCR
+              CALL                     2
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_CONST               2 ('name')
+              LOAD_CONST               1 ('')
+              CALL                     2
+              RETURN_VALUE

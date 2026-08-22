@@ -1,0 +1,724 @@
+=== FILE: bilisub\script\runner.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('Orchestrator autoscript → list[SubtitleEntry] khớp timeline (chảy thẳng vào TTS + render).\n\nBỐN đường vào, CÙNG một khuôn dữ liệu ra (xem ``user_script`` — phải điền cả 3 trường\ntext/translated/voice_text). Đây là ĐIỂM RẼ NHÁNH DUY NHẤT của cả tính năng: ``pipeline`` chỉ\nbiết ``source == "autoscript"`` và không cần biết chữ từ đâu ra.\n\n  ai       Gemini XEM CẢ VIDEO → kịch bản story-first có timestamp (``video_script``) — CŨ\n  paste    khách DÁN lời bình đã viết sẵn            → 0 credit ở bước kịch bản\n  file     khách TẢI file .txt/.md/.srt/.docx/.rtf   → 0 credit ở bước kịch bản\n  outline  khách DÁN DÀN Ý, AI viết bám dàn ý        → VẪN trừ credit (AI vẫn phải xem video)\n\nv1 (giữ lại, dự phòng): keyframe rời + caption từng cảnh (``keyframes`` + ``vision`` +\n``generator``) — chất lượng thấp hơn, chỉ dùng khi ép ``BILISUB_AUTOSCRIPT_V1=1``.\n')
+              STORE_NAME               0 (__doc__)
+
+ 15           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 17           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (os)
+              STORE_NAME               3 (os)
+
+ 18           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (tempfile)
+              STORE_NAME               4 (tempfile)
+
+ 19           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Callable', 'Optional'))
+              IMPORT_NAME              5 (typing)
+              IMPORT_FROM              6 (Callable)
+              STORE_NAME               6 (Callable)
+              IMPORT_FROM              7 (Optional)
+              STORE_NAME               7 (Optional)
+              POP_TOP
+
+ 21           LOAD_CONST               5 (2)
+              LOAD_CONST               6 (('SubtitleEntry',))
+              IMPORT_NAME              8 (models)
+              IMPORT_FROM              9 (SubtitleEntry)
+              STORE_NAME               9 (SubtitleEntry)
+              POP_TOP
+
+ 22           LOAD_CONST               7 (1)
+              LOAD_CONST               8 (('StylePack', 'get_style'))
+              IMPORT_NAME             10 (styles)
+              IMPORT_FROM             11 (StylePack)
+              STORE_NAME              11 (StylePack)
+              IMPORT_FROM             12 (get_style)
+              STORE_NAME              12 (get_style)
+              POP_TOP
+
+ 23           LOAD_CONST               7 (1)
+              LOAD_CONST               9 (('generate_video_script',))
+              IMPORT_NAME             13 (video_script)
+              IMPORT_FROM             14 (generate_video_script)
+              STORE_NAME              14 (generate_video_script)
+              POP_TOP
+
+ 27           LOAD_CONST               3 (None)
+
+ 28           LOAD_CONST              10 ('vi')
+              LOAD_CONST               3 (None)
+
+ 29           LOAD_CONST               3 (None)
+
+ 30           LOAD_CONST               3 (None)
+
+ 31           LOAD_CONST               3 (None)
+
+ 26           LOAD_CONST              11 (('style', 'target_language', 'provider', 'work_dir', 'progress', 'log'))
+              BUILD_CONST_KEY_MAP      6
+
+ 27           NOP
+
+ 26           NOP
+
+ 27           NOP
+
+ 26           NOP
+
+ 28           NOP
+
+ 26           NOP
+
+ 28           NOP
+
+ 26           NOP
+
+ 29           NOP
+
+ 26           NOP
+
+ 30           NOP
+
+ 26           NOP
+
+ 31           NOP
+
+ 26           NOP
+
+ 32           NOP
+
+ 26           LOAD_CONST              15 (('video', 'str', 'style', 'Optional[StylePack]', 'target_language', 'str', 'provider', 'Optional[str]', 'work_dir', 'Optional[str]', 'progress', 'Optional[Callable[[str, int], None]]', 'log', 'Optional[Callable[[str], None]]', 'return', 'list[SubtitleEntry]'))
+              LOAD_CONST              12 (<code object run_autoscript at 0x0000016DC8FCF820, file "bilisub\script\runner.py", line 26>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              15 (run_autoscript)
+
+ 57           LOAD_CONST              16 (('return', 'list[SubtitleEntry]'))
+              LOAD_CONST              13 (<code object _run_kich_ban_khach at 0x0000016DC90779F0, file "bilisub\script\runner.py", line 57>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              16 (_run_kich_ban_khach)
+
+109           LOAD_CONST              14 (<code object _run_v1 at 0x0000016DC90DE120, file "bilisub\script\runner.py", line 109>)
+              MAKE_FUNCTION
+              STORE_NAME              17 (_run_v1)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object run_autoscript at 0x0000016DC8FCF820, file "bilisub\script\runner.py", line 26>:
+ 26           RESUME                   0
+
+ 33           LOAD_FAST                7 (log)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         3 (to L1)
+              POP_TOP
+              LOAD_CONST               1 (<code object <lambda> at 0x0000016DC91363F0, file "bilisub\script\runner.py", line 33>)
+              MAKE_FUNCTION
+      L1:     STORE_FAST               7 (log)
+
+ 34           LOAD_FAST                2 (style)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE        22 (to L2)
+              POP_TOP
+              LOAD_GLOBAL              1 (get_style + NULL)
+              LOAD_GLOBAL              3 (getattr + NULL)
+              LOAD_FAST                1 (settings)
+              LOAD_CONST               2 ('autoscript_style')
+              LOAD_CONST               3 ('wild_serious')
+              CALL                     3
+              CALL                     1
+      L2:     STORE_FAST               2 (style)
+
+ 36           LOAD_GLOBAL              5 (str + NULL)
+              LOAD_GLOBAL              3 (getattr + NULL)
+              LOAD_FAST                1 (settings)
+              LOAD_CONST               4 ('autoscript_source')
+              LOAD_CONST               5 ('ai')
+              CALL                     3
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+              POP_TOP
+              LOAD_CONST               5 ('ai')
+      L3:     CALL                     1
+              LOAD_ATTR                7 (strip + NULL|self)
+              CALL                     0
+              LOAD_ATTR                9 (lower + NULL|self)
+              CALL                     0
+              STORE_FAST               8 (nguon)
+
+ 38           LOAD_FAST                8 (nguon)
+              LOAD_CONST               6 (('paste', 'file'))
+              CONTAINS_OP              0
+              POP_JUMP_IF_FALSE       10 (to L4)
+
+ 39           LOAD_GLOBAL             11 (_run_kich_ban_khach + NULL)
+              LOAD_FAST_LOAD_FAST      1 (video, settings)
+              LOAD_FAST_LOAD_FAST    135 (nguon, log)
+              LOAD_CONST               7 (('settings', 'nguon', 'log'))
+              CALL_KW                  4
+              RETURN_VALUE
+
+ 41   L4:     LOAD_FAST                8 (nguon)
+              LOAD_CONST               8 ('outline')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       42 (to L6)
+
+ 42           LOAD_GLOBAL             13 (generate_video_script + NULL)
+
+ 43           LOAD_FAST_LOAD_FAST      1 (video, settings)
+              LOAD_FAST_LOAD_FAST     35 (style, target_language)
+
+ 44           LOAD_FAST_LOAD_FAST     70 (provider, progress)
+              LOAD_FAST                7 (log)
+
+ 45           LOAD_GLOBAL              5 (str + NULL)
+              LOAD_GLOBAL              3 (getattr + NULL)
+              LOAD_FAST                1 (settings)
+              LOAD_CONST               9 ('autoscript_outline')
+              LOAD_CONST              10 ('')
+              CALL                     3
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L5)
+              POP_TOP
+              LOAD_CONST              10 ('')
+      L5:     CALL                     1
+
+ 42           LOAD_CONST              11 (('settings', 'style', 'target_language', 'provider', 'progress', 'log', 'outline'))
+              CALL_KW                  8
+              RETURN_VALUE
+
+ 47   L6:     LOAD_GLOBAL             14 (os)
+              LOAD_ATTR               16 (environ)
+              LOAD_ATTR               19 (get + NULL|self)
+              LOAD_CONST              12 ('BILISUB_AUTOSCRIPT_V1')
+              CALL                     1
+              LOAD_CONST              13 ('1')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       13 (to L7)
+
+ 48           LOAD_GLOBAL             21 (_run_v1 + NULL)
+              LOAD_FAST_LOAD_FAST      1 (video, settings)
+              LOAD_FAST                2 (style)
+
+ 49           LOAD_FAST_LOAD_FAST     52 (target_language, provider)
+
+ 50           LOAD_FAST_LOAD_FAST     86 (work_dir, progress)
+              LOAD_FAST                7 (log)
+
+ 48           LOAD_CONST              14 (('settings', 'style', 'target_language', 'provider', 'work_dir', 'progress', 'log'))
+              CALL_KW                  8
+              RETURN_VALUE
+
+ 52   L7:     LOAD_GLOBAL             13 (generate_video_script + NULL)
+
+ 53           LOAD_FAST_LOAD_FAST      1 (video, settings)
+              LOAD_FAST_LOAD_FAST     35 (style, target_language)
+
+ 54           LOAD_FAST_LOAD_FAST     70 (provider, progress)
+              LOAD_FAST                7 (log)
+
+ 52           LOAD_CONST              15 (('settings', 'style', 'target_language', 'provider', 'progress', 'log'))
+              CALL_KW                  7
+              RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC91363F0, file "bilisub\script\runner.py", line 33>:
+ 33           RESUME                   0
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _run_kich_ban_khach at 0x0000016DC90779F0, file "bilisub\script\runner.py", line 57>:
+  57            RESUME                   0
+
+  64            LOAD_CONST               1 (2)
+                LOAD_CONST               2 (('probe',))
+                IMPORT_NAME              0 (ffmpeg_utils)
+                IMPORT_FROM              1 (probe)
+                STORE_FAST               4 (probe)
+                POP_TOP
+
+  65            LOAD_CONST               3 (1)
+                LOAD_CONST               4 (('MSG_0_CREDIT', 'MSG_FILE_HONG', 'UserScriptError', 'canh_bao_do_dai', 'doc_file_kich_ban', 'dung_entries'))
+                IMPORT_NAME              2 (user_script)
+                IMPORT_FROM              3 (MSG_0_CREDIT)
+                STORE_FAST               5 (MSG_0_CREDIT)
+                IMPORT_FROM              4 (MSG_FILE_HONG)
+                STORE_FAST               6 (MSG_FILE_HONG)
+                IMPORT_FROM              5 (UserScriptError)
+                STORE_FAST               7 (UserScriptError)
+                IMPORT_FROM              6 (canh_bao_do_dai)
+                STORE_FAST               8 (canh_bao_do_dai)
+                IMPORT_FROM              7 (doc_file_kich_ban)
+                STORE_FAST               9 (doc_file_kich_ban)
+                IMPORT_FROM              8 (dung_entries)
+                STORE_FAST              10 (dung_entries)
+                POP_TOP
+
+  68            LOAD_FAST                2 (nguon)
+                LOAD_CONST               5 ('file')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE      159 (to L5)
+
+  69            LOAD_GLOBAL             19 (str + NULL)
+                LOAD_GLOBAL             21 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST               6 ('autoscript_file')
+                LOAD_CONST               7 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                LOAD_CONST               7 ('')
+        L1:     CALL                     1
+                LOAD_ATTR               23 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST              11 (duong)
+
+  70            LOAD_FAST                9 (doc_file_kich_ban)
+                PUSH_NULL
+                LOAD_FAST               11 (duong)
+                CALL                     1
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  205 (txt, canh)
+
+  71            LOAD_FAST               13 (canh)
+                GET_ITER
+        L2:     FOR_ITER                14 (to L3)
+                STORE_FAST              14 (c)
+
+  72            LOAD_FAST                3 (log)
+                PUSH_NULL
+                LOAD_CONST               8 ('   ')
+                LOAD_FAST               14 (c)
+                BINARY_OP                0 (+)
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD           16 (to L2)
+
+  71    L3:     END_FOR
+                POP_TOP
+
+  73            LOAD_FAST               12 (txt)
+                LOAD_ATTR               23 (strip + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_TRUE         8 (to L4)
+
+  74            LOAD_FAST                7 (UserScriptError)
+                PUSH_NULL
+                LOAD_FAST                6 (MSG_FILE_HONG)
+                CALL                     1
+                RAISE_VARARGS            1
+
+  75    L4:     LOAD_FAST                3 (log)
+                PUSH_NULL
+                LOAD_CONST               9 ('✍ Kịch bản của bạn — đọc từ file «')
+                LOAD_GLOBAL             24 (os)
+                LOAD_ATTR               26 (path)
+                LOAD_ATTR               29 (basename + NULL|self)
+                LOAD_FAST               11 (duong)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              10 ('» (')
+
+  76            LOAD_GLOBAL             31 (len + NULL)
+                LOAD_FAST               12 (txt)
+                CALL                     1
+                LOAD_CONST              11 (',')
+                FORMAT_WITH_SPEC
+                LOAD_CONST              12 (' ký tự).')
+
+  75            BUILD_STRING             5
+                CALL                     1
+                POP_TOP
+                JUMP_FORWARD            53 (to L7)
+
+  78    L5:     LOAD_GLOBAL             19 (str + NULL)
+                LOAD_GLOBAL             21 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST              13 ('autoscript_text')
+                LOAD_CONST               7 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L6)
+                POP_TOP
+                LOAD_CONST               7 ('')
+        L6:     CALL                     1
+                STORE_FAST              12 (txt)
+
+  79            LOAD_FAST                3 (log)
+                PUSH_NULL
+                LOAD_CONST              14 ('✍ Kịch bản của bạn — ')
+                LOAD_GLOBAL             31 (len + NULL)
+                LOAD_FAST               12 (txt)
+                CALL                     1
+                LOAD_CONST              11 (',')
+                FORMAT_WITH_SPEC
+                LOAD_CONST              15 (' ký tự bạn đã dán.')
+                BUILD_STRING             3
+                CALL                     1
+                POP_TOP
+
+  83    L7:     LOAD_CONST              16 (0)
+                STORE_FAST              15 (video_ms)
+
+  84            LOAD_FAST                0 (video)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       37 (to L10)
+
+  85            NOP
+
+  86    L8:     LOAD_GLOBAL             33 (int + NULL)
+                LOAD_FAST                4 (probe)
+                PUSH_NULL
+                LOAD_FAST                0 (video)
+                CALL                     1
+                LOAD_ATTR               34 (duration_ms)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L9)
+                POP_TOP
+                LOAD_CONST              16 (0)
+        L9:     CALL                     1
+                STORE_FAST              15 (video_ms)
+
+  90   L10:     LOAD_GLOBAL             39 (float + NULL)
+                LOAD_GLOBAL             21 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST              21 ('tts_speed')
+                LOAD_CONST              22 (1.0)
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L11)
+                POP_TOP
+                LOAD_CONST              22 (1.0)
+       L11:     CALL                     1
+                STORE_FAST              17 (sp)
+
+  91            LOAD_FAST                8 (canh_bao_do_dai)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST    207 (txt, video_ms)
+                LOAD_FAST               17 (sp)
+                LOAD_CONST              23 (('video_ms', 'tts_speed'))
+                CALL_KW                  3
+                UNPACK_SEQUENCE          2
+                STORE_FAST              18 (_muc)
+                STORE_FAST              19 (cau)
+
+  92            LOAD_FAST               19 (cau)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        8 (to L12)
+
+  93            LOAD_FAST                3 (log)
+                PUSH_NULL
+                LOAD_FAST               19 (cau)
+                CALL                     1
+                POP_TOP
+
+  97   L12:     NOP
+
+  98   L13:     LOAD_CONST               3 (1)
+                LOAD_CONST              24 (('tach_kich_ban',))
+                IMPORT_NAME              2 (user_script)
+                IMPORT_FROM             20 (tach_kich_ban)
+                STORE_FAST              20 (tach_kich_ban)
+                POP_TOP
+
+  99            LOAD_FAST               20 (tach_kich_ban)
+                PUSH_NULL
+                LOAD_FAST               12 (txt)
+                CALL                     1
+                LOAD_ATTR               43 (get + NULL|self)
+                LOAD_CONST              25 ('canh_bao')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L14)
+                POP_TOP
+                BUILD_LIST               0
+       L14:     GET_ITER
+       L15:     FOR_ITER                23 (to L16)
+                STORE_FAST              21 (_cb)
+
+ 100            LOAD_FAST                3 (log)
+                PUSH_NULL
+                LOAD_CONST               8 ('   ')
+                LOAD_GLOBAL             19 (str + NULL)
+                LOAD_FAST               21 (_cb)
+                CALL                     1
+                BINARY_OP                0 (+)
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD           25 (to L15)
+
+  99   L16:     END_FOR
+                POP_TOP
+
+ 103   L17:     LOAD_FAST               10 (dung_entries)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST    207 (txt, video_ms)
+                LOAD_FAST               17 (sp)
+                LOAD_CONST              23 (('video_ms', 'tts_speed'))
+                CALL_KW                  3
+                STORE_FAST              22 (ents)
+
+ 104            LOAD_FAST                3 (log)
+                PUSH_NULL
+                LOAD_CONST              26 ('✅ Kịch bản của bạn: ')
+                LOAD_GLOBAL             31 (len + NULL)
+                LOAD_FAST               22 (ents)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              27 (' câu — KHÔNG gọi AI, KHÔNG trừ credit ở bước này.')
+                BUILD_STRING             3
+                CALL                     1
+                POP_TOP
+
+ 105            LOAD_FAST                3 (log)
+                PUSH_NULL
+                LOAD_FAST                5 (MSG_0_CREDIT)
+                CALL                     1
+                POP_TOP
+
+ 106            LOAD_FAST               22 (ents)
+                RETURN_VALUE
+
+  --   L18:     PUSH_EXC_INFO
+
+  87            LOAD_GLOBAL             36 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       34 (to L22)
+                STORE_FAST              16 (ex)
+
+  88   L19:     LOAD_FAST                3 (log)
+                PUSH_NULL
+                LOAD_CONST              17 ('   (không đọc được độ dài video: ')
+                LOAD_GLOBAL             19 (str + NULL)
+                LOAD_FAST               16 (ex)
+                CALL                     1
+                LOAD_CONST              18 (None)
+                LOAD_CONST              19 (70)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                LOAD_CONST              20 (' — các câu sẽ chạy nối tiếp)')
+                BUILD_STRING             3
+                CALL                     1
+                POP_TOP
+       L20:     POP_EXCEPT
+                LOAD_CONST              18 (None)
+                STORE_FAST              16 (ex)
+                DELETE_FAST             16 (ex)
+                JUMP_BACKWARD_NO_INTERRUPT 199 (to L10)
+
+  --   L21:     LOAD_CONST              18 (None)
+                STORE_FAST              16 (ex)
+                DELETE_FAST             16 (ex)
+                RERAISE                  1
+
+  87   L22:     RERAISE                  0
+
+  --   L23:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L24:     PUSH_EXC_INFO
+
+ 101            LOAD_GLOBAL             36 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L26)
+                POP_TOP
+
+ 102   L25:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 97 (to L17)
+
+ 101   L26:     RERAISE                  0
+
+  --   L27:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L8 to L10 -> L18 [0]
+  L13 to L17 -> L24 [0]
+  L18 to L19 -> L23 [1] lasti
+  L19 to L20 -> L21 [1] lasti
+  L21 to L23 -> L23 [1] lasti
+  L24 to L25 -> L27 [1] lasti
+  L26 to L27 -> L27 [1] lasti
+
+Disassembly of <code object _run_v1 at 0x0000016DC90DE120, file "bilisub\script\runner.py", line 109>:
+  --           MAKE_CELL                6 (progress)
+
+ 109           RESUME                   0
+
+ 111           LOAD_CONST               1 (1)
+               LOAD_CONST               2 (('generate_script',))
+               IMPORT_NAME              0 (generator)
+               IMPORT_FROM              1 (generate_script)
+               STORE_FAST               8 (generate_script)
+               POP_TOP
+
+ 112           LOAD_CONST               1 (1)
+               LOAD_CONST               3 (('extract_scenes',))
+               IMPORT_NAME              2 (keyframes)
+               IMPORT_FROM              3 (extract_scenes)
+               STORE_FAST               9 (extract_scenes)
+               POP_TOP
+
+ 113           LOAD_CONST               1 (1)
+               LOAD_CONST               4 (('describe_scenes',))
+               IMPORT_NAME              4 (vision)
+               IMPORT_FROM              5 (describe_scenes)
+               STORE_FAST              10 (describe_scenes)
+               POP_TOP
+
+ 115           LOAD_FAST                5 (work_dir)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE        20 (to L1)
+               POP_TOP
+               LOAD_GLOBAL             12 (tempfile)
+               LOAD_ATTR               14 (mkdtemp)
+               PUSH_NULL
+               LOAD_CONST               5 ('autoscript_')
+               LOAD_CONST               6 (('prefix',))
+               CALL_KW                  1
+       L1:     STORE_FAST              11 (wd)
+
+ 117           LOAD_FAST                6 (progress)
+               BUILD_TUPLE              1
+               LOAD_CONST               7 (<code object _p at 0x0000016DC8CBEB50, file "bilisub\script\runner.py", line 117>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               STORE_FAST              12 (_p)
+
+ 120           LOAD_FAST                9 (extract_scenes)
+               PUSH_NULL
+               LOAD_FAST_LOAD_FAST     11 (video, wd)
+               LOAD_GLOBAL             17 (getattr + NULL)
+               LOAD_FAST                1 (settings)
+               LOAD_CONST               8 ('autoscript_max_frames')
+               LOAD_CONST               9 (48)
+               CALL                     3
+
+ 121           LOAD_FAST                7 (log)
+
+ 120           LOAD_CONST              10 (('max_frames', 'log'))
+               CALL_KW                  4
+               STORE_FAST              13 (scenes)
+
+ 122           LOAD_FAST               10 (describe_scenes)
+               PUSH_NULL
+               LOAD_FAST_LOAD_FAST    209 (scenes, settings)
+               LOAD_FAST                3 (target_language)
+
+ 123           LOAD_FAST               12 (_p)
+               PUSH_NULL
+               LOAD_CONST              11 ('vision')
+               CALL                     1
+               LOAD_FAST                7 (log)
+
+ 122           LOAD_CONST              12 (('settings', 'target_language', 'progress', 'log'))
+               CALL_KW                  5
+               STORE_FAST              13 (scenes)
+
+ 124           LOAD_FAST                8 (generate_script)
+               PUSH_NULL
+               LOAD_FAST               13 (scenes)
+               GET_ITER
+               LOAD_FAST_AND_CLEAR     14 (s)
+               SWAP                     2
+       L2:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L3:     FOR_ITER                23 (to L6)
+               STORE_FAST_LOAD_FAST   238 (s, s)
+               LOAD_ATTR               18 (description)
+               TO_BOOL
+       L4:     POP_JUMP_IF_TRUE         2 (to L5)
+               JUMP_BACKWARD           21 (to L3)
+       L5:     LOAD_FAST               14 (s)
+               LIST_APPEND              2
+               JUMP_BACKWARD           25 (to L3)
+       L6:     END_FOR
+               POP_TOP
+       L7:     SWAP                     2
+               STORE_FAST              14 (s)
+               LOAD_FAST                2 (style)
+
+ 125           LOAD_FAST_LOAD_FAST     19 (settings, target_language)
+
+ 126           LOAD_FAST_LOAD_FAST     76 (provider, _p)
+               PUSH_NULL
+               LOAD_CONST              13 ('translate')
+               CALL                     1
+               LOAD_FAST                7 (log)
+
+ 124           LOAD_CONST              14 (('style', 'settings', 'target_language', 'provider', 'progress', 'log'))
+               CALL_KW                  7
+               RETURN_VALUE
+
+  --   L8:     SWAP                     2
+               POP_TOP
+
+ 124           SWAP                     2
+               STORE_FAST              14 (s)
+               RERAISE                  0
+ExceptionTable:
+  L2 to L4 -> L8 [4]
+  L5 to L7 -> L8 [4]
+
+Disassembly of <code object _p at 0x0000016DC8CBEB50, file "bilisub\script\runner.py", line 117>:
+  --           COPY_FREE_VARS           1
+               MAKE_CELL                0 (stage)
+
+ 117           RESUME                   0
+
+ 118           LOAD_DEREF               1 (progress)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        7 (to L1)
+               LOAD_FAST                1 (progress)
+               LOAD_FAST                0 (stage)
+               BUILD_TUPLE              2
+               LOAD_CONST               1 (<code object <lambda> at 0x0000016DC8EAE670, file "bilisub\script\runner.py", line 118>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               RETURN_VALUE
+       L1:     LOAD_CONST               0 (None)
+               RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC8EAE670, file "bilisub\script\runner.py", line 118>:
+  --           COPY_FREE_VARS           2
+
+ 118           RESUME                   0
+               LOAD_DEREF               3 (progress)
+               PUSH_NULL
+               LOAD_DEREF               4 (stage)
+               LOAD_GLOBAL              1 (int + NULL)
+               LOAD_FAST                0 (c)
+               LOAD_CONST               1 (100)
+               BINARY_OP                5 (*)
+               LOAD_GLOBAL              3 (max + NULL)
+               LOAD_FAST                1 (t)
+               LOAD_CONST               2 (1)
+               CALL                     2
+               BINARY_OP               11 (/)
+               CALL                     1
+               CALL                     2
+               RETURN_VALUE

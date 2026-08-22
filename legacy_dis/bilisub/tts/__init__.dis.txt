@@ -1,0 +1,47 @@
+=== FILE: bilisub\tts\__init__.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 (1)
+              LOAD_CONST               1 (('VOICES', 'voice_engine', 'voice_language', 'default_voice', 'VoiceSpec', 'custom_vbee_voices', 'dynamic_edge_voices', 'dynamic_vbee_voices', 'voices_for_language', 'resolve_voice', 'LEGACY_VOICE_MAP'))
+              IMPORT_NAME              0 (base)
+              IMPORT_FROM              1 (VOICES)
+              STORE_NAME               1 (VOICES)
+              IMPORT_FROM              2 (voice_engine)
+              STORE_NAME               2 (voice_engine)
+              IMPORT_FROM              3 (voice_language)
+              STORE_NAME               3 (voice_language)
+              IMPORT_FROM              4 (default_voice)
+              STORE_NAME               4 (default_voice)
+              IMPORT_FROM              5 (VoiceSpec)
+              STORE_NAME               5 (VoiceSpec)
+              IMPORT_FROM              6 (custom_vbee_voices)
+              STORE_NAME               6 (custom_vbee_voices)
+              IMPORT_FROM              7 (dynamic_edge_voices)
+              STORE_NAME               7 (dynamic_edge_voices)
+              IMPORT_FROM              8 (dynamic_vbee_voices)
+              STORE_NAME               8 (dynamic_vbee_voices)
+              IMPORT_FROM              9 (voices_for_language)
+              STORE_NAME               9 (voices_for_language)
+              IMPORT_FROM             10 (resolve_voice)
+              STORE_NAME              10 (resolve_voice)
+              IMPORT_FROM             11 (LEGACY_VOICE_MAP)
+              STORE_NAME              11 (LEGACY_VOICE_MAP)
+              POP_TOP
+
+  4           LOAD_CONST               0 (1)
+              LOAD_CONST               2 (('TTSEngine', 'TTSError'))
+              IMPORT_NAME             12 (engine)
+              IMPORT_FROM             13 (TTSEngine)
+              STORE_NAME              13 (TTSEngine)
+              IMPORT_FROM             14 (TTSError)
+              STORE_NAME              14 (TTSError)
+              POP_TOP
+
+  6           BUILD_LIST               0
+              LOAD_CONST               3 (('VOICES', 'voice_engine', 'voice_language', 'default_voice', 'VoiceSpec', 'custom_vbee_voices', 'dynamic_edge_voices', 'dynamic_vbee_voices', 'voices_for_language', 'resolve_voice', 'LEGACY_VOICE_MAP', 'TTSEngine', 'TTSError'))
+              LIST_EXTEND              1
+              STORE_NAME              15 (__all__)
+              RETURN_CONST             4 (None)

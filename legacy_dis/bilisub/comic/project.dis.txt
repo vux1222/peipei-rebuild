@@ -1,0 +1,502 @@
+=== FILE: bilisub\comic\project.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('PROJECT truyện dài — lưu tiến độ review để LÀM TIẾP qua nhiều phiên.\n\nTruyện vài trăm/nghìn chương không thể review 1 lần. Mỗi THƯ MỤC TRUYỆN (chứa các folder\n``chuong-*``) mang 1 file ``project.json``: đã review chương nào, tóm tắt nối-series\n(series_context cuốn chiếu), tuỳ chọn đã dùng (tone/bối cảnh/giọng/tốc độ/phụ đề…).\nMở lại project → tool BỎ QUA chương đã xong, review tiếp chương mới, kịch bản vẫn nối\nmạch với các chương cũ. File nằm CẠNH ảnh truyện → copy/di chuyển thư mục là mang theo.\n')
+              STORE_NAME               0 (__doc__)
+
+  9           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 11           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (json)
+              STORE_NAME               3 (json)
+
+ 12           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (time)
+              STORE_NAME               4 (time)
+
+ 13           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Path',))
+              IMPORT_NAME              5 (pathlib)
+              IMPORT_FROM              6 (Path)
+              STORE_NAME               6 (Path)
+              POP_TOP
+
+ 14           LOAD_CONST               1 (0)
+              LOAD_CONST               5 (('Optional',))
+              IMPORT_NAME              7 (typing)
+              IMPORT_FROM              8 (Optional)
+              STORE_NAME               8 (Optional)
+              POP_TOP
+
+ 16           LOAD_CONST               6 ('project.json')
+              STORE_NAME               9 (PROJECT_FILE)
+
+ 19           LOAD_CONST              13 (('root', 'str | Path', 'return', 'Path'))
+              LOAD_CONST               7 (<code object project_path at 0x0000016DC90F1B60, file "bilisub\comic\project.py", line 19>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              10 (project_path)
+
+ 23           LOAD_CONST              14 (('root', 'str | Path', 'return', 'Optional[dict]'))
+              LOAD_CONST               8 (<code object load at 0x0000016DC90E5470, file "bilisub\comic\project.py", line 23>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              11 (load)
+
+ 35           LOAD_CONST              15 (('root', 'str | Path', 'data', 'dict', 'return', 'None'))
+              LOAD_CONST               9 (<code object save at 0x0000016DC8E4E030, file "bilisub\comic\project.py", line 35>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              12 (save)
+
+ 49           LOAD_CONST              16 (('root', 'str | Path', 'return', 'dict'))
+              LOAD_CONST              10 (<code object update at 0x0000016DC90EDD10, file "bilisub\comic\project.py", line 49>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              13 (update)
+
+ 57           LOAD_CONST              17 (('subs', 'list', 'proj', 'Optional[dict]', 'return', 'tuple[list, set]'))
+              LOAD_CONST              11 (<code object todo_chapters at 0x0000016DC8E0B930, file "bilisub\comic\project.py", line 57>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              14 (todo_chapters)
+
+ 63           LOAD_CONST              18 (('search_roots', 'list', 'return', 'list[dict]'))
+              LOAD_CONST              12 (<code object list_projects at 0x0000016DC8F5B050, file "bilisub\comic\project.py", line 63>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              15 (list_projects)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object project_path at 0x0000016DC90F1B60, file "bilisub\comic\project.py", line 19>:
+ 19           RESUME                   0
+
+ 20           LOAD_GLOBAL              1 (Path + NULL)
+              LOAD_FAST                0 (root)
+              CALL                     1
+              LOAD_GLOBAL              2 (PROJECT_FILE)
+              BINARY_OP               11 (/)
+              RETURN_VALUE
+
+Disassembly of <code object load at 0x0000016DC90E5470, file "bilisub\comic\project.py", line 23>:
+  23           RESUME                   0
+
+  25           LOAD_GLOBAL              1 (project_path + NULL)
+               LOAD_FAST                0 (root)
+               CALL                     1
+               STORE_FAST               1 (p)
+
+  26           LOAD_FAST                1 (p)
+               LOAD_ATTR                3 (exists + NULL|self)
+               CALL                     0
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L1)
+
+  27           RETURN_CONST             1 (None)
+
+  28   L1:     NOP
+
+  29   L2:     LOAD_GLOBAL              4 (json)
+               LOAD_ATTR                6 (loads)
+               PUSH_NULL
+               LOAD_FAST                1 (p)
+               LOAD_ATTR                9 (read_text + NULL|self)
+               LOAD_CONST               2 ('utf-8')
+               LOAD_CONST               3 (('encoding',))
+               CALL_KW                  1
+               CALL                     1
+               STORE_FAST               2 (d)
+
+  30           LOAD_GLOBAL             11 (isinstance + NULL)
+               LOAD_FAST                2 (d)
+               LOAD_GLOBAL             12 (dict)
+               CALL                     2
+               TO_BOOL
+               POP_JUMP_IF_FALSE        2 (to L4)
+               LOAD_FAST                2 (d)
+       L3:     RETURN_VALUE
+       L4:     LOAD_CONST               1 (None)
+       L5:     RETURN_VALUE
+
+  --   L6:     PUSH_EXC_INFO
+
+  31           LOAD_GLOBAL             14 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L8)
+               POP_TOP
+
+  32   L7:     POP_EXCEPT
+               RETURN_CONST             1 (None)
+
+  31   L8:     RERAISE                  0
+
+  --   L9:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L6 [0]
+  L4 to L5 -> L6 [0]
+  L6 to L7 -> L9 [1] lasti
+  L8 to L9 -> L9 [1] lasti
+
+Disassembly of <code object save at 0x0000016DC8E4E030, file "bilisub\comic\project.py", line 35>:
+  35           RESUME                   0
+
+  37           NOP
+
+  38   L1:     LOAD_GLOBAL              1 (dict + NULL)
+               LOAD_FAST                1 (data)
+               CALL                     1
+               STORE_FAST               1 (data)
+
+  39           LOAD_FAST                1 (data)
+               LOAD_ATTR                3 (setdefault + NULL|self)
+               LOAD_CONST               1 ('version')
+               LOAD_CONST               2 (1)
+               CALL                     2
+               POP_TOP
+
+  40           LOAD_GLOBAL              4 (time)
+               LOAD_ATTR                6 (strftime)
+               PUSH_NULL
+               LOAD_CONST               3 ('%Y-%m-%d %H:%M:%S')
+               CALL                     1
+               LOAD_FAST                1 (data)
+               LOAD_CONST               4 ('updated_at')
+               STORE_SUBSCR
+
+  41           LOAD_GLOBAL              9 (project_path + NULL)
+               LOAD_FAST                0 (root)
+               CALL                     1
+               STORE_FAST               2 (p)
+
+  42           LOAD_FAST                2 (p)
+               LOAD_ATTR               11 (with_suffix + NULL|self)
+               LOAD_CONST               5 ('.tmp')
+               CALL                     1
+               STORE_FAST               3 (tmp)
+
+  43           LOAD_FAST                3 (tmp)
+               LOAD_ATTR               13 (write_text + NULL|self)
+               LOAD_GLOBAL             14 (json)
+               LOAD_ATTR               16 (dumps)
+               PUSH_NULL
+               LOAD_FAST                1 (data)
+               LOAD_CONST               6 (False)
+               LOAD_CONST               2 (1)
+               LOAD_CONST               7 (('ensure_ascii', 'indent'))
+               CALL_KW                  3
+               LOAD_CONST               8 ('utf-8')
+               LOAD_CONST               9 (('encoding',))
+               CALL_KW                  2
+               POP_TOP
+
+  44           LOAD_FAST                3 (tmp)
+               LOAD_ATTR               19 (replace + NULL|self)
+               LOAD_FAST                2 (p)
+               CALL                     1
+               POP_TOP
+       L2:     RETURN_CONST            10 (None)
+
+  --   L3:     PUSH_EXC_INFO
+
+  45           LOAD_GLOBAL             20 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L5)
+               POP_TOP
+
+  46   L4:     POP_EXCEPT
+               RETURN_CONST            10 (None)
+
+  45   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object update at 0x0000016DC90EDD10, file "bilisub\comic\project.py", line 49>:
+ 49           RESUME                   0
+
+ 51           LOAD_GLOBAL              1 (load + NULL)
+              LOAD_FAST                0 (root)
+              CALL                     1
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE        24 (to L1)
+              POP_TOP
+              LOAD_CONST               1 (1)
+              LOAD_GLOBAL              3 (Path + NULL)
+              LOAD_FAST                0 (root)
+              CALL                     1
+              LOAD_ATTR                4 (name)
+              LOAD_CONST               2 (('version', 'name'))
+              BUILD_CONST_KEY_MAP      2
+      L1:     STORE_FAST               2 (d)
+
+ 52           LOAD_FAST                2 (d)
+              LOAD_ATTR                7 (update + NULL|self)
+              LOAD_FAST                1 (fields)
+              CALL                     1
+              POP_TOP
+
+ 53           LOAD_GLOBAL              9 (save + NULL)
+              LOAD_FAST_LOAD_FAST      2 (root, d)
+              CALL                     2
+              POP_TOP
+
+ 54           LOAD_FAST                2 (d)
+              RETURN_VALUE
+
+Disassembly of <code object todo_chapters at 0x0000016DC8E0B930, file "bilisub\comic\project.py", line 57>:
+  57           RESUME                   0
+
+  59           LOAD_GLOBAL              1 (set + NULL)
+               LOAD_FAST                1 (proj)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L1)
+               POP_TOP
+               BUILD_MAP                0
+       L1:     LOAD_ATTR                3 (get + NULL|self)
+               LOAD_CONST               1 ('done_chapters')
+               CALL                     1
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L2)
+               POP_TOP
+               BUILD_LIST               0
+       L2:     CALL                     1
+               STORE_FAST               2 (done)
+
+  60           LOAD_FAST                0 (subs)
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      3 (d)
+               SWAP                     2
+       L3:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L4:     FOR_ITER                22 (to L7)
+               STORE_FAST_LOAD_FAST    51 (d, d)
+               LOAD_ATTR                4 (name)
+               LOAD_FAST                2 (done)
+               CONTAINS_OP              1
+       L5:     POP_JUMP_IF_TRUE         2 (to L6)
+               JUMP_BACKWARD           20 (to L4)
+       L6:     LOAD_FAST                3 (d)
+               LIST_APPEND              2
+               JUMP_BACKWARD           24 (to L4)
+       L7:     END_FOR
+               POP_TOP
+       L8:     SWAP                     2
+               STORE_FAST               3 (d)
+               LOAD_FAST                2 (done)
+               BUILD_TUPLE              2
+               RETURN_VALUE
+
+  --   L9:     SWAP                     2
+               POP_TOP
+
+  60           SWAP                     2
+               STORE_FAST               3 (d)
+               RERAISE                  0
+ExceptionTable:
+  L3 to L5 -> L9 [2]
+  L6 to L8 -> L9 [2]
+
+Disassembly of <code object list_projects at 0x0000016DC8F5B050, file "bilisub\comic\project.py", line 63>:
+ 63            RESUME                   0
+
+ 69            BUILD_LIST               0
+               STORE_FAST               1 (out)
+
+ 70            LOAD_GLOBAL              1 (set + NULL)
+               CALL                     0
+               STORE_FAST               2 (seen)
+
+ 71            LOAD_FAST                0 (search_roots)
+               GET_ITER
+       L1:     EXTENDED_ARG             1
+               FOR_ITER               325 (to L10)
+               STORE_FAST               3 (base)
+
+ 72            LOAD_GLOBAL              3 (Path + NULL)
+               LOAD_FAST                3 (base)
+               CALL                     1
+               STORE_FAST               4 (b)
+
+ 73            LOAD_FAST                4 (b)
+               LOAD_ATTR                5 (is_dir + NULL|self)
+               CALL                     0
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L2)
+
+ 74            JUMP_BACKWARD           38 (to L1)
+
+ 75    L2:     LOAD_FAST                4 (b)
+               LOAD_ATTR                7 (glob + NULL|self)
+               LOAD_CONST               1 ('*/')
+               LOAD_GLOBAL              8 (PROJECT_FILE)
+               FORMAT_SIMPLE
+               BUILD_STRING             2
+               CALL                     1
+               GET_ITER
+       L3:     EXTENDED_ARG             1
+               FOR_ITER               258 (to L9)
+               STORE_FAST               5 (p)
+
+ 76            LOAD_GLOBAL             11 (str + NULL)
+               LOAD_FAST                5 (p)
+               LOAD_ATTR               12 (parent)
+               LOAD_ATTR               15 (resolve + NULL|self)
+               CALL                     0
+               CALL                     1
+               STORE_FAST               6 (root)
+
+ 77            LOAD_FAST_LOAD_FAST     98 (root, seen)
+               CONTAINS_OP              0
+               POP_JUMP_IF_FALSE        2 (to L4)
+
+ 78            JUMP_BACKWARD           46 (to L3)
+
+ 79    L4:     LOAD_FAST                2 (seen)
+               LOAD_ATTR               17 (add + NULL|self)
+               LOAD_FAST                6 (root)
+               CALL                     1
+               POP_TOP
+
+ 80            LOAD_GLOBAL             19 (load + NULL)
+               LOAD_FAST                5 (p)
+               LOAD_ATTR               12 (parent)
+               CALL                     1
+               STORE_FAST               7 (d)
+
+ 81            LOAD_FAST                7 (d)
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L5)
+
+ 82            JUMP_BACKWARD           93 (to L3)
+
+ 83    L5:     LOAD_GLOBAL             21 (sum + NULL)
+               LOAD_CONST               2 (<code object <genexpr> at 0x0000016DC9128B70, file "bilisub\comic\project.py", line 83>)
+               MAKE_FUNCTION
+               LOAD_FAST                5 (p)
+               LOAD_ATTR               12 (parent)
+               LOAD_ATTR               23 (iterdir + NULL|self)
+               CALL                     0
+               GET_ITER
+               CALL                     0
+               CALL                     1
+               STORE_FAST               8 (total)
+
+ 84            LOAD_FAST                1 (out)
+               LOAD_ATTR               25 (append + NULL|self)
+               LOAD_FAST_LOAD_FAST    103 (root, d)
+               LOAD_ATTR               27 (get + NULL|self)
+               LOAD_CONST               3 ('name')
+               CALL                     1
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE        22 (to L6)
+               POP_TOP
+               LOAD_FAST                5 (p)
+               LOAD_ATTR               12 (parent)
+               LOAD_ATTR               28 (name)
+
+ 85    L6:     LOAD_GLOBAL             31 (len + NULL)
+               LOAD_FAST                7 (d)
+               LOAD_ATTR               27 (get + NULL|self)
+               LOAD_CONST               4 ('done_chapters')
+               CALL                     1
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L7)
+               POP_TOP
+               BUILD_LIST               0
+       L7:     CALL                     1
+               LOAD_FAST                8 (total)
+
+ 86            LOAD_FAST                7 (d)
+               LOAD_ATTR               27 (get + NULL|self)
+               LOAD_CONST               5 ('updated_at')
+               CALL                     1
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L8)
+               POP_TOP
+               LOAD_CONST               6 ('')
+
+ 84    L8:     LOAD_CONST               7 (('root', 'name', 'done', 'total', 'updated_at'))
+               BUILD_CONST_KEY_MAP      5
+               CALL                     1
+               POP_TOP
+               EXTENDED_ARG             1
+               JUMP_BACKWARD          261 (to L3)
+
+ 75    L9:     END_FOR
+               POP_TOP
+               EXTENDED_ARG             1
+               JUMP_BACKWARD          328 (to L1)
+
+ 71   L10:     END_FOR
+               POP_TOP
+
+ 87            LOAD_FAST                1 (out)
+               LOAD_ATTR               33 (sort + NULL|self)
+               LOAD_CONST               8 (<code object <lambda> at 0x0000016DC8EB8C70, file "bilisub\comic\project.py", line 87>)
+               MAKE_FUNCTION
+               LOAD_CONST               9 (True)
+               LOAD_CONST              10 (('key', 'reverse'))
+               CALL_KW                  2
+               POP_TOP
+
+ 88            LOAD_FAST                1 (out)
+               RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC9128B70, file "bilisub\comic\project.py", line 83>:
+  83           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                29 (to L5)
+               STORE_FAST_LOAD_FAST    17 (x, x)
+               LOAD_ATTR                1 (is_dir + NULL|self)
+               CALL                     0
+               TO_BOOL
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           25 (to L2)
+       L4:     LOAD_CONST               0 (1)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           31 (to L2)
+       L5:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L6:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L6 [0] lasti
+  L4 to L6 -> L6 [0] lasti
+
+Disassembly of <code object <lambda> at 0x0000016DC8EB8C70, file "bilisub\comic\project.py", line 87>:
+ 87           RESUME                   0
+              LOAD_FAST                0 (x)
+              LOAD_CONST               1 ('updated_at')
+              BINARY_SUBSCR
+              RETURN_VALUE

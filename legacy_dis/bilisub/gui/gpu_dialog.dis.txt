@@ -1,0 +1,1137 @@
+=== FILE: bilisub\gui\gpu_dialog.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('⚡ Dialog TẢI GÓI TĂNG TỐC GPU — chỉ dành cho máy có card NVIDIA.\n\nBản .exe giao khách KHÔNG nhồi thư viện CUDA (giữ .exe nhẹ ~280MB). Máy nào có card NVIDIA,\nbấm nút này tải gói cuBLAS (~527MB) về %LOCALAPPDATA%\\PeiPeiReup\\gpu → tự bật GPU cho khâu\nnghe giọng (Whisper) nhanh hơn ~3×. Máy không có card → khỏi tải, tool vẫn chạy CPU bình thường.\n')
+              STORE_NAME               0 (__doc__)
+
+  7           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+  9           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (zipfile)
+              STORE_NAME               3 (zipfile)
+
+ 10           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Path',))
+              IMPORT_NAME              4 (pathlib)
+              IMPORT_FROM              5 (Path)
+              STORE_NAME               5 (Path)
+              POP_TOP
+
+ 12           LOAD_CONST               1 (0)
+              LOAD_CONST               5 (('QThread', 'pyqtSignal'))
+              IMPORT_NAME              6 (PyQt6.QtCore)
+              IMPORT_FROM              7 (QThread)
+              STORE_NAME               7 (QThread)
+              IMPORT_FROM              8 (pyqtSignal)
+              STORE_NAME               8 (pyqtSignal)
+              POP_TOP
+
+ 13           LOAD_CONST               1 (0)
+              LOAD_CONST               6 (('QDialog', 'QFileDialog', 'QHBoxLayout', 'QLabel', 'QLineEdit', 'QProgressBar', 'QPushButton', 'QVBoxLayout'))
+              IMPORT_NAME              9 (PyQt6.QtWidgets)
+              IMPORT_FROM             10 (QDialog)
+              STORE_NAME              10 (QDialog)
+              IMPORT_FROM             11 (QFileDialog)
+              STORE_NAME              11 (QFileDialog)
+              IMPORT_FROM             12 (QHBoxLayout)
+              STORE_NAME              12 (QHBoxLayout)
+              IMPORT_FROM             13 (QLabel)
+              STORE_NAME              13 (QLabel)
+              IMPORT_FROM             14 (QLineEdit)
+              STORE_NAME              14 (QLineEdit)
+              IMPORT_FROM             15 (QProgressBar)
+              STORE_NAME              15 (QProgressBar)
+              IMPORT_FROM             16 (QPushButton)
+              STORE_NAME              16 (QPushButton)
+              IMPORT_FROM             17 (QVBoxLayout)
+              STORE_NAME              17 (QVBoxLayout)
+              POP_TOP
+
+ 17           LOAD_CONST               7 (2)
+              LOAD_CONST               8 (('pack_root', 'set_pack_root'))
+              IMPORT_NAME             18 (config)
+              IMPORT_FROM             19 (pack_root)
+              STORE_NAME              19 (pack_root)
+              IMPORT_FROM             20 (set_pack_root)
+              STORE_NAME              20 (set_pack_root)
+              POP_TOP
+
+ 18           LOAD_CONST               7 (2)
+              LOAD_CONST               9 (('gpu_pack_dir', 'gpu_pack_installed', 'gpu_pack_has_ocr', 'has_cuda_gpu'))
+              IMPORT_NAME             21 (gpu)
+              IMPORT_FROM             22 (gpu_pack_dir)
+              STORE_NAME              22 (gpu_pack_dir)
+              IMPORT_FROM             23 (gpu_pack_installed)
+              STORE_NAME              23 (gpu_pack_installed)
+              IMPORT_FROM             24 (gpu_pack_has_ocr)
+              STORE_NAME              24 (gpu_pack_has_ocr)
+              IMPORT_FROM             25 (has_cuda_gpu)
+              STORE_NAME              26 (_has_cuda_gpu)
+              POP_TOP
+
+ 20           LOAD_CONST              10 ('https://github.com/LeeJiHoon0112/peipei-downloads/releases/download/v1.0/peipei_gpu_pack.zip')
+              STORE_NAME              27 (_PACK_URL)
+
+ 24           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              11 (<code object _GpuWorker at 0x0000016DC9129C50, file "bilisub\gui\gpu_dialog.py", line 24>)
+              MAKE_FUNCTION
+              LOAD_CONST              12 ('_GpuWorker')
+              LOAD_NAME                7 (QThread)
+              CALL                     3
+              STORE_NAME              28 (_GpuWorker)
+
+ 84           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              13 (<code object GpuAccelDialog at 0x0000016DC9129110, file "bilisub\gui\gpu_dialog.py", line 84>)
+              MAKE_FUNCTION
+              LOAD_CONST              14 ('GpuAccelDialog')
+              LOAD_NAME               10 (QDialog)
+              CALL                     3
+              STORE_NAME              29 (GpuAccelDialog)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object _GpuWorker at 0x0000016DC9129C50, file "bilisub\gui\gpu_dialog.py", line 24>:
+ 24           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('_GpuWorker')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (24)
+              STORE_NAME               3 (__firstlineno__)
+
+ 25           LOAD_NAME                4 (pyqtSignal)
+              PUSH_NULL
+              LOAD_NAME                5 (int)
+              CALL                     1
+              STORE_NAME               6 (prog)
+
+ 26           LOAD_NAME                4 (pyqtSignal)
+              PUSH_NULL
+              LOAD_NAME                7 (str)
+              CALL                     1
+              STORE_NAME               8 (stage)
+
+ 27           LOAD_NAME                4 (pyqtSignal)
+              PUSH_NULL
+              CALL                     0
+              STORE_NAME               9 (done)
+
+ 28           LOAD_NAME                4 (pyqtSignal)
+              PUSH_NULL
+              LOAD_NAME                7 (str)
+              CALL                     1
+              STORE_NAME              10 (failed)
+
+ 30           LOAD_CONST               2 (<code object run at 0x0000016DC92132C0, file "bilisub\gui\gpu_dialog.py", line 30>)
+              MAKE_FUNCTION
+              STORE_NAME              11 (run)
+              LOAD_CONST               3 (())
+              STORE_NAME              12 (__static_attributes__)
+              RETURN_CONST             4 (None)
+
+Disassembly of <code object run at 0x0000016DC92132C0, file "bilisub\gui\gpu_dialog.py", line 30>:
+  30            RESUME                   0
+
+  31            LOAD_CONST               1 (0)
+                LOAD_CONST               0 (None)
+                IMPORT_NAME              0 (shutil)
+                STORE_FAST               1 (shutil)
+
+  33            LOAD_CONST               1 (0)
+                LOAD_CONST               0 (None)
+                IMPORT_NAME              1 (requests)
+                STORE_FAST               2 (requests)
+
+  34            LOAD_CONST               0 (None)
+                STORE_FAST               3 (tmp)
+
+  35            NOP
+
+  36    L1:     LOAD_GLOBAL              5 (gpu_pack_dir + NULL)
+                CALL                     0
+                STORE_FAST               4 (dst)
+
+  37            LOAD_FAST                4 (dst)
+                LOAD_ATTR                7 (mkdir + NULL|self)
+                LOAD_CONST               2 (True)
+                LOAD_CONST               2 (True)
+                LOAD_CONST               3 (('parents', 'exist_ok'))
+                CALL_KW                  2
+                POP_TOP
+
+  39    L2:     NOP
+
+  40    L3:     LOAD_FAST                1 (shutil)
+                LOAD_ATTR                9 (disk_usage + NULL|self)
+                LOAD_FAST                4 (dst)
+                CALL                     1
+                LOAD_ATTR               10 (free)
+                LOAD_CONST               4 (1073741824)
+                BINARY_OP               11 (/)
+                STORE_FAST               5 (_free_gb)
+
+  43    L4:     LOAD_FAST                5 (_free_gb)
+                LOAD_CONST               6 (4.0)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       38 (to L6)
+
+  44            LOAD_GLOBAL             15 (RuntimeError + NULL)
+
+  45            LOAD_CONST               7 ('Ổ chứa gói (')
+                LOAD_FAST                4 (dst)
+                LOAD_ATTR               16 (drive)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L5)
+                POP_TOP
+                LOAD_FAST                4 (dst)
+        L5:     FORMAT_SIMPLE
+                LOAD_CONST               8 (') chỉ còn ')
+                LOAD_FAST                5 (_free_gb)
+                LOAD_CONST               9 ('.1f')
+                FORMAT_WITH_SPEC
+                LOAD_CONST              10 (" GB trống — cần khoảng 4 GB (tải ~1,5GB + giải nén). Bấm '…' chọn ổ khác còn nhiều chỗ rồi tải lại.")
+                BUILD_STRING             5
+
+  44            CALL                     1
+                RAISE_VARARGS            1
+
+  49    L6:     LOAD_FAST                4 (dst)
+                LOAD_CONST              11 ('_pack_download.zip')
+                BINARY_OP               11 (/)
+                STORE_FAST               3 (tmp)
+
+  50            LOAD_FAST                0 (self)
+                LOAD_ATTR               18 (stage)
+                LOAD_ATTR               21 (emit + NULL|self)
+                LOAD_CONST              12 ('Đang tải gói tăng tốc GPU (~1.5GB)... (chỉ tải một lần)')
+                CALL                     1
+                POP_TOP
+
+  51            LOAD_FAST                2 (requests)
+                LOAD_ATTR               23 (get + NULL|self)
+                LOAD_GLOBAL             24 (_PACK_URL)
+                LOAD_CONST               2 (True)
+                LOAD_CONST              13 ((15, 120))
+                LOAD_CONST              14 (('stream', 'timeout'))
+                CALL_KW                  3
+                BEFORE_WITH
+        L7:     STORE_FAST               6 (r)
+
+  52            LOAD_FAST                6 (r)
+                LOAD_ATTR               27 (raise_for_status + NULL|self)
+                CALL                     0
+                POP_TOP
+
+  53            LOAD_GLOBAL             29 (int + NULL)
+                LOAD_FAST                6 (r)
+                LOAD_ATTR               30 (headers)
+                LOAD_ATTR               23 (get + NULL|self)
+                LOAD_CONST              15 ('Content-Length')
+                LOAD_CONST               1 (0)
+                CALL                     2
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L8)
+                POP_TOP
+                LOAD_CONST               1 (0)
+        L8:     CALL                     1
+                STORE_FAST               7 (total)
+
+  54            LOAD_CONST               1 (0)
+                STORE_FAST               8 (got)
+
+  55            LOAD_GLOBAL             33 (open + NULL)
+                LOAD_FAST                3 (tmp)
+                LOAD_CONST              16 ('wb')
+                CALL                     2
+                BEFORE_WITH
+        L9:     STORE_FAST               9 (f)
+
+  56            LOAD_FAST                6 (r)
+                LOAD_ATTR               35 (iter_content + NULL|self)
+                LOAD_CONST              17 (1048576)
+                CALL                     1
+                GET_ITER
+       L10:     FOR_ITER               104 (to L15)
+                STORE_FAST              10 (chunk)
+
+  57            LOAD_FAST               10 (chunk)
+                TO_BOOL
+       L11:     POP_JUMP_IF_TRUE         2 (to L12)
+                JUMP_BACKWARD           12 (to L10)
+
+  58   L12:     LOAD_FAST                9 (f)
+                LOAD_ATTR               37 (write + NULL|self)
+                LOAD_FAST               10 (chunk)
+                CALL                     1
+                POP_TOP
+
+  59            LOAD_FAST                8 (got)
+                LOAD_GLOBAL             39 (len + NULL)
+                LOAD_FAST               10 (chunk)
+                CALL                     1
+                BINARY_OP               13 (+=)
+                STORE_FAST               8 (got)
+
+  60            LOAD_FAST                7 (total)
+                TO_BOOL
+       L13:     POP_JUMP_IF_TRUE         2 (to L14)
+                JUMP_BACKWARD           52 (to L10)
+
+  61   L14:     LOAD_FAST                0 (self)
+                LOAD_ATTR               40 (prog)
+                LOAD_ATTR               21 (emit + NULL|self)
+                LOAD_GLOBAL             43 (min + NULL)
+                LOAD_CONST              18 (95)
+                LOAD_GLOBAL             29 (int + NULL)
+                LOAD_FAST                8 (got)
+                LOAD_CONST              18 (95)
+                BINARY_OP                5 (*)
+                LOAD_FAST                7 (total)
+                BINARY_OP               11 (/)
+                CALL                     1
+                CALL                     2
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD          106 (to L10)
+
+  56   L15:     END_FOR
+                POP_TOP
+
+  55   L16:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+
+  51   L17:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+
+  62   L18:     LOAD_FAST                0 (self)
+                LOAD_ATTR               18 (stage)
+                LOAD_ATTR               21 (emit + NULL|self)
+                LOAD_CONST              19 ('Đang giải nén...')
+                CALL                     1
+                POP_TOP
+
+  63            LOAD_GLOBAL             44 (zipfile)
+                LOAD_ATTR               46 (ZipFile)
+                PUSH_NULL
+                LOAD_FAST                3 (tmp)
+                CALL                     1
+                BEFORE_WITH
+       L19:     STORE_FAST              11 (z)
+
+  64            LOAD_FAST               11 (z)
+                LOAD_ATTR               49 (extractall + NULL|self)
+                LOAD_FAST                4 (dst)
+                CALL                     1
+                POP_TOP
+
+  63   L20:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+
+  65   L21:     LOAD_FAST                3 (tmp)
+                LOAD_ATTR               51 (unlink + NULL|self)
+                LOAD_CONST               2 (True)
+                LOAD_CONST              20 (('missing_ok',))
+                CALL_KW                  1
+                POP_TOP
+
+  66            LOAD_GLOBAL             53 (gpu_pack_installed + NULL)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_TRUE        11 (to L22)
+
+  67            LOAD_GLOBAL             15 (RuntimeError + NULL)
+                LOAD_CONST              21 ('giải nén xong nhưng thiếu cublas64_12.dll')
+                CALL                     1
+                RAISE_VARARGS            1
+
+  70   L22:     LOAD_GLOBAL             55 (gpu_pack_has_ocr + NULL)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_TRUE        27 (to L23)
+
+  71            LOAD_FAST                0 (self)
+                LOAD_ATTR               18 (stage)
+                LOAD_ATTR               21 (emit + NULL|self)
+                LOAD_CONST              22 ('⚠ Gói thiếu cuDNN — Whisper (nghe thoại) vẫn tăng tốc GPU, nhưng OCR đọc phụ đề sẽ chạy CPU. Nếu cần OCR nhanh, tải lại gói đầy đủ.')
+                CALL                     1
+                POP_TOP
+
+  73   L23:     LOAD_FAST                0 (self)
+                LOAD_ATTR               40 (prog)
+                LOAD_ATTR               21 (emit + NULL|self)
+                LOAD_CONST              23 (100)
+                CALL                     1
+                POP_TOP
+
+  74            LOAD_FAST                0 (self)
+                LOAD_ATTR               56 (done)
+                LOAD_ATTR               21 (emit + NULL|self)
+                CALL                     0
+                POP_TOP
+       L24:     RETURN_CONST             0 (None)
+
+  --   L25:     PUSH_EXC_INFO
+
+  41            LOAD_GLOBAL             12 (OSError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        6 (to L27)
+                POP_TOP
+
+  42            LOAD_CONST               5 (999.0)
+                STORE_FAST               5 (_free_gb)
+       L26:     POP_EXCEPT
+                EXTENDED_ARG             2
+                JUMP_BACKWARD_NO_INTERRUPT 543 (to L4)
+
+  41   L27:     RERAISE                  0
+
+  --   L28:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+  55   L29:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L30)
+                RERAISE                  2
+       L30:     POP_TOP
+       L31:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                JUMP_BACKWARD_NO_INTERRUPT 253 (to L17)
+
+  --   L32:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+  51   L33:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L34)
+                RERAISE                  2
+       L34:     POP_TOP
+       L35:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                EXTENDED_ARG             1
+                JUMP_BACKWARD_NO_INTERRUPT 263 (to L18)
+
+  --   L36:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+  63   L37:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L38)
+                RERAISE                  2
+       L38:     POP_TOP
+       L39:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                JUMP_BACKWARD_NO_INTERRUPT 205 (to L21)
+
+  --   L40:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L41:     PUSH_EXC_INFO
+
+  75            LOAD_GLOBAL             58 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       85 (to L52)
+                STORE_FAST              12 (e)
+
+  76   L42:     NOP
+
+  77   L43:     LOAD_FAST                3 (tmp)
+                POP_JUMP_IF_NONE        15 (to L44)
+
+  78            LOAD_FAST                3 (tmp)
+                LOAD_ATTR               51 (unlink + NULL|self)
+                LOAD_CONST               2 (True)
+                LOAD_CONST              20 (('missing_ok',))
+                CALL_KW                  1
+                POP_TOP
+
+  --   L44:     JUMP_FORWARD            16 (to L49)
+       L45:     PUSH_EXC_INFO
+
+  79            LOAD_GLOBAL             12 (OSError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L47)
+                POP_TOP
+
+  80   L46:     POP_EXCEPT
+                JUMP_FORWARD             4 (to L49)
+
+  79   L47:     RERAISE                  0
+
+  --   L48:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+  81   L49:     LOAD_FAST                0 (self)
+                LOAD_ATTR               60 (failed)
+                LOAD_ATTR               21 (emit + NULL|self)
+                LOAD_GLOBAL             63 (str + NULL)
+                LOAD_FAST               12 (e)
+                CALL                     1
+                LOAD_CONST               0 (None)
+                LOAD_CONST              24 (200)
+                BINARY_SLICE
+                CALL                     1
+                POP_TOP
+       L50:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST              12 (e)
+                DELETE_FAST             12 (e)
+                RETURN_CONST             0 (None)
+
+  --   L51:     LOAD_CONST               0 (None)
+                STORE_FAST              12 (e)
+                DELETE_FAST             12 (e)
+                RERAISE                  1
+
+  75   L52:     RERAISE                  0
+
+  --   L53:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L41 [0]
+  L3 to L4 -> L25 [0]
+  L4 to L7 -> L41 [0]
+  L7 to L9 -> L33 [1] lasti
+  L9 to L11 -> L29 [2] lasti
+  L12 to L13 -> L29 [2] lasti
+  L14 to L16 -> L29 [2] lasti
+  L16 to L17 -> L33 [1] lasti
+  L17 to L19 -> L41 [0]
+  L19 to L20 -> L37 [1] lasti
+  L20 to L24 -> L41 [0]
+  L25 to L26 -> L28 [1] lasti
+  L26 to L27 -> L41 [0]
+  L27 to L28 -> L28 [1] lasti
+  L28 to L29 -> L41 [0]
+  L29 to L31 -> L32 [4] lasti
+  L31 to L33 -> L33 [1] lasti
+  L33 to L35 -> L36 [3] lasti
+  L35 to L37 -> L41 [0]
+  L37 to L39 -> L40 [3] lasti
+  L39 to L41 -> L41 [0]
+  L41 to L42 -> L53 [1] lasti
+  L43 to L44 -> L45 [1]
+  L44 to L45 -> L51 [1] lasti
+  L45 to L46 -> L48 [2] lasti
+  L46 to L47 -> L51 [1] lasti
+  L47 to L48 -> L48 [2] lasti
+  L48 to L50 -> L51 [1] lasti
+  L51 to L53 -> L53 [1] lasti
+
+Disassembly of <code object GpuAccelDialog at 0x0000016DC9129110, file "bilisub\gui\gpu_dialog.py", line 84>:
+  --           MAKE_CELL                0 (__class__)
+
+  84           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('GpuAccelDialog')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (84)
+               STORE_NAME               3 (__firstlineno__)
+
+  85           LOAD_CONST               9 ((None,))
+               LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               2 (<code object __init__ at 0x0000016DC922F3C0, file "bilisub\gui\gpu_dialog.py", line 85>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME               4 (__init__)
+
+ 149           LOAD_CONST               3 (<code object _choose_dir at 0x0000016DC90D08F0, file "bilisub\gui\gpu_dialog.py", line 149>)
+               MAKE_FUNCTION
+               STORE_NAME               5 (_choose_dir)
+
+ 155           LOAD_CONST               4 (<code object _start at 0x0000016DC93B7F90, file "bilisub\gui\gpu_dialog.py", line 155>)
+               MAKE_FUNCTION
+               STORE_NAME               6 (_start)
+
+ 170           LOAD_CONST               5 (<code object _done at 0x0000016DC8DB24C0, file "bilisub\gui\gpu_dialog.py", line 170>)
+               MAKE_FUNCTION
+               STORE_NAME               7 (_done)
+
+ 180           LOAD_CONST              10 (('msg', 'str'))
+               LOAD_CONST               6 (<code object _failed at 0x0000016DC8E0BDB0, file "bilisub\gui\gpu_dialog.py", line 180>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME               8 (_failed)
+
+ 185           LOAD_CONST               7 (<code object closeEvent at 0x0000016DC8E0B4B0, file "bilisub\gui\gpu_dialog.py", line 185>)
+               MAKE_FUNCTION
+               STORE_NAME               9 (closeEvent)
+               LOAD_CONST               8 (('bar', 'btn', 'dir_edit', 'stage', 'worker'))
+               STORE_NAME              10 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME              11 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC922F3C0, file "bilisub\gui\gpu_dialog.py", line 85>:
+  --           COPY_FREE_VARS           1
+
+  85           RESUME                   0
+
+  86           LOAD_GLOBAL              0 (super)
+               LOAD_DEREF              10 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+               LOAD_FAST                1 (parent)
+               CALL                     1
+               POP_TOP
+
+  87           LOAD_CONST               0 (None)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               2 (worker)
+
+  88           LOAD_FAST                0 (self)
+               LOAD_ATTR                7 (setWindowTitle + NULL|self)
+               LOAD_CONST               1 ('⚡ Tăng tốc GPU (card NVIDIA)')
+               CALL                     1
+               POP_TOP
+
+  89           LOAD_FAST                0 (self)
+               LOAD_ATTR                9 (resize + NULL|self)
+               LOAD_CONST               2 (520)
+               LOAD_CONST               3 (260)
+               CALL                     2
+               POP_TOP
+
+  90           LOAD_GLOBAL             11 (QVBoxLayout + NULL)
+               LOAD_FAST                0 (self)
+               CALL                     1
+               STORE_FAST               2 (lay)
+
+  92           LOAD_GLOBAL             13 (_has_cuda_gpu + NULL)
+               CALL                     0
+               STORE_FAST               3 (has_gpu)
+
+  93           LOAD_GLOBAL             15 (gpu_pack_installed + NULL)
+               CALL                     0
+               STORE_FAST               4 (installed)
+
+  95           LOAD_FAST                4 (installed)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        3 (to L1)
+
+  96           LOAD_CONST               4 ('✅ Đã bật tăng tốc GPU. Đọc phụ đề cứng (OCR) + nghe giọng (Whisper) đang chạy trên card NVIDIA — nhanh hơn ~3× so với CPU.')
+               STORE_FAST               5 (head)
+               JUMP_FORWARD            12 (to L3)
+
+  98   L1:     LOAD_FAST                3 (has_gpu)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        3 (to L2)
+
+  99           LOAD_CONST               5 ('Máy bạn CÓ card NVIDIA. Tải gói tăng tốc (~1.5GB) để ĐỌC PHỤ ĐỀ CỨNG (OCR) + nghe giọng chạy trên GPU — nhanh hơn ~3×. Video dài sub cứng đỡ được hàng GIỜ (6 tiếng: đọc sub 10 tiếng → ~4 tiếng).')
+               STORE_FAST               5 (head)
+               JUMP_FORWARD             2 (to L3)
+
+ 103   L2:     LOAD_CONST               6 ('Không phát hiện card NVIDIA trên máy này. Gói GPU chỉ dùng được với card NVIDIA — máy của bạn vẫn chạy tốt bằng CPU, KHÔNG cần tải gì.')
+               STORE_FAST               5 (head)
+
+ 105   L3:     LOAD_GLOBAL             17 (QLabel + NULL)
+               LOAD_FAST                5 (head)
+               CALL                     1
+               STORE_FAST               6 (lb)
+
+ 106           LOAD_FAST                6 (lb)
+               LOAD_ATTR               19 (setWordWrap + NULL|self)
+               LOAD_CONST               7 (True)
+               CALL                     1
+               POP_TOP
+
+ 107           LOAD_FAST                2 (lay)
+               LOAD_ATTR               21 (addWidget + NULL|self)
+               LOAD_FAST                6 (lb)
+               CALL                     1
+               POP_TOP
+
+ 109           LOAD_GLOBAL             17 (QLabel + NULL)
+               LOAD_CONST               8 ('• Chỉ tải MỘT LẦN, lưu ở máy.\n• Máy không có card NVIDIA không cần gói này.\n• Sau khi tải xong hãy TẮT & MỞ LẠI tool để có hiệu lực.')
+               CALL                     1
+               STORE_FAST               7 (note)
+
+ 112           LOAD_FAST                7 (note)
+               LOAD_ATTR               23 (setStyleSheet + NULL|self)
+               LOAD_CONST               9 ('color:#94a3b8; font-size:12px;')
+               CALL                     1
+               POP_TOP
+
+ 113           LOAD_FAST                2 (lay)
+               LOAD_ATTR               21 (addWidget + NULL|self)
+               LOAD_FAST                7 (note)
+               CALL                     1
+               POP_TOP
+
+ 116           LOAD_CONST               0 (None)
+               LOAD_FAST                0 (self)
+               STORE_ATTR              12 (dir_edit)
+
+ 117           LOAD_FAST                3 (has_gpu)
+               TO_BOOL
+               POP_JUMP_IF_FALSE      230 (to L4)
+               LOAD_FAST                4 (installed)
+               TO_BOOL
+               POP_JUMP_IF_TRUE       223 (to L4)
+
+ 118           LOAD_GLOBAL             27 (QHBoxLayout + NULL)
+               CALL                     0
+               STORE_FAST               8 (row)
+
+ 119           LOAD_FAST                8 (row)
+               LOAD_ATTR               21 (addWidget + NULL|self)
+               LOAD_GLOBAL             17 (QLabel + NULL)
+               LOAD_CONST              10 ('Tải về ổ / thư mục:')
+               CALL                     1
+               CALL                     1
+               POP_TOP
+
+ 120           LOAD_GLOBAL             29 (QLineEdit + NULL)
+               LOAD_GLOBAL             31 (str + NULL)
+               LOAD_GLOBAL             33 (pack_root + NULL)
+               CALL                     0
+               CALL                     1
+               CALL                     1
+               LOAD_FAST                0 (self)
+               STORE_ATTR              12 (dir_edit)
+
+ 121           LOAD_FAST                0 (self)
+               LOAD_ATTR               24 (dir_edit)
+               LOAD_ATTR               35 (setToolTip + NULL|self)
+               LOAD_CONST              11 ('Nơi lưu gói tăng tốc GPU. Chọn ổ D… nếu ổ C sắp đầy. Mặc định %LOCALAPPDATA% (ổ C).')
+               CALL                     1
+               POP_TOP
+
+ 123           LOAD_FAST                8 (row)
+               LOAD_ATTR               21 (addWidget + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               24 (dir_edit)
+               LOAD_CONST              12 (1)
+               CALL                     2
+               POP_TOP
+
+ 124           LOAD_GLOBAL             37 (QPushButton + NULL)
+               LOAD_CONST              13 ('…')
+               CALL                     1
+               STORE_FAST               9 (b_dir)
+
+ 125           LOAD_FAST                9 (b_dir)
+               LOAD_ATTR               39 (setFixedWidth + NULL|self)
+               LOAD_CONST              14 (36)
+               CALL                     1
+               POP_TOP
+
+ 126           LOAD_FAST                9 (b_dir)
+               LOAD_ATTR               40 (clicked)
+               LOAD_ATTR               43 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               44 (_choose_dir)
+               CALL                     1
+               POP_TOP
+
+ 127           LOAD_FAST                8 (row)
+               LOAD_ATTR               21 (addWidget + NULL|self)
+               LOAD_FAST                9 (b_dir)
+               CALL                     1
+               POP_TOP
+
+ 128           LOAD_FAST                2 (lay)
+               LOAD_ATTR               47 (addLayout + NULL|self)
+               LOAD_FAST                8 (row)
+               CALL                     1
+               POP_TOP
+
+ 130   L4:     LOAD_GLOBAL             49 (QProgressBar + NULL)
+               CALL                     0
+               LOAD_FAST                0 (self)
+               STORE_ATTR              25 (bar)
+
+ 131           LOAD_FAST                2 (lay)
+               LOAD_ATTR               21 (addWidget + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               50 (bar)
+               CALL                     1
+               POP_TOP
+
+ 132           LOAD_GLOBAL             17 (QLabel + NULL)
+               LOAD_CONST              15 ('')
+               CALL                     1
+               LOAD_FAST                0 (self)
+               STORE_ATTR              26 (stage)
+
+ 133           LOAD_FAST                0 (self)
+               LOAD_ATTR               52 (stage)
+               LOAD_ATTR               23 (setStyleSheet + NULL|self)
+               LOAD_CONST              16 ('color:#94a3b8;')
+               CALL                     1
+               POP_TOP
+
+ 134           LOAD_FAST                2 (lay)
+               LOAD_ATTR               21 (addWidget + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               52 (stage)
+               CALL                     1
+               POP_TOP
+
+ 136           LOAD_GLOBAL             37 (QPushButton + NULL)
+               CALL                     0
+               LOAD_FAST                0 (self)
+               STORE_ATTR              27 (btn)
+
+ 137           LOAD_FAST                0 (self)
+               LOAD_ATTR               54 (btn)
+               LOAD_ATTR               57 (setObjectName + NULL|self)
+               LOAD_CONST              17 ('primary')
+               CALL                     1
+               POP_TOP
+
+ 138           LOAD_FAST                4 (installed)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       75 (to L5)
+
+ 139           LOAD_FAST                0 (self)
+               LOAD_ATTR               54 (btn)
+               LOAD_ATTR               59 (setText + NULL|self)
+               LOAD_CONST              18 ('Đã cài — Đóng')
+               CALL                     1
+               POP_TOP
+
+ 140           LOAD_FAST                0 (self)
+               LOAD_ATTR               54 (btn)
+               LOAD_ATTR               40 (clicked)
+               LOAD_ATTR               43 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               60 (accept)
+               CALL                     1
+               POP_TOP
+               JUMP_FORWARD           156 (to L7)
+
+ 141   L5:     LOAD_FAST                3 (has_gpu)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       75 (to L6)
+
+ 142           LOAD_FAST                0 (self)
+               LOAD_ATTR               54 (btn)
+               LOAD_ATTR               59 (setText + NULL|self)
+               LOAD_CONST              19 ('⬇ Tải gói tăng tốc GPU (~1.5GB)')
+               CALL                     1
+               POP_TOP
+
+ 143           LOAD_FAST                0 (self)
+               LOAD_ATTR               54 (btn)
+               LOAD_ATTR               40 (clicked)
+               LOAD_ATTR               43 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               62 (_start)
+               CALL                     1
+               POP_TOP
+               JUMP_FORWARD            74 (to L7)
+
+ 145   L6:     LOAD_FAST                0 (self)
+               LOAD_ATTR               54 (btn)
+               LOAD_ATTR               59 (setText + NULL|self)
+               LOAD_CONST              20 ('Đóng')
+               CALL                     1
+               POP_TOP
+
+ 146           LOAD_FAST                0 (self)
+               LOAD_ATTR               54 (btn)
+               LOAD_ATTR               40 (clicked)
+               LOAD_ATTR               43 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               60 (accept)
+               CALL                     1
+               POP_TOP
+
+ 147   L7:     LOAD_FAST                2 (lay)
+               LOAD_ATTR               21 (addWidget + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               54 (btn)
+               CALL                     1
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object _choose_dir at 0x0000016DC90D08F0, file "bilisub\gui\gpu_dialog.py", line 149>:
+149           RESUME                   0
+
+150           LOAD_GLOBAL              0 (QFileDialog)
+              LOAD_ATTR                2 (getExistingDirectory)
+              PUSH_NULL
+              LOAD_FAST                0 (self)
+              LOAD_CONST               1 ('Chọn ổ / thư mục tải gói GPU')
+
+151           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       26 (to L1)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              LOAD_ATTR                7 (text + NULL|self)
+              CALL                     0
+              JUMP_FORWARD             1 (to L2)
+      L1:     LOAD_CONST               2 ('')
+
+150   L2:     CALL                     3
+              STORE_FAST               1 (d)
+
+152           LOAD_FAST                1 (d)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       42 (to L4)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              POP_JUMP_IF_NONE        28 (to L3)
+
+153           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              LOAD_ATTR                9 (setText + NULL|self)
+              LOAD_FAST                1 (d)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+152   L3:     RETURN_CONST             0 (None)
+      L4:     RETURN_CONST             0 (None)
+
+Disassembly of <code object _start at 0x0000016DC93B7F90, file "bilisub\gui\gpu_dialog.py", line 155>:
+155           RESUME                   0
+
+156           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (worker)
+              POP_JUMP_IF_NONE        32 (to L1)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (worker)
+              LOAD_ATTR                3 (isRunning + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE        1 (to L1)
+
+157           RETURN_CONST             0 (None)
+
+159   L1:     LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              POP_JUMP_IF_NONE        69 (to L2)
+
+160           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              LOAD_ATTR                7 (setText + NULL|self)
+              LOAD_GLOBAL              9 (str + NULL)
+              LOAD_GLOBAL             11 (set_pack_root + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              LOAD_ATTR               13 (text + NULL|self)
+              CALL                     0
+              CALL                     1
+              CALL                     1
+              CALL                     1
+              POP_TOP
+
+161   L2:     LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (btn)
+              LOAD_ATTR               17 (setEnabled + NULL|self)
+              LOAD_CONST               1 (False)
+              CALL                     1
+              POP_TOP
+
+162           LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (btn)
+              LOAD_ATTR                7 (setText + NULL|self)
+              LOAD_CONST               2 ('⏳ Đang tải…')
+              CALL                     1
+              POP_TOP
+
+163           LOAD_GLOBAL             19 (_GpuWorker + NULL)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              STORE_ATTR               0 (worker)
+
+164           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (worker)
+              LOAD_ATTR               20 (prog)
+              LOAD_ATTR               23 (connect + NULL|self)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               24 (bar)
+              LOAD_ATTR               26 (setValue)
+              CALL                     1
+              POP_TOP
+
+165           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (worker)
+              LOAD_ATTR               28 (stage)
+              LOAD_ATTR               23 (connect + NULL|self)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               28 (stage)
+              LOAD_ATTR                6 (setText)
+              CALL                     1
+              POP_TOP
+
+166           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (worker)
+              LOAD_ATTR               30 (done)
+              LOAD_ATTR               23 (connect + NULL|self)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               32 (_done)
+              CALL                     1
+              POP_TOP
+
+167           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (worker)
+              LOAD_ATTR               34 (failed)
+              LOAD_ATTR               23 (connect + NULL|self)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               36 (_failed)
+              CALL                     1
+              POP_TOP
+
+168           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (worker)
+              LOAD_ATTR               39 (start + NULL|self)
+              CALL                     0
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _done at 0x0000016DC8DB24C0, file "bilisub\gui\gpu_dialog.py", line 170>:
+ 170           RESUME                   0
+
+ 171           LOAD_FAST                0 (self)
+               LOAD_ATTR                0 (stage)
+               LOAD_ATTR                3 (setText + NULL|self)
+               LOAD_CONST               1 ('✅ Xong! TẮT & MỞ LẠI tool để bật GPU.')
+               CALL                     1
+               POP_TOP
+
+ 172           LOAD_FAST                0 (self)
+               LOAD_ATTR                4 (btn)
+               LOAD_ATTR                7 (setEnabled + NULL|self)
+               LOAD_CONST               2 (True)
+               CALL                     1
+               POP_TOP
+
+ 173           LOAD_FAST                0 (self)
+               LOAD_ATTR                4 (btn)
+               LOAD_ATTR                3 (setText + NULL|self)
+               LOAD_CONST               3 ('Đóng')
+               CALL                     1
+               POP_TOP
+
+ 174           NOP
+
+ 175   L1:     LOAD_FAST                0 (self)
+               LOAD_ATTR                4 (btn)
+               LOAD_ATTR                8 (clicked)
+               LOAD_ATTR               11 (disconnect + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 178   L2:     LOAD_FAST                0 (self)
+               LOAD_ATTR                4 (btn)
+               LOAD_ATTR                8 (clicked)
+               LOAD_ATTR               15 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               16 (accept)
+               CALL                     1
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L3:     PUSH_EXC_INFO
+
+ 176           LOAD_GLOBAL             12 (TypeError)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L5)
+               POP_TOP
+
+ 177   L4:     POP_EXCEPT
+               JUMP_BACKWARD_NO_INTERRUPT 60 (to L2)
+
+ 176   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object _failed at 0x0000016DC8E0BDB0, file "bilisub\gui\gpu_dialog.py", line 180>:
+180           RESUME                   0
+
+181           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (stage)
+              LOAD_ATTR                3 (setText + NULL|self)
+              LOAD_CONST               1 ('❌ Lỗi: ')
+              LOAD_FAST                1 (msg)
+              FORMAT_SIMPLE
+              BUILD_STRING             2
+              CALL                     1
+              POP_TOP
+
+182           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (btn)
+              LOAD_ATTR                7 (setEnabled + NULL|self)
+              LOAD_CONST               2 (True)
+              CALL                     1
+              POP_TOP
+
+183           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (btn)
+              LOAD_ATTR                3 (setText + NULL|self)
+              LOAD_CONST               3 ('Thử lại')
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object closeEvent at 0x0000016DC8E0B4B0, file "bilisub\gui\gpu_dialog.py", line 185>:
+185           RESUME                   0
+
+186           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (worker)
+              POP_JUMP_IF_NONE        58 (to L1)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (worker)
+              LOAD_ATTR                3 (isRunning + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE       27 (to L1)
+
+187           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (worker)
+              LOAD_ATTR                5 (wait + NULL|self)
+              LOAD_CONST               1 (2000)
+              CALL                     1
+              POP_TOP
+
+188   L1:     LOAD_FAST                1 (e)
+              LOAD_ATTR                7 (accept + NULL|self)
+              CALL                     0
+              POP_TOP
+              RETURN_CONST             0 (None)

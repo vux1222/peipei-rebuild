@@ -1,0 +1,414 @@
+=== FILE: bilisub\gating.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('★2026-08-06 (Boss chốt) CỔNG BẮT BUỘC trước khi cho khách bấm Dịch.\n\nTách riêng thành hàm THUẦN (không Qt) để test gọi thẳng — cùng khuôn với\n``queue_store.jobs_need_zoning`` (rule 45: logic quyết định phải test được mà không\ndựng GUI, vì dựng MainWindow trong test từng làm bẩn hàng chờ + settings thật).\n\nVì sao bắt buộc (Boss 06/08):\n  ① THỂ LOẠI — quyết định thuật ngữ + văn phong khi dịch (tu tiên 法宝→pháp bảo,\n     金丹→kim đan). Bỏ trống là dịch trật cả phim, khách phải chạy lại (tốn credit).\n  ② VÙNG DỊCH vẽ trong Editor — OCR chỉ quét trong vùng khoanh. Không khoanh thì dễ\n     đọc trúng chữ trong cảnh / trật dải phụ đề ⇒ "dịch thiếu" (xem memory\n     ocr-missing-translation).\nMiễn trừ đúng chỗ KHÔNG dùng tới, để cổng không chặn oan:\n  • \'Tự viết kịch bản\' (autoscript): không OCR, dùng Phong cách kịch bản riêng.\n  • SRT đã dịch sẵn (chỉ lồng tiếng): không có khâu dịch → không cần thể loại.\n  • Nguồn KHÔNG chạy OCR (\'srt\', \'asr\'): không có vùng nào để khoanh.\n')
+              STORE_NAME               0 (__doc__)
+
+ 18           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 21           LOAD_CONST               3 (('hardsub', 'auto', 'asr_fast'))
+              STORE_NAME               3 (OCR_SOURCES)
+
+ 23           LOAD_CONST               4 ('Hãy chọn THỂ LOẠI VIDEO — AI cần biết để dịch đúng thuật ngữ + văn phong.')
+              STORE_NAME               4 (MSG_GENRE)
+
+ 24           LOAD_CONST               5 ('Hãy mở ✏️ Editor và vẽ VÙNG DỊCH cho video này — OCR chỉ quét trong vùng bạn khoanh.')
+              STORE_NAME               5 (MSG_ZONES)
+
+ 29           LOAD_CONST               6 ('Bạn chọn «Tôi dán kịch bản» nhưng ô kịch bản đang trống — hãy dán lời bình vào ô ✍️ Kịch bản.')
+              STORE_NAME               6 (MSG_SCRIPT_EMPTY)
+
+ 31           LOAD_CONST               7 ('Bạn chọn «Tôi tải file kịch bản» nhưng chưa chọn file — bấm 📂 Chọn file kịch bản.')
+              STORE_NAME               7 (MSG_SCRIPT_NOFILE)
+
+ 33           LOAD_CONST               8 ('Không tìm thấy file kịch bản bạn đã chọn (có thể đã bị xoá hoặc đổi tên) — hãy chọn lại file.')
+              STORE_NAME               8 (MSG_SCRIPT_GONE)
+
+ 35           LOAD_CONST               9 ('Bạn chọn «Tôi dán dàn ý» nhưng ô dàn ý đang trống — hãy viết mỗi ý một dòng.')
+              STORE_NAME               9 (MSG_OUTLINE_EMPTY)
+
+ 39           LOAD_CONST              10 ('📂 Đọc «{ten}» xong nhưng không thấy câu nào — file có thể chỉ chứa ảnh, hoặc là bảng rỗng.')
+              STORE_NAME              10 (MSG_SCRIPT_FILE_EMPTY)
+
+ 44           LOAD_CONST              11 ('ℹ️ Chưa có vùng dịch → bản XEM TRƯỚC sẽ tự dò vùng phụ đề. Muốn chính xác hơn thì mở ✏️ Editor vẽ vùng rồi xem lại.')
+
+ 43           STORE_NAME              11 (MSG_PREVIEW_AUTOZONE)
+
+ 48           LOAD_CONST              12 ('  ·  «Cả clip» = chạy TOÀN BỘ phim (tốn credit + thời gian như bản thật) nên vẫn phải vẽ vùng. Chọn 30 giây / 1 phút / 2 phút là xem trước được ngay.')
+
+ 47           STORE_NAME              12 (MSG_PREVIEW_FULLCLIP)
+
+ 52           LOAD_CONST              23 (('why', 'str', 'return', 'bool'))
+              LOAD_CONST              13 (<code object la_ly_do_kich_ban at 0x0000016DC90E1330, file "bilisub\gating.py", line 52>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              13 (la_ly_do_kich_ban)
+
+ 63           LOAD_CONST              24 (('return', 'bool'))
+              LOAD_CONST              14 (<code object preview_relaxes_zones at 0x0000016DC8EA2E80, file "bilisub\gating.py", line 63>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              14 (preview_relaxes_zones)
+
+ 82           NOP
+
+ 83           NOP
+
+ 82           NOP
+
+ 83           NOP
+
+ 82           NOP
+
+ 83           NOP
+
+ 82           LOAD_CONST              25 (('script_source', 'str', 'script_text', 'str', 'script_file', 'str', 'script_file_ok', 'bool', 'outline_text', 'str', 'return', 'str'))
+              LOAD_CONST              15 (<code object script_gate_reason at 0x0000016DC8DB24C0, file "bilisub\gating.py", line 82>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              15 (script_gate_reason)
+
+107           LOAD_CONST              16 (False)
+
+108           LOAD_CONST              17 ('ai')
+              LOAD_CONST              18 ('')
+
+109           LOAD_CONST              18 ('')
+              LOAD_CONST              16 (False)
+
+110           LOAD_CONST              18 ('')
+
+105           LOAD_CONST              19 (('is_preview', 'script_source', 'script_text', 'script_file', 'script_file_ok', 'outline_text'))
+              BUILD_CONST_KEY_MAP      6
+
+106           NOP
+
+105           NOP
+
+106           NOP
+
+105           NOP
+
+106           NOP
+
+105           NOP
+
+107           NOP
+
+105           NOP
+
+108           NOP
+
+105           NOP
+
+108           NOP
+
+105           NOP
+
+109           NOP
+
+105           NOP
+
+109           NOP
+
+105           NOP
+
+110           NOP
+
+105           NOP
+
+110           NOP
+
+105           LOAD_CONST              26 (('script_mode', 'bool', 'source', 'str', 'pretranslated', 'bool', 'genre', 'str', 'video_path', 'str', 'zones_ready', 'bool', 'is_preview', 'bool', 'script_source', 'str', 'script_text', 'str', 'script_file', 'str', 'script_file_ok', 'bool', 'outline_text', 'str', 'return', 'str'))
+              LOAD_CONST              20 (<code object run_gate_reason at 0x0000016DC8DB2940, file "bilisub\gating.py", line 105>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              16 (run_gate_reason)
+
+152           NOP
+
+153           NOP
+
+152           NOP
+
+153           NOP
+
+152           LOAD_CONST              27 (('script_mode', 'bool', 'source', 'str', 'video_path', 'str', 'zones_ready', 'bool', 'return', 'str'))
+              LOAD_CONST              21 (<code object preview_zone_note at 0x0000016DC8E0B630, file "bilisub\gating.py", line 152>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              17 (preview_zone_note)
+              RETURN_CONST            22 (None)
+
+Disassembly of <code object la_ly_do_kich_ban at 0x0000016DC90E1330, file "bilisub\gating.py", line 52>:
+ 52           RESUME                   0
+
+ 60           LOAD_FAST                0 (why)
+              LOAD_GLOBAL              0 (MSG_SCRIPT_EMPTY)
+              LOAD_GLOBAL              2 (MSG_SCRIPT_NOFILE)
+              LOAD_GLOBAL              4 (MSG_SCRIPT_GONE)
+              LOAD_GLOBAL              6 (MSG_OUTLINE_EMPTY)
+              BUILD_TUPLE              4
+              CONTAINS_OP              0
+              RETURN_VALUE
+
+Disassembly of <code object preview_relaxes_zones at 0x0000016DC8EA2E80, file "bilisub\gating.py", line 63>:
+  63           RESUME                   0
+
+  76           NOP
+
+  77   L1:     LOAD_GLOBAL              1 (int + NULL)
+               LOAD_FAST                0 (preview_seconds)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L2)
+               POP_TOP
+               LOAD_CONST               1 (0)
+       L2:     CALL                     1
+               LOAD_CONST               1 (0)
+               COMPARE_OP             132 (>)
+       L3:     RETURN_VALUE
+
+  --   L4:     PUSH_EXC_INFO
+
+  78           LOAD_GLOBAL              2 (TypeError)
+               LOAD_GLOBAL              4 (ValueError)
+               BUILD_TUPLE              2
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L6)
+               POP_TOP
+
+  79   L5:     POP_EXCEPT
+               RETURN_CONST             2 (False)
+
+  78   L6:     RERAISE                  0
+
+  --   L7:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L4 [0]
+  L4 to L5 -> L7 [1] lasti
+  L6 to L7 -> L7 [1] lasti
+
+Disassembly of <code object script_gate_reason at 0x0000016DC8DB24C0, file "bilisub\gating.py", line 82>:
+ 82           RESUME                   0
+
+ 92           LOAD_FAST                0 (script_source)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('ai')
+      L1:     LOAD_ATTR                1 (strip + NULL|self)
+              CALL                     0
+              LOAD_ATTR                3 (lower + NULL|self)
+              CALL                     0
+              STORE_FAST               5 (src)
+
+ 93           LOAD_FAST                5 (src)
+              LOAD_CONST               2 ('paste')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       36 (to L3)
+              LOAD_FAST                1 (script_text)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L2)
+              POP_TOP
+              LOAD_CONST               3 ('')
+      L2:     LOAD_ATTR                1 (strip + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_TRUE         6 (to L3)
+
+ 94           LOAD_GLOBAL              4 (MSG_SCRIPT_EMPTY)
+              RETURN_VALUE
+
+ 95   L3:     LOAD_FAST                5 (src)
+              LOAD_CONST               4 ('file')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       49 (to L6)
+
+ 96           LOAD_FAST                2 (script_file)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L4)
+              POP_TOP
+              LOAD_CONST               3 ('')
+      L4:     LOAD_ATTR                1 (strip + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_TRUE         6 (to L5)
+
+ 97           LOAD_GLOBAL              6 (MSG_SCRIPT_NOFILE)
+              RETURN_VALUE
+
+ 98   L5:     LOAD_FAST                3 (script_file_ok)
+              TO_BOOL
+              POP_JUMP_IF_TRUE         6 (to L6)
+
+ 99           LOAD_GLOBAL              8 (MSG_SCRIPT_GONE)
+              RETURN_VALUE
+
+100   L6:     LOAD_FAST                5 (src)
+              LOAD_CONST               5 ('outline')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       36 (to L8)
+              LOAD_FAST                4 (outline_text)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L7)
+              POP_TOP
+              LOAD_CONST               3 ('')
+      L7:     LOAD_ATTR                1 (strip + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_TRUE         6 (to L8)
+
+101           LOAD_GLOBAL             10 (MSG_OUTLINE_EMPTY)
+              RETURN_VALUE
+
+102   L8:     RETURN_CONST             3 ('')
+
+Disassembly of <code object run_gate_reason at 0x0000016DC8DB2940, file "bilisub\gating.py", line 105>:
+105           RESUME                   0
+
+136           LOAD_FAST                0 (script_mode)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       11 (to L1)
+
+137           LOAD_GLOBAL              1 (script_gate_reason + NULL)
+              LOAD_FAST_LOAD_FAST    120 (script_source, script_text)
+
+138           LOAD_FAST_LOAD_FAST    154 (script_file, script_file_ok)
+
+139           LOAD_FAST               11 (outline_text)
+
+137           LOAD_CONST               1 (('script_source', 'script_text', 'script_file', 'script_file_ok', 'outline_text'))
+              CALL_KW                  5
+              RETURN_VALUE
+
+140   L1:     LOAD_GLOBAL              3 (str + NULL)
+              LOAD_FAST                1 (source)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L2)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L2:     CALL                     1
+              STORE_FAST              12 (src)
+
+141           LOAD_FAST                2 (pretranslated)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE        5 (to L3)
+              POP_TOP
+              LOAD_FAST               12 (src)
+              LOAD_CONST               3 ('srt')
+              COMPARE_OP              72 (==)
+      L3:     TO_BOOL
+              UNARY_NOT
+              STORE_FAST              13 (will_translate)
+
+142           LOAD_FAST               13 (will_translate)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       45 (to L5)
+              LOAD_GLOBAL              3 (str + NULL)
+              LOAD_FAST                3 (genre)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L4)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L4:     CALL                     1
+              LOAD_ATTR                5 (strip + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_TRUE         6 (to L5)
+
+143           LOAD_GLOBAL              6 (MSG_GENRE)
+              RETURN_VALUE
+
+144   L5:     LOAD_FAST               12 (src)
+              LOAD_GLOBAL              8 (OCR_SOURCES)
+              CONTAINS_OP              0
+              POP_JUMP_IF_FALSE       60 (to L8)
+              LOAD_FAST                6 (is_preview)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        53 (to L8)
+
+145           LOAD_GLOBAL              3 (str + NULL)
+              LOAD_FAST                4 (video_path)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L6)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L6:     CALL                     1
+              LOAD_ATTR                5 (strip + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_TRUE         1 (to L7)
+
+146           RETURN_CONST             2 ('')
+
+147   L7:     LOAD_FAST                5 (zones_ready)
+              TO_BOOL
+              POP_JUMP_IF_TRUE         6 (to L8)
+
+148           LOAD_GLOBAL             10 (MSG_ZONES)
+              RETURN_VALUE
+
+149   L8:     RETURN_CONST             2 ('')
+
+Disassembly of <code object preview_zone_note at 0x0000016DC8E0B630, file "bilisub\gating.py", line 152>:
+152           RESUME                   0
+
+159           LOAD_FAST                0 (script_mode)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        28 (to L2)
+              LOAD_GLOBAL              1 (str + NULL)
+              LOAD_FAST                1 (source)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     CALL                     1
+              LOAD_GLOBAL              2 (OCR_SOURCES)
+              CONTAINS_OP              1
+              POP_JUMP_IF_FALSE        1 (to L3)
+
+160   L2:     RETURN_CONST             1 ('')
+
+161   L3:     LOAD_GLOBAL              1 (str + NULL)
+              LOAD_FAST                2 (video_path)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L4)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L4:     CALL                     1
+              LOAD_ATTR                5 (strip + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_TRUE         1 (to L5)
+
+162           RETURN_CONST             1 ('')
+
+163   L5:     LOAD_FAST                3 (zones_ready)
+              TO_BOOL
+              POP_JUMP_IF_FALSE        2 (to L6)
+              LOAD_CONST               1 ('')
+              RETURN_VALUE
+      L6:     LOAD_GLOBAL              6 (MSG_PREVIEW_AUTOZONE)
+              RETURN_VALUE

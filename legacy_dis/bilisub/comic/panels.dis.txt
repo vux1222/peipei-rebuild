@@ -1,0 +1,2524 @@
+=== FILE: bilisub\comic\panels.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('Cắt ảnh truyện thành PANEL để review + tạo ``SceneNote`` cho pipeline autoscript.\n\n★22/07 v2 "CẮT NÉ BONG BÓNG" (vụ \'Người Trên Vạn Người\' — Boss: "cắt ảnh siêu tệ"):\n- Nhiều site (nettruyen…) TỰ CHẶT webtoon thành trang ~800×1500 NGAY GIỮA bong bóng\n  thoại/nhân vật (đo thật: cặp trang cùng chiều cao = 1 khúc bị bổ đôi). Trang lại thấp\n  hơn ngưỡng strip → tool cũ giữ nguyên từng trang → ranh giới xấu của SITE lên thẳng video.\n  → Fix: KHÂU các trang LIỀN NHAU cùng bề ngang thành STRIP ẢO rồi cắt lại chỗ an toàn.\n- Chọn điểm cắt v2: ① khe TRẮNG/ĐEN tinh khiết (như cũ) → ② dải PHẲNG BẤT KỂ MÀU\n  (row_std thấp — nền trời/đất/tường; thuật cũ đòi trắng/đen nên truyện màu không bao\n  giờ có khe) → ③ ép cắt = hàng ít mực nhất NHƯNG CẤM vùng BONG BÓNG THOẠI (khối trắng\n  KÍN có chữ bên trong — thuật cũ chọn "hàng trắng nhất" nên dao bị HÚT vào giữa bubble).\n- Trang rời thật (manga scan có lề) khâu xong vẫn cắt đúng lề trắng → không đổi hành vi.\n\nMọi panel được re-encode ra **JPEG** (Gemini vision gắn cứng mime ``image/jpeg``).\nCó ``max_panels`` để chặn số request Gemini (lấy mẫu trải đều, KHÔNG cắt câm — có log).\n')
+              STORE_NAME               0 (__doc__)
+
+ 17           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 19           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (('Path',))
+              IMPORT_NAME              3 (pathlib)
+              IMPORT_FROM              4 (Path)
+              STORE_NAME               4 (Path)
+              POP_TOP
+
+ 20           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Callable', 'Optional'))
+              IMPORT_NAME              5 (typing)
+              IMPORT_FROM              6 (Callable)
+              STORE_NAME               6 (Callable)
+              IMPORT_FROM              7 (Optional)
+              STORE_NAME               7 (Optional)
+              POP_TOP
+
+ 22           LOAD_CONST               5 (2)
+              LOAD_CONST               6 (('SceneNote',))
+              IMPORT_NAME              8 (script.models)
+              IMPORT_FROM              9 (SceneNote)
+              STORE_NAME               9 (SceneNote)
+              POP_TOP
+
+ 25           LOAD_CONST               7 (<code object _log at 0x0000016DC90F1A70, file "bilisub\comic\panels.py", line 25>)
+              MAKE_FUNCTION
+              STORE_NAME              10 (_log)
+
+ 29           LOAD_CONST               8 (56)
+              LOAD_CONST               9 (96)
+              LOAD_CONST              10 (('keep', 'min_run'))
+              BUILD_CONST_KEY_MAP      2
+              LOAD_CONST              35 (('keep', 'int', 'min_run', 'int'))
+              LOAD_CONST              11 (<code object _compress_blank_runs at 0x0000016DC8F99F30, file "bilisub\comic\panels.py", line 29>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              11 (_compress_blank_runs)
+
+ 67           LOAD_CONST              12 (160)
+              LOAD_CONST              13 (10)
+              LOAD_CONST              14 (('ds_w', 'pad'))
+              BUILD_CONST_KEY_MAP      2
+              LOAD_CONST              36 (('ds_w', 'int', 'pad', 'int'))
+              LOAD_CONST              15 (<code object _bubble_rows at 0x0000016DC8F8E510, file "bilisub\comic\panels.py", line 67>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              12 (_bubble_rows)
+
+158           NOP
+
+159           NOP
+
+158           NOP
+
+159           NOP
+
+158           NOP
+
+160           NOP
+
+158           NOP
+
+160           NOP
+
+158           LOAD_CONST              37 (('w', 'int', 'h', 'int', 'target_ratio', 'float', 'max_ratio', 'float', 'gutter_std', 'float', 'gutter_min_px', 'int'))
+              LOAD_CONST              16 (<code object _choose_cuts at 0x0000016DC8FB7E10, file "bilisub\comic\panels.py", line 158>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              13 (_choose_cuts)
+
+223           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              17 (<code object _VirtualStrip at 0x0000016DC90E2330, file "bilisub\comic\panels.py", line 223>)
+              MAKE_FUNCTION
+              LOAD_CONST              18 ('_VirtualStrip')
+              CALL                     2
+              STORE_NAME              14 (_VirtualStrip)
+
+266           LOAD_CONST              19 (1.6)
+              LOAD_CONST              20 (3.4)
+
+267           LOAD_CONST              21 (8.0)
+              LOAD_CONST              22 (8)
+
+265           LOAD_CONST              23 (('target_ratio', 'max_ratio', 'gutter_std', 'gutter_min_px'))
+              BUILD_CONST_KEY_MAP      4
+
+266           NOP
+
+265           NOP
+
+266           NOP
+
+265           NOP
+
+267           NOP
+
+265           NOP
+
+267           NOP
+
+265           NOP
+
+267           NOP
+
+265           LOAD_CONST              38 (('paths', 'list[str]', 'out_dir', 'str', 'base_index', 'int', 'target_ratio', 'float', 'max_ratio', 'float', 'gutter_std', 'float', 'gutter_min_px', 'int', 'return', 'list[str]'))
+              LOAD_CONST              24 (<code object split_pages_group at 0x0000016DC8FB8DB0, file "bilisub\comic\panels.py", line 265>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              15 (split_pages_group)
+
+295           LOAD_CONST              19 (1.6)
+              LOAD_CONST              20 (3.4)
+
+296           LOAD_CONST              21 (8.0)
+              LOAD_CONST              22 (8)
+
+293           LOAD_CONST              23 (('target_ratio', 'max_ratio', 'gutter_std', 'gutter_min_px'))
+              BUILD_CONST_KEY_MAP      4
+
+294           NOP
+
+293           NOP
+
+294           NOP
+
+293           NOP
+
+294           NOP
+
+293           NOP
+
+295           NOP
+
+293           NOP
+
+295           NOP
+
+293           NOP
+
+296           NOP
+
+293           NOP
+
+296           NOP
+
+293           NOP
+
+297           NOP
+
+293           LOAD_CONST              39 (('path', 'str', 'out_dir', 'str', 'base_index', 'int', 'target_ratio', 'float', 'max_ratio', 'float', 'gutter_std', 'float', 'gutter_min_px', 'int', 'return', 'list[str]'))
+              LOAD_CONST              25 (<code object split_tall_image at 0x0000016DC90F1D40, file "bilisub\comic\panels.py", line 293>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              16 (split_tall_image)
+
+304           LOAD_CONST              40 (('path', 'str', 'out_dir', 'str', 'base_index', 'int', 'return', 'str'))
+              LOAD_CONST              26 (<code object _save_whole at 0x0000016DC90D0AB0, file "bilisub\comic\panels.py", line 304>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              17 (_save_whole)
+
+318           LOAD_CONST              27 (2.6)
+              LOAD_CONST              28 (60)
+
+319           LOAD_CONST              29 (None)
+
+316           LOAD_CONST              30 (('tall_ratio', 'max_panels', 'log'))
+              BUILD_CONST_KEY_MAP      3
+
+317           NOP
+
+316           NOP
+
+317           NOP
+
+316           NOP
+
+318           NOP
+
+316           NOP
+
+318           NOP
+
+316           NOP
+
+319           NOP
+
+316           NOP
+
+320           NOP
+
+316           LOAD_CONST              41 (('image_paths', 'list[str]', 'out_dir', 'str', 'tall_ratio', 'float', 'max_panels', 'int', 'log', 'Optional[Callable[[str], None]]', 'return', 'list[str]'))
+              LOAD_CONST              31 (<code object prepare_panels at 0x0000016DC8FBD6B0, file "bilisub\comic\panels.py", line 316>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              18 (prepare_panels)
+
+378           LOAD_CONST              32 (6.0)
+              LOAD_CONST              33 (('seconds_per',))
+              BUILD_CONST_KEY_MAP      1
+              LOAD_CONST              42 (('panel_paths', 'list[str]', 'seconds_per', 'float', 'return', 'list[SceneNote]'))
+              LOAD_CONST              34 (<code object to_scenes at 0x0000016DC90EDA50, file "bilisub\comic\panels.py", line 378>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              19 (to_scenes)
+              RETURN_CONST            29 (None)
+
+Disassembly of <code object _log at 0x0000016DC90F1A70, file "bilisub\comic\panels.py", line 25>:
+ 25           RESUME                   0
+
+ 26           LOAD_FAST                0 (fn)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         3 (to L1)
+              POP_TOP
+              LOAD_CONST               1 (<code object <lambda> at 0x0000016DC9134440, file "bilisub\comic\panels.py", line 26>)
+              MAKE_FUNCTION
+      L1:     RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC9134440, file "bilisub\comic\panels.py", line 26>:
+ 26           RESUME                   0
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _compress_blank_runs at 0x0000016DC8F99F30, file "bilisub\comic\panels.py", line 29>:
+ 29           RESUME                   0
+
+ 35           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (None)
+              IMPORT_NAME              0 (numpy)
+              STORE_FAST               3 (np)
+
+ 36           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (('Image',))
+              IMPORT_NAME              1 (PIL)
+              IMPORT_FROM              2 (Image)
+              STORE_FAST               4 (Image)
+              POP_TOP
+
+ 38           LOAD_FAST                3 (np)
+              LOAD_ATTR                7 (asarray + NULL|self)
+              LOAD_FAST                0 (im)
+              CALL                     1
+              STORE_FAST               5 (arr)
+
+ 39           LOAD_FAST                3 (np)
+              LOAD_ATTR                7 (asarray + NULL|self)
+              LOAD_FAST                0 (im)
+              LOAD_ATTR                9 (convert + NULL|self)
+              LOAD_CONST               4 ('L')
+              CALL                     1
+              LOAD_FAST                3 (np)
+              LOAD_ATTR               10 (float32)
+              LOAD_CONST               5 (('dtype',))
+              CALL_KW                  2
+              STORE_FAST               6 (gray)
+
+ 40           LOAD_FAST                6 (gray)
+              LOAD_ATTR               13 (std + NULL|self)
+              LOAD_CONST               6 (1)
+              LOAD_CONST               7 (('axis',))
+              CALL_KW                  1
+              STORE_FAST               7 (row_std)
+
+ 41           LOAD_FAST                6 (gray)
+              LOAD_ATTR               15 (mean + NULL|self)
+              LOAD_CONST               6 (1)
+              LOAD_CONST               7 (('axis',))
+              CALL_KW                  1
+              STORE_FAST               8 (row_mean)
+
+ 42           LOAD_FAST                7 (row_std)
+              LOAD_CONST               8 (5.0)
+              COMPARE_OP               2 (<)
+              LOAD_FAST                8 (row_mean)
+              LOAD_CONST               9 (245)
+              COMPARE_OP             132 (>)
+              LOAD_FAST                8 (row_mean)
+              LOAD_CONST              10 (12)
+              COMPARE_OP               2 (<)
+              BINARY_OP                7 (|)
+              BINARY_OP                1 (&)
+              STORE_FAST               9 (blank)
+
+ 43           LOAD_FAST                5 (arr)
+              LOAD_ATTR               16 (shape)
+              LOAD_CONST               1 (0)
+              BINARY_SUBSCR
+              STORE_FAST              10 (h)
+
+ 44           LOAD_FAST                3 (np)
+              LOAD_ATTR               19 (ones + NULL|self)
+              LOAD_FAST               10 (h)
+              LOAD_GLOBAL             20 (bool)
+              LOAD_CONST               5 (('dtype',))
+              CALL_KW                  2
+              STORE_FAST              11 (keep_mask)
+
+ 45           LOAD_CONST               1 (0)
+              STORE_FAST              12 (y)
+
+ 46           LOAD_CONST               1 (0)
+              STORE_FAST              13 (dropped)
+
+ 47           LOAD_FAST_LOAD_FAST    202 (y, h)
+              COMPARE_OP              18 (bool(<))
+              POP_JUMP_IF_FALSE       95 (to L7)
+
+ 48   L1:     LOAD_FAST_LOAD_FAST    156 (blank, y)
+              BINARY_SUBSCR
+              TO_BOOL
+              POP_JUMP_IF_FALSE       74 (to L5)
+
+ 49           LOAD_FAST               12 (y)
+              STORE_FAST              14 (j)
+
+ 50           LOAD_FAST_LOAD_FAST    234 (j, h)
+              COMPARE_OP              18 (bool(<))
+              POP_JUMP_IF_FALSE       30 (to L3)
+              LOAD_FAST_LOAD_FAST    158 (blank, j)
+              BINARY_SUBSCR
+              TO_BOOL
+              POP_JUMP_IF_FALSE       21 (to L3)
+
+ 51   L2:     LOAD_FAST               14 (j)
+              LOAD_CONST               6 (1)
+              BINARY_OP               13 (+=)
+              STORE_FAST              14 (j)
+
+ 50           LOAD_FAST_LOAD_FAST    234 (j, h)
+              COMPARE_OP              18 (bool(<))
+              POP_JUMP_IF_FALSE       11 (to L3)
+              LOAD_FAST_LOAD_FAST    158 (blank, j)
+              BINARY_SUBSCR
+              TO_BOOL
+              POP_JUMP_IF_FALSE        2 (to L3)
+              JUMP_BACKWARD           21 (to L2)
+
+ 52   L3:     LOAD_FAST_LOAD_FAST    236 (j, y)
+              BINARY_OP               10 (-)
+              LOAD_FAST                2 (min_run)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_FALSE       26 (to L4)
+
+ 53           LOAD_FAST_LOAD_FAST    193 (y, keep)
+              LOAD_CONST              11 (2)
+              BINARY_OP                2 (//)
+              BINARY_OP                0 (+)
+              LOAD_FAST_LOAD_FAST    225 (j, keep)
+              LOAD_CONST              11 (2)
+              BINARY_OP                2 (//)
+              BINARY_OP               10 (-)
+              STORE_FAST              16 (b)
+              STORE_FAST              15 (a)
+
+ 54           LOAD_CONST              12 (False)
+              LOAD_FAST_LOAD_FAST    191 (keep_mask, a)
+              LOAD_FAST               16 (b)
+              STORE_SLICE
+
+ 55           LOAD_FAST               13 (dropped)
+              LOAD_FAST               16 (b)
+              LOAD_FAST               15 (a)
+              BINARY_OP               10 (-)
+              BINARY_OP               13 (+=)
+              STORE_FAST              13 (dropped)
+
+ 56   L4:     LOAD_FAST               14 (j)
+              STORE_FAST              12 (y)
+              JUMP_FORWARD             5 (to L6)
+
+ 58   L5:     LOAD_FAST               12 (y)
+              LOAD_CONST               6 (1)
+              BINARY_OP               13 (+=)
+              STORE_FAST              12 (y)
+
+ 47   L6:     LOAD_FAST_LOAD_FAST    202 (y, h)
+              COMPARE_OP              18 (bool(<))
+              POP_JUMP_IF_FALSE        2 (to L7)
+              JUMP_BACKWARD           95 (to L1)
+
+ 59   L7:     LOAD_FAST               13 (dropped)
+              TO_BOOL
+              POP_JUMP_IF_TRUE         4 (to L8)
+
+ 60           LOAD_FAST                0 (im)
+              LOAD_CONST               1 (0)
+              BUILD_TUPLE              2
+              RETURN_VALUE
+
+ 61   L8:     LOAD_FAST                4 (Image)
+              LOAD_ATTR               23 (fromarray + NULL|self)
+              LOAD_FAST_LOAD_FAST     91 (arr, keep_mask)
+              BINARY_SUBSCR
+              CALL                     1
+              LOAD_GLOBAL             25 (int + NULL)
+              LOAD_FAST               13 (dropped)
+              CALL                     1
+              BUILD_TUPLE              2
+              RETURN_VALUE
+
+Disassembly of <code object _bubble_rows at 0x0000016DC8F8E510, file "bilisub\comic\panels.py", line 67>:
+  --            MAKE_CELL               39 (find)
+                MAKE_CELL               40 (parent)
+
+  67            RESUME                   0
+
+  74            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              0 (numpy)
+                STORE_FAST               3 (np)
+
+  76            LOAD_FAST                0 (im)
+                LOAD_ATTR                2 (size)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST   69 (w, h)
+
+  77            LOAD_GLOBAL              5 (max + NULL)
+                LOAD_CONST               3 (2)
+                LOAD_GLOBAL              7 (int + NULL)
+                LOAD_FAST_LOAD_FAST     81 (h, ds_w)
+                BINARY_OP                5 (*)
+                LOAD_GLOBAL              5 (max + NULL)
+                LOAD_CONST               4 (1)
+                LOAD_FAST                4 (w)
+                CALL                     2
+                BINARY_OP               11 (/)
+                CALL                     1
+                CALL                     2
+                STORE_FAST               6 (ds_h)
+
+  78            LOAD_FAST                3 (np)
+                LOAD_ATTR                9 (asarray + NULL|self)
+                LOAD_FAST                0 (im)
+                LOAD_ATTR               11 (convert + NULL|self)
+                LOAD_CONST               5 ('L')
+                CALL                     1
+                LOAD_ATTR               13 (resize + NULL|self)
+                LOAD_FAST_LOAD_FAST     22 (ds_w, ds_h)
+                BUILD_TUPLE              2
+                CALL                     1
+                LOAD_FAST                3 (np)
+                LOAD_ATTR               14 (uint8)
+                LOAD_CONST               6 (('dtype',))
+                CALL_KW                  2
+                STORE_FAST               7 (g)
+
+  79            LOAD_FAST                7 (g)
+                LOAD_CONST               7 (232)
+                COMPARE_OP             172 (>=)
+                STORE_FAST               8 (white)
+
+  80            LOAD_FAST                7 (g)
+                LOAD_CONST               8 (100)
+                COMPARE_OP              42 (<=)
+                STORE_FAST               9 (dark)
+
+  82            BUILD_LIST               0
+                STORE_DEREF             40 (parent)
+
+  84            LOAD_FAST               40 (parent)
+                BUILD_TUPLE              1
+                LOAD_CONST               9 (<code object find at 0x0000016DC9129590, file "bilisub\comic\panels.py", line 84>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                STORE_DEREF             39 (find)
+
+  90            LOAD_FAST               39 (find)
+                LOAD_FAST               40 (parent)
+                BUILD_TUPLE              2
+                LOAD_CONST              10 (<code object union at 0x0000016DC8EADAC0, file "bilisub\comic\panels.py", line 90>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                STORE_FAST              10 (union)
+
+  95            BUILD_LIST               0
+                STORE_FAST              11 (runs_prev)
+
+  96            BUILD_MAP                0
+                STORE_FAST              12 (px_rows)
+
+  97            BUILD_MAP                0
+                STORE_FAST              13 (px_cols)
+
+  98            LOAD_GLOBAL             17 (range + NULL)
+                LOAD_FAST                6 (ds_h)
+                CALL                     1
+                GET_ITER
+        L1:     EXTENDED_ARG             1
+                FOR_ITER               313 (to L20)
+                STORE_FAST              14 (y)
+
+  99            BUILD_LIST               0
+                STORE_FAST              15 (runs_cur)
+
+ 100            LOAD_CONST               1 (0)
+                STORE_FAST              16 (x)
+
+ 101            LOAD_FAST_LOAD_FAST    142 (white, y)
+                BINARY_SUBSCR
+                STORE_FAST              17 (row)
+
+ 102            LOAD_FAST               16 (x)
+                LOAD_FAST                1 (ds_w)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE      171 (to L13)
+
+ 103    L2:     LOAD_FAST               17 (row)
+                LOAD_FAST               16 (x)
+                BINARY_SUBSCR
+                TO_BOOL
+                POP_JUMP_IF_FALSE      148 (to L11)
+
+ 104            LOAD_FAST               16 (x)
+                STORE_FAST              18 (x1)
+
+ 105            LOAD_FAST               18 (x1)
+                LOAD_FAST                1 (ds_w)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       33 (to L4)
+                LOAD_FAST               17 (row)
+                LOAD_FAST               18 (x1)
+                BINARY_SUBSCR
+                TO_BOOL
+                POP_JUMP_IF_FALSE       23 (to L4)
+
+ 106    L3:     LOAD_FAST               18 (x1)
+                LOAD_CONST               4 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST              18 (x1)
+
+ 105            LOAD_FAST               18 (x1)
+                LOAD_FAST                1 (ds_w)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       12 (to L4)
+                LOAD_FAST               17 (row)
+                LOAD_FAST               18 (x1)
+                BINARY_SUBSCR
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L4)
+                JUMP_BACKWARD           23 (to L3)
+
+ 107    L4:     LOAD_CONST               2 (None)
+                STORE_FAST              19 (lab)
+
+ 108            LOAD_FAST               11 (runs_prev)
+                GET_ITER
+        L5:     FOR_ITER                45 (to L9)
+                UNPACK_SEQUENCE          3
+                STORE_FAST              20 (px0)
+                STORE_FAST              21 (px1)
+                STORE_FAST              22 (pl)
+
+ 109            LOAD_FAST               20 (px0)
+                LOAD_FAST               18 (x1)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_TRUE         2 (to L6)
+                JUMP_BACKWARD           15 (to L5)
+        L6:     LOAD_FAST               16 (x)
+                LOAD_FAST               21 (px1)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_TRUE         2 (to L7)
+                JUMP_BACKWARD           23 (to L5)
+
+ 110    L7:     LOAD_FAST               19 (lab)
+                POP_JUMP_IF_NOT_NONE    10 (to L8)
+
+ 111            LOAD_DEREF              39 (find)
+                PUSH_NULL
+                LOAD_FAST               22 (pl)
+                CALL                     1
+                STORE_FAST              19 (lab)
+                JUMP_BACKWARD           36 (to L5)
+
+ 113    L8:     LOAD_FAST               10 (union)
+                PUSH_NULL
+                LOAD_FAST               19 (lab)
+                LOAD_FAST               22 (pl)
+                CALL                     2
+                POP_TOP
+                JUMP_BACKWARD           47 (to L5)
+
+ 108    L9:     END_FOR
+                POP_TOP
+
+ 114            LOAD_FAST               19 (lab)
+                POP_JUMP_IF_NOT_NONE    28 (to L10)
+
+ 115            LOAD_GLOBAL             19 (len + NULL)
+                LOAD_DEREF              40 (parent)
+                CALL                     1
+                STORE_FAST              19 (lab)
+
+ 116            LOAD_DEREF              40 (parent)
+                LOAD_ATTR               21 (append + NULL|self)
+                LOAD_FAST               19 (lab)
+                CALL                     1
+                POP_TOP
+
+ 117   L10:     LOAD_FAST               15 (runs_cur)
+                LOAD_ATTR               21 (append + NULL|self)
+                LOAD_FAST               16 (x)
+                LOAD_FAST               18 (x1)
+                LOAD_FAST               19 (lab)
+                BUILD_TUPLE              3
+                CALL                     1
+                POP_TOP
+
+ 118            LOAD_FAST               18 (x1)
+                STORE_FAST              16 (x)
+                JUMP_FORWARD             5 (to L12)
+
+ 120   L11:     LOAD_FAST               16 (x)
+                LOAD_CONST               4 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST              16 (x)
+
+ 102   L12:     LOAD_FAST               16 (x)
+                LOAD_FAST                1 (ds_w)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        2 (to L13)
+                JUMP_BACKWARD          171 (to L2)
+
+ 121   L13:     LOAD_FAST               15 (runs_cur)
+                GET_ITER
+       L14:     FOR_ITER               116 (to L19)
+                UNPACK_SEQUENCE          3
+                STORE_FAST              23 (x0)
+                STORE_FAST              18 (x1)
+                STORE_FAST              19 (lab)
+
+ 122            LOAD_DEREF              39 (find)
+                PUSH_NULL
+                LOAD_FAST               19 (lab)
+                CALL                     1
+                STORE_FAST              24 (r)
+
+ 123            LOAD_FAST               12 (px_rows)
+                LOAD_ATTR               23 (setdefault + NULL|self)
+                LOAD_FAST               24 (r)
+                BUILD_LIST               0
+                CALL                     2
+                LOAD_ATTR               21 (append + NULL|self)
+                LOAD_FAST               14 (y)
+                CALL                     1
+                POP_TOP
+
+ 124            LOAD_FAST               13 (px_cols)
+                LOAD_ATTR               25 (get + NULL|self)
+                LOAD_FAST               24 (r)
+                CALL                     1
+                STORE_FAST              25 (c)
+
+ 125            LOAD_FAST               25 (c)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       15 (to L15)
+                LOAD_GLOBAL             27 (min + NULL)
+                LOAD_FAST               23 (x0)
+                LOAD_FAST               25 (c)
+                LOAD_CONST               1 (0)
+                BINARY_SUBSCR
+                CALL                     2
+                JUMP_FORWARD             1 (to L16)
+       L15:     LOAD_FAST               23 (x0)
+       L16:     LOAD_FAST               25 (c)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       15 (to L17)
+                LOAD_GLOBAL              5 (max + NULL)
+                LOAD_FAST               18 (x1)
+                LOAD_FAST               25 (c)
+                LOAD_CONST               4 (1)
+                BINARY_SUBSCR
+                CALL                     2
+                JUMP_FORWARD             1 (to L18)
+       L17:     LOAD_FAST               18 (x1)
+       L18:     BUILD_TUPLE              2
+                LOAD_FAST               13 (px_cols)
+                LOAD_FAST               24 (r)
+                STORE_SUBSCR
+                JUMP_BACKWARD          118 (to L14)
+
+ 121   L19:     END_FOR
+                POP_TOP
+
+ 126            LOAD_FAST               15 (runs_cur)
+                STORE_FAST              11 (runs_prev)
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          316 (to L1)
+
+  98   L20:     END_FOR
+                POP_TOP
+
+ 129            BUILD_MAP                0
+                STORE_FAST              26 (rows_of)
+
+ 130            BUILD_MAP                0
+                STORE_FAST              27 (cols_of)
+
+ 131            LOAD_FAST               12 (px_rows)
+                LOAD_ATTR               29 (items + NULL|self)
+                CALL                     0
+                GET_ITER
+       L21:     FOR_ITER               123 (to L26)
+                UNPACK_SEQUENCE          2
+                STORE_FAST              19 (lab)
+                STORE_FAST              28 (ys)
+
+ 132            LOAD_DEREF              39 (find)
+                PUSH_NULL
+                LOAD_FAST               19 (lab)
+                CALL                     1
+                STORE_FAST              24 (r)
+
+ 133            LOAD_FAST               26 (rows_of)
+                LOAD_ATTR               23 (setdefault + NULL|self)
+                LOAD_FAST               24 (r)
+                BUILD_LIST               0
+                CALL                     2
+                LOAD_ATTR               31 (extend + NULL|self)
+                LOAD_FAST               28 (ys)
+                CALL                     1
+                POP_TOP
+
+ 134            LOAD_FAST               13 (px_cols)
+                LOAD_FAST               19 (lab)
+                BINARY_SUBSCR
+                UNPACK_SEQUENCE          2
+                STORE_FAST              29 (c0)
+                STORE_FAST              30 (c1)
+
+ 135            LOAD_FAST               27 (cols_of)
+                LOAD_ATTR               25 (get + NULL|self)
+                LOAD_FAST               24 (r)
+                CALL                     1
+                STORE_FAST              31 (cc)
+
+ 136            LOAD_FAST               31 (cc)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       15 (to L22)
+                LOAD_GLOBAL             27 (min + NULL)
+                LOAD_FAST               29 (c0)
+                LOAD_FAST               31 (cc)
+                LOAD_CONST               1 (0)
+                BINARY_SUBSCR
+                CALL                     2
+                JUMP_FORWARD             1 (to L23)
+       L22:     LOAD_FAST               29 (c0)
+       L23:     LOAD_FAST               31 (cc)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       15 (to L24)
+                LOAD_GLOBAL              5 (max + NULL)
+                LOAD_FAST               30 (c1)
+                LOAD_FAST               31 (cc)
+                LOAD_CONST               4 (1)
+                BINARY_SUBSCR
+                CALL                     2
+                JUMP_FORWARD             1 (to L25)
+       L24:     LOAD_FAST               30 (c1)
+       L25:     BUILD_TUPLE              2
+                LOAD_FAST               27 (cols_of)
+                LOAD_FAST               24 (r)
+                STORE_SUBSCR
+                JUMP_BACKWARD          125 (to L21)
+
+ 131   L26:     END_FOR
+                POP_TOP
+
+ 138            LOAD_FAST                3 (np)
+                LOAD_ATTR               33 (zeros + NULL|self)
+                LOAD_FAST                5 (h)
+                LOAD_GLOBAL             34 (bool)
+                LOAD_CONST               6 (('dtype',))
+                CALL_KW                  2
+                STORE_FAST              32 (forbidden)
+
+ 139            LOAD_CONST              11 (0.015)
+                LOAD_FAST                1 (ds_w)
+                BINARY_OP                5 (*)
+                LOAD_FAST                6 (ds_h)
+                BINARY_OP                5 (*)
+                STORE_FAST              33 (min_area)
+
+ 140            LOAD_FAST               26 (rows_of)
+                LOAD_ATTR               29 (items + NULL|self)
+                CALL                     0
+                GET_ITER
+       L27:     FOR_ITER               211 (to L32)
+                UNPACK_SEQUENCE          2
+                STORE_FAST              24 (r)
+                STORE_FAST              28 (ys)
+
+ 141            LOAD_GLOBAL             19 (len + NULL)
+                LOAD_FAST               28 (ys)
+                CALL                     1
+                LOAD_CONST              12 (1.0)
+                BINARY_OP                5 (*)
+                LOAD_CONST               3 (2)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        2 (to L28)
+
+ 142            JUMP_BACKWARD           26 (to L27)
+
+ 143   L28:     LOAD_GLOBAL             27 (min + NULL)
+                LOAD_FAST               28 (ys)
+                CALL                     1
+                LOAD_GLOBAL              5 (max + NULL)
+                LOAD_FAST               28 (ys)
+                CALL                     1
+                STORE_FAST              35 (y1)
+                STORE_FAST              34 (y0)
+
+ 144            LOAD_FAST               27 (cols_of)
+                LOAD_FAST               24 (r)
+                BINARY_SUBSCR
+                UNPACK_SEQUENCE          2
+                STORE_FAST              29 (c0)
+                STORE_FAST              30 (c1)
+
+ 145            LOAD_GLOBAL             37 (sum + NULL)
+                LOAD_CONST              13 (<code object <genexpr> at 0x0000016DC90F1B60, file "bilisub\comic\panels.py", line 145>)
+                MAKE_FUNCTION
+                LOAD_FAST               28 (ys)
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                STORE_FAST              36 (area)
+
+ 146            LOAD_FAST               30 (c1)
+                LOAD_FAST               29 (c0)
+                BINARY_OP               10 (-)
+                LOAD_CONST              14 (0.92)
+                LOAD_FAST                1 (ds_w)
+                BINARY_OP                5 (*)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE        2 (to L29)
+
+ 147            JUMP_BACKWARD           88 (to L27)
+
+ 148   L29:     LOAD_FAST               35 (y1)
+                LOAD_FAST               34 (y0)
+                BINARY_OP               10 (-)
+                LOAD_CONST               4 (1)
+                BINARY_OP                0 (+)
+                LOAD_FAST               30 (c1)
+                LOAD_FAST               29 (c0)
+                BINARY_OP               10 (-)
+                BINARY_OP                5 (*)
+                LOAD_FAST               33 (min_area)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        2 (to L30)
+
+ 149            JUMP_BACKWARD          108 (to L27)
+
+ 150   L30:     LOAD_FAST                9 (dark)
+                LOAD_FAST               34 (y0)
+                LOAD_FAST               35 (y1)
+                LOAD_CONST               4 (1)
+                BINARY_OP                0 (+)
+                BUILD_SLICE              2
+                LOAD_FAST               29 (c0)
+                LOAD_FAST               30 (c1)
+                BUILD_SLICE              2
+                BUILD_TUPLE              2
+                BINARY_SUBSCR
+                LOAD_ATTR               39 (any + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L31)
+
+ 151            JUMP_BACKWARD          143 (to L27)
+
+ 152   L31:     LOAD_GLOBAL              5 (max + NULL)
+                LOAD_CONST               1 (0)
+                LOAD_GLOBAL              7 (int + NULL)
+                LOAD_FAST               34 (y0)
+                LOAD_FAST                5 (h)
+                BINARY_OP                5 (*)
+                LOAD_FAST                6 (ds_h)
+                BINARY_OP               11 (/)
+                CALL                     1
+                LOAD_FAST                2 (pad)
+                BINARY_OP               10 (-)
+                CALL                     2
+                STORE_FAST              37 (a)
+
+ 153            LOAD_GLOBAL             27 (min + NULL)
+                LOAD_FAST                5 (h)
+                LOAD_GLOBAL              7 (int + NULL)
+                LOAD_FAST               35 (y1)
+                LOAD_CONST               4 (1)
+                BINARY_OP                0 (+)
+                LOAD_FAST                5 (h)
+                BINARY_OP                5 (*)
+                LOAD_FAST                6 (ds_h)
+                BINARY_OP               11 (/)
+                CALL                     1
+                LOAD_FAST                2 (pad)
+                BINARY_OP                0 (+)
+                CALL                     2
+                STORE_FAST              38 (b)
+
+ 154            LOAD_CONST              15 (True)
+                LOAD_FAST               32 (forbidden)
+                LOAD_FAST               37 (a)
+                LOAD_FAST               38 (b)
+                STORE_SLICE
+                JUMP_BACKWARD          213 (to L27)
+
+ 140   L32:     END_FOR
+                POP_TOP
+
+ 155            LOAD_FAST               32 (forbidden)
+                RETURN_VALUE
+
+Disassembly of <code object find at 0x0000016DC9129590, file "bilisub\comic\panels.py", line 84>:
+  --           COPY_FREE_VARS           1
+
+  84           RESUME                   0
+
+  85           LOAD_DEREF               1 (parent)
+               LOAD_FAST                0 (x)
+               BINARY_SUBSCR
+               LOAD_FAST                0 (x)
+               COMPARE_OP             119 (bool(!=))
+               POP_JUMP_IF_FALSE       27 (to L2)
+
+  86   L1:     LOAD_DEREF               1 (parent)
+               LOAD_DEREF               1 (parent)
+               LOAD_FAST                0 (x)
+               BINARY_SUBSCR
+               BINARY_SUBSCR
+               LOAD_DEREF               1 (parent)
+               LOAD_FAST                0 (x)
+               STORE_SUBSCR
+
+  87           LOAD_DEREF               1 (parent)
+               LOAD_FAST                0 (x)
+               BINARY_SUBSCR
+               STORE_FAST               0 (x)
+
+  85           LOAD_DEREF               1 (parent)
+               LOAD_FAST                0 (x)
+               BINARY_SUBSCR
+               LOAD_FAST                0 (x)
+               COMPARE_OP             119 (bool(!=))
+               POP_JUMP_IF_FALSE        2 (to L2)
+               JUMP_BACKWARD           27 (to L1)
+
+  88   L2:     LOAD_FAST                0 (x)
+               RETURN_VALUE
+
+Disassembly of <code object union at 0x0000016DC8EADAC0, file "bilisub\comic\panels.py", line 90>:
+  --           COPY_FREE_VARS           2
+
+  90           RESUME                   0
+
+  91           LOAD_DEREF               4 (find)
+               PUSH_NULL
+               LOAD_FAST                0 (a)
+               CALL                     1
+               LOAD_DEREF               4 (find)
+               PUSH_NULL
+               LOAD_FAST                1 (b)
+               CALL                     1
+               STORE_FAST_STORE_FAST   50 (rb, ra)
+
+  92           LOAD_FAST_LOAD_FAST     35 (ra, rb)
+               COMPARE_OP             119 (bool(!=))
+               POP_JUMP_IF_FALSE        6 (to L1)
+
+  93           LOAD_FAST                2 (ra)
+               LOAD_DEREF               5 (parent)
+               LOAD_FAST                3 (rb)
+               STORE_SUBSCR
+               RETURN_CONST             0 (None)
+
+  92   L1:     RETURN_CONST             0 (None)
+
+Disassembly of <code object <genexpr> at 0x0000016DC90F1B60, file "bilisub\comic\panels.py", line 145>:
+ 145           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                 7 (to L3)
+               STORE_FAST               1 (_)
+               LOAD_CONST               0 (1)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD            9 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object _choose_cuts at 0x0000016DC8FB7E10, file "bilisub\comic\panels.py", line 158>:
+  --            MAKE_CELL                4 (h)
+                MAKE_CELL                8 (gutter_min_px)
+                MAKE_CELL               27 (hi)
+                MAKE_CELL               28 (lo)
+
+ 158            RESUME                   0
+
+ 166            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              0 (numpy)
+                STORE_FAST               9 (np)
+
+ 168            LOAD_FAST_LOAD_FAST      7 (row_std, gutter_std)
+                COMPARE_OP               2 (<)
+                LOAD_FAST                1 (row_mean)
+                LOAD_CONST               3 (232)
+                COMPARE_OP             132 (>)
+                LOAD_FAST                1 (row_mean)
+                LOAD_CONST               4 (22)
+                COMPARE_OP               2 (<)
+                BINARY_OP                7 (|)
+                BINARY_OP                1 (&)
+                STORE_FAST              10 (is_pure)
+
+ 169            LOAD_FAST                0 (row_std)
+                LOAD_CONST               5 (12.0)
+                COMPARE_OP               2 (<)
+                LOAD_FAST                2 (forbidden)
+                UNARY_INVERT
+                BINARY_OP                1 (&)
+                STORE_FAST              11 (is_flat)
+
+ 171            LOAD_FAST                8 (gutter_min_px)
+                LOAD_FAST                4 (h)
+                BUILD_TUPLE              2
+                LOAD_CONST               6 (<code object band_centers at 0x0000016DC8EA5A30, file "bilisub\comic\panels.py", line 171>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                STORE_FAST              12 (band_centers)
+
+ 186            LOAD_FAST               12 (band_centers)
+                PUSH_NULL
+                LOAD_FAST               10 (is_pure)
+                CALL                     1
+                STORE_FAST              13 (pure_c)
+
+ 187            LOAD_FAST               12 (band_centers)
+                PUSH_NULL
+                LOAD_FAST               11 (is_flat)
+                CALL                     1
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     14 (c)
+                SWAP                     2
+        L1:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L2:     FOR_ITER                16 (to L5)
+                STORE_FAST_LOAD_FAST   226 (c, forbidden)
+                LOAD_FAST               14 (c)
+                BINARY_SUBSCR
+                TO_BOOL
+        L3:     POP_JUMP_IF_FALSE        2 (to L4)
+                JUMP_BACKWARD           14 (to L2)
+        L4:     LOAD_FAST               14 (c)
+                LIST_APPEND              2
+                JUMP_BACKWARD           18 (to L2)
+        L5:     END_FOR
+                POP_TOP
+        L6:     STORE_FAST              15 (flat_c)
+                STORE_FAST              14 (c)
+
+ 189            LOAD_GLOBAL              3 (max + NULL)
+                LOAD_CONST               7 (1)
+                LOAD_GLOBAL              5 (int + NULL)
+                LOAD_GLOBAL              7 (round + NULL)
+                LOAD_FAST_LOAD_FAST     83 (target_ratio, w)
+                BINARY_OP                5 (*)
+                CALL                     1
+                CALL                     1
+                CALL                     2
+                STORE_FAST              16 (target_h)
+
+ 190            LOAD_GLOBAL              3 (max + NULL)
+                LOAD_FAST               16 (target_h)
+                LOAD_CONST               7 (1)
+                BINARY_OP                0 (+)
+                LOAD_GLOBAL              5 (int + NULL)
+                LOAD_GLOBAL              7 (round + NULL)
+                LOAD_FAST_LOAD_FAST     99 (max_ratio, w)
+                BINARY_OP                5 (*)
+                CALL                     1
+                CALL                     1
+                CALL                     2
+                STORE_FAST              17 (max_h)
+
+ 191            LOAD_FAST_LOAD_FAST      2 (row_std, forbidden)
+                LOAD_ATTR                9 (astype + NULL|self)
+                LOAD_FAST                9 (np)
+                LOAD_ATTR               10 (float32)
+                CALL                     1
+                LOAD_CONST               8 (1000000.0)
+                BINARY_OP                5 (*)
+                BINARY_OP                0 (+)
+                STORE_FAST              18 (score)
+
+ 193            BUILD_LIST               0
+                STORE_FAST              19 (cuts)
+
+ 194            LOAD_CONST               1 (0)
+                STORE_FAST              20 (start)
+
+ 195            LOAD_FAST               20 (start)
+                LOAD_DEREF               4 (h)
+                COMPARE_OP              18 (bool(<))
+                EXTENDED_ARG             1
+                POP_JUMP_IF_FALSE      348 (to L20)
+
+ 196    L7:     LOAD_FAST               20 (start)
+                LOAD_FAST               16 (target_h)
+                BINARY_OP                0 (+)
+                LOAD_FAST               20 (start)
+                LOAD_FAST               17 (max_h)
+                BINARY_OP                0 (+)
+                SWAP                     2
+                STORE_DEREF             28 (lo)
+                STORE_DEREF             27 (hi)
+
+ 197            LOAD_GLOBAL             13 (next + NULL)
+                LOAD_FAST               27 (hi)
+                LOAD_FAST               28 (lo)
+                BUILD_TUPLE              2
+                LOAD_CONST               9 (<code object <genexpr> at 0x0000016DC9128B70, file "bilisub\comic\panels.py", line 197>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                LOAD_FAST               13 (pure_c)
+                GET_ITER
+                CALL                     0
+                LOAD_CONST               2 (None)
+                CALL                     2
+                STORE_FAST              21 (cand)
+
+ 198            LOAD_FAST               21 (cand)
+                POP_JUMP_IF_NOT_NONE    23 (to L8)
+
+ 199            LOAD_GLOBAL             13 (next + NULL)
+                LOAD_FAST               27 (hi)
+                LOAD_FAST               28 (lo)
+                BUILD_TUPLE              2
+                LOAD_CONST              10 (<code object <genexpr> at 0x0000016DC9129230, file "bilisub\comic\panels.py", line 199>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                LOAD_FAST               15 (flat_c)
+                GET_ITER
+                CALL                     0
+                LOAD_CONST               2 (None)
+                CALL                     2
+                STORE_FAST              21 (cand)
+
+ 200    L8:     LOAD_FAST               21 (cand)
+                POP_JUMP_IF_NOT_NONE   213 (to L17)
+
+ 201            LOAD_GLOBAL             15 (min + NULL)
+                LOAD_DEREF              28 (lo)
+                LOAD_DEREF               4 (h)
+                LOAD_CONST               7 (1)
+                BINARY_OP               10 (-)
+                CALL                     2
+                LOAD_GLOBAL             15 (min + NULL)
+                LOAD_DEREF              27 (hi)
+                LOAD_DEREF               4 (h)
+                LOAD_CONST               7 (1)
+                BINARY_OP               10 (-)
+                CALL                     2
+                STORE_FAST              23 (b)
+                STORE_FAST              22 (a)
+
+ 202            LOAD_FAST               23 (b)
+                LOAD_FAST               22 (a)
+                BINARY_OP               10 (-)
+                LOAD_CONST              11 (4)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE      171 (to L16)
+
+ 203            LOAD_FAST               22 (a)
+                LOAD_GLOBAL              5 (int + NULL)
+                LOAD_FAST                9 (np)
+                LOAD_ATTR               17 (argmin + NULL|self)
+                LOAD_FAST               18 (score)
+                LOAD_FAST               22 (a)
+                LOAD_FAST               23 (b)
+                BINARY_SLICE
+                CALL                     1
+                CALL                     1
+                BINARY_OP                0 (+)
+                STORE_FAST              24 (cut)
+
+ 204            LOAD_FAST                2 (forbidden)
+                LOAD_FAST               24 (cut)
+                BINARY_SUBSCR
+                TO_BOOL
+                POP_JUMP_IF_FALSE      128 (to L15)
+
+ 205            LOAD_FAST               24 (cut)
+                STORE_FAST              25 (up)
+
+ 206            LOAD_FAST               25 (up)
+                LOAD_FAST               20 (start)
+                LOAD_FAST                3 (w)
+                LOAD_CONST              12 (2)
+                BINARY_OP                2 (//)
+                BINARY_OP                0 (+)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       39 (to L10)
+                LOAD_FAST                2 (forbidden)
+                LOAD_FAST               25 (up)
+                BINARY_SUBSCR
+                TO_BOOL
+                POP_JUMP_IF_FALSE       29 (to L10)
+
+ 207    L9:     LOAD_FAST               25 (up)
+                LOAD_CONST               7 (1)
+                BINARY_OP               23 (-=)
+                STORE_FAST              25 (up)
+
+ 206            LOAD_FAST               25 (up)
+                LOAD_FAST               20 (start)
+                LOAD_FAST                3 (w)
+                LOAD_CONST              12 (2)
+                BINARY_OP                2 (//)
+                BINARY_OP                0 (+)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       12 (to L10)
+                LOAD_FAST                2 (forbidden)
+                LOAD_FAST               25 (up)
+                BINARY_SUBSCR
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L10)
+                JUMP_BACKWARD           29 (to L9)
+
+ 208   L10:     LOAD_FAST               24 (cut)
+                STORE_FAST              26 (dn)
+
+ 209            LOAD_FAST               26 (dn)
+                LOAD_DEREF               4 (h)
+                LOAD_CONST               7 (1)
+                BINARY_OP               10 (-)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       36 (to L12)
+                LOAD_FAST                2 (forbidden)
+                LOAD_FAST               26 (dn)
+                BINARY_SUBSCR
+                TO_BOOL
+                POP_JUMP_IF_FALSE       26 (to L12)
+
+ 210   L11:     LOAD_FAST               26 (dn)
+                LOAD_CONST               7 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST              26 (dn)
+
+ 209            LOAD_FAST               26 (dn)
+                LOAD_DEREF               4 (h)
+                LOAD_CONST               7 (1)
+                BINARY_OP               10 (-)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       12 (to L12)
+                LOAD_FAST                2 (forbidden)
+                LOAD_FAST               26 (dn)
+                BINARY_SUBSCR
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L12)
+                JUMP_BACKWARD           26 (to L11)
+
+ 211   L12:     LOAD_FAST               24 (cut)
+                LOAD_FAST               25 (up)
+                BINARY_OP               10 (-)
+                LOAD_FAST               26 (dn)
+                LOAD_FAST               24 (cut)
+                BINARY_OP               10 (-)
+                COMPARE_OP              58 (bool(<=))
+                POP_JUMP_IF_FALSE       14 (to L13)
+                LOAD_FAST               25 (up)
+                LOAD_FAST               20 (start)
+                LOAD_FAST                3 (w)
+                LOAD_CONST              12 (2)
+                BINARY_OP                2 (//)
+                BINARY_OP                0 (+)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE        2 (to L13)
+                LOAD_FAST               25 (up)
+                JUMP_FORWARD             1 (to L14)
+       L13:     LOAD_FAST               26 (dn)
+       L14:     STORE_FAST              24 (cut)
+
+  --   L15:     JUMP_FORWARD             5 (to L18)
+
+ 213   L16:     LOAD_DEREF              27 (hi)
+                STORE_FAST              24 (cut)
+                JUMP_FORWARD             2 (to L18)
+
+ 215   L17:     LOAD_FAST               21 (cand)
+                STORE_FAST              24 (cut)
+
+ 216   L18:     LOAD_FAST               24 (cut)
+                LOAD_DEREF               4 (h)
+                LOAD_GLOBAL              5 (int + NULL)
+                LOAD_CONST              13 (0.3)
+                LOAD_FAST               16 (target_h)
+                BINARY_OP                5 (*)
+                CALL                     1
+                BINARY_OP               10 (-)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE        3 (to L19)
+
+ 217            NOP
+
+ 220            LOAD_FAST               19 (cuts)
+                RETURN_VALUE
+
+ 218   L19:     LOAD_FAST               19 (cuts)
+                LOAD_ATTR               19 (append + NULL|self)
+                LOAD_GLOBAL              5 (int + NULL)
+                LOAD_FAST               24 (cut)
+                CALL                     1
+                CALL                     1
+                POP_TOP
+
+ 219            LOAD_GLOBAL              5 (int + NULL)
+                LOAD_FAST               24 (cut)
+                CALL                     1
+                STORE_FAST              20 (start)
+
+ 195            LOAD_FAST               20 (start)
+                LOAD_DEREF               4 (h)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        3 (to L20)
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          348 (to L7)
+
+ 220   L20:     LOAD_FAST               19 (cuts)
+                RETURN_VALUE
+
+  --   L21:     SWAP                     2
+                POP_TOP
+
+ 187            SWAP                     2
+                STORE_FAST              14 (c)
+                RERAISE                  0
+ExceptionTable:
+  L1 to L3 -> L21 [2]
+  L4 to L6 -> L21 [2]
+
+Disassembly of <code object band_centers at 0x0000016DC8EA5A30, file "bilisub\comic\panels.py", line 171>:
+  --           COPY_FREE_VARS           2
+
+ 171           RESUME                   0
+
+ 172           BUILD_LIST               0
+               STORE_FAST               1 (out)
+
+ 173           LOAD_CONST               1 (0)
+               STORE_FAST               2 (y)
+
+ 174           LOAD_FAST                2 (y)
+               LOAD_DEREF               5 (h)
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE       94 (to L7)
+
+ 175   L1:     LOAD_FAST_LOAD_FAST      2 (mask, y)
+               BINARY_SUBSCR
+               TO_BOOL
+               POP_JUMP_IF_FALSE       72 (to L5)
+
+ 176           LOAD_FAST                2 (y)
+               STORE_FAST               3 (j)
+
+ 177           LOAD_FAST                3 (j)
+               LOAD_DEREF               5 (h)
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE       31 (to L3)
+               LOAD_FAST_LOAD_FAST      3 (mask, j)
+               BINARY_SUBSCR
+               TO_BOOL
+               POP_JUMP_IF_FALSE       22 (to L3)
+
+ 178   L2:     LOAD_FAST                3 (j)
+               LOAD_CONST               2 (1)
+               BINARY_OP               13 (+=)
+               STORE_FAST               3 (j)
+
+ 177           LOAD_FAST                3 (j)
+               LOAD_DEREF               5 (h)
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE       11 (to L3)
+               LOAD_FAST_LOAD_FAST      3 (mask, j)
+               BINARY_SUBSCR
+               TO_BOOL
+               POP_JUMP_IF_FALSE        2 (to L3)
+               JUMP_BACKWARD           22 (to L2)
+
+ 179   L3:     LOAD_FAST_LOAD_FAST     50 (j, y)
+               BINARY_OP               10 (-)
+               LOAD_DEREF               4 (gutter_min_px)
+               COMPARE_OP             188 (bool(>=))
+               POP_JUMP_IF_FALSE       22 (to L4)
+
+ 180           LOAD_FAST                1 (out)
+               LOAD_ATTR                1 (append + NULL|self)
+               LOAD_FAST_LOAD_FAST     35 (y, j)
+               BINARY_OP                0 (+)
+               LOAD_CONST               3 (2)
+               BINARY_OP                2 (//)
+               CALL                     1
+               POP_TOP
+
+ 181   L4:     LOAD_FAST                3 (j)
+               STORE_FAST               2 (y)
+               JUMP_FORWARD             5 (to L6)
+
+ 183   L5:     LOAD_FAST                2 (y)
+               LOAD_CONST               2 (1)
+               BINARY_OP               13 (+=)
+               STORE_FAST               2 (y)
+
+ 174   L6:     LOAD_FAST                2 (y)
+               LOAD_DEREF               5 (h)
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE        2 (to L7)
+               JUMP_BACKWARD           94 (to L1)
+
+ 184   L7:     LOAD_FAST                1 (out)
+               RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC9128B70, file "bilisub\comic\panels.py", line 197>:
+  --           COPY_FREE_VARS           2
+
+ 197           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                26 (to L8)
+               STORE_FAST               1 (c)
+               LOAD_DEREF               3 (lo)
+               LOAD_FAST                1 (c)
+               SWAP                     2
+               COPY                     2
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE        8 (to L5)
+               LOAD_DEREF               2 (hi)
+               COMPARE_OP              58 (bool(<=))
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           18 (to L2)
+       L4:     JUMP_FORWARD             3 (to L7)
+       L5:     POP_TOP
+       L6:     JUMP_BACKWARD           22 (to L2)
+       L7:     LOAD_FAST                1 (c)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           28 (to L2)
+       L8:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L9:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L9 [0] lasti
+  L4 to L6 -> L9 [0] lasti
+  L7 to L9 -> L9 [0] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC9129230, file "bilisub\comic\panels.py", line 199>:
+  --           COPY_FREE_VARS           2
+
+ 199           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                26 (to L8)
+               STORE_FAST               1 (c)
+               LOAD_DEREF               3 (lo)
+               LOAD_FAST                1 (c)
+               SWAP                     2
+               COPY                     2
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE        8 (to L5)
+               LOAD_DEREF               2 (hi)
+               COMPARE_OP              58 (bool(<=))
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           18 (to L2)
+       L4:     JUMP_FORWARD             3 (to L7)
+       L5:     POP_TOP
+       L6:     JUMP_BACKWARD           22 (to L2)
+       L7:     LOAD_FAST                1 (c)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           28 (to L2)
+       L8:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L9:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L9 [0] lasti
+  L4 to L6 -> L9 [0] lasti
+  L7 to L9 -> L9 [0] lasti
+
+Disassembly of <code object _VirtualStrip at 0x0000016DC90E2330, file "bilisub\comic\panels.py", line 223>:
+223           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('_VirtualStrip')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (223)
+              STORE_NAME               3 (__firstlineno__)
+
+224           LOAD_CONST               2 ('Các trang LIỀN NHAU cùng bề ngang ghép thành 1 strip DỌC — không dựng ảnh khổng lồ\ntrong RAM: thống kê hàng tính per-trang rồi nối; crop panel mới vstack đúng các trang liên quan.')
+              STORE_NAME               4 (__doc__)
+
+227           LOAD_CONST               7 (('paths', 'list[str]'))
+              LOAD_CONST               3 (<code object __init__ at 0x0000016DC8FB86C0, file "bilisub\comic\panels.py", line 227>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               5 (__init__)
+
+253           LOAD_CONST               8 (('y0', 'int', 'y1', 'int'))
+              LOAD_CONST               4 (<code object crop at 0x0000016DC8DB2280, file "bilisub\comic\panels.py", line 253>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               6 (crop)
+              LOAD_CONST               5 (('forbidden', 'h', 'images', 'offsets', 'paths', 'row_mean', 'row_std', 'w'))
+              STORE_NAME               7 (__static_attributes__)
+              RETURN_CONST             6 (None)
+
+Disassembly of <code object __init__ at 0x0000016DC8FB86C0, file "bilisub\comic\panels.py", line 227>:
+227           RESUME                   0
+
+228           LOAD_CONST               1 (0)
+              LOAD_CONST               0 (None)
+              IMPORT_NAME              0 (numpy)
+              STORE_FAST               2 (np)
+
+229           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('Image',))
+              IMPORT_NAME              1 (PIL)
+              IMPORT_FROM              2 (Image)
+              STORE_FAST               3 (Image)
+              POP_TOP
+
+231           LOAD_FAST_LOAD_FAST     16 (paths, self)
+              STORE_ATTR               3 (paths)
+
+232           BUILD_LIST               0
+              LOAD_FAST                0 (self)
+              STORE_ATTR               4 (images)
+
+233           BUILD_LIST               0
+              BUILD_LIST               0
+              STORE_FAST_STORE_FAST   84 (means, stds)
+
+234           BUILD_LIST               0
+              STORE_FAST               6 (forb)
+
+235           LOAD_FAST                1 (paths)
+              GET_ITER
+      L1:     FOR_ITER               189 (to L2)
+              STORE_FAST               7 (p)
+
+236           LOAD_FAST                3 (Image)
+              LOAD_ATTR               11 (open + NULL|self)
+              LOAD_FAST                7 (p)
+              CALL                     1
+              LOAD_ATTR               13 (convert + NULL|self)
+              LOAD_CONST               3 ('RGB')
+              CALL                     1
+              STORE_FAST               8 (im)
+
+237           LOAD_FAST                0 (self)
+              LOAD_ATTR                8 (images)
+              LOAD_ATTR               15 (append + NULL|self)
+              LOAD_FAST                8 (im)
+              CALL                     1
+              POP_TOP
+
+238           LOAD_FAST                2 (np)
+              LOAD_ATTR               17 (asarray + NULL|self)
+              LOAD_FAST                8 (im)
+              LOAD_ATTR               13 (convert + NULL|self)
+              LOAD_CONST               4 ('L')
+              CALL                     1
+              LOAD_FAST                2 (np)
+              LOAD_ATTR               18 (float32)
+              LOAD_CONST               5 (('dtype',))
+              CALL_KW                  2
+              STORE_FAST               9 (g)
+
+239           LOAD_FAST                4 (stds)
+              LOAD_ATTR               15 (append + NULL|self)
+              LOAD_FAST                9 (g)
+              LOAD_ATTR               21 (std + NULL|self)
+              LOAD_CONST               6 (1)
+              LOAD_CONST               7 (('axis',))
+              CALL_KW                  1
+              CALL                     1
+              POP_TOP
+
+240           LOAD_FAST                5 (means)
+              LOAD_ATTR               15 (append + NULL|self)
+              LOAD_FAST                9 (g)
+              LOAD_ATTR               23 (mean + NULL|self)
+              LOAD_CONST               6 (1)
+              LOAD_CONST               7 (('axis',))
+              CALL_KW                  1
+              CALL                     1
+              POP_TOP
+
+241           LOAD_FAST                6 (forb)
+              LOAD_ATTR               15 (append + NULL|self)
+              LOAD_GLOBAL             25 (_bubble_rows + NULL)
+              LOAD_FAST                8 (im)
+              CALL                     1
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD          191 (to L1)
+
+235   L2:     END_FOR
+              POP_TOP
+
+242           LOAD_FAST                0 (self)
+              LOAD_ATTR                8 (images)
+              LOAD_CONST               1 (0)
+              BINARY_SUBSCR
+              LOAD_ATTR               26 (size)
+              LOAD_CONST               1 (0)
+              BINARY_SUBSCR
+              LOAD_FAST                0 (self)
+              STORE_ATTR              14 (w)
+
+243           LOAD_FAST                2 (np)
+              LOAD_ATTR               31 (concatenate + NULL|self)
+              LOAD_FAST                4 (stds)
+              CALL                     1
+              LOAD_FAST                0 (self)
+              STORE_ATTR              16 (row_std)
+
+244           LOAD_FAST                2 (np)
+              LOAD_ATTR               31 (concatenate + NULL|self)
+              LOAD_FAST                5 (means)
+              CALL                     1
+              LOAD_FAST                0 (self)
+              STORE_ATTR              17 (row_mean)
+
+245           LOAD_FAST                2 (np)
+              LOAD_ATTR               31 (concatenate + NULL|self)
+              LOAD_FAST                6 (forb)
+              CALL                     1
+              LOAD_FAST                0 (self)
+              STORE_ATTR              18 (forbidden)
+
+246           LOAD_GLOBAL             39 (int + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               32 (row_std)
+              LOAD_ATTR               40 (shape)
+              LOAD_CONST               1 (0)
+              BINARY_SUBSCR
+              CALL                     1
+              LOAD_FAST                0 (self)
+              STORE_ATTR              21 (h)
+
+247           BUILD_LIST               0
+              LOAD_FAST                0 (self)
+              STORE_ATTR              22 (offsets)
+
+248           LOAD_CONST               1 (0)
+              STORE_FAST              10 (off)
+
+249           LOAD_FAST                0 (self)
+              LOAD_ATTR                8 (images)
+              GET_ITER
+      L3:     FOR_ITER                47 (to L4)
+              STORE_FAST               8 (im)
+
+250           LOAD_FAST                0 (self)
+              LOAD_ATTR               44 (offsets)
+              LOAD_ATTR               15 (append + NULL|self)
+              LOAD_FAST               10 (off)
+              CALL                     1
+              POP_TOP
+
+251           LOAD_FAST_LOAD_FAST    168 (off, im)
+              LOAD_ATTR               26 (size)
+              LOAD_CONST               6 (1)
+              BINARY_SUBSCR
+              BINARY_OP               13 (+=)
+              STORE_FAST              10 (off)
+              JUMP_BACKWARD           49 (to L3)
+
+249   L4:     END_FOR
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object crop at 0x0000016DC8DB2280, file "bilisub\comic\panels.py", line 253>:
+253           RESUME                   0
+
+254           LOAD_CONST               1 (0)
+              LOAD_CONST               0 (None)
+              IMPORT_NAME              0 (numpy)
+              STORE_FAST               3 (np)
+
+255           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('Image',))
+              IMPORT_NAME              1 (PIL)
+              IMPORT_FROM              2 (Image)
+              STORE_FAST               4 (Image)
+              POP_TOP
+
+256           BUILD_LIST               0
+              STORE_FAST               5 (parts)
+
+257           LOAD_GLOBAL              7 (zip + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                8 (images)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (offsets)
+              CALL                     2
+              GET_ITER
+      L1:     FOR_ITER                90 (to L3)
+              UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST  103 (im, off)
+
+258           LOAD_FAST                6 (im)
+              LOAD_ATTR               12 (size)
+              LOAD_CONST               3 (1)
+              BINARY_SUBSCR
+              STORE_FAST               8 (h)
+
+259           LOAD_GLOBAL             15 (max + NULL)
+              LOAD_FAST_LOAD_FAST     23 (y0, off)
+              CALL                     2
+              LOAD_GLOBAL             17 (min + NULL)
+              LOAD_FAST_LOAD_FAST     39 (y1, off)
+              LOAD_FAST                8 (h)
+              BINARY_OP                0 (+)
+              CALL                     2
+              STORE_FAST_STORE_FAST  169 (b, a)
+
+260           LOAD_FAST_LOAD_FAST    169 (b, a)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_TRUE         2 (to L2)
+              JUMP_BACKWARD           51 (to L1)
+
+261   L2:     LOAD_FAST                5 (parts)
+              LOAD_ATTR               19 (append + NULL|self)
+              LOAD_FAST                3 (np)
+              LOAD_ATTR               21 (asarray + NULL|self)
+              LOAD_FAST                6 (im)
+              CALL                     1
+              LOAD_FAST_LOAD_FAST    151 (a, off)
+              BINARY_OP               10 (-)
+              LOAD_FAST_LOAD_FAST    167 (b, off)
+              BINARY_OP               10 (-)
+              BINARY_SLICE
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD           92 (to L1)
+
+257   L3:     END_FOR
+              POP_TOP
+
+262           LOAD_FAST                5 (parts)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       32 (to L4)
+              LOAD_FAST                4 (Image)
+              LOAD_ATTR               23 (fromarray + NULL|self)
+              LOAD_FAST                3 (np)
+              LOAD_ATTR               25 (vstack + NULL|self)
+              LOAD_FAST                5 (parts)
+              CALL                     1
+              CALL                     1
+              RETURN_VALUE
+      L4:     LOAD_CONST               0 (None)
+              RETURN_VALUE
+
+Disassembly of <code object split_pages_group at 0x0000016DC8FB8DB0, file "bilisub\comic\panels.py", line 265>:
+265           RESUME                   0
+
+269           LOAD_GLOBAL              1 (_VirtualStrip + NULL)
+              LOAD_FAST                0 (paths)
+              CALL                     1
+              STORE_FAST               7 (strip)
+
+270           LOAD_GLOBAL              3 (_choose_cuts + NULL)
+              LOAD_FAST                7 (strip)
+              LOAD_ATTR                4 (row_std)
+              LOAD_FAST                7 (strip)
+              LOAD_ATTR                6 (row_mean)
+              LOAD_FAST                7 (strip)
+              LOAD_ATTR                8 (forbidden)
+
+271           LOAD_FAST                7 (strip)
+              LOAD_ATTR               10 (w)
+              LOAD_FAST                7 (strip)
+              LOAD_ATTR               12 (h)
+              LOAD_FAST_LOAD_FAST     52 (target_ratio, max_ratio)
+
+272           LOAD_FAST_LOAD_FAST     86 (gutter_std, gutter_min_px)
+
+270           LOAD_CONST               1 (('target_ratio', 'max_ratio', 'gutter_std', 'gutter_min_px'))
+              CALL_KW                  9
+              STORE_FAST               8 (cuts)
+
+273           LOAD_CONST               2 (0)
+              BUILD_LIST               1
+              LOAD_FAST                8 (cuts)
+              BINARY_OP                0 (+)
+              LOAD_FAST                7 (strip)
+              LOAD_ATTR               12 (h)
+              BUILD_LIST               1
+              BINARY_OP                0 (+)
+              STORE_FAST               9 (bounds)
+
+274           LOAD_GLOBAL             15 (Path + NULL)
+              LOAD_FAST                1 (out_dir)
+              CALL                     1
+              STORE_FAST              10 (out)
+
+275           LOAD_FAST               10 (out)
+              LOAD_ATTR               17 (mkdir + NULL|self)
+              LOAD_CONST               3 (True)
+              LOAD_CONST               3 (True)
+              LOAD_CONST               4 (('parents', 'exist_ok'))
+              CALL_KW                  2
+              POP_TOP
+
+276           BUILD_LIST               0
+              STORE_FAST              11 (saved)
+
+277           LOAD_GLOBAL             19 (range + NULL)
+              LOAD_GLOBAL             21 (len + NULL)
+              LOAD_FAST                9 (bounds)
+              CALL                     1
+              LOAD_CONST               5 (1)
+              BINARY_OP               10 (-)
+              CALL                     1
+              GET_ITER
+      L1:     FOR_ITER               162 (to L5)
+              STORE_FAST              12 (k)
+
+278           LOAD_FAST_LOAD_FAST    156 (bounds, k)
+              BINARY_SUBSCR
+              LOAD_FAST_LOAD_FAST    156 (bounds, k)
+              LOAD_CONST               5 (1)
+              BINARY_OP                0 (+)
+              BINARY_SUBSCR
+              STORE_FAST_STORE_FAST  237 (bot, top)
+
+279           LOAD_FAST_LOAD_FAST    237 (bot, top)
+              BINARY_OP               10 (-)
+              LOAD_CONST               6 (8)
+              COMPARE_OP              18 (bool(<))
+              POP_JUMP_IF_FALSE        2 (to L2)
+
+280           JUMP_BACKWARD           23 (to L1)
+
+281   L2:     LOAD_GLOBAL             23 (int + NULL)
+              LOAD_FAST                7 (strip)
+              LOAD_ATTR                4 (row_std)
+              LOAD_FAST_LOAD_FAST    222 (top, bot)
+              BINARY_SLICE
+              LOAD_FAST                5 (gutter_std)
+              COMPARE_OP             172 (>=)
+              LOAD_ATTR               25 (sum + NULL|self)
+              CALL                     0
+              CALL                     1
+              LOAD_CONST               7 (6)
+              COMPARE_OP              18 (bool(<))
+              POP_JUMP_IF_FALSE        2 (to L3)
+
+282           JUMP_BACKWARD           69 (to L1)
+
+283   L3:     LOAD_FAST                7 (strip)
+              LOAD_ATTR               27 (crop + NULL|self)
+              LOAD_FAST_LOAD_FAST    222 (top, bot)
+              CALL                     2
+              STORE_FAST              15 (crop)
+
+284           LOAD_FAST               15 (crop)
+              POP_JUMP_IF_NOT_NONE     2 (to L4)
+
+285           JUMP_BACKWARD           91 (to L1)
+
+286   L4:     LOAD_GLOBAL             29 (_compress_blank_runs + NULL)
+              LOAD_FAST               15 (crop)
+              CALL                     1
+              UNPACK_SEQUENCE          2
+              STORE_FAST              15 (crop)
+              STORE_FAST              16 (_sq)
+
+287           LOAD_FAST               10 (out)
+              LOAD_CONST               8 ('panel_')
+              LOAD_FAST                2 (base_index)
+              LOAD_CONST               9 ('04d')
+              FORMAT_WITH_SPEC
+              LOAD_CONST              10 ('_')
+              LOAD_FAST               12 (k)
+              LOAD_CONST              11 ('03d')
+              FORMAT_WITH_SPEC
+              LOAD_CONST              12 ('.jpg')
+              BUILD_STRING             5
+              BINARY_OP               11 (/)
+              STORE_FAST              17 (fp)
+
+288           LOAD_FAST               15 (crop)
+              LOAD_ATTR               31 (save + NULL|self)
+              LOAD_FAST               17 (fp)
+              LOAD_CONST              13 ('JPEG')
+              LOAD_CONST              14 (88)
+              LOAD_CONST              15 (('quality',))
+              CALL_KW                  3
+              POP_TOP
+
+289           LOAD_FAST               11 (saved)
+              LOAD_ATTR               33 (append + NULL|self)
+              LOAD_GLOBAL             35 (str + NULL)
+              LOAD_FAST               17 (fp)
+              CALL                     1
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD          164 (to L1)
+
+277   L5:     END_FOR
+              POP_TOP
+
+290           LOAD_FAST               11 (saved)
+              RETURN_VALUE
+
+Disassembly of <code object split_tall_image at 0x0000016DC90F1D40, file "bilisub\comic\panels.py", line 293>:
+293           RESUME                   0
+
+299           LOAD_GLOBAL              1 (split_pages_group + NULL)
+              LOAD_FAST                0 (path)
+              BUILD_LIST               1
+              LOAD_FAST_LOAD_FAST     18 (out_dir, base_index)
+
+300           LOAD_FAST_LOAD_FAST     52 (target_ratio, max_ratio)
+
+301           LOAD_FAST_LOAD_FAST     86 (gutter_std, gutter_min_px)
+
+299           LOAD_CONST               1 (('target_ratio', 'max_ratio', 'gutter_std', 'gutter_min_px'))
+              CALL_KW                  7
+              RETURN_VALUE
+
+Disassembly of <code object _save_whole at 0x0000016DC90D0AB0, file "bilisub\comic\panels.py", line 304>:
+304           RESUME                   0
+
+306           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('Image',))
+              IMPORT_NAME              0 (PIL)
+              IMPORT_FROM              1 (Image)
+              STORE_FAST               3 (Image)
+              POP_TOP
+
+307           LOAD_GLOBAL              5 (Path + NULL)
+              LOAD_FAST                1 (out_dir)
+              CALL                     1
+              STORE_FAST               4 (out)
+
+308           LOAD_FAST                4 (out)
+              LOAD_ATTR                7 (mkdir + NULL|self)
+              LOAD_CONST               3 (True)
+              LOAD_CONST               3 (True)
+              LOAD_CONST               4 (('parents', 'exist_ok'))
+              CALL_KW                  2
+              POP_TOP
+
+309           LOAD_FAST                4 (out)
+              LOAD_CONST               5 ('page_')
+              LOAD_FAST                2 (base_index)
+              LOAD_CONST               6 ('04d')
+              FORMAT_WITH_SPEC
+              LOAD_CONST               7 ('.jpg')
+              BUILD_STRING             3
+              BINARY_OP               11 (/)
+              STORE_FAST               5 (fp)
+
+310           LOAD_FAST                3 (Image)
+              LOAD_ATTR                9 (open + NULL|self)
+              LOAD_FAST                0 (path)
+              CALL                     1
+              LOAD_ATTR               11 (convert + NULL|self)
+              LOAD_CONST               8 ('RGB')
+              CALL                     1
+              STORE_FAST               6 (im)
+
+311           LOAD_GLOBAL             13 (_compress_blank_runs + NULL)
+              LOAD_FAST                6 (im)
+              CALL                     1
+              UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST  103 (im, _squeezed)
+
+312           LOAD_FAST                6 (im)
+              LOAD_ATTR               15 (save + NULL|self)
+              LOAD_FAST                5 (fp)
+              LOAD_CONST               9 ('JPEG')
+              LOAD_CONST              10 (88)
+              LOAD_CONST              11 (('quality',))
+              CALL_KW                  3
+              POP_TOP
+
+313           LOAD_GLOBAL             17 (str + NULL)
+              LOAD_FAST                5 (fp)
+              CALL                     1
+              RETURN_VALUE
+
+Disassembly of <code object prepare_panels at 0x0000016DC8FBD6B0, file "bilisub\comic\panels.py", line 316>:
+ 316            RESUME                   0
+
+ 326            LOAD_GLOBAL              1 (_log + NULL)
+                LOAD_FAST                4 (log)
+                CALL                     1
+                STORE_FAST               4 (log)
+
+ 327            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (('Image',))
+                IMPORT_NAME              1 (PIL)
+                IMPORT_FROM              2 (Image)
+                STORE_FAST               5 (Image)
+                POP_TOP
+
+ 329            BUILD_LIST               0
+                STORE_FAST               6 (metas)
+
+ 330            LOAD_FAST                0 (image_paths)
+                GET_ITER
+        L1:     FOR_ITER                75 (to L6)
+                STORE_FAST               7 (src)
+
+ 331            NOP
+
+ 332    L2:     LOAD_FAST                5 (Image)
+                LOAD_ATTR                7 (open + NULL|self)
+                LOAD_FAST                7 (src)
+                CALL                     1
+                BEFORE_WITH
+        L3:     STORE_FAST               8 (im)
+
+ 333            LOAD_FAST                6 (metas)
+                LOAD_ATTR                9 (append + NULL|self)
+                LOAD_FAST_LOAD_FAST    120 (src, im)
+                LOAD_ATTR               10 (size)
+                LOAD_CONST               1 (0)
+                BINARY_SUBSCR
+                LOAD_FAST                8 (im)
+                LOAD_ATTR               10 (size)
+                LOAD_CONST               3 (1)
+                BINARY_SUBSCR
+                BUILD_TUPLE              3
+                CALL                     1
+                POP_TOP
+
+ 332    L4:     LOAD_CONST               4 (None)
+                LOAD_CONST               4 (None)
+                LOAD_CONST               4 (None)
+                CALL                     2
+                POP_TOP
+        L5:     JUMP_BACKWARD           77 (to L1)
+
+ 330    L6:     END_FOR
+                POP_TOP
+
+ 337            BUILD_LIST               0
+                STORE_FAST              10 (panels)
+
+ 338            LOAD_CONST               1 (0)
+                STORE_FAST              11 (n_stitched)
+
+ 339            LOAD_CONST               1 (0)
+                STORE_FAST              12 (i)
+
+ 340            LOAD_CONST               1 (0)
+                STORE_FAST              13 (gidx)
+
+ 341    L7:     LOAD_FAST               12 (i)
+                LOAD_GLOBAL             21 (len + NULL)
+                LOAD_FAST                6 (metas)
+                CALL                     1
+                COMPARE_OP              18 (bool(<))
+                EXTENDED_ARG             1
+                POP_JUMP_IF_FALSE      291 (to L18)
+
+ 342    L8:     LOAD_FAST_LOAD_FAST    108 (metas, i)
+                BINARY_SUBSCR
+                UNPACK_SEQUENCE          3
+                STORE_FAST_STORE_FAST  126 (src, w)
+                STORE_FAST              15 (h)
+
+ 344            LOAD_FAST               12 (i)
+                STORE_FAST              16 (j)
+
+ 345            LOAD_FAST               16 (j)
+                LOAD_GLOBAL             21 (len + NULL)
+                LOAD_FAST                6 (metas)
+                CALL                     1
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       88 (to L10)
+                LOAD_FAST                6 (metas)
+                LOAD_FAST               16 (j)
+                BINARY_SUBSCR
+                LOAD_CONST               3 (1)
+                BINARY_SUBSCR
+                LOAD_FAST               14 (w)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       76 (to L10)
+
+ 346            LOAD_FAST                6 (metas)
+                LOAD_FAST               16 (j)
+                BINARY_SUBSCR
+                LOAD_CONST               8 (2)
+                BINARY_SUBSCR
+                LOAD_CONST               9 (1.2)
+                LOAD_FAST                6 (metas)
+                LOAD_FAST               16 (j)
+                BINARY_SUBSCR
+                LOAD_CONST               3 (1)
+                BINARY_SUBSCR
+                BINARY_OP                5 (*)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE       55 (to L10)
+
+ 347    L9:     LOAD_FAST               16 (j)
+                LOAD_CONST               3 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST              16 (j)
+
+ 345            LOAD_FAST               16 (j)
+                LOAD_GLOBAL             21 (len + NULL)
+                LOAD_FAST                6 (metas)
+                CALL                     1
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       35 (to L10)
+                LOAD_FAST                6 (metas)
+                LOAD_FAST               16 (j)
+                BINARY_SUBSCR
+                LOAD_CONST               3 (1)
+                BINARY_SUBSCR
+                LOAD_FAST               14 (w)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       23 (to L10)
+
+ 346            LOAD_FAST                6 (metas)
+                LOAD_FAST               16 (j)
+                BINARY_SUBSCR
+                LOAD_CONST               8 (2)
+                BINARY_SUBSCR
+                LOAD_CONST               9 (1.2)
+                LOAD_FAST                6 (metas)
+                LOAD_FAST               16 (j)
+                BINARY_SUBSCR
+                LOAD_CONST               3 (1)
+                BINARY_SUBSCR
+                BINARY_OP                5 (*)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE        2 (to L10)
+                JUMP_BACKWARD           55 (to L9)
+
+ 348   L10:     LOAD_FAST_LOAD_FAST    108 (metas, i)
+                LOAD_FAST               16 (j)
+                BINARY_SLICE
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     17 (m)
+                SWAP                     2
+       L11:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L12:     FOR_ITER                 8 (to L13)
+                STORE_FAST              17 (m)
+                LOAD_FAST               17 (m)
+                LOAD_CONST               1 (0)
+                BINARY_SUBSCR
+                LIST_APPEND              2
+                JUMP_BACKWARD           10 (to L12)
+       L13:     END_FOR
+                POP_TOP
+       L14:     STORE_FAST              18 (group)
+                STORE_FAST              17 (m)
+
+ 349            LOAD_GLOBAL             21 (len + NULL)
+                LOAD_FAST               18 (group)
+                CALL                     1
+                LOAD_CONST               8 (2)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE       50 (to L15)
+
+ 350            LOAD_FAST               10 (panels)
+                LOAD_ATTR               23 (extend + NULL|self)
+                LOAD_GLOBAL             25 (split_pages_group + NULL)
+                LOAD_FAST               18 (group)
+                LOAD_FAST_LOAD_FAST     29 (out_dir, gidx)
+                CALL                     3
+                CALL                     1
+                POP_TOP
+
+ 351            LOAD_FAST               11 (n_stitched)
+                LOAD_GLOBAL             21 (len + NULL)
+                LOAD_FAST               18 (group)
+                CALL                     1
+                BINARY_OP               13 (+=)
+                STORE_FAST              11 (n_stitched)
+
+ 352            LOAD_FAST               13 (gidx)
+                LOAD_CONST               3 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST              13 (gidx)
+
+ 353            LOAD_FAST               16 (j)
+                STORE_FAST              12 (i)
+
+ 354            JUMP_BACKWARD          216 (to L7)
+
+ 355   L15:     LOAD_FAST_LOAD_FAST    242 (h, tall_ratio)
+                LOAD_FAST               14 (w)
+                BINARY_OP                5 (*)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE       28 (to L16)
+
+ 356            LOAD_FAST               10 (panels)
+                LOAD_ATTR               23 (extend + NULL|self)
+                LOAD_GLOBAL             27 (split_tall_image + NULL)
+                LOAD_FAST_LOAD_FAST    113 (src, out_dir)
+                LOAD_FAST               13 (gidx)
+                CALL                     3
+                CALL                     1
+                POP_TOP
+                JUMP_FORWARD            27 (to L17)
+
+ 358   L16:     LOAD_FAST               10 (panels)
+                LOAD_ATTR                9 (append + NULL|self)
+                LOAD_GLOBAL             29 (_save_whole + NULL)
+                LOAD_FAST_LOAD_FAST    113 (src, out_dir)
+                LOAD_FAST               13 (gidx)
+                CALL                     3
+                CALL                     1
+                POP_TOP
+
+ 359   L17:     LOAD_FAST               13 (gidx)
+                LOAD_CONST               3 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST              13 (gidx)
+
+ 360            LOAD_FAST               12 (i)
+                LOAD_CONST               3 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST              12 (i)
+
+ 341            LOAD_FAST               12 (i)
+                LOAD_GLOBAL             21 (len + NULL)
+                LOAD_FAST                6 (metas)
+                CALL                     1
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        3 (to L18)
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          291 (to L8)
+
+ 362   L18:     LOAD_FAST               10 (panels)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        11 (to L19)
+
+ 363            LOAD_GLOBAL             31 (ValueError + NULL)
+                LOAD_CONST              10 ('Không tạo được panel nào từ ảnh đã cho.')
+                CALL                     1
+                RAISE_VARARGS            1
+
+ 365   L19:     LOAD_FAST               11 (n_stitched)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       12 (to L20)
+
+ 366            LOAD_FAST                4 (log)
+                PUSH_NULL
+                LOAD_CONST              11 ('🧵 Khâu ')
+                LOAD_FAST               11 (n_stitched)
+                FORMAT_SIMPLE
+                LOAD_CONST              12 (' trang webtoon bị site chặt dở → cắt lại chỗ an toàn (né bong bóng thoại).')
+                BUILD_STRING             3
+                CALL                     1
+                POP_TOP
+
+ 368   L20:     LOAD_FAST                4 (log)
+                PUSH_NULL
+                LOAD_CONST              13 ('Cắt được ')
+                LOAD_GLOBAL             21 (len + NULL)
+                LOAD_FAST               10 (panels)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              14 (' panel từ ')
+                LOAD_GLOBAL             21 (len + NULL)
+                LOAD_FAST                0 (image_paths)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              15 (' ảnh.')
+                BUILD_STRING             5
+                CALL                     1
+                POP_TOP
+
+ 369            LOAD_FAST                3 (max_panels)
+                TO_BOOL
+                POP_JUMP_IF_FALSE      102 (to L25)
+                LOAD_FAST                3 (max_panels)
+                LOAD_CONST               1 (0)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       96 (to L25)
+                LOAD_GLOBAL             21 (len + NULL)
+                LOAD_FAST               10 (panels)
+                CALL                     1
+                LOAD_FAST                3 (max_panels)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       81 (to L25)
+
+ 370            LOAD_GLOBAL             21 (len + NULL)
+                LOAD_FAST               10 (panels)
+                CALL                     1
+                LOAD_FAST                3 (max_panels)
+                BINARY_OP               11 (/)
+                STORE_FAST              19 (step)
+
+ 371            LOAD_GLOBAL             33 (range + NULL)
+                LOAD_FAST                3 (max_panels)
+                CALL                     1
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     12 (i)
+                SWAP                     2
+       L21:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L22:     FOR_ITER                19 (to L23)
+                STORE_FAST_LOAD_FAST   202 (i, panels)
+                LOAD_GLOBAL             35 (int + NULL)
+                LOAD_FAST               12 (i)
+                LOAD_FAST               19 (step)
+                BINARY_OP                5 (*)
+                CALL                     1
+                BINARY_SUBSCR
+                LIST_APPEND              2
+                JUMP_BACKWARD           21 (to L22)
+       L23:     END_FOR
+                POP_TOP
+       L24:     STORE_FAST              20 (keep)
+                STORE_FAST              12 (i)
+
+ 372            LOAD_FAST                4 (log)
+                PUSH_NULL
+                LOAD_CONST              16 ('⚠ Giới hạn ')
+                LOAD_FAST                3 (max_panels)
+                FORMAT_SIMPLE
+                LOAD_CONST              17 (' panel (từ ')
+                LOAD_GLOBAL             21 (len + NULL)
+                LOAD_FAST               10 (panels)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              18 (') để tiết kiệm Gemini — lấy mẫu trải đều. Tăng max_panels nếu muốn review đầy đủ.')
+                BUILD_STRING             5
+                CALL                     1
+                POP_TOP
+
+ 374            LOAD_FAST               20 (keep)
+                STORE_FAST              10 (panels)
+
+ 375   L25:     LOAD_FAST               10 (panels)
+                RETURN_VALUE
+
+ 332   L26:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L27)
+                RERAISE                  2
+       L27:     POP_TOP
+       L28:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+       L29:     EXTENDED_ARG             2
+                JUMP_BACKWARD          591 (to L1)
+
+  --   L30:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L31:     PUSH_EXC_INFO
+
+ 334            LOAD_GLOBAL             12 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       57 (to L35)
+                STORE_FAST               9 (ex)
+
+ 335   L32:     LOAD_FAST                4 (log)
+                PUSH_NULL
+                LOAD_CONST               5 ('Bỏ ảnh lỗi ')
+                LOAD_GLOBAL             15 (Path + NULL)
+                LOAD_FAST                7 (src)
+                CALL                     1
+                LOAD_ATTR               16 (name)
+                FORMAT_SIMPLE
+                LOAD_CONST               6 (': ')
+                LOAD_GLOBAL             19 (str + NULL)
+                LOAD_FAST                9 (ex)
+                CALL                     1
+                LOAD_CONST               4 (None)
+                LOAD_CONST               7 (60)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             4
+                CALL                     1
+                POP_TOP
+       L33:     POP_EXCEPT
+                LOAD_CONST               4 (None)
+                STORE_FAST               9 (ex)
+                DELETE_FAST              9 (ex)
+                EXTENDED_ARG             2
+                JUMP_BACKWARD          656 (to L1)
+
+  --   L34:     LOAD_CONST               4 (None)
+                STORE_FAST               9 (ex)
+                DELETE_FAST              9 (ex)
+                RERAISE                  1
+
+ 334   L35:     RERAISE                  0
+
+  --   L36:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L37:     SWAP                     2
+                POP_TOP
+
+ 348            SWAP                     2
+                STORE_FAST              17 (m)
+                RERAISE                  0
+
+  --   L38:     SWAP                     2
+                POP_TOP
+
+ 371            SWAP                     2
+                STORE_FAST              12 (i)
+                RERAISE                  0
+ExceptionTable:
+  L2 to L3 -> L31 [1]
+  L3 to L4 -> L26 [2] lasti
+  L4 to L5 -> L31 [1]
+  L11 to L14 -> L37 [2]
+  L21 to L24 -> L38 [2]
+  L26 to L28 -> L30 [4] lasti
+  L28 to L29 -> L31 [1]
+  L30 to L31 -> L31 [1]
+  L31 to L32 -> L36 [2] lasti
+  L32 to L33 -> L34 [2] lasti
+  L34 to L36 -> L36 [2] lasti
+
+Disassembly of <code object to_scenes at 0x0000016DC90EDA50, file "bilisub\comic\panels.py", line 378>:
+378           RESUME                   0
+
+380           BUILD_LIST               0
+              STORE_FAST               2 (scenes)
+
+381           LOAD_CONST               1 (0)
+              STORE_FAST               3 (cur)
+
+382           LOAD_GLOBAL              1 (max + NULL)
+              LOAD_CONST               2 (1)
+              LOAD_GLOBAL              3 (int + NULL)
+              LOAD_FAST                1 (seconds_per)
+              LOAD_CONST               3 (1000)
+              BINARY_OP                5 (*)
+              CALL                     1
+              CALL                     2
+              STORE_FAST               4 (step)
+
+383           LOAD_FAST                0 (panel_paths)
+              GET_ITER
+      L1:     FOR_ITER                35 (to L2)
+              STORE_FAST               5 (p)
+
+384           LOAD_FAST                2 (scenes)
+              LOAD_ATTR                5 (append + NULL|self)
+              LOAD_GLOBAL              7 (SceneNote + NULL)
+              LOAD_FAST_LOAD_FAST     51 (cur, cur)
+              LOAD_FAST                4 (step)
+              BINARY_OP                0 (+)
+              LOAD_FAST                5 (p)
+              LOAD_CONST               4 (('start_ms', 'end_ms', 'frame_path'))
+              CALL_KW                  3
+              CALL                     1
+              POP_TOP
+
+385           LOAD_FAST_LOAD_FAST     52 (cur, step)
+              BINARY_OP               13 (+=)
+              STORE_FAST               3 (cur)
+              JUMP_BACKWARD           37 (to L1)
+
+383   L2:     END_FOR
+              POP_TOP
+
+386           LOAD_FAST                2 (scenes)
+              RETURN_VALUE

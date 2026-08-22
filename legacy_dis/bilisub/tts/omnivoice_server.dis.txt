@@ -1,0 +1,2610 @@
+=== FILE: bilisub\tts\omnivoice_server.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+   0            RESUME                   0
+
+   2            LOAD_CONST               0 ('Worker OmniVoice — chạy bằng PYTHON CÓ torch+omnivoice (venv gói GPU / máy dev).\n\nNạp model + Whisper 1 LẦN rồi phục vụ tổng hợp giọng qua HTTP nội bộ (127.0.0.1):\n  GET  /health                  -> {"ready": bool, "error": str}\n  POST /synth  {text, voice...}  -> audio/wav (PCM16) | {"error": ...}\n\nEngine `omnivoice:` trong tool chính (không có torch) khởi động worker này và gọi nó.\nTái dùng lõi đã kiểm nghiệm của PeiPeiCloneVoice (app.engine / app.profiles).\nTự thoát khi cha chết-lâu (idle-timeout) để không để tiến trình GPU mồ côi.\n\n★07/08 GỘP LÔ (`--batch N`, mặc định 4) — lane "cắt giờ":\n  Trước: mỗi request tự ôm `gen_lock` gọi model cho ĐÚNG MỘT câu ⇒ 4 luồng của tool xếp hàng\n  sau ổ khoá, GPU chỉ 35-39%. Nay mọi request xếp vào một HÀNG CHỜ và MỘT luồng sinh duy nhất\n  gom tối đa `--batch` câu (CÙNG giọng/tham số) trong cửa sổ `--batch-wait-ms` rồi gọi\n  `model.generate(text=[...])` một lượt.\n  VÌ SAO ĂN: vòng giải mã chạy ĐÚNG `num_step` (=32) lượt forward cho CẢ LÔ\n  (omnivoice/models/omnivoice.py:1384) ⇒ gộp 4 câu thì số lượt forward giảm 4 lần.\n  KHÔNG LÂY GIỌNG: mặt nạ chú ý dựng theo TỪNG HÀNG (`batch_attention_mask[i,:,:c_len,:c_len]`)\n  nên câu i không có một ô True nào trỏ sang câu j; `voice_clone_prompt` nằm trong `input_ids`\n  của từng hàng, không dùng chung.\n  Đo E2E qua đúng đường sản xuất (64 câu thật): 2,47× và 2,97× · audio hợp lệ 448/448 ·\n  máy nghe lại (Whisper large-v3) 63/64 ⟷ 63/64, DANH SÁCH CÂU GIỐNG HỆT.\n  🔴 `--batch 1` = TẮT HẲN, chạy lại ĐÚNG đường cũ (không qua hàng chờ) — đường lùi an toàn.\n  Hợp đồng HTTP KHÔNG đổi (POST /synth 1 câu → 1 WAV) nên client không phải sửa gì.')
+                STORE_NAME               0 (__doc__)
+
+  26            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              1 (argparse)
+                STORE_NAME               1 (argparse)
+
+  27            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              2 (io)
+                STORE_NAME               2 (io)
+
+  28            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              3 (json)
+                STORE_NAME               3 (json)
+
+  29            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              4 (os)
+                STORE_NAME               4 (os)
+
+  30            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              5 (queue)
+                STORE_NAME               5 (queue)
+
+  31            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              6 (sys)
+                STORE_NAME               6 (sys)
+
+  32            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              7 (threading)
+                STORE_NAME               7 (threading)
+
+  33            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              8 (time)
+                STORE_NAME               8 (time)
+
+  34            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              9 (traceback)
+                STORE_NAME               9 (traceback)
+
+  35            LOAD_CONST               1 (0)
+                LOAD_CONST               3 (('BaseHTTPRequestHandler', 'ThreadingHTTPServer'))
+                IMPORT_NAME             10 (http.server)
+                IMPORT_FROM             11 (BaseHTTPRequestHandler)
+                STORE_NAME              11 (BaseHTTPRequestHandler)
+                IMPORT_FROM             12 (ThreadingHTTPServer)
+                STORE_NAME              12 (ThreadingHTTPServer)
+                POP_TOP
+
+  41            LOAD_NAME                4 (os)
+                LOAD_ATTR               26 (path)
+                LOAD_ATTR               29 (dirname + NULL|self)
+                LOAD_NAME                4 (os)
+                LOAD_ATTR               26 (path)
+                LOAD_ATTR               31 (abspath + NULL|self)
+                LOAD_NAME               16 (__file__)
+                CALL                     1
+                CALL                     1
+                STORE_NAME              17 (_HERE)
+
+  42            LOAD_NAME                6 (sys)
+                LOAD_ATTR               26 (path)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      0 (p)
+                SWAP                     2
+        L1:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L2:     FOR_ITER                47 (to L6)
+                STORE_FAST               0 (p)
+                LOAD_NAME                4 (os)
+                LOAD_ATTR               26 (path)
+                LOAD_ATTR               31 (abspath + NULL|self)
+                LOAD_FAST                0 (p)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L3)
+                POP_TOP
+                LOAD_CONST               4 ('.')
+        L3:     CALL                     1
+                LOAD_NAME               17 (_HERE)
+                COMPARE_OP             119 (bool(!=))
+        L4:     POP_JUMP_IF_TRUE         2 (to L5)
+                JUMP_BACKWARD           45 (to L2)
+        L5:     LOAD_FAST                0 (p)
+                LIST_APPEND              2
+                JUMP_BACKWARD           49 (to L2)
+        L6:     END_FOR
+                POP_TOP
+        L7:     SWAP                     2
+                STORE_FAST               0 (p)
+                LOAD_NAME                6 (sys)
+                LOAD_ATTR               26 (path)
+                LOAD_CONST               2 (None)
+                LOAD_CONST               2 (None)
+                STORE_SLICE
+
+  54            LOAD_NAME                6 (sys)
+                LOAD_ATTR               36 (stdout)
+                LOAD_NAME                6 (sys)
+                LOAD_ATTR               38 (stderr)
+                BUILD_TUPLE              2
+                GET_ITER
+        L8:     FOR_ITER                20 (to L11)
+                STORE_NAME              20 (_s)
+
+  55            NOP
+
+  56    L9:     LOAD_NAME               20 (_s)
+                LOAD_ATTR               43 (reconfigure + NULL|self)
+                LOAD_CONST               5 ('utf-8')
+                LOAD_CONST               6 ('replace')
+                LOAD_CONST               7 (('encoding', 'errors'))
+                CALL_KW                  2
+                POP_TOP
+       L10:     JUMP_BACKWARD           22 (to L8)
+
+  54   L11:     END_FOR
+                POP_TOP
+
+  61            LOAD_CONST               8 (False)
+                LOAD_CONST               9 ('')
+                LOAD_CONST               2 (None)
+                LOAD_CONST               2 (None)
+
+  62            BUILD_MAP                0
+                LOAD_NAME                7 (threading)
+                LOAD_ATTR               46 (Lock)
+                PUSH_NULL
+                CALL                     0
+                LOAD_NAME                8 (time)
+                LOAD_ATTR               16 (time)
+                PUSH_NULL
+                CALL                     0
+
+  64            LOAD_NAME                5 (queue)
+                LOAD_ATTR               48 (Queue)
+                PUSH_NULL
+                CALL                     0
+                LOAD_CONST              10 (1)
+                LOAD_CONST              11 (0.03)
+
+  65            LOAD_CONST               1 (0)
+                LOAD_CONST               1 (0)
+
+  60            LOAD_CONST              12 (('ready', 'error', 'eng', 'pm', 'prompts', 'gen_lock', 'last', 'q', 'batch_max', 'wait_s', 'stat_batches', 'stat_items'))
+                BUILD_CONST_KEY_MAP     12
+                STORE_NAME              25 (STATE)
+
+  69            LOAD_CONST              13 ('return')
+                LOAD_NAME               26 (bool)
+                BUILD_TUPLE              2
+                LOAD_CONST              14 (<code object _batch_helpers_ok at 0x0000016DC8E06FB0, file "bilisub\tts\omnivoice_server.py", line 69>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   4 (annotations)
+                STORE_NAME              27 (_batch_helpers_ok)
+
+  84            LOAD_CONST              15 (<code object _load_models at 0x0000016DC8D2A520, file "bilisub\tts\omnivoice_server.py", line 84>)
+                MAKE_FUNCTION
+                STORE_NAME              28 (_load_models)
+
+ 133            LOAD_CONST              16 ('voice')
+                LOAD_NAME               29 (str)
+                BUILD_TUPLE              2
+                LOAD_CONST              17 (<code object _get_prompt at 0x0000016DC8F51830, file "bilisub\tts\omnivoice_server.py", line 133>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   4 (annotations)
+                STORE_NAME              30 (_get_prompt)
+
+ 148            LOAD_BUILD_CLASS
+                PUSH_NULL
+                LOAD_CONST              18 (<code object _Job at 0x0000016DC90F1B60, file "bilisub\tts\omnivoice_server.py", line 148>)
+                MAKE_FUNCTION
+                LOAD_CONST              19 ('_Job')
+                CALL                     2
+                STORE_NAME              31 (_Job)
+
+ 159            LOAD_CONST              20 (<code object _synth_group at 0x0000016DC8F5F5A0, file "bilisub\tts\omnivoice_server.py", line 159>)
+                MAKE_FUNCTION
+                STORE_NAME              32 (_synth_group)
+
+ 202            LOAD_CONST              21 (<code object _wav_bytes at 0x0000016DC9618030, file "bilisub\tts\omnivoice_server.py", line 202>)
+                MAKE_FUNCTION
+                STORE_NAME              33 (_wav_bytes)
+
+ 209            LOAD_CONST              22 (<code object _run_batch at 0x0000016DC907BA90, file "bilisub\tts\omnivoice_server.py", line 209>)
+                MAKE_FUNCTION
+                STORE_NAME              34 (_run_batch)
+
+ 233            LOAD_CONST              23 (<code object _gen_once at 0x0000016DC8F5E460, file "bilisub\tts\omnivoice_server.py", line 233>)
+                MAKE_FUNCTION
+                STORE_NAME              35 (_gen_once)
+
+ 260            LOAD_CONST              24 (<code object _gen_loop at 0x0000016DC8F51A50, file "bilisub\tts\omnivoice_server.py", line 260>)
+                MAKE_FUNCTION
+                STORE_NAME              36 (_gen_loop)
+
+ 279            LOAD_BUILD_CLASS
+                PUSH_NULL
+                LOAD_CONST              25 (<code object _Handler at 0x0000016DC90E1430, file "bilisub\tts\omnivoice_server.py", line 279>)
+                MAKE_FUNCTION
+                LOAD_CONST              26 ('_Handler')
+                LOAD_NAME               11 (BaseHTTPRequestHandler)
+                CALL                     3
+                STORE_NAME              37 (_Handler)
+
+ 370            LOAD_CONST              27 ('timeout')
+                LOAD_NAME               38 (float)
+                BUILD_TUPLE              2
+                LOAD_CONST              28 (<code object _idle_watchdog at 0x0000016DC8EB5160, file "bilisub\tts\omnivoice_server.py", line 370>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   4 (annotations)
+                STORE_NAME              39 (_idle_watchdog)
+
+ 382            LOAD_CONST              29 (<code object main at 0x0000016DC9207BF0, file "bilisub\tts\omnivoice_server.py", line 382>)
+                MAKE_FUNCTION
+                STORE_NAME              40 (main)
+
+ 413            LOAD_NAME               41 (__name__)
+                LOAD_CONST              30 ('__main__')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE        8 (to L12)
+
+ 414            LOAD_NAME               40 (main)
+                PUSH_NULL
+                CALL                     0
+                POP_TOP
+                RETURN_CONST             2 (None)
+
+ 413   L12:     RETURN_CONST             2 (None)
+
+  --   L13:     SWAP                     2
+                POP_TOP
+
+  42            SWAP                     2
+                STORE_FAST               0 (p)
+                RERAISE                  0
+
+  --   L14:     PUSH_EXC_INFO
+
+  57            LOAD_NAME               22 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L16)
+                POP_TOP
+
+  58   L15:     POP_EXCEPT
+                JUMP_BACKWARD          176 (to L8)
+
+  57   L16:     RERAISE                  0
+
+  --   L17:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L13 [2]
+  L5 to L7 -> L13 [2]
+  L9 to L10 -> L14 [1]
+  L14 to L15 -> L17 [2] lasti
+  L16 to L17 -> L17 [2] lasti
+
+Disassembly of <code object _batch_helpers_ok at 0x0000016DC8E06FB0, file "bilisub\tts\omnivoice_server.py", line 69>:
+  69           RESUME                   0
+
+  76           NOP
+
+  77   L1:     LOAD_CONST               1 (0)
+               LOAD_CONST               2 (('_split_sentences', '_finalize_audio', '_apply_fade'))
+               IMPORT_NAME              0 (app.engine)
+               IMPORT_FROM              1 (_split_sentences)
+               STORE_FAST               0 (_split_sentences)
+               IMPORT_FROM              2 (_finalize_audio)
+               STORE_FAST               1 (_finalize_audio)
+               IMPORT_FROM              3 (_apply_fade)
+               STORE_FAST               2 (_apply_fade)
+               POP_TOP
+
+  79           LOAD_GLOBAL              9 (callable + NULL)
+               LOAD_GLOBAL             11 (getattr + NULL)
+               LOAD_GLOBAL             12 (STATE)
+               LOAD_CONST               3 ('eng')
+               BINARY_SUBSCR
+               LOAD_CONST               4 ('_base_gen_kwargs')
+               LOAD_CONST               5 (None)
+               CALL                     3
+               CALL                     1
+       L2:     RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+  80           LOAD_GLOBAL             14 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L5)
+               POP_TOP
+
+  81   L4:     POP_EXCEPT
+               RETURN_CONST             6 (False)
+
+  80   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object _load_models at 0x0000016DC8D2A520, file "bilisub\tts\omnivoice_server.py", line 84>:
+  --            MAKE_CELL                9 (_orig_fp)
+
+  84            RESUME                   0
+
+  86            NOP
+
+  87    L1:     LOAD_GLOBAL              0 (sys)
+                LOAD_ATTR                2 (path)
+                LOAD_ATTR                5 (insert + NULL|self)
+                LOAD_CONST               1 (0)
+                LOAD_FAST                0 (args)
+                LOAD_ATTR                6 (app_dir)
+                CALL                     2
+                POP_TOP
+
+  88            LOAD_FAST                0 (args)
+                LOAD_ATTR                8 (model_dir)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       29 (to L2)
+
+  89            LOAD_FAST                0 (args)
+                LOAD_ATTR                8 (model_dir)
+                LOAD_GLOBAL             10 (os)
+                LOAD_ATTR               12 (environ)
+                LOAD_CONST               2 ('OMNIVOICE_MODEL_DIR')
+                STORE_SUBSCR
+
+  90    L2:     LOAD_FAST                0 (args)
+                LOAD_ATTR               14 (asr_dir)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       29 (to L3)
+
+  91            LOAD_FAST                0 (args)
+                LOAD_ATTR               14 (asr_dir)
+                LOAD_GLOBAL             10 (os)
+                LOAD_ATTR               12 (environ)
+                LOAD_CONST               3 ('OMNIVOICE_ASR_DIR')
+                STORE_SUBSCR
+
+  97    L3:     LOAD_GLOBAL             17 (getattr + NULL)
+                LOAD_FAST                0 (args)
+                LOAD_CONST               4 ('no_asr')
+                LOAD_CONST               5 (False)
+                CALL                     3
+                TO_BOOL
+                POP_JUMP_IF_FALSE       69 (to L6)
+
+  98    L4:     NOP
+
+  99    L5:     LOAD_CONST               1 (0)
+                LOAD_CONST               6 (None)
+                IMPORT_NAME              9 (omnivoice)
+                STORE_FAST               1 (_ov)
+
+ 100            LOAD_FAST                1 (_ov)
+                LOAD_ATTR               20 (OmniVoice)
+                LOAD_ATTR               22 (from_pretrained)
+                STORE_DEREF              9 (_orig_fp)
+
+ 102            LOAD_FAST                9 (_orig_fp)
+                BUILD_TUPLE              1
+                LOAD_CONST               7 (<code object _fp_no_asr at 0x0000016DC8EAE670, file "bilisub\tts\omnivoice_server.py", line 102>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                STORE_FAST               2 (_fp_no_asr)
+
+ 107            LOAD_GLOBAL             25 (staticmethod + NULL)
+                LOAD_FAST                2 (_fp_no_asr)
+                CALL                     1
+                LOAD_FAST                1 (_ov)
+                LOAD_ATTR               20 (OmniVoice)
+                STORE_ATTR              11 (from_pretrained)
+
+ 108            LOAD_GLOBAL             27 (print + NULL)
+                LOAD_CONST               8 ('[omni] chạy KHÔNG kèm Whisper (chỉ đọc giọng làm sẵn)')
+                LOAD_CONST               9 (True)
+                LOAD_CONST              10 (('flush',))
+                CALL_KW                  2
+                POP_TOP
+
+ 111    L6:     LOAD_CONST               1 (0)
+                LOAD_CONST              13 (('VoiceEngine',))
+                IMPORT_NAME             15 (app.engine)
+                IMPORT_FROM             16 (VoiceEngine)
+                STORE_FAST               4 (VoiceEngine)
+                POP_TOP
+
+ 112            LOAD_CONST               1 (0)
+                LOAD_CONST              14 (('ProfileManager',))
+                IMPORT_NAME             17 (app.profiles)
+                IMPORT_FROM             18 (ProfileManager)
+                STORE_FAST               5 (ProfileManager)
+                POP_TOP
+
+ 113            LOAD_FAST                4 (VoiceEngine)
+                PUSH_NULL
+                CALL                     0
+                STORE_FAST               6 (eng)
+
+ 114            LOAD_FAST                6 (eng)
+                LOAD_ATTR               39 (load + NULL|self)
+                LOAD_CONST              15 (<code object <lambda> at 0x0000016DC8EBAE90, file "bilisub\tts\omnivoice_server.py", line 114>)
+                MAKE_FUNCTION
+                LOAD_CONST              16 (('log',))
+                CALL_KW                  1
+                POP_TOP
+
+ 115            LOAD_FAST                5 (ProfileManager)
+                PUSH_NULL
+                CALL                     0
+                STORE_FAST               7 (pm)
+
+ 116            LOAD_FAST                0 (args)
+                LOAD_ATTR               40 (voices_dir)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       17 (to L7)
+
+ 117            LOAD_FAST                0 (args)
+                LOAD_ATTR               40 (voices_dir)
+                LOAD_FAST                7 (pm)
+                STORE_ATTR              20 (voices_dir)
+
+ 118    L7:     LOAD_FAST                6 (eng)
+                LOAD_GLOBAL             42 (STATE)
+                LOAD_CONST              17 ('eng')
+                STORE_SUBSCR
+
+ 119            LOAD_FAST                7 (pm)
+                LOAD_GLOBAL             42 (STATE)
+                LOAD_CONST              18 ('pm')
+                STORE_SUBSCR
+
+ 121            LOAD_GLOBAL             42 (STATE)
+                LOAD_CONST              19 ('batch_max')
+                BINARY_SUBSCR
+                LOAD_CONST              20 (1)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       34 (to L8)
+                LOAD_GLOBAL             45 (_batch_helpers_ok + NULL)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_TRUE        19 (to L8)
+
+ 122            LOAD_CONST              20 (1)
+                LOAD_GLOBAL             42 (STATE)
+                LOAD_CONST              19 ('batch_max')
+                STORE_SUBSCR
+
+ 123            LOAD_GLOBAL             27 (print + NULL)
+                LOAD_CONST              21 ('[omni] ⚠ lõi CloneVoice thiếu hàm hậu kỳ → TẮT gộp lô, chạy từng câu')
+
+ 124            LOAD_CONST               9 (True)
+
+ 123            LOAD_CONST              10 (('flush',))
+                CALL_KW                  2
+                POP_TOP
+
+ 125    L8:     LOAD_CONST               9 (True)
+                LOAD_GLOBAL             42 (STATE)
+                LOAD_CONST              22 ('ready')
+                STORE_SUBSCR
+
+ 126            LOAD_GLOBAL             27 (print + NULL)
+
+ 127            LOAD_GLOBAL             42 (STATE)
+                LOAD_CONST              19 ('batch_max')
+                BINARY_SUBSCR
+                LOAD_CONST              20 (1)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       13 (to L9)
+
+ 126            LOAD_CONST              23 ('[omni] READY (gộp lô tối đa ')
+                LOAD_GLOBAL             42 (STATE)
+                LOAD_CONST              19 ('batch_max')
+                BINARY_SUBSCR
+                FORMAT_SIMPLE
+                LOAD_CONST              24 (' câu/lượt)')
+                BUILD_STRING             3
+                JUMP_FORWARD             1 (to L10)
+
+ 127    L9:     LOAD_CONST              25 ('[omni] READY')
+       L10:     LOAD_CONST               9 (True)
+
+ 126            LOAD_CONST              10 (('flush',))
+                CALL_KW                  2
+                POP_TOP
+       L11:     RETURN_CONST             6 (None)
+
+  --   L12:     PUSH_EXC_INFO
+
+ 109            LOAD_GLOBAL             28 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       24 (to L16)
+                STORE_FAST               3 (ex)
+
+ 110   L13:     LOAD_GLOBAL             27 (print + NULL)
+                LOAD_CONST              11 ('[omni] không bỏ được Whisper (')
+                LOAD_FAST                3 (ex)
+                FORMAT_SIMPLE
+                LOAD_CONST              12 (') — nạp đầy đủ')
+                BUILD_STRING             3
+                LOAD_CONST               9 (True)
+                LOAD_CONST              10 (('flush',))
+                CALL_KW                  2
+                POP_TOP
+       L14:     POP_EXCEPT
+                LOAD_CONST               6 (None)
+                STORE_FAST               3 (ex)
+                DELETE_FAST              3 (ex)
+                JUMP_BACKWARD_NO_INTERRUPT 216 (to L6)
+
+  --   L15:     LOAD_CONST               6 (None)
+                STORE_FAST               3 (ex)
+                DELETE_FAST              3 (ex)
+                RERAISE                  1
+
+ 109   L16:     RERAISE                  0
+
+  --   L17:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L18:     PUSH_EXC_INFO
+
+ 128            LOAD_GLOBAL             28 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       64 (to L22)
+                STORE_FAST               8 (e)
+
+ 129   L19:     LOAD_FAST                8 (e)
+                FORMAT_SIMPLE
+                LOAD_CONST              26 ('\n')
+                LOAD_GLOBAL             46 (traceback)
+                LOAD_ATTR               48 (format_exc)
+                PUSH_NULL
+                CALL                     0
+                FORMAT_SIMPLE
+                BUILD_STRING             3
+                LOAD_CONST               6 (None)
+                LOAD_CONST              27 (1500)
+                BINARY_SLICE
+                LOAD_GLOBAL             42 (STATE)
+                LOAD_CONST              28 ('error')
+                STORE_SUBSCR
+
+ 130            LOAD_GLOBAL             27 (print + NULL)
+                LOAD_CONST              29 ('[omni] LOAD FAIL:')
+                LOAD_GLOBAL             42 (STATE)
+                LOAD_CONST              28 ('error')
+                BINARY_SUBSCR
+                LOAD_CONST               9 (True)
+                LOAD_CONST              10 (('flush',))
+                CALL_KW                  3
+                POP_TOP
+       L20:     POP_EXCEPT
+                LOAD_CONST               6 (None)
+                STORE_FAST               8 (e)
+                DELETE_FAST              8 (e)
+                RETURN_CONST             6 (None)
+
+  --   L21:     LOAD_CONST               6 (None)
+                STORE_FAST               8 (e)
+                DELETE_FAST              8 (e)
+                RERAISE                  1
+
+ 128   L22:     RERAISE                  0
+
+  --   L23:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L18 [0]
+  L5 to L6 -> L12 [0]
+  L6 to L11 -> L18 [0]
+  L12 to L13 -> L17 [1] lasti
+  L13 to L14 -> L15 [1] lasti
+  L14 to L15 -> L18 [0]
+  L15 to L17 -> L17 [1] lasti
+  L17 to L18 -> L18 [0]
+  L18 to L19 -> L23 [1] lasti
+  L19 to L20 -> L21 [1] lasti
+  L21 to L23 -> L23 [1] lasti
+
+Disassembly of <code object _fp_no_asr at 0x0000016DC8EAE670, file "bilisub\tts\omnivoice_server.py", line 102>:
+  --           COPY_FREE_VARS           1
+
+ 102           RESUME                   0
+
+ 103           LOAD_CONST               1 (False)
+               LOAD_FAST                1 (kw)
+               LOAD_CONST               2 ('load_asr')
+               STORE_SUBSCR
+
+ 104           LOAD_FAST                1 (kw)
+               LOAD_ATTR                1 (pop + NULL|self)
+               LOAD_CONST               3 ('asr_model_name')
+               LOAD_CONST               0 (None)
+               CALL                     2
+               POP_TOP
+
+ 105           LOAD_DEREF               2 (_orig_fp)
+               PUSH_NULL
+               LOAD_FAST                0 (a)
+               BUILD_MAP                0
+               LOAD_FAST                1 (kw)
+               DICT_MERGE               1
+               CALL_FUNCTION_EX         1
+               RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC8EBAE90, file "bilisub\tts\omnivoice_server.py", line 114>:
+114           RESUME                   0
+              LOAD_GLOBAL              1 (print + NULL)
+              LOAD_CONST               1 ('[omni]')
+              LOAD_FAST                0 (m)
+              LOAD_CONST               2 (True)
+              LOAD_CONST               3 (('flush',))
+              CALL_KW                  3
+              RETURN_VALUE
+
+Disassembly of <code object _get_prompt at 0x0000016DC8F51830, file "bilisub\tts\omnivoice_server.py", line 133>:
+133           RESUME                   0
+
+135           LOAD_GLOBAL              0 (STATE)
+              LOAD_CONST               1 ('prompts')
+              BINARY_SUBSCR
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_FAST                0 (voice)
+              CALL                     1
+              STORE_FAST               1 (p)
+
+136           LOAD_FAST                1 (p)
+              POP_JUMP_IF_NONE         2 (to L1)
+
+137           LOAD_FAST                1 (p)
+              RETURN_VALUE
+
+138   L1:     LOAD_GLOBAL              4 (os)
+              LOAD_ATTR                6 (path)
+              LOAD_ATTR                9 (isfile + NULL|self)
+              LOAD_FAST                0 (voice)
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE       59 (to L2)
+              LOAD_FAST                0 (voice)
+              LOAD_ATTR               11 (lower + NULL|self)
+              CALL                     0
+              LOAD_ATTR               13 (endswith + NULL|self)
+              LOAD_CONST               2 ('.pt')
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE       23 (to L2)
+
+139           LOAD_CONST               3 (0)
+              LOAD_CONST               4 (('_load_pt', '_as_prompt'))
+              IMPORT_NAME              7 (app.profiles)
+              IMPORT_FROM              8 (_load_pt)
+              STORE_FAST               2 (_load_pt)
+              IMPORT_FROM              9 (_as_prompt)
+              STORE_FAST               3 (_as_prompt)
+              POP_TOP
+
+140           LOAD_FAST                3 (_as_prompt)
+              PUSH_NULL
+              LOAD_FAST                2 (_load_pt)
+              PUSH_NULL
+              LOAD_FAST                0 (voice)
+              CALL                     1
+              CALL                     1
+              STORE_FAST               1 (p)
+              JUMP_FORWARD            24 (to L3)
+
+142   L2:     LOAD_GLOBAL              0 (STATE)
+              LOAD_CONST               5 ('pm')
+              BINARY_SUBSCR
+              LOAD_ATTR               21 (load_prompt + NULL|self)
+              LOAD_FAST                0 (voice)
+              CALL                     1
+              STORE_FAST               1 (p)
+
+143   L3:     LOAD_FAST                1 (p)
+              LOAD_GLOBAL              0 (STATE)
+              LOAD_CONST               1 ('prompts')
+              BINARY_SUBSCR
+              LOAD_FAST                0 (voice)
+              STORE_SUBSCR
+
+144           LOAD_FAST                1 (p)
+              RETURN_VALUE
+
+Disassembly of <code object _Job at 0x0000016DC90F1B60, file "bilisub\tts\omnivoice_server.py", line 148>:
+148           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('_Job')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (148)
+              STORE_NAME               3 (__firstlineno__)
+
+149           LOAD_CONST               2 (('text', 'key', 'ev', 'wav', 'err'))
+              STORE_NAME               4 (__slots__)
+
+151           LOAD_CONST               3 (<code object __init__ at 0x0000016DC8E07730, file "bilisub\tts\omnivoice_server.py", line 151>)
+              MAKE_FUNCTION
+              STORE_NAME               5 (__init__)
+              LOAD_CONST               4 (('err', 'ev', 'key', 'text', 'wav'))
+              STORE_NAME               6 (__static_attributes__)
+              RETURN_CONST             5 (None)
+
+Disassembly of <code object __init__ at 0x0000016DC8E07730, file "bilisub\tts\omnivoice_server.py", line 151>:
+151           RESUME                   0
+
+152           LOAD_FAST_LOAD_FAST     16 (text, self)
+              STORE_ATTR               0 (text)
+
+153           LOAD_FAST_LOAD_FAST     32 (key, self)
+              STORE_ATTR               1 (key)
+
+154           LOAD_GLOBAL              4 (threading)
+              LOAD_ATTR                6 (Event)
+              PUSH_NULL
+              CALL                     0
+              LOAD_FAST                0 (self)
+              STORE_ATTR               4 (ev)
+
+155           LOAD_CONST               0 (None)
+              LOAD_FAST                0 (self)
+              STORE_ATTR               5 (wav)
+
+156           LOAD_CONST               1 ('')
+              LOAD_FAST                0 (self)
+              STORE_ATTR               6 (err)
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _synth_group at 0x0000016DC8F5F5A0, file "bilisub\tts\omnivoice_server.py", line 159>:
+ 159            RESUME                   0
+
+ 166            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              0 (numpy)
+                STORE_FAST               2 (np)
+
+ 167            LOAD_CONST               1 (0)
+                LOAD_CONST               3 (('_split_sentences', '_finalize_audio', '_apply_fade'))
+                IMPORT_NAME              1 (app.engine)
+                IMPORT_FROM              2 (_split_sentences)
+                STORE_FAST               3 (_split_sentences)
+                IMPORT_FROM              3 (_finalize_audio)
+                STORE_FAST               4 (_finalize_audio)
+                IMPORT_FROM              4 (_apply_fade)
+                STORE_FAST               5 (_apply_fade)
+                POP_TOP
+
+ 169            LOAD_FAST                0 (key)
+                UNPACK_SEQUENCE          5
+                STORE_FAST_STORE_FAST  103 (voice, lang)
+                STORE_FAST_STORE_FAST  137 (speed, num_step)
+                STORE_FAST              10 (guidance)
+
+ 170            LOAD_GLOBAL             10 (STATE)
+                LOAD_CONST               4 ('eng')
+                BINARY_SUBSCR
+                STORE_FAST              11 (eng)
+
+ 171            LOAD_FAST               11 (eng)
+                LOAD_ATTR               12 (sample_rate)
+                STORE_FAST              12 (sr)
+
+ 172            LOAD_GLOBAL             15 (_get_prompt + NULL)
+                LOAD_FAST                6 (voice)
+                CALL                     1
+                STORE_FAST              13 (prompt)
+
+ 173            LOAD_FAST               11 (eng)
+                LOAD_ATTR               17 (_base_gen_kwargs + NULL|self)
+
+ 174            LOAD_FAST_LOAD_FAST    151 (num_step, lang)
+                LOAD_FAST                8 (speed)
+
+ 175            LOAD_FAST_LOAD_FAST    173 (guidance, prompt)
+
+ 173            LOAD_CONST               5 (('num_step', 'language', 'speed', 'guidance_scale', 'voice_clone_prompt'))
+                CALL_KW                  5
+                STORE_FAST              14 (base)
+
+ 178            BUILD_LIST               0
+                BUILD_LIST               0
+                STORE_FAST              16 (flat)
+                STORE_FAST              15 (owner)
+
+ 179            LOAD_GLOBAL             19 (enumerate + NULL)
+                LOAD_FAST                1 (texts)
+                CALL                     1
+                GET_ITER
+        L1:     FOR_ITER                82 (to L5)
+                UNPACK_SEQUENCE          2
+                STORE_FAST              17 (i)
+                STORE_FAST              18 (t)
+
+ 180            LOAD_FAST                3 (_split_sentences)
+                PUSH_NULL
+                LOAD_FAST               18 (t)
+                LOAD_FAST                7 (lang)
+                CALL                     2
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        17 (to L2)
+                POP_TOP
+                LOAD_FAST               18 (t)
+                LOAD_ATTR               21 (strip + NULL|self)
+                CALL                     0
+                BUILD_LIST               1
+        L2:     STORE_FAST              19 (subs)
+
+ 181            LOAD_FAST               19 (subs)
+                GET_ITER
+        L3:     FOR_ITER                37 (to L4)
+                STORE_FAST              20 (s)
+
+ 182            LOAD_FAST               15 (owner)
+                LOAD_ATTR               23 (append + NULL|self)
+                LOAD_FAST               17 (i)
+                CALL                     1
+                POP_TOP
+
+ 183            LOAD_FAST               16 (flat)
+                LOAD_ATTR               23 (append + NULL|self)
+                LOAD_FAST               20 (s)
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD           39 (to L3)
+
+ 181    L4:     END_FOR
+                POP_TOP
+                JUMP_BACKWARD           84 (to L1)
+
+ 179    L5:     END_FOR
+                POP_TOP
+
+ 185            LOAD_FAST               11 (eng)
+                LOAD_ATTR               24 (model)
+                LOAD_ATTR               26 (generate)
+                PUSH_NULL
+                LOAD_CONST              13 (())
+                LOAD_CONST               6 ('text')
+                LOAD_FAST               16 (flat)
+                BUILD_MAP                1
+                LOAD_FAST               14 (base)
+                DICT_MERGE               1
+                CALL_FUNCTION_EX         1
+                STORE_FAST              21 (pieces)
+
+ 187            LOAD_CONST               2 (None)
+                BUILD_LIST               1
+                LOAD_GLOBAL             29 (len + NULL)
+                LOAD_FAST                1 (texts)
+                CALL                     1
+                BINARY_OP                5 (*)
+                STORE_FAST              22 (out)
+
+ 188            LOAD_FAST                1 (texts)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     23 (_)
+                SWAP                     2
+        L6:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L7:     FOR_ITER                 5 (to L8)
+                STORE_FAST              23 (_)
+                BUILD_LIST               0
+                LIST_APPEND              2
+                JUMP_BACKWARD            7 (to L7)
+        L8:     END_FOR
+                POP_TOP
+        L9:     STORE_FAST              24 (buf)
+                STORE_FAST              23 (_)
+
+ 189            LOAD_GLOBAL             31 (zip + NULL)
+                LOAD_FAST               15 (owner)
+                LOAD_FAST               21 (pieces)
+                CALL                     2
+                GET_ITER
+       L10:     FOR_ITER                50 (to L11)
+                UNPACK_SEQUENCE          2
+                STORE_FAST              25 (oi)
+                STORE_FAST              26 (a)
+
+ 190            LOAD_FAST               24 (buf)
+                LOAD_FAST               25 (oi)
+                BINARY_SUBSCR
+                LOAD_ATTR               23 (append + NULL|self)
+                LOAD_FAST                2 (np)
+                LOAD_ATTR               33 (asarray + NULL|self)
+                LOAD_FAST               26 (a)
+                LOAD_FAST                2 (np)
+                LOAD_ATTR               34 (float32)
+                LOAD_CONST               7 (('dtype',))
+                CALL_KW                  2
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD           52 (to L10)
+
+ 189   L11:     END_FOR
+                POP_TOP
+
+ 191            LOAD_GLOBAL             19 (enumerate + NULL)
+                LOAD_FAST               24 (buf)
+                CALL                     1
+                GET_ITER
+       L12:     FOR_ITER               100 (to L19)
+                UNPACK_SEQUENCE          2
+                STORE_FAST              17 (i)
+                STORE_FAST              27 (parts)
+
+ 192            LOAD_GLOBAL             29 (len + NULL)
+                LOAD_FAST               27 (parts)
+                CALL                     1
+                LOAD_CONST               8 (1)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE        6 (to L13)
+
+ 193            LOAD_FAST               27 (parts)
+                LOAD_CONST               1 (0)
+                BINARY_SUBSCR
+                STORE_FAST              28 (audio)
+                JUMP_FORWARD            52 (to L18)
+
+ 196   L13:     LOAD_FAST                2 (np)
+                LOAD_ATTR               37 (concatenate + NULL|self)
+                LOAD_FAST               27 (parts)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     29 (p)
+                SWAP                     2
+       L14:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L15:     FOR_ITER                23 (to L16)
+                STORE_FAST              29 (p)
+                LOAD_FAST                5 (_apply_fade)
+                PUSH_NULL
+                LOAD_FAST               29 (p)
+                LOAD_FAST               12 (sr)
+                LOAD_GLOBAL             39 (min + NULL)
+                LOAD_CONST               9 (8.0)
+                LOAD_CONST              10 (10.0)
+                CALL                     2
+                CALL                     3
+                LIST_APPEND              2
+                JUMP_BACKWARD           25 (to L15)
+       L16:     END_FOR
+                POP_TOP
+       L17:     SWAP                     2
+                STORE_FAST              29 (p)
+                CALL                     1
+                STORE_FAST              28 (audio)
+
+ 197   L18:     LOAD_FAST                4 (_finalize_audio)
+                PUSH_NULL
+                LOAD_FAST               28 (audio)
+                LOAD_FAST               12 (sr)
+                LOAD_CONST               2 (None)
+                LOAD_CONST              11 (-16.0)
+                LOAD_CONST              12 (True)
+                LOAD_CONST              10 (10.0)
+                CALL                     6
+                UNPACK_SEQUENCE          2
+                STORE_FAST              28 (audio)
+                STORE_FAST              23 (_)
+
+ 198            LOAD_FAST               28 (audio)
+                LOAD_FAST               22 (out)
+                LOAD_FAST               17 (i)
+                STORE_SUBSCR
+                JUMP_BACKWARD          102 (to L12)
+
+ 191   L19:     END_FOR
+                POP_TOP
+
+ 199            LOAD_FAST               22 (out)
+                RETURN_VALUE
+
+  --   L20:     SWAP                     2
+                POP_TOP
+
+ 188            SWAP                     2
+                STORE_FAST              23 (_)
+                RERAISE                  0
+
+  --   L21:     SWAP                     2
+                POP_TOP
+
+ 196            SWAP                     2
+                STORE_FAST              29 (p)
+                RERAISE                  0
+ExceptionTable:
+  L6 to L9 -> L20 [2]
+  L14 to L17 -> L21 [5]
+
+Disassembly of <code object _wav_bytes at 0x0000016DC9618030, file "bilisub\tts\omnivoice_server.py", line 202>:
+202           RESUME                   0
+
+203           LOAD_CONST               1 (0)
+              LOAD_CONST               0 (None)
+              IMPORT_NAME              0 (soundfile)
+              STORE_FAST               1 (sf)
+
+204           LOAD_GLOBAL              2 (io)
+              LOAD_ATTR                4 (BytesIO)
+              PUSH_NULL
+              CALL                     0
+              STORE_FAST               2 (bio)
+
+205           LOAD_FAST                1 (sf)
+              LOAD_ATTR                7 (write + NULL|self)
+              LOAD_FAST_LOAD_FAST     32 (bio, audio)
+              LOAD_GLOBAL              8 (STATE)
+              LOAD_CONST               2 ('eng')
+              BINARY_SUBSCR
+              LOAD_ATTR               10 (sample_rate)
+              LOAD_CONST               3 ('WAV')
+              LOAD_CONST               4 ('PCM_16')
+              LOAD_CONST               5 (('format', 'subtype'))
+              CALL_KW                  5
+              POP_TOP
+
+206           LOAD_FAST                2 (bio)
+              LOAD_ATTR               13 (getvalue + NULL|self)
+              CALL                     0
+              RETURN_VALUE
+
+Disassembly of <code object _run_batch at 0x0000016DC907BA90, file "bilisub\tts\omnivoice_server.py", line 209>:
+ 209            RESUME                   0
+
+ 211            NOP
+
+ 212    L1:     LOAD_GLOBAL              1 (_synth_group + NULL)
+                LOAD_FAST_LOAD_FAST      1 (key, jobs)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      2 (j)
+                SWAP                     2
+        L2:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L3:     FOR_ITER                14 (to L4)
+                STORE_FAST_LOAD_FAST    34 (j, j)
+                LOAD_ATTR                2 (text)
+                LIST_APPEND              2
+                JUMP_BACKWARD           16 (to L3)
+        L4:     END_FOR
+                POP_TOP
+        L5:     SWAP                     2
+                STORE_FAST               2 (j)
+                CALL                     2
+                STORE_FAST               3 (outs)
+
+ 213            LOAD_GLOBAL              5 (zip + NULL)
+                LOAD_FAST_LOAD_FAST     19 (jobs, outs)
+                CALL                     2
+                GET_ITER
+        L6:     FOR_ITER                21 (to L7)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST   36 (j, a)
+
+ 214            LOAD_GLOBAL              7 (_wav_bytes + NULL)
+                LOAD_FAST                4 (a)
+                CALL                     1
+                LOAD_FAST                2 (j)
+                STORE_ATTR               4 (wav)
+                JUMP_BACKWARD           23 (to L6)
+
+ 213    L7:     END_FOR
+                POP_TOP
+
+ 227    L8:     LOAD_GLOBAL             20 (STATE)
+                LOAD_CONST              11 ('stat_batches')
+                COPY                     2
+                COPY                     2
+                BINARY_SUBSCR
+                LOAD_CONST               1 (1)
+                BINARY_OP               13 (+=)
+                SWAP                     3
+                SWAP                     2
+                STORE_SUBSCR
+
+ 228            LOAD_GLOBAL             20 (STATE)
+                LOAD_CONST              12 ('stat_items')
+                COPY                     2
+                COPY                     2
+                BINARY_SUBSCR
+                LOAD_GLOBAL             13 (len + NULL)
+                LOAD_FAST                1 (jobs)
+                CALL                     1
+                BINARY_OP               13 (+=)
+                SWAP                     3
+                SWAP                     2
+                STORE_SUBSCR
+
+ 229            LOAD_FAST                1 (jobs)
+                GET_ITER
+        L9:     FOR_ITER                29 (to L10)
+                STORE_FAST               2 (j)
+
+ 230            LOAD_FAST                2 (j)
+                LOAD_ATTR               22 (ev)
+                LOAD_ATTR               25 (set + NULL|self)
+                CALL                     0
+                POP_TOP
+                JUMP_BACKWARD           31 (to L9)
+
+ 229   L10:     END_FOR
+                POP_TOP
+                RETURN_CONST             2 (None)
+
+  --   L11:     SWAP                     2
+                POP_TOP
+
+ 212            SWAP                     2
+                STORE_FAST               2 (j)
+                RERAISE                  0
+
+  --   L12:     PUSH_EXC_INFO
+
+ 215            LOAD_GLOBAL             10 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE      166 (to L29)
+                STORE_FAST               5 (ex_batch)
+
+ 216   L13:     LOAD_GLOBAL             13 (len + NULL)
+                LOAD_FAST                1 (jobs)
+                CALL                     1
+                LOAD_CONST               1 (1)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       19 (to L15)
+
+ 217            LOAD_FAST                5 (ex_batch)
+                FORMAT_SIMPLE
+                LOAD_CONST               2 (None)
+                LOAD_CONST               3 (400)
+                BINARY_SLICE
+                LOAD_FAST                1 (jobs)
+                LOAD_CONST               4 (0)
+                BINARY_SUBSCR
+                STORE_ATTR               7 (err)
+       L14:     POP_EXCEPT
+                LOAD_CONST               2 (None)
+                STORE_FAST               5 (ex_batch)
+                DELETE_FAST              5 (ex_batch)
+                JUMP_BACKWARD_NO_INTERRUPT 128 (to L8)
+
+ 219   L15:     LOAD_GLOBAL             17 (print + NULL)
+                LOAD_CONST               5 ('[omni] ⚠ lô ')
+                LOAD_GLOBAL             13 (len + NULL)
+                LOAD_FAST                1 (jobs)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST               6 (' câu hỏng (')
+                LOAD_GLOBAL             19 (str + NULL)
+                LOAD_FAST                5 (ex_batch)
+                CALL                     1
+                LOAD_CONST               2 (None)
+                LOAD_CONST               7 (120)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                LOAD_CONST               8 (') → sinh lại từng câu')
+                BUILD_STRING             5
+
+ 220            LOAD_CONST               9 (True)
+
+ 219            LOAD_CONST              10 (('flush',))
+                CALL_KW                  2
+                POP_TOP
+
+ 221            LOAD_FAST                1 (jobs)
+                GET_ITER
+       L16:     FOR_ITER                78 (to L26)
+                STORE_FAST               2 (j)
+
+ 222   L17:     NOP
+
+ 223   L18:     LOAD_GLOBAL              7 (_wav_bytes + NULL)
+                LOAD_GLOBAL              1 (_synth_group + NULL)
+                LOAD_FAST_LOAD_FAST      2 (key, j)
+                LOAD_ATTR                2 (text)
+                BUILD_LIST               1
+                CALL                     2
+                LOAD_CONST               4 (0)
+                BINARY_SUBSCR
+                CALL                     1
+                LOAD_FAST                2 (j)
+                STORE_ATTR               4 (wav)
+       L19:     JUMP_BACKWARD           45 (to L16)
+
+  --   L20:     PUSH_EXC_INFO
+
+ 224            LOAD_GLOBAL             10 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       22 (to L24)
+                STORE_FAST               6 (ex)
+
+ 225   L21:     LOAD_FAST                6 (ex)
+                FORMAT_SIMPLE
+                LOAD_CONST               2 (None)
+                LOAD_CONST               3 (400)
+                BINARY_SLICE
+                LOAD_FAST                2 (j)
+                STORE_ATTR               7 (err)
+       L22:     POP_EXCEPT
+                LOAD_CONST               2 (None)
+                STORE_FAST               6 (ex)
+                DELETE_FAST              6 (ex)
+                JUMP_BACKWARD           72 (to L16)
+
+  --   L23:     LOAD_CONST               2 (None)
+                STORE_FAST               6 (ex)
+                DELETE_FAST              6 (ex)
+                RERAISE                  1
+
+ 224   L24:     RERAISE                  0
+
+  --   L25:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+ 221   L26:     END_FOR
+                POP_TOP
+       L27:     POP_EXCEPT
+                LOAD_CONST               2 (None)
+                STORE_FAST               5 (ex_batch)
+                DELETE_FAST              5 (ex_batch)
+                JUMP_BACKWARD_NO_INTERRUPT 255 (to L8)
+
+  --   L28:     LOAD_CONST               2 (None)
+                STORE_FAST               5 (ex_batch)
+                DELETE_FAST              5 (ex_batch)
+                RERAISE                  1
+
+ 215   L29:     RERAISE                  0
+
+  --   L30:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L31:     PUSH_EXC_INFO
+
+ 227            LOAD_GLOBAL             20 (STATE)
+                LOAD_CONST              11 ('stat_batches')
+                COPY                     2
+                COPY                     2
+                BINARY_SUBSCR
+                LOAD_CONST               1 (1)
+                BINARY_OP               13 (+=)
+                SWAP                     3
+                SWAP                     2
+                STORE_SUBSCR
+
+ 228            LOAD_GLOBAL             20 (STATE)
+                LOAD_CONST              12 ('stat_items')
+                COPY                     2
+                COPY                     2
+                BINARY_SUBSCR
+                LOAD_GLOBAL             13 (len + NULL)
+                LOAD_FAST                1 (jobs)
+                CALL                     1
+                BINARY_OP               13 (+=)
+                SWAP                     3
+                SWAP                     2
+                STORE_SUBSCR
+
+ 229            LOAD_FAST                1 (jobs)
+                GET_ITER
+       L32:     FOR_ITER                29 (to L33)
+                STORE_FAST               2 (j)
+
+ 230            LOAD_FAST                2 (j)
+                LOAD_ATTR               22 (ev)
+                LOAD_ATTR               25 (set + NULL|self)
+                CALL                     0
+                POP_TOP
+                JUMP_BACKWARD           31 (to L32)
+
+ 229   L33:     END_FOR
+                POP_TOP
+                RERAISE                  0
+
+  --   L34:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L12 [0]
+  L2 to L5 -> L11 [5]
+  L5 to L8 -> L12 [0]
+  L11 to L12 -> L12 [0]
+  L12 to L13 -> L30 [1] lasti
+  L13 to L14 -> L28 [1] lasti
+  L14 to L15 -> L31 [0]
+  L15 to L17 -> L28 [1] lasti
+  L18 to L19 -> L20 [2]
+  L19 to L20 -> L28 [1] lasti
+  L20 to L21 -> L25 [3] lasti
+  L21 to L22 -> L23 [3] lasti
+  L22 to L23 -> L28 [1] lasti
+  L23 to L25 -> L25 [3] lasti
+  L25 to L27 -> L28 [1] lasti
+  L27 to L28 -> L31 [0]
+  L28 to L30 -> L30 [1] lasti
+  L30 to L31 -> L31 [0]
+  L31 to L34 -> L34 [1] lasti
+
+Disassembly of <code object _gen_once at 0x0000016DC8F5E460, file "bilisub\tts\omnivoice_server.py", line 233>:
+  --            MAKE_CELL                1 (pending)
+
+ 233            RESUME                   0
+
+ 235            LOAD_DEREF               1 (pending)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        59 (to L1)
+
+ 236            LOAD_FAST                0 (Q)
+                LOAD_ATTR                1 (get + NULL|self)
+                CALL                     0
+                STORE_FAST               2 (j)
+
+ 237            LOAD_DEREF               1 (pending)
+                LOAD_ATTR                3 (setdefault + NULL|self)
+                LOAD_FAST                2 (j)
+                LOAD_ATTR                4 (key)
+                BUILD_LIST               0
+                CALL                     2
+                LOAD_ATTR                7 (append + NULL|self)
+                LOAD_FAST                2 (j)
+                CALL                     1
+                POP_TOP
+
+ 239    L1:     LOAD_GLOBAL              8 (time)
+                LOAD_ATTR                8 (time)
+                PUSH_NULL
+                CALL                     0
+                LOAD_GLOBAL             10 (STATE)
+                LOAD_CONST               1 ('wait_s')
+                BINARY_SUBSCR
+                BINARY_OP                0 (+)
+                STORE_FAST               3 (t_end)
+
+ 240            LOAD_GLOBAL             13 (max + NULL)
+                LOAD_CONST               2 (<code object <genexpr> at 0x0000016DC90E1630, file "bilisub\tts\omnivoice_server.py", line 240>)
+                MAKE_FUNCTION
+                LOAD_DEREF               1 (pending)
+                LOAD_ATTR               15 (values + NULL|self)
+                CALL                     0
+                GET_ITER
+                CALL                     0
+                LOAD_CONST               3 (0)
+                LOAD_CONST               4 (('default',))
+                CALL_KW                  2
+                LOAD_GLOBAL             10 (STATE)
+                LOAD_CONST               5 ('batch_max')
+                BINARY_SUBSCR
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE      134 (to L6)
+
+ 241    L2:     LOAD_FAST                3 (t_end)
+                LOAD_GLOBAL              8 (time)
+                LOAD_ATTR                8 (time)
+                PUSH_NULL
+                CALL                     0
+                BINARY_OP               10 (-)
+                STORE_FAST               4 (left)
+
+ 242            LOAD_FAST                4 (left)
+                LOAD_CONST               3 (0)
+                COMPARE_OP              58 (bool(<=))
+                POP_JUMP_IF_FALSE        1 (to L3)
+
+ 243            JUMP_FORWARD           103 (to L6)
+
+ 244    L3:     NOP
+
+ 245    L4:     LOAD_FAST                0 (Q)
+                LOAD_ATTR                1 (get + NULL|self)
+                LOAD_FAST                4 (left)
+                LOAD_CONST               6 (('timeout',))
+                CALL_KW                  1
+                STORE_FAST               2 (j)
+
+ 248    L5:     LOAD_DEREF               1 (pending)
+                LOAD_ATTR                3 (setdefault + NULL|self)
+                LOAD_FAST                2 (j)
+                LOAD_ATTR                4 (key)
+                BUILD_LIST               0
+                CALL                     2
+                LOAD_ATTR                7 (append + NULL|self)
+                LOAD_FAST                2 (j)
+                CALL                     1
+                POP_TOP
+
+ 240            LOAD_GLOBAL             13 (max + NULL)
+                LOAD_CONST               2 (<code object <genexpr> at 0x0000016DC90E1630, file "bilisub\tts\omnivoice_server.py", line 240>)
+                MAKE_FUNCTION
+                LOAD_DEREF               1 (pending)
+                LOAD_ATTR               15 (values + NULL|self)
+                CALL                     0
+                GET_ITER
+                CALL                     0
+                LOAD_CONST               3 (0)
+                LOAD_CONST               4 (('default',))
+                CALL_KW                  2
+                LOAD_GLOBAL             10 (STATE)
+                LOAD_CONST               5 ('batch_max')
+                BINARY_SUBSCR
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        2 (to L6)
+                JUMP_BACKWARD          134 (to L2)
+
+ 250    L6:     LOAD_GLOBAL             13 (max + NULL)
+                LOAD_DEREF               1 (pending)
+                LOAD_FAST                1 (pending)
+                BUILD_TUPLE              1
+                LOAD_CONST               7 (<code object <lambda> at 0x0000016DC90F15C0, file "bilisub\tts\omnivoice_server.py", line 250>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                LOAD_CONST               8 (('key',))
+                CALL_KW                  2
+                STORE_FAST               5 (key)
+
+ 251            LOAD_DEREF               1 (pending)
+                LOAD_FAST                5 (key)
+                BINARY_SUBSCR
+                LOAD_CONST               9 (None)
+                LOAD_GLOBAL             10 (STATE)
+                LOAD_CONST               5 ('batch_max')
+                BINARY_SUBSCR
+                BINARY_SLICE
+                STORE_FAST               6 (jobs)
+
+ 252            LOAD_DEREF               1 (pending)
+                LOAD_FAST                5 (key)
+                BINARY_SUBSCR
+                LOAD_GLOBAL             10 (STATE)
+                LOAD_CONST               5 ('batch_max')
+                BINARY_SUBSCR
+                LOAD_CONST               9 (None)
+                BINARY_SLICE
+                LOAD_DEREF               1 (pending)
+                LOAD_FAST                5 (key)
+                STORE_SUBSCR
+
+ 253            LOAD_DEREF               1 (pending)
+                LOAD_FAST                5 (key)
+                BINARY_SUBSCR
+                TO_BOOL
+                POP_JUMP_IF_TRUE         3 (to L7)
+
+ 254            LOAD_DEREF               1 (pending)
+                LOAD_FAST                5 (key)
+                DELETE_SUBSCR
+
+ 255    L7:     LOAD_GLOBAL             10 (STATE)
+                LOAD_CONST              10 ('gen_lock')
+                BINARY_SUBSCR
+                BEFORE_WITH
+        L8:     POP_TOP
+
+ 256            LOAD_GLOBAL             21 (_run_batch + NULL)
+                LOAD_FAST_LOAD_FAST     86 (key, jobs)
+                CALL                     2
+                POP_TOP
+
+ 255    L9:     LOAD_CONST               9 (None)
+                LOAD_CONST               9 (None)
+                LOAD_CONST               9 (None)
+                CALL                     2
+                POP_TOP
+
+ 257   L10:     LOAD_GLOBAL              8 (time)
+                LOAD_ATTR                8 (time)
+                PUSH_NULL
+                CALL                     0
+                LOAD_GLOBAL             10 (STATE)
+                LOAD_CONST              11 ('last')
+                STORE_SUBSCR
+                RETURN_CONST             9 (None)
+
+  --   L11:     PUSH_EXC_INFO
+
+ 246            LOAD_GLOBAL             16 (queue)
+                LOAD_ATTR               18 (Empty)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L13)
+                POP_TOP
+
+ 247   L12:     POP_EXCEPT
+                JUMP_BACKWARD          141 (to L6)
+
+ 246   L13:     RERAISE                  0
+
+  --   L14:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+ 255   L15:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L16)
+                RERAISE                  2
+       L16:     POP_TOP
+       L17:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                JUMP_BACKWARD_NO_INTERRUPT 70 (to L10)
+
+  --   L18:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L4 to L5 -> L11 [0]
+  L8 to L9 -> L15 [1] lasti
+  L11 to L12 -> L14 [1] lasti
+  L13 to L14 -> L14 [1] lasti
+  L15 to L17 -> L18 [3] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E1630, file "bilisub\tts\omnivoice_server.py", line 240>:
+ 240           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                16 (to L3)
+               STORE_FAST               1 (v)
+               LOAD_GLOBAL              1 (len + NULL)
+               LOAD_FAST                1 (v)
+               CALL                     1
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           18 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object <lambda> at 0x0000016DC90F15C0, file "bilisub\tts\omnivoice_server.py", line 250>:
+  --           COPY_FREE_VARS           1
+
+ 250           RESUME                   0
+               LOAD_GLOBAL              1 (len + NULL)
+               LOAD_DEREF               1 (pending)
+               LOAD_FAST                0 (k)
+               BINARY_SUBSCR
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object _gen_loop at 0x0000016DC8F51A50, file "bilisub\tts\omnivoice_server.py", line 260>:
+ 260            RESUME                   0
+
+ 264            LOAD_GLOBAL              0 (STATE)
+                LOAD_CONST               1 ('q')
+                BINARY_SUBSCR
+                STORE_FAST               0 (Q)
+
+ 265            BUILD_MAP                0
+                STORE_FAST               1 (pending)
+
+ 266            NOP
+
+ 267    L1:     NOP
+
+ 268    L2:     LOAD_GLOBAL              3 (_gen_once + NULL)
+                LOAD_FAST_LOAD_FAST      1 (Q, pending)
+                CALL                     2
+                POP_TOP
+
+ 266    L3:     JUMP_BACKWARD           14 (to L1)
+
+  --    L4:     PUSH_EXC_INFO
+
+ 269            LOAD_GLOBAL              4 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE      127 (to L10)
+                POP_TOP
+
+ 270            LOAD_GLOBAL              6 (traceback)
+                LOAD_ATTR                8 (print_exc)
+                PUSH_NULL
+                CALL                     0
+                POP_TOP
+
+ 271            LOAD_FAST                1 (pending)
+                LOAD_ATTR               11 (values + NULL|self)
+                CALL                     0
+                GET_ITER
+        L5:     FOR_ITER                45 (to L8)
+                STORE_FAST               2 (jobs)
+
+ 272            LOAD_FAST                2 (jobs)
+                GET_ITER
+        L6:     FOR_ITER                36 (to L7)
+                STORE_FAST               3 (j)
+
+ 273            LOAD_CONST               2 ('luồng sinh gặp lỗi nội bộ')
+                LOAD_FAST                3 (j)
+                STORE_ATTR               6 (err)
+
+ 274            LOAD_FAST                3 (j)
+                LOAD_ATTR               14 (ev)
+                LOAD_ATTR               17 (set + NULL|self)
+                CALL                     0
+                POP_TOP
+                JUMP_BACKWARD           38 (to L6)
+
+ 272    L7:     END_FOR
+                POP_TOP
+                JUMP_BACKWARD           47 (to L5)
+
+ 271    L8:     END_FOR
+                POP_TOP
+
+ 275            LOAD_FAST                1 (pending)
+                LOAD_ATTR               19 (clear + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 276            LOAD_GLOBAL             20 (time)
+                LOAD_ATTR               22 (sleep)
+                PUSH_NULL
+                LOAD_CONST               3 (0.2)
+                CALL                     1
+                POP_TOP
+        L9:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 138 (to L3)
+
+ 269   L10:     RERAISE                  0
+
+  --   L11:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L4 [0]
+  L4 to L9 -> L11 [1] lasti
+  L10 to L11 -> L11 [1] lasti
+
+Disassembly of <code object _Handler at 0x0000016DC90E1430, file "bilisub\tts\omnivoice_server.py", line 279>:
+279           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('_Handler')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (279)
+              STORE_NAME               3 (__firstlineno__)
+
+280           LOAD_CONST               2 ('HTTP/1.1')
+              STORE_NAME               4 (protocol_version)
+
+282           LOAD_CONST               3 (<code object log_message at 0x0000016DC9134920, file "bilisub\tts\omnivoice_server.py", line 282>)
+              MAKE_FUNCTION
+              STORE_NAME               5 (log_message)
+
+285           LOAD_CONST               4 (<code object _json at 0x0000016DC8E4EE30, file "bilisub\tts\omnivoice_server.py", line 285>)
+              MAKE_FUNCTION
+              STORE_NAME               6 (_json)
+
+293           LOAD_CONST               5 (<code object do_GET at 0x0000016DC8F51610, file "bilisub\tts\omnivoice_server.py", line 293>)
+              MAKE_FUNCTION
+              STORE_NAME               7 (do_GET)
+
+304           LOAD_CONST               6 (<code object do_POST at 0x0000016DC9071A20, file "bilisub\tts\omnivoice_server.py", line 304>)
+              MAKE_FUNCTION
+              STORE_NAME               8 (do_POST)
+              LOAD_CONST               7 (())
+              STORE_NAME               9 (__static_attributes__)
+              RETURN_CONST             8 (None)
+
+Disassembly of <code object log_message at 0x0000016DC9134920, file "bilisub\tts\omnivoice_server.py", line 282>:
+282           RESUME                   0
+
+283           RETURN_CONST             0 (None)
+
+Disassembly of <code object _json at 0x0000016DC8E4EE30, file "bilisub\tts\omnivoice_server.py", line 285>:
+285           RESUME                   0
+
+286           LOAD_GLOBAL              0 (json)
+              LOAD_ATTR                2 (dumps)
+              PUSH_NULL
+              LOAD_FAST                2 (obj)
+              CALL                     1
+              LOAD_ATTR                5 (encode + NULL|self)
+              LOAD_CONST               1 ('utf-8')
+              CALL                     1
+              STORE_FAST               3 (b)
+
+287           LOAD_FAST                0 (self)
+              LOAD_ATTR                7 (send_response + NULL|self)
+              LOAD_FAST                1 (code)
+              CALL                     1
+              POP_TOP
+
+288           LOAD_FAST                0 (self)
+              LOAD_ATTR                9 (send_header + NULL|self)
+              LOAD_CONST               2 ('Content-Type')
+              LOAD_CONST               3 ('application/json')
+              CALL                     2
+              POP_TOP
+
+289           LOAD_FAST                0 (self)
+              LOAD_ATTR                9 (send_header + NULL|self)
+              LOAD_CONST               4 ('Content-Length')
+              LOAD_GLOBAL             11 (str + NULL)
+              LOAD_GLOBAL             13 (len + NULL)
+              LOAD_FAST                3 (b)
+              CALL                     1
+              CALL                     1
+              CALL                     2
+              POP_TOP
+
+290           LOAD_FAST                0 (self)
+              LOAD_ATTR               15 (end_headers + NULL|self)
+              CALL                     0
+              POP_TOP
+
+291           LOAD_FAST                0 (self)
+              LOAD_ATTR               16 (wfile)
+              LOAD_ATTR               19 (write + NULL|self)
+              LOAD_FAST                3 (b)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object do_GET at 0x0000016DC8F51610, file "bilisub\tts\omnivoice_server.py", line 293>:
+293           RESUME                   0
+
+294           LOAD_GLOBAL              0 (time)
+              LOAD_ATTR                0 (time)
+              PUSH_NULL
+              CALL                     0
+              LOAD_GLOBAL              2 (STATE)
+              LOAD_CONST               1 ('last')
+              STORE_SUBSCR
+
+295           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (path)
+              LOAD_CONST               2 ('/health')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       36 (to L1)
+
+296           LOAD_FAST                0 (self)
+              LOAD_ATTR                7 (_json + NULL|self)
+              LOAD_CONST               3 (200)
+              LOAD_GLOBAL              2 (STATE)
+              LOAD_CONST               4 ('ready')
+              BINARY_SUBSCR
+              LOAD_GLOBAL              2 (STATE)
+              LOAD_CONST               5 ('error')
+              BINARY_SUBSCR
+              LOAD_CONST               6 (('ready', 'error'))
+              BUILD_CONST_KEY_MAP      2
+              CALL                     2
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+297   L1:     LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (path)
+              LOAD_CONST               7 ('/stats')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       44 (to L2)
+
+298           LOAD_FAST                0 (self)
+              LOAD_ATTR                7 (_json + NULL|self)
+              LOAD_CONST               3 (200)
+              LOAD_GLOBAL              2 (STATE)
+              LOAD_CONST               8 ('stat_batches')
+              BINARY_SUBSCR
+
+299           LOAD_GLOBAL              2 (STATE)
+              LOAD_CONST               9 ('stat_items')
+              BINARY_SUBSCR
+
+300           LOAD_GLOBAL              2 (STATE)
+              LOAD_CONST              10 ('batch_max')
+              BINARY_SUBSCR
+
+298           LOAD_CONST              11 (('batches', 'items', 'batch_max'))
+              BUILD_CONST_KEY_MAP      3
+              CALL                     2
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+302   L2:     LOAD_FAST                0 (self)
+              LOAD_ATTR                7 (_json + NULL|self)
+              LOAD_CONST              12 (404)
+              LOAD_CONST               5 ('error')
+              LOAD_CONST              13 ('not found')
+              BUILD_MAP                1
+              CALL                     2
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object do_POST at 0x0000016DC9071A20, file "bilisub\tts\omnivoice_server.py", line 304>:
+ 304            RESUME                   0
+
+ 305            LOAD_GLOBAL              0 (time)
+                LOAD_ATTR                0 (time)
+                PUSH_NULL
+                CALL                     0
+                LOAD_GLOBAL              2 (STATE)
+                LOAD_CONST               1 ('last')
+                STORE_SUBSCR
+
+ 306            LOAD_FAST                0 (self)
+                LOAD_ATTR                4 (path)
+                LOAD_CONST               2 ('/synth')
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE       20 (to L1)
+
+ 307            LOAD_FAST                0 (self)
+                LOAD_ATTR                7 (_json + NULL|self)
+                LOAD_CONST               3 (404)
+                LOAD_CONST               4 ('error')
+                LOAD_CONST               5 ('not found')
+                BUILD_MAP                1
+                CALL                     2
+                RETURN_VALUE
+
+ 308    L1:     NOP
+
+ 309    L2:     LOAD_GLOBAL              9 (int + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               10 (headers)
+                LOAD_ATTR               13 (get + NULL|self)
+                LOAD_CONST               6 ('Content-Length')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L3)
+                POP_TOP
+                LOAD_CONST               7 (0)
+        L3:     CALL                     1
+                STORE_FAST               1 (n)
+
+ 310            LOAD_GLOBAL             14 (json)
+                LOAD_ATTR               16 (loads)
+                PUSH_NULL
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               18 (rfile)
+                LOAD_ATTR               21 (read + NULL|self)
+                LOAD_FAST                1 (n)
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L4)
+                POP_TOP
+                LOAD_CONST               8 (b'{}')
+        L4:     CALL                     1
+                STORE_FAST               2 (req)
+
+ 313    L5:     LOAD_GLOBAL              2 (STATE)
+                LOAD_CONST              11 ('ready')
+                BINARY_SUBSCR
+                TO_BOOL
+                POP_JUMP_IF_TRUE        36 (to L7)
+
+ 314            LOAD_FAST                0 (self)
+                LOAD_ATTR                7 (_json + NULL|self)
+                LOAD_CONST              12 (503)
+                LOAD_CONST               4 ('error')
+                LOAD_GLOBAL              2 (STATE)
+                LOAD_CONST               4 ('error')
+                BINARY_SUBSCR
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L6)
+                POP_TOP
+                LOAD_CONST              13 ('model chưa nạp xong')
+        L6:     BUILD_MAP                1
+                CALL                     2
+                RETURN_VALUE
+
+ 315    L7:     LOAD_FAST                2 (req)
+                LOAD_ATTR               13 (get + NULL|self)
+                LOAD_CONST              14 ('text')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L8)
+                POP_TOP
+                LOAD_CONST              15 ('')
+        L8:     LOAD_ATTR               25 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               4 (text)
+
+ 316            LOAD_FAST                2 (req)
+                LOAD_ATTR               13 (get + NULL|self)
+                LOAD_CONST              16 ('voice')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L9)
+                POP_TOP
+                LOAD_CONST              15 ('')
+        L9:     LOAD_ATTR               25 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               5 (voice)
+
+ 317            LOAD_FAST                4 (text)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        7 (to L10)
+                LOAD_FAST                5 (voice)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        20 (to L11)
+
+ 318   L10:     LOAD_FAST                0 (self)
+                LOAD_ATTR                7 (_json + NULL|self)
+                LOAD_CONST               9 (400)
+                LOAD_CONST               4 ('error')
+                LOAD_CONST              17 ('thiếu text/voice')
+                BUILD_MAP                1
+                CALL                     2
+                RETURN_VALUE
+
+ 321   L11:     LOAD_GLOBAL              2 (STATE)
+                LOAD_CONST              18 ('batch_max')
+                BINARY_SUBSCR
+                LOAD_CONST              19 (1)
+                COMPARE_OP             148 (bool(>))
+                EXTENDED_ARG             1
+                POP_JUMP_IF_FALSE      442 (to L20)
+
+ 322            LOAD_FAST_LOAD_FAST     82 (voice, req)
+                LOAD_ATTR               13 (get + NULL|self)
+                LOAD_CONST              20 ('language')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L12)
+                POP_TOP
+                LOAD_CONST              21 ('vi')
+
+ 323   L12:     LOAD_GLOBAL             27 (float + NULL)
+                LOAD_FAST                2 (req)
+                LOAD_ATTR               13 (get + NULL|self)
+                LOAD_CONST              22 ('speed')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L13)
+                POP_TOP
+                LOAD_CONST              23 (0.95)
+       L13:     CALL                     1
+
+ 324            LOAD_GLOBAL              9 (int + NULL)
+                LOAD_FAST                2 (req)
+                LOAD_ATTR               13 (get + NULL|self)
+                LOAD_CONST              24 ('num_step')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L14)
+                POP_TOP
+                LOAD_CONST              25 (32)
+       L14:     CALL                     1
+
+ 325            LOAD_GLOBAL             27 (float + NULL)
+                LOAD_FAST                2 (req)
+                LOAD_ATTR               13 (get + NULL|self)
+                LOAD_CONST              26 ('guidance')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L15)
+                POP_TOP
+                LOAD_CONST              27 (2.0)
+       L15:     CALL                     1
+
+ 322            BUILD_TUPLE              5
+                STORE_FAST               6 (key)
+
+ 326            LOAD_GLOBAL             29 (_Job + NULL)
+                LOAD_FAST_LOAD_FAST     70 (text, key)
+                CALL                     2
+                STORE_FAST               7 (job)
+
+ 327            LOAD_GLOBAL              2 (STATE)
+                LOAD_CONST              28 ('q')
+                BINARY_SUBSCR
+                LOAD_ATTR               31 (put + NULL|self)
+                LOAD_FAST                7 (job)
+                CALL                     1
+                POP_TOP
+
+ 332            LOAD_FAST                7 (job)
+                LOAD_ATTR               32 (ev)
+                LOAD_ATTR               35 (wait + NULL|self)
+                LOAD_CONST              29 (900.0)
+                LOAD_CONST              30 (('timeout',))
+                CALL_KW                  1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        20 (to L16)
+
+ 333            LOAD_FAST                0 (self)
+                LOAD_ATTR                7 (_json + NULL|self)
+                LOAD_CONST              31 (500)
+                LOAD_CONST               4 ('error')
+                LOAD_CONST              32 ('worker qua 900s khong tra loi (nghi ket GPU) - hay chay lai')
+                BUILD_MAP                1
+                CALL                     2
+                RETURN_VALUE
+
+ 334   L16:     LOAD_FAST                7 (job)
+                LOAD_ATTR               36 (err)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        17 (to L17)
+                LOAD_FAST                7 (job)
+                LOAD_ATTR               38 (wav)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        39 (to L19)
+
+ 335   L17:     LOAD_FAST                0 (self)
+                LOAD_ATTR                7 (_json + NULL|self)
+                LOAD_CONST              31 (500)
+                LOAD_CONST               4 ('error')
+                LOAD_FAST                7 (job)
+                LOAD_ATTR               36 (err)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L18)
+                POP_TOP
+                LOAD_CONST              33 ('audio rỗng')
+       L18:     BUILD_MAP                1
+                CALL                     2
+                RETURN_VALUE
+
+ 336   L19:     LOAD_FAST                7 (job)
+                LOAD_ATTR               38 (wav)
+                STORE_FAST               8 (data)
+
+ 337            LOAD_GLOBAL              0 (time)
+                LOAD_ATTR                0 (time)
+                PUSH_NULL
+                CALL                     0
+                LOAD_GLOBAL              2 (STATE)
+                LOAD_CONST               1 ('last')
+                STORE_SUBSCR
+
+ 338            LOAD_FAST                0 (self)
+                LOAD_ATTR               41 (send_response + NULL|self)
+                LOAD_CONST              34 (200)
+                CALL                     1
+                POP_TOP
+
+ 339            LOAD_FAST                0 (self)
+                LOAD_ATTR               43 (send_header + NULL|self)
+                LOAD_CONST              35 ('Content-Type')
+                LOAD_CONST              36 ('audio/wav')
+                CALL                     2
+                POP_TOP
+
+ 340            LOAD_FAST                0 (self)
+                LOAD_ATTR               43 (send_header + NULL|self)
+                LOAD_CONST               6 ('Content-Length')
+                LOAD_GLOBAL             45 (str + NULL)
+                LOAD_GLOBAL             47 (len + NULL)
+                LOAD_FAST                8 (data)
+                CALL                     1
+                CALL                     1
+                CALL                     2
+                POP_TOP
+
+ 341            LOAD_FAST                0 (self)
+                LOAD_ATTR               49 (end_headers + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 342            LOAD_FAST                0 (self)
+                LOAD_ATTR               50 (wfile)
+                LOAD_ATTR               53 (write + NULL|self)
+                LOAD_FAST                8 (data)
+                CALL                     1
+                POP_TOP
+
+ 343            RETURN_CONST             0 (None)
+
+ 344   L20:     NOP
+
+ 345   L21:     LOAD_CONST               7 (0)
+                LOAD_CONST               0 (None)
+                IMPORT_NAME             27 (soundfile)
+                STORE_FAST               9 (sf)
+
+ 346            LOAD_GLOBAL              2 (STATE)
+                LOAD_CONST              37 ('gen_lock')
+                BINARY_SUBSCR
+                BEFORE_WITH
+       L22:     POP_TOP
+
+ 347            LOAD_GLOBAL             57 (_get_prompt + NULL)
+                LOAD_FAST                5 (voice)
+                CALL                     1
+                STORE_FAST              10 (prompt)
+
+ 348            LOAD_GLOBAL              2 (STATE)
+                LOAD_CONST              38 ('eng')
+                BINARY_SUBSCR
+                LOAD_ATTR               59 (generate + NULL|self)
+
+ 349            LOAD_FAST                4 (text)
+
+ 350            LOAD_FAST                2 (req)
+                LOAD_ATTR               13 (get + NULL|self)
+                LOAD_CONST              20 ('language')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L23)
+                POP_TOP
+                LOAD_CONST              21 ('vi')
+
+ 351   L23:     LOAD_GLOBAL             27 (float + NULL)
+                LOAD_FAST                2 (req)
+                LOAD_ATTR               13 (get + NULL|self)
+                LOAD_CONST              22 ('speed')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L24)
+                POP_TOP
+                LOAD_CONST              23 (0.95)
+       L24:     CALL                     1
+
+ 352            LOAD_GLOBAL              9 (int + NULL)
+                LOAD_FAST                2 (req)
+                LOAD_ATTR               13 (get + NULL|self)
+                LOAD_CONST              24 ('num_step')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L25)
+                POP_TOP
+                LOAD_CONST              25 (32)
+       L25:     CALL                     1
+
+ 353            LOAD_GLOBAL             27 (float + NULL)
+                LOAD_FAST                2 (req)
+                LOAD_ATTR               13 (get + NULL|self)
+                LOAD_CONST              26 ('guidance')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L26)
+                POP_TOP
+                LOAD_CONST              27 (2.0)
+       L26:     CALL                     1
+
+ 354            LOAD_FAST               10 (prompt)
+
+ 355            LOAD_CONST              39 (-16.0)
+                LOAD_CONST              40 (True)
+                LOAD_CONST              41 (10.0)
+
+ 348            LOAD_CONST              42 (('language', 'speed', 'num_step', 'guidance_scale', 'voice_clone_prompt', 'target_lufs', 'trim_silence', 'fade_ms'))
+                CALL_KW                  9
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  188 (sr, audio)
+
+ 346   L27:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+
+ 357   L28:     LOAD_GLOBAL             60 (io)
+                LOAD_ATTR               62 (BytesIO)
+                PUSH_NULL
+                CALL                     0
+                STORE_FAST              13 (bio)
+
+ 358            LOAD_FAST                9 (sf)
+                LOAD_ATTR               53 (write + NULL|self)
+                LOAD_FAST               13 (bio)
+                LOAD_FAST_CHECK         12 (audio)
+                LOAD_FAST_CHECK         11 (sr)
+                LOAD_CONST              43 ('WAV')
+                LOAD_CONST              44 ('PCM_16')
+                LOAD_CONST              45 (('format', 'subtype'))
+                CALL_KW                  5
+                POP_TOP
+
+ 359            LOAD_FAST               13 (bio)
+                LOAD_ATTR               65 (getvalue + NULL|self)
+                CALL                     0
+                STORE_FAST               8 (data)
+
+ 360            LOAD_GLOBAL              0 (time)
+                LOAD_ATTR                0 (time)
+                PUSH_NULL
+                CALL                     0
+                LOAD_GLOBAL              2 (STATE)
+                LOAD_CONST               1 ('last')
+                STORE_SUBSCR
+
+ 361            LOAD_FAST                0 (self)
+                LOAD_ATTR               41 (send_response + NULL|self)
+                LOAD_CONST              34 (200)
+                CALL                     1
+                POP_TOP
+
+ 362            LOAD_FAST                0 (self)
+                LOAD_ATTR               43 (send_header + NULL|self)
+                LOAD_CONST              35 ('Content-Type')
+                LOAD_CONST              36 ('audio/wav')
+                CALL                     2
+                POP_TOP
+
+ 363            LOAD_FAST                0 (self)
+                LOAD_ATTR               43 (send_header + NULL|self)
+                LOAD_CONST               6 ('Content-Length')
+                LOAD_GLOBAL             45 (str + NULL)
+                LOAD_GLOBAL             47 (len + NULL)
+                LOAD_FAST                8 (data)
+                CALL                     1
+                CALL                     1
+                CALL                     2
+                POP_TOP
+
+ 364            LOAD_FAST                0 (self)
+                LOAD_ATTR               49 (end_headers + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 365            LOAD_FAST                0 (self)
+                LOAD_ATTR               50 (wfile)
+                LOAD_ATTR               53 (write + NULL|self)
+                LOAD_FAST                8 (data)
+                CALL                     1
+                POP_TOP
+       L29:     RETURN_CONST             0 (None)
+
+  --   L30:     PUSH_EXC_INFO
+
+ 311            LOAD_GLOBAL             22 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       33 (to L35)
+                STORE_FAST               3 (e)
+
+ 312   L31:     LOAD_FAST                0 (self)
+                LOAD_ATTR                7 (_json + NULL|self)
+                LOAD_CONST               9 (400)
+                LOAD_CONST               4 ('error')
+                LOAD_CONST              10 ('bad request: ')
+                LOAD_FAST                3 (e)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                BUILD_MAP                1
+                CALL                     2
+       L32:     SWAP                     2
+       L33:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST               3 (e)
+                DELETE_FAST              3 (e)
+                RETURN_VALUE
+
+  --   L34:     LOAD_CONST               0 (None)
+                STORE_FAST               3 (e)
+                DELETE_FAST              3 (e)
+                RERAISE                  1
+
+ 311   L35:     RERAISE                  0
+
+  --   L36:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+ 346   L37:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L38)
+                RERAISE                  2
+       L38:     POP_TOP
+       L39:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                EXTENDED_ARG             1
+                JUMP_BACKWARD_NO_INTERRUPT 260 (to L28)
+
+  --   L40:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L41:     PUSH_EXC_INFO
+
+ 366            LOAD_GLOBAL             22 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       34 (to L45)
+                STORE_FAST               3 (e)
+
+ 367   L42:     LOAD_FAST                0 (self)
+                LOAD_ATTR                7 (_json + NULL|self)
+                LOAD_CONST              31 (500)
+                LOAD_CONST               4 ('error')
+                LOAD_FAST                3 (e)
+                FORMAT_SIMPLE
+                LOAD_CONST               0 (None)
+                LOAD_CONST               9 (400)
+                BINARY_SLICE
+                BUILD_MAP                1
+                CALL                     2
+                POP_TOP
+       L43:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST               3 (e)
+                DELETE_FAST              3 (e)
+                RETURN_CONST             0 (None)
+
+  --   L44:     LOAD_CONST               0 (None)
+                STORE_FAST               3 (e)
+                DELETE_FAST              3 (e)
+                RERAISE                  1
+
+ 366   L45:     RERAISE                  0
+
+  --   L46:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L5 -> L30 [0]
+  L21 to L22 -> L41 [0]
+  L22 to L27 -> L37 [1] lasti
+  L27 to L29 -> L41 [0]
+  L30 to L31 -> L36 [1] lasti
+  L31 to L32 -> L34 [1] lasti
+  L32 to L33 -> L36 [1] lasti
+  L34 to L36 -> L36 [1] lasti
+  L37 to L39 -> L40 [3] lasti
+  L39 to L41 -> L41 [0]
+  L41 to L42 -> L46 [1] lasti
+  L42 to L43 -> L44 [1] lasti
+  L44 to L46 -> L46 [1] lasti
+
+Disassembly of <code object _idle_watchdog at 0x0000016DC8EB5160, file "bilisub\tts\omnivoice_server.py", line 370>:
+370           RESUME                   0
+
+372           LOAD_FAST                1 (timeout)
+              LOAD_CONST               1 (0)
+              COMPARE_OP              58 (bool(<=))
+              POP_JUMP_IF_FALSE        1 (to L1)
+
+373           RETURN_CONST             2 (None)
+
+374   L1:     NOP
+
+375   L2:     LOAD_GLOBAL              0 (time)
+              LOAD_ATTR                2 (sleep)
+              PUSH_NULL
+              LOAD_CONST               4 (15)
+              CALL                     1
+              POP_TOP
+
+376           LOAD_GLOBAL              0 (time)
+              LOAD_ATTR                0 (time)
+              PUSH_NULL
+              CALL                     0
+              LOAD_GLOBAL              4 (STATE)
+              LOAD_CONST               5 ('last')
+              BINARY_SUBSCR
+              BINARY_OP               10 (-)
+              LOAD_FAST                1 (timeout)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE       27 (to L3)
+
+377           LOAD_GLOBAL              7 (print + NULL)
+              LOAD_CONST               6 ('[omni] idle-timeout → thoát')
+              LOAD_CONST               3 (True)
+              LOAD_CONST               7 (('flush',))
+              CALL_KW                  2
+              POP_TOP
+
+378           LOAD_FAST                0 (srv)
+              LOAD_ATTR                9 (shutdown + NULL|self)
+              CALL                     0
+              POP_TOP
+
+379           RETURN_CONST             2 (None)
+
+374   L3:     JUMP_BACKWARD           86 (to L2)
+
+Disassembly of <code object main at 0x0000016DC9207BF0, file "bilisub\tts\omnivoice_server.py", line 382>:
+ 382           RESUME                   0
+
+ 383           LOAD_GLOBAL              0 (argparse)
+               LOAD_ATTR                2 (ArgumentParser)
+               PUSH_NULL
+               CALL                     0
+               STORE_FAST               0 (ap)
+
+ 384           LOAD_FAST                0 (ap)
+               LOAD_ATTR                5 (add_argument + NULL|self)
+               LOAD_CONST               1 ('--port')
+               LOAD_GLOBAL              6 (int)
+               LOAD_CONST               2 (True)
+               LOAD_CONST               3 (('type', 'required'))
+               CALL_KW                  3
+               POP_TOP
+
+ 385           LOAD_FAST                0 (ap)
+               LOAD_ATTR                5 (add_argument + NULL|self)
+               LOAD_CONST               4 ('--app-dir')
+               LOAD_CONST               2 (True)
+               LOAD_CONST               5 (('required',))
+               CALL_KW                  2
+               POP_TOP
+
+ 386           LOAD_FAST                0 (ap)
+               LOAD_ATTR                5 (add_argument + NULL|self)
+               LOAD_CONST               6 ('--model-dir')
+               LOAD_CONST               7 ('')
+               LOAD_CONST               8 (('default',))
+               CALL_KW                  2
+               POP_TOP
+
+ 387           LOAD_FAST                0 (ap)
+               LOAD_ATTR                5 (add_argument + NULL|self)
+               LOAD_CONST               9 ('--asr-dir')
+               LOAD_CONST               7 ('')
+               LOAD_CONST               8 (('default',))
+               CALL_KW                  2
+               POP_TOP
+
+ 388           LOAD_FAST                0 (ap)
+               LOAD_ATTR                5 (add_argument + NULL|self)
+               LOAD_CONST              10 ('--voices-dir')
+               LOAD_CONST               7 ('')
+               LOAD_CONST               8 (('default',))
+               CALL_KW                  2
+               POP_TOP
+
+ 390           LOAD_FAST                0 (ap)
+               LOAD_ATTR                5 (add_argument + NULL|self)
+               LOAD_CONST              11 ('--no-asr')
+               LOAD_CONST              12 ('store_true')
+               LOAD_CONST              13 (('action',))
+               CALL_KW                  2
+               POP_TOP
+
+ 391           LOAD_FAST                0 (ap)
+               LOAD_ATTR                5 (add_argument + NULL|self)
+               LOAD_CONST              14 ('--idle-timeout')
+               LOAD_GLOBAL              8 (float)
+               LOAD_CONST              15 (900.0)
+               LOAD_CONST              16 (('type', 'default'))
+               CALL_KW                  3
+               POP_TOP
+
+ 394           LOAD_FAST                0 (ap)
+               LOAD_ATTR                5 (add_argument + NULL|self)
+               LOAD_CONST              17 ('--batch')
+               LOAD_GLOBAL              6 (int)
+               LOAD_CONST              18 (1)
+               LOAD_CONST              16 (('type', 'default'))
+               CALL_KW                  3
+               POP_TOP
+
+ 395           LOAD_FAST                0 (ap)
+               LOAD_ATTR                5 (add_argument + NULL|self)
+               LOAD_CONST              19 ('--batch-wait-ms')
+               LOAD_GLOBAL              8 (float)
+               LOAD_CONST              20 (30.0)
+               LOAD_CONST              16 (('type', 'default'))
+               CALL_KW                  3
+               POP_TOP
+
+ 396           LOAD_FAST                0 (ap)
+               LOAD_ATTR               11 (parse_args + NULL|self)
+               CALL                     0
+               STORE_FAST               1 (args)
+
+ 398           LOAD_GLOBAL             13 (max + NULL)
+               LOAD_CONST              18 (1)
+               LOAD_GLOBAL              7 (int + NULL)
+               LOAD_FAST                1 (args)
+               LOAD_ATTR               14 (batch)
+               CALL                     1
+               CALL                     2
+               LOAD_GLOBAL             16 (STATE)
+               LOAD_CONST              21 ('batch_max')
+               STORE_SUBSCR
+
+ 399           LOAD_GLOBAL             13 (max + NULL)
+               LOAD_CONST              22 (0.0)
+               LOAD_GLOBAL              9 (float + NULL)
+               LOAD_FAST                1 (args)
+               LOAD_ATTR               18 (batch_wait_ms)
+               CALL                     1
+               LOAD_CONST              23 (1000.0)
+               BINARY_OP               11 (/)
+               CALL                     2
+               LOAD_GLOBAL             16 (STATE)
+               LOAD_CONST              24 ('wait_s')
+               STORE_SUBSCR
+
+ 401           LOAD_GLOBAL             20 (threading)
+               LOAD_ATTR               22 (Thread)
+               PUSH_NULL
+               LOAD_GLOBAL             24 (_load_models)
+               LOAD_FAST                1 (args)
+               BUILD_TUPLE              1
+               LOAD_CONST               2 (True)
+               LOAD_CONST              25 (('target', 'args', 'daemon'))
+               CALL_KW                  3
+               LOAD_ATTR               27 (start + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 402           LOAD_GLOBAL             16 (STATE)
+               LOAD_CONST              21 ('batch_max')
+               BINARY_SUBSCR
+               LOAD_CONST              18 (1)
+               COMPARE_OP             148 (bool(>))
+               POP_JUMP_IF_FALSE       39 (to L1)
+
+ 403           LOAD_GLOBAL             20 (threading)
+               LOAD_ATTR               22 (Thread)
+               PUSH_NULL
+               LOAD_GLOBAL             28 (_gen_loop)
+               LOAD_CONST               2 (True)
+               LOAD_CONST              26 (('target', 'daemon'))
+               CALL_KW                  2
+               LOAD_ATTR               27 (start + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 404   L1:     LOAD_GLOBAL             31 (ThreadingHTTPServer + NULL)
+               LOAD_CONST              27 ('127.0.0.1')
+               LOAD_FAST                1 (args)
+               LOAD_ATTR               32 (port)
+               BUILD_TUPLE              2
+               LOAD_GLOBAL             34 (_Handler)
+               CALL                     2
+               STORE_FAST               2 (srv)
+
+ 405           LOAD_GLOBAL             20 (threading)
+               LOAD_ATTR               22 (Thread)
+               PUSH_NULL
+               LOAD_GLOBAL             36 (_idle_watchdog)
+               LOAD_FAST_LOAD_FAST     33 (srv, args)
+               LOAD_ATTR               38 (idle_timeout)
+               BUILD_TUPLE              2
+               LOAD_CONST               2 (True)
+               LOAD_CONST              25 (('target', 'args', 'daemon'))
+               CALL_KW                  3
+               LOAD_ATTR               27 (start + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 406           LOAD_GLOBAL             41 (print + NULL)
+               LOAD_CONST              28 ('[omni] serving on 127.0.0.1:')
+               LOAD_FAST                1 (args)
+               LOAD_ATTR               32 (port)
+               FORMAT_SIMPLE
+               BUILD_STRING             2
+               LOAD_CONST               2 (True)
+               LOAD_CONST              29 (('flush',))
+               CALL_KW                  2
+               POP_TOP
+
+ 407           NOP
+
+ 408   L2:     LOAD_FAST                2 (srv)
+               LOAD_ATTR               43 (serve_forever + NULL|self)
+               CALL                     0
+               POP_TOP
+       L3:     RETURN_CONST             0 (None)
+
+  --   L4:     PUSH_EXC_INFO
+
+ 409           LOAD_GLOBAL             44 (KeyboardInterrupt)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L6)
+               POP_TOP
+
+ 410   L5:     POP_EXCEPT
+               RETURN_CONST             0 (None)
+
+ 409   L6:     RERAISE                  0
+
+  --   L7:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L4 [0]
+  L4 to L5 -> L7 [1] lasti
+  L6 to L7 -> L7 [1] lasti

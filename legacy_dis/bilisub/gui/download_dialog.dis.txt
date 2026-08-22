@@ -1,0 +1,2944 @@
+=== FILE: bilisub\gui\download_dialog.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           SETUP_ANNOTATIONS
+              LOAD_CONST               0 ('Dialog tải video Bilibili/Douyin từ link.')
+              STORE_NAME               0 (__doc__)
+
+  2           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+  4           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (os)
+              STORE_NAME               3 (os)
+
+  5           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Path',))
+              IMPORT_NAME              4 (pathlib)
+              IMPORT_FROM              5 (Path)
+              STORE_NAME               5 (Path)
+              POP_TOP
+
+  7           LOAD_CONST               1 (0)
+              LOAD_CONST               5 (('Qt', 'QThread', 'pyqtSignal'))
+              IMPORT_NAME              6 (PyQt6.QtCore)
+              IMPORT_FROM              7 (Qt)
+              STORE_NAME               7 (Qt)
+              IMPORT_FROM              8 (QThread)
+              STORE_NAME               8 (QThread)
+              IMPORT_FROM              9 (pyqtSignal)
+              STORE_NAME               9 (pyqtSignal)
+              POP_TOP
+
+  8           LOAD_CONST               1 (0)
+              LOAD_CONST               6 (('QDialog', 'QFileDialog', 'QFormLayout', 'QHBoxLayout', 'QLabel', 'QLineEdit', 'QListWidget', 'QListWidgetItem', 'QMessageBox', 'QPlainTextEdit', 'QProgressBar', 'QPushButton', 'QVBoxLayout', 'QWidget'))
+              IMPORT_NAME             10 (PyQt6.QtWidgets)
+              IMPORT_FROM             11 (QDialog)
+              STORE_NAME              11 (QDialog)
+              IMPORT_FROM             12 (QFileDialog)
+              STORE_NAME              12 (QFileDialog)
+              IMPORT_FROM             13 (QFormLayout)
+              STORE_NAME              13 (QFormLayout)
+              IMPORT_FROM             14 (QHBoxLayout)
+              STORE_NAME              14 (QHBoxLayout)
+              IMPORT_FROM             15 (QLabel)
+              STORE_NAME              15 (QLabel)
+              IMPORT_FROM             16 (QLineEdit)
+              STORE_NAME              16 (QLineEdit)
+              IMPORT_FROM             17 (QListWidget)
+              STORE_NAME              17 (QListWidget)
+              IMPORT_FROM             18 (QListWidgetItem)
+              STORE_NAME              18 (QListWidgetItem)
+              IMPORT_FROM             19 (QMessageBox)
+              STORE_NAME              19 (QMessageBox)
+              IMPORT_FROM             20 (QPlainTextEdit)
+              STORE_NAME              20 (QPlainTextEdit)
+              IMPORT_FROM             21 (QProgressBar)
+              STORE_NAME              21 (QProgressBar)
+              IMPORT_FROM             22 (QPushButton)
+              STORE_NAME              22 (QPushButton)
+              IMPORT_FROM             23 (QVBoxLayout)
+              STORE_NAME              23 (QVBoxLayout)
+              IMPORT_FROM             24 (QWidget)
+              STORE_NAME              24 (QWidget)
+              POP_TOP
+
+ 14           LOAD_CONST               7 (2)
+              LOAD_CONST               8 (('download', 'download_selected', 'list_parts', 'detect_platform'))
+              IMPORT_NAME             25 (downloader)
+              IMPORT_FROM             26 (download)
+              STORE_NAME              26 (download)
+              IMPORT_FROM             27 (download_selected)
+              STORE_NAME              27 (download_selected)
+              IMPORT_FROM             28 (list_parts)
+              STORE_NAME              28 (list_parts)
+              IMPORT_FROM             29 (detect_platform)
+              STORE_NAME              29 (detect_platform)
+              POP_TOP
+
+ 17           LOAD_CONST              22 (('return', 'Path'))
+              LOAD_CONST               9 (<code object default_download_dir at 0x0000016DC90F1B60, file "bilisub\gui\download_dialog.py", line 17>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              30 (default_download_dir)
+
+ 27           BUILD_LIST               0
+              STORE_NAME              31 (_ALIVE)
+              LOAD_CONST              10 ('list')
+              LOAD_NAME               32 (__annotations__)
+              LOAD_CONST              11 ('_ALIVE')
+              STORE_SUBSCR
+
+ 30           LOAD_CONST              12 (<code object _keep_alive at 0x0000016DC9160480, file "bilisub\gui\download_dialog.py", line 30>)
+              MAKE_FUNCTION
+              STORE_NAME              33 (_keep_alive)
+
+ 35           LOAD_CONST              23 ((5000,))
+              LOAD_CONST              24 (('timeout_ms', 'int'))
+              LOAD_CONST              13 (<code object drain_workers at 0x0000016DC8E91890, file "bilisub\gui\download_dialog.py", line 35>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              34 (drain_workers)
+
+ 48           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              14 (<code object _DLWorker at 0x0000016DC8E07870, file "bilisub\gui\download_dialog.py", line 48>)
+              MAKE_FUNCTION
+              LOAD_CONST              15 ('_DLWorker')
+              LOAD_NAME                8 (QThread)
+              CALL                     3
+              STORE_NAME              35 (_DLWorker)
+
+ 72           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              16 (<code object _PartsWorker at 0x0000016DC9129350, file "bilisub\gui\download_dialog.py", line 72>)
+              MAKE_FUNCTION
+              LOAD_CONST              17 ('_PartsWorker')
+              LOAD_NAME                8 (QThread)
+              CALL                     3
+              STORE_NAME              36 (_PartsWorker)
+
+ 90           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              18 (<code object _MultiDLWorker at 0x0000016DC90EDFD0, file "bilisub\gui\download_dialog.py", line 90>)
+              MAKE_FUNCTION
+              LOAD_CONST              19 ('_MultiDLWorker')
+              LOAD_NAME                8 (QThread)
+              CALL                     3
+              STORE_NAME              37 (_MultiDLWorker)
+
+127           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              20 (<code object DownloadDialog at 0x0000016DC8EB6420, file "bilisub\gui\download_dialog.py", line 127>)
+              MAKE_FUNCTION
+              LOAD_CONST              21 ('DownloadDialog')
+              LOAD_NAME               11 (QDialog)
+              CALL                     3
+              STORE_NAME              38 (DownloadDialog)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object default_download_dir at 0x0000016DC90F1B60, file "bilisub\gui\download_dialog.py", line 17>:
+ 17           RESUME                   0
+
+ 19           LOAD_CONST               1 (2)
+              LOAD_CONST               2 (('default_videos_dir',))
+              IMPORT_NAME              0 (config)
+              IMPORT_FROM              1 (default_videos_dir)
+              STORE_FAST               0 (default_videos_dir)
+              POP_TOP
+
+ 20           LOAD_FAST                0 (default_videos_dir)
+              PUSH_NULL
+              CALL                     0
+              RETURN_VALUE
+
+Disassembly of <code object _keep_alive at 0x0000016DC9160480, file "bilisub\gui\download_dialog.py", line 30>:
+  30           RESUME                   0
+
+  31           LOAD_GLOBAL              0 (_ALIVE)
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      1 (x)
+               SWAP                     2
+       L1:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L2:     FOR_ITER                27 (to L5)
+               STORE_FAST_LOAD_FAST    17 (x, x)
+               LOAD_ATTR                3 (isRunning + NULL|self)
+               CALL                     0
+               TO_BOOL
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           25 (to L2)
+       L4:     LOAD_FAST                1 (x)
+               LIST_APPEND              2
+               JUMP_BACKWARD           29 (to L2)
+       L5:     END_FOR
+               POP_TOP
+       L6:     SWAP                     2
+               STORE_FAST               1 (x)
+               LOAD_GLOBAL              0 (_ALIVE)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               STORE_SLICE
+
+  32           LOAD_GLOBAL              0 (_ALIVE)
+               LOAD_ATTR                5 (append + NULL|self)
+               LOAD_FAST                0 (w)
+               CALL                     1
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L7:     SWAP                     2
+               POP_TOP
+
+  31           SWAP                     2
+               STORE_FAST               1 (x)
+               RERAISE                  0
+ExceptionTable:
+  L1 to L3 -> L7 [2]
+  L4 to L6 -> L7 [2]
+
+Disassembly of <code object drain_workers at 0x0000016DC8E91890, file "bilisub\gui\download_dialog.py", line 35>:
+  35            RESUME                   0
+
+  37            LOAD_GLOBAL              1 (list + NULL)
+                LOAD_GLOBAL              2 (_ALIVE)
+                CALL                     1
+                GET_ITER
+        L1:     FOR_ITER                82 (to L7)
+                STORE_FAST               1 (w)
+
+  38            NOP
+
+  39    L2:     LOAD_FAST                1 (w)
+                POP_JUMP_IF_NONE        75 (to L6)
+                LOAD_FAST                1 (w)
+                LOAD_ATTR                5 (isRunning + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_FALSE       52 (to L5)
+
+  40            LOAD_GLOBAL              7 (hasattr + NULL)
+                LOAD_FAST                1 (w)
+                LOAD_CONST               2 ('cancel')
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       16 (to L3)
+
+  41            LOAD_FAST                1 (w)
+                LOAD_ATTR                9 (cancel + NULL|self)
+                CALL                     0
+                POP_TOP
+
+  42    L3:     LOAD_FAST                1 (w)
+                LOAD_ATTR               11 (wait + NULL|self)
+                LOAD_FAST                0 (timeout_ms)
+                CALL                     1
+                POP_TOP
+        L4:     JUMP_BACKWARD           80 (to L1)
+
+  39    L5:     JUMP_BACKWARD           82 (to L1)
+        L6:     JUMP_BACKWARD           84 (to L1)
+
+  37    L7:     END_FOR
+                POP_TOP
+
+  45            LOAD_GLOBAL              2 (_ALIVE)
+                LOAD_ATTR               15 (clear + NULL|self)
+                CALL                     0
+                POP_TOP
+                RETURN_CONST             1 (None)
+
+  --    L8:     PUSH_EXC_INFO
+
+  43            LOAD_GLOBAL             12 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L10)
+                POP_TOP
+
+  44    L9:     POP_EXCEPT
+                JUMP_BACKWARD          120 (to L1)
+
+  43   L10:     RERAISE                  0
+
+  --   L11:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L4 -> L8 [1]
+  L8 to L9 -> L11 [2] lasti
+  L10 to L11 -> L11 [2] lasti
+
+Disassembly of <code object _DLWorker at 0x0000016DC8E07870, file "bilisub\gui\download_dialog.py", line 48>:
+  --           MAKE_CELL                0 (__class__)
+
+  48           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('_DLWorker')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (48)
+               STORE_NAME               3 (__firstlineno__)
+
+  49           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                5 (int)
+               CALL                     1
+               STORE_NAME               6 (prog)
+
+  50           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                7 (str)
+               CALL                     1
+               STORE_NAME               8 (log)
+
+  51           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                7 (str)
+               CALL                     1
+               STORE_NAME               9 (done)
+
+  52           LOAD_NAME                4 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                7 (str)
+               CALL                     1
+               STORE_NAME              10 (failed)
+
+  54           LOAD_CONST               5 ((None, None))
+               LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               2 (<code object __init__ at 0x0000016DC9129C50, file "bilisub\gui\download_dialog.py", line 54>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              11 (__init__)
+
+  61           LOAD_CONST               3 (<code object run at 0x0000016DC8EF5040, file "bilisub\gui\download_dialog.py", line 61>)
+               MAKE_FUNCTION
+               STORE_NAME              12 (run)
+               LOAD_CONST               4 (('cookiefile', 'filename', 'out_dir', 'url'))
+               STORE_NAME              13 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME              14 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC9129C50, file "bilisub\gui\download_dialog.py", line 54>:
+  --           COPY_FREE_VARS           1
+
+  54           RESUME                   0
+
+  55           LOAD_GLOBAL              0 (super)
+               LOAD_DEREF               5 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+               CALL                     0
+               POP_TOP
+
+  56           LOAD_FAST_LOAD_FAST     16 (url, self)
+               STORE_ATTR               2 (url)
+
+  57           LOAD_FAST_LOAD_FAST     32 (out_dir, self)
+               STORE_ATTR               3 (out_dir)
+
+  58           LOAD_FAST_LOAD_FAST     48 (cookiefile, self)
+               STORE_ATTR               4 (cookiefile)
+
+  59           LOAD_FAST_LOAD_FAST     64 (filename, self)
+               STORE_ATTR               5 (filename)
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object run at 0x0000016DC8EF5040, file "bilisub\gui\download_dialog.py", line 61>:
+  --            MAKE_CELL                0 (self)
+
+  61            RESUME                   0
+
+  62            NOP
+
+  63    L1:     LOAD_GLOBAL              1 (download + NULL)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR                2 (url)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR                4 (out_dir)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR                6 (cookiefile)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                LOAD_CONST               0 (None)
+
+  64    L2:     LOAD_DEREF               0 (self)
+                LOAD_ATTR                8 (filename)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L3)
+                POP_TOP
+                LOAD_CONST               0 (None)
+
+  65    L3:     LOAD_FAST                0 (self)
+                BUILD_TUPLE              1
+                LOAD_CONST               1 (<code object <lambda> at 0x0000016DC8EAF440, file "bilisub\gui\download_dialog.py", line 65>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+
+  66            LOAD_FAST                0 (self)
+                BUILD_TUPLE              1
+                LOAD_CONST               2 (<code object <lambda> at 0x0000016DC8EAF990, file "bilisub\gui\download_dialog.py", line 66>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+
+  63            LOAD_CONST               3 (('cookiefile', 'filename', 'on_progress', 'log'))
+                CALL_KW                  6
+                STORE_FAST               1 (path)
+
+  67            LOAD_DEREF               0 (self)
+                LOAD_ATTR               10 (done)
+                LOAD_ATTR               13 (emit + NULL|self)
+                LOAD_FAST                1 (path)
+                CALL                     1
+                POP_TOP
+        L4:     RETURN_CONST             0 (None)
+
+  --    L5:     PUSH_EXC_INFO
+
+  68            LOAD_GLOBAL             14 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       46 (to L9)
+                STORE_FAST               2 (e)
+
+  69    L6:     LOAD_DEREF               0 (self)
+                LOAD_ATTR               16 (failed)
+                LOAD_ATTR               13 (emit + NULL|self)
+                LOAD_GLOBAL             19 (str + NULL)
+                LOAD_FAST                2 (e)
+                CALL                     1
+                CALL                     1
+                POP_TOP
+        L7:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST               2 (e)
+                DELETE_FAST              2 (e)
+                RETURN_CONST             0 (None)
+
+  --    L8:     LOAD_CONST               0 (None)
+                STORE_FAST               2 (e)
+                DELETE_FAST              2 (e)
+                RERAISE                  1
+
+  68    L9:     RERAISE                  0
+
+  --   L10:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L5 [0]
+  L5 to L6 -> L10 [1] lasti
+  L6 to L7 -> L8 [1] lasti
+  L8 to L10 -> L10 [1] lasti
+
+Disassembly of <code object <lambda> at 0x0000016DC8EAF440, file "bilisub\gui\download_dialog.py", line 65>:
+  --           COPY_FREE_VARS           1
+
+  65           RESUME                   0
+               LOAD_DEREF               1 (self)
+               LOAD_ATTR                0 (prog)
+               LOAD_ATTR                3 (emit + NULL|self)
+               LOAD_FAST                0 (p)
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC8EAF990, file "bilisub\gui\download_dialog.py", line 66>:
+  --           COPY_FREE_VARS           1
+
+  66           RESUME                   0
+               LOAD_DEREF               1 (self)
+               LOAD_ATTR                0 (log)
+               LOAD_ATTR                3 (emit + NULL|self)
+               LOAD_FAST                0 (m)
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object _PartsWorker at 0x0000016DC9129350, file "bilisub\gui\download_dialog.py", line 72>:
+  --           MAKE_CELL                0 (__class__)
+
+  72           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('_PartsWorker')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (72)
+               STORE_NAME               3 (__firstlineno__)
+
+  73           LOAD_CONST               2 ('Liệt kê các tập (选集/分P) của link — chạy nền vì có gọi mạng.')
+               STORE_NAME               4 (__doc__)
+
+  74           LOAD_NAME                5 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                6 (list)
+               CALL                     1
+               STORE_NAME               7 (done)
+
+  75           LOAD_NAME                5 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                8 (str)
+               CALL                     1
+               STORE_NAME               9 (failed)
+
+  77           LOAD_CONST               6 ((None,))
+               LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               3 (<code object __init__ at 0x0000016DC8EAFAA0, file "bilisub\gui\download_dialog.py", line 77>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              10 (__init__)
+
+  82           LOAD_CONST               4 (<code object run at 0x0000016DC8EC55F0, file "bilisub\gui\download_dialog.py", line 82>)
+               MAKE_FUNCTION
+               STORE_NAME              11 (run)
+               LOAD_CONST               5 (('cookiefile', 'url'))
+               STORE_NAME              12 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME              13 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC8EAFAA0, file "bilisub\gui\download_dialog.py", line 77>:
+  --           COPY_FREE_VARS           1
+
+  77           RESUME                   0
+
+  78           LOAD_GLOBAL              0 (super)
+               LOAD_DEREF               3 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+               CALL                     0
+               POP_TOP
+
+  79           LOAD_FAST_LOAD_FAST     16 (url, self)
+               STORE_ATTR               2 (url)
+
+  80           LOAD_FAST_LOAD_FAST     32 (cookiefile, self)
+               STORE_ATTR               3 (cookiefile)
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object run at 0x0000016DC8EC55F0, file "bilisub\gui\download_dialog.py", line 82>:
+  82           RESUME                   0
+
+  83           NOP
+
+  84   L1:     LOAD_GLOBAL              1 (list_parts + NULL)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR                2 (url)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR                4 (cookiefile)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L2)
+               POP_TOP
+               LOAD_CONST               0 (None)
+       L2:     LOAD_CONST               1 (('cookiefile',))
+               CALL_KW                  2
+               STORE_FAST               1 (parts)
+
+  85           LOAD_FAST                0 (self)
+               LOAD_ATTR                6 (done)
+               LOAD_ATTR                9 (emit + NULL|self)
+               LOAD_FAST                1 (parts)
+               CALL                     1
+               POP_TOP
+       L3:     RETURN_CONST             0 (None)
+
+  --   L4:     PUSH_EXC_INFO
+
+  86           LOAD_GLOBAL             10 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       46 (to L8)
+               STORE_FAST               2 (e)
+
+  87   L5:     LOAD_FAST                0 (self)
+               LOAD_ATTR               12 (failed)
+               LOAD_ATTR                9 (emit + NULL|self)
+               LOAD_GLOBAL             15 (str + NULL)
+               LOAD_FAST                2 (e)
+               CALL                     1
+               CALL                     1
+               POP_TOP
+       L6:     POP_EXCEPT
+               LOAD_CONST               0 (None)
+               STORE_FAST               2 (e)
+               DELETE_FAST              2 (e)
+               RETURN_CONST             0 (None)
+
+  --   L7:     LOAD_CONST               0 (None)
+               STORE_FAST               2 (e)
+               DELETE_FAST              2 (e)
+               RERAISE                  1
+
+  86   L8:     RERAISE                  0
+
+  --   L9:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L4 [0]
+  L4 to L5 -> L9 [1] lasti
+  L5 to L6 -> L7 [1] lasti
+  L7 to L9 -> L9 [1] lasti
+
+Disassembly of <code object _MultiDLWorker at 0x0000016DC90EDFD0, file "bilisub\gui\download_dialog.py", line 90>:
+  --           MAKE_CELL                0 (__class__)
+
+  90           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('_MultiDLWorker')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (90)
+               STORE_NAME               3 (__firstlineno__)
+
+  91           LOAD_CONST               2 ('Tải NHIỀU tập được chọn (dùng download_selected — lặp download() từng tập).')
+               STORE_NAME               4 (__doc__)
+
+  92           LOAD_NAME                5 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                6 (int)
+               CALL                     1
+               STORE_NAME               7 (item_prog)
+
+  93           LOAD_NAME                5 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                6 (int)
+               LOAD_NAME                6 (int)
+               LOAD_NAME                8 (str)
+               CALL                     3
+               STORE_NAME               9 (overall)
+
+  94           LOAD_NAME                5 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                8 (str)
+               CALL                     1
+               STORE_NAME              10 (log)
+
+  95           LOAD_NAME                5 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME               11 (list)
+               CALL                     1
+               STORE_NAME              12 (done)
+
+  96           LOAD_NAME                5 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                8 (str)
+               CALL                     1
+               STORE_NAME              13 (failed)
+
+  98           LOAD_CONST               7 ((None, None))
+               LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               3 (<code object __init__ at 0x0000016DC8E079B0, file "bilisub\gui\download_dialog.py", line 98>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              14 (__init__)
+
+ 107           LOAD_CONST               4 (<code object cancel at 0x0000016DC90E1430, file "bilisub\gui\download_dialog.py", line 107>)
+               MAKE_FUNCTION
+               STORE_NAME              15 (cancel)
+
+ 113           LOAD_CONST               5 (<code object run at 0x0000016DC9234D00, file "bilisub\gui\download_dialog.py", line 113>)
+               MAKE_FUNCTION
+               STORE_NAME              16 (run)
+               LOAD_CONST               6 (('_cancel', 'cookiefile', 'filename', 'indices', 'out_dir', 'url'))
+               STORE_NAME              17 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME              18 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC8E079B0, file "bilisub\gui\download_dialog.py", line 98>:
+  --           COPY_FREE_VARS           1
+
+  98           RESUME                   0
+
+  99           LOAD_GLOBAL              0 (super)
+               LOAD_DEREF               6 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 100           LOAD_FAST_LOAD_FAST     16 (url, self)
+               STORE_ATTR               2 (url)
+
+ 101           LOAD_FAST_LOAD_FAST     32 (out_dir, self)
+               STORE_ATTR               3 (out_dir)
+
+ 102           LOAD_FAST_LOAD_FAST     48 (indices, self)
+               STORE_ATTR               4 (indices)
+
+ 103           LOAD_FAST_LOAD_FAST     64 (cookiefile, self)
+               STORE_ATTR               5 (cookiefile)
+
+ 104           LOAD_FAST_LOAD_FAST     80 (filename, self)
+               STORE_ATTR               6 (filename)
+
+ 105           LOAD_CONST               1 (False)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               7 (_cancel)
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object cancel at 0x0000016DC90E1430, file "bilisub\gui\download_dialog.py", line 107>:
+107           RESUME                   0
+
+110           LOAD_CONST               1 (True)
+              LOAD_FAST                0 (self)
+              STORE_ATTR               0 (_cancel)
+
+111           LOAD_FAST                0 (self)
+              LOAD_ATTR                3 (requestInterruption + NULL|self)
+              CALL                     0
+              POP_TOP
+              RETURN_CONST             2 (None)
+
+Disassembly of <code object run at 0x0000016DC9234D00, file "bilisub\gui\download_dialog.py", line 113>:
+  --            MAKE_CELL                0 (self)
+
+ 113            RESUME                   0
+
+ 114            NOP
+
+ 115    L1:     LOAD_GLOBAL              1 (download_selected + NULL)
+
+ 116            LOAD_DEREF               0 (self)
+                LOAD_ATTR                2 (url)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR                4 (out_dir)
+                LOAD_DEREF               0 (self)
+                LOAD_ATTR                6 (indices)
+
+ 117            LOAD_DEREF               0 (self)
+                LOAD_ATTR                8 (cookiefile)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                LOAD_CONST               0 (None)
+        L2:     LOAD_DEREF               0 (self)
+                LOAD_ATTR               10 (filename)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L3)
+                POP_TOP
+                LOAD_CONST               0 (None)
+
+ 118    L3:     LOAD_FAST                0 (self)
+                BUILD_TUPLE              1
+                LOAD_CONST               1 (<code object <lambda> at 0x0000016DC8EAFBB0, file "bilisub\gui\download_dialog.py", line 118>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+
+ 119            LOAD_FAST                0 (self)
+                BUILD_TUPLE              1
+                LOAD_CONST               2 (<code object <lambda> at 0x0000016DC8EAFCC0, file "bilisub\gui\download_dialog.py", line 119>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+
+ 120            LOAD_FAST                0 (self)
+                BUILD_TUPLE              1
+                LOAD_CONST               3 (<code object <lambda> at 0x0000016DC90F14D0, file "bilisub\gui\download_dialog.py", line 120>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+
+ 121            LOAD_FAST                0 (self)
+                BUILD_TUPLE              1
+                LOAD_CONST               4 (<code object <lambda> at 0x0000016DC8EAFDD0, file "bilisub\gui\download_dialog.py", line 121>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+
+ 115            LOAD_CONST               5 (('cookiefile', 'filename', 'on_item_progress', 'on_overall', 'should_stop', 'log'))
+                CALL_KW                  9
+                STORE_FAST               1 (paths)
+
+ 122            LOAD_DEREF               0 (self)
+                LOAD_ATTR               12 (done)
+                LOAD_ATTR               15 (emit + NULL|self)
+                LOAD_FAST                1 (paths)
+                CALL                     1
+                POP_TOP
+        L4:     RETURN_CONST             0 (None)
+
+  --    L5:     PUSH_EXC_INFO
+
+ 123            LOAD_GLOBAL             16 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       46 (to L9)
+                STORE_FAST               2 (e)
+
+ 124    L6:     LOAD_DEREF               0 (self)
+                LOAD_ATTR               18 (failed)
+                LOAD_ATTR               15 (emit + NULL|self)
+                LOAD_GLOBAL             21 (str + NULL)
+                LOAD_FAST                2 (e)
+                CALL                     1
+                CALL                     1
+                POP_TOP
+        L7:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST               2 (e)
+                DELETE_FAST              2 (e)
+                RETURN_CONST             0 (None)
+
+  --    L8:     LOAD_CONST               0 (None)
+                STORE_FAST               2 (e)
+                DELETE_FAST              2 (e)
+                RERAISE                  1
+
+ 123    L9:     RERAISE                  0
+
+  --   L10:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L5 [0]
+  L5 to L6 -> L10 [1] lasti
+  L6 to L7 -> L8 [1] lasti
+  L8 to L10 -> L10 [1] lasti
+
+Disassembly of <code object <lambda> at 0x0000016DC8EAFBB0, file "bilisub\gui\download_dialog.py", line 118>:
+  --           COPY_FREE_VARS           1
+
+ 118           RESUME                   0
+               LOAD_DEREF               1 (self)
+               LOAD_ATTR                0 (item_prog)
+               LOAD_ATTR                3 (emit + NULL|self)
+               LOAD_FAST                0 (p)
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC8EAFCC0, file "bilisub\gui\download_dialog.py", line 119>:
+  --           COPY_FREE_VARS           1
+
+ 119           RESUME                   0
+               LOAD_DEREF               3 (self)
+               LOAD_ATTR                0 (overall)
+               LOAD_ATTR                3 (emit + NULL|self)
+               LOAD_FAST_LOAD_FAST      1 (d, t)
+               LOAD_FAST                2 (name)
+               CALL                     3
+               RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC90F14D0, file "bilisub\gui\download_dialog.py", line 120>:
+  --           COPY_FREE_VARS           1
+
+ 120           RESUME                   0
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR                0 (_cancel)
+               RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC8EAFDD0, file "bilisub\gui\download_dialog.py", line 121>:
+  --           COPY_FREE_VARS           1
+
+ 121           RESUME                   0
+               LOAD_DEREF               1 (self)
+               LOAD_ATTR                0 (log)
+               LOAD_ATTR                3 (emit + NULL|self)
+               LOAD_FAST                0 (m)
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object DownloadDialog at 0x0000016DC8EB6420, file "bilisub\gui\download_dialog.py", line 127>:
+  --           MAKE_CELL                0 (__class__)
+
+ 127           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('DownloadDialog')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (127)
+               STORE_NAME               3 (__firstlineno__)
+
+ 128           LOAD_CONST              25 ((None,))
+               LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               2 (<code object __init__ at 0x0000016DC8FCE5D0, file "bilisub\gui\download_dialog.py", line 128>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME               4 (__init__)
+
+ 243           LOAD_CONST               3 (<code object _on_url at 0x0000016DC8EC1A70, file "bilisub\gui\download_dialog.py", line 243>)
+               MAKE_FUNCTION
+               STORE_NAME               5 (_on_url)
+
+ 246           LOAD_CONST               4 (<code object _choose_dir at 0x0000016DC9198330, file "bilisub\gui\download_dialog.py", line 246>)
+               MAKE_FUNCTION
+               STORE_NAME               6 (_choose_dir)
+
+ 251           LOAD_CONST               5 (<code object _choose_cookie at 0x0000016DC8EC30C0, file "bilisub\gui\download_dialog.py", line 251>)
+               MAKE_FUNCTION
+               STORE_NAME               7 (_choose_cookie)
+
+ 258           LOAD_CONST              26 (('return', 'bool'))
+               LOAD_CONST               6 (<code object _cookie_hong at 0x0000016DC91984B0, file "bilisub\gui\download_dialog.py", line 258>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME               8 (_cookie_hong)
+
+ 269           LOAD_CONST               7 (<code object _kiem_cookie at 0x0000016DC90EE3F0, file "bilisub\gui\download_dialog.py", line 269>)
+               MAKE_FUNCTION
+               STORE_NAME               9 (_kiem_cookie)
+
+ 278           LOAD_CONST               8 (<code object _ve_nhan_cookie at 0x0000016DC8EA3340, file "bilisub\gui\download_dialog.py", line 278>)
+               MAKE_FUNCTION
+               STORE_NAME              10 (_ve_nhan_cookie)
+
+ 283           LOAD_CONST              26 (('return', 'bool'))
+               LOAD_CONST               9 (<code object _canh_bao_cookie at 0x0000016DC922F090, file "bilisub\gui\download_dialog.py", line 283>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              11 (_canh_bao_cookie)
+
+ 303           LOAD_CONST              10 (<code object _start at 0x0000016DC93B7010, file "bilisub\gui\download_dialog.py", line 303>)
+               MAKE_FUNCTION
+               STORE_NAME              12 (_start)
+
+ 325           LOAD_CONST              11 (<code object _list_parts at 0x0000016DC93B7860, file "bilisub\gui\download_dialog.py", line 325>)
+               MAKE_FUNCTION
+               STORE_NAME              13 (_list_parts)
+
+ 339           LOAD_CONST              12 (<code object _parts_done at 0x0000016DC93B7C10, file "bilisub\gui\download_dialog.py", line 339>)
+               MAKE_FUNCTION
+               STORE_NAME              14 (_parts_done)
+
+ 360           LOAD_CONST              13 (<code object _parts_failed at 0x0000016DC9198630, file "bilisub\gui\download_dialog.py", line 360>)
+               MAKE_FUNCTION
+               STORE_NAME              15 (_parts_failed)
+
+ 365           LOAD_CONST              27 (('on', 'bool'))
+               LOAD_CONST              14 (<code object _set_all_checked at 0x0000016DC90DDB50, file "bilisub\gui\download_dialog.py", line 365>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              16 (_set_all_checked)
+
+ 370           LOAD_CONST              28 (('return', 'list[int]'))
+               LOAD_CONST              15 (<code object _checked_indices at 0x0000016DC9235640, file "bilisub\gui\download_dialog.py", line 370>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              17 (_checked_indices)
+
+ 378           LOAD_CONST              16 (<code object _start_multi at 0x0000016DC8F14870, file "bilisub\gui\download_dialog.py", line 378>)
+               MAKE_FUNCTION
+               STORE_NAME              18 (_start_multi)
+
+ 401           LOAD_CONST              17 (<code object _multi_overall at 0x0000016DC8E07D70, file "bilisub\gui\download_dialog.py", line 401>)
+               MAKE_FUNCTION
+               STORE_NAME              19 (_multi_overall)
+
+ 405           LOAD_CONST              18 (<code object _multi_done at 0x0000016DC8F12C60, file "bilisub\gui\download_dialog.py", line 405>)
+               MAKE_FUNCTION
+               STORE_NAME              20 (_multi_done)
+
+ 413           LOAD_CONST              19 (<code object _multi_failed at 0x0000016DC90E52C0, file "bilisub\gui\download_dialog.py", line 413>)
+               MAKE_FUNCTION
+               STORE_NAME              21 (_multi_failed)
+
+ 419           LOAD_CONST              20 (<code object _done at 0x0000016DC8E07EB0, file "bilisub\gui\download_dialog.py", line 419>)
+               MAKE_FUNCTION
+               STORE_NAME              22 (_done)
+
+ 424           LOAD_CONST              21 (<code object _failed at 0x0000016DC91A8030, file "bilisub\gui\download_dialog.py", line 424>)
+               MAKE_FUNCTION
+               STORE_NAME              23 (_failed)
+
+ 429           LOAD_CONST              22 (<code object _busy_worker at 0x0000016DC91A8170, file "bilisub\gui\download_dialog.py", line 429>)
+               MAKE_FUNCTION
+               STORE_NAME              24 (_busy_worker)
+
+ 437           LOAD_CONST              23 (<code object closeEvent at 0x0000016DC9214F30, file "bilisub\gui\download_dialog.py", line 437>)
+               MAKE_FUNCTION
+               STORE_NAME              25 (closeEvent)
+               LOAD_CONST              24 (('_multi', '_parts', '_parts_worker', 'bar', 'cookie_edit', 'cookie_warn', 'dir_edit', 'dl_btn', 'dl_sel_btn', 'logbox', 'name_edit', 'parts_box', 'parts_btn', 'parts_hint', 'parts_list', 'plat_label', 'result_path', 'url_edit', 'worker'))
+               STORE_NAME              26 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME              27 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC8FCE5D0, file "bilisub\gui\download_dialog.py", line 128>:
+  --           COPY_FREE_VARS           1
+               MAKE_CELL                0 (self)
+
+ 128           RESUME                   0
+
+ 129           LOAD_GLOBAL              0 (super)
+               LOAD_DEREF              18 (__class__)
+               LOAD_DEREF               0 (self)
+               LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+               LOAD_FAST                1 (parent)
+               CALL                     1
+               POP_TOP
+
+ 130           LOAD_CONST               0 (None)
+               LOAD_DEREF               0 (self)
+               STORE_ATTR               2 (result_path)
+
+ 131           LOAD_CONST               0 (None)
+               LOAD_DEREF               0 (self)
+               STORE_ATTR               3 (worker)
+
+ 132           LOAD_DEREF               0 (self)
+               LOAD_ATTR                9 (setWindowTitle + NULL|self)
+               LOAD_CONST               1 ('⬇ Tải video (Bilibili / Douyin)')
+               CALL                     1
+               POP_TOP
+
+ 133           LOAD_DEREF               0 (self)
+               LOAD_ATTR               11 (resize + NULL|self)
+               LOAD_CONST               2 (560)
+               LOAD_CONST               3 (360)
+               CALL                     2
+               POP_TOP
+
+ 134           LOAD_GLOBAL             13 (QVBoxLayout + NULL)
+               LOAD_DEREF               0 (self)
+               CALL                     1
+               STORE_FAST               2 (lay)
+
+ 136           LOAD_GLOBAL             15 (QFormLayout + NULL)
+               CALL                     0
+               STORE_FAST               3 (f)
+
+ 137           LOAD_GLOBAL             17 (QLineEdit + NULL)
+               CALL                     0
+               LOAD_DEREF               0 (self)
+               STORE_ATTR               9 (url_edit)
+
+ 138           LOAD_DEREF               0 (self)
+               LOAD_ATTR               18 (url_edit)
+               LOAD_ATTR               21 (setPlaceholderText + NULL|self)
+               LOAD_CONST               4 ('Dán link Bilibili / Douyin (Douyin dán cả đoạn chia sẻ cũng được)')
+               CALL                     1
+               POP_TOP
+
+ 139           LOAD_DEREF               0 (self)
+               LOAD_ATTR               18 (url_edit)
+               LOAD_ATTR               22 (textChanged)
+               LOAD_ATTR               25 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               26 (_on_url)
+               CALL                     1
+               POP_TOP
+
+ 140           LOAD_FAST                3 (f)
+               LOAD_ATTR               29 (addRow + NULL|self)
+               LOAD_CONST               5 ('Link:')
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               18 (url_edit)
+               CALL                     2
+               POP_TOP
+
+ 141           LOAD_GLOBAL             31 (QLabel + NULL)
+               LOAD_CONST               6 ('—')
+               CALL                     1
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              16 (plat_label)
+
+ 142           LOAD_DEREF               0 (self)
+               LOAD_ATTR               32 (plat_label)
+               LOAD_ATTR               35 (setStyleSheet + NULL|self)
+               LOAD_CONST               7 ('color:#94a3b8;')
+               CALL                     1
+               POP_TOP
+
+ 143           LOAD_FAST                3 (f)
+               LOAD_ATTR               29 (addRow + NULL|self)
+               LOAD_CONST               8 ('Nguồn:')
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               32 (plat_label)
+               CALL                     2
+               POP_TOP
+
+ 144           LOAD_GLOBAL             17 (QLineEdit + NULL)
+               LOAD_GLOBAL             37 (str + NULL)
+               LOAD_GLOBAL             39 (default_download_dir + NULL)
+               CALL                     0
+               CALL                     1
+               CALL                     1
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              20 (dir_edit)
+
+ 145           LOAD_GLOBAL             43 (QPushButton + NULL)
+               LOAD_CONST               9 ('...')
+               CALL                     1
+               STORE_FAST               4 (dir_btn)
+
+ 146           LOAD_FAST                4 (dir_btn)
+               LOAD_ATTR               45 (setFixedWidth + NULL|self)
+               LOAD_CONST              10 (36)
+               CALL                     1
+               POP_TOP
+
+ 147           LOAD_FAST                4 (dir_btn)
+               LOAD_ATTR               46 (clicked)
+               LOAD_ATTR               25 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               48 (_choose_dir)
+               CALL                     1
+               POP_TOP
+
+ 148           LOAD_GLOBAL             51 (QWidget + NULL)
+               CALL                     0
+               STORE_FAST               5 (dw)
+
+ 149           LOAD_GLOBAL             53 (QHBoxLayout + NULL)
+               LOAD_FAST                5 (dw)
+               CALL                     1
+               STORE_FAST               6 (dh)
+
+ 150           LOAD_FAST                6 (dh)
+               LOAD_ATTR               55 (setContentsMargins + NULL|self)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               CALL                     4
+               POP_TOP
+
+ 151           LOAD_FAST                6 (dh)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               40 (dir_edit)
+               LOAD_CONST              12 (1)
+               CALL                     2
+               POP_TOP
+
+ 152           LOAD_FAST                6 (dh)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_FAST                4 (dir_btn)
+               CALL                     1
+               POP_TOP
+
+ 153           LOAD_FAST                3 (f)
+               LOAD_ATTR               29 (addRow + NULL|self)
+               LOAD_CONST              13 ('Lưu vào:')
+               LOAD_FAST                5 (dw)
+               CALL                     2
+               POP_TOP
+
+ 156           LOAD_GLOBAL             17 (QLineEdit + NULL)
+               CALL                     0
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              29 (name_edit)
+
+ 157           LOAD_DEREF               0 (self)
+               LOAD_ATTR               58 (name_edit)
+               LOAD_ATTR               21 (setPlaceholderText + NULL|self)
+               LOAD_CONST              14 ('(Tuỳ chọn) đặt tên video khi lưu — để trống = giữ tên gốc')
+               CALL                     1
+               POP_TOP
+
+ 158           LOAD_DEREF               0 (self)
+               LOAD_ATTR               58 (name_edit)
+               LOAD_ATTR               61 (setToolTip + NULL|self)
+               LOAD_CONST              15 ('Gõ tên bạn muốn (không cần .mp4). Để trống thì tool giữ tên theo tiêu đề gốc. Các ký tự cấm trên Windows \\ / : * ? " < > | sẽ tự được thay bằng khoảng trắng.')
+               CALL                     1
+               POP_TOP
+
+ 161           LOAD_FAST                3 (f)
+               LOAD_ATTR               29 (addRow + NULL|self)
+               LOAD_CONST              16 ('Tên file:')
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               58 (name_edit)
+               CALL                     2
+               POP_TOP
+
+ 164           LOAD_GLOBAL             17 (QLineEdit + NULL)
+               CALL                     0
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              31 (cookie_edit)
+
+ 165           LOAD_DEREF               0 (self)
+               LOAD_ATTR               62 (cookie_edit)
+               LOAD_ATTR               21 (setPlaceholderText + NULL|self)
+               LOAD_CONST              17 ('(Tuỳ chọn) file cookies .txt HOẶC .json — cần cho Douyin/TikTok')
+               CALL                     1
+               POP_TOP
+
+ 166           LOAD_GLOBAL             43 (QPushButton + NULL)
+               LOAD_CONST               9 ('...')
+               CALL                     1
+               STORE_FAST               7 (ck_btn)
+
+ 167           LOAD_FAST                7 (ck_btn)
+               LOAD_ATTR               45 (setFixedWidth + NULL|self)
+               LOAD_CONST              10 (36)
+               CALL                     1
+               POP_TOP
+
+ 168           LOAD_FAST                7 (ck_btn)
+               LOAD_ATTR               46 (clicked)
+               LOAD_ATTR               25 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               64 (_choose_cookie)
+               CALL                     1
+               POP_TOP
+
+ 169           LOAD_GLOBAL             51 (QWidget + NULL)
+               CALL                     0
+               STORE_FAST               8 (cw)
+
+ 170           LOAD_GLOBAL             53 (QHBoxLayout + NULL)
+               LOAD_FAST                8 (cw)
+               CALL                     1
+               STORE_FAST               9 (ch)
+
+ 171           LOAD_FAST                9 (ch)
+               LOAD_ATTR               55 (setContentsMargins + NULL|self)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               CALL                     4
+               POP_TOP
+
+ 172           LOAD_FAST                9 (ch)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               62 (cookie_edit)
+               LOAD_CONST              12 (1)
+               CALL                     2
+               POP_TOP
+
+ 173           LOAD_FAST                9 (ch)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_FAST                7 (ck_btn)
+               CALL                     1
+               POP_TOP
+
+ 174           LOAD_FAST                3 (f)
+               LOAD_ATTR               29 (addRow + NULL|self)
+               LOAD_CONST              18 ('Cookies:')
+               LOAD_FAST                8 (cw)
+               CALL                     2
+               POP_TOP
+
+ 179           LOAD_GLOBAL             31 (QLabel + NULL)
+               LOAD_CONST              19 ('')
+               CALL                     1
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              33 (cookie_warn)
+
+ 180           LOAD_DEREF               0 (self)
+               LOAD_ATTR               66 (cookie_warn)
+               LOAD_ATTR               69 (setWordWrap + NULL|self)
+               LOAD_CONST              20 (True)
+               CALL                     1
+               POP_TOP
+
+ 181           LOAD_DEREF               0 (self)
+               LOAD_ATTR               66 (cookie_warn)
+               LOAD_ATTR               35 (setStyleSheet + NULL|self)
+               LOAD_CONST              21 ('color:#f87171; font-size:11px;')
+               CALL                     1
+               POP_TOP
+
+ 182           LOAD_FAST                3 (f)
+               LOAD_ATTR               29 (addRow + NULL|self)
+               LOAD_CONST              19 ('')
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               66 (cookie_warn)
+               CALL                     2
+               POP_TOP
+
+ 183           LOAD_DEREF               0 (self)
+               LOAD_ATTR               62 (cookie_edit)
+               LOAD_ATTR               22 (textChanged)
+               LOAD_ATTR               25 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               BUILD_TUPLE              1
+               LOAD_CONST              22 (<code object <lambda> at 0x0000016DC90F05D0, file "bilisub\gui\download_dialog.py", line 183>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               CALL                     1
+               POP_TOP
+
+ 184           LOAD_FAST                2 (lay)
+               LOAD_ATTR               71 (addLayout + NULL|self)
+               LOAD_FAST                3 (f)
+               CALL                     1
+               POP_TOP
+
+ 186           LOAD_GLOBAL             31 (QLabel + NULL)
+               LOAD_CONST              23 ('Douyin/TikTok cần cookies: cài tiện ích Chrome “Get cookies.txt LOCALLY” (hoặc Cookie-Editor export JSON) → mở douyin.com → export file → chọn ở ô Cookies. Nhận cả .txt lẫn .json. Bilibili thường không cần.')
+               CALL                     1
+               STORE_FAST              10 (guide)
+
+ 189           LOAD_FAST               10 (guide)
+               LOAD_ATTR               69 (setWordWrap + NULL|self)
+               LOAD_CONST              20 (True)
+               CALL                     1
+               POP_TOP
+
+ 190           LOAD_FAST               10 (guide)
+               LOAD_ATTR               35 (setStyleSheet + NULL|self)
+               LOAD_CONST              24 ('color:#94a3b8; font-size:11px;')
+               CALL                     1
+               POP_TOP
+
+ 191           LOAD_FAST                2 (lay)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_FAST               10 (guide)
+               CALL                     1
+               POP_TOP
+
+ 194           LOAD_GLOBAL             51 (QWidget + NULL)
+               CALL                     0
+               STORE_FAST              11 (btnrow)
+
+ 195           LOAD_GLOBAL             53 (QHBoxLayout + NULL)
+               LOAD_FAST               11 (btnrow)
+               CALL                     1
+               STORE_FAST              12 (bh)
+
+ 196           LOAD_FAST               12 (bh)
+               LOAD_ATTR               55 (setContentsMargins + NULL|self)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               CALL                     4
+               POP_TOP
+
+ 197           LOAD_GLOBAL             43 (QPushButton + NULL)
+               LOAD_CONST              25 ('📑 Xem danh sách tập')
+               CALL                     1
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              36 (parts_btn)
+
+ 198           LOAD_DEREF               0 (self)
+               LOAD_ATTR               72 (parts_btn)
+               LOAD_ATTR               61 (setToolTip + NULL|self)
+               LOAD_CONST              26 ("Link phim nhiều tập (选集) → liệt kê để chọn tập nào cần tải. Video 1 phần thì bấm '⬇ Tải về' như bình thường.")
+               CALL                     1
+               POP_TOP
+
+ 200           LOAD_DEREF               0 (self)
+               LOAD_ATTR               72 (parts_btn)
+               LOAD_ATTR               46 (clicked)
+               LOAD_ATTR               25 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               74 (_list_parts)
+               CALL                     1
+               POP_TOP
+
+ 201           LOAD_GLOBAL             43 (QPushButton + NULL)
+               LOAD_CONST              27 ('⬇ Tải về')
+               CALL                     1
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              38 (dl_btn)
+
+ 202           LOAD_DEREF               0 (self)
+               LOAD_ATTR               76 (dl_btn)
+               LOAD_ATTR               79 (setObjectName + NULL|self)
+               LOAD_CONST              28 ('primary')
+               CALL                     1
+               POP_TOP
+
+ 203           LOAD_DEREF               0 (self)
+               LOAD_ATTR               76 (dl_btn)
+               LOAD_ATTR               46 (clicked)
+               LOAD_ATTR               25 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               80 (_start)
+               CALL                     1
+               POP_TOP
+
+ 204           LOAD_FAST               12 (bh)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               72 (parts_btn)
+               CALL                     1
+               POP_TOP
+
+ 205           LOAD_FAST               12 (bh)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               76 (dl_btn)
+               LOAD_CONST              12 (1)
+               CALL                     2
+               POP_TOP
+
+ 206           LOAD_FAST                2 (lay)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_FAST               11 (btnrow)
+               CALL                     1
+               POP_TOP
+
+ 209           LOAD_GLOBAL             51 (QWidget + NULL)
+               CALL                     0
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              41 (parts_box)
+
+ 210           LOAD_GLOBAL             13 (QVBoxLayout + NULL)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               82 (parts_box)
+               CALL                     1
+               STORE_FAST              13 (pv)
+
+ 211           LOAD_FAST               13 (pv)
+               LOAD_ATTR               55 (setContentsMargins + NULL|self)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               CALL                     4
+               POP_TOP
+
+ 212           LOAD_GLOBAL             51 (QWidget + NULL)
+               CALL                     0
+               STORE_FAST              14 (selrow)
+
+ 213           LOAD_GLOBAL             53 (QHBoxLayout + NULL)
+               LOAD_FAST               14 (selrow)
+               CALL                     1
+               STORE_FAST              15 (sh)
+
+ 214           LOAD_FAST               15 (sh)
+               LOAD_ATTR               55 (setContentsMargins + NULL|self)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               LOAD_CONST              11 (0)
+               CALL                     4
+               POP_TOP
+
+ 215           LOAD_GLOBAL             31 (QLabel + NULL)
+               LOAD_CONST              29 ('Chọn tập cần tải:')
+               CALL                     1
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              42 (parts_hint)
+
+ 216           LOAD_DEREF               0 (self)
+               LOAD_ATTR               84 (parts_hint)
+               LOAD_ATTR               35 (setStyleSheet + NULL|self)
+               LOAD_CONST               7 ('color:#94a3b8;')
+               CALL                     1
+               POP_TOP
+
+ 217           LOAD_GLOBAL             43 (QPushButton + NULL)
+               LOAD_CONST              30 ('Chọn tất cả')
+               CALL                     1
+               STORE_FAST              16 (chk_all)
+
+ 218           LOAD_FAST               16 (chk_all)
+               LOAD_ATTR               45 (setFixedWidth + NULL|self)
+               LOAD_CONST              31 (96)
+               CALL                     1
+               POP_TOP
+
+ 219           LOAD_FAST               16 (chk_all)
+               LOAD_ATTR               46 (clicked)
+               LOAD_ATTR               25 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               BUILD_TUPLE              1
+               LOAD_CONST              32 (<code object <lambda> at 0x0000016DC90F1110, file "bilisub\gui\download_dialog.py", line 219>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               CALL                     1
+               POP_TOP
+
+ 220           LOAD_GLOBAL             43 (QPushButton + NULL)
+               LOAD_CONST              33 ('Bỏ chọn')
+               CALL                     1
+               STORE_FAST              17 (chk_none)
+
+ 221           LOAD_FAST               17 (chk_none)
+               LOAD_ATTR               45 (setFixedWidth + NULL|self)
+               LOAD_CONST              34 (72)
+               CALL                     1
+               POP_TOP
+
+ 222           LOAD_FAST               17 (chk_none)
+               LOAD_ATTR               46 (clicked)
+               LOAD_ATTR               25 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               BUILD_TUPLE              1
+               LOAD_CONST              35 (<code object <lambda> at 0x0000016DC90F1F20, file "bilisub\gui\download_dialog.py", line 222>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               CALL                     1
+               POP_TOP
+
+ 223           LOAD_FAST               15 (sh)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               84 (parts_hint)
+               LOAD_CONST              12 (1)
+               CALL                     2
+               POP_TOP
+
+ 224           LOAD_FAST               15 (sh)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_FAST               16 (chk_all)
+               CALL                     1
+               POP_TOP
+
+ 225           LOAD_FAST               15 (sh)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_FAST               17 (chk_none)
+               CALL                     1
+               POP_TOP
+
+ 226           LOAD_FAST               13 (pv)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_FAST               14 (selrow)
+               CALL                     1
+               POP_TOP
+
+ 227           LOAD_GLOBAL             87 (QListWidget + NULL)
+               CALL                     0
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              44 (parts_list)
+
+ 228           LOAD_DEREF               0 (self)
+               LOAD_ATTR               88 (parts_list)
+               LOAD_ATTR               91 (setMaximumHeight + NULL|self)
+               LOAD_CONST              36 (150)
+               CALL                     1
+               POP_TOP
+
+ 229           LOAD_FAST               13 (pv)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               88 (parts_list)
+               CALL                     1
+               POP_TOP
+
+ 230           LOAD_GLOBAL             43 (QPushButton + NULL)
+               LOAD_CONST              37 ('⬇ Tải các tập đã chọn')
+               CALL                     1
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              46 (dl_sel_btn)
+
+ 231           LOAD_DEREF               0 (self)
+               LOAD_ATTR               92 (dl_sel_btn)
+               LOAD_ATTR               79 (setObjectName + NULL|self)
+               LOAD_CONST              28 ('primary')
+               CALL                     1
+               POP_TOP
+
+ 232           LOAD_DEREF               0 (self)
+               LOAD_ATTR               92 (dl_sel_btn)
+               LOAD_ATTR               46 (clicked)
+               LOAD_ATTR               25 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               94 (_start_multi)
+               CALL                     1
+               POP_TOP
+
+ 233           LOAD_FAST               13 (pv)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               92 (dl_sel_btn)
+               CALL                     1
+               POP_TOP
+
+ 234           LOAD_DEREF               0 (self)
+               LOAD_ATTR               82 (parts_box)
+               LOAD_ATTR               97 (setVisible + NULL|self)
+               LOAD_CONST              38 (False)
+               CALL                     1
+               POP_TOP
+
+ 235           LOAD_FAST                2 (lay)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               82 (parts_box)
+               CALL                     1
+               POP_TOP
+
+ 237           LOAD_GLOBAL             99 (QProgressBar + NULL)
+               CALL                     0
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              50 (bar)
+
+ 238           LOAD_FAST                2 (lay)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR              100 (bar)
+               CALL                     1
+               POP_TOP
+
+ 239           LOAD_GLOBAL            103 (QPlainTextEdit + NULL)
+               CALL                     0
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              52 (logbox)
+
+ 240           LOAD_DEREF               0 (self)
+               LOAD_ATTR              104 (logbox)
+               LOAD_ATTR              107 (setReadOnly + NULL|self)
+               LOAD_CONST              20 (True)
+               CALL                     1
+               POP_TOP
+
+ 241           LOAD_FAST                2 (lay)
+               LOAD_ATTR               57 (addWidget + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR              104 (logbox)
+               LOAD_CONST              12 (1)
+               CALL                     2
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object <lambda> at 0x0000016DC90F05D0, file "bilisub\gui\download_dialog.py", line 183>:
+  --           COPY_FREE_VARS           1
+
+ 183           RESUME                   0
+               LOAD_DEREF               1 (self)
+               LOAD_ATTR                1 (_kiem_cookie + NULL|self)
+               CALL                     0
+               RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC90F1110, file "bilisub\gui\download_dialog.py", line 219>:
+  --           COPY_FREE_VARS           1
+
+ 219           RESUME                   0
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR                1 (_set_all_checked + NULL|self)
+               LOAD_CONST               1 (True)
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC90F1F20, file "bilisub\gui\download_dialog.py", line 222>:
+  --           COPY_FREE_VARS           1
+
+ 222           RESUME                   0
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR                1 (_set_all_checked + NULL|self)
+               LOAD_CONST               1 (False)
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object _on_url at 0x0000016DC8EC1A70, file "bilisub\gui\download_dialog.py", line 243>:
+243           RESUME                   0
+
+244           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (plat_label)
+              LOAD_ATTR                3 (setText + NULL|self)
+              LOAD_FAST                1 (text)
+              LOAD_ATTR                5 (strip + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE       16 (to L1)
+              LOAD_GLOBAL              7 (detect_platform + NULL)
+              LOAD_FAST                1 (text)
+              CALL                     1
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+      L1:     LOAD_CONST               1 ('—')
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _choose_dir at 0x0000016DC9198330, file "bilisub\gui\download_dialog.py", line 246>:
+246           RESUME                   0
+
+247           LOAD_GLOBAL              0 (QFileDialog)
+              LOAD_ATTR                2 (getExistingDirectory)
+              PUSH_NULL
+              LOAD_FAST                0 (self)
+              LOAD_CONST               1 ('Chọn thư mục lưu')
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              LOAD_ATTR                7 (text + NULL|self)
+              CALL                     0
+              CALL                     3
+              STORE_FAST               1 (d)
+
+248           LOAD_FAST                1 (d)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       28 (to L1)
+
+249           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dir_edit)
+              LOAD_ATTR                9 (setText + NULL|self)
+              LOAD_FAST                1 (d)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+248   L1:     RETURN_CONST             0 (None)
+
+Disassembly of <code object _choose_cookie at 0x0000016DC8EC30C0, file "bilisub\gui\download_dialog.py", line 251>:
+251           RESUME                   0
+
+252           LOAD_GLOBAL              0 (QFileDialog)
+              LOAD_ATTR                2 (getOpenFileName)
+              PUSH_NULL
+              LOAD_FAST                0 (self)
+              LOAD_CONST               1 ('Chọn file cookies')
+              LOAD_CONST               2 ('')
+
+253           LOAD_CONST               3 ('Cookies (*.txt *.json);;Tất cả (*.*)')
+
+252           CALL                     4
+              UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST   18 (p, _)
+
+254           LOAD_FAST                1 (p)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       28 (to L1)
+
+255           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (cookie_edit)
+              LOAD_ATTR                7 (setText + NULL|self)
+              LOAD_FAST                1 (p)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+254   L1:     RETURN_CONST             0 (None)
+
+Disassembly of <code object _cookie_hong at 0x0000016DC91984B0, file "bilisub\gui\download_dialog.py", line 258>:
+258           RESUME                   0
+
+266           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (cookie_edit)
+              LOAD_ATTR                3 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR                5 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               1 (p)
+
+267           LOAD_GLOBAL              7 (bool + NULL)
+              LOAD_FAST                1 (p)
+              CALL                     1
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE       30 (to L1)
+              POP_TOP
+              LOAD_GLOBAL              9 (Path + NULL)
+              LOAD_FAST                1 (p)
+              CALL                     1
+              LOAD_ATTR               11 (is_file + NULL|self)
+              CALL                     0
+              TO_BOOL
+              UNARY_NOT
+      L1:     RETURN_VALUE
+
+Disassembly of <code object _kiem_cookie at 0x0000016DC90EE3F0, file "bilisub\gui\download_dialog.py", line 269>:
+ 269           RESUME                   0
+
+ 270           LOAD_GLOBAL              1 (getattr + NULL)
+               LOAD_FAST                0 (self)
+               LOAD_CONST               1 ('cookie_warn')
+               LOAD_CONST               0 (None)
+               CALL                     3
+               STORE_FAST               1 (w)
+
+ 271           LOAD_FAST                1 (w)
+               POP_JUMP_IF_NOT_NONE     1 (to L1)
+
+ 272           RETURN_CONST             0 (None)
+
+ 273   L1:     NOP
+
+ 274   L2:     LOAD_FAST                0 (self)
+               LOAD_ATTR                3 (_ve_nhan_cookie + NULL|self)
+               LOAD_FAST                1 (w)
+               CALL                     1
+               POP_TOP
+       L3:     RETURN_CONST             0 (None)
+
+  --   L4:     PUSH_EXC_INFO
+
+ 275           LOAD_GLOBAL              4 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       20 (to L6)
+               POP_TOP
+
+ 276           LOAD_FAST                1 (w)
+               LOAD_ATTR                7 (setText + NULL|self)
+               LOAD_CONST               2 ('')
+               CALL                     1
+               POP_TOP
+       L5:     POP_EXCEPT
+               RETURN_CONST             0 (None)
+
+ 275   L6:     RERAISE                  0
+
+  --   L7:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L4 [0]
+  L4 to L5 -> L7 [1] lasti
+  L6 to L7 -> L7 [1] lasti
+
+Disassembly of <code object _ve_nhan_cookie at 0x0000016DC8EA3340, file "bilisub\gui\download_dialog.py", line 278>:
+278           RESUME                   0
+
+279           LOAD_FAST                1 (w)
+              LOAD_ATTR                1 (setText + NULL|self)
+
+281           LOAD_FAST                0 (self)
+              LOAD_ATTR                3 (_cookie_hong + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE        7 (to L1)
+
+279           LOAD_CONST               1 ('⚠ KHÔNG thấy file cookies này — tải sẽ chạy ở chế độ CHƯA ĐĂNG NHẬP (nhiều trang chỉ trả bản xem thử vài phút). Kiểm tra lại đường dẫn.')
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+281   L1:     LOAD_CONST               2 ('')
+
+279           CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _canh_bao_cookie at 0x0000016DC922F090, file "bilisub\gui\download_dialog.py", line 283>:
+283           RESUME                   0
+
+286           LOAD_FAST                0 (self)
+              LOAD_ATTR                1 (_cookie_hong + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE       35 (to L1)
+              LOAD_GLOBAL              2 (os)
+              LOAD_ATTR                4 (environ)
+              LOAD_ATTR                7 (get + NULL|self)
+              LOAD_CONST               1 ('BILISUB_COOKIE_WARN_OFF')
+              CALL                     1
+              LOAD_CONST               2 ('1')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE        1 (to L2)
+
+287   L1:     RETURN_CONST             3 (True)
+
+288   L2:     LOAD_GLOBAL              9 (QMessageBox + NULL)
+              LOAD_FAST                0 (self)
+              CALL                     1
+              STORE_FAST               1 (box)
+
+289           LOAD_FAST                1 (box)
+              LOAD_ATTR               11 (setWindowTitle + NULL|self)
+              LOAD_CONST               4 ('File cookies không tồn tại')
+              CALL                     1
+              POP_TOP
+
+290           LOAD_FAST                1 (box)
+              LOAD_ATTR               13 (setText + NULL|self)
+              LOAD_CONST               5 ('Không tìm thấy file cookies bạn đã chọn.')
+              CALL                     1
+              POP_TOP
+
+291           LOAD_FAST                1 (box)
+              LOAD_ATTR               15 (setInformativeText + NULL|self)
+
+292           LOAD_FAST                0 (self)
+              LOAD_ATTR               16 (cookie_edit)
+              LOAD_ATTR               19 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR               21 (strip + NULL|self)
+              CALL                     0
+              FORMAT_SIMPLE
+              LOAD_CONST               6 ('\n\nTải tiếp sẽ chạy ở chế độ CHƯA ĐĂNG NHẬP — nhiều trang (Bilibili, Douyin, TikTok, YouTube) chỉ trả BẢN XEM THỬ vài phút thay vì phim đầy đủ.')
+              BUILD_STRING             2
+
+291           CALL                     1
+              POP_TOP
+
+295           LOAD_FAST                1 (box)
+              LOAD_ATTR               23 (addButton + NULL|self)
+              LOAD_CONST               7 ('Vẫn tải (không đăng nhập)')
+              LOAD_GLOBAL              8 (QMessageBox)
+              LOAD_ATTR               24 (ButtonRole)
+              LOAD_ATTR               26 (DestructiveRole)
+              CALL                     2
+              STORE_FAST               2 (b_go)
+
+296           LOAD_FAST                1 (box)
+              LOAD_ATTR               23 (addButton + NULL|self)
+              LOAD_CONST               8 ('Quay lại chọn file')
+              LOAD_GLOBAL              8 (QMessageBox)
+              LOAD_ATTR               24 (ButtonRole)
+              LOAD_ATTR               28 (RejectRole)
+              CALL                     2
+              POP_TOP
+
+297           LOAD_FAST                1 (box)
+              LOAD_ATTR               31 (exec + NULL|self)
+              CALL                     0
+              POP_TOP
+
+298           LOAD_FAST                1 (box)
+              LOAD_ATTR               33 (clickedButton + NULL|self)
+              CALL                     0
+              LOAD_FAST                2 (b_go)
+              IS_OP                    0
+              POP_JUMP_IF_FALSE       28 (to L3)
+
+299           LOAD_FAST                0 (self)
+              LOAD_ATTR               34 (logbox)
+              LOAD_ATTR               37 (appendPlainText + NULL|self)
+              LOAD_CONST               9 ('⚠ Không có file cookies — tải KHÔNG đăng nhập.')
+              CALL                     1
+              POP_TOP
+
+300           RETURN_CONST             3 (True)
+
+301   L3:     RETURN_CONST            10 (False)
+
+Disassembly of <code object _start at 0x0000016DC93B7010, file "bilisub\gui\download_dialog.py", line 303>:
+  --           MAKE_CELL                0 (self)
+
+ 303           RESUME                   0
+
+ 304           LOAD_DEREF               0 (self)
+               LOAD_ATTR                0 (url_edit)
+               LOAD_ATTR                3 (text + NULL|self)
+               CALL                     0
+               LOAD_ATTR                5 (strip + NULL|self)
+               CALL                     0
+               STORE_FAST               1 (url)
+
+ 305           LOAD_FAST                1 (url)
+               TO_BOOL
+               POP_JUMP_IF_TRUE        28 (to L1)
+
+ 306           LOAD_DEREF               0 (self)
+               LOAD_ATTR                6 (logbox)
+               LOAD_ATTR                9 (appendPlainText + NULL|self)
+               LOAD_CONST               1 ('Hãy dán link.')
+               CALL                     1
+               POP_TOP
+
+ 307           RETURN_CONST             0 (None)
+
+ 310   L1:     LOAD_DEREF               0 (self)
+               LOAD_ATTR                6 (logbox)
+               LOAD_ATTR               11 (clear + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 311           LOAD_DEREF               0 (self)
+               LOAD_ATTR               13 (_canh_bao_cookie + NULL|self)
+               CALL                     0
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L2)
+
+ 312           RETURN_CONST             0 (None)
+
+ 313   L2:     LOAD_DEREF               0 (self)
+               LOAD_ATTR               14 (dl_btn)
+               LOAD_ATTR               17 (setEnabled + NULL|self)
+               LOAD_CONST               2 (False)
+               CALL                     1
+               POP_TOP
+
+ 314           LOAD_GLOBAL             19 (_DLWorker + NULL)
+               LOAD_FAST                1 (url)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               20 (dir_edit)
+               LOAD_ATTR                3 (text + NULL|self)
+               CALL                     0
+               LOAD_ATTR                5 (strip + NULL|self)
+               CALL                     0
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE        19 (to L3)
+               POP_TOP
+               LOAD_GLOBAL             23 (str + NULL)
+               LOAD_GLOBAL             25 (default_download_dir + NULL)
+               CALL                     0
+               CALL                     1
+
+ 315   L3:     LOAD_DEREF               0 (self)
+               LOAD_ATTR               26 (cookie_edit)
+               LOAD_ATTR                3 (text + NULL|self)
+               CALL                     0
+               LOAD_ATTR                5 (strip + NULL|self)
+               CALL                     0
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L4)
+               POP_TOP
+               LOAD_CONST               0 (None)
+
+ 316   L4:     LOAD_DEREF               0 (self)
+               LOAD_ATTR               28 (name_edit)
+               LOAD_ATTR                3 (text + NULL|self)
+               CALL                     0
+               LOAD_ATTR                5 (strip + NULL|self)
+               CALL                     0
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L5)
+               POP_TOP
+               LOAD_CONST               0 (None)
+
+ 314   L5:     CALL                     4
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              15 (worker)
+
+ 317           LOAD_DEREF               0 (self)
+               LOAD_ATTR               30 (worker)
+               LOAD_ATTR               32 (prog)
+               LOAD_ATTR               35 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               36 (bar)
+               LOAD_ATTR               38 (setValue)
+               CALL                     1
+               POP_TOP
+
+ 318           LOAD_DEREF               0 (self)
+               LOAD_ATTR               30 (worker)
+               LOAD_ATTR               40 (log)
+               LOAD_ATTR               35 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               BUILD_TUPLE              1
+               LOAD_CONST               3 (<code object <lambda> at 0x0000016DC91A0030, file "bilisub\gui\download_dialog.py", line 318>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               CALL                     1
+               POP_TOP
+
+ 319           LOAD_DEREF               0 (self)
+               LOAD_ATTR               30 (worker)
+               LOAD_ATTR               42 (done)
+               LOAD_ATTR               35 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               44 (_done)
+               CALL                     1
+               POP_TOP
+
+ 320           LOAD_DEREF               0 (self)
+               LOAD_ATTR               30 (worker)
+               LOAD_ATTR               46 (failed)
+               LOAD_ATTR               35 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               48 (_failed)
+               CALL                     1
+               POP_TOP
+
+ 321           LOAD_DEREF               0 (self)
+               LOAD_ATTR               30 (worker)
+               LOAD_ATTR               51 (start + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 322           LOAD_GLOBAL             53 (_keep_alive + NULL)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               30 (worker)
+               CALL                     1
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object <lambda> at 0x0000016DC91A0030, file "bilisub\gui\download_dialog.py", line 318>:
+  --           COPY_FREE_VARS           1
+
+ 318           RESUME                   0
+               LOAD_DEREF               1 (self)
+               LOAD_ATTR                0 (logbox)
+               LOAD_ATTR                3 (appendPlainText + NULL|self)
+               LOAD_FAST                0 (m)
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object _list_parts at 0x0000016DC93B7860, file "bilisub\gui\download_dialog.py", line 325>:
+325           RESUME                   0
+
+326           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (url_edit)
+              LOAD_ATTR                3 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR                5 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               1 (url)
+
+327           LOAD_FAST                1 (url)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        28 (to L1)
+
+328           LOAD_FAST                0 (self)
+              LOAD_ATTR                6 (logbox)
+              LOAD_ATTR                9 (appendPlainText + NULL|self)
+              LOAD_CONST               1 ('Hãy dán link.')
+              CALL                     1
+              POP_TOP
+
+329           RETURN_CONST             0 (None)
+
+330   L1:     LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (parts_btn)
+              LOAD_ATTR               13 (setEnabled + NULL|self)
+              LOAD_CONST               2 (False)
+              CALL                     1
+              POP_TOP
+
+331           LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (parts_btn)
+              LOAD_ATTR               15 (setText + NULL|self)
+              LOAD_CONST               3 ('Đang lấy danh sách…')
+              CALL                     1
+              POP_TOP
+
+332           LOAD_FAST                0 (self)
+              LOAD_ATTR                6 (logbox)
+              LOAD_ATTR               17 (clear + NULL|self)
+              CALL                     0
+              POP_TOP
+
+333           LOAD_GLOBAL             19 (_PartsWorker + NULL)
+              LOAD_FAST_LOAD_FAST     16 (url, self)
+              LOAD_ATTR               20 (cookie_edit)
+              LOAD_ATTR                3 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR                5 (strip + NULL|self)
+              CALL                     0
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L2)
+              POP_TOP
+              LOAD_CONST               0 (None)
+      L2:     CALL                     2
+              LOAD_FAST                0 (self)
+              STORE_ATTR              11 (_parts_worker)
+
+334           LOAD_FAST                0 (self)
+              LOAD_ATTR               22 (_parts_worker)
+              LOAD_ATTR               24 (done)
+              LOAD_ATTR               27 (connect + NULL|self)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               28 (_parts_done)
+              CALL                     1
+              POP_TOP
+
+335           LOAD_FAST                0 (self)
+              LOAD_ATTR               22 (_parts_worker)
+              LOAD_ATTR               30 (failed)
+              LOAD_ATTR               27 (connect + NULL|self)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               32 (_parts_failed)
+              CALL                     1
+              POP_TOP
+
+336           LOAD_FAST                0 (self)
+              LOAD_ATTR               22 (_parts_worker)
+              LOAD_ATTR               35 (start + NULL|self)
+              CALL                     0
+              POP_TOP
+
+337           LOAD_GLOBAL             37 (_keep_alive + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               22 (_parts_worker)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _parts_done at 0x0000016DC93B7C10, file "bilisub\gui\download_dialog.py", line 339>:
+339           RESUME                   0
+
+340           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (parts_btn)
+              LOAD_ATTR                3 (setEnabled + NULL|self)
+              LOAD_CONST               1 (True)
+              CALL                     1
+              POP_TOP
+
+341           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (parts_btn)
+              LOAD_ATTR                5 (setText + NULL|self)
+              LOAD_CONST               2 ('📑 Xem danh sách tập')
+              CALL                     1
+              POP_TOP
+
+342           LOAD_FAST_LOAD_FAST     16 (parts, self)
+              STORE_ATTR               3 (_parts)
+
+343           LOAD_GLOBAL              9 (len + NULL)
+              LOAD_FAST                1 (parts)
+              CALL                     1
+              LOAD_CONST               3 (1)
+              COMPARE_OP              58 (bool(<=))
+              POP_JUMP_IF_FALSE       55 (to L1)
+
+344           LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (parts_box)
+              LOAD_ATTR               13 (setVisible + NULL|self)
+              LOAD_CONST               4 (False)
+              CALL                     1
+              POP_TOP
+
+345           LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (logbox)
+              LOAD_ATTR               17 (appendPlainText + NULL|self)
+
+346           LOAD_CONST               5 ("ℹ Video này chỉ có 1 phần — bấm '⬇ Tải về' để tải như bình thường.")
+
+345           CALL                     1
+              POP_TOP
+
+347           RETURN_CONST             0 (None)
+
+348   L1:     LOAD_FAST                0 (self)
+              LOAD_ATTR               18 (parts_list)
+              LOAD_ATTR               21 (clear + NULL|self)
+              CALL                     0
+              POP_TOP
+
+349           LOAD_FAST                1 (parts)
+              GET_ITER
+      L2:     FOR_ITER               198 (to L3)
+              STORE_FAST               2 (p)
+
+350           LOAD_GLOBAL             23 (QListWidgetItem + NULL)
+              LOAD_CONST               6 ('Tập ')
+              LOAD_FAST                2 (p)
+              LOAD_CONST               7 ('index')
+              BINARY_SUBSCR
+              LOAD_CONST               8 ('02d')
+              FORMAT_WITH_SPEC
+              LOAD_CONST               9 ('  ·  ')
+              LOAD_FAST                2 (p)
+              LOAD_CONST              10 ('title')
+              BINARY_SUBSCR
+              FORMAT_SIMPLE
+              BUILD_STRING             4
+              CALL                     1
+              STORE_FAST               3 (it)
+
+351           LOAD_FAST                3 (it)
+              LOAD_ATTR               25 (setFlags + NULL|self)
+              LOAD_FAST                3 (it)
+              LOAD_ATTR               27 (flags + NULL|self)
+              CALL                     0
+              LOAD_GLOBAL             28 (Qt)
+              LOAD_ATTR               30 (ItemFlag)
+              LOAD_ATTR               32 (ItemIsUserCheckable)
+              BINARY_OP                7 (|)
+              CALL                     1
+              POP_TOP
+
+352           LOAD_FAST                3 (it)
+              LOAD_ATTR               35 (setCheckState + NULL|self)
+              LOAD_GLOBAL             28 (Qt)
+              LOAD_ATTR               36 (CheckState)
+              LOAD_ATTR               38 (Checked)
+              CALL                     1
+              POP_TOP
+
+353           LOAD_FAST                3 (it)
+              LOAD_ATTR               41 (setData + NULL|self)
+              LOAD_GLOBAL             28 (Qt)
+              LOAD_ATTR               42 (ItemDataRole)
+              LOAD_ATTR               44 (UserRole)
+              LOAD_FAST                2 (p)
+              LOAD_CONST               7 ('index')
+              BINARY_SUBSCR
+              CALL                     2
+              POP_TOP
+
+354           LOAD_FAST                0 (self)
+              LOAD_ATTR               18 (parts_list)
+              LOAD_ATTR               47 (addItem + NULL|self)
+              LOAD_FAST                3 (it)
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD          200 (to L2)
+
+349   L3:     END_FOR
+              POP_TOP
+
+355           LOAD_FAST                0 (self)
+              LOAD_ATTR               48 (parts_hint)
+              LOAD_ATTR                5 (setText + NULL|self)
+              LOAD_CONST              11 ('Phim có ')
+              LOAD_GLOBAL              9 (len + NULL)
+              LOAD_FAST                1 (parts)
+              CALL                     1
+              FORMAT_SIMPLE
+              LOAD_CONST              12 (' tập — chọn tập cần tải:')
+              BUILD_STRING             3
+              CALL                     1
+              POP_TOP
+
+356           LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (parts_box)
+              LOAD_ATTR               13 (setVisible + NULL|self)
+              LOAD_CONST               1 (True)
+              CALL                     1
+              POP_TOP
+
+357           LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (logbox)
+              LOAD_ATTR               17 (appendPlainText + NULL|self)
+              LOAD_CONST              13 ('✅ Tìm thấy ')
+              LOAD_GLOBAL              9 (len + NULL)
+              LOAD_FAST                1 (parts)
+              CALL                     1
+              FORMAT_SIMPLE
+              LOAD_CONST              14 (" tập. Tick chọn rồi bấm '⬇ Tải các tập đã chọn'.")
+              BUILD_STRING             3
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _parts_failed at 0x0000016DC9198630, file "bilisub\gui\download_dialog.py", line 360>:
+360           RESUME                   0
+
+361           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (parts_btn)
+              LOAD_ATTR                3 (setEnabled + NULL|self)
+              LOAD_CONST               1 (True)
+              CALL                     1
+              POP_TOP
+
+362           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (parts_btn)
+              LOAD_ATTR                5 (setText + NULL|self)
+              LOAD_CONST               2 ('📑 Xem danh sách tập')
+              CALL                     1
+              POP_TOP
+
+363           LOAD_FAST                0 (self)
+              LOAD_ATTR                6 (logbox)
+              LOAD_ATTR                9 (appendPlainText + NULL|self)
+              LOAD_CONST               3 ('❌ Không lấy được danh sách tập: ')
+              LOAD_FAST                1 (msg)
+              FORMAT_SIMPLE
+              BUILD_STRING             2
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _set_all_checked at 0x0000016DC90DDB50, file "bilisub\gui\download_dialog.py", line 365>:
+365           RESUME                   0
+
+366           LOAD_FAST                1 (on)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       26 (to L1)
+              LOAD_GLOBAL              0 (Qt)
+              LOAD_ATTR                2 (CheckState)
+              LOAD_ATTR                4 (Checked)
+              JUMP_FORWARD            25 (to L2)
+      L1:     LOAD_GLOBAL              0 (Qt)
+              LOAD_ATTR                2 (CheckState)
+              LOAD_ATTR                6 (Unchecked)
+      L2:     STORE_FAST               2 (st)
+
+367           LOAD_GLOBAL              9 (range + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (parts_list)
+              LOAD_ATTR               13 (count + NULL|self)
+              CALL                     0
+              CALL                     1
+              GET_ITER
+      L3:     FOR_ITER                45 (to L4)
+              STORE_FAST               3 (i)
+
+368           LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (parts_list)
+              LOAD_ATTR               15 (item + NULL|self)
+              LOAD_FAST                3 (i)
+              CALL                     1
+              LOAD_ATTR               17 (setCheckState + NULL|self)
+              LOAD_FAST                2 (st)
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD           47 (to L3)
+
+367   L4:     END_FOR
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _checked_indices at 0x0000016DC9235640, file "bilisub\gui\download_dialog.py", line 370>:
+370           RESUME                   0
+
+371           BUILD_LIST               0
+              STORE_FAST               1 (out)
+
+372           LOAD_GLOBAL              1 (range + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (parts_list)
+              LOAD_ATTR                5 (count + NULL|self)
+              CALL                     0
+              CALL                     1
+              GET_ITER
+      L1:     FOR_ITER               141 (to L3)
+              STORE_FAST               2 (i)
+
+373           LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (parts_list)
+              LOAD_ATTR                7 (item + NULL|self)
+              LOAD_FAST                2 (i)
+              CALL                     1
+              STORE_FAST               3 (it)
+
+374           LOAD_FAST                3 (it)
+              LOAD_ATTR                9 (checkState + NULL|self)
+              CALL                     0
+              LOAD_GLOBAL             10 (Qt)
+              LOAD_ATTR               12 (CheckState)
+              LOAD_ATTR               14 (Checked)
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_TRUE         2 (to L2)
+              JUMP_BACKWARD           76 (to L1)
+
+375   L2:     LOAD_FAST                1 (out)
+              LOAD_ATTR               17 (append + NULL|self)
+              LOAD_GLOBAL             19 (int + NULL)
+              LOAD_FAST                3 (it)
+              LOAD_ATTR               21 (data + NULL|self)
+              LOAD_GLOBAL             10 (Qt)
+              LOAD_ATTR               22 (ItemDataRole)
+              LOAD_ATTR               24 (UserRole)
+              CALL                     1
+              CALL                     1
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD          143 (to L1)
+
+372   L3:     END_FOR
+              POP_TOP
+
+376           LOAD_FAST                1 (out)
+              RETURN_VALUE
+
+Disassembly of <code object _start_multi at 0x0000016DC8F14870, file "bilisub\gui\download_dialog.py", line 378>:
+  --           MAKE_CELL                0 (self)
+
+ 378           RESUME                   0
+
+ 379           LOAD_DEREF               0 (self)
+               LOAD_ATTR                1 (_checked_indices + NULL|self)
+               CALL                     0
+               STORE_FAST               1 (idx)
+
+ 380           LOAD_FAST                1 (idx)
+               TO_BOOL
+               POP_JUMP_IF_TRUE        28 (to L1)
+
+ 381           LOAD_DEREF               0 (self)
+               LOAD_ATTR                2 (logbox)
+               LOAD_ATTR                5 (appendPlainText + NULL|self)
+               LOAD_CONST               1 ('Chưa chọn tập nào.')
+               CALL                     1
+               POP_TOP
+
+ 382           RETURN_CONST             0 (None)
+
+ 383   L1:     LOAD_DEREF               0 (self)
+               LOAD_ATTR                7 (_canh_bao_cookie + NULL|self)
+               CALL                     0
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L2)
+
+ 384           RETURN_CONST             0 (None)
+
+ 385   L2:     LOAD_DEREF               0 (self)
+               LOAD_ATTR                8 (url_edit)
+               LOAD_ATTR               11 (text + NULL|self)
+               CALL                     0
+               LOAD_ATTR               13 (strip + NULL|self)
+               CALL                     0
+               STORE_FAST               2 (url)
+
+ 386           LOAD_DEREF               0 (self)
+               LOAD_ATTR               14 (dl_sel_btn)
+               LOAD_ATTR               17 (setEnabled + NULL|self)
+               LOAD_CONST               2 (False)
+               CALL                     1
+               POP_TOP
+
+ 387           LOAD_DEREF               0 (self)
+               LOAD_ATTR               18 (dl_btn)
+               LOAD_ATTR               17 (setEnabled + NULL|self)
+               LOAD_CONST               2 (False)
+               CALL                     1
+               POP_TOP
+
+ 388           LOAD_DEREF               0 (self)
+               LOAD_ATTR               20 (parts_btn)
+               LOAD_ATTR               17 (setEnabled + NULL|self)
+               LOAD_CONST               2 (False)
+               CALL                     1
+               POP_TOP
+
+ 389           LOAD_DEREF               0 (self)
+               LOAD_ATTR                2 (logbox)
+               LOAD_ATTR                5 (appendPlainText + NULL|self)
+               LOAD_CONST               3 ('Bắt đầu tải ')
+               LOAD_GLOBAL             23 (len + NULL)
+               LOAD_FAST                1 (idx)
+               CALL                     1
+               FORMAT_SIMPLE
+               LOAD_CONST               4 (' tập…')
+               BUILD_STRING             3
+               CALL                     1
+               POP_TOP
+
+ 390           LOAD_GLOBAL             25 (_MultiDLWorker + NULL)
+
+ 391           LOAD_FAST                2 (url)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               26 (dir_edit)
+               LOAD_ATTR               11 (text + NULL|self)
+               CALL                     0
+               LOAD_ATTR               13 (strip + NULL|self)
+               CALL                     0
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE        19 (to L3)
+               POP_TOP
+               LOAD_GLOBAL             29 (str + NULL)
+               LOAD_GLOBAL             31 (default_download_dir + NULL)
+               CALL                     0
+               CALL                     1
+       L3:     LOAD_FAST                1 (idx)
+
+ 392           LOAD_DEREF               0 (self)
+               LOAD_ATTR               32 (cookie_edit)
+               LOAD_ATTR               11 (text + NULL|self)
+               CALL                     0
+               LOAD_ATTR               13 (strip + NULL|self)
+               CALL                     0
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L4)
+               POP_TOP
+               LOAD_CONST               0 (None)
+       L4:     LOAD_DEREF               0 (self)
+               LOAD_ATTR               34 (name_edit)
+               LOAD_ATTR               11 (text + NULL|self)
+               CALL                     0
+               LOAD_ATTR               13 (strip + NULL|self)
+               CALL                     0
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L5)
+               POP_TOP
+               LOAD_CONST               0 (None)
+
+ 390   L5:     CALL                     5
+               LOAD_DEREF               0 (self)
+               STORE_ATTR              18 (_multi)
+
+ 393           LOAD_DEREF               0 (self)
+               LOAD_ATTR               36 (_multi)
+               LOAD_ATTR               38 (item_prog)
+               LOAD_ATTR               41 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               42 (bar)
+               LOAD_ATTR               44 (setValue)
+               CALL                     1
+               POP_TOP
+
+ 394           LOAD_DEREF               0 (self)
+               LOAD_ATTR               36 (_multi)
+               LOAD_ATTR               46 (overall)
+               LOAD_ATTR               41 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               48 (_multi_overall)
+               CALL                     1
+               POP_TOP
+
+ 395           LOAD_DEREF               0 (self)
+               LOAD_ATTR               36 (_multi)
+               LOAD_ATTR               50 (log)
+               LOAD_ATTR               41 (connect + NULL|self)
+               LOAD_FAST                0 (self)
+               BUILD_TUPLE              1
+               LOAD_CONST               5 (<code object <lambda> at 0x0000016DC91A0140, file "bilisub\gui\download_dialog.py", line 395>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               CALL                     1
+               POP_TOP
+
+ 396           LOAD_DEREF               0 (self)
+               LOAD_ATTR               36 (_multi)
+               LOAD_ATTR               52 (done)
+               LOAD_ATTR               41 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               54 (_multi_done)
+               CALL                     1
+               POP_TOP
+
+ 397           LOAD_DEREF               0 (self)
+               LOAD_ATTR               36 (_multi)
+               LOAD_ATTR               56 (failed)
+               LOAD_ATTR               41 (connect + NULL|self)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               58 (_multi_failed)
+               CALL                     1
+               POP_TOP
+
+ 398           LOAD_DEREF               0 (self)
+               LOAD_ATTR               36 (_multi)
+               LOAD_ATTR               61 (start + NULL|self)
+               CALL                     0
+               POP_TOP
+
+ 399           LOAD_GLOBAL             63 (_keep_alive + NULL)
+               LOAD_DEREF               0 (self)
+               LOAD_ATTR               36 (_multi)
+               CALL                     1
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object <lambda> at 0x0000016DC91A0140, file "bilisub\gui\download_dialog.py", line 395>:
+  --           COPY_FREE_VARS           1
+
+ 395           RESUME                   0
+               LOAD_DEREF               1 (self)
+               LOAD_ATTR                0 (logbox)
+               LOAD_ATTR                3 (appendPlainText + NULL|self)
+               LOAD_FAST                0 (m)
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object _multi_overall at 0x0000016DC8E07D70, file "bilisub\gui\download_dialog.py", line 401>:
+401           RESUME                   0
+
+402           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (parts_hint)
+              LOAD_ATTR                3 (setText + NULL|self)
+              LOAD_CONST               1 ('Đang tải: ')
+              LOAD_FAST                1 (done)
+              FORMAT_SIMPLE
+              LOAD_CONST               2 ('/')
+              LOAD_FAST                2 (total)
+              FORMAT_SIMPLE
+              LOAD_CONST               3 (' tập xong')
+              BUILD_STRING             5
+
+403           LOAD_FAST                3 (name)
+              TO_BOOL
+              POP_JUMP_IF_FALSE        8 (to L1)
+              LOAD_CONST               4 ('  ·  ')
+              LOAD_FAST                3 (name)
+              LOAD_CONST               0 (None)
+              LOAD_CONST               5 (30)
+              BINARY_SLICE
+              FORMAT_SIMPLE
+              BUILD_STRING             2
+              JUMP_FORWARD             1 (to L2)
+      L1:     LOAD_CONST               6 ('')
+
+402   L2:     BINARY_OP                0 (+)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _multi_done at 0x0000016DC8F12C60, file "bilisub\gui\download_dialog.py", line 405>:
+405           RESUME                   0
+
+406           LOAD_FAST                1 (paths)
+              TO_BOOL
+              POP_JUMP_IF_FALSE        5 (to L1)
+              LOAD_FAST                1 (paths)
+              LOAD_CONST               1 (0)
+              BINARY_SUBSCR
+              JUMP_FORWARD             1 (to L2)
+      L1:     LOAD_CONST               0 (None)
+      L2:     LOAD_FAST                0 (self)
+              STORE_ATTR               0 (result_path)
+
+407           LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (logbox)
+              LOAD_ATTR                5 (appendPlainText + NULL|self)
+              LOAD_CONST               2 ('✅ Xong ')
+              LOAD_GLOBAL              7 (len + NULL)
+              LOAD_FAST                1 (paths)
+              CALL                     1
+              FORMAT_SIMPLE
+              LOAD_CONST               3 (' tập. Lưu tại: ')
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                8 (dir_edit)
+              LOAD_ATTR               11 (text + NULL|self)
+              CALL                     0
+              FORMAT_SIMPLE
+              BUILD_STRING             4
+              CALL                     1
+              POP_TOP
+
+408           LOAD_FAST                0 (self)
+              LOAD_ATTR               12 (parts_hint)
+              LOAD_ATTR               15 (setText + NULL|self)
+              LOAD_CONST               4 ('✅ Đã tải xong ')
+              LOAD_GLOBAL              7 (len + NULL)
+              LOAD_FAST                1 (paths)
+              CALL                     1
+              FORMAT_SIMPLE
+              LOAD_CONST               5 (' tập.')
+              BUILD_STRING             3
+              CALL                     1
+              POP_TOP
+
+409           LOAD_FAST                0 (self)
+              LOAD_ATTR               16 (dl_sel_btn)
+              LOAD_ATTR               19 (setEnabled + NULL|self)
+              LOAD_CONST               6 (True)
+              CALL                     1
+              POP_TOP
+
+410           LOAD_FAST                0 (self)
+              LOAD_ATTR               20 (dl_btn)
+              LOAD_ATTR               19 (setEnabled + NULL|self)
+              LOAD_CONST               6 (True)
+              CALL                     1
+              POP_TOP
+
+411           LOAD_FAST                0 (self)
+              LOAD_ATTR               22 (parts_btn)
+              LOAD_ATTR               19 (setEnabled + NULL|self)
+              LOAD_CONST               6 (True)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _multi_failed at 0x0000016DC90E52C0, file "bilisub\gui\download_dialog.py", line 413>:
+413           RESUME                   0
+
+414           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (dl_sel_btn)
+              LOAD_ATTR                3 (setEnabled + NULL|self)
+              LOAD_CONST               1 (True)
+              CALL                     1
+              POP_TOP
+
+415           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (dl_btn)
+              LOAD_ATTR                3 (setEnabled + NULL|self)
+              LOAD_CONST               1 (True)
+              CALL                     1
+              POP_TOP
+
+416           LOAD_FAST                0 (self)
+              LOAD_ATTR                6 (parts_btn)
+              LOAD_ATTR                3 (setEnabled + NULL|self)
+              LOAD_CONST               1 (True)
+              CALL                     1
+              POP_TOP
+
+417           LOAD_FAST                0 (self)
+              LOAD_ATTR                8 (logbox)
+              LOAD_ATTR               11 (appendPlainText + NULL|self)
+              LOAD_CONST               2 ('❌ LỖI: ')
+              LOAD_FAST                1 (msg)
+              FORMAT_SIMPLE
+              BUILD_STRING             2
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _done at 0x0000016DC8E07EB0, file "bilisub\gui\download_dialog.py", line 419>:
+419           RESUME                   0
+
+420           LOAD_FAST_LOAD_FAST     16 (path, self)
+              STORE_ATTR               0 (result_path)
+
+421           LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (logbox)
+              LOAD_ATTR                5 (appendPlainText + NULL|self)
+              LOAD_CONST               1 ('✅ Xong: ')
+              LOAD_FAST                1 (path)
+              FORMAT_SIMPLE
+              BUILD_STRING             2
+              CALL                     1
+              POP_TOP
+
+422           LOAD_FAST                0 (self)
+              LOAD_ATTR                7 (accept + NULL|self)
+              CALL                     0
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _failed at 0x0000016DC91A8030, file "bilisub\gui\download_dialog.py", line 424>:
+424           RESUME                   0
+
+425           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (dl_btn)
+              LOAD_ATTR                3 (setEnabled + NULL|self)
+              LOAD_CONST               1 (True)
+              CALL                     1
+              POP_TOP
+
+426           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (logbox)
+              LOAD_ATTR                7 (appendPlainText + NULL|self)
+              LOAD_CONST               2 ('❌ LỖI: ')
+              LOAD_FAST                1 (msg)
+              FORMAT_SIMPLE
+              BUILD_STRING             2
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _busy_worker at 0x0000016DC91A8170, file "bilisub\gui\download_dialog.py", line 429>:
+429           RESUME                   0
+
+431           LOAD_CONST               1 (('worker', '_multi'))
+              GET_ITER
+      L1:     FOR_ITER                45 (to L4)
+              STORE_FAST               1 (name)
+
+432           LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST_LOAD_FAST      1 (self, name)
+              LOAD_CONST               2 (None)
+              CALL                     3
+              STORE_FAST               2 (w)
+
+433           LOAD_FAST                2 (w)
+              POP_JUMP_IF_NOT_NONE     2 (to L2)
+              JUMP_BACKWARD           20 (to L1)
+      L2:     LOAD_FAST                2 (w)
+              LOAD_ATTR                3 (isRunning + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+              JUMP_BACKWARD           43 (to L1)
+
+434   L3:     LOAD_FAST                2 (w)
+              SWAP                     2
+              POP_TOP
+              RETURN_VALUE
+
+431   L4:     END_FOR
+              POP_TOP
+
+435           RETURN_CONST             2 (None)
+
+Disassembly of <code object closeEvent at 0x0000016DC9214F30, file "bilisub\gui\download_dialog.py", line 437>:
+437           RESUME                   0
+
+441           LOAD_FAST                0 (self)
+              LOAD_ATTR                1 (_busy_worker + NULL|self)
+              CALL                     0
+              STORE_FAST               2 (w)
+
+442           LOAD_FAST                2 (w)
+              EXTENDED_ARG             1
+              POP_JUMP_IF_NONE       334 (to L3)
+
+443           LOAD_GLOBAL              3 (QMessageBox + NULL)
+              LOAD_FAST                0 (self)
+              CALL                     1
+              STORE_FAST               3 (box)
+
+444           LOAD_FAST                3 (box)
+              LOAD_ATTR                5 (setWindowTitle + NULL|self)
+              LOAD_CONST               2 ('Đang tải')
+              CALL                     1
+              POP_TOP
+
+445           LOAD_FAST                3 (box)
+              LOAD_ATTR                7 (setText + NULL|self)
+              LOAD_CONST               3 ('Video đang tải dở.')
+              CALL                     1
+              POP_TOP
+
+446           LOAD_FAST                3 (box)
+              LOAD_ATTR                9 (setInformativeText + NULL|self)
+              LOAD_CONST               4 ('Bạn muốn dừng tải hay để tải tiếp trong nền?')
+              CALL                     1
+              POP_TOP
+
+447           LOAD_FAST                3 (box)
+              LOAD_ATTR               11 (addButton + NULL|self)
+              LOAD_CONST               5 ('⛔ Dừng tải')
+              LOAD_GLOBAL              2 (QMessageBox)
+              LOAD_ATTR               12 (ButtonRole)
+              LOAD_ATTR               14 (DestructiveRole)
+              CALL                     2
+              STORE_FAST               4 (b_stop)
+
+448           LOAD_FAST                3 (box)
+              LOAD_ATTR               11 (addButton + NULL|self)
+              LOAD_CONST               6 ('Tải tiếp trong nền')
+              LOAD_GLOBAL              2 (QMessageBox)
+              LOAD_ATTR               12 (ButtonRole)
+              LOAD_ATTR               16 (AcceptRole)
+              CALL                     2
+              STORE_FAST               5 (b_bg)
+
+449           LOAD_FAST                3 (box)
+              LOAD_ATTR               11 (addButton + NULL|self)
+              LOAD_CONST               7 ('Quay lại')
+              LOAD_GLOBAL              2 (QMessageBox)
+              LOAD_ATTR               12 (ButtonRole)
+              LOAD_ATTR               18 (RejectRole)
+              CALL                     2
+              POP_TOP
+
+450           LOAD_FAST                3 (box)
+              LOAD_ATTR               21 (exec + NULL|self)
+              CALL                     0
+              POP_TOP
+
+451           LOAD_FAST                3 (box)
+              LOAD_ATTR               23 (clickedButton + NULL|self)
+              CALL                     0
+              STORE_FAST               6 (clicked)
+
+452           LOAD_FAST_LOAD_FAST    100 (clicked, b_stop)
+              IS_OP                    0
+              POP_JUMP_IF_FALSE       89 (to L2)
+
+453           LOAD_GLOBAL             25 (hasattr + NULL)
+              LOAD_FAST                2 (w)
+              LOAD_CONST               8 ('cancel')
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_FALSE       44 (to L1)
+
+454           LOAD_FAST                2 (w)
+              LOAD_ATTR               27 (cancel + NULL|self)
+              CALL                     0
+              POP_TOP
+
+455           LOAD_FAST                0 (self)
+              LOAD_ATTR               28 (logbox)
+              LOAD_ATTR               31 (appendPlainText + NULL|self)
+              LOAD_CONST               9 ('⛔ Sẽ dừng sau khi xong tập đang tải…')
+              CALL                     1
+              POP_TOP
+              JUMP_FORWARD            49 (to L3)
+
+457   L1:     LOAD_FAST                0 (self)
+              LOAD_ATTR               28 (logbox)
+              LOAD_ATTR               31 (appendPlainText + NULL|self)
+              LOAD_CONST              10 ('⛔ Tập đang tải sẽ chạy nốt rồi dừng.')
+              CALL                     1
+              POP_TOP
+              JUMP_FORWARD            21 (to L3)
+
+458   L2:     LOAD_FAST_LOAD_FAST    101 (clicked, b_bg)
+              IS_OP                    1
+              POP_JUMP_IF_FALSE       17 (to L3)
+
+459           LOAD_FAST                1 (e)
+              LOAD_ATTR               33 (ignore + NULL|self)
+              CALL                     0
+              POP_TOP
+
+460           RETURN_CONST             1 (None)
+
+461   L3:     LOAD_FAST                1 (e)
+              LOAD_ATTR               35 (accept + NULL|self)
+              CALL                     0
+              POP_TOP
+              RETURN_CONST             1 (None)

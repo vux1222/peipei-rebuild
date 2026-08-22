@@ -1,0 +1,120 @@
+=== FILE: bilisub\script\models.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('Kiểu dữ liệu cho pipeline tự sinh kịch bản từ video.')
+              STORE_NAME               0 (__doc__)
+
+  2           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+  4           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (('dataclass',))
+              IMPORT_NAME              3 (dataclasses)
+              IMPORT_FROM              4 (dataclass)
+              STORE_NAME               4 (dataclass)
+              POP_TOP
+
+  7           LOAD_NAME                4 (dataclass)
+
+  8           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST               4 (<code object SceneNote at 0x0000016DC8E06830, file "bilisub\script\models.py", line 7>)
+              MAKE_FUNCTION
+              LOAD_CONST               5 ('SceneNote')
+              CALL                     2
+
+  7           CALL                     0
+
+  8           STORE_NAME               5 (SceneNote)
+              RETURN_CONST             6 (None)
+
+Disassembly of <code object SceneNote at 0x0000016DC8E06830, file "bilisub\script\models.py", line 7>:
+  7           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('SceneNote')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (7)
+              STORE_NAME               3 (__firstlineno__)
+              SETUP_ANNOTATIONS
+
+  9           LOAD_CONST               2 ("Một cảnh đã được 'mắt' (VLM/Gemini) mô tả — coi như SỰ THẬT để narration bám vào.\n\n- ``description`` : mô tả khách quan những gì thấy/nghe trong cảnh.\n- ``frame_path``  : ảnh keyframe đại diện (nếu có) — để gửi cho VLM.\n")
+              STORE_NAME               4 (__doc__)
+
+ 14           LOAD_CONST               3 ('int')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               4 ('start_ms')
+              STORE_SUBSCR
+
+ 15           LOAD_CONST               3 ('int')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               5 ('end_ms')
+              STORE_SUBSCR
+
+ 16           LOAD_CONST               6 ('')
+              STORE_NAME               6 (description)
+              LOAD_CONST               7 ('str')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               8 ('description')
+              STORE_SUBSCR
+
+ 17           LOAD_CONST               6 ('')
+              STORE_NAME               7 (frame_path)
+              LOAD_CONST               7 ('str')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               9 ('frame_path')
+              STORE_SUBSCR
+
+ 19           LOAD_NAME                8 (property)
+
+ 20           LOAD_CONST              14 (('return', 'int'))
+              LOAD_CONST              10 (<code object duration_ms at 0x0000016DC8EAE780, file "bilisub\script\models.py", line 19>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+
+ 19           CALL                     0
+
+ 20           STORE_NAME               9 (duration_ms)
+
+ 23           LOAD_NAME                8 (property)
+
+ 24           LOAD_CONST              15 (('return', 'float'))
+              LOAD_CONST              11 (<code object seconds at 0x0000016DC90F1D40, file "bilisub\script\models.py", line 23>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+
+ 23           CALL                     0
+
+ 24           STORE_NAME              10 (seconds)
+              LOAD_CONST              12 (())
+              STORE_NAME              11 (__static_attributes__)
+              RETURN_CONST            13 (None)
+
+Disassembly of <code object duration_ms at 0x0000016DC8EAE780, file "bilisub\script\models.py", line 19>:
+ 19           RESUME                   0
+
+ 21           LOAD_GLOBAL              1 (max + NULL)
+              LOAD_CONST               1 (0)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                2 (end_ms)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (start_ms)
+              BINARY_OP               10 (-)
+              CALL                     2
+              RETURN_VALUE
+
+Disassembly of <code object seconds at 0x0000016DC90F1D40, file "bilisub\script\models.py", line 23>:
+ 23           RESUME                   0
+
+ 25           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (duration_ms)
+              LOAD_CONST               1 (1000.0)
+              BINARY_OP               11 (/)
+              RETURN_VALUE

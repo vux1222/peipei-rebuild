@@ -1,0 +1,1763 @@
+=== FILE: bilisub\user_prompt.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+   0           RESUME                   0
+
+   2           SETUP_ANNOTATIONS
+               LOAD_CONST               0 ('PROMPT RIÊNG CỦA NGƯỜI DÙNG — khách tự dán hướng dẫn VĂN PHONG vào khâu dịch.\n\nThiết kế đầy đủ: ``D:\\PeiPeiReup\\temp\\user_prompt\\thietke.md`` (nhiệm vụ A2).\n\n────────────────────────────────────────────────────────────────────────────────\n🔴 NGUYÊN TẮC SỐ 1 — PROMPT KHÁCH CHỈ NÓI VỀ VĂN PHONG\n────────────────────────────────────────────────────────────────────────────────\nTool KHÔNG gửi cả file SRT cho AI. Nó gửi từng lô 80 câu dạng ``index|text|maxlen``\nvà BẮT AI trả JSON ĐÚNG SỐ CÂU (xem ``translate/prompts.py`` — "items length MUST\nequal {count}", "Do NOT add, delete, merge, split, or reorder").\n\nHai tài liệu prompt mà khách gửi cho Boss ("MODULE V5") lại ghi nguyên văn\n*"CHỈ XUẤT RA NỘI DUNG FILE SRT ĐÃ DỊCH"*, *"GIỮ NGUYÊN 100% số thứ tự dòng và mốc\nthời gian"*. Dán nguyên si vào tool ⇒ model trả SRT thay vì JSON ⇒ **hỏng cả lô 80\ncâu** = đúng lớp lỗi "dịch thiếu" đã tốn cả buổi truy (memory ``ocr-missing-translation``).\n\n⇒ Prompt khách chỉ được là phần **BỔ SUNG**, không bao giờ thay khung xương:\n   ① JSON · ② số câu · ③ index · ④ maxlen · ⑤ ngôn ngữ đích · ⑥ bảng xưng hô.\nBa lớp chặn: nhãn MỞ khối + chốt ĐÓNG khối (``prompts.user_style_block``) và\n``OUTPUT FORMAT LOCK`` sát trên dữ liệu (``prompts.user_style_tail``).\n\n────────────────────────────────────────────────────────────────────────────────\nVÌ SAO LÀ MODULE RIÊNG, KHÔNG NHÉT VÀO genres.py / prompts.py\n────────────────────────────────────────────────────────────────────────────────\n``genres.py`` là DỮ LIỆU thuần; ``prompts.py`` phải nhẹ và không được biết gì về\n``Settings``; còn GUI cần ``scan_risky_prompt`` mà không muốn kéo cả\n``bilisub.translate`` vào. File này CHỈ dùng thư viện chuẩn: không Qt, không\n``translate`` (trừ 1 lazy-import có fallback trong :func:`est_extra`).\n\n🔴 LUẬT KHI SỬA: chữ của khách chỉ được vào prompt qua **nối chuỗi** hoặc ``{biến}``\ntrong f-string. CẤM ``.format`` / ``.format_map`` / ``%`` trên chuỗi chứa chữ khách —\nkhách viết ``{ngoặc}`` hay ``dịch 100% sát nghĩa`` là nổ ``KeyError``/``ValueError``\nGIỮA LÚC DỊCH (xem thietke.md §5.4).\n')
+               STORE_NAME               0 (__doc__)
+
+  36           LOAD_CONST               1 (0)
+               LOAD_CONST               2 (('annotations',))
+               IMPORT_NAME              1 (__future__)
+               IMPORT_FROM              2 (annotations)
+               STORE_NAME               2 (annotations)
+               POP_TOP
+
+  38           LOAD_CONST               1 (0)
+               LOAD_CONST               3 (None)
+               IMPORT_NAME              3 (re)
+               STORE_NAME               3 (re)
+
+  39           LOAD_CONST               1 (0)
+               LOAD_CONST               3 (None)
+               IMPORT_NAME              4 (unicodedata)
+               STORE_NAME               4 (unicodedata)
+
+  40           LOAD_CONST               1 (0)
+               LOAD_CONST               4 (('NamedTuple',))
+               IMPORT_NAME              5 (typing)
+               IMPORT_FROM              6 (NamedTuple)
+               STORE_NAME               6 (NamedTuple)
+               POP_TOP
+
+  42           BUILD_LIST               0
+               LOAD_CONST               5 (('Warn', 'scan_risky_prompt', 'scan_length', 'warn_lines', 'user_prompt_for', 'est_extra', 'Est', 'SOFT_CAP', 'HARD_CAP', 'NICE_CAP', 'BATCHES_2H', 'MAU', 'danh_sach_mau', 'lay_mau', 'doc_prompt_tu_file', 'DUOI_HO_TRO'))
+               LIST_EXTEND              1
+               STORE_NAME               7 (__all__)
+
+  63           LOAD_CONST               6 (('.txt', '.md', '.docx', '.rtf'))
+               STORE_NAME               8 (DUOI_HO_TRO)
+
+  66           LOAD_CONST               7 ('')
+               LOAD_CONST               8 ('vi')
+
+  67           LOAD_CONST               9 (True)
+
+  66           LOAD_CONST              10 (('genre_key', 'target_language', 'soi'))
+               BUILD_CONST_KEY_MAP      3
+
+  67           NOP
+
+  66           NOP
+
+  67           NOP
+
+  66           LOAD_CONST              72 (('genre_key', 'str', 'target_language', 'str', 'soi', 'bool', 'return', "'tuple[str, list[str]]'"))
+               LOAD_CONST              11 (<code object doc_prompt_tu_file at 0x0000016DC8EC34B0, file "bilisub\user_prompt.py", line 66>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+               STORE_NAME               9 (doc_prompt_tu_file)
+
+  93           LOAD_CONST              12 (800)
+               STORE_NAME              10 (NICE_CAP)
+
+  94           LOAD_CONST              13 (2000)
+               STORE_NAME              11 (SOFT_CAP)
+
+  95           LOAD_CONST              14 (4000)
+               STORE_NAME              12 (HARD_CAP)
+
+  99           LOAD_CONST              15 (30)
+               STORE_NAME              13 (BATCHES_2H)
+
+ 112           LOAD_CONST              16 (1.9)
+               STORE_NAME              14 (_CHARS_PER_TOKEN)
+
+ 116           LOAD_CONST              17 (200)
+               LOAD_CONST              18 (100)
+               LOAD_CONST              19 (('deepseek', 'gemini'))
+               BUILD_CONST_KEY_MAP      2
+               STORE_NAME              15 (TOKENS_PER_CREDIT)
+
+ 117           LOAD_CONST              17 (200)
+               STORE_NAME              16 (_TOKENS_PER_CREDIT_DEFAULT)
+
+ 120           LOAD_BUILD_CLASS
+               PUSH_NULL
+               LOAD_CONST              20 (<code object Warn at 0x0000016DC8EAF880, file "bilisub\user_prompt.py", line 120>)
+               MAKE_FUNCTION
+               LOAD_CONST              21 ('Warn')
+               LOAD_NAME                6 (NamedTuple)
+               CALL                     3
+               STORE_NAME              17 (Warn)
+
+ 128           LOAD_BUILD_CLASS
+               PUSH_NULL
+               LOAD_CONST              22 (<code object Est at 0x0000016DC9128A50, file "bilisub\user_prompt.py", line 128>)
+               MAKE_FUNCTION
+               LOAD_CONST              23 ('Est')
+               LOAD_NAME                6 (NamedTuple)
+               CALL                     3
+               STORE_NAME              18 (Est)
+
+ 144           LOAD_CONST              24 ('\u200b\u200c\u200d\u2060\ufeff⠀\u180e')
+               STORE_NAME              19 (_INVISIBLE)
+
+ 147           LOAD_CONST              73 (('return', 'str'))
+               LOAD_CONST              25 (<code object visible_text at 0x0000016DC90D0FF0, file "bilisub\user_prompt.py", line 147>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              20 (visible_text)
+
+ 161           LOAD_CONST              74 (('',))
+               LOAD_CONST              75 (('genre_key', 'str', 'return', 'str'))
+               LOAD_CONST              26 (<code object user_prompt_for at 0x0000016DC8FB73D0, file "bilisub\user_prompt.py", line 161>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              21 (user_prompt_for)
+
+ 194           LOAD_CONST              27 (1180)
+               STORE_NAME              22 (_WRAPPER_FALLBACK)
+
+ 197           LOAD_CONST              76 (('Vietnamese',))
+               LOAD_CONST              77 (('target_language', 'str', 'return', 'int'))
+               LOAD_CONST              29 (<code object _wrapper_chars at 0x0000016DC8E0BAB0, file "bilisub\user_prompt.py", line 197>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              23 (_wrapper_chars)
+
+ 205           LOAD_NAME               13 (BATCHES_2H)
+               LOAD_CONST              30 ('deepseek')
+
+ 206           LOAD_CONST              28 ('Vietnamese')
+
+ 205           LOAD_CONST              31 (('batches', 'provider', 'target_language'))
+               BUILD_CONST_KEY_MAP      3
+
+ 206           NOP
+
+ 205           NOP
+
+ 206           NOP
+
+ 205           LOAD_CONST              78 (('text', 'str', 'batches', 'int', 'provider', 'str', 'target_language', 'str', 'return', 'Est'))
+               LOAD_CONST              32 (<code object est_extra at 0x0000016DC9320BA0, file "bilisub\user_prompt.py", line 205>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+               STORE_NAME              24 (est_extra)
+
+ 227           LOAD_NAME                3 (re)
+               LOAD_ATTR               50 (compile)
+               PUSH_NULL
+               LOAD_CONST              33 ('\\b(đừng|chớ)\\b')
+               CALL                     1
+               STORE_NAME              26 (_NEG_ALIAS)
+
+ 230           LOAD_CONST              79 (('s', 'str', 'return', 'str'))
+               LOAD_CONST              34 (<code object _norm at 0x0000016DC8F586E0, file "bilisub\user_prompt.py", line 230>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              27 (_norm)
+
+ 247           BUILD_LIST               0
+               LOAD_CONST              35 ((('srt_only', 'do', '(chi\\s*(xuat|tra|in|ghi|dua)\\s*ra[^.\\n]{0,30}(srt|file|phu de))|(xuat\\s*ra\\s*(noi dung\\s*)?(file\\s*)?srt)|(only\\s*(output|return|print)[^.\\n]{0,25}srt)|(output\\s*only[^.\\n]{0,25}srt)|(只(输出|返回|给出)[^。\\n]{0,20}(srt|字幕文件))', "Yêu cầu 'chỉ xuất ra file SRT' — tool KHÔNG nhận SRT, nó đọc JSON. Câu này làm HỎNG CẢ LÔ 80 câu (cả lô mất bản dịch)."), ('keep_timecode', 'do', '(giu\\s*nguyen[^.\\n]{0,40}(timecode|time\\s*code|timestamp|moc thoi gian|thoi gian))|(bao toan[^.\\n]{0,30}(dinh dang|format)\\s*srt)|(keep[^.\\n]{0,30}(timecode|timestamp|time\\s*code)s?\\s*(unchanged|intact|as is)?)|(preserve[^.\\n]{0,30}(timecode|timestamp))|((保留|保持)[^。\\n]{0,15}(时间轴|时间码|时间戳))', "Yêu cầu 'giữ nguyên timecode' — tool KHÔNG gửi timecode cho AI (nó tự giữ). Câu này mời AI bịa ra khung SRT thay vì JSON."), ('return_file', 'do', '(tra\\s*(ve|lai)[^.\\n]{0,25}(file|tep|van ban day du|toan bo file))|(xuat\\s*ra\\s*(mot\\s*)?file)|(return[^.\\n]{0,20}(the\\s*)?(file|whole file|full file))|((返回|输出)[^。\\n]{0,10}文件)', "Yêu cầu 'trả về file' — AI sẽ cố trả một khối văn bản dài thay vì JSON đúng số câu."), ('other_format', 'do', '(xuat[^.\\n]{0,25}(dinh dang|format)[^.\\n]{0,20}(markdown|bang|table|txt|word|csv|xml))|(dat trong[^.\\n]{0,15}(khoi ma|code block))|(output[^.\\n]{0,20}(as|in)\\s*(markdown|a table|plain text|csv|xml))|(输出[^。\\n]{0,12}(markdown|表格|纯文本))', 'Yêu cầu xuất ĐỊNH DẠNG KHÁC (markdown/bảng/txt) — đầu ra bắt buộc là JSON, câu này làm hỏng lô.'), ('no_json', 'do', "(khong\\s*(duoc\\s*)?(dung|su dung|xai|tra ve|tra loi|xuat|in|ghi)\\s*(ra\\s*)?(bang\\s*|dinh dang\\s*|kieu\\s*)?json)|(tuyet doi khong\\s*json)|(do\\s*not|don'?t|never)\\s*(use|return|output|reply\\s*(in|with))\\s*(in\\s*)?json|(不要(使用|用|返回|输出)\\s*json)", 'Yêu cầu KHÔNG dùng JSON — đây là câu phá khung nặng nhất, cả lô 80 câu sẽ mất.'), ('merge_lines', 'do', '(gop\\s*\\d*\\s*(dong|cau|block|hai dong|nhieu dong))|(nhap\\s*(dong|cau))|(tach\\s*(mot\\s*)?(cau|dong)\\s*thanh\\s*(hai|nhieu))|(merge|combine|split)\\s*(the\\s*)?(lines?|entries|subtitles?|sentences?)|((合并|拆分)[^。\\n]{0,10}(行|句|字幕))', 'Yêu cầu GỘP/TÁCH dòng — tool bắt buộc trả ĐÚNG số câu đã gửi; gộp/tách là lô bị vứt.'), ('renumber', 'do', '(danh\\s*so\\s*lai)|(so thu tu[^.\\n]{0,20}(lai|tu\\s*\\d|bat dau tu))|(danh\\s*(so|index)[^.\\n]{0,15}(bat dau|danh lai)?\\s*tu\\s*\\d)|(index[^.\\n]{0,15}bat dau tu\\s*\\d)|(bo\\s*(so\\s*thu tu|index))|(re-?number)|(renumber)|(start\\s*(the\\s*)?index\\s*(from|at)\\s*\\d)|(重新编号)', 'Yêu cầu ĐÁNH SỐ LẠI — index phải giữ NGUYÊN như tool gửi (lô đầu có thể bắt đầu từ số lớn); đánh số lại = tool không ghép được bản dịch về đúng câu.'), ('count_change', 'do', '(them|bot|xoa|luoc bo)\\s*(dong|cau)\\b|(dich\\s*(gop|chung)\\s*ca\\s*doan)|(add|remove|delete|omit)\\s*(some\\s*)?(lines?|entries)', 'Yêu cầu THÊM/BỚT dòng — số câu trả về phải bằng đúng số câu gửi đi.'), ('ignore_above', 'do', '(bo qua|phot lo|khong can theo|khong tuan theo)[^.\\n]{0,30}(huong dan|quy tac|luat|yeu cau)[^.\\n]{0,20}(tren|phia tren|truoc)|(ignore|disregard|override)[^.\\n]{0,25}(above|previous|prior|system)[^.\\n]{0,20}(instruction|rule|prompt)?|(忽略(以上|上面|之前))', "Câu 'bỏ qua hướng dẫn phía trên' — sẽ đánh nhau với luật xưng hô/độ dài mà tool đã vá cho bạn."), ('nothing_else', 'cam', '(tuyet doi khong them[^.\\n]{0,40}(loi chao|giai thich|gi khac|binh luan))|(khong\\s*(them|viet|ghi)\\s*(gi\\s*khac|bat cu\\s*dieu gi|loi\\s*(chao|dan)))|(khong\\s*giai\\s*thich)|(no\\s*(explanation|preamble|greeting|extra text|additional text))|(do\\s*not\\s*add[^.\\n]{0,25}(anything|explanation|comment))|(不要(解释|添加|输出)[^。\\n]{0,15}(任何|其他|额外))', "Câu 'không thêm gì khác / không giải thích' là dấu hiệu bạn đang dán NGUYÊN tài liệu prompt cho ChatGPT. Vô hại một mình, nhưng thường đi kèm luật định dạng phá khung — hãy xoá cả cụm."), ('paste_srt_here', 'cam', '(dan\\s*(toan bo\\s*)?(noi dung\\s*)?(file\\s*)?srt[^.\\n]{0,20}(vao|day|ben duoi))|(\\[dan noi dung file srt[^\\]]*\\])|(paste\\s*(the\\s*)?(whole\\s*)?srt)', "Còn chỗ '[DÁN NỘI DUNG FILE SRT VÀO ĐÂY]' — đó là phần dành cho ChatGPT, tool tự đưa câu vào. Hãy xoá cả mục này."), ('json_schema', 'cam', '("items"|"index"|"translated"|\\{\\s*"items)', 'Prompt của bạn có nhắc khoá JSON ("items"/"index"/"translated") — dễ làm AI đổi sang khuôn JSON của bạn thay vì khuôn của tool. Bỏ phần ví dụ JSON đi.'), ('code_fence', 'cam', '```', 'Có khối mã ``` trong prompt — AI dễ bắt chước trả lời trong khối mã. Nên bỏ.'), ('empty_items', 'do', '(de trong|bo trong|khong dich)[^.\\n]{0,25}(ban dich|phan dich|truong translated)|(ban dich[^.\\n]{0,20}(de trong|bo trong))|(chep (lai )?(y )?nguyen[^.\\n]{0,30}(cau goc|tieng trung|ban goc|nguyen ban))|(giu nguyen[^.\\n]{0,15}(cau|van ban)[^.\\n]{0,10}(goc|tieng trung))|(\\"items\\"\\s*:\\s*\\[\\s*\\])|(mang rong)', 'Yêu cầu ĐỂ TRỐNG bản dịch / chép nguyên câu gốc — cả lô sẽ về rỗng hoặc còn nguyên chữ Trung. Đây là câu giết lô, hãy xoá.'), ('ignore_below', 'do', '(bo qua|phot lo|khong can theo|khong tuan theo)[^.\\n]{0,30}(huong dan|quy tac|luat|yeu cau)[^.\\n]{0,25}(phia sau|ben duoi|sau day|he thong)|(bo qua|phot lo)[^.\\n]{0,20}(moi )?luat he thong|(ignore|disregard)[^.\\n]{0,25}(below|following|system)[^.\\n]{0,20}(instruction|rule)?|(忽略(以下|下面|系统))', "Câu 'bỏ qua hướng dẫn phía sau / mọi luật hệ thống' — nhắm thẳng vào chốt định dạng của tool nằm ngay dưới prompt của bạn. Hãy xoá."), ('cpl_rule', 'cam', '(toi da|khong qua|gioi han|khong vuot qua)[^.\\n]{0,20}\\d{2}\\s*(-|–|den)?\\s*\\d{0,2}\\s*(ky tu|chu cai)|(ky tu\\s*/\\s*dong)|(\\bcpl\\b)|(\\d{2}\\s*ky tu\\s*(moi|tren|mot)\\s*dong)', 'Prompt của bạn ép SỐ KÝ TỰ MỖI DÒNG. Tool đã tự tính giới hạn độ dài theo THỜI GIAN THẬT của từng câu (chính xác hơn con số cứng); ép thêm luật này dễ làm câu dịch dài quá ngân sách ⇒ giọng đọc bị kéo giãn. Nên bỏ.'), ('line_break', 'cam', '(khong qua|toi da|gioi han)\\s*\\d\\s*dong|(moi|mot)\\s*(block|khoi|cau)[^.\\n]{0,15}\\d\\s*dong|(ngat|xuong|chia)\\s*(thanh\\s*)?\\d\\s*dong', 'Prompt của bạn nói về SỐ DÒNG mỗi block — tool trả về MỘT chuỗi cho mỗi câu, không có khái niệm block 2 dòng; câu này mời AI chèn xuống dòng vào giữa bản dịch.')))
+               LIST_EXTEND              1
+               STORE_NAME              28 (_RULES)
+               LOAD_CONST              36 ('list[tuple[str, str, str, str]]')
+               LOAD_NAME               29 (__annotations__)
+               LOAD_CONST              37 ('_RULES')
+               STORE_SUBSCR
+
+ 394           LOAD_NAME               28 (_RULES)
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      0 (c)
+               LOAD_FAST_AND_CLEAR      1 (lv)
+               LOAD_FAST_AND_CLEAR      2 (rx)
+               LOAD_FAST_AND_CLEAR      3 (m)
+               SWAP                     5
+       L1:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L2:     FOR_ITER                26 (to L3)
+               UNPACK_SEQUENCE          4
+               STORE_FAST_STORE_FAST    1 (c, lv)
+               STORE_FAST_STORE_FAST   35 (rx, m)
+               LOAD_FAST_LOAD_FAST      1 (c, lv)
+               LOAD_NAME                3 (re)
+               LOAD_ATTR               51 (compile + NULL|self)
+               LOAD_FAST                2 (rx)
+               CALL                     1
+               LOAD_FAST                3 (m)
+               BUILD_TUPLE              4
+               LIST_APPEND              2
+               JUMP_BACKWARD           28 (to L2)
+       L3:     END_FOR
+               POP_TOP
+       L4:     SWAP                     5
+               STORE_FAST               3 (m)
+               STORE_FAST               2 (rx)
+               STORE_FAST               1 (lv)
+               STORE_FAST               0 (c)
+               STORE_NAME              30 (_COMPILED)
+
+ 402           LOAD_NAME               31 (frozenset)
+               PUSH_NULL
+               BUILD_SET                0
+               LOAD_CONST              38 (frozenset({'count_change', 'merge_lines', 'other_format', 'ignore_above', 'srt_only', 'keep_timecode', 'empty_items', 'ignore_below', 'line_break', 'cpl_rule', 'renumber', 'return_file'}))
+               SET_UPDATE               1
+               CALL                     1
+               STORE_NAME              32 (_NEG_SKIP_CODES)
+
+ 407           LOAD_CONST              39 (40)
+               STORE_NAME              33 (_NEG_WINDOW)
+
+ 411           LOAD_CONST              40 (20000)
+               STORE_NAME              34 (_SCAN_HEAD)
+
+ 412           LOAD_CONST              40 (20000)
+               STORE_NAME              35 (_SCAN_TAIL)
+
+ 415           LOAD_CONST              80 (('rx', "'re.Pattern[str]'", 'hay', 'str', 'skip_neg', 'bool'))
+               LOAD_CONST              41 (<code object _search_live at 0x0000016DC8EC5B60, file "bilisub\user_prompt.py", line 415>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              36 (_search_live)
+
+ 436           LOAD_CONST              42 (('tu tien', 'tien hiep', 'kiem hiep', 'co trang', 'dan dien', 'bon toa', 'kim dan', 'linh khi', 'ca ca', 'ty ty', 'nuong tu', 'su phu', 'han viet', 'co phong', 'tai ha', 'ban dao', 'lao phu'))
+               STORE_NAME              37 (_CO_TRANG_WORDS)
+
+ 439           LOAD_CONST              43 (('dien thoai', 'cong ty', 'internet', 'gen z', 'tren mang', 'slang', 'tu ngu xu huong'))
+               STORE_NAME              38 (_HIEN_DAI_WORDS)
+
+ 441           LOAD_CONST              44 (('văn phòng', 'sếp'))
+               STORE_NAME              39 (_MODERN_STRICT)
+
+ 442           LOAD_NAME                3 (re)
+               LOAD_ATTR               50 (compile)
+               PUSH_NULL
+               LOAD_CONST              45 ("(cam|khong|tranh|khong duoc|tuyet doi khong|avoid|never|don'?t|不要|禁止)[^.!?;\\n。！？；]{0,40}$")
+               CALL                     1
+               STORE_NAME              40 (_NEG)
+
+ 450           LOAD_CONST              46 (('tu_tien', 'kiem_hiep', 'xuyen_khong', 'he_thong', 'cung_dau', 'linh_di', 'dien_van', 'huyen_huyen'))
+               STORE_NAME              41 (_ANCIENT_KEYS)
+
+ 452           LOAD_CONST              47 (('do_thi', 'ngon_tinh', 'tan_the', 'vlog', 'cam_trai', 'dong_vat', 'am_thuc', 'pha_an', 'thanh_xuan', 'quan_su'))
+               STORE_NAME              42 (_MODERN_KEYS)
+
+ 455           LOAD_CONST              48 (('co trang', 'tu tien', 'tien hiep', 'kiem hiep', 'xuyen khong', 'trong sinh', 'hien dai', 'do thi', 'ngon tinh', 'tan the', 'sinh ton', 'vlog', 'am thuc', 'drama', 'hai huoc'))
+               STORE_NAME              43 (_GENRE_FAMILIES)
+
+ 458           LOAD_CONST              49 (3)
+               STORE_NAME              44 (_MATRIX_MIN_FAMILIES)
+
+ 460           LOAD_NAME                3 (re)
+               LOAD_ATTR               50 (compile)
+               PUSH_NULL
+               LOAD_CONST              50 ('[\\u4e00-\\u9fff]')
+               CALL                     1
+               STORE_NAME              45 (_CJK)
+
+ 461           LOAD_NAME                3 (re)
+               LOAD_ATTR               50 (compile)
+               PUSH_NULL
+               LOAD_CONST              51 ('[ăâđêôơưàáảãạằắẳẵặầấẩẫậèéẻẽẹềếểễệìíỉĩịòóỏõọồốổỗộờớởỡợùúủũụừứửữựỳýỷỹỵ]')
+
+ 462           LOAD_NAME                3 (re)
+               LOAD_ATTR               92 (IGNORECASE)
+
+ 461           CALL                     2
+               STORE_NAME              47 (_VI_MARK)
+
+ 465           LOAD_CONST              81 (('words', 'tuple', 'hay', 'str', 'return', 'list[str]'))
+               LOAD_CONST              52 (<code object _hits at 0x0000016DC8EC5990, file "bilisub\user_prompt.py", line 465>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              48 (_hits)
+
+ 478           LOAD_CONST               7 ('')
+
+ 479           LOAD_CONST               8 ('vi')
+
+ 478           LOAD_CONST              53 (('genre_key', 'target_language'))
+               BUILD_CONST_KEY_MAP      2
+
+ 479           NOP
+
+ 478           NOP
+
+ 479           NOP
+
+ 478           LOAD_CONST              82 (('text', 'str', 'genre_key', 'str', 'target_language', 'str', 'return', 'list[Warn]'))
+               LOAD_CONST              54 (<code object scan_risky_prompt at 0x0000016DC8F5A5C0, file "bilisub\user_prompt.py", line 478>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+               STORE_NAME              49 (scan_risky_prompt)
+
+ 568           LOAD_CONST              83 (('text', 'str', 'return', 'list[Warn]'))
+               LOAD_CONST              55 (<code object scan_length at 0x0000016DC90E5E90, file "bilisub\user_prompt.py", line 568>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              50 (scan_length)
+
+ 588           LOAD_CONST              84 (('return', 'list[str]'))
+               LOAD_CONST              56 (<code object warn_lines at 0x0000016DC90DE120, file "bilisub\user_prompt.py", line 588>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              51 (warn_lines)
+
+ 620           LOAD_CONST              57 ('VAI TRÒ: Bạn là biên kịch / đạo diễn lồng tiếng chuyên nghiệp. Việt hoá lời thoại sao cho khán giả Việt nghe một lần là hiểu ngay, không phải nghĩ, câu chữ trôi chảy và đi vào lòng người. Biến câu dịch thô cứng thành lời nói tự nhiên, uyển chuyển, có nhịp của người Việt đời thực.\n\nĐỌC CẢ CỤM RỒI MỚI DỊCH: trước khi dịch một câu, đọc luôn 4-5 câu liền kề quanh nó để nắm:\n1. Ai đang nói với ai (nam - nữ, thầy - trò, kẻ thù - đồng minh, cha mẹ - con cái).\n2. Cách xưng hô đúng địa vị và quan hệ, chốt xong thì giữ cố định (anh - em, ta - ngươi, tôi - cô, mày - tao).\n3. Cảm xúc nhân vật lúc đó: mừng rỡ, đau khổ, mỉa mai, ngột ngạt hay giận dữ.\n4. Mạch thoại: câu sau kế thừa ngữ cảnh câu trước, hội thoại liên tục, không rời rạc.\n\nVĂN PHONG:\n- Dễ hiểu tuyệt đối, nghe phát thủng ngay. Tránh từ tối nghĩa, viết tắt, từ địa phương kén người nghe, từ Hán-Việt cổ hủ. ĐÚNG: "Đừng lo, chuyện này cứ để tôi lo." SAI: "Mạc lo, sự này y nhiên giao cho bồi thần."\n- Liền mạch và đưa đẩy: hai câu liền kề phải bắt vào nhau như hội thoại thật. ĐÚNG: "Tối nay đi ăn gì không?" / "Ăn gì cũng được, tùy anh."\n- Nhất quán xưng hô 100%: A gọi B là "anh" thì từ đầu tới cuối đều "anh", không lúc em lúc anh.\n- Đa dạng từ vựng: đừng lặp mãi một cụm. ĐÚNG: "Dùng bữa thôi." / "Ăn lẹ còn đi làm." SAI: "Ăn cơm thôi." / "Đang ăn cơm hả?" / "Sắp ăn cơm chưa?"\n- Khẩu ngữ, cho phép lược chủ ngữ, đừng ép cấu trúc thô cứng. ĐÚNG: "Đi ăn không?" / "Ăn chứ!" SAI: "Bạn có đi ăn không?" / "Tôi đi ăn chứ!"\n- Thành ngữ và tiếng lóng: dịch thoát ý sang cách nói tương đương của người Việt, tuyệt đối không dịch từng chữ. 吃醋 -> "ghen tị muốn chết" (không phải "uống dấm rồi à"); "piece of cake" -> "dễ như ăn kẹo" (không phải "một miếng bánh"). Chỉ dùng khẩu ngữ đã phổ biến, đừng bịa lóng lạ.\n- Nhịp cho giọng đọc: đừng để câu kết thúc bằng từ nối lơ lửng (của, và, hay, nhưng, bị, được, thì, là, mà, ở, trong, với, để, vì, cho). ĐÚNG: "... món quà anh dành tặng cho em." SAI: "... món quà anh dành tặng cho"\n- Ưu tiên NGẮN GỌN: khi luật văn phong đá nhau với độ dài cho phép của câu, chọn phương án ngắn hơn. Câu đã kịch độ dài thì bỏ hết từ đệm, chỉ câu còn dư mới thêm từ cảm thán cho tự nhiên.\n\nTHEO THỂ LOẠI (chỉ áp phần đúng với phim đang dịch, đừng áp tràn):\n- Cổ trang / tu tiên: trang trọng, cổ phong; KHÔNG dùng tiếng lóng hiện đại; xưng hô bổn tọa, đạo hữu, vương gia, bệ hạ, tại hạ, huynh - muội.\n- Xuyên không / hài: pha chút hiện đại, dí dỏm, hóm hỉnh; tiếng lóng dùng có chọn lọc, hợp cảnh.\n- Hiện đại / drama: sắc sảo, gãy gọn, tự nhiên; khuyến khích khẩu ngữ đời thường của người Việt; tôi - cậu, anh - em, mày - tao, sếp - nhân viên.\n- Sinh tồn / tận thế: căng thẳng, dồn dập, gấp gáp; KHÔNG đùa cợt, không tiếng lóng gây loãng; tao - mày, ông - tôi.')
+               STORE_NAME              52 (MAU_TONG_QUAT)
+
+ 645           LOAD_CONST              58 ('VAI TRÒ: Bạn là dịch giả cao cấp dòng phim Tiên Hiệp / Tu Tiên / Huyền Huyễn, đặc biệt là mạch Cẩu Đạo, Sinh Tồn, Ẩn Nhẫn, Trọng Sinh. Văn phong Cổ Phong: đanh thép, ngông nghễ mà vẫn mượt mà, sâu lắng như bản dịch audiobook tiên hiệp đỉnh cao.\n\nXƯNG HÔ (chọn theo VAI và TÌNH HUỐNG, không phải tra bảng một-đổi-một):\n- Tự sự / độc thoại nội tâm của nhân vật chính: xưng TA, không dùng "tôi" (nghe hiện đại).\n- Trước kẻ thù, kiếp tu, lúc ra oai: Ngươi - Ta, bổn tọa (本座), bổn tôn (本尊), lão phu (老夫).\n- Lúc nhún nhường, giấu tu vi: tại hạ (在下), bần đạo (贫道), xưng vãn bối trước tiền bối, xưng đệ với sư huynh, gọi chung là "các vị đạo hữu".\n- Sư đồ và môn phái: sư tôn (师尊) / sư phụ (师父) - đồ nhi / đệ tử; sư huynh, sư đệ, sư tỷ, sư muội; chưởng môn (掌门), trưởng lão, tiền bối (前辈), hậu bối (后辈), đại hiệp (大侠), thiếu hiệp (少侠). Nếu có bối cảnh hoàng tộc: 王爷 -> vương gia, 陛下 -> bệ hạ, 太子 -> thái tử.\n- Ngôi hai và ngôi ba: 你 -> ngươi, 你们 -> các ngươi, 他 -> hắn (hoặc y), 她 -> nàng (hoặc cô ta). Giữ đúng giới tính nhân vật, không dùng chung một đại từ cho cả nam lẫn nữ.\n- Không dùng từ ngữ hiện đại: điện thoại, xe hơi, công ty, giám đốc, ok, sorry, xài. Chữ "vô" chỉ giữ khi là từ Hán-Việt (vô lý, vô dụng, vô sỉ, vô tình, vô địch); còn "vô" theo nghĩa "đi vào" thì viết "vào".\n\nTHUẬT NGỮ CỐ ĐỊNH:\n- Cảnh giới: luyện khí (sơ kỳ / trung kỳ / hậu kỳ / đỉnh phong), trúc cơ, kim đan, nguyên anh, bình cảnh (đột phá bình cảnh), độ kiếp, phi thăng.\n- Thuật pháp và thể chất: võ công, nội lực, chân khí, linh lực, khinh công, kinh mạch, đan điền, thần thức, ngũ hành ngụy linh căn, liễm tức quyết (thuật giấu tu vi), hỏa cầu thuật.\n- Đan dược và vật phẩm: ngưng khí hoàn, tụ khí tán, phế đan, độc đan, tiên đan, linh dược, pháp bảo, phi kiếm, phù lục, túi trữ vật, hóa thi thủy, linh thạch.\n- Xã hội và tổ chức: giang hồ, võ lâm, tán tu, kiếp tu, linh nông, phường thị, quỷ thị, môn phái, trận pháp, kết giới, phong ấn.\n- Hành động tu luyện: 吸收月华 -> "thổ nạp nguyệt hoa" (đừng dịch trần là "hấp thụ ánh trăng"), đột phá cảnh giới.\n- Tên người và chiêu thức phiên âm Hán-Việt chuẩn: 令狐冲 -> Lệnh Hồ Xung, 降龙十八掌 -> Hàng Long Thập Bát Chưởng.\n\nSỬA LỖI NGHE NHẦM: bản tiếng Trung do máy nghe ra nên hay sai từ đồng âm, hãy tự sửa theo ngữ cảnh tu tiên trước khi dịch:\n筑基修饰 / 住机器修饰 -> 筑基修士 (tu sĩ Trúc Cơ) · 凝奇丸 -> 凝气丸 (ngưng khí hoàn) · 委灵根 -> 伪灵根 (ngụy linh căn) · 凌玉决 -> 灵雨诀 (Linh Vũ Quyết) · 聚气伞 -> 聚气散 (tụ khí tán) · 飞金飞木 -> 非金非木 (không phải kim cũng chẳng phải mộc).\nBốn cặp sau CHỈ sửa khi ngữ cảnh đúng là tu luyện, còn đúng nghĩa gốc thì giữ nguyên: 食指 -> 实质 (nhưng 食指 còn là "ngón trỏ") · 废蛋 -> 废丹 (nhưng 废蛋 còn là câu chửi "đồ vô dụng") · 零农 -> 灵农 (nhưng 零 đứng trước số là "linh/lẻ") · 化湿水 -> 化尸水 (nhưng 化湿 là thuật ngữ Đông y có thật).\n\nDỊCH THOÁT Ý CHO ĐẮT:\n品字形 -> "thế chân vạc" · 跌入凡尘 -> "rơi trở lại hồng trần" · 笨鸟先飞 -> "chim chậm bay trước" · 泥鳅 -> "con cá chạch" · 懒驴打滚 -> "thế lừa lười lăn mình" · 杀人夺宝 -> "giết người đoạt bảo" · 狗屎运 -> "vận cứt chó" (muốn nhẹ hơn thì "số hên chó ngáp").\n\nTHOẠI VÀ GIỌNG ĐỌC:\n- Cảnh giao chiến giữ nguyên cường độ, mạnh và dứt khoát: 住手! -> Dừng tay! · 找死! -> Tìm chết! · 受死吧! -> Chịu chết đi!\n- Cắt bỏ các từ đệm thừa của tiếng Trung (啊, 吧, 呢, 呀, 哼) cho thoại cô đọng, sắc nét; nhưng đừng thay bằng khẩu ngữ phim thời nay, phá hết cổ phong.\n- Câu văn gãy gọn, giàu hình ảnh: đanh thép trong cảnh đánh nhau, trầm ổn và mưu trí trong cảnh độc thoại tính kế.\n- Không gọi cha là "bố" (máy đọc dễ vỡ giọng) mà dùng phụ thân hoặc cha, mẹ ruột là mẫu thân hoặc mẹ. Các từ khác có âm "bố" (bố trí, công bố, bố cáo, bố thí) thì giữ nguyên.')
+               STORE_NAME              53 (MAU_TU_TIEN)
+
+ 680           LOAD_CONST              59 ('📜 Việt hoá thoại — bản tổng quát')
+
+ 681           LOAD_CONST              60 ('Thoại tự nhiên như người Việt nói: đọc cả cụm, chốt xưng hô, thành ngữ thoát ý, nhịp mượt cho giọng đọc.')
+
+ 683           LOAD_NAME               52 (MAU_TONG_QUAT)
+
+ 684           BUILD_LIST               0
+               LOAD_CONST              61 (('do_thi', 'ngon_tinh', 'xuyen_khong', 'tan_the'))
+               LIST_EXTEND              1
+
+ 679           LOAD_CONST              62 (('ten', 'mo_ta', 'noi_dung', 'the_loai'))
+               BUILD_CONST_KEY_MAP      4
+
+ 687           LOAD_CONST              63 ('🗡️ Cổ phong tu tiên — bản chuyên sâu')
+
+ 688           LOAD_CONST              64 ('Văn phong tiên hiệp đanh thép: bảng cảnh giới - đan dược, xưng hô phân tầng, sửa lỗi nghe nhầm, thành ngữ cổ phong.')
+
+ 690           LOAD_NAME               53 (MAU_TU_TIEN)
+
+ 691           LOAD_CONST              65 ('tu_tien')
+               LOAD_CONST              66 ('kiem_hiep')
+               BUILD_LIST               2
+
+ 686           LOAD_CONST              62 (('ten', 'mo_ta', 'noi_dung', 'the_loai'))
+               BUILD_CONST_KEY_MAP      4
+
+ 678           LOAD_CONST              67 (('tong_quat', 'tu_tien'))
+               BUILD_CONST_KEY_MAP      2
+               STORE_NAME              54 (MAU)
+               LOAD_CONST              68 ('dict[str, dict]')
+               LOAD_NAME               29 (__annotations__)
+               LOAD_CONST              69 ('MAU')
+               STORE_SUBSCR
+
+ 696           LOAD_CONST              85 (('return', 'list[tuple[str, str, str]]'))
+               LOAD_CONST              70 (<code object danh_sach_mau at 0x0000016DC8E07730, file "bilisub\user_prompt.py", line 696>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              55 (danh_sach_mau)
+
+ 701           LOAD_CONST              86 (('key', 'str', 'return', 'str'))
+               LOAD_CONST              71 (<code object lay_mau at 0x0000016DC8EA3800, file "bilisub\user_prompt.py", line 701>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              56 (lay_mau)
+               RETURN_CONST             3 (None)
+
+  --   L5:     SWAP                     2
+               POP_TOP
+
+ 394           SWAP                     5
+               STORE_FAST               3 (m)
+               STORE_FAST               2 (rx)
+               STORE_FAST               1 (lv)
+               STORE_FAST               0 (c)
+               RERAISE                  0
+ExceptionTable:
+  L1 to L4 -> L5 [5]
+
+Disassembly of <code object doc_prompt_tu_file at 0x0000016DC8EC34B0, file "bilisub\user_prompt.py", line 66>:
+  66           RESUME                   0
+
+  75           NOP
+
+  76   L1:     LOAD_CONST               1 (1)
+               LOAD_CONST               2 (('doc_prompt_tu_file',))
+               IMPORT_NAME              0 (doc_file_prompt)
+               IMPORT_FROM              1 (doc_prompt_tu_file)
+               STORE_FAST               4 (_f)
+               POP_TOP
+
+  80   L2:     LOAD_FAST                4 (_f)
+               PUSH_NULL
+               LOAD_FAST_LOAD_FAST      1 (path, genre_key)
+               LOAD_FAST_LOAD_FAST     35 (target_language, soi)
+               LOAD_CONST               7 (('genre_key', 'target_language', 'soi'))
+               CALL_KW                  4
+               RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+  77           LOAD_GLOBAL              4 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       39 (to L8)
+               STORE_FAST               5 (e)
+
+  78   L4:     LOAD_CONST               3 ('')
+               LOAD_CONST               4 ('🔴 Không nạp được bộ đọc file (')
+               LOAD_FAST                5 (e)
+               LOAD_ATTR                6 (__class__)
+               LOAD_ATTR                8 (__name__)
+               FORMAT_SIMPLE
+               LOAD_CONST               5 ('). Hãy dán chữ thẳng vào ô bên dưới.')
+               BUILD_STRING             3
+               BUILD_LIST               1
+               BUILD_TUPLE              2
+       L5:     SWAP                     2
+       L6:     POP_EXCEPT
+               LOAD_CONST               6 (None)
+               STORE_FAST               5 (e)
+               DELETE_FAST              5 (e)
+               RETURN_VALUE
+
+  --   L7:     LOAD_CONST               6 (None)
+               STORE_FAST               5 (e)
+               DELETE_FAST              5 (e)
+               RERAISE                  1
+
+  77   L8:     RERAISE                  0
+
+  --   L9:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L9 [1] lasti
+  L4 to L5 -> L7 [1] lasti
+  L5 to L6 -> L9 [1] lasti
+  L7 to L9 -> L9 [1] lasti
+
+Disassembly of <code object Warn at 0x0000016DC8EAF880, file "bilisub\user_prompt.py", line 120>:
+120           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('Warn')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (120)
+              STORE_NAME               3 (__firstlineno__)
+              SETUP_ANNOTATIONS
+
+121           LOAD_CONST               2 ('Một cảnh báo. Test bám vào ``code`` (mã ổn định), KHÔNG bám câu chữ.')
+              STORE_NAME               4 (__doc__)
+
+122           LOAD_CONST               3 ('str')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               4 ('code')
+              STORE_SUBSCR
+
+123           LOAD_CONST               3 ('str')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               5 ('level')
+              STORE_SUBSCR
+
+124           LOAD_CONST               3 ('str')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               6 ('msg')
+              STORE_SUBSCR
+
+125           LOAD_CONST               3 ('str')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               7 ('hit')
+              STORE_SUBSCR
+              LOAD_CONST               8 (())
+              STORE_NAME               6 (__static_attributes__)
+              RETURN_CONST             9 (None)
+
+Disassembly of <code object Est at 0x0000016DC9128A50, file "bilisub\user_prompt.py", line 128>:
+128           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('Est')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (128)
+              STORE_NAME               3 (__firstlineno__)
+              SETUP_ANNOTATIONS
+
+129           LOAD_CONST               2 ('Ước tính chi phí phần prompt riêng.')
+              STORE_NAME               4 (__doc__)
+
+130           LOAD_CONST               3 ('int')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               4 ('chars')
+              STORE_SUBSCR
+
+131           LOAD_CONST               3 ('int')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               5 ('tokens')
+              STORE_SUBSCR
+
+132           LOAD_CONST               3 ('int')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               6 ('credits')
+              STORE_SUBSCR
+
+133           LOAD_CONST               3 ('int')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               7 ('batches')
+              STORE_SUBSCR
+
+134           LOAD_CONST               8 ('str')
+              LOAD_NAME                5 (__annotations__)
+              LOAD_CONST               9 ('provider')
+              STORE_SUBSCR
+              LOAD_CONST              10 (())
+              STORE_NAME               6 (__static_attributes__)
+              RETURN_CONST            11 (None)
+
+Disassembly of <code object visible_text at 0x0000016DC90D0FF0, file "bilisub\user_prompt.py", line 147>:
+ 147            RESUME                   0
+
+ 154            LOAD_GLOBAL              1 (str + NULL)
+                LOAD_FAST                0 (s)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                LOAD_CONST               1 ('')
+        L1:     CALL                     1
+                STORE_FAST               1 (t)
+
+ 155            LOAD_FAST                1 (t)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L2)
+
+ 156            RETURN_CONST             1 ('')
+
+ 157    L2:     LOAD_FAST                1 (t)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      2 (c)
+                SWAP                     2
+        L3:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L4:     FOR_ITER                44 (to L9)
+                STORE_FAST_LOAD_FAST    34 (c, c)
+                LOAD_GLOBAL              2 (_INVISIBLE)
+                CONTAINS_OP              1
+        L5:     POP_JUMP_IF_TRUE         2 (to L6)
+                JUMP_BACKWARD           14 (to L4)
+        L6:     LOAD_GLOBAL              4 (unicodedata)
+                LOAD_ATTR                6 (category)
+                PUSH_NULL
+                LOAD_FAST                2 (c)
+                CALL                     1
+                LOAD_CONST               2 ('Cf')
+                COMPARE_OP             119 (bool(!=))
+        L7:     POP_JUMP_IF_TRUE         2 (to L8)
+                JUMP_BACKWARD           42 (to L4)
+        L8:     LOAD_FAST                2 (c)
+                LIST_APPEND              2
+                JUMP_BACKWARD           46 (to L4)
+        L9:     END_FOR
+                POP_TOP
+       L10:     STORE_FAST               3 (out)
+                STORE_FAST               2 (c)
+
+ 158            LOAD_CONST               1 ('')
+                LOAD_ATTR                9 (join + NULL|self)
+                LOAD_FAST                3 (out)
+                CALL                     1
+                LOAD_ATTR               11 (strip + NULL|self)
+                CALL                     0
+                RETURN_VALUE
+
+  --   L11:     SWAP                     2
+                POP_TOP
+
+ 157            SWAP                     2
+                STORE_FAST               2 (c)
+                RERAISE                  0
+ExceptionTable:
+  L3 to L5 -> L11 [2]
+  L6 to L7 -> L11 [2]
+  L8 to L10 -> L11 [2]
+
+Disassembly of <code object user_prompt_for at 0x0000016DC8FB73D0, file "bilisub\user_prompt.py", line 161>:
+ 161            RESUME                   0
+
+ 171            NOP
+
+ 172    L1:     LOAD_GLOBAL              1 (str + NULL)
+                LOAD_GLOBAL              3 (getattr + NULL)
+                LOAD_FAST                0 (settings)
+                LOAD_CONST               1 ('user_prompt_scope')
+                LOAD_CONST               2 ('genre')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                LOAD_CONST               2 ('genre')
+        L2:     CALL                     1
+                LOAD_ATTR                5 (strip + NULL|self)
+                CALL                     0
+                LOAD_ATTR                7 (lower + NULL|self)
+                CALL                     0
+                STORE_FAST               2 (scope)
+
+ 173            LOAD_FAST                2 (scope)
+                LOAD_CONST               3 ('all')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       32 (to L4)
+
+ 174            LOAD_GLOBAL              1 (str + NULL)
+                LOAD_GLOBAL              3 (getattr + NULL)
+                LOAD_FAST                0 (settings)
+                LOAD_CONST               4 ('user_prompt_all')
+                LOAD_CONST               5 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L3)
+                POP_TOP
+                LOAD_CONST               5 ('')
+        L3:     CALL                     1
+                STORE_FAST               3 (raw)
+                JUMP_FORWARD            89 (to L9)
+
+ 176    L4:     LOAD_GLOBAL              3 (getattr + NULL)
+                LOAD_FAST                0 (settings)
+                LOAD_CONST               6 ('user_prompt_by_genre')
+                LOAD_CONST               7 (None)
+                CALL                     3
+                STORE_FAST               4 (d)
+
+ 177            LOAD_GLOBAL              9 (isinstance + NULL)
+                LOAD_FAST                4 (d)
+                LOAD_GLOBAL             10 (dict)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L6)
+
+ 178    L5:     RETURN_CONST             5 ('')
+
+ 179    L6:     LOAD_GLOBAL              1 (str + NULL)
+                LOAD_FAST                4 (d)
+                LOAD_ATTR               13 (get + NULL|self)
+                LOAD_GLOBAL              1 (str + NULL)
+                LOAD_FAST                1 (genre_key)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L7)
+                POP_TOP
+                LOAD_CONST               5 ('')
+        L7:     CALL                     1
+                LOAD_CONST               5 ('')
+                CALL                     2
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L8)
+                POP_TOP
+                LOAD_CONST               5 ('')
+        L8:     CALL                     1
+                STORE_FAST               3 (raw)
+
+ 182    L9:     LOAD_GLOBAL             15 (visible_text + NULL)
+                LOAD_FAST                3 (raw)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE       16 (to L11)
+                LOAD_FAST                3 (raw)
+                LOAD_ATTR                5 (strip + NULL|self)
+                CALL                     0
+       L10:     RETURN_VALUE
+       L11:     LOAD_CONST               5 ('')
+       L12:     RETURN_VALUE
+
+  --   L13:     PUSH_EXC_INFO
+
+ 183            LOAD_GLOBAL             16 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L15)
+                POP_TOP
+
+ 184   L14:     POP_EXCEPT
+                RETURN_CONST             5 ('')
+
+ 183   L15:     RERAISE                  0
+
+  --   L16:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L5 -> L13 [0]
+  L6 to L10 -> L13 [0]
+  L11 to L12 -> L13 [0]
+  L13 to L14 -> L16 [1] lasti
+  L15 to L16 -> L16 [1] lasti
+
+Disassembly of <code object _wrapper_chars at 0x0000016DC8E0BAB0, file "bilisub\user_prompt.py", line 197>:
+ 197           RESUME                   0
+
+ 198           NOP
+
+ 199   L1:     LOAD_CONST               1 (1)
+               LOAD_CONST               2 (('prompts',))
+               IMPORT_NAME              0 (translate)
+               IMPORT_FROM              1 (prompts)
+               STORE_FAST               1 (_p)
+               POP_TOP
+
+ 200           LOAD_GLOBAL              5 (len + NULL)
+               LOAD_FAST                1 (_p)
+               LOAD_ATTR                7 (user_style_block + NULL|self)
+               LOAD_CONST               3 ('x')
+               CALL                     1
+               CALL                     1
+               LOAD_CONST               1 (1)
+               BINARY_OP               10 (-)
+               LOAD_GLOBAL              5 (len + NULL)
+               LOAD_FAST                1 (_p)
+               LOAD_ATTR                9 (user_style_tail + NULL|self)
+               LOAD_FAST                0 (target_language)
+               CALL                     1
+               CALL                     1
+               BINARY_OP                0 (+)
+       L2:     RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+ 201           LOAD_GLOBAL             10 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        9 (to L5)
+               POP_TOP
+
+ 202           LOAD_GLOBAL             12 (_WRAPPER_FALLBACK)
+               SWAP                     2
+       L4:     POP_EXCEPT
+               RETURN_VALUE
+
+ 201   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object est_extra at 0x0000016DC9320BA0, file "bilisub\user_prompt.py", line 205>:
+205           RESUME                   0
+
+208           LOAD_FAST                0 (text)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     LOAD_ATTR                1 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               4 (up)
+
+209           LOAD_GLOBAL              3 (len + NULL)
+              LOAD_FAST                4 (up)
+              CALL                     1
+              STORE_FAST               5 (n)
+
+210           LOAD_FAST                5 (n)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        66 (to L4)
+
+211           LOAD_GLOBAL              5 (Est + NULL)
+              LOAD_CONST               2 (0)
+              LOAD_CONST               2 (0)
+              LOAD_CONST               2 (0)
+              LOAD_GLOBAL              7 (max + NULL)
+              LOAD_CONST               3 (1)
+              LOAD_GLOBAL              9 (int + NULL)
+              LOAD_FAST                1 (batches)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L2)
+              POP_TOP
+              LOAD_CONST               3 (1)
+      L2:     CALL                     1
+              CALL                     2
+              LOAD_FAST                2 (provider)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+              POP_TOP
+              LOAD_CONST               4 ('deepseek')
+      L3:     LOAD_ATTR               11 (lower + NULL|self)
+              CALL                     0
+              CALL                     5
+              RETURN_VALUE
+
+212   L4:     LOAD_GLOBAL              7 (max + NULL)
+              LOAD_CONST               3 (1)
+              LOAD_GLOBAL              9 (int + NULL)
+              LOAD_FAST                1 (batches)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L5)
+              POP_TOP
+              LOAD_CONST               3 (1)
+      L5:     CALL                     1
+              CALL                     2
+              STORE_FAST               6 (b)
+
+213           LOAD_FAST                2 (provider)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L6)
+              POP_TOP
+              LOAD_CONST               4 ('deepseek')
+      L6:     LOAD_ATTR                1 (strip + NULL|self)
+              CALL                     0
+              LOAD_ATTR               11 (lower + NULL|self)
+              CALL                     0
+              STORE_FAST               7 (prov)
+
+214           LOAD_GLOBAL             12 (TOKENS_PER_CREDIT)
+              LOAD_ATTR               15 (get + NULL|self)
+              LOAD_FAST                7 (prov)
+              LOAD_GLOBAL             16 (_TOKENS_PER_CREDIT_DEFAULT)
+              CALL                     2
+              STORE_FAST               8 (per_cr)
+
+215           LOAD_GLOBAL              9 (int + NULL)
+              LOAD_GLOBAL             19 (round + NULL)
+              LOAD_FAST                5 (n)
+              LOAD_GLOBAL             21 (_wrapper_chars + NULL)
+              LOAD_FAST                3 (target_language)
+              CALL                     1
+              BINARY_OP                0 (+)
+              LOAD_GLOBAL             22 (_CHARS_PER_TOKEN)
+              BINARY_OP               11 (/)
+              CALL                     1
+              CALL                     1
+              STORE_FAST               9 (tok)
+
+216           LOAD_GLOBAL              5 (Est + NULL)
+              LOAD_FAST_LOAD_FAST     89 (n, tok)
+              LOAD_GLOBAL              9 (int + NULL)
+              LOAD_GLOBAL             19 (round + NULL)
+              LOAD_FAST_LOAD_FAST    150 (tok, b)
+              BINARY_OP                5 (*)
+              LOAD_FAST                8 (per_cr)
+              BINARY_OP               11 (/)
+              CALL                     1
+              CALL                     1
+              LOAD_FAST_LOAD_FAST    103 (b, prov)
+              CALL                     5
+              RETURN_VALUE
+
+Disassembly of <code object _norm at 0x0000016DC8F586E0, file "bilisub\user_prompt.py", line 230>:
+230           RESUME                   0
+
+238           LOAD_GLOBAL              0 (unicodedata)
+              LOAD_ATTR                2 (normalize)
+              PUSH_NULL
+              LOAD_CONST               1 ('NFC')
+              LOAD_FAST                0 (s)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L1:     CALL                     2
+              LOAD_ATTR                5 (lower + NULL|self)
+              CALL                     0
+              STORE_FAST               0 (s)
+
+239           LOAD_GLOBAL              6 (_NEG_ALIAS)
+              LOAD_ATTR                9 (sub + NULL|self)
+              LOAD_CONST               3 ('khong')
+              LOAD_FAST                0 (s)
+              CALL                     2
+              STORE_FAST               0 (s)
+
+240           LOAD_GLOBAL              0 (unicodedata)
+              LOAD_ATTR                2 (normalize)
+              PUSH_NULL
+              LOAD_CONST               4 ('NFD')
+              LOAD_FAST                0 (s)
+              CALL                     2
+              STORE_FAST               0 (s)
+
+241           LOAD_CONST               2 ('')
+              LOAD_ATTR               11 (join + NULL|self)
+              LOAD_CONST               5 (<code object <genexpr> at 0x0000016DC8EA3210, file "bilisub\user_prompt.py", line 241>)
+              MAKE_FUNCTION
+              LOAD_FAST                0 (s)
+              GET_ITER
+              CALL                     0
+              CALL                     1
+              STORE_FAST               0 (s)
+
+242           LOAD_FAST                0 (s)
+              LOAD_ATTR               13 (replace + NULL|self)
+              LOAD_CONST               6 ('đ')
+              LOAD_CONST               7 ('d')
+              CALL                     2
+              STORE_FAST               0 (s)
+
+243           LOAD_GLOBAL             14 (re)
+              LOAD_ATTR                8 (sub)
+              PUSH_NULL
+              LOAD_CONST               8 ('[\\s\\u00a0]+')
+              LOAD_CONST               9 (' ')
+              LOAD_FAST                0 (s)
+              CALL                     3
+              RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC8EA3210, file "bilisub\user_prompt.py", line 241>:
+ 241           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                36 (to L5)
+               STORE_FAST               1 (c)
+               LOAD_GLOBAL              0 (unicodedata)
+               LOAD_ATTR                2 (combining)
+               PUSH_NULL
+               LOAD_FAST                1 (c)
+               CALL                     1
+               TO_BOOL
+       L3:     POP_JUMP_IF_FALSE        2 (to L4)
+               JUMP_BACKWARD           32 (to L2)
+       L4:     LOAD_FAST                1 (c)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           38 (to L2)
+       L5:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L6:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L6 [0] lasti
+  L4 to L6 -> L6 [0] lasti
+
+Disassembly of <code object _search_live at 0x0000016DC8EC5B60, file "bilisub\user_prompt.py", line 415>:
+415           RESUME                   0
+
+417           LOAD_FAST                2 (skip_neg)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        17 (to L1)
+
+418           LOAD_FAST                0 (rx)
+              LOAD_ATTR                1 (search + NULL|self)
+              LOAD_FAST                1 (hay)
+              CALL                     1
+              RETURN_VALUE
+
+419   L1:     LOAD_FAST                0 (rx)
+              LOAD_ATTR                3 (finditer + NULL|self)
+              LOAD_FAST                1 (hay)
+              CALL                     1
+              GET_ITER
+      L2:     FOR_ITER                81 (to L4)
+              STORE_FAST               3 (m)
+
+420           LOAD_GLOBAL              4 (_NEG)
+              LOAD_ATTR                1 (search + NULL|self)
+              LOAD_FAST                1 (hay)
+              LOAD_GLOBAL              7 (max + NULL)
+              LOAD_CONST               1 (0)
+              LOAD_FAST                3 (m)
+              LOAD_ATTR                9 (start + NULL|self)
+              CALL                     0
+              LOAD_GLOBAL             10 (_NEG_WINDOW)
+              BINARY_OP               10 (-)
+              CALL                     2
+              LOAD_FAST                3 (m)
+              LOAD_ATTR                9 (start + NULL|self)
+              CALL                     0
+              BINARY_SLICE
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE        2 (to L3)
+              JUMP_BACKWARD           79 (to L2)
+
+421   L3:     LOAD_FAST                3 (m)
+              SWAP                     2
+              POP_TOP
+              RETURN_VALUE
+
+419   L4:     END_FOR
+              POP_TOP
+
+422           RETURN_CONST             2 (None)
+
+Disassembly of <code object _hits at 0x0000016DC8EC5990, file "bilisub\user_prompt.py", line 465>:
+465           RESUME                   0
+
+467           BUILD_LIST               0
+              STORE_FAST               2 (got)
+
+468           LOAD_FAST                0 (words)
+              GET_ITER
+      L1:     FOR_ITER               117 (to L5)
+              STORE_FAST               3 (w)
+
+469           LOAD_FAST                1 (hay)
+              LOAD_ATTR                1 (find + NULL|self)
+              LOAD_FAST                3 (w)
+              CALL                     1
+              STORE_FAST               4 (i)
+
+470           LOAD_FAST                4 (i)
+              LOAD_CONST               1 (0)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_TRUE         2 (to L2)
+              JUMP_BACKWARD           28 (to L1)
+
+471   L2:     LOAD_GLOBAL              2 (_NEG)
+              LOAD_ATTR                5 (search + NULL|self)
+              LOAD_FAST                1 (hay)
+              LOAD_GLOBAL              7 (max + NULL)
+              LOAD_CONST               1 (0)
+              LOAD_FAST                4 (i)
+              LOAD_CONST               2 (40)
+              BINARY_OP               10 (-)
+              CALL                     2
+              LOAD_FAST                4 (i)
+              BINARY_SLICE
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE        19 (to L3)
+
+472           LOAD_FAST                2 (got)
+              LOAD_ATTR                9 (append + NULL|self)
+              LOAD_FAST                3 (w)
+              CALL                     1
+              POP_TOP
+
+473           JUMP_BACKWARD           89 (to L1)
+
+474   L3:     LOAD_FAST                1 (hay)
+              LOAD_ATTR                1 (find + NULL|self)
+              LOAD_FAST_LOAD_FAST     52 (w, i)
+              LOAD_CONST               3 (1)
+              BINARY_OP                0 (+)
+              CALL                     2
+              STORE_FAST               4 (i)
+
+470           LOAD_FAST                4 (i)
+              LOAD_CONST               1 (0)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_FALSE        2 (to L4)
+              JUMP_BACKWARD           89 (to L2)
+      L4:     JUMP_BACKWARD          119 (to L1)
+
+468   L5:     END_FOR
+              POP_TOP
+
+475           LOAD_FAST                2 (got)
+              RETURN_VALUE
+
+Disassembly of <code object scan_risky_prompt at 0x0000016DC8F5A5C0, file "bilisub\user_prompt.py", line 478>:
+ 478            RESUME                   0
+
+ 490            LOAD_FAST                0 (text)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                LOAD_CONST               1 ('')
+        L1:     STORE_FAST               3 (raw)
+
+ 491            LOAD_FAST                3 (raw)
+                LOAD_ATTR                1 (strip + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+
+ 492            BUILD_LIST               0
+                RETURN_VALUE
+
+ 500    L2:     LOAD_GLOBAL              3 (len + NULL)
+                LOAD_FAST                3 (raw)
+                CALL                     1
+                LOAD_GLOBAL              4 (_SCAN_HEAD)
+                LOAD_GLOBAL              6 (_SCAN_TAIL)
+                BINARY_OP                0 (+)
+                COMPARE_OP              58 (bool(<=))
+                POP_JUMP_IF_FALSE        2 (to L3)
+                LOAD_FAST                3 (raw)
+                JUMP_FORWARD            22 (to L4)
+        L3:     LOAD_FAST                3 (raw)
+                LOAD_CONST               2 (None)
+                LOAD_GLOBAL              4 (_SCAN_HEAD)
+                BINARY_SLICE
+                LOAD_CONST               3 ('\n…\n')
+                BINARY_OP                0 (+)
+
+ 501            LOAD_FAST                3 (raw)
+                LOAD_GLOBAL              6 (_SCAN_TAIL)
+                UNARY_NEGATIVE
+                LOAD_CONST               2 (None)
+                BINARY_SLICE
+
+ 500            BINARY_OP                0 (+)
+        L4:     STORE_FAST               4 (body)
+
+ 502            LOAD_GLOBAL              9 (_norm + NULL)
+                LOAD_FAST                4 (body)
+                CALL                     1
+                STORE_FAST               5 (n)
+
+ 503            BUILD_LIST               0
+                STORE_FAST               6 (out)
+
+ 504            LOAD_GLOBAL              3 (len + NULL)
+                LOAD_FAST                3 (raw)
+                CALL                     1
+                LOAD_GLOBAL              4 (_SCAN_HEAD)
+                LOAD_GLOBAL              6 (_SCAN_TAIL)
+                BINARY_OP                0 (+)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       59 (to L5)
+
+ 505            LOAD_FAST                6 (out)
+                LOAD_ATTR               11 (append + NULL|self)
+                LOAD_GLOBAL             13 (Warn + NULL)
+                LOAD_CONST               4 ('scan_partial')
+                LOAD_CONST               5 ('cam')
+
+ 506            LOAD_CONST               6 ('Prompt dài ')
+                LOAD_GLOBAL              3 (len + NULL)
+                LOAD_FAST                3 (raw)
+                CALL                     1
+                LOAD_CONST               7 (',')
+                FORMAT_WITH_SPEC
+                LOAD_CONST               8 (' ký tự — bộ soi chỉ đọc ')
+                LOAD_GLOBAL              4 (_SCAN_HEAD)
+                LOAD_CONST               7 (',')
+                FORMAT_WITH_SPEC
+                LOAD_CONST               9 (' ký tự ĐẦU và ')
+
+ 507            LOAD_GLOBAL              6 (_SCAN_TAIL)
+                LOAD_CONST               7 (',')
+                FORMAT_WITH_SPEC
+                LOAD_CONST              10 (' ký tự CUỐI, khúc giữa KHÔNG được kiểm. Hãy tự rà lại khúc giữa xem có câu luật định dạng nào lọt vào không.')
+
+ 506            BUILD_STRING             7
+
+ 508            LOAD_CONST               1 ('')
+
+ 505            CALL                     4
+                CALL                     1
+                POP_TOP
+
+ 513    L5:     LOAD_FAST                1 (genre_key)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L6)
+                POP_TOP
+                LOAD_CONST               1 ('')
+        L6:     LOAD_ATTR                1 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               7 (_g)
+
+ 514            LOAD_FAST                7 (_g)
+                TO_BOOL
+                POP_JUMP_IF_FALSE      160 (to L11)
+
+ 515            LOAD_GLOBAL             14 (MAU)
+                LOAD_ATTR               17 (items + NULL|self)
+                CALL                     0
+                GET_ITER
+        L7:     FOR_ITER               136 (to L10)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  137 (_k, _m)
+
+ 516            LOAD_FAST                3 (raw)
+                LOAD_ATTR                1 (strip + NULL|self)
+                CALL                     0
+                LOAD_GLOBAL             19 (str + NULL)
+                LOAD_FAST                9 (_m)
+                LOAD_ATTR               21 (get + NULL|self)
+                LOAD_CONST              11 ('noi_dung')
+                LOAD_CONST               1 ('')
+                CALL                     2
+                CALL                     1
+                LOAD_ATTR                1 (strip + NULL|self)
+                CALL                     0
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_TRUE         2 (to L8)
+                JUMP_BACKWARD           66 (to L7)
+        L8:     LOAD_FAST_LOAD_FAST    121 (_g, _m)
+                LOAD_CONST              12 ('the_loai')
+                BINARY_SUBSCR
+                CONTAINS_OP              1
+                POP_JUMP_IF_TRUE         2 (to L9)
+                JUMP_BACKWARD           76 (to L7)
+
+ 517    L9:     LOAD_FAST                6 (out)
+                LOAD_ATTR               11 (append + NULL|self)
+                LOAD_GLOBAL             13 (Warn + NULL)
+                LOAD_CONST              13 ('mau_lech_the_loai')
+                LOAD_CONST               5 ('cam')
+
+ 518            LOAD_CONST              14 ('Bạn đang dùng mẫu «')
+                LOAD_FAST                9 (_m)
+                LOAD_CONST              15 ('ten')
+                BINARY_SUBSCR
+                FORMAT_SIMPLE
+                LOAD_CONST              16 ('» — mẫu này viết cho thể loại ')
+
+ 519            LOAD_CONST              17 (', ')
+                LOAD_ATTR               23 (join + NULL|self)
+                LOAD_FAST                9 (_m)
+                LOAD_CONST              12 ('the_loai')
+                BINARY_SUBSCR
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              18 (', không phải thể loại đang chọn. Đổi thể loại hoặc chọn mẫu khác.')
+
+ 518            BUILD_STRING             5
+
+ 520            LOAD_FAST                9 (_m)
+                LOAD_CONST              15 ('ten')
+                BINARY_SUBSCR
+
+ 517            CALL                     4
+                CALL                     1
+                POP_TOP
+
+ 521            POP_TOP
+                JUMP_FORWARD             2 (to L11)
+
+ 515   L10:     END_FOR
+                POP_TOP
+
+ 522   L11:     LOAD_GLOBAL             24 (_COMPILED)
+                GET_ITER
+       L12:     FOR_ITER               104 (to L16)
+                UNPACK_SEQUENCE          4
+                STORE_FAST_STORE_FAST  171 (code, level)
+                STORE_FAST_STORE_FAST  205 (rx, msg)
+
+ 523            LOAD_FAST               10 (code)
+                LOAD_GLOBAL             26 (_NEG_SKIP_CODES)
+                CONTAINS_OP              0
+                STORE_FAST              14 (neg)
+
+ 525            LOAD_GLOBAL             29 (_search_live + NULL)
+                LOAD_FAST_LOAD_FAST    197 (rx, n)
+                LOAD_FAST               14 (neg)
+                LOAD_CONST              19 (('skip_neg',))
+                CALL_KW                  3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        18 (to L14)
+                POP_TOP
+
+ 527            LOAD_FAST               10 (code)
+                LOAD_CONST              20 (('json_schema', 'code_fence'))
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       10 (to L13)
+
+ 526            LOAD_GLOBAL             29 (_search_live + NULL)
+                LOAD_FAST_LOAD_FAST    196 (rx, body)
+                LOAD_FAST               14 (neg)
+                LOAD_CONST              19 (('skip_neg',))
+                CALL_KW                  3
+                JUMP_FORWARD             1 (to L14)
+
+ 527   L13:     LOAD_CONST               2 (None)
+
+ 525   L14:     STORE_FAST              15 (m)
+
+ 528            LOAD_FAST               15 (m)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L15)
+                JUMP_BACKWARD           59 (to L12)
+
+ 529   L15:     LOAD_FAST                6 (out)
+                LOAD_ATTR               11 (append + NULL|self)
+                LOAD_GLOBAL             13 (Warn + NULL)
+                LOAD_FAST_LOAD_FAST    171 (code, level)
+                LOAD_FAST_LOAD_FAST    223 (msg, m)
+                LOAD_ATTR               31 (group + NULL|self)
+                LOAD_CONST              21 (0)
+                CALL                     1
+                LOAD_CONST               2 (None)
+                LOAD_CONST              22 (60)
+                BINARY_SLICE
+                CALL                     4
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD          106 (to L12)
+
+ 522   L16:     END_FOR
+                POP_TOP
+
+ 532            LOAD_FAST                1 (genre_key)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L17)
+                POP_TOP
+                LOAD_CONST               1 ('')
+       L17:     LOAD_ATTR                1 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST              16 (g)
+
+ 533            LOAD_GLOBAL             32 (_GENRE_FAMILIES)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     17 (f)
+                SWAP                     2
+       L18:     BUILD_SET                0
+                SWAP                     2
+                GET_ITER
+       L19:     FOR_ITER                13 (to L22)
+                STORE_FAST              17 (f)
+                LOAD_FAST               17 (f)
+                LOAD_FAST                5 (n)
+                CONTAINS_OP              0
+       L20:     POP_JUMP_IF_TRUE         2 (to L21)
+                JUMP_BACKWARD           11 (to L19)
+       L21:     LOAD_FAST               17 (f)
+                SET_ADD                  2
+                JUMP_BACKWARD           15 (to L19)
+       L22:     END_FOR
+                POP_TOP
+       L23:     STORE_FAST              18 (families)
+                STORE_FAST              17 (f)
+
+ 534            LOAD_GLOBAL              3 (len + NULL)
+                LOAD_FAST               18 (families)
+                CALL                     1
+                LOAD_GLOBAL             34 (_MATRIX_MIN_FAMILIES)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE        1 (to L24)
+
+ 535            JUMP_FORWARD           222 (to L27)
+
+ 536   L24:     LOAD_FAST               16 (g)
+                LOAD_GLOBAL             36 (_MODERN_KEYS)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       86 (to L26)
+
+ 537            LOAD_GLOBAL             39 (_hits + NULL)
+                LOAD_GLOBAL             40 (_CO_TRANG_WORDS)
+                LOAD_FAST                5 (n)
+                CALL                     2
+                STORE_FAST              19 (hit)
+
+ 538            LOAD_GLOBAL              3 (len + NULL)
+                LOAD_FAST               19 (hit)
+                CALL                     1
+                LOAD_CONST              23 (2)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE       54 (to L25)
+
+ 539            LOAD_FAST                6 (out)
+                LOAD_ATTR               11 (append + NULL|self)
+                LOAD_GLOBAL             13 (Warn + NULL)
+                LOAD_CONST              24 ('genre_mismatch')
+                LOAD_CONST               5 ('cam')
+
+ 540            LOAD_CONST              25 ('Prompt của bạn nói giọng CỔ TRANG (')
+                LOAD_CONST              17 (', ')
+                LOAD_ATTR               23 (join + NULL|self)
+                LOAD_FAST               19 (hit)
+                LOAD_CONST               2 (None)
+                LOAD_CONST              26 (3)
+                BINARY_SLICE
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              27 (") nhưng thể loại đang chọn là HIỆN ĐẠI — dễ ra 'nhi tử của ca ca ta'.")
+                BUILD_STRING             3
+
+ 542            LOAD_FAST               19 (hit)
+                LOAD_CONST              21 (0)
+                BINARY_SUBSCR
+
+ 539            CALL                     4
+                CALL                     1
+                POP_TOP
+
+  --   L25:     JUMP_FORWARD           126 (to L27)
+
+ 543   L26:     LOAD_FAST               16 (g)
+                LOAD_GLOBAL             42 (_ANCIENT_KEYS)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE      116 (to L27)
+
+ 544            LOAD_GLOBAL             39 (_hits + NULL)
+                LOAD_GLOBAL             44 (_HIEN_DAI_WORDS)
+                LOAD_FAST                5 (n)
+                CALL                     2
+                LOAD_GLOBAL             39 (_hits + NULL)
+                LOAD_GLOBAL             46 (_MODERN_STRICT)
+                LOAD_FAST                4 (body)
+                LOAD_ATTR               49 (lower + NULL|self)
+                CALL                     0
+                CALL                     2
+                BINARY_OP                0 (+)
+                STORE_FAST              19 (hit)
+
+ 545            LOAD_GLOBAL              3 (len + NULL)
+                LOAD_FAST               19 (hit)
+                CALL                     1
+                LOAD_CONST              23 (2)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE       54 (to L27)
+
+ 546            LOAD_FAST                6 (out)
+                LOAD_ATTR               11 (append + NULL|self)
+                LOAD_GLOBAL             13 (Warn + NULL)
+                LOAD_CONST              24 ('genre_mismatch')
+                LOAD_CONST               5 ('cam')
+
+ 547            LOAD_CONST              28 ('Prompt của bạn nhắc từ HIỆN ĐẠI (')
+                LOAD_CONST              17 (', ')
+                LOAD_ATTR               23 (join + NULL|self)
+                LOAD_FAST               19 (hit)
+                LOAD_CONST               2 (None)
+                LOAD_CONST              26 (3)
+                BINARY_SLICE
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              29 (') nhưng thể loại đang chọn là cổ trang/tu tiên — dễ phá cổ phong.')
+                BUILD_STRING             3
+
+ 548            LOAD_FAST               19 (hit)
+                LOAD_CONST              21 (0)
+                BINARY_SUBSCR
+
+ 546            CALL                     4
+                CALL                     1
+                POP_TOP
+
+ 554   L27:     LOAD_FAST                2 (target_language)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L28)
+                POP_TOP
+                LOAD_CONST               1 ('')
+       L28:     LOAD_ATTR                1 (strip + NULL|self)
+                CALL                     0
+                LOAD_ATTR               49 (lower + NULL|self)
+                CALL                     0
+                STORE_FAST              20 (tgt)
+
+ 555            LOAD_FAST               20 (tgt)
+                LOAD_ATTR               51 (startswith + NULL|self)
+                LOAD_CONST              30 ('vi')
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        35 (to L30)
+                LOAD_CONST              31 ('viet')
+                LOAD_FAST               20 (tgt)
+                CONTAINS_OP              0
+                POP_JUMP_IF_TRUE        29 (to L30)
+                LOAD_CONST              32 ('việt')
+                LOAD_FAST                2 (target_language)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L29)
+                POP_TOP
+                LOAD_CONST               1 ('')
+       L29:     LOAD_ATTR               49 (lower + NULL|self)
+                CALL                     0
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE      159 (to L32)
+
+ 556   L30:     LOAD_GLOBAL              3 (len + NULL)
+                LOAD_GLOBAL             52 (_CJK)
+                LOAD_ATTR               55 (findall + NULL|self)
+                LOAD_FAST                4 (body)
+                CALL                     1
+                CALL                     1
+                STORE_FAST              21 (cjk)
+
+ 557            LOAD_FAST               21 (cjk)
+                LOAD_GLOBAL             57 (max + NULL)
+                LOAD_CONST              33 (1)
+                LOAD_GLOBAL              3 (len + NULL)
+                LOAD_FAST                4 (body)
+                CALL                     1
+                CALL                     2
+                BINARY_OP               11 (/)
+                LOAD_CONST              34 (0.15)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE       31 (to L31)
+
+ 558            LOAD_FAST                6 (out)
+                LOAD_ATTR               11 (append + NULL|self)
+                LOAD_GLOBAL             13 (Warn + NULL)
+                LOAD_CONST              35 ('lang_zh')
+                LOAD_CONST               5 ('cam')
+
+ 559            LOAD_CONST              36 ('Prompt viết phần lớn bằng TIẾNG TRUNG trong khi bản dịch phải ra TIẾNG VIỆT — AI dễ trả lời bằng tiếng Trung.')
+
+ 560            LOAD_CONST              37 ('中文')
+
+ 558            CALL                     4
+                CALL                     1
+                POP_TOP
+
+ 565            LOAD_FAST                6 (out)
+                RETURN_VALUE
+
+ 561   L31:     LOAD_GLOBAL             58 (_VI_MARK)
+                LOAD_ATTR               61 (search + NULL|self)
+                LOAD_FAST                4 (body)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        44 (to L32)
+                LOAD_GLOBAL              3 (len + NULL)
+                LOAD_FAST                4 (body)
+                CALL                     1
+                LOAD_CONST              38 (120)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       29 (to L32)
+
+ 562            LOAD_FAST                6 (out)
+                LOAD_ATTR               11 (append + NULL|self)
+                LOAD_GLOBAL             13 (Warn + NULL)
+                LOAD_CONST              39 ('lang_en')
+                LOAD_CONST               5 ('cam')
+
+ 563            LOAD_CONST              40 ('Prompt không có chữ tiếng Việt có dấu nào trong khi bản dịch phải ra TIẾNG VIỆT — kiểm tra lại kẻo AI trả lời bằng tiếng Anh.')
+
+ 564            LOAD_CONST               1 ('')
+
+ 562            CALL                     4
+                CALL                     1
+                POP_TOP
+
+ 565   L32:     LOAD_FAST                6 (out)
+                RETURN_VALUE
+
+  --   L33:     SWAP                     2
+                POP_TOP
+
+ 533            SWAP                     2
+                STORE_FAST              17 (f)
+                RERAISE                  0
+ExceptionTable:
+  L18 to L20 -> L33 [2]
+  L21 to L23 -> L33 [2]
+
+Disassembly of <code object scan_length at 0x0000016DC90E5E90, file "bilisub\user_prompt.py", line 568>:
+568           RESUME                   0
+
+575           LOAD_GLOBAL              1 (len + NULL)
+              LOAD_FAST                0 (text)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     LOAD_ATTR                3 (strip + NULL|self)
+              CALL                     0
+              CALL                     1
+              STORE_FAST               1 (n)
+
+576           LOAD_FAST                1 (n)
+              LOAD_GLOBAL              4 (HARD_CAP)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE       28 (to L2)
+
+577           LOAD_GLOBAL              7 (Warn + NULL)
+              LOAD_CONST               2 ('too_long_hard')
+              LOAD_CONST               3 ('do')
+
+578           LOAD_CONST               4 ('Prompt dài ')
+              LOAD_FAST                1 (n)
+              LOAD_CONST               5 (',')
+              FORMAT_WITH_SPEC
+              LOAD_CONST               6 (' ký tự (trần khuyến nghị ')
+              LOAD_GLOBAL              4 (HARD_CAP)
+              LOAD_CONST               5 (',')
+              FORMAT_WITH_SPEC
+              LOAD_CONST               7 ('). Tool KHÔNG cắt bớt chữ của bạn, nhưng phần này gửi lại ở MỌI lô ⇒ tốn credit và LÀM LOÃNG các luật quan trọng (đo thật: prompt to hơn từng làm bản dịch KÉM đi).')
+              BUILD_STRING             5
+
+580           LOAD_CONST               1 ('')
+
+577           CALL                     4
+              BUILD_LIST               1
+              RETURN_VALUE
+
+581   L2:     LOAD_FAST                1 (n)
+              LOAD_GLOBAL              8 (SOFT_CAP)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE       28 (to L3)
+
+582           LOAD_GLOBAL              7 (Warn + NULL)
+              LOAD_CONST               8 ('too_long_soft')
+              LOAD_CONST               9 ('cam')
+
+583           LOAD_CONST               4 ('Prompt dài ')
+              LOAD_FAST                1 (n)
+              LOAD_CONST               5 (',')
+              FORMAT_WITH_SPEC
+              LOAD_CONST              10 (' ký tự (nên ≤ ')
+              LOAD_GLOBAL              8 (SOFT_CAP)
+              LOAD_CONST               5 (',')
+              FORMAT_WITH_SPEC
+              LOAD_CONST              11 ('). Phần này gửi lại ở MỌI lô — xem ước tính credit bên dưới.')
+              BUILD_STRING             5
+
+584           LOAD_CONST               1 ('')
+
+582           CALL                     4
+              BUILD_LIST               1
+              RETURN_VALUE
+
+585   L3:     BUILD_LIST               0
+              RETURN_VALUE
+
+Disassembly of <code object warn_lines at 0x0000016DC90DE120, file "bilisub\user_prompt.py", line 588>:
+588           RESUME                   0
+
+590           BUILD_LIST               0
+              STORE_FAST               1 (out)
+
+591           LOAD_FAST                0 (warns)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 (())
+      L1:     GET_ITER
+      L2:     FOR_ITER               124 (to L8)
+              STORE_FAST               2 (w)
+
+592           LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                2 (w)
+              LOAD_CONST               2 ('level')
+              LOAD_CONST               3 ('')
+              CALL                     3
+              LOAD_CONST               4 ('do')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE        2 (to L3)
+              LOAD_CONST               5 ('🔴')
+              JUMP_FORWARD             1 (to L4)
+      L3:     LOAD_CONST               6 ('🟠')
+      L4:     STORE_FAST               3 (icon)
+
+593           LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                2 (w)
+              LOAD_CONST               7 ('hit')
+              LOAD_CONST               3 ('')
+              CALL                     3
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L5)
+              POP_TOP
+              LOAD_CONST               3 ('')
+      L5:     LOAD_ATTR                3 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               4 (hit)
+
+594           LOAD_FAST                1 (out)
+              LOAD_ATTR                5 (append + NULL|self)
+              LOAD_FAST                3 (icon)
+              FORMAT_SIMPLE
+              LOAD_CONST               8 (' [')
+              LOAD_FAST                2 (w)
+              LOAD_ATTR                6 (code)
+              FORMAT_SIMPLE
+              LOAD_CONST               9 ('] ')
+              LOAD_FAST                2 (w)
+              LOAD_ATTR                8 (msg)
+              FORMAT_SIMPLE
+              BUILD_STRING             5
+              LOAD_FAST                4 (hit)
+              TO_BOOL
+              POP_JUMP_IF_FALSE        9 (to L6)
+              LOAD_CONST              10 ('  « ')
+              LOAD_FAST                4 (hit)
+              LOAD_CONST              11 (None)
+              LOAD_CONST              12 (44)
+              BINARY_SLICE
+              FORMAT_SIMPLE
+              LOAD_CONST              13 (' »')
+              BUILD_STRING             3
+              JUMP_FORWARD             1 (to L7)
+      L6:     LOAD_CONST               3 ('')
+      L7:     BINARY_OP                0 (+)
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD          126 (to L2)
+
+591   L8:     END_FOR
+              POP_TOP
+
+595           LOAD_FAST                1 (out)
+              RETURN_VALUE
+
+Disassembly of <code object danh_sach_mau at 0x0000016DC8E07730, file "bilisub\user_prompt.py", line 696>:
+ 696           RESUME                   0
+
+ 698           LOAD_GLOBAL              0 (MAU)
+               LOAD_ATTR                3 (items + NULL|self)
+               CALL                     0
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      0 (k)
+               LOAD_FAST_AND_CLEAR      1 (v)
+               SWAP                     3
+       L1:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L2:     FOR_ITER                15 (to L3)
+               UNPACK_SEQUENCE          2
+               STORE_FAST_STORE_FAST    1 (k, v)
+               LOAD_FAST_LOAD_FAST      1 (k, v)
+               LOAD_CONST               1 ('ten')
+               BINARY_SUBSCR
+               LOAD_FAST                1 (v)
+               LOAD_CONST               2 ('mo_ta')
+               BINARY_SUBSCR
+               BUILD_TUPLE              3
+               LIST_APPEND              2
+               JUMP_BACKWARD           17 (to L2)
+       L3:     END_FOR
+               POP_TOP
+       L4:     SWAP                     3
+               STORE_FAST               1 (v)
+               STORE_FAST               0 (k)
+               RETURN_VALUE
+
+  --   L5:     SWAP                     2
+               POP_TOP
+
+ 698           SWAP                     3
+               STORE_FAST               1 (v)
+               STORE_FAST               0 (k)
+               RERAISE                  0
+ExceptionTable:
+  L1 to L4 -> L5 [3]
+
+Disassembly of <code object lay_mau at 0x0000016DC8EA3800, file "bilisub\user_prompt.py", line 701>:
+701           RESUME                   0
+
+703           LOAD_GLOBAL              0 (MAU)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_FAST                0 (key)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     BUILD_MAP                0
+              CALL                     2
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_CONST               2 ('noi_dung')
+              LOAD_CONST               1 ('')
+              CALL                     2
+              RETURN_VALUE

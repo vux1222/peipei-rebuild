@@ -1,0 +1,79 @@
+=== FILE: bilisub\script\__init__.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ("Tự sinh kịch bản từ video: keyframe → (VLM hiểu) → narration theo phong cách.\n\nBackend 'mắt' (vision) tách riêng ở ``vision.py`` (Gemini / local); các phần\nkeyframe/style/generator ở đây KHÔNG phụ thuộc backend.\n")
+              STORE_NAME               0 (__doc__)
+
+  6           LOAD_CONST               1 (1)
+              LOAD_CONST               2 (('SceneNote',))
+              IMPORT_NAME              1 (models)
+              IMPORT_FROM              2 (SceneNote)
+              STORE_NAME               2 (SceneNote)
+              POP_TOP
+
+  7           LOAD_CONST               1 (1)
+              LOAD_CONST               3 (('StylePack', 'STYLE_PACKS', 'STYLE_KEYS', 'DEFAULT_STYLE', 'get_style'))
+              IMPORT_NAME              3 (styles)
+              IMPORT_FROM              4 (StylePack)
+              STORE_NAME               4 (StylePack)
+              IMPORT_FROM              5 (STYLE_PACKS)
+              STORE_NAME               5 (STYLE_PACKS)
+              IMPORT_FROM              6 (STYLE_KEYS)
+              STORE_NAME               6 (STYLE_KEYS)
+              IMPORT_FROM              7 (DEFAULT_STYLE)
+              STORE_NAME               7 (DEFAULT_STYLE)
+              IMPORT_FROM              8 (get_style)
+              STORE_NAME               8 (get_style)
+              POP_TOP
+
+  8           LOAD_CONST               1 (1)
+              LOAD_CONST               4 (('extract_scenes', 'plan_scenes', 'detect_scene_times'))
+              IMPORT_NAME              9 (keyframes)
+              IMPORT_FROM             10 (extract_scenes)
+              STORE_NAME              10 (extract_scenes)
+              IMPORT_FROM             11 (plan_scenes)
+              STORE_NAME              11 (plan_scenes)
+              IMPORT_FROM             12 (detect_scene_times)
+              STORE_NAME              12 (detect_scene_times)
+              POP_TOP
+
+  9           LOAD_CONST               1 (1)
+              LOAD_CONST               5 (('describe_scenes', 'VisionError'))
+              IMPORT_NAME             13 (vision)
+              IMPORT_FROM             14 (describe_scenes)
+              STORE_NAME              14 (describe_scenes)
+              IMPORT_FROM             15 (VisionError)
+              STORE_NAME              15 (VisionError)
+              POP_TOP
+
+ 10           LOAD_CONST               1 (1)
+              LOAD_CONST               6 (('generate_script',))
+              IMPORT_NAME             16 (generator)
+              IMPORT_FROM             17 (generate_script)
+              STORE_NAME              17 (generate_script)
+              POP_TOP
+
+ 11           LOAD_CONST               1 (1)
+              LOAD_CONST               7 (('generate_video_script', 'VideoScriptError'))
+              IMPORT_NAME             18 (video_script)
+              IMPORT_FROM             19 (generate_video_script)
+              STORE_NAME              19 (generate_video_script)
+              IMPORT_FROM             20 (VideoScriptError)
+              STORE_NAME              20 (VideoScriptError)
+              POP_TOP
+
+ 12           LOAD_CONST               1 (1)
+              LOAD_CONST               8 (('run_autoscript',))
+              IMPORT_NAME             21 (runner)
+              IMPORT_FROM             22 (run_autoscript)
+              STORE_NAME              22 (run_autoscript)
+              POP_TOP
+
+ 14           BUILD_LIST               0
+              LOAD_CONST               9 (('SceneNote', 'StylePack', 'STYLE_PACKS', 'STYLE_KEYS', 'DEFAULT_STYLE', 'get_style', 'extract_scenes', 'plan_scenes', 'detect_scene_times', 'describe_scenes', 'VisionError', 'generate_script', 'generate_video_script', 'VideoScriptError', 'run_autoscript'))
+              LIST_EXTEND              1
+              STORE_NAME              23 (__all__)
+              RETURN_CONST            10 (None)

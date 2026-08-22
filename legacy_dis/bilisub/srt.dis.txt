@@ -1,0 +1,4794 @@
+=== FILE: bilisub\srt.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+   0           RESUME                   0
+
+   1           SETUP_ANNOTATIONS
+               LOAD_CONST               0 ('Đọc/ghi SRT và xuất ASS (phụ đề có style kiểu CapCut).')
+               STORE_NAME               0 (__doc__)
+
+   2           LOAD_CONST               1 (0)
+               LOAD_CONST               2 (('annotations',))
+               IMPORT_NAME              1 (__future__)
+               IMPORT_FROM              2 (annotations)
+               STORE_NAME               2 (annotations)
+               POP_TOP
+
+   4           LOAD_CONST               1 (0)
+               LOAD_CONST               3 (None)
+               IMPORT_NAME              3 (os)
+               STORE_NAME               3 (os)
+
+   5           LOAD_CONST               1 (0)
+               LOAD_CONST               3 (None)
+               IMPORT_NAME              4 (re)
+               STORE_NAME               4 (re)
+
+   6           LOAD_CONST               1 (0)
+               LOAD_CONST               3 (None)
+               IMPORT_NAME              5 (time)
+               STORE_NAME               5 (time)
+
+   7           LOAD_CONST               1 (0)
+               LOAD_CONST               4 (('Path',))
+               IMPORT_NAME              6 (pathlib)
+               IMPORT_FROM              7 (Path)
+               STORE_NAME               7 (Path)
+               POP_TOP
+
+   8           LOAD_CONST               1 (0)
+               LOAD_CONST               5 (('Iterable',))
+               IMPORT_NAME              8 (typing)
+               IMPORT_FROM              9 (Iterable)
+               STORE_NAME               9 (Iterable)
+               POP_TOP
+
+  10           LOAD_CONST               6 (1)
+               LOAD_CONST               7 (('SubtitleEntry',))
+               IMPORT_NAME             10 (models)
+               IMPORT_FROM             11 (SubtitleEntry)
+               STORE_NAME              11 (SubtitleEntry)
+               POP_TOP
+
+  22           LOAD_CONST               8 ((0.4, 1.0, 2.0))
+               STORE_NAME              12 (_GHI_CHO_S)
+
+  25           NOP
+
+  26           NOP
+
+  25           LOAD_CONST             119 (('utf-8-sig', None))
+
+  26           NOP
+
+  25           LOAD_CONST             120 (('path', 'str | Path', 'data', 'str', 'encoding', 'str', 'return', 'Path'))
+               LOAD_CONST               9 (<code object ghi_text_ben at 0x0000016DC8F7EDC0, file "bilisub\srt.py", line 25>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              13 (ghi_text_ben)
+
+  51           LOAD_NAME                4 (re)
+               LOAD_ATTR               28 (compile)
+               PUSH_NULL
+               LOAD_CONST              10 ('\\n\\s*\\n')
+               CALL                     1
+               STORE_NAME              15 (_BLOCK_SPLIT)
+
+  52           LOAD_NAME                4 (re)
+               LOAD_ATTR               28 (compile)
+               PUSH_NULL
+
+  53           LOAD_CONST              11 ('(\\d{1,2}:\\d{2}:\\d{2}[,.]\\d{1,3})\\s*-->\\s*(\\d{1,2}:\\d{2}:\\d{2}[,.]\\d{1,3})')
+
+  52           CALL                     1
+               STORE_NAME              16 (_TIME_LINE)
+
+  55           LOAD_NAME                4 (re)
+               LOAD_ATTR               28 (compile)
+               PUSH_NULL
+               LOAD_CONST              12 ('<[^>]+>')
+               CALL                     1
+               STORE_NAME              17 (_TAG)
+
+  60           LOAD_NAME                4 (re)
+               LOAD_ATTR               28 (compile)
+               PUSH_NULL
+               LOAD_CONST              13 ('\\{\\\\[^{}]*\\}')
+               CALL                     1
+               STORE_NAME              18 (_ASS_TAG)
+
+  67           LOAD_NAME                4 (re)
+               LOAD_ATTR               28 (compile)
+               PUSH_NULL
+               LOAD_CONST              14 ('\\[\\s*PeiPei[^\\]]*?\\bk\\s*=\\s*([0-9]+(?:[.,][0-9]+)?)\\s*\\]')
+               LOAD_NAME                4 (re)
+               LOAD_ATTR               38 (IGNORECASE)
+               CALL                     2
+               STORE_NAME              20 (_DAU_TRUC_TIM)
+
+  68           LOAD_NAME                4 (re)
+               LOAD_ATTR               28 (compile)
+               PUSH_NULL
+               LOAD_CONST              15 ('^\\[\\s*PeiPei[^\\]]*\\]$')
+               LOAD_NAME                4 (re)
+               LOAD_ATTR               38 (IGNORECASE)
+               CALL                     2
+               STORE_NAME              21 (_DAU_TRUC_RE)
+
+  71           LOAD_CONST             121 (('k', 'float', 'return', 'str'))
+               LOAD_CONST              16 (<code object dau_truc_cue at 0x0000016DC8CBEB50, file "bilisub\srt.py", line 71>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              22 (dau_truc_cue)
+
+  76           LOAD_CONST             122 (('path', 'str | Path', 'return', 'float'))
+               LOAD_CONST              17 (<code object doc_dau_truc at 0x0000016DC8E90D50, file "bilisub\srt.py", line 76>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              23 (doc_dau_truc)
+
+  92           LOAD_CONST             123 (('path', 'str | Path', 'k', 'float', 'return', 'None'))
+               LOAD_CONST              18 (<code object ghi_dau_truc at 0x0000016DC8FDDEB0, file "bilisub\srt.py", line 92>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              24 (ghi_dau_truc)
+
+ 108           LOAD_CONST             124 (('path', 'str | Path', 'return', 'str'))
+               LOAD_CONST              19 (<code object _read_text at 0x0000016DC8E0B7B0, file "bilisub\srt.py", line 108>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              25 (_read_text)
+
+ 118           LOAD_CONST             125 (('path', 'str | Path', 'return', 'list[SubtitleEntry]'))
+               LOAD_CONST              20 (<code object parse_srt at 0x0000016DC8D286C0, file "bilisub\srt.py", line 118>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              26 (parse_srt)
+
+ 149           LOAD_CONST             126 ((True,))
+               LOAD_CONST             127 (('entries', 'Iterable[SubtitleEntry]', 'path', 'str | Path', 'use_translated', 'bool', 'return', 'Path'))
+               LOAD_CONST              22 (<code object export_srt at 0x0000016DC8EF4BE0, file "bilisub\srt.py", line 149>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              27 (export_srt)
+
+ 160           LOAD_CONST             128 ((1500,))
+               LOAD_CONST             129 (('entries', 'list[SubtitleEntry]', 'max_gap_ms', 'int', 'return', 'list[SubtitleEntry]'))
+               LOAD_CONST              23 (<code object merge_duplicate_entries at 0x0000016DC87BBF80, file "bilisub\srt.py", line 160>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              28 (merge_duplicate_entries)
+
+ 271           LOAD_CONST             130 ((400,))
+               LOAD_CONST             131 (('entries', 'list[SubtitleEntry]', 'min_duration_ms', 'int', 'return', 'list[SubtitleEntry]'))
+               LOAD_CONST              24 (<code object merge_short_entries at 0x0000016DC8FE23F0, file "bilisub\srt.py", line 271>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              29 (merge_short_entries)
+
+ 319           BUILD_MAP                0
+
+ 320           LOAD_CONST              25 ('Neon')
+               LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              27 ('#00E5FF')
+               LOAD_CONST              28 (3.5)
+               LOAD_CONST              29 (1.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              30 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold'))
+               BUILD_CONST_KEY_MAP      5
+
+ 319           MAP_ADD                  1
+
+ 321           LOAD_CONST              31 ('Classic')
+               LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              32 ('#000000')
+               LOAD_CONST              33 (3.0)
+               LOAD_CONST              34 (1.2)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              30 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold'))
+               BUILD_CONST_KEY_MAP      5
+
+ 319           MAP_ADD                  1
+
+ 322           LOAD_CONST              35 ('Minimal')
+               LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              32 ('#000000')
+               LOAD_CONST              36 (1.6)
+               LOAD_CONST              37 (0.4)
+               LOAD_CONST              38 (False)
+               LOAD_CONST              30 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold'))
+               BUILD_CONST_KEY_MAP      5
+
+ 319           MAP_ADD                  1
+
+ 323           LOAD_CONST              39 ('Bold')
+               LOAD_CONST              40 ('#FFE000')
+               LOAD_CONST              32 ('#000000')
+               LOAD_CONST              41 (4.2)
+               LOAD_CONST              42 (1.4)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              30 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold'))
+               BUILD_CONST_KEY_MAP      5
+
+ 319           MAP_ADD                  1
+
+ 324           LOAD_CONST              43 ('Mint')
+               LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              44 ('#22C55E')
+               LOAD_CONST              45 (3.2)
+               LOAD_CONST              29 (1.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              30 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold'))
+               BUILD_CONST_KEY_MAP      5
+
+ 319           MAP_ADD                  1
+
+ 325           LOAD_CONST              46 ('Rose')
+               LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              47 ('#FF4D8D')
+               LOAD_CONST              45 (3.2)
+               LOAD_CONST              29 (1.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              30 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold'))
+               BUILD_CONST_KEY_MAP      5
+
+ 319           MAP_ADD                  1
+
+ 326           LOAD_CONST              48 ('Sky')
+               LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              49 ('#38BDF8')
+               LOAD_CONST              45 (3.2)
+               LOAD_CONST              29 (1.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              30 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold'))
+               BUILD_CONST_KEY_MAP      5
+
+ 319           MAP_ADD                  1
+
+ 327           LOAD_CONST              50 ('Sunset')
+               LOAD_CONST              51 ('#FFB347')
+               LOAD_CONST              52 ('#7A2E00')
+               LOAD_CONST              53 (3.4)
+               LOAD_CONST              34 (1.2)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              30 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold'))
+               BUILD_CONST_KEY_MAP      5
+
+ 319           MAP_ADD                  1
+
+ 328           LOAD_CONST              54 ('Lavender')
+               LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              55 ('#A78BFA')
+               LOAD_CONST              45 (3.2)
+               LOAD_CONST              29 (1.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              30 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold'))
+               BUILD_CONST_KEY_MAP      5
+
+ 319           MAP_ADD                  1
+
+ 329           LOAD_CONST              56 ('Lemon')
+               LOAD_CONST              57 ('#FFF16A')
+               LOAD_CONST              58 ('#3A3A00')
+               LOAD_CONST              45 (3.2)
+               LOAD_CONST              29 (1.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              30 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold'))
+               BUILD_CONST_KEY_MAP      5
+
+ 319           MAP_ADD                  1
+
+ 330           LOAD_CONST              59 ('Coral')
+               LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              60 ('#FF6B5B')
+               LOAD_CONST              45 (3.2)
+               LOAD_CONST              29 (1.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              30 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold'))
+               BUILD_CONST_KEY_MAP      5
+
+ 319           MAP_ADD                  1
+
+ 331           LOAD_CONST              61 ('Teal')
+               LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              62 ('#14B8A6')
+               LOAD_CONST              45 (3.2)
+               LOAD_CONST              29 (1.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              30 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold'))
+               BUILD_CONST_KEY_MAP      5
+
+ 319           MAP_ADD                  1
+
+ 341           LOAD_CONST              63 ('Không viền')
+               LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              32 ('#000000')
+               LOAD_CONST              64 (0.0)
+
+ 342           LOAD_CONST              64 (0.0)
+               LOAD_CONST              21 (True)
+
+ 341           LOAD_CONST              30 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold'))
+               BUILD_CONST_KEY_MAP      5
+
+ 319           MAP_ADD                  1
+
+ 343           LOAD_CONST              65 ('Chữ đen')
+               LOAD_CONST              66 ('#111111')
+               LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              67 (2.4)
+
+ 344           LOAD_CONST              68 (0.6)
+               LOAD_CONST              21 (True)
+
+ 343           LOAD_CONST              30 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold'))
+               BUILD_CONST_KEY_MAP      5
+
+ 319           MAP_ADD                  1
+
+ 345           LOAD_CONST              69 ('Hộp trắng')
+               LOAD_CONST              66 ('#111111')
+               LOAD_CONST              32 ('#000000')
+               LOAD_CONST              70 (8.0)
+
+ 346           LOAD_CONST              64 (0.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              26 ('#FFFFFF')
+
+ 345           LOAD_CONST              71 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold', 'box', 'box_color'))
+               BUILD_CONST_KEY_MAP      7
+
+ 319           MAP_ADD                  1
+
+ 347           LOAD_CONST              72 ('Hộp đen')
+               LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              32 ('#000000')
+               LOAD_CONST              70 (8.0)
+
+ 348           LOAD_CONST              64 (0.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              32 ('#000000')
+
+ 347           LOAD_CONST              71 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold', 'box', 'box_color'))
+               BUILD_CONST_KEY_MAP      7
+
+ 319           MAP_ADD                  1
+
+ 349           LOAD_CONST              73 ('Hộp vàng')
+               LOAD_CONST              66 ('#111111')
+               LOAD_CONST              32 ('#000000')
+               LOAD_CONST              70 (8.0)
+
+ 350           LOAD_CONST              64 (0.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              74 ('#FFD400')
+
+ 349           LOAD_CONST              71 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold', 'box', 'box_color'))
+               BUILD_CONST_KEY_MAP      7
+
+ 319           MAP_ADD                  1
+
+ 351           LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              32 ('#000000')
+               LOAD_CONST              70 (8.0)
+
+ 352           LOAD_CONST              64 (0.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              75 ('#7C3AED')
+
+ 351           LOAD_CONST              71 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold', 'box', 'box_color'))
+               BUILD_CONST_KEY_MAP      7
+
+ 353           LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              32 ('#000000')
+               LOAD_CONST              70 (8.0)
+
+ 354           LOAD_CONST              64 (0.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              76 ('#4B5563')
+
+ 353           LOAD_CONST              71 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold', 'box', 'box_color'))
+               BUILD_CONST_KEY_MAP      7
+
+ 355           LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              32 ('#000000')
+               LOAD_CONST              70 (8.0)
+
+ 356           LOAD_CONST              64 (0.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              77 ('#EC4899')
+
+ 355           LOAD_CONST              71 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold', 'box', 'box_color'))
+               BUILD_CONST_KEY_MAP      7
+
+ 357           LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              32 ('#000000')
+               LOAD_CONST              70 (8.0)
+
+ 358           LOAD_CONST              64 (0.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              78 ('#16A34A')
+
+ 357           LOAD_CONST              71 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold', 'box', 'box_color'))
+               BUILD_CONST_KEY_MAP      7
+
+ 359           LOAD_CONST              26 ('#FFFFFF')
+               LOAD_CONST              32 ('#000000')
+               LOAD_CONST              70 (8.0)
+
+ 360           LOAD_CONST              64 (0.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              79 ('#DC2626')
+
+ 359           LOAD_CONST              71 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold', 'box', 'box_color'))
+               BUILD_CONST_KEY_MAP      7
+
+ 361           LOAD_CONST              80 ('#22FF88')
+               LOAD_CONST              32 ('#000000')
+               LOAD_CONST              70 (8.0)
+
+ 362           LOAD_CONST              64 (0.0)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              21 (True)
+               LOAD_CONST              32 ('#000000')
+
+ 361           LOAD_CONST              71 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold', 'box', 'box_color'))
+               BUILD_CONST_KEY_MAP      7
+
+ 363           LOAD_CONST              75 ('#7C3AED')
+               LOAD_CONST              32 ('#000000')
+
+ 364           LOAD_CONST              70 (8.0)
+               LOAD_CONST              64 (0.0)
+               LOAD_CONST              21 (True)
+
+ 365           LOAD_CONST              21 (True)
+               LOAD_CONST              26 ('#FFFFFF')
+
+ 363           LOAD_CONST              71 (('text_color', 'outline_color', 'outline_width', 'shadow', 'bold', 'box', 'box_color'))
+               BUILD_CONST_KEY_MAP      7
+
+ 319           LOAD_CONST              81 (('Hộp tím', 'Hộp xám', 'Hộp hồng', 'Hộp xanh lá', 'Hộp đỏ', 'Hộp đen chữ lá', 'Hộp trắng chữ tím'))
+               BUILD_CONST_KEY_MAP      7
+               DICT_UPDATE              1
+               STORE_NAME              30 (ASS_PRESETS)
+               LOAD_CONST              82 ('dict[str, dict]')
+               LOAD_NAME               31 (__annotations__)
+               LOAD_CONST              83 ('ASS_PRESETS')
+               STORE_SUBSCR
+
+ 367           LOAD_NAME               32 (list)
+               PUSH_NULL
+               LOAD_NAME               30 (ASS_PRESETS)
+               LOAD_ATTR               67 (keys + NULL|self)
+               CALL                     0
+               CALL                     1
+               STORE_NAME              34 (PRESET_NAMES)
+
+ 369           LOAD_NAME               30 (ASS_PRESETS)
+               LOAD_ATTR               71 (items + NULL|self)
+               CALL                     0
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      0 (k)
+               LOAD_FAST_AND_CLEAR      1 (v)
+               SWAP                     3
+       L1:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L2:     FOR_ITER                31 (to L5)
+               UNPACK_SEQUENCE          2
+               STORE_FAST_STORE_FAST    1 (k, v)
+               LOAD_FAST                1 (v)
+               LOAD_ATTR               73 (get + NULL|self)
+               LOAD_CONST              84 ('box')
+               CALL                     1
+               TO_BOOL
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           29 (to L2)
+       L4:     LOAD_FAST                0 (k)
+               LIST_APPEND              2
+               JUMP_BACKWARD           33 (to L2)
+       L5:     END_FOR
+               POP_TOP
+       L6:     SWAP                     3
+               STORE_FAST               1 (v)
+               STORE_FAST               0 (k)
+               STORE_NAME              37 (PRESET_BOX_NAMES)
+
+ 372           LOAD_CONST             132 (('name', 'str', 'return', 'dict'))
+               LOAD_CONST              85 (<code object get_preset at 0x0000016DC90E1D30, file "bilisub\srt.py", line 372>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              38 (get_preset)
+
+ 376           LOAD_CONST             133 ((0,))
+               LOAD_CONST             134 (('color', 'str', 'alpha', 'int', 'return', 'str'))
+               LOAD_CONST              86 (<code object _hex_to_ass at 0x0000016DC8EC3B40, file "bilisub\srt.py", line 376>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              39 (_hex_to_ass)
+
+ 385           LOAD_CONST             135 (('text', 'str', 'max_chars', 'int', 'return', 'list[str]'))
+               LOAD_CONST              87 (<code object _wrap_words at 0x0000016DC8E90F30, file "bilisub\srt.py", line 385>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              40 (_wrap_words)
+
+ 402           NOP
+
+ 403           NOP
+
+ 402           NOP
+
+ 403           NOP
+
+ 402           LOAD_CONST             136 (('body', 'str', 'ex', 'int', 'video_width', 'int', 'fs_eff', 'float', 'base_scale', 'float', 'return', 'tuple[str, float]'))
+               LOAD_CONST              88 (<code object _fit_text at 0x0000016DC8EF4780, file "bilisub\srt.py", line 402>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              41 (_fit_text)
+
+ 420           LOAD_CONST             137 ((0.0, 0.0))
+               LOAD_CONST             138 (('w', 'float', 'h', 'float', 'r', 'float', 'ox', 'float', 'oy', 'float', 'return', 'str'))
+               LOAD_CONST              89 (<code object _round_rect_path at 0x0000016DC9223A20, file "bilisub\srt.py", line 420>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              42 (_round_rect_path)
+
+ 449           LOAD_CONST              90 (1.05)
+               STORE_NAME              43 (ART_H_ALLOW)
+
+ 450           LOAD_CONST              91 (1.7)
+               STORE_NAME              44 (ART_W_ALLOW)
+
+ 451           LOAD_CONST              92 (0.13)
+               STORE_NAME              45 (ART_W_MAX_FRAME)
+
+ 452           LOAD_CONST              93 (0.42)
+               STORE_NAME              46 (ART_H_MAX_FRAME)
+
+ 453           LOAD_CONST              94 (0.055)
+               STORE_NAME              47 (ART_W_MIN_FRAME)
+
+ 454           LOAD_CONST              95 (0.3)
+               STORE_NAME              48 (ART_MIN_SHRINK)
+
+ 455           LOAD_CONST              96 (0.017)
+               STORE_NAME              49 (ART_MIN_FS_RATIO)
+
+ 456           LOAD_CONST              97 (1.25)
+               STORE_NAME              50 (ART_FILL_MAX)
+
+ 461           LOAD_CONST              98 (0.72)
+               STORE_NAME              51 (ART_CHAR_W_VERT)
+
+ 462           LOAD_CONST              99 (0.7)
+               STORE_NAME              52 (ART_CHAR_W_HORZ)
+
+ 463           LOAD_CONST             100 (6)
+               STORE_NAME              53 (_STACK_GAP)
+
+ 469           LOAD_CONST              21 (True)
+               STORE_NAME              54 (ART_COVER_BBOX)
+
+ 472           NOP
+
+ 473           NOP
+
+ 472           NOP
+
+ 473           NOP
+
+ 472           NOP
+
+ 473           NOP
+
+ 472           NOP
+
+ 473           NOP
+
+ 472           LOAD_CONST             139 (('body', 'str', 'fs_eff', 'float', 'shrink', 'float', 'n_lines', 'int', 'vertical', 'bool', 'video_width', 'int', 'video_height', 'int', 'return', 'float'))
+               LOAD_CONST             101 (<code object _art_fit_scale at 0x0000016DC8F5A5C0, file "bilisub\srt.py", line 472>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              55 (_art_fit_scale)
+
+ 519           LOAD_CONST             102 ('Nirmala UI')
+               LOAD_CONST             102 ('Nirmala UI')
+               LOAD_CONST             102 ('Nirmala UI')
+               LOAD_CONST             102 ('Nirmala UI')
+
+ 520           LOAD_CONST             102 ('Nirmala UI')
+               LOAD_CONST             102 ('Nirmala UI')
+               LOAD_CONST             102 ('Nirmala UI')
+               LOAD_CONST             102 ('Nirmala UI')
+
+ 521           LOAD_CONST             103 ('Segoe UI')
+
+ 525           LOAD_CONST             103 ('Segoe UI')
+
+ 518           LOAD_CONST             104 (('hi', 'mr', 'bn', 'ta', 'te', 'gu', 'kn', 'ml', 'ur', 'ar'))
+               BUILD_CONST_KEY_MAP     10
+               STORE_NAME              56 (_FONT_THEO_TIENG)
+
+ 529           LOAD_NAME               57 (frozenset)
+               PUSH_NULL
+               LOAD_NAME               56 (_FONT_THEO_TIENG)
+               CALL                     1
+               STORE_NAME              58 (LANG_CHU_RIENG)
+
+ 532           LOAD_CONST             140 (('',))
+               LOAD_CONST             141 (('lang', 'str', 'font_hien_tai', 'str', 'return', 'str'))
+               LOAD_CONST             106 (<code object font_for_language at 0x0000016DC90EE290, file "bilisub\srt.py", line 532>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME              59 (font_for_language)
+
+ 547           LOAD_CONST             107 ('Segoe UI Black')
+
+ 548           LOAD_CONST             105 ('')
+
+ 549           LOAD_CONST             105 ('')
+
+ 550           LOAD_CONST             105 ('')
+
+ 551           LOAD_CONST             108 ('plain')
+
+ 552           LOAD_CONST             109 ('#150F09')
+
+ 553           LOAD_CONST             110 ('#D8B45A')
+
+ 554           LOAD_CONST             111 (0.95)
+
+ 555           LOAD_CONST             112 (72)
+
+ 556           LOAD_CONST              26 ('#FFFFFF')
+
+ 557           LOAD_CONST             113 ('#FF80FF')
+
+ 558           LOAD_CONST             114 (3.3)
+
+ 559           LOAD_CONST              42 (1.4)
+
+ 560           LOAD_CONST              21 (True)
+
+ 561           LOAD_CONST              38 (False)
+
+ 562           LOAD_CONST             115 (100.0)
+
+ 563           LOAD_CONST             115 (100.0)
+
+ 564           LOAD_CONST             116 ((0.5, 0.88))
+
+ 565           LOAD_CONST              21 (True)
+
+ 566           LOAD_CONST              38 (False)
+
+ 567           LOAD_CONST              32 ('#000000')
+
+ 541           LOAD_CONST             117 (('font_name', 'art_font_name', 'art_color', 'art_outline', 'art_style', 'art_panel_fill', 'art_panel_border', 'art_panel_opacity', 'font_size', 'text_color', 'outline_color', 'outline_width', 'shadow', 'bold', 'italic', 'scale_x', 'scale_y', 'position', 'use_translated', 'box', 'box_color'))
+               BUILD_CONST_KEY_MAP     21
+
+ 542           NOP
+
+ 541           NOP
+
+ 543           NOP
+
+ 541           NOP
+
+ 545           NOP
+
+ 541           NOP
+
+ 546           NOP
+
+ 541           NOP
+
+ 547           NOP
+
+ 541           NOP
+
+ 548           NOP
+
+ 541           NOP
+
+ 549           NOP
+
+ 541           NOP
+
+ 550           NOP
+
+ 541           NOP
+
+ 551           NOP
+
+ 541           NOP
+
+ 552           NOP
+
+ 541           NOP
+
+ 553           NOP
+
+ 541           NOP
+
+ 554           NOP
+
+ 541           NOP
+
+ 555           NOP
+
+ 541           NOP
+
+ 556           NOP
+
+ 541           NOP
+
+ 557           NOP
+
+ 541           NOP
+
+ 558           NOP
+
+ 541           NOP
+
+ 559           NOP
+
+ 541           NOP
+
+ 560           NOP
+
+ 541           NOP
+
+ 561           NOP
+
+ 541           NOP
+
+ 562           NOP
+
+ 541           NOP
+
+ 563           NOP
+
+ 541           NOP
+
+ 564           NOP
+
+ 541           NOP
+
+ 565           NOP
+
+ 541           NOP
+
+ 566           NOP
+
+ 541           NOP
+
+ 567           NOP
+
+ 541           NOP
+
+ 568           NOP
+
+ 541           LOAD_CONST             142 (('entries', 'Iterable[SubtitleEntry]', 'path', 'str | Path', 'video_width', 'int', 'video_height', 'int', 'font_name', 'str', 'art_font_name', 'str', 'art_color', 'str', 'art_outline', 'str', 'art_style', 'str', 'art_panel_fill', 'str', 'art_panel_border', 'str', 'art_panel_opacity', 'float', 'font_size', 'int', 'text_color', 'str', 'outline_color', 'str', 'outline_width', 'float', 'shadow', 'float', 'bold', 'bool', 'italic', 'bool', 'scale_x', 'float', 'scale_y', 'float', 'position', 'tuple[float, float]', 'use_translated', 'bool', 'box', 'bool', 'box_color', 'str', 'return', 'Path'))
+               LOAD_CONST             118 (<code object export_ass at 0x0000016DC8FDFE70, file "bilisub\srt.py", line 541>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+               STORE_NAME              60 (export_ass)
+               RETURN_CONST             3 (None)
+
+  --   L7:     SWAP                     2
+               POP_TOP
+
+ 369           SWAP                     3
+               STORE_FAST               1 (v)
+               STORE_FAST               0 (k)
+               RERAISE                  0
+ExceptionTable:
+  L1 to L3 -> L7 [3]
+  L4 to L6 -> L7 [3]
+
+Disassembly of <code object ghi_text_ben at 0x0000016DC8F7EDC0, file "bilisub\srt.py", line 25>:
+  25            RESUME                   0
+
+  31            LOAD_GLOBAL              1 (Path + NULL)
+                LOAD_FAST                0 (path)
+                CALL                     1
+                STORE_FAST               4 (p)
+
+  32            LOAD_FAST                4 (p)
+                LOAD_ATTR                3 (with_name + NULL|self)
+                LOAD_FAST                4 (p)
+                LOAD_ATTR                4 (name)
+                LOAD_CONST               1 ('.ghitam')
+                BINARY_OP                0 (+)
+                CALL                     1
+                STORE_FAST               5 (tmp)
+
+  33            LOAD_CONST               2 (None)
+                STORE_FAST               6 (loi)
+
+  34            LOAD_GLOBAL              7 (enumerate + NULL)
+                LOAD_CONST               3 ((0.0,))
+                LOAD_GLOBAL              8 (_GHI_CHO_S)
+                BINARY_OP                0 (+)
+                CALL                     1
+                GET_ITER
+        L1:     FOR_ITER               113 (to L6)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  120 (lan, cho)
+
+  35            LOAD_FAST                8 (cho)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       22 (to L2)
+
+  36            LOAD_GLOBAL             10 (time)
+                LOAD_ATTR               12 (sleep)
+                PUSH_NULL
+                LOAD_FAST                8 (cho)
+                CALL                     1
+                POP_TOP
+
+  37    L2:     NOP
+
+  38    L3:     LOAD_FAST                5 (tmp)
+                LOAD_ATTR               15 (write_text + NULL|self)
+                LOAD_FAST_LOAD_FAST     18 (data, encoding)
+                LOAD_CONST               4 (('encoding',))
+                CALL_KW                  2
+                POP_TOP
+
+  39            LOAD_GLOBAL             16 (os)
+                LOAD_ATTR               18 (replace)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST     84 (tmp, p)
+                CALL                     2
+                POP_TOP
+
+  40            LOAD_FAST                7 (lan)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       32 (to L4)
+                LOAD_FAST                3 (log)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       25 (to L4)
+
+  41            LOAD_FAST                3 (log)
+                PUSH_NULL
+                LOAD_CONST               5 ("ℹ Ghi '")
+                LOAD_FAST                4 (p)
+                LOAD_ATTR                4 (name)
+                FORMAT_SIMPLE
+                LOAD_CONST               6 ("' trượt ")
+                LOAD_FAST                7 (lan)
+                FORMAT_SIMPLE
+                LOAD_CONST               7 (' lần (ổ đĩa bận/khoá) — thử lại đã XONG.')
+                BUILD_STRING             5
+                CALL                     1
+                POP_TOP
+
+  42    L4:     LOAD_FAST                4 (p)
+        L5:     SWAP                     2
+                POP_TOP
+                RETURN_VALUE
+
+  34    L6:     END_FOR
+                POP_TOP
+
+  49            LOAD_FAST                6 (loi)
+                RAISE_VARARGS            1
+
+  --    L7:     PUSH_EXC_INFO
+
+  43            LOAD_GLOBAL             20 (OSError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       51 (to L18)
+                STORE_FAST               9 (ex)
+
+  44    L8:     LOAD_FAST                9 (ex)
+                STORE_FAST               6 (loi)
+
+  45    L9:     NOP
+
+  46   L10:     LOAD_FAST                5 (tmp)
+                LOAD_ATTR               23 (unlink + NULL|self)
+                CALL                     0
+                POP_TOP
+       L11:     POP_EXCEPT
+                LOAD_CONST               2 (None)
+                STORE_FAST               9 (ex)
+                DELETE_FAST              9 (ex)
+                JUMP_BACKWARD          154 (to L1)
+
+  --   L12:     PUSH_EXC_INFO
+
+  47            LOAD_GLOBAL             20 (OSError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        8 (to L15)
+                POP_TOP
+
+  48   L13:     POP_EXCEPT
+       L14:     POP_EXCEPT
+                LOAD_CONST               2 (None)
+                STORE_FAST               9 (ex)
+                DELETE_FAST              9 (ex)
+                JUMP_BACKWARD          171 (to L1)
+
+  47   L15:     RERAISE                  0
+
+  --   L16:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L17:     LOAD_CONST               2 (None)
+                STORE_FAST               9 (ex)
+                DELETE_FAST              9 (ex)
+                RERAISE                  1
+
+  43   L18:     RERAISE                  0
+
+  --   L19:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L3 to L5 -> L7 [1]
+  L7 to L8 -> L19 [2] lasti
+  L8 to L9 -> L17 [2] lasti
+  L10 to L11 -> L12 [2]
+  L12 to L13 -> L16 [3] lasti
+  L13 to L14 -> L17 [2] lasti
+  L15 to L16 -> L16 [3] lasti
+  L16 to L17 -> L17 [2] lasti
+  L17 to L19 -> L19 [2] lasti
+
+Disassembly of <code object dau_truc_cue at 0x0000016DC8CBEB50, file "bilisub\srt.py", line 71>:
+ 71           RESUME                   0
+
+ 73           LOAD_CONST               1 ('0\n00:00:00,000 --> 00:00:00,000\n[PeiPei timeline k=')
+              LOAD_GLOBAL              1 (float + NULL)
+              LOAD_FAST                0 (k)
+              CALL                     1
+              LOAD_CONST               2 ('g')
+              FORMAT_WITH_SPEC
+              LOAD_CONST               3 (']\n')
+              BUILD_STRING             3
+              RETURN_VALUE
+
+Disassembly of <code object doc_dau_truc at 0x0000016DC8E90D50, file "bilisub\srt.py", line 76>:
+  76            RESUME                   0
+
+  78            NOP
+
+  79    L1:     LOAD_GLOBAL              1 (_read_text + NULL)
+                LOAD_FAST                0 (path)
+                CALL                     1
+                LOAD_CONST               1 (None)
+                LOAD_CONST               2 (4000)
+                BINARY_SLICE
+                STORE_FAST               1 (head)
+
+  82    L2:     LOAD_GLOBAL              4 (_DAU_TRUC_TIM)
+                LOAD_ATTR                7 (search + NULL|self)
+                LOAD_FAST                1 (head)
+                CALL                     1
+                STORE_FAST               2 (m)
+
+  83            LOAD_FAST                2 (m)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L3)
+
+  84            RETURN_CONST             3 (0.0)
+
+  85    L3:     NOP
+
+  86    L4:     LOAD_GLOBAL              9 (float + NULL)
+                LOAD_FAST                2 (m)
+                LOAD_ATTR               11 (group + NULL|self)
+                LOAD_CONST               4 (1)
+                CALL                     1
+                LOAD_ATTR               13 (replace + NULL|self)
+                LOAD_CONST               5 (',')
+                LOAD_CONST               6 ('.')
+                CALL                     2
+                CALL                     1
+                STORE_FAST               3 (v)
+
+  87            LOAD_CONST               7 (0.05)
+                LOAD_FAST                3 (v)
+                SWAP                     2
+                COPY                     2
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        7 (to L6)
+                LOAD_CONST               8 (20)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        3 (to L7)
+                LOAD_FAST                3 (v)
+        L5:     RETURN_VALUE
+        L6:     POP_TOP
+        L7:     LOAD_CONST               3 (0.0)
+        L8:     RETURN_VALUE
+
+  --    L9:     PUSH_EXC_INFO
+
+  80            LOAD_GLOBAL              2 (OSError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L11)
+                POP_TOP
+
+  81   L10:     POP_EXCEPT
+                RETURN_CONST             3 (0.0)
+
+  80   L11:     RERAISE                  0
+
+  --   L12:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L13:     PUSH_EXC_INFO
+
+  88            LOAD_GLOBAL             14 (ValueError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L15)
+                POP_TOP
+
+  89   L14:     POP_EXCEPT
+                RETURN_CONST             3 (0.0)
+
+  88   L15:     RERAISE                  0
+
+  --   L16:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L9 [0]
+  L4 to L5 -> L13 [0]
+  L6 to L8 -> L13 [0]
+  L9 to L10 -> L12 [1] lasti
+  L11 to L12 -> L12 [1] lasti
+  L13 to L14 -> L16 [1] lasti
+  L15 to L16 -> L16 [1] lasti
+
+Disassembly of <code object ghi_dau_truc at 0x0000016DC8FDDEB0, file "bilisub\srt.py", line 92>:
+  92            RESUME                   0
+
+  94            NOP
+
+  95    L1:     LOAD_GLOBAL              1 (_read_text + NULL)
+                LOAD_FAST                0 (path)
+                CALL                     1
+                LOAD_ATTR                3 (replace + NULL|self)
+                LOAD_CONST               1 ('\r\n')
+                LOAD_CONST               2 ('\n')
+                CALL                     2
+                LOAD_ATTR                3 (replace + NULL|self)
+                LOAD_CONST               3 ('\r')
+                LOAD_CONST               2 ('\n')
+                CALL                     2
+                STORE_FAST               2 (text)
+
+  96            LOAD_GLOBAL              4 (_BLOCK_SPLIT)
+                LOAD_ATTR                7 (split + NULL|self)
+                LOAD_FAST                2 (text)
+                LOAD_ATTR                9 (strip + NULL|self)
+                CALL                     0
+                CALL                     1
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      3 (b)
+                SWAP                     2
+        L2:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L3:     FOR_ITER                41 (to L6)
+                STORE_FAST_LOAD_FAST    51 (b, b)
+                LOAD_ATTR                9 (strip + NULL|self)
+                CALL                     0
+                TO_BOOL
+        L4:     POP_JUMP_IF_TRUE         2 (to L5)
+                JUMP_BACKWARD           25 (to L3)
+        L5:     LOAD_FAST                3 (b)
+                LOAD_ATTR                9 (strip + NULL|self)
+                CALL                     0
+                LIST_APPEND              2
+                JUMP_BACKWARD           43 (to L3)
+        L6:     END_FOR
+                POP_TOP
+        L7:     STORE_FAST               4 (blocks)
+                STORE_FAST               3 (b)
+
+  97            LOAD_FAST                4 (blocks)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      3 (b)
+                SWAP                     2
+        L8:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L9:     FOR_ITER                33 (to L12)
+                STORE_FAST               3 (b)
+                LOAD_GLOBAL             10 (_DAU_TRUC_TIM)
+                LOAD_ATTR               13 (search + NULL|self)
+                LOAD_FAST                3 (b)
+                CALL                     1
+                TO_BOOL
+       L10:     POP_JUMP_IF_FALSE        2 (to L11)
+                JUMP_BACKWARD           31 (to L9)
+       L11:     LOAD_FAST                3 (b)
+                LIST_APPEND              2
+                JUMP_BACKWARD           35 (to L9)
+       L12:     END_FOR
+                POP_TOP
+       L13:     STORE_FAST               4 (blocks)
+                STORE_FAST               3 (b)
+
+  98            LOAD_GLOBAL             15 (abs + NULL)
+                LOAD_GLOBAL             17 (float + NULL)
+                LOAD_FAST                1 (k)
+                CALL                     1
+                LOAD_CONST               4 (1.0)
+                BINARY_OP               10 (-)
+                CALL                     1
+                LOAD_CONST               5 (0.001)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       41 (to L14)
+
+  99            LOAD_FAST                4 (blocks)
+                LOAD_ATTR               19 (insert + NULL|self)
+                LOAD_CONST               6 (0)
+                LOAD_GLOBAL             21 (dau_truc_cue + NULL)
+                LOAD_FAST                1 (k)
+                CALL                     1
+                LOAD_ATTR                9 (strip + NULL|self)
+                CALL                     0
+                CALL                     2
+                POP_TOP
+
+ 100   L14:     LOAD_GLOBAL             23 (ghi_text_ben + NULL)
+                LOAD_FAST                0 (path)
+                LOAD_CONST               7 ('\n\n')
+                LOAD_ATTR               25 (join + NULL|self)
+                LOAD_FAST                4 (blocks)
+                CALL                     1
+                LOAD_CONST               2 ('\n')
+                BINARY_OP                0 (+)
+                LOAD_CONST               8 ('utf-8-sig')
+                LOAD_CONST               9 (('encoding',))
+                CALL_KW                  3
+                POP_TOP
+       L15:     RETURN_CONST            10 (None)
+
+  --   L16:     SWAP                     2
+                POP_TOP
+
+  96            SWAP                     2
+                STORE_FAST               3 (b)
+                RERAISE                  0
+
+  --   L17:     SWAP                     2
+                POP_TOP
+
+  97            SWAP                     2
+                STORE_FAST               3 (b)
+                RERAISE                  0
+
+  --   L18:     PUSH_EXC_INFO
+
+ 101            LOAD_GLOBAL             26 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L20)
+                POP_TOP
+
+ 102   L19:     POP_EXCEPT
+                RETURN_CONST            10 (None)
+
+ 101   L20:     RERAISE                  0
+
+  --   L21:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L18 [0]
+  L2 to L4 -> L16 [2]
+  L5 to L7 -> L16 [2]
+  L7 to L8 -> L18 [0]
+  L8 to L10 -> L17 [2]
+  L11 to L13 -> L17 [2]
+  L13 to L15 -> L18 [0]
+  L16 to L18 -> L18 [0]
+  L18 to L19 -> L21 [1] lasti
+  L20 to L21 -> L21 [1] lasti
+
+Disassembly of <code object _read_text at 0x0000016DC8E0B7B0, file "bilisub\srt.py", line 108>:
+ 108           RESUME                   0
+
+ 109           LOAD_GLOBAL              1 (Path + NULL)
+               LOAD_FAST                0 (path)
+               CALL                     1
+               LOAD_ATTR                3 (read_bytes + NULL|self)
+               CALL                     0
+               STORE_FAST               1 (data)
+
+ 110           LOAD_CONST               1 (('utf-8-sig', 'utf-8', 'utf-16', 'gb18030', 'cp1252', 'latin-1'))
+               GET_ITER
+       L1:     FOR_ITER                21 (to L4)
+               STORE_FAST               2 (enc)
+
+ 111           NOP
+
+ 112   L2:     LOAD_FAST                1 (data)
+               LOAD_ATTR                5 (decode + NULL|self)
+               LOAD_FAST                2 (enc)
+               CALL                     1
+       L3:     SWAP                     2
+               POP_TOP
+               RETURN_VALUE
+
+ 110   L4:     END_FOR
+               POP_TOP
+
+ 115           LOAD_FAST                1 (data)
+               LOAD_ATTR                5 (decode + NULL|self)
+               LOAD_CONST               2 ('utf-8')
+               LOAD_CONST               3 ('replace')
+               LOAD_CONST               4 (('errors',))
+               CALL_KW                  2
+               RETURN_VALUE
+
+  --   L5:     PUSH_EXC_INFO
+
+ 113           LOAD_GLOBAL              6 (UnicodeDecodeError)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        4 (to L7)
+               POP_TOP
+
+ 114   L6:     POP_EXCEPT
+               JUMP_BACKWARD           54 (to L1)
+
+ 113   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L5 [1]
+  L5 to L6 -> L8 [2] lasti
+  L7 to L8 -> L8 [2] lasti
+
+Disassembly of <code object parse_srt at 0x0000016DC8D286C0, file "bilisub\srt.py", line 118>:
+118           RESUME                   0
+
+119           LOAD_GLOBAL              1 (_read_text + NULL)
+              LOAD_FAST                0 (path)
+              CALL                     1
+              LOAD_ATTR                3 (replace + NULL|self)
+              LOAD_CONST               1 ('\r\n')
+              LOAD_CONST               2 ('\n')
+              CALL                     2
+              LOAD_ATTR                3 (replace + NULL|self)
+              LOAD_CONST               3 ('\r')
+              LOAD_CONST               2 ('\n')
+              CALL                     2
+              STORE_FAST               1 (text)
+
+120           BUILD_LIST               0
+              STORE_FAST               2 (entries)
+
+121           LOAD_CONST               4 (0)
+              STORE_FAST               3 (idx)
+
+122           LOAD_GLOBAL              4 (_BLOCK_SPLIT)
+              LOAD_ATTR                7 (split + NULL|self)
+              LOAD_FAST                1 (text)
+              LOAD_ATTR                9 (strip + NULL|self)
+              CALL                     0
+              CALL                     1
+              GET_ITER
+      L1:     EXTENDED_ARG             1
+              FOR_ITER               447 (to L7)
+              STORE_FAST               4 (block)
+
+123           LOAD_FAST                4 (block)
+              LOAD_ATTR                9 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               4 (block)
+
+124           LOAD_FAST                4 (block)
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L2)
+
+125           JUMP_BACKWARD           29 (to L1)
+
+126   L2:     LOAD_GLOBAL             10 (_TIME_LINE)
+              LOAD_ATTR               13 (search + NULL|self)
+              LOAD_FAST                4 (block)
+              CALL                     1
+              STORE_FAST               5 (m)
+
+127           LOAD_FAST                5 (m)
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+
+128           JUMP_BACKWARD           59 (to L1)
+
+129   L3:     LOAD_GLOBAL             14 (SubtitleEntry)
+              LOAD_ATTR               16 (parse_time)
+              PUSH_NULL
+              LOAD_FAST                5 (m)
+              LOAD_ATTR               19 (group + NULL|self)
+              LOAD_CONST               5 (1)
+              CALL                     1
+              CALL                     1
+              STORE_FAST               6 (start)
+
+130           LOAD_GLOBAL             14 (SubtitleEntry)
+              LOAD_ATTR               16 (parse_time)
+              PUSH_NULL
+              LOAD_FAST                5 (m)
+              LOAD_ATTR               19 (group + NULL|self)
+              LOAD_CONST               6 (2)
+              CALL                     1
+              CALL                     1
+              STORE_FAST               7 (end)
+
+132           LOAD_FAST                4 (block)
+              LOAD_ATTR                7 (split + NULL|self)
+              LOAD_CONST               2 ('\n')
+              CALL                     1
+              STORE_FAST               8 (lines)
+
+133           LOAD_GLOBAL             21 (next + NULL)
+              LOAD_CONST               7 (<code object <genexpr> at 0x0000016DC8EA3210, file "bilisub\srt.py", line 133>)
+              MAKE_FUNCTION
+              LOAD_GLOBAL             23 (enumerate + NULL)
+              LOAD_FAST                8 (lines)
+              CALL                     1
+              GET_ITER
+              CALL                     0
+              LOAD_CONST               4 (0)
+              CALL                     2
+              STORE_FAST               9 (ti)
+
+134           LOAD_CONST               8 (' ')
+              LOAD_ATTR               25 (join + NULL|self)
+              LOAD_CONST               9 (<code object <genexpr> at 0x0000016DC8E07870, file "bilisub\srt.py", line 134>)
+              MAKE_FUNCTION
+              LOAD_FAST_LOAD_FAST    137 (lines, ti)
+              LOAD_CONST               5 (1)
+              BINARY_OP                0 (+)
+              LOAD_CONST               0 (None)
+              BINARY_SLICE
+              GET_ITER
+              CALL                     0
+              CALL                     1
+              STORE_FAST              10 (content)
+
+135           LOAD_GLOBAL             26 (_TAG)
+              LOAD_ATTR               29 (sub + NULL|self)
+              LOAD_CONST              10 ('')
+              LOAD_FAST               10 (content)
+              CALL                     2
+              STORE_FAST              10 (content)
+
+136           LOAD_GLOBAL             30 (_ASS_TAG)
+              LOAD_ATTR               29 (sub + NULL|self)
+              LOAD_CONST              10 ('')
+              LOAD_FAST               10 (content)
+              CALL                     2
+              STORE_FAST              10 (content)
+
+138           LOAD_FAST               10 (content)
+              LOAD_ATTR                3 (replace + NULL|self)
+              LOAD_CONST              11 ('\\N')
+              LOAD_CONST               8 (' ')
+              CALL                     2
+              LOAD_ATTR                3 (replace + NULL|self)
+              LOAD_CONST              12 ('\\n')
+              LOAD_CONST               8 (' ')
+              CALL                     2
+              LOAD_ATTR                3 (replace + NULL|self)
+              LOAD_CONST              13 ('\\h')
+              LOAD_CONST               8 (' ')
+              CALL                     2
+              STORE_FAST              10 (content)
+
+139           LOAD_CONST               8 (' ')
+              LOAD_ATTR               25 (join + NULL|self)
+              LOAD_FAST               10 (content)
+              LOAD_ATTR                7 (split + NULL|self)
+              CALL                     0
+              CALL                     1
+              LOAD_ATTR                9 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST              10 (content)
+
+140           LOAD_FAST               10 (content)
+              TO_BOOL
+              POP_JUMP_IF_TRUE         3 (to L4)
+
+141           EXTENDED_ARG             1
+              JUMP_BACKWARD          356 (to L1)
+
+142   L4:     LOAD_GLOBAL             32 (_DAU_TRUC_RE)
+              LOAD_ATTR               35 (match + NULL|self)
+              LOAD_FAST               10 (content)
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE        32 (to L5)
+              LOAD_FAST                6 (start)
+              LOAD_CONST               4 (0)
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       29 (to L6)
+              LOAD_FAST                7 (end)
+              LOAD_CONST               4 (0)
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       23 (to L6)
+              LOAD_CONST              14 ('peipei')
+              LOAD_FAST               10 (content)
+              LOAD_ATTR               37 (lower + NULL|self)
+              CALL                     0
+              CONTAINS_OP              0
+              POP_JUMP_IF_FALSE        3 (to L6)
+
+143   L5:     EXTENDED_ARG             1
+              JUMP_BACKWARD          417 (to L1)
+
+144   L6:     LOAD_FAST                3 (idx)
+              LOAD_CONST               5 (1)
+              BINARY_OP               13 (+=)
+              STORE_FAST               3 (idx)
+
+145           LOAD_FAST                2 (entries)
+              LOAD_ATTR               39 (append + NULL|self)
+              LOAD_GLOBAL             15 (SubtitleEntry + NULL)
+              LOAD_FAST_LOAD_FAST     54 (idx, start)
+              LOAD_FAST_LOAD_FAST    122 (end, content)
+              LOAD_CONST              15 (('index', 'start_ms', 'end_ms', 'text'))
+              CALL_KW                  4
+              CALL                     1
+              POP_TOP
+              EXTENDED_ARG             1
+              JUMP_BACKWARD          450 (to L1)
+
+122   L7:     END_FOR
+              POP_TOP
+
+146           LOAD_FAST                2 (entries)
+              RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC8EA3210, file "bilisub\srt.py", line 133>:
+ 133           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                37 (to L5)
+               UNPACK_SEQUENCE          2
+               STORE_FAST_STORE_FAST   18 (i, ln)
+               LOAD_GLOBAL              0 (_TIME_LINE)
+               LOAD_ATTR                3 (search + NULL|self)
+               LOAD_FAST                2 (ln)
+               CALL                     1
+               TO_BOOL
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           33 (to L2)
+       L4:     LOAD_FAST                1 (i)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           39 (to L2)
+       L5:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L6:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L6 [0] lasti
+  L4 to L6 -> L6 [0] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC8E07870, file "bilisub\srt.py", line 134>:
+ 134           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                43 (to L5)
+               STORE_FAST_LOAD_FAST    17 (ln, ln)
+               LOAD_ATTR                1 (strip + NULL|self)
+               CALL                     0
+               TO_BOOL
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           25 (to L2)
+       L4:     LOAD_FAST                1 (ln)
+               LOAD_ATTR                1 (strip + NULL|self)
+               CALL                     0
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           45 (to L2)
+       L5:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L6:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L6 [0] lasti
+  L4 to L6 -> L6 [0] lasti
+
+Disassembly of <code object export_srt at 0x0000016DC8EF4BE0, file "bilisub\srt.py", line 149>:
+149           RESUME                   0
+
+150           BUILD_LIST               0
+              STORE_FAST               3 (out)
+
+151           LOAD_GLOBAL              1 (enumerate + NULL)
+              LOAD_FAST                0 (entries)
+              LOAD_CONST               1 (1)
+              CALL                     2
+              GET_ITER
+      L1:     FOR_ITER               129 (to L4)
+              UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST   69 (i, e)
+
+152           LOAD_FAST                2 (use_translated)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       16 (to L2)
+              LOAD_FAST                5 (e)
+              LOAD_ATTR                3 (output_text + NULL|self)
+              CALL                     0
+              JUMP_FORWARD            11 (to L3)
+      L2:     LOAD_FAST                5 (e)
+              LOAD_ATTR                4 (text)
+      L3:     STORE_FAST               6 (body)
+
+153           LOAD_FAST                3 (out)
+              LOAD_ATTR                7 (append + NULL|self)
+              LOAD_FAST                4 (i)
+              FORMAT_SIMPLE
+              LOAD_CONST               2 ('\n')
+              LOAD_GLOBAL              8 (SubtitleEntry)
+              LOAD_ATTR               10 (format_time)
+              PUSH_NULL
+              LOAD_FAST                5 (e)
+              LOAD_ATTR               12 (start_ms)
+              CALL                     1
+              FORMAT_SIMPLE
+              LOAD_CONST               3 (' --> ')
+
+154           LOAD_GLOBAL              8 (SubtitleEntry)
+              LOAD_ATTR               10 (format_time)
+              PUSH_NULL
+              LOAD_FAST                5 (e)
+              LOAD_ATTR               14 (end_ms)
+              CALL                     1
+              FORMAT_SIMPLE
+              LOAD_CONST               2 ('\n')
+              LOAD_FAST                6 (body)
+              FORMAT_SIMPLE
+              LOAD_CONST               2 ('\n')
+
+153           BUILD_STRING             8
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD          131 (to L1)
+
+151   L4:     END_FOR
+              POP_TOP
+
+157           LOAD_GLOBAL             17 (ghi_text_ben + NULL)
+              LOAD_FAST                1 (path)
+              LOAD_CONST               2 ('\n')
+              LOAD_ATTR               19 (join + NULL|self)
+              LOAD_FAST                3 (out)
+              CALL                     1
+              LOAD_CONST               4 ('utf-8-sig')
+              LOAD_CONST               5 (('encoding',))
+              CALL_KW                  3
+              RETURN_VALUE
+
+Disassembly of <code object merge_duplicate_entries at 0x0000016DC87BBF80, file "bilisub\srt.py", line 160>:
+  --            MAKE_CELL               10 (_BO_DAU_CAU)
+                MAKE_CELL               11 (_RANH_SO)
+                MAKE_CELL               12 (_cjk)
+                MAKE_CELL               13 (_n_ocr)
+                MAKE_CELL               14 (_sim_ocr)
+
+ 160            RESUME                   0
+
+ 202            LOAD_GLOBAL              0 (re)
+                LOAD_ATTR                2 (compile)
+                PUSH_NULL
+                LOAD_CONST               1 ('(?<=\\d)[\\W_]+(?=\\d)')
+                LOAD_GLOBAL              0 (re)
+                LOAD_ATTR                4 (UNICODE)
+                CALL                     2
+                STORE_DEREF             11 (_RANH_SO)
+
+ 203            LOAD_GLOBAL              0 (re)
+                LOAD_ATTR                2 (compile)
+                PUSH_NULL
+                LOAD_CONST               2 ('[^\\w#]+|_+')
+                LOAD_GLOBAL              0 (re)
+                LOAD_ATTR                4 (UNICODE)
+                CALL                     2
+                STORE_DEREF             10 (_BO_DAU_CAU)
+
+ 205            LOAD_CONST              18 (('e', 'SubtitleEntry', 'return', 'str'))
+                LOAD_FAST               10 (_BO_DAU_CAU)
+                LOAD_FAST               11 (_RANH_SO)
+                BUILD_TUPLE              2
+                LOAD_CONST               3 (<code object _norm at 0x0000016DC8E0BAB0, file "bilisub\srt.py", line 205>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                SET_FUNCTION_ATTRIBUTE   4 (annotations)
+                STORE_FAST               2 (_norm)
+
+ 209            NOP
+
+ 212    L1:     LOAD_CONST               4 (1)
+                LOAD_CONST               5 (('_CJK_RE', '_norm', '_similar'))
+                IMPORT_NAME              3 (ocr)
+                IMPORT_FROM              4 (_CJK_RE)
+                STORE_DEREF             12 (_cjk)
+                IMPORT_FROM              5 (_norm)
+                STORE_DEREF             13 (_n_ocr)
+                IMPORT_FROM              6 (_similar)
+                STORE_DEREF             14 (_sim_ocr)
+                POP_TOP
+
+ 218    L2:     LOAD_CONST              19 (('a', 'SubtitleEntry', 'b', 'SubtitleEntry', 'return', 'bool'))
+                LOAD_FAST               12 (_cjk)
+                LOAD_FAST               13 (_n_ocr)
+                LOAD_FAST               14 (_sim_ocr)
+                BUILD_TUPLE              3
+                LOAD_CONST               9 (<code object _cung_nguon at 0x0000016DC8F5C7B0, file "bilisub\srt.py", line 218>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                SET_FUNCTION_ATTRIBUTE   4 (annotations)
+                STORE_FAST               3 (_cung_nguon)
+
+ 242            BUILD_LIST               0
+                STORE_FAST               4 (out)
+
+ 243            LOAD_CONST              10 (0)
+                STORE_FAST               5 (_giu_lai)
+
+ 244            LOAD_CONST              11 ('')
+                STORE_FAST               6 (_vd)
+
+ 245            LOAD_FAST                0 (entries)
+                GET_ITER
+        L3:     EXTENDED_ARG             1
+                FOR_ITER               276 (to L9)
+                STORE_FAST               7 (e)
+
+ 246            LOAD_FAST                4 (out)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        5 (to L4)
+                LOAD_FAST                4 (out)
+                LOAD_CONST              12 (-1)
+                BINARY_SUBSCR
+                JUMP_FORWARD             1 (to L5)
+        L4:     LOAD_CONST              13 (None)
+        L5:     STORE_FAST               8 (last)
+
+ 247            LOAD_FAST                8 (last)
+                POP_JUMP_IF_NONE       238 (to L8)
+
+ 248            LOAD_GLOBAL             17 (getattr + NULL)
+                LOAD_FAST                7 (e)
+                LOAD_CONST              14 ('is_art')
+                LOAD_CONST              15 (False)
+                CALL                     3
+                TO_BOOL
+                POP_JUMP_IF_TRUE       220 (to L8)
+                LOAD_GLOBAL             17 (getattr + NULL)
+                LOAD_FAST                8 (last)
+                LOAD_CONST              14 ('is_art')
+                LOAD_CONST              15 (False)
+                CALL                     3
+                TO_BOOL
+                POP_JUMP_IF_TRUE       202 (to L8)
+
+ 249            LOAD_GLOBAL             17 (getattr + NULL)
+                LOAD_FAST                7 (e)
+                LOAD_CONST              16 ('pos')
+                LOAD_CONST              13 (None)
+                CALL                     3
+                LOAD_GLOBAL             17 (getattr + NULL)
+                LOAD_FAST                8 (last)
+                LOAD_CONST              16 ('pos')
+                LOAD_CONST              13 (None)
+                CALL                     3
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE      174 (to L8)
+
+ 250            LOAD_FAST                2 (_norm)
+                PUSH_NULL
+                LOAD_FAST                7 (e)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE      161 (to L8)
+                LOAD_FAST                2 (_norm)
+                PUSH_NULL
+                LOAD_FAST                7 (e)
+                CALL                     1
+                LOAD_FAST                2 (_norm)
+                PUSH_NULL
+                LOAD_FAST                8 (last)
+                CALL                     1
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE      143 (to L8)
+
+ 251            LOAD_FAST                7 (e)
+                LOAD_ATTR               18 (start_ms)
+                LOAD_FAST                8 (last)
+                LOAD_ATTR               20 (end_ms)
+                BINARY_OP               10 (-)
+                LOAD_FAST                1 (max_gap_ms)
+                COMPARE_OP              58 (bool(<=))
+                POP_JUMP_IF_FALSE      114 (to L8)
+
+ 252            LOAD_FAST                3 (_cung_nguon)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST    135 (last, e)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       39 (to L6)
+
+ 253            LOAD_GLOBAL             23 (max + NULL)
+                LOAD_FAST                8 (last)
+                LOAD_ATTR               20 (end_ms)
+                LOAD_FAST                7 (e)
+                LOAD_ATTR               20 (end_ms)
+                CALL                     2
+                LOAD_FAST                8 (last)
+                STORE_ATTR              10 (end_ms)
+
+ 254            JUMP_BACKWARD          197 (to L3)
+
+ 260    L6:     LOAD_FAST                5 (_giu_lai)
+                LOAD_CONST               4 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST               5 (_giu_lai)
+
+ 261            LOAD_CONST              15 (False)
+                LOAD_FAST                7 (e)
+                STORE_ATTR              12 (speak)
+
+ 262            LOAD_FAST                6 (_vd)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        43 (to L8)
+
+ 263            LOAD_FAST                7 (e)
+                LOAD_ATTR               26 (translated)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        21 (to L7)
+                POP_TOP
+                LOAD_FAST                7 (e)
+                LOAD_ATTR               28 (text)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L7)
+                POP_TOP
+                LOAD_CONST              11 ('')
+        L7:     LOAD_CONST              13 (None)
+                LOAD_CONST              17 (40)
+                BINARY_SLICE
+                STORE_FAST               6 (_vd)
+
+ 264    L8:     LOAD_FAST                4 (out)
+                LOAD_ATTR               31 (append + NULL|self)
+                LOAD_FAST                7 (e)
+                CALL                     1
+                POP_TOP
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          279 (to L3)
+
+ 245    L9:     END_FOR
+                POP_TOP
+
+ 265            LOAD_GLOBAL             33 (enumerate + NULL)
+                LOAD_FAST                4 (out)
+                LOAD_CONST               4 (1)
+                CALL                     2
+                GET_ITER
+       L10:     FOR_ITER                11 (to L11)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  151 (i, e)
+
+ 266            LOAD_FAST_LOAD_FAST    151 (i, e)
+                STORE_ATTR              17 (index)
+                JUMP_BACKWARD           13 (to L10)
+
+ 265   L11:     END_FOR
+                POP_TOP
+
+ 267            LOAD_FAST_LOAD_FAST     86 (_giu_lai, _vd)
+                BUILD_TUPLE              2
+                LOAD_GLOBAL             36 (merge_duplicate_entries)
+                STORE_ATTR              19 (last_kept_diff_src)
+
+ 268            LOAD_FAST                4 (out)
+                RETURN_VALUE
+
+  --   L12:     PUSH_EXC_INFO
+
+ 213            LOAD_GLOBAL             14 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       32 (to L14)
+                POP_TOP
+
+ 214            LOAD_CONST               6 (<code object <lambda> at 0x0000016DC9129D70, file "bilisub\srt.py", line 214>)
+                MAKE_FUNCTION
+                STORE_DEREF             13 (_n_ocr)
+
+ 215            LOAD_CONST               7 (<code object <lambda> at 0x0000016DC9135070, file "bilisub\srt.py", line 215>)
+                MAKE_FUNCTION
+                STORE_DEREF             14 (_sim_ocr)
+
+ 216            LOAD_GLOBAL              0 (re)
+                LOAD_ATTR                2 (compile)
+                PUSH_NULL
+                LOAD_CONST               8 ('[一-鿿㐀-䶿]')
+                CALL                     1
+                STORE_DEREF             12 (_cjk)
+       L13:     POP_EXCEPT
+                EXTENDED_ARG             1
+                JUMP_BACKWARD_NO_INTERRUPT 381 (to L2)
+
+ 213   L14:     RERAISE                  0
+
+  --   L15:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L12 [0]
+  L12 to L13 -> L15 [1] lasti
+  L14 to L15 -> L15 [1] lasti
+
+Disassembly of <code object _norm at 0x0000016DC8E0BAB0, file "bilisub\srt.py", line 205>:
+  --           COPY_FREE_VARS           2
+
+ 205           RESUME                   0
+
+ 206           LOAD_FAST                0 (e)
+               LOAD_ATTR                0 (translated)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE        12 (to L1)
+               POP_TOP
+               LOAD_FAST                0 (e)
+               LOAD_ATTR                2 (text)
+       L1:     COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L2)
+               POP_TOP
+               LOAD_CONST               1 ('')
+       L2:     STORE_FAST               1 (t)
+
+ 207           LOAD_DEREF               2 (_BO_DAU_CAU)
+               LOAD_ATTR                5 (sub + NULL|self)
+               LOAD_CONST               1 ('')
+               LOAD_DEREF               3 (_RANH_SO)
+               LOAD_ATTR                5 (sub + NULL|self)
+               LOAD_CONST               2 ('#')
+               LOAD_FAST                1 (t)
+               CALL                     2
+               CALL                     2
+               LOAD_ATTR                7 (lower + NULL|self)
+               CALL                     0
+               RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC9129D70, file "bilisub\srt.py", line 214>:
+214           RESUME                   0
+              LOAD_CONST               1 ('')
+              LOAD_ATTR                1 (join + NULL|self)
+              LOAD_FAST                0 (s)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     LOAD_ATTR                3 (split + NULL|self)
+              CALL                     0
+              CALL                     1
+              RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC9135070, file "bilisub\srt.py", line 215>:
+215           RESUME                   0
+              RETURN_CONST             1 (1.0)
+
+Disassembly of <code object _cung_nguon at 0x0000016DC8F5C7B0, file "bilisub\srt.py", line 218>:
+  --            COPY_FREE_VARS           3
+
+ 218            RESUME                   0
+
+ 226            LOAD_DEREF               7 (_n_ocr)
+                PUSH_NULL
+                LOAD_FAST                0 (a)
+                LOAD_ATTR                0 (text)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                LOAD_CONST               1 ('')
+        L1:     CALL                     1
+                LOAD_ATTR                3 (lower + NULL|self)
+                CALL                     0
+                LOAD_DEREF               7 (_n_ocr)
+                PUSH_NULL
+                LOAD_FAST                1 (b)
+                LOAD_ATTR                0 (text)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                LOAD_CONST               1 ('')
+        L2:     CALL                     1
+                LOAD_ATTR                3 (lower + NULL|self)
+                CALL                     0
+                STORE_FAST_STORE_FAST   50 (sb, sa)
+
+ 227            LOAD_FAST                2 (sa)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        7 (to L3)
+                LOAD_FAST                3 (sb)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L4)
+
+ 228    L3:     RETURN_CONST             2 (True)
+
+ 229    L4:     LOAD_FAST_LOAD_FAST     35 (sa, sb)
+                CONTAINS_OP              0
+                POP_JUMP_IF_TRUE         5 (to L5)
+                LOAD_FAST_LOAD_FAST     50 (sb, sa)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE        1 (to L6)
+
+ 230    L5:     RETURN_CONST             2 (True)
+
+ 231    L6:     LOAD_GLOBAL              5 (min + NULL)
+                LOAD_GLOBAL              7 (len + NULL)
+                LOAD_FAST                2 (sa)
+                CALL                     1
+                LOAD_GLOBAL              7 (len + NULL)
+                LOAD_FAST                3 (sb)
+                CALL                     1
+                CALL                     2
+                LOAD_CONST               3 (2)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       13 (to L7)
+                LOAD_DEREF               8 (_sim_ocr)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST     35 (sa, sb)
+                CALL                     2
+                LOAD_CONST               4 (0.5)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE        1 (to L7)
+
+ 232            RETURN_CONST             2 (True)
+
+ 233    L7:     LOAD_CONST               1 ('')
+                LOAD_ATTR                9 (join + NULL|self)
+                LOAD_DEREF               6 (_cjk)
+                LOAD_ATTR               11 (findall + NULL|self)
+                LOAD_FAST                2 (sa)
+                CALL                     1
+                CALL                     1
+                STORE_FAST               4 (ha)
+
+ 234            LOAD_CONST               1 ('')
+                LOAD_ATTR                9 (join + NULL|self)
+                LOAD_DEREF               6 (_cjk)
+                LOAD_ATTR               11 (findall + NULL|self)
+                LOAD_FAST                3 (sb)
+                CALL                     1
+                CALL                     1
+                STORE_FAST               5 (hb)
+
+ 235            LOAD_FAST                4 (ha)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       65 (to L10)
+                LOAD_FAST                5 (hb)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       58 (to L10)
+
+ 236            LOAD_FAST_LOAD_FAST     69 (ha, hb)
+                CONTAINS_OP              0
+                POP_JUMP_IF_TRUE         5 (to L8)
+                LOAD_FAST_LOAD_FAST     84 (hb, ha)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE        1 (to L9)
+
+ 237    L8:     RETURN_CONST             2 (True)
+
+ 238    L9:     LOAD_GLOBAL              5 (min + NULL)
+                LOAD_GLOBAL              7 (len + NULL)
+                LOAD_FAST                4 (ha)
+                CALL                     1
+                LOAD_GLOBAL              7 (len + NULL)
+                LOAD_FAST                5 (hb)
+                CALL                     1
+                CALL                     2
+                LOAD_CONST               3 (2)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       13 (to L10)
+                LOAD_DEREF               8 (_sim_ocr)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST     69 (ha, hb)
+                CALL                     2
+                LOAD_CONST               4 (0.5)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE        1 (to L10)
+
+ 239            RETURN_CONST             2 (True)
+
+ 240   L10:     RETURN_CONST             5 (False)
+
+Disassembly of <code object merge_short_entries at 0x0000016DC8FE23F0, file "bilisub\srt.py", line 271>:
+271           RESUME                   0
+
+279           LOAD_FAST                0 (entries)
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+
+280           BUILD_LIST               0
+              RETURN_VALUE
+
+282   L1:     LOAD_CONST               6 (('return', 'bool'))
+              LOAD_CONST               1 (<code object _mergeable at 0x0000016DC8D399F0, file "bilisub\srt.py", line 282>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_FAST               2 (_mergeable)
+
+296           BUILD_LIST               0
+              STORE_FAST               3 (merged)
+
+297           LOAD_FAST                0 (entries)
+              LOAD_CONST               2 (0)
+              BINARY_SUBSCR
+              LOAD_ATTR                1 (copy + NULL|self)
+              CALL                     0
+              STORE_FAST               4 (buf)
+
+298           LOAD_FAST                0 (entries)
+              LOAD_CONST               3 (1)
+              LOAD_CONST               4 (None)
+              BINARY_SLICE
+              GET_ITER
+      L2:     FOR_ITER               214 (to L6)
+              STORE_FAST               5 (nxt)
+
+299           LOAD_FAST                4 (buf)
+              LOAD_ATTR                2 (duration_ms)
+              LOAD_FAST                1 (min_duration_ms)
+              COMPARE_OP              18 (bool(<))
+              POP_JUMP_IF_FALSE      162 (to L5)
+              LOAD_FAST                2 (_mergeable)
+              PUSH_NULL
+              LOAD_FAST_LOAD_FAST     69 (buf, nxt)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_FALSE      149 (to L5)
+
+300           LOAD_FAST                5 (nxt)
+              LOAD_ATTR                4 (end_ms)
+              LOAD_FAST                4 (buf)
+              STORE_ATTR               2 (end_ms)
+
+301           LOAD_FAST                4 (buf)
+              LOAD_ATTR                6 (text)
+              LOAD_CONST               5 (' ')
+              BINARY_OP                0 (+)
+              LOAD_FAST                5 (nxt)
+              LOAD_ATTR                6 (text)
+              BINARY_OP                0 (+)
+              LOAD_ATTR                9 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                4 (buf)
+              STORE_ATTR               3 (text)
+
+302           LOAD_FAST                4 (buf)
+              LOAD_ATTR               10 (translated)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        17 (to L3)
+              LOAD_FAST                5 (nxt)
+              LOAD_ATTR               10 (translated)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       49 (to L4)
+
+303   L3:     LOAD_FAST                4 (buf)
+              LOAD_ATTR               10 (translated)
+              LOAD_CONST               5 (' ')
+              BINARY_OP                0 (+)
+              LOAD_FAST                5 (nxt)
+              LOAD_ATTR               10 (translated)
+              BINARY_OP                0 (+)
+              LOAD_ATTR                9 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                4 (buf)
+              STORE_ATTR               5 (translated)
+              JUMP_BACKWARD          179 (to L2)
+
+302   L4:     JUMP_BACKWARD          181 (to L2)
+
+305   L5:     LOAD_FAST                3 (merged)
+              LOAD_ATTR               13 (append + NULL|self)
+              LOAD_FAST                4 (buf)
+              CALL                     1
+              POP_TOP
+
+306           LOAD_FAST                5 (nxt)
+              LOAD_ATTR                1 (copy + NULL|self)
+              CALL                     0
+              STORE_FAST               4 (buf)
+              JUMP_BACKWARD          216 (to L2)
+
+298   L6:     END_FOR
+              POP_TOP
+
+307           LOAD_FAST                3 (merged)
+              LOAD_ATTR               13 (append + NULL|self)
+              LOAD_FAST                4 (buf)
+              CALL                     1
+              POP_TOP
+
+308           LOAD_GLOBAL             15 (enumerate + NULL)
+              LOAD_FAST                3 (merged)
+              LOAD_CONST               3 (1)
+              CALL                     2
+              GET_ITER
+      L7:     FOR_ITER                11 (to L8)
+              UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST  103 (i, e)
+
+309           LOAD_FAST_LOAD_FAST    103 (i, e)
+              STORE_ATTR               8 (index)
+              JUMP_BACKWARD           13 (to L7)
+
+308   L8:     END_FOR
+              POP_TOP
+
+310           LOAD_FAST                3 (merged)
+              RETURN_VALUE
+
+Disassembly of <code object _mergeable at 0x0000016DC8D399F0, file "bilisub\srt.py", line 282>:
+282           RESUME                   0
+
+283           LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                0 (a)
+              LOAD_CONST               1 ('is_art')
+              LOAD_CONST               2 (False)
+              CALL                     3
+              LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                1 (b)
+              LOAD_CONST               1 ('is_art')
+              LOAD_CONST               2 (False)
+              CALL                     3
+              COMPARE_OP             119 (bool(!=))
+              POP_JUMP_IF_FALSE        1 (to L1)
+
+284           RETURN_CONST             2 (False)
+
+285   L1:     LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                0 (a)
+              LOAD_CONST               1 ('is_art')
+              LOAD_CONST               2 (False)
+              CALL                     3
+              TO_BOOL
+              POP_JUMP_IF_TRUE        18 (to L2)
+              LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                1 (b)
+              LOAD_CONST               1 ('is_art')
+              LOAD_CONST               2 (False)
+              CALL                     3
+              TO_BOOL
+              POP_JUMP_IF_FALSE        1 (to L3)
+
+286   L2:     RETURN_CONST             2 (False)
+
+287   L3:     LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                0 (a)
+              LOAD_CONST               3 ('speak')
+              LOAD_CONST               4 (True)
+              CALL                     3
+              LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                1 (b)
+              LOAD_CONST               3 ('speak')
+              LOAD_CONST               4 (True)
+              CALL                     3
+              COMPARE_OP             119 (bool(!=))
+              POP_JUMP_IF_FALSE        1 (to L4)
+
+288           RETURN_CONST             2 (False)
+
+291   L4:     LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                0 (a)
+              LOAD_CONST               5 ('pos')
+              LOAD_CONST               0 (None)
+              CALL                     3
+              LOAD_GLOBAL              1 (getattr + NULL)
+              LOAD_FAST                1 (b)
+              LOAD_CONST               5 ('pos')
+              LOAD_CONST               0 (None)
+              CALL                     3
+              STORE_FAST_STORE_FAST   50 (pb, pa)
+
+292           LOAD_FAST                2 (pa)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       56 (to L6)
+              LOAD_FAST                3 (pb)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       49 (to L6)
+              LOAD_GLOBAL              3 (abs + NULL)
+              LOAD_FAST                2 (pa)
+              LOAD_CONST               6 (0)
+              BINARY_SUBSCR
+              LOAD_FAST                3 (pb)
+              LOAD_CONST               6 (0)
+              BINARY_SUBSCR
+              BINARY_OP               10 (-)
+              CALL                     1
+              LOAD_CONST               7 (0.15)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_TRUE        24 (to L5)
+              LOAD_GLOBAL              3 (abs + NULL)
+              LOAD_FAST                2 (pa)
+              LOAD_CONST               8 (1)
+              BINARY_SUBSCR
+              LOAD_FAST                3 (pb)
+              LOAD_CONST               8 (1)
+              BINARY_SUBSCR
+              BINARY_OP               10 (-)
+              CALL                     1
+              LOAD_CONST               9 (0.12)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE        1 (to L6)
+
+293   L5:     RETURN_CONST             2 (False)
+
+294   L6:     RETURN_CONST             4 (True)
+
+Disassembly of <code object get_preset at 0x0000016DC90E1D30, file "bilisub\srt.py", line 372>:
+372           RESUME                   0
+
+373           LOAD_GLOBAL              0 (ASS_PRESETS)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_FAST                0 (name)
+              BUILD_MAP                0
+              CALL                     2
+              RETURN_VALUE
+
+Disassembly of <code object _hex_to_ass at 0x0000016DC8EC3B40, file "bilisub\srt.py", line 376>:
+376           RESUME                   0
+
+378           LOAD_FAST                0 (color)
+              LOAD_ATTR                1 (lstrip + NULL|self)
+              LOAD_CONST               1 ('#')
+              CALL                     1
+              STORE_FAST               2 (c)
+
+379           LOAD_GLOBAL              3 (len + NULL)
+              LOAD_FAST                2 (c)
+              CALL                     1
+              LOAD_CONST               2 (6)
+              COMPARE_OP             119 (bool(!=))
+              POP_JUMP_IF_FALSE        2 (to L1)
+
+380           LOAD_CONST               3 ('FFFFFF')
+              STORE_FAST               2 (c)
+
+381   L1:     LOAD_FAST                2 (c)
+              LOAD_CONST               4 (0)
+              LOAD_CONST               5 (2)
+              BINARY_SLICE
+              LOAD_FAST                2 (c)
+              LOAD_CONST               5 (2)
+              LOAD_CONST               6 (4)
+              BINARY_SLICE
+              LOAD_FAST                2 (c)
+              LOAD_CONST               6 (4)
+              LOAD_CONST               2 (6)
+              BINARY_SLICE
+              STORE_FAST_STORE_FAST   84 (b, g)
+              STORE_FAST               3 (r)
+
+382           LOAD_CONST               7 ('&H')
+              LOAD_FAST                1 (alpha)
+              LOAD_CONST               8 ('02X')
+              FORMAT_WITH_SPEC
+              LOAD_FAST                5 (b)
+              FORMAT_SIMPLE
+              LOAD_FAST                4 (g)
+              FORMAT_SIMPLE
+              LOAD_FAST                3 (r)
+              FORMAT_SIMPLE
+              BUILD_STRING             5
+              RETURN_VALUE
+
+Disassembly of <code object _wrap_words at 0x0000016DC8E90F30, file "bilisub\srt.py", line 385>:
+385           RESUME                   0
+
+387           LOAD_FAST                0 (text)
+              LOAD_ATTR                1 (split + NULL|self)
+              LOAD_CONST               1 (' ')
+              CALL                     1
+              STORE_FAST               2 (words)
+
+388           BUILD_LIST               0
+              LOAD_CONST               2 ('')
+              STORE_FAST_STORE_FAST   67 (cur, lines)
+
+389           LOAD_FAST                2 (words)
+              GET_ITER
+      L1:     FOR_ITER                73 (to L4)
+              STORE_FAST               5 (w)
+
+390           LOAD_FAST                4 (cur)
+              TO_BOOL
+              POP_JUMP_IF_TRUE         4 (to L2)
+
+391           LOAD_FAST                5 (w)
+              STORE_FAST               4 (cur)
+              JUMP_BACKWARD           14 (to L1)
+
+392   L2:     LOAD_GLOBAL              3 (len + NULL)
+              LOAD_FAST                4 (cur)
+              CALL                     1
+              LOAD_CONST               3 (1)
+              BINARY_OP                0 (+)
+              LOAD_GLOBAL              3 (len + NULL)
+              LOAD_FAST                5 (w)
+              CALL                     1
+              BINARY_OP                0 (+)
+              LOAD_FAST                1 (max_chars)
+              COMPARE_OP              58 (bool(<=))
+              POP_JUMP_IF_FALSE       10 (to L3)
+
+393           LOAD_FAST                4 (cur)
+              LOAD_CONST               1 (' ')
+              LOAD_FAST                5 (w)
+              BINARY_OP                0 (+)
+              BINARY_OP               13 (+=)
+              STORE_FAST               4 (cur)
+              JUMP_BACKWARD           54 (to L1)
+
+395   L3:     LOAD_FAST                3 (lines)
+              LOAD_ATTR                5 (append + NULL|self)
+              LOAD_FAST                4 (cur)
+              CALL                     1
+              POP_TOP
+
+396           LOAD_FAST                5 (w)
+              STORE_FAST               4 (cur)
+              JUMP_BACKWARD           75 (to L1)
+
+389   L4:     END_FOR
+              POP_TOP
+
+397           LOAD_FAST                4 (cur)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       17 (to L5)
+
+398           LOAD_FAST                3 (lines)
+              LOAD_ATTR                5 (append + NULL|self)
+              LOAD_FAST                4 (cur)
+              CALL                     1
+              POP_TOP
+
+399   L5:     LOAD_FAST                3 (lines)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         3 (to L6)
+              POP_TOP
+              LOAD_FAST                0 (text)
+              BUILD_LIST               1
+      L6:     RETURN_VALUE
+
+Disassembly of <code object _fit_text at 0x0000016DC8EF4780, file "bilisub\srt.py", line 402>:
+402           RESUME                   0
+
+408           LOAD_GLOBAL              1 (max + NULL)
+              LOAD_CONST               1 (20)
+              LOAD_GLOBAL              3 (int + NULL)
+              LOAD_FAST                2 (video_width)
+              LOAD_CONST               2 (0.03)
+              BINARY_OP                5 (*)
+              CALL                     1
+              CALL                     2
+              STORE_FAST               5 (margin)
+
+409           LOAD_CONST               3 (2)
+              LOAD_GLOBAL              1 (max + NULL)
+              LOAD_CONST               4 (1)
+              LOAD_GLOBAL              5 (min + NULL)
+              LOAD_FAST_LOAD_FAST     18 (ex, video_width)
+              LOAD_FAST                1 (ex)
+              BINARY_OP               10 (-)
+              CALL                     2
+              LOAD_FAST                5 (margin)
+              BINARY_OP               10 (-)
+              CALL                     2
+              BINARY_OP                5 (*)
+              STORE_FAST               6 (usable)
+
+410           LOAD_GLOBAL              1 (max + NULL)
+              LOAD_CONST               5 (1.0)
+              LOAD_FAST                3 (fs_eff)
+              LOAD_CONST               6 (0.55)
+              BINARY_OP                5 (*)
+              LOAD_FAST                4 (base_scale)
+              BINARY_OP                5 (*)
+              LOAD_CONST               7 (100.0)
+              BINARY_OP               11 (/)
+              CALL                     2
+              STORE_FAST               7 (char_w)
+
+411           LOAD_GLOBAL              1 (max + NULL)
+              LOAD_CONST               8 (4)
+              LOAD_GLOBAL              3 (int + NULL)
+              LOAD_FAST_LOAD_FAST    103 (usable, char_w)
+              BINARY_OP               11 (/)
+              CALL                     1
+              CALL                     2
+              STORE_FAST               8 (max_chars)
+
+412           LOAD_GLOBAL              7 (_wrap_words + NULL)
+              LOAD_FAST_LOAD_FAST      8 (body, max_chars)
+              CALL                     2
+              STORE_FAST               9 (lines)
+
+413           LOAD_GLOBAL              1 (max + NULL)
+              LOAD_CONST               9 (<code object <genexpr> at 0x0000016DC90E1F30, file "bilisub\srt.py", line 413>)
+              MAKE_FUNCTION
+              LOAD_FAST                9 (lines)
+              GET_ITER
+              CALL                     0
+              LOAD_CONST               4 (1)
+              LOAD_CONST              10 (('default',))
+              CALL_KW                  2
+              STORE_FAST              10 (longest)
+
+414           LOAD_CONST               5 (1.0)
+              STORE_FAST              11 (shrink)
+
+415           LOAD_FAST_LOAD_FAST    167 (longest, char_w)
+              BINARY_OP                5 (*)
+              LOAD_FAST                6 (usable)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE       17 (to L1)
+
+416           LOAD_GLOBAL              1 (max + NULL)
+              LOAD_CONST              11 (0.4)
+              LOAD_FAST_LOAD_FAST    106 (usable, longest)
+              LOAD_FAST                7 (char_w)
+              BINARY_OP                5 (*)
+              BINARY_OP               11 (/)
+              CALL                     2
+              STORE_FAST              11 (shrink)
+
+417   L1:     LOAD_CONST              12 ('\\N')
+              LOAD_ATTR                9 (join + NULL|self)
+              LOAD_FAST                9 (lines)
+              CALL                     1
+              LOAD_FAST               11 (shrink)
+              BUILD_TUPLE              2
+              RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E1F30, file "bilisub\srt.py", line 413>:
+ 413           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                16 (to L3)
+               STORE_FAST               1 (ln)
+               LOAD_GLOBAL              1 (len + NULL)
+               LOAD_FAST                1 (ln)
+               CALL                     1
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           18 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object _round_rect_path at 0x0000016DC9223A20, file "bilisub\srt.py", line 420>:
+420           RESUME                   0
+
+423           LOAD_GLOBAL              1 (max + NULL)
+              LOAD_CONST               1 (1.0)
+              LOAD_GLOBAL              3 (min + NULL)
+              LOAD_FAST_LOAD_FAST     32 (r, w)
+              LOAD_CONST               2 (2.0)
+              BINARY_OP               11 (/)
+              LOAD_FAST                1 (h)
+              LOAD_CONST               2 (2.0)
+              BINARY_OP               11 (/)
+              CALL                     3
+              CALL                     2
+              STORE_FAST               2 (r)
+
+424           LOAD_FAST_LOAD_FAST     52 (ox, oy)
+              LOAD_FAST_LOAD_FAST     48 (ox, w)
+              BINARY_OP                0 (+)
+              LOAD_FAST_LOAD_FAST     65 (oy, h)
+              BINARY_OP                0 (+)
+              BUILD_TUPLE              4
+              UNPACK_SEQUENCE          4
+              STORE_FAST_STORE_FAST   86 (x0, y0)
+              STORE_FAST_STORE_FAST  120 (x1, y1)
+
+426           LOAD_CONST               9 (('v', 'float', 'return', 'int'))
+              LOAD_CONST               3 (<code object n at 0x0000016DC90E1930, file "bilisub\srt.py", line 426>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_FAST               9 (n)
+
+430           LOAD_CONST               4 ('')
+              LOAD_ATTR                5 (join + NULL|self)
+              BUILD_LIST               0
+              LOAD_CONST               5 ('m ')
+              LIST_APPEND              1
+              LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST_LOAD_FAST     82 (x0, r)
+              BINARY_OP                0 (+)
+              CALL                     1
+              FORMAT_SIMPLE
+              LIST_APPEND              1
+              LOAD_CONST               6 (' ')
+              LIST_APPEND              1
+              LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                6 (y0)
+              CALL                     1
+              FORMAT_SIMPLE
+              LIST_APPEND              1
+              LOAD_CONST               7 (' l ')
+              LIST_APPEND              1
+
+431           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST_LOAD_FAST    114 (x1, r)
+              BINARY_OP               10 (-)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+431           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+431           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                6 (y0)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+431           LOAD_CONST               8 (' b ')
+
+430           LIST_APPEND              1
+
+431           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                7 (x1)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+431           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+431           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                6 (y0)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+431           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+431           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                7 (x1)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+431           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+431           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                6 (y0)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+431           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+431           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                7 (x1)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+431           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+431           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST_LOAD_FAST     98 (y0, r)
+              BINARY_OP                0 (+)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+431           LOAD_CONST               7 (' l ')
+
+430           LIST_APPEND              1
+
+432           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                7 (x1)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+432           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+432           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST_LOAD_FAST    130 (y1, r)
+              BINARY_OP               10 (-)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+432           LOAD_CONST               8 (' b ')
+
+430           LIST_APPEND              1
+
+432           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                7 (x1)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+432           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+432           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                8 (y1)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+432           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+432           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                7 (x1)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+432           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+432           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                8 (y1)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+432           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+432           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST_LOAD_FAST    114 (x1, r)
+              BINARY_OP               10 (-)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+432           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+432           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                8 (y1)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+432           LOAD_CONST               7 (' l ')
+
+430           LIST_APPEND              1
+
+433           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST_LOAD_FAST     82 (x0, r)
+              BINARY_OP                0 (+)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+433           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+433           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                8 (y1)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+433           LOAD_CONST               8 (' b ')
+
+430           LIST_APPEND              1
+
+433           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                5 (x0)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+433           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+433           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                8 (y1)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+433           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+433           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                5 (x0)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+433           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+433           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                8 (y1)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+433           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+433           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                5 (x0)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+433           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+433           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST_LOAD_FAST    130 (y1, r)
+              BINARY_OP               10 (-)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+433           LOAD_CONST               7 (' l ')
+
+430           LIST_APPEND              1
+
+434           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                5 (x0)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+434           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+434           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST_LOAD_FAST     98 (y0, r)
+              BINARY_OP                0 (+)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+434           LOAD_CONST               8 (' b ')
+
+430           LIST_APPEND              1
+
+434           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                5 (x0)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+434           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+434           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                6 (y0)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+434           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+434           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                5 (x0)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+434           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+434           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                6 (y0)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+434           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+434           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST_LOAD_FAST     82 (x0, r)
+              BINARY_OP                0 (+)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+
+434           LOAD_CONST               6 (' ')
+
+430           LIST_APPEND              1
+
+434           LOAD_FAST                9 (n)
+              PUSH_NULL
+              LOAD_FAST                6 (y0)
+              CALL                     1
+              FORMAT_SIMPLE
+
+430           LIST_APPEND              1
+              CALL                     1
+
+429           RETURN_VALUE
+
+Disassembly of <code object n at 0x0000016DC90E1930, file "bilisub\srt.py", line 426>:
+426           RESUME                   0
+
+427           LOAD_GLOBAL              1 (int + NULL)
+              LOAD_GLOBAL              3 (round + NULL)
+              LOAD_FAST                0 (v)
+              CALL                     1
+              CALL                     1
+              RETURN_VALUE
+
+Disassembly of <code object _art_fit_scale at 0x0000016DC8F5A5C0, file "bilisub\srt.py", line 472>:
+472           RESUME                   0
+
+478           LOAD_FAST                1 (bbox)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       15 (to L1)
+              LOAD_GLOBAL              1 (len + NULL)
+              LOAD_FAST                1 (bbox)
+              CALL                     1
+              LOAD_CONST               1 (4)
+              COMPARE_OP             119 (bool(!=))
+              POP_JUMP_IF_FALSE        1 (to L2)
+
+479   L1:     RETURN_CONST             2 (1.0)
+
+480   L2:     LOAD_GLOBAL              3 (max + NULL)
+              LOAD_CONST               2 (1.0)
+              LOAD_FAST_LOAD_FAST     35 (fs_eff, shrink)
+              BINARY_OP                5 (*)
+              CALL                     2
+              STORE_FAST               8 (S)
+
+481           LOAD_GLOBAL              3 (max + NULL)
+              LOAD_CONST               2 (1.0)
+              LOAD_FAST                1 (bbox)
+              LOAD_CONST               3 (2)
+              BINARY_SUBSCR
+              LOAD_FAST                1 (bbox)
+              LOAD_CONST               4 (0)
+              BINARY_SUBSCR
+              BINARY_OP               10 (-)
+              LOAD_FAST                6 (video_width)
+              BINARY_OP                5 (*)
+              CALL                     2
+              STORE_FAST               9 (bw)
+
+482           LOAD_GLOBAL              3 (max + NULL)
+              LOAD_CONST               2 (1.0)
+              LOAD_FAST                1 (bbox)
+              LOAD_CONST               5 (3)
+              BINARY_SUBSCR
+              LOAD_FAST                1 (bbox)
+              LOAD_CONST               6 (1)
+              BINARY_SUBSCR
+              BINARY_OP               10 (-)
+              LOAD_FAST                7 (video_height)
+              BINARY_OP                5 (*)
+              CALL                     2
+              STORE_FAST              10 (bh)
+
+484           LOAD_CONST               7 (1.24)
+              LOAD_FAST                8 (S)
+              BINARY_OP                5 (*)
+              LOAD_GLOBAL              3 (max + NULL)
+              LOAD_CONST               6 (1)
+              LOAD_FAST                4 (n_lines)
+              CALL                     2
+              BINARY_OP                5 (*)
+              LOAD_CONST               8 (0.84)
+              LOAD_FAST                8 (S)
+              BINARY_OP                5 (*)
+              BINARY_OP                0 (+)
+              STORE_FAST              11 (need_h)
+
+488           LOAD_FAST                5 (vertical)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       50 (to L3)
+
+489           LOAD_GLOBAL              3 (max + NULL)
+              LOAD_CONST               9 (<code object <genexpr> at 0x0000016DC90E1630, file "bilisub\srt.py", line 489>)
+              MAKE_FUNCTION
+              LOAD_FAST                0 (body)
+              LOAD_ATTR                5 (split + NULL|self)
+              CALL                     0
+              GET_ITER
+              CALL                     0
+              LOAD_CONST               6 (1)
+              LOAD_CONST              10 (('default',))
+              CALL_KW                  2
+              STORE_FAST              12 (longest)
+
+490           LOAD_FAST               12 (longest)
+              LOAD_GLOBAL              6 (ART_CHAR_W_VERT)
+              BINARY_OP                5 (*)
+              LOAD_FAST                8 (S)
+              BINARY_OP                5 (*)
+              LOAD_CONST              11 (1.1)
+              LOAD_FAST                8 (S)
+              BINARY_OP                5 (*)
+              BINARY_OP                0 (+)
+              STORE_FAST              13 (need_w)
+              JUMP_FORWARD            50 (to L4)
+
+492   L3:     LOAD_GLOBAL              3 (max + NULL)
+              LOAD_CONST              12 (<code object <genexpr> at 0x0000016DC90E2030, file "bilisub\srt.py", line 492>)
+              MAKE_FUNCTION
+              LOAD_FAST                0 (body)
+              LOAD_ATTR                5 (split + NULL|self)
+              LOAD_CONST              13 ('\\N')
+              CALL                     1
+              GET_ITER
+              CALL                     0
+              LOAD_CONST               6 (1)
+              LOAD_CONST              10 (('default',))
+              CALL_KW                  2
+              STORE_FAST              12 (longest)
+
+493           LOAD_FAST               12 (longest)
+              LOAD_GLOBAL              8 (ART_CHAR_W_HORZ)
+              BINARY_OP                5 (*)
+              LOAD_FAST                8 (S)
+              BINARY_OP                5 (*)
+              LOAD_CONST              11 (1.1)
+              LOAD_FAST                8 (S)
+              BINARY_OP                5 (*)
+              BINARY_OP                0 (+)
+              STORE_FAST              13 (need_w)
+
+498   L4:     LOAD_GLOBAL             11 (min + NULL)
+              LOAD_FAST               10 (bh)
+              LOAD_GLOBAL             12 (ART_H_ALLOW)
+              BINARY_OP                5 (*)
+              LOAD_FAST                7 (video_height)
+              LOAD_GLOBAL             14 (ART_H_MAX_FRAME)
+              BINARY_OP                5 (*)
+              CALL                     2
+              STORE_FAST              14 (want_h)
+
+499           LOAD_GLOBAL             11 (min + NULL)
+              LOAD_GLOBAL              3 (max + NULL)
+              LOAD_FAST                9 (bw)
+              LOAD_GLOBAL             16 (ART_W_ALLOW)
+              BINARY_OP                5 (*)
+              LOAD_FAST                6 (video_width)
+              LOAD_GLOBAL             18 (ART_W_MIN_FRAME)
+              BINARY_OP                5 (*)
+              CALL                     2
+
+500           LOAD_FAST                6 (video_width)
+              LOAD_GLOBAL             20 (ART_W_MAX_FRAME)
+              BINARY_OP                5 (*)
+
+499           CALL                     2
+              STORE_FAST              15 (want_w)
+
+501           LOAD_GLOBAL             11 (min + NULL)
+              LOAD_FAST_LOAD_FAST    235 (want_h, need_h)
+              BINARY_OP               11 (/)
+              LOAD_FAST_LOAD_FAST    253 (want_w, need_w)
+              BINARY_OP               11 (/)
+              CALL                     2
+              STORE_FAST              16 (k)
+
+502           LOAD_GLOBAL             11 (min + NULL)
+              LOAD_CONST               2 (1.0)
+              LOAD_FAST               16 (k)
+              CALL                     2
+              STORE_FAST              16 (k)
+
+503           LOAD_GLOBAL              3 (max + NULL)
+              LOAD_GLOBAL             22 (ART_MIN_SHRINK)
+              LOAD_GLOBAL             24 (ART_MIN_FS_RATIO)
+              LOAD_FAST                7 (video_height)
+              BINARY_OP                5 (*)
+              LOAD_FAST                8 (S)
+              BINARY_OP               11 (/)
+              CALL                     2
+              STORE_FAST              17 (floor)
+
+504           LOAD_GLOBAL              3 (max + NULL)
+              LOAD_GLOBAL             11 (min + NULL)
+              LOAD_CONST               2 (1.0)
+              LOAD_FAST               17 (floor)
+              CALL                     2
+              LOAD_FAST               16 (k)
+              CALL                     2
+              RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E1630, file "bilisub\srt.py", line 489>:
+ 489           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                16 (to L3)
+               STORE_FAST               1 (s)
+               LOAD_GLOBAL              1 (len + NULL)
+               LOAD_FAST                1 (s)
+               CALL                     1
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           18 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E2030, file "bilisub\srt.py", line 492>:
+ 492           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                16 (to L3)
+               STORE_FAST               1 (s)
+               LOAD_GLOBAL              1 (len + NULL)
+               LOAD_FAST                1 (s)
+               CALL                     1
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           18 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object font_for_language at 0x0000016DC90EE290, file "bilisub\srt.py", line 532>:
+532           RESUME                   0
+
+538           LOAD_GLOBAL              0 (_FONT_THEO_TIENG)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_GLOBAL              5 (str + NULL)
+              LOAD_FAST                0 (lang)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     CALL                     1
+              LOAD_ATTR                7 (strip + NULL|self)
+              CALL                     0
+              LOAD_ATTR                9 (lower + NULL|self)
+              CALL                     0
+              LOAD_CONST               2 (None)
+              LOAD_CONST               3 (2)
+              BINARY_SLICE
+              LOAD_FAST                1 (font_hien_tai)
+              CALL                     2
+              RETURN_VALUE
+
+Disassembly of <code object export_ass at 0x0000016DC8FDFE70, file "bilisub\srt.py", line 541>:
+541            RESUME                   0
+
+569            LOAD_GLOBAL              1 (_hex_to_ass + NULL)
+               LOAD_FAST               13 (text_color)
+               CALL                     1
+               STORE_FAST              25 (primary)
+
+570            LOAD_GLOBAL              1 (_hex_to_ass + NULL)
+               LOAD_FAST               14 (outline_color)
+               CALL                     1
+               STORE_FAST              26 (outline)
+
+576            LOAD_FAST               23 (box)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        2 (to L1)
+               LOAD_CONST               1 (3)
+               JUMP_FORWARD             1 (to L2)
+       L1:     LOAD_CONST               2 (1)
+       L2:     STORE_FAST              27 (border_style)
+
+577            LOAD_FAST               23 (box)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       23 (to L3)
+
+578            LOAD_GLOBAL              1 (_hex_to_ass + NULL)
+               LOAD_FAST               24 (box_color)
+               CALL                     1
+               STORE_FAST              26 (outline)
+
+579            LOAD_GLOBAL              1 (_hex_to_ass + NULL)
+               LOAD_FAST               24 (box_color)
+               CALL                     1
+               STORE_FAST              28 (back)
+               JUMP_FORWARD            12 (to L4)
+
+581    L3:     LOAD_GLOBAL              1 (_hex_to_ass + NULL)
+               LOAD_CONST               3 ('#000000')
+               LOAD_CONST               4 (0)
+               CALL                     2
+               STORE_FAST              28 (back)
+
+582    L4:     LOAD_FAST               17 (bold)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        2 (to L5)
+               LOAD_CONST               5 (-1)
+               JUMP_FORWARD             1 (to L6)
+       L5:     LOAD_CONST               4 (0)
+       L6:     STORE_FAST              29 (b)
+
+583            LOAD_FAST               18 (italic)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        2 (to L7)
+               LOAD_CONST               5 (-1)
+               JUMP_FORWARD             1 (to L8)
+       L7:     LOAD_CONST               4 (0)
+       L8:     STORE_FAST              30 (it)
+
+584            LOAD_GLOBAL              3 (int + NULL)
+               LOAD_GLOBAL              5 (round + NULL)
+               LOAD_FAST               21 (position)
+               LOAD_CONST               4 (0)
+               BINARY_SUBSCR
+               LOAD_FAST                2 (video_width)
+               BINARY_OP                5 (*)
+               CALL                     1
+               CALL                     1
+               STORE_FAST              31 (pos_x)
+
+585            LOAD_GLOBAL              3 (int + NULL)
+               LOAD_GLOBAL              5 (round + NULL)
+               LOAD_FAST               21 (position)
+               LOAD_CONST               2 (1)
+               BINARY_SUBSCR
+               LOAD_FAST                3 (video_height)
+               BINARY_OP                5 (*)
+               CALL                     1
+               CALL                     1
+               STORE_FAST              32 (pos_y)
+
+586            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_CONST               6 (10)
+               LOAD_FAST                3 (video_height)
+               LOAD_FAST               32 (pos_y)
+               BINARY_OP               10 (-)
+               CALL                     2
+               STORE_FAST              33 (margin_v)
+
+589            LOAD_CONST               7 ('')
+               LOAD_ATTR                9 (join + NULL|self)
+               BUILD_LIST               0
+               LOAD_CONST               8 ('[Script Info]\nTitle: PeiPeiReup Styled Subtitles\nScriptType: v4.00+\nWrapStyle: 2\nScaledBorderAndShadow: yes\nPlayResX: ')
+               LIST_APPEND              1
+
+594            LOAD_FAST                2 (video_width)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+594            LOAD_CONST               9 ('\nPlayResY: ')
+
+589            LIST_APPEND              1
+
+595            LOAD_FAST                3 (video_height)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+595            LOAD_CONST              10 ('\n\n[V4+ Styles]\nFormat: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding\nStyle: Default,')
+
+589            LIST_APPEND              1
+
+600            LOAD_FAST                4 (font_name)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+600            LOAD_CONST              11 (',')
+
+589            LIST_APPEND              1
+
+600            LOAD_FAST               12 (font_size)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+600            LOAD_CONST              11 (',')
+
+589            LIST_APPEND              1
+
+600            LOAD_FAST               25 (primary)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+600            LOAD_CONST              11 (',')
+
+589            LIST_APPEND              1
+
+600            LOAD_FAST               25 (primary)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+600            LOAD_CONST              11 (',')
+
+589            LIST_APPEND              1
+
+600            LOAD_FAST               26 (outline)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+600            LOAD_CONST              11 (',')
+
+589            LIST_APPEND              1
+
+600            LOAD_FAST               28 (back)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+600            LOAD_CONST              11 (',')
+
+589            LIST_APPEND              1
+
+601            LOAD_FAST               29 (b)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+601            LOAD_CONST              11 (',')
+
+589            LIST_APPEND              1
+
+601            LOAD_FAST               30 (it)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+601            LOAD_CONST              12 (',0,0,')
+
+589            LIST_APPEND              1
+
+601            LOAD_FAST               19 (scale_x)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+601            LOAD_CONST              11 (',')
+
+589            LIST_APPEND              1
+
+601            LOAD_FAST               20 (scale_y)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+601            LOAD_CONST              12 (',0,0,')
+
+589            LIST_APPEND              1
+
+601            LOAD_FAST               27 (border_style)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+601            LOAD_CONST              11 (',')
+
+589            LIST_APPEND              1
+
+601            LOAD_FAST               15 (outline_width)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+601            LOAD_CONST              11 (',')
+
+589            LIST_APPEND              1
+
+601            LOAD_FAST               16 (shadow)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+601            LOAD_CONST              13 (',5,60,60,')
+
+589            LIST_APPEND              1
+
+602            LOAD_FAST               33 (margin_v)
+               FORMAT_SIMPLE
+
+589            LIST_APPEND              1
+
+602            LOAD_CONST              14 (',1\n\n[Events]\nFormat: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text\n')
+
+589            LIST_APPEND              1
+               CALL                     1
+
+588            STORE_FAST              34 (header)
+
+607            BUILD_LIST               0
+               STORE_FAST              35 (lines)
+
+608            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_CONST              15 (20)
+               LOAD_GLOBAL              3 (int + NULL)
+               LOAD_FAST                2 (video_width)
+               LOAD_CONST              16 (0.03)
+               BINARY_OP                5 (*)
+               CALL                     1
+               CALL                     2
+               STORE_FAST              36 (margin_x)
+
+609            BUILD_LIST               0
+               STORE_FAST              37 (placed)
+
+612            BUILD_LIST               0
+               STORE_FAST              38 (stacked_main)
+
+613            LOAD_FAST                0 (entries)
+               GET_ITER
+       L9:     EXTENDED_ARG             8
+               FOR_ITER              2220 (to L48)
+               STORE_FAST              39 (e)
+
+614            LOAD_FAST               22 (use_translated)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       16 (to L10)
+               LOAD_FAST               39 (e)
+               LOAD_ATTR               11 (output_text + NULL|self)
+               CALL                     0
+               JUMP_FORWARD            11 (to L11)
+      L10:     LOAD_FAST               39 (e)
+               LOAD_ATTR               12 (text)
+      L11:     LOAD_ATTR               15 (replace + NULL|self)
+               LOAD_CONST              17 ('\n')
+               LOAD_CONST              18 (' ')
+               CALL                     2
+               LOAD_ATTR               17 (strip + NULL|self)
+               CALL                     0
+               STORE_FAST              40 (body)
+
+618            LOAD_FAST               40 (body)
+               LOAD_ATTR               15 (replace + NULL|self)
+               LOAD_CONST              19 ('\\')
+               LOAD_CONST              20 ('＼')
+               CALL                     2
+               LOAD_ATTR               15 (replace + NULL|self)
+               LOAD_CONST              21 ('{')
+               LOAD_CONST              22 ('｛')
+               CALL                     2
+               LOAD_ATTR               15 (replace + NULL|self)
+               LOAD_CONST              23 ('}')
+               LOAD_CONST              24 ('｝')
+               CALL                     2
+               STORE_FAST              40 (body)
+
+619            LOAD_FAST               40 (body)
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L12)
+
+620            JUMP_BACKWARD          128 (to L9)
+
+621   L12:     LOAD_GLOBAL             18 (SubtitleEntry)
+               LOAD_ATTR               20 (format_time)
+               PUSH_NULL
+               LOAD_FAST               39 (e)
+               LOAD_ATTR               22 (start_ms)
+               LOAD_CONST              25 ('.')
+               CALL                     2
+               LOAD_CONST               0 (None)
+               LOAD_CONST               5 (-1)
+               BINARY_SLICE
+               STORE_FAST              41 (st)
+
+622            LOAD_GLOBAL             18 (SubtitleEntry)
+               LOAD_ATTR               20 (format_time)
+               PUSH_NULL
+               LOAD_FAST               39 (e)
+               LOAD_ATTR               24 (end_ms)
+               LOAD_CONST              25 ('.')
+               CALL                     2
+               LOAD_CONST               0 (None)
+               LOAD_CONST               5 (-1)
+               BINARY_SLICE
+               STORE_FAST              42 (en)
+
+624            LOAD_GLOBAL             27 (getattr + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_CONST              26 ('pos')
+               LOAD_CONST               0 (None)
+               CALL                     3
+               TO_BOOL
+               POP_JUMP_IF_FALSE       73 (to L13)
+
+625            LOAD_GLOBAL              3 (int + NULL)
+               LOAD_GLOBAL              5 (round + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_ATTR               28 (pos)
+               LOAD_CONST               4 (0)
+               BINARY_SUBSCR
+               LOAD_FAST                2 (video_width)
+               BINARY_OP                5 (*)
+               CALL                     1
+               CALL                     1
+               STORE_FAST              43 (ex)
+
+626            LOAD_GLOBAL              3 (int + NULL)
+               LOAD_GLOBAL              5 (round + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_ATTR               28 (pos)
+               LOAD_CONST               2 (1)
+               BINARY_SUBSCR
+               LOAD_FAST                3 (video_height)
+               BINARY_OP                5 (*)
+               CALL                     1
+               CALL                     1
+               STORE_FAST              44 (ey)
+               JUMP_FORWARD             4 (to L14)
+
+628   L13:     LOAD_FAST               31 (pos_x)
+               LOAD_FAST               32 (pos_y)
+               STORE_FAST              44 (ey)
+               STORE_FAST              43 (ex)
+
+629   L14:     LOAD_GLOBAL              7 (max + NULL)
+               LOAD_FAST               36 (margin_x)
+               LOAD_GLOBAL             31 (min + NULL)
+               LOAD_FAST                2 (video_width)
+               LOAD_FAST               36 (margin_x)
+               BINARY_OP               10 (-)
+               LOAD_FAST               43 (ex)
+               CALL                     2
+               CALL                     2
+               STORE_FAST              43 (ex)
+
+630            LOAD_GLOBAL             27 (getattr + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_CONST              27 ('font_scale')
+               LOAD_CONST              28 (1.0)
+               CALL                     3
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L15)
+               POP_TOP
+               LOAD_CONST              28 (1.0)
+      L15:     STORE_FAST              45 (fscale)
+
+631            LOAD_FAST               12 (font_size)
+               LOAD_FAST               45 (fscale)
+               BINARY_OP                5 (*)
+               STORE_FAST              46 (fs_eff)
+
+632            LOAD_GLOBAL             27 (getattr + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_CONST              29 ('vertical')
+               LOAD_CONST              30 (False)
+               CALL                     3
+               TO_BOOL
+               POP_JUMP_IF_FALSE       34 (to L16)
+
+635            LOAD_CONST              31 ('\\N')
+               LOAD_ATTR                9 (join + NULL|self)
+               LOAD_FAST               40 (body)
+               LOAD_ATTR               33 (split + NULL|self)
+               CALL                     0
+               CALL                     1
+               LOAD_CONST              28 (1.0)
+               STORE_FAST              48 (shrink)
+               STORE_FAST              47 (wrapped)
+               JUMP_FORWARD            18 (to L17)
+
+637   L16:     LOAD_GLOBAL             35 (_fit_text + NULL)
+               LOAD_FAST               40 (body)
+               LOAD_FAST               43 (ex)
+               LOAD_FAST                2 (video_width)
+               LOAD_FAST               46 (fs_eff)
+               LOAD_FAST               19 (scale_x)
+               CALL                     5
+               UNPACK_SEQUENCE          2
+               STORE_FAST              47 (wrapped)
+               STORE_FAST              48 (shrink)
+
+638   L17:     LOAD_FAST               47 (wrapped)
+               LOAD_ATTR               37 (count + NULL|self)
+               LOAD_CONST              31 ('\\N')
+               CALL                     1
+               LOAD_CONST               2 (1)
+               BINARY_OP                0 (+)
+               STORE_FAST              49 (n_lines)
+
+640            LOAD_FAST                8 (art_style)
+               LOAD_CONST              32 ('plaque')
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_FALSE       60 (to L18)
+               LOAD_GLOBAL             27 (getattr + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_CONST              33 ('is_art')
+               LOAD_CONST              30 (False)
+               CALL                     3
+               TO_BOOL
+               POP_JUMP_IF_FALSE       42 (to L18)
+
+641            LOAD_FAST               48 (shrink)
+               LOAD_GLOBAL             39 (_art_fit_scale + NULL)
+               LOAD_FAST               40 (body)
+               LOAD_GLOBAL             27 (getattr + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_CONST              34 ('bbox')
+               LOAD_CONST               0 (None)
+               CALL                     3
+               LOAD_FAST               46 (fs_eff)
+               LOAD_FAST               48 (shrink)
+
+642            LOAD_FAST               49 (n_lines)
+               LOAD_GLOBAL             27 (getattr + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_CONST              29 ('vertical')
+               LOAD_CONST              30 (False)
+               CALL                     3
+
+643            LOAD_FAST_LOAD_FAST     35 (video_width, video_height)
+
+641            CALL                     8
+               BINARY_OP               18 (*=)
+               STORE_FAST              48 (shrink)
+
+644   L18:     LOAD_GLOBAL              3 (int + NULL)
+               LOAD_FAST               46 (fs_eff)
+               LOAD_FAST               48 (shrink)
+               BINARY_OP                5 (*)
+               LOAD_CONST              35 (0.62)
+               BINARY_OP                5 (*)
+               LOAD_FAST               49 (n_lines)
+               BINARY_OP                5 (*)
+               CALL                     1
+               STORE_FAST              50 (half_h)
+
+645            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_FAST               50 (half_h)
+               LOAD_CONST               6 (10)
+               BINARY_OP                0 (+)
+               LOAD_GLOBAL             31 (min + NULL)
+               LOAD_FAST                3 (video_height)
+               LOAD_FAST               50 (half_h)
+               BINARY_OP               10 (-)
+               LOAD_CONST               6 (10)
+               BINARY_OP               10 (-)
+               LOAD_FAST               44 (ey)
+               CALL                     2
+               CALL                     2
+               STORE_FAST              44 (ey)
+
+653            LOAD_GLOBAL             27 (getattr + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_CONST              26 ('pos')
+               LOAD_CONST               0 (None)
+               CALL                     3
+               TO_BOOL
+               POP_JUMP_IF_TRUE       215 (to L25)
+               LOAD_GLOBAL             27 (getattr + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_CONST              33 ('is_art')
+               LOAD_CONST              30 (False)
+               CALL                     3
+               TO_BOOL
+               POP_JUMP_IF_TRUE       197 (to L25)
+
+654            LOAD_FAST               38 (stacked_main)
+               GET_ITER
+      L19:     FOR_ITER               114 (to L24)
+               UNPACK_SEQUENCE          5
+               STORE_FAST              51 (o_st)
+               STORE_FAST              52 (o_en)
+               STORE_FAST              53 (o_ex)
+               STORE_FAST              54 (o_ey)
+               STORE_FAST              55 (o_half)
+
+655            LOAD_FAST               39 (e)
+               LOAD_ATTR               22 (start_ms)
+               LOAD_FAST               52 (o_en)
+               COMPARE_OP             188 (bool(>=))
+               POP_JUMP_IF_TRUE        16 (to L20)
+               LOAD_FAST               39 (e)
+               LOAD_ATTR               24 (end_ms)
+               LOAD_FAST               51 (o_st)
+               COMPARE_OP              58 (bool(<=))
+               POP_JUMP_IF_FALSE        2 (to L21)
+
+656   L20:     JUMP_BACKWARD           43 (to L19)
+
+657   L21:     LOAD_GLOBAL             41 (abs + NULL)
+               LOAD_FAST               43 (ex)
+               LOAD_FAST               53 (o_ex)
+               BINARY_OP               10 (-)
+               CALL                     1
+               LOAD_GLOBAL              7 (max + NULL)
+               LOAD_FAST                2 (video_width)
+               LOAD_CONST              36 (0.25)
+               BINARY_OP                5 (*)
+               LOAD_CONST               2 (1)
+               CALL                     2
+               COMPARE_OP             148 (bool(>))
+               POP_JUMP_IF_FALSE        2 (to L22)
+
+658            JUMP_BACKWARD           76 (to L19)
+
+659   L22:     LOAD_GLOBAL             41 (abs + NULL)
+               LOAD_FAST               44 (ey)
+               LOAD_FAST               54 (o_ey)
+               BINARY_OP               10 (-)
+               CALL                     1
+               LOAD_FAST               50 (half_h)
+               LOAD_FAST               55 (o_half)
+               BINARY_OP                0 (+)
+               COMPARE_OP             188 (bool(>=))
+               POP_JUMP_IF_FALSE        2 (to L23)
+
+660            JUMP_BACKWARD           99 (to L19)
+
+661   L23:     LOAD_FAST               54 (o_ey)
+               LOAD_FAST               55 (o_half)
+               BINARY_OP               10 (-)
+               LOAD_FAST               50 (half_h)
+               BINARY_OP               10 (-)
+               LOAD_GLOBAL             42 (_STACK_GAP)
+               BINARY_OP               10 (-)
+               STORE_FAST              44 (ey)
+               JUMP_BACKWARD          116 (to L19)
+
+654   L24:     END_FOR
+               POP_TOP
+
+662            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_FAST               50 (half_h)
+               LOAD_CONST               6 (10)
+               BINARY_OP                0 (+)
+               LOAD_FAST               44 (ey)
+               CALL                     2
+               STORE_FAST              44 (ey)
+
+663            LOAD_FAST               38 (stacked_main)
+               LOAD_ATTR               45 (append + NULL|self)
+               LOAD_FAST               39 (e)
+               LOAD_ATTR               22 (start_ms)
+               LOAD_FAST               39 (e)
+               LOAD_ATTR               24 (end_ms)
+               LOAD_FAST               43 (ex)
+               LOAD_FAST               44 (ey)
+               LOAD_FAST               50 (half_h)
+               BUILD_TUPLE              5
+               CALL                     1
+               POP_TOP
+
+664            LOAD_GLOBAL             47 (len + NULL)
+               LOAD_FAST               38 (stacked_main)
+               CALL                     1
+               LOAD_CONST              37 (24)
+               COMPARE_OP             148 (bool(>))
+               POP_JUMP_IF_FALSE        5 (to L25)
+
+665            LOAD_FAST               38 (stacked_main)
+               LOAD_CONST               0 (None)
+               LOAD_CONST              38 (-24)
+               BUILD_SLICE              2
+               DELETE_SUBSCR
+
+669   L25:     LOAD_FAST                8 (art_style)
+               LOAD_CONST              32 ('plaque')
+               COMPARE_OP              72 (==)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_FALSE       13 (to L26)
+               POP_TOP
+               LOAD_GLOBAL             27 (getattr + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_CONST              33 ('is_art')
+               LOAD_CONST              30 (False)
+               CALL                     3
+      L26:     STORE_FAST              56 (plaque)
+
+670            LOAD_CONST               0 (None)
+               STORE_FAST              57 (panel)
+
+671            LOAD_CONST              28 (1.0)
+               STORE_FAST              58 (fill_scale)
+
+672            LOAD_FAST               56 (plaque)
+               TO_BOOL
+               EXTENDED_ARG             3
+               POP_JUMP_IF_FALSE      819 (to L40)
+
+673            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_CONST              28 (1.0)
+               LOAD_FAST               46 (fs_eff)
+               LOAD_FAST               48 (shrink)
+               BINARY_OP                5 (*)
+               CALL                     2
+               STORE_FAST              59 (S)
+
+674            LOAD_GLOBAL             27 (getattr + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_CONST              29 ('vertical')
+               LOAD_CONST              30 (False)
+               CALL                     3
+               TO_BOOL
+               POP_JUMP_IF_FALSE       42 (to L27)
+
+675            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_CONST              39 (<code object <genexpr> at 0x0000016DC90E1430, file "bilisub\srt.py", line 675>)
+               MAKE_FUNCTION
+               LOAD_FAST               40 (body)
+               LOAD_ATTR               33 (split + NULL|self)
+               CALL                     0
+               GET_ITER
+               CALL                     0
+               LOAD_CONST               2 (1)
+               LOAD_CONST              40 (('default',))
+               CALL_KW                  2
+               LOAD_GLOBAL             48 (ART_CHAR_W_VERT)
+               BINARY_OP                5 (*)
+               LOAD_FAST               59 (S)
+               BINARY_OP                5 (*)
+               STORE_FAST              60 (block_w)
+               JUMP_FORWARD            42 (to L28)
+
+677   L27:     LOAD_GLOBAL              7 (max + NULL)
+               LOAD_CONST              41 (<code object <genexpr> at 0x0000016DC90E1830, file "bilisub\srt.py", line 677>)
+               MAKE_FUNCTION
+               LOAD_FAST               47 (wrapped)
+               LOAD_ATTR               33 (split + NULL|self)
+               LOAD_CONST              31 ('\\N')
+               CALL                     1
+               GET_ITER
+               CALL                     0
+               LOAD_CONST               2 (1)
+               LOAD_CONST              40 (('default',))
+               CALL_KW                  2
+               LOAD_GLOBAL             50 (ART_CHAR_W_HORZ)
+               BINARY_OP                5 (*)
+               LOAD_FAST               59 (S)
+               BINARY_OP                5 (*)
+               STORE_FAST              60 (block_w)
+
+678   L28:     LOAD_CONST              42 (0.55)
+               LOAD_FAST               59 (S)
+               BINARY_OP                5 (*)
+               LOAD_CONST              43 (0.42)
+               LOAD_FAST               59 (S)
+               BINARY_OP                5 (*)
+               STORE_FAST              62 (pad_y)
+               STORE_FAST              61 (pad_x)
+
+679            LOAD_FAST               43 (ex)
+               LOAD_FAST               60 (block_w)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               BINARY_OP               10 (-)
+               LOAD_FAST               61 (pad_x)
+               BINARY_OP               10 (-)
+               LOAD_FAST               43 (ex)
+               LOAD_FAST               60 (block_w)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               BINARY_OP                0 (+)
+               LOAD_FAST               61 (pad_x)
+               BINARY_OP                0 (+)
+               STORE_FAST              64 (px1)
+               STORE_FAST              63 (px0)
+
+680            LOAD_FAST               44 (ey)
+               LOAD_FAST               50 (half_h)
+               BINARY_OP               10 (-)
+               LOAD_FAST               62 (pad_y)
+               BINARY_OP               10 (-)
+               LOAD_FAST               44 (ey)
+               LOAD_FAST               50 (half_h)
+               BINARY_OP                0 (+)
+               LOAD_FAST               62 (pad_y)
+               BINARY_OP                0 (+)
+               STORE_FAST              66 (py1)
+               STORE_FAST              65 (py0)
+
+689            LOAD_GLOBAL             27 (getattr + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_CONST              34 ('bbox')
+               LOAD_CONST               0 (None)
+               CALL                     3
+               STORE_FAST              67 (bb)
+
+690            LOAD_FAST               67 (bb)
+               TO_BOOL
+               POP_JUMP_IF_FALSE      185 (to L29)
+               LOAD_GLOBAL             47 (len + NULL)
+               LOAD_FAST_CHECK         67 (bb)
+               CALL                     1
+               LOAD_CONST              45 (4)
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_FALSE      170 (to L29)
+
+691            LOAD_FAST_CHECK         67 (bb)
+               LOAD_CONST               4 (0)
+               BINARY_SUBSCR
+               LOAD_FAST               67 (bb)
+               LOAD_CONST              44 (2)
+               BINARY_SUBSCR
+               BINARY_OP                0 (+)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               LOAD_FAST                2 (video_width)
+               BINARY_OP                5 (*)
+               STORE_FAST              68 (cx)
+
+692            LOAD_FAST               67 (bb)
+               LOAD_CONST               2 (1)
+               BINARY_SUBSCR
+               LOAD_FAST               67 (bb)
+               LOAD_CONST               1 (3)
+               BINARY_SUBSCR
+               BINARY_OP                0 (+)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               LOAD_FAST                3 (video_height)
+               BINARY_OP                5 (*)
+               STORE_FAST              69 (cy)
+
+693            LOAD_FAST_CHECK         64 (px1)
+               LOAD_FAST               63 (px0)
+               BINARY_OP               10 (-)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               LOAD_FAST_CHECK         66 (py1)
+               LOAD_FAST_CHECK         65 (py0)
+               BINARY_OP               10 (-)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               STORE_FAST              71 (hh)
+               STORE_FAST              70 (hw)
+
+694            LOAD_FAST               68 (cx)
+               LOAD_FAST               70 (hw)
+               BINARY_OP               10 (-)
+               LOAD_FAST               68 (cx)
+               LOAD_FAST               70 (hw)
+               BINARY_OP                0 (+)
+               STORE_FAST              64 (px1)
+               STORE_FAST              63 (px0)
+
+695            LOAD_FAST               69 (cy)
+               LOAD_FAST               71 (hh)
+               BINARY_OP               10 (-)
+               LOAD_FAST               69 (cy)
+               LOAD_FAST               71 (hh)
+               BINARY_OP                0 (+)
+               STORE_FAST              66 (py1)
+               STORE_FAST              65 (py0)
+
+696            LOAD_GLOBAL             52 (ART_COVER_BBOX)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       89 (to L29)
+
+697            LOAD_CONST              46 (0.28)
+               LOAD_FAST               59 (S)
+               BINARY_OP                5 (*)
+               STORE_FAST              72 (m2)
+
+698            LOAD_GLOBAL             31 (min + NULL)
+               LOAD_FAST               63 (px0)
+               LOAD_FAST_CHECK         67 (bb)
+               LOAD_CONST               4 (0)
+               BINARY_SUBSCR
+               LOAD_FAST                2 (video_width)
+               BINARY_OP                5 (*)
+               LOAD_FAST               72 (m2)
+               BINARY_OP               10 (-)
+               CALL                     2
+               STORE_FAST              63 (px0)
+
+699            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_FAST_CHECK         64 (px1)
+               LOAD_FAST               67 (bb)
+               LOAD_CONST              44 (2)
+               BINARY_SUBSCR
+               LOAD_FAST                2 (video_width)
+               BINARY_OP                5 (*)
+               LOAD_FAST               72 (m2)
+               BINARY_OP                0 (+)
+               CALL                     2
+               STORE_FAST              64 (px1)
+
+700            LOAD_GLOBAL             31 (min + NULL)
+               LOAD_FAST_CHECK         65 (py0)
+               LOAD_FAST               67 (bb)
+               LOAD_CONST               2 (1)
+               BINARY_SUBSCR
+               LOAD_FAST                3 (video_height)
+               BINARY_OP                5 (*)
+               LOAD_FAST               72 (m2)
+               BINARY_OP               10 (-)
+               CALL                     2
+               STORE_FAST              65 (py0)
+
+701            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_FAST_CHECK         66 (py1)
+               LOAD_FAST               67 (bb)
+               LOAD_CONST               1 (3)
+               BINARY_SUBSCR
+               LOAD_FAST                3 (video_height)
+               BINARY_OP                5 (*)
+               LOAD_FAST               72 (m2)
+               BINARY_OP                0 (+)
+               CALL                     2
+               STORE_FAST              66 (py1)
+
+708   L29:     LOAD_FAST                2 (video_width)
+               LOAD_GLOBAL             54 (ART_W_MAX_FRAME)
+               BINARY_OP                5 (*)
+               LOAD_FAST                3 (video_height)
+               LOAD_GLOBAL             56 (ART_H_MAX_FRAME)
+               BINARY_OP                5 (*)
+               STORE_FAST              74 (_mh)
+               STORE_FAST              73 (_mw)
+
+709            LOAD_FAST_CHECK         64 (px1)
+               LOAD_FAST               63 (px0)
+               BINARY_OP               10 (-)
+               LOAD_FAST               73 (_mw)
+               COMPARE_OP             148 (bool(>))
+               POP_JUMP_IF_FALSE       24 (to L30)
+
+710            LOAD_FAST               63 (px0)
+               LOAD_FAST_CHECK         64 (px1)
+               BINARY_OP                0 (+)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               STORE_FAST              75 (_c)
+
+711            LOAD_FAST               75 (_c)
+               LOAD_FAST_CHECK         73 (_mw)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               BINARY_OP               10 (-)
+               LOAD_FAST               75 (_c)
+               LOAD_FAST               73 (_mw)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               BINARY_OP                0 (+)
+               STORE_FAST              64 (px1)
+               STORE_FAST              63 (px0)
+
+712   L30:     LOAD_FAST_CHECK         66 (py1)
+               LOAD_FAST_CHECK         65 (py0)
+               BINARY_OP               10 (-)
+               LOAD_FAST_CHECK         74 (_mh)
+               COMPARE_OP             148 (bool(>))
+               POP_JUMP_IF_FALSE       24 (to L31)
+
+713            LOAD_FAST_CHECK         65 (py0)
+               LOAD_FAST_CHECK         66 (py1)
+               BINARY_OP                0 (+)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               STORE_FAST              75 (_c)
+
+714            LOAD_FAST               75 (_c)
+               LOAD_FAST_CHECK         74 (_mh)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               BINARY_OP               10 (-)
+               LOAD_FAST               75 (_c)
+               LOAD_FAST               74 (_mh)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               BINARY_OP                0 (+)
+               STORE_FAST              66 (py1)
+               STORE_FAST              65 (py0)
+
+718   L31:     LOAD_CONST              47 (6)
+               STORE_FAST              76 (mg)
+
+719            LOAD_FAST               37 (placed)
+               GET_ITER
+      L32:     FOR_ITER               131 (to L39)
+               UNPACK_SEQUENCE          6
+               STORE_FAST              77 (ost)
+               STORE_FAST              78 (oen)
+               STORE_FAST              79 (ox0)
+               STORE_FAST              80 (oy0)
+               STORE_FAST              81 (ox1)
+               STORE_FAST              82 (oy1)
+
+720            LOAD_FAST               78 (oen)
+               LOAD_FAST               41 (st)
+               COMPARE_OP              58 (bool(<=))
+               POP_JUMP_IF_TRUE         6 (to L33)
+               LOAD_FAST_CHECK         77 (ost)
+               LOAD_FAST               42 (en)
+               COMPARE_OP             188 (bool(>=))
+               POP_JUMP_IF_FALSE        2 (to L34)
+
+721   L33:     JUMP_BACKWARD           24 (to L32)
+
+722   L34:     LOAD_FAST_CHECK         64 (px1)
+               LOAD_FAST_CHECK         79 (ox0)
+               COMPARE_OP              58 (bool(<=))
+               POP_JUMP_IF_TRUE        18 (to L35)
+               LOAD_FAST               63 (px0)
+               LOAD_FAST_CHECK         81 (ox1)
+               COMPARE_OP             188 (bool(>=))
+               POP_JUMP_IF_TRUE        12 (to L35)
+               LOAD_FAST_CHECK         66 (py1)
+               LOAD_FAST_CHECK         80 (oy0)
+               COMPARE_OP              58 (bool(<=))
+               POP_JUMP_IF_TRUE         6 (to L35)
+               LOAD_FAST_CHECK         65 (py0)
+               LOAD_FAST_CHECK         82 (oy1)
+               COMPARE_OP             188 (bool(>=))
+               POP_JUMP_IF_FALSE        2 (to L36)
+
+723   L35:     JUMP_BACKWARD           50 (to L32)
+
+724   L36:     LOAD_CONST              48 (4.0)
+               STORE_FAST              83 (gap)
+
+725            LOAD_FAST               63 (px0)
+               LOAD_FAST_CHECK         64 (px1)
+               BINARY_OP                0 (+)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               LOAD_FAST_CHECK         79 (ox0)
+               LOAD_FAST_CHECK         81 (ox1)
+               BINARY_OP                0 (+)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               COMPARE_OP             188 (bool(>=))
+               POP_JUMP_IF_FALSE       32 (to L37)
+
+726            LOAD_FAST_CHECK         81 (ox1)
+               LOAD_FAST               63 (px0)
+               BINARY_OP               10 (-)
+               LOAD_FAST_CHECK         83 (gap)
+               BINARY_OP                0 (+)
+               STORE_FAST              84 (d)
+
+727            LOAD_FAST_CHECK         64 (px1)
+               LOAD_FAST               84 (d)
+               BINARY_OP                0 (+)
+               LOAD_FAST                2 (video_width)
+               LOAD_FAST_CHECK         76 (mg)
+               BINARY_OP               10 (-)
+               COMPARE_OP              58 (bool(<=))
+               POP_JUMP_IF_FALSE       12 (to L37)
+
+728            LOAD_FAST               63 (px0)
+               LOAD_FAST_CHECK         84 (d)
+               BINARY_OP                0 (+)
+               LOAD_FAST_CHECK         64 (px1)
+               LOAD_FAST               84 (d)
+               BINARY_OP                0 (+)
+               STORE_FAST              64 (px1)
+               STORE_FAST              63 (px0)
+
+729            JUMP_BACKWARD          102 (to L32)
+
+730   L37:     LOAD_FAST_CHECK         64 (px1)
+               LOAD_FAST_CHECK         79 (ox0)
+               BINARY_OP               10 (-)
+               LOAD_FAST_CHECK         83 (gap)
+               BINARY_OP                0 (+)
+               STORE_FAST              84 (d)
+
+731            LOAD_FAST               63 (px0)
+               LOAD_FAST               84 (d)
+               BINARY_OP               10 (-)
+               LOAD_FAST_CHECK         76 (mg)
+               COMPARE_OP             188 (bool(>=))
+               POP_JUMP_IF_TRUE         2 (to L38)
+               JUMP_BACKWARD          121 (to L32)
+
+732   L38:     LOAD_FAST               63 (px0)
+               LOAD_FAST_CHECK         84 (d)
+               BINARY_OP               10 (-)
+               LOAD_FAST_CHECK         64 (px1)
+               LOAD_FAST               84 (d)
+               BINARY_OP               10 (-)
+               STORE_FAST              64 (px1)
+               STORE_FAST              63 (px0)
+               JUMP_BACKWARD          133 (to L32)
+
+719   L39:     END_FOR
+               POP_TOP
+
+733            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_FAST_CHECK         76 (mg)
+               LOAD_FAST               63 (px0)
+               CALL                     2
+               LOAD_GLOBAL              7 (max + NULL)
+               LOAD_FAST               76 (mg)
+               LOAD_FAST_CHECK         65 (py0)
+               CALL                     2
+               STORE_FAST              65 (py0)
+               STORE_FAST              63 (px0)
+
+734            LOAD_GLOBAL             31 (min + NULL)
+               LOAD_FAST                2 (video_width)
+               LOAD_FAST               76 (mg)
+               BINARY_OP               10 (-)
+               LOAD_FAST_CHECK         64 (px1)
+               CALL                     2
+               LOAD_GLOBAL             31 (min + NULL)
+               LOAD_FAST                3 (video_height)
+               LOAD_FAST               76 (mg)
+               BINARY_OP               10 (-)
+               LOAD_FAST_CHECK         66 (py1)
+               CALL                     2
+               STORE_FAST              66 (py1)
+               STORE_FAST              64 (px1)
+
+735            LOAD_FAST               64 (px1)
+               LOAD_FAST               63 (px0)
+               BINARY_OP               10 (-)
+               LOAD_CONST              49 (12)
+               COMPARE_OP             148 (bool(>))
+               POP_JUMP_IF_FALSE      163 (to L40)
+               LOAD_FAST_CHECK         66 (py1)
+               LOAD_FAST_CHECK         65 (py0)
+               BINARY_OP               10 (-)
+               LOAD_CONST              49 (12)
+               COMPARE_OP             148 (bool(>))
+               POP_JUMP_IF_FALSE      154 (to L40)
+
+736            LOAD_FAST               63 (px0)
+               LOAD_FAST_CHECK         65 (py0)
+               LOAD_FAST_CHECK         64 (px1)
+               LOAD_FAST_CHECK         66 (py1)
+               LOAD_FAST               59 (S)
+               BUILD_TUPLE              5
+               STORE_FAST              57 (panel)
+
+737            LOAD_FAST               37 (placed)
+               LOAD_ATTR               45 (append + NULL|self)
+               LOAD_FAST               41 (st)
+               LOAD_FAST               42 (en)
+               LOAD_FAST               63 (px0)
+               LOAD_FAST               65 (py0)
+               LOAD_FAST               64 (px1)
+               LOAD_FAST               66 (py1)
+               BUILD_TUPLE              6
+               CALL                     1
+               POP_TOP
+
+738            LOAD_GLOBAL              3 (int + NULL)
+               LOAD_GLOBAL              5 (round + NULL)
+               LOAD_FAST               63 (px0)
+               LOAD_FAST               64 (px1)
+               BINARY_OP                0 (+)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               CALL                     1
+               CALL                     1
+               STORE_FAST              43 (ex)
+
+739            LOAD_GLOBAL              3 (int + NULL)
+               LOAD_GLOBAL              5 (round + NULL)
+               LOAD_FAST               65 (py0)
+               LOAD_FAST               66 (py1)
+               BINARY_OP                0 (+)
+               LOAD_CONST              44 (2)
+               BINARY_OP               11 (/)
+               CALL                     1
+               CALL                     1
+               STORE_FAST              44 (ey)
+
+743            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_CONST              28 (1.0)
+               LOAD_CONST              44 (2)
+               LOAD_FAST               50 (half_h)
+               BINARY_OP                5 (*)
+               CALL                     2
+               LOAD_GLOBAL              7 (max + NULL)
+               LOAD_CONST              28 (1.0)
+               LOAD_FAST               60 (block_w)
+               CALL                     2
+               STORE_FAST              86 (cur_w)
+               STORE_FAST              85 (cur_h)
+
+744            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_CONST              28 (1.0)
+               LOAD_GLOBAL             31 (min + NULL)
+               LOAD_GLOBAL             58 (ART_FILL_MAX)
+               LOAD_FAST               64 (px1)
+               LOAD_FAST               63 (px0)
+               BINARY_OP               10 (-)
+               LOAD_CONST              50 (0.7)
+               BINARY_OP                5 (*)
+               LOAD_FAST               86 (cur_w)
+               BINARY_OP               11 (/)
+
+745            LOAD_FAST               66 (py1)
+               LOAD_FAST               65 (py0)
+               BINARY_OP               10 (-)
+               LOAD_CONST              51 (0.8)
+               BINARY_OP                5 (*)
+               LOAD_FAST               85 (cur_h)
+               BINARY_OP               11 (/)
+
+744            CALL                     3
+               CALL                     2
+               STORE_FAST              58 (fill_scale)
+
+746   L40:     LOAD_CONST              52 ('\\an5\\pos(')
+               LOAD_FAST               43 (ex)
+               FORMAT_SIMPLE
+               LOAD_CONST              11 (',')
+               LOAD_FAST               44 (ey)
+               FORMAT_SIMPLE
+               LOAD_CONST              53 (')')
+               BUILD_STRING             5
+               STORE_FAST              87 (tags)
+
+747            LOAD_GLOBAL             27 (getattr + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_CONST              33 ('is_art')
+               LOAD_CONST              30 (False)
+               CALL                     3
+               TO_BOOL
+               POP_JUMP_IF_FALSE       65 (to L43)
+
+748            LOAD_FAST                5 (art_font_name)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        8 (to L41)
+
+749            LOAD_FAST_CHECK         87 (tags)
+               LOAD_CONST              54 ('\\fn')
+               LOAD_FAST                5 (art_font_name)
+               FORMAT_SIMPLE
+               BUILD_STRING             2
+               BINARY_OP               13 (+=)
+               STORE_FAST              87 (tags)
+
+750   L41:     LOAD_FAST                6 (art_color)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       18 (to L42)
+
+751            LOAD_FAST_CHECK         87 (tags)
+               LOAD_CONST              55 ('\\c')
+               LOAD_GLOBAL              1 (_hex_to_ass + NULL)
+               LOAD_FAST                6 (art_color)
+               CALL                     1
+               FORMAT_SIMPLE
+               LOAD_CONST              56 ('&')
+               BUILD_STRING             3
+               BINARY_OP               13 (+=)
+               STORE_FAST              87 (tags)
+
+752   L42:     LOAD_FAST                7 (art_outline)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       18 (to L43)
+
+753            LOAD_FAST_CHECK         87 (tags)
+               LOAD_CONST              57 ('\\3c')
+               LOAD_GLOBAL              1 (_hex_to_ass + NULL)
+               LOAD_FAST                7 (art_outline)
+               CALL                     1
+               FORMAT_SIMPLE
+               LOAD_CONST              56 ('&')
+               BUILD_STRING             3
+               BINARY_OP               13 (+=)
+               STORE_FAST              87 (tags)
+
+754   L43:     LOAD_FAST               45 (fscale)
+               LOAD_FAST               48 (shrink)
+               BINARY_OP                5 (*)
+               LOAD_FAST               58 (fill_scale)
+               BINARY_OP                5 (*)
+               STORE_FAST              88 (eff)
+
+755            LOAD_GLOBAL             41 (abs + NULL)
+               LOAD_FAST               88 (eff)
+               LOAD_CONST              28 (1.0)
+               BINARY_OP               10 (-)
+               CALL                     1
+               LOAD_CONST              58 (0.001)
+               COMPARE_OP             148 (bool(>))
+               POP_JUMP_IF_FALSE       34 (to L44)
+
+756            LOAD_GLOBAL              3 (int + NULL)
+               LOAD_GLOBAL              5 (round + NULL)
+               LOAD_FAST_CHECK         88 (eff)
+               LOAD_CONST              59 (100)
+               BINARY_OP                5 (*)
+               CALL                     1
+               CALL                     1
+               STORE_FAST              89 (fs)
+
+757            LOAD_FAST_CHECK         87 (tags)
+               LOAD_CONST              60 ('\\fscx')
+               LOAD_FAST               89 (fs)
+               FORMAT_SIMPLE
+               LOAD_CONST              61 ('\\fscy')
+               LOAD_FAST               89 (fs)
+               FORMAT_SIMPLE
+               BUILD_STRING             4
+               BINARY_OP               13 (+=)
+               STORE_FAST              87 (tags)
+
+758   L44:     LOAD_FAST               57 (panel)
+               TO_BOOL
+               EXTENDED_ARG             1
+               POP_JUMP_IF_FALSE      357 (to L45)
+
+759            LOAD_FAST               57 (panel)
+               UNPACK_SEQUENCE          5
+               STORE_FAST              63 (px0)
+               STORE_FAST              65 (py0)
+               STORE_FAST              64 (px1)
+               STORE_FAST              66 (py1)
+               STORE_FAST              59 (S)
+
+760            LOAD_FAST               64 (px1)
+               LOAD_FAST               63 (px0)
+               BINARY_OP               10 (-)
+               LOAD_FAST               66 (py1)
+               LOAD_FAST               65 (py0)
+               BINARY_OP               10 (-)
+               STORE_FAST              91 (PH)
+               STORE_FAST              90 (PW)
+
+761            LOAD_GLOBAL              3 (int + NULL)
+               LOAD_GLOBAL              5 (round + NULL)
+               LOAD_FAST               63 (px0)
+               CALL                     1
+               CALL                     1
+               LOAD_GLOBAL              3 (int + NULL)
+               LOAD_GLOBAL              5 (round + NULL)
+               LOAD_FAST               65 (py0)
+               CALL                     1
+               CALL                     1
+               STORE_FAST              93 (py0i)
+               STORE_FAST              92 (px0i)
+
+762            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_CONST              62 (8.0)
+               LOAD_GLOBAL             31 (min + NULL)
+               LOAD_GLOBAL             31 (min + NULL)
+               LOAD_FAST               90 (PW)
+               LOAD_FAST               91 (PH)
+               CALL                     2
+               LOAD_CONST              63 (0.14)
+               BINARY_OP                5 (*)
+               LOAD_CONST              64 (0.6)
+               LOAD_FAST               59 (S)
+               BINARY_OP                5 (*)
+               CALL                     2
+               CALL                     2
+               STORE_FAST              94 (rad)
+
+763            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_CONST               4 (0)
+               LOAD_GLOBAL             31 (min + NULL)
+               LOAD_CONST              65 (255)
+               LOAD_GLOBAL              3 (int + NULL)
+               LOAD_GLOBAL              5 (round + NULL)
+               LOAD_CONST              28 (1.0)
+               LOAD_FAST               11 (art_panel_opacity)
+               BINARY_OP               10 (-)
+               LOAD_CONST              65 (255)
+               BINARY_OP                5 (*)
+               CALL                     1
+               CALL                     1
+               CALL                     2
+               CALL                     2
+               STORE_FAST              95 (a_fill)
+
+765            LOAD_CONST              66 ('\\an7\\pos(')
+               LOAD_FAST               92 (px0i)
+               FORMAT_SIMPLE
+               LOAD_CONST              11 (',')
+               LOAD_FAST               93 (py0i)
+               FORMAT_SIMPLE
+               LOAD_CONST              67 (')\\p1\\1c')
+
+766            LOAD_GLOBAL              1 (_hex_to_ass + NULL)
+               LOAD_FAST                9 (art_panel_fill)
+               CALL                     1
+               FORMAT_SIMPLE
+               LOAD_CONST              68 ('&\\1a&H')
+               LOAD_FAST               95 (a_fill)
+               LOAD_CONST              69 ('02X')
+               FORMAT_WITH_SPEC
+               LOAD_CONST              70 ('&\\bord1.6\\3c')
+
+767            LOAD_GLOBAL              1 (_hex_to_ass + NULL)
+               LOAD_FAST               10 (art_panel_border)
+               CALL                     1
+               FORMAT_SIMPLE
+               LOAD_CONST              71 ('&\\3a&H66&\\shad3\\4c')
+
+768            LOAD_GLOBAL              1 (_hex_to_ass + NULL)
+               LOAD_CONST               3 ('#000000')
+               CALL                     1
+               FORMAT_SIMPLE
+               LOAD_CONST              72 ('&\\4a&H55&')
+
+765            BUILD_STRING            13
+
+764            STORE_FAST              96 (body_tags)
+
+770            LOAD_FAST               35 (lines)
+               LOAD_ATTR               45 (append + NULL|self)
+               LOAD_CONST              73 ('Dialogue: 0,')
+               LOAD_FAST               41 (st)
+               FORMAT_SIMPLE
+               LOAD_CONST              11 (',')
+               LOAD_FAST               42 (en)
+               FORMAT_SIMPLE
+               LOAD_CONST              74 (',Default,,0,0,0,,{')
+
+771            LOAD_FAST               96 (body_tags)
+               FORMAT_SIMPLE
+               LOAD_CONST              23 ('}')
+               LOAD_GLOBAL             61 (_round_rect_path + NULL)
+               LOAD_FAST               90 (PW)
+               LOAD_FAST               91 (PH)
+               LOAD_FAST               94 (rad)
+               CALL                     3
+               FORMAT_SIMPLE
+               LOAD_CONST              75 ('{\\p0}')
+
+770            BUILD_STRING             9
+               CALL                     1
+               POP_TOP
+
+772            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_CONST              76 (5.0)
+               LOAD_CONST              77 (0.18)
+               LOAD_FAST               59 (S)
+               BINARY_OP                5 (*)
+               CALL                     2
+               STORE_FAST              97 (inset)
+
+773            LOAD_FAST               90 (PW)
+               LOAD_CONST              44 (2)
+               LOAD_FAST               97 (inset)
+               BINARY_OP                5 (*)
+               BINARY_OP               10 (-)
+               LOAD_FAST               91 (PH)
+               LOAD_CONST              44 (2)
+               LOAD_FAST               97 (inset)
+               BINARY_OP                5 (*)
+               BINARY_OP               10 (-)
+               STORE_FAST              99 (fh)
+               STORE_FAST              98 (fw)
+
+774            LOAD_FAST               98 (fw)
+               LOAD_CONST              78 (8)
+               COMPARE_OP             148 (bool(>))
+               POP_JUMP_IF_FALSE       88 (to L45)
+               LOAD_FAST_CHECK         99 (fh)
+               LOAD_CONST              78 (8)
+               COMPARE_OP             148 (bool(>))
+               POP_JUMP_IF_FALSE       82 (to L45)
+
+775            LOAD_GLOBAL              7 (max + NULL)
+               LOAD_CONST              76 (5.0)
+               LOAD_FAST_CHECK         94 (rad)
+               LOAD_FAST_CHECK         97 (inset)
+               LOAD_CONST              64 (0.6)
+               BINARY_OP                5 (*)
+               BINARY_OP               10 (-)
+               CALL                     2
+               STORE_FAST             100 (r2)
+
+777            LOAD_CONST              66 ('\\an7\\pos(')
+               LOAD_FAST_CHECK         92 (px0i)
+               FORMAT_SIMPLE
+               LOAD_CONST              11 (',')
+               LOAD_FAST_CHECK         93 (py0i)
+               FORMAT_SIMPLE
+               LOAD_CONST              79 (')\\p1\\1a&HFF&\\bord2.4\\3c')
+
+778            LOAD_GLOBAL              1 (_hex_to_ass + NULL)
+               LOAD_FAST               10 (art_panel_border)
+               CALL                     1
+               FORMAT_SIMPLE
+               LOAD_CONST              80 ('&\\3a&H14&\\shad0\\4a&HFF&')
+
+777            BUILD_STRING             7
+
+776            STORE_FAST             101 (frame_tags)
+
+781            LOAD_FAST               35 (lines)
+               LOAD_ATTR               45 (append + NULL|self)
+               LOAD_CONST              73 ('Dialogue: 0,')
+               LOAD_FAST               41 (st)
+               FORMAT_SIMPLE
+               LOAD_CONST              11 (',')
+               LOAD_FAST               42 (en)
+               FORMAT_SIMPLE
+               LOAD_CONST              74 (',Default,,0,0,0,,{')
+
+782            LOAD_FAST              101 (frame_tags)
+               FORMAT_SIMPLE
+               LOAD_CONST              23 ('}')
+               LOAD_GLOBAL             61 (_round_rect_path + NULL)
+               LOAD_FAST_CHECK         98 (fw)
+               LOAD_FAST_CHECK         99 (fh)
+               LOAD_FAST              100 (r2)
+               LOAD_FAST               97 (inset)
+               LOAD_FAST               97 (inset)
+               CALL                     5
+               FORMAT_SIMPLE
+               LOAD_CONST              75 ('{\\p0}')
+
+781            BUILD_STRING             9
+               CALL                     1
+               POP_TOP
+
+788   L45:     LOAD_FAST                8 (art_style)
+               LOAD_CONST              32 ('plaque')
+               COMPARE_OP              88 (bool(==))
+               POP_JUMP_IF_FALSE       20 (to L46)
+               LOAD_GLOBAL             27 (getattr + NULL)
+               LOAD_FAST               39 (e)
+               LOAD_CONST              33 ('is_art')
+               LOAD_CONST              30 (False)
+               CALL                     3
+               TO_BOOL
+               POP_JUMP_IF_FALSE        2 (to L46)
+               LOAD_CONST              44 (2)
+               JUMP_FORWARD             1 (to L47)
+      L46:     LOAD_CONST               4 (0)
+      L47:     STORE_FAST             102 (_layer)
+
+789            LOAD_FAST               35 (lines)
+               LOAD_ATTR               45 (append + NULL|self)
+               LOAD_CONST              81 ('Dialogue: ')
+               LOAD_FAST              102 (_layer)
+               FORMAT_SIMPLE
+               LOAD_CONST              11 (',')
+               LOAD_FAST               41 (st)
+               FORMAT_SIMPLE
+               LOAD_CONST              11 (',')
+               LOAD_FAST               42 (en)
+               FORMAT_SIMPLE
+               LOAD_CONST              74 (',Default,,0,0,0,,{')
+               LOAD_FAST_CHECK         87 (tags)
+               FORMAT_SIMPLE
+               LOAD_CONST              23 ('}')
+               LOAD_FAST               47 (wrapped)
+               FORMAT_SIMPLE
+               BUILD_STRING            10
+               CALL                     1
+               POP_TOP
+               EXTENDED_ARG             8
+               JUMP_BACKWARD         2223 (to L9)
+
+613   L48:     END_FOR
+               POP_TOP
+
+791            LOAD_GLOBAL             63 (Path + NULL)
+               LOAD_FAST                1 (path)
+               CALL                     1
+               STORE_FAST             103 (p)
+
+792            LOAD_FAST              103 (p)
+               LOAD_ATTR               65 (write_text + NULL|self)
+               LOAD_FAST               34 (header)
+               LOAD_CONST              17 ('\n')
+               LOAD_ATTR                9 (join + NULL|self)
+               LOAD_FAST               35 (lines)
+               CALL                     1
+               BINARY_OP                0 (+)
+               LOAD_CONST              17 ('\n')
+               BINARY_OP                0 (+)
+               LOAD_CONST              82 ('utf-8-sig')
+               LOAD_CONST              83 (('encoding',))
+               CALL_KW                  2
+               POP_TOP
+
+793            LOAD_FAST              103 (p)
+               RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E1430, file "bilisub\srt.py", line 675>:
+ 675           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                16 (to L3)
+               STORE_FAST               1 (s)
+               LOAD_GLOBAL              1 (len + NULL)
+               LOAD_FAST                1 (s)
+               CALL                     1
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           18 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E1830, file "bilisub\srt.py", line 677>:
+ 677           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                16 (to L3)
+               STORE_FAST               1 (s)
+               LOAD_GLOBAL              1 (len + NULL)
+               LOAD_FAST                1 (s)
+               CALL                     1
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           18 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti

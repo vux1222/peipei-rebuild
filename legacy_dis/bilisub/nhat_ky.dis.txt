@@ -1,0 +1,972 @@
+=== FILE: bilisub\nhat_ky.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  2           LOAD_CONST               0 ('📜 SỔ NHẬT KÝ LÀM VIDEO (20/08/2026 — Boss: "thêm phần nhật ký, báo tổng thời gian").\n\nMỗi video chạy qua run_pipeline (xong / lỗi / bấm ⏹) ghi MỘT dòng JSON vào\n``nhat_ky_video.jsonl`` trong thư mục dữ liệu tool: ngày giờ · tên video · kết quả ·\ntổng thời gian · thời gian TỪNG KHÂU (đo qua chính callback progress — không đụng logic\nkhâu nào). GUI đọc sổ này ở nút "📜 Nhật ký"; cuối mỗi video log in dòng\n"🕒 TỔNG THỜI GIAN LÀM VIDEO: …" cho khách.\n\nThuần logic + file — KHÔNG import Qt. Mọi hàm ghi/đọc nuốt lỗi I/O (sổ là lớp phụ,\ntuyệt đối không được làm chết job làm video).\n')
+              STORE_NAME               0 (__doc__)
+
+ 13           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 15           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (json)
+              STORE_NAME               3 (json)
+
+ 16           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (os)
+              STORE_NAME               4 (os)
+
+ 17           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              5 (threading)
+              STORE_NAME               5 (threading)
+
+ 18           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              6 (time)
+              STORE_NAME               6 (time)
+
+ 19           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Path',))
+              IMPORT_NAME              7 (pathlib)
+              IMPORT_FROM              8 (Path)
+              STORE_NAME               8 (Path)
+              POP_TOP
+
+ 21           LOAD_CONST               5 (500)
+              STORE_NAME               9 (GIU_TOI_DA)
+
+ 22           LOAD_CONST               6 (600)
+              STORE_NAME              10 (_TRAN_DON)
+
+ 26           LOAD_CONST               7 ('OCR')
+              LOAD_CONST               8 ('dịch')
+              LOAD_CONST               9 ('tạo giọng')
+              LOAD_CONST              10 ('render')
+
+ 27           LOAD_CONST              11 ('nghe thoại')
+              LOAD_CONST              12 ('tách nhạc')
+              LOAD_CONST              13 ('tải video')
+
+ 29           LOAD_CONST              14 ('nạp model giọng')
+              LOAD_CONST              15 ('gọn câu & đọc lại')
+              LOAD_CONST              12 ('tách nhạc')
+
+ 25           LOAD_CONST              16 (('ocr', 'translate', 'tts', 'render', 'asr', 'audio_sep', 'download', 'tts_model', 'tts_gon', 'sep'))
+              BUILD_CONST_KEY_MAP     10
+              STORE_NAME              11 (TEN_KHAU)
+
+ 33           LOAD_CONST              24 (('return', 'Path'))
+              LOAD_CONST              17 (<code object _duong_so at 0x0000016DC90EE290, file "bilisub\nhat_ky.py", line 33>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              12 (_duong_so)
+
+ 42           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              18 (<code object DongHoKhau at 0x0000016DC9128DB0, file "bilisub\nhat_ky.py", line 42>)
+              MAKE_FUNCTION
+              LOAD_CONST              19 ('DongHoKhau')
+              CALL                     2
+              STORE_NAME              13 (DongHoKhau)
+
+ 74           LOAD_CONST              25 (('return', 'str'))
+              LOAD_CONST              20 (<code object fmt_khoang at 0x0000016DC8EA5A30, file "bilisub\nhat_ky.py", line 74>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              14 (fmt_khoang)
+
+ 87           LOAD_CONST              26 ((4,))
+              LOAD_CONST              27 (('khau', 'dict', 'top', 'int', 'return', 'str'))
+              LOAD_CONST              21 (<code object tom_tat_khau at 0x0000016DC8EB5C50, file "bilisub\nhat_ky.py", line 87>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              15 (tom_tat_khau)
+
+ 97           LOAD_CONST              28 (('muc', 'dict', 'return', 'None'))
+              LOAD_CONST              22 (<code object ghi at 0x0000016DC8FB5E50, file "bilisub\nhat_ky.py", line 97>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              16 (ghi)
+
+115           LOAD_CONST              29 ((300,))
+              LOAD_CONST              30 (('n', 'int', 'return', 'list[dict]'))
+              LOAD_CONST              23 (<code object doc at 0x0000016DC9216FA0, file "bilisub\nhat_ky.py", line 115>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              17 (doc)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object _duong_so at 0x0000016DC90EE290, file "bilisub\nhat_ky.py", line 33>:
+  33           RESUME                   0
+
+  34           NOP
+
+  35   L1:     LOAD_CONST               1 (1)
+               LOAD_CONST               2 (('app_data_dir',))
+               IMPORT_NAME              0 (config)
+               IMPORT_FROM              1 (app_data_dir)
+               STORE_FAST               0 (app_data_dir)
+               POP_TOP
+
+  36           LOAD_GLOBAL              5 (Path + NULL)
+               LOAD_FAST                0 (app_data_dir)
+               PUSH_NULL
+               CALL                     0
+               CALL                     1
+               LOAD_CONST               3 ('nhat_ky_video.jsonl')
+               BINARY_OP               11 (/)
+       L2:     RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+  37           LOAD_GLOBAL              6 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       35 (to L5)
+               POP_TOP
+
+  38           LOAD_CONST               4 (0)
+               LOAD_CONST               0 (None)
+               IMPORT_NAME              4 (tempfile)
+               STORE_FAST               1 (tempfile)
+
+  39           LOAD_GLOBAL              5 (Path + NULL)
+               LOAD_FAST                1 (tempfile)
+               LOAD_ATTR               11 (gettempdir + NULL|self)
+               CALL                     0
+               CALL                     1
+               LOAD_CONST               3 ('nhat_ky_video.jsonl')
+               BINARY_OP               11 (/)
+               SWAP                     2
+       L4:     POP_EXCEPT
+               RETURN_VALUE
+
+  37   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object DongHoKhau at 0x0000016DC9128DB0, file "bilisub\nhat_ky.py", line 42>:
+ 42           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('DongHoKhau')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (42)
+              STORE_NAME               3 (__firstlineno__)
+
+ 43           LOAD_CONST               2 ('Đồng hồ đo giờ TỪNG KHÂU, bấm qua progress(stage, pct).\n\nprogress được gọi từ cả LUỒNG CON (TTS 4 luồng) → có khoá. Đổi stage = chốt giờ\nkhâu cũ, mở khâu mới; ``chot()`` đóng khâu đang mở và trả dict theo thứ tự gặp.')
+              STORE_NAME               4 (__doc__)
+
+ 48           LOAD_NAME                5 (time)
+              LOAD_ATTR               12 (monotonic)
+              BUILD_TUPLE              1
+              LOAD_CONST               3 (<code object __init__ at 0x0000016DC8E07230, file "bilisub\nhat_ky.py", line 48>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME               7 (__init__)
+
+ 55           LOAD_CONST               8 (('stage', 'str', 'return', 'None'))
+              LOAD_CONST               4 (<code object cham at 0x0000016DC8F5ED60, file "bilisub\nhat_ky.py", line 55>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               8 (cham)
+
+ 65           LOAD_CONST               9 (('return', 'dict[str, float]'))
+              LOAD_CONST               5 (<code object chot at 0x0000016DC8F5D5C0, file "bilisub\nhat_ky.py", line 65>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               9 (chot)
+              LOAD_CONST               6 (('_dang', '_khau', '_lock', '_now', '_tu'))
+              STORE_NAME              10 (__static_attributes__)
+              RETURN_CONST             7 (None)
+
+Disassembly of <code object __init__ at 0x0000016DC8E07230, file "bilisub\nhat_ky.py", line 48>:
+ 48           RESUME                   0
+
+ 49           LOAD_FAST_LOAD_FAST     16 (now, self)
+              STORE_ATTR               0 (_now)
+
+ 50           LOAD_GLOBAL              2 (threading)
+              LOAD_ATTR                4 (Lock)
+              PUSH_NULL
+              CALL                     0
+              LOAD_FAST                0 (self)
+              STORE_ATTR               3 (_lock)
+
+ 51           BUILD_MAP                0
+              LOAD_FAST                0 (self)
+              STORE_ATTR               4 (_khau)
+
+ 52           LOAD_CONST               1 ('')
+              LOAD_FAST                0 (self)
+              STORE_ATTR               5 (_dang)
+
+ 53           LOAD_CONST               2 (0.0)
+              LOAD_FAST                0 (self)
+              STORE_ATTR               6 (_tu)
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object cham at 0x0000016DC8F5ED60, file "bilisub\nhat_ky.py", line 55>:
+  55            RESUME                   0
+
+  56            LOAD_GLOBAL              1 (str + NULL)
+                LOAD_FAST                1 (stage)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                LOAD_CONST               1 ('')
+        L1:     CALL                     1
+                LOAD_ATTR                3 (strip + NULL|self)
+                CALL                     0
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                LOAD_CONST               2 ('?')
+        L2:     STORE_FAST               1 (stage)
+
+  57            LOAD_FAST                0 (self)
+                LOAD_ATTR                4 (_lock)
+                BEFORE_WITH
+        L3:     POP_TOP
+
+  58            LOAD_FAST                0 (self)
+                LOAD_ATTR                7 (_now + NULL|self)
+                CALL                     0
+                STORE_FAST               2 (t)
+
+  59            LOAD_FAST_LOAD_FAST     16 (stage, self)
+                LOAD_ATTR                8 (_dang)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       10 (to L5)
+
+  60            NOP
+
+  57    L4:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+                RETURN_CONST             0 (None)
+
+  61    L5:     LOAD_FAST                0 (self)
+                LOAD_ATTR                8 (_dang)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       76 (to L6)
+
+  62            LOAD_FAST                0 (self)
+                LOAD_ATTR               10 (_khau)
+                LOAD_ATTR               13 (get + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR                8 (_dang)
+                LOAD_CONST               3 (0.0)
+                CALL                     2
+                LOAD_FAST_LOAD_FAST     32 (t, self)
+                LOAD_ATTR               14 (_tu)
+                BINARY_OP               10 (-)
+                BINARY_OP                0 (+)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               10 (_khau)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR                8 (_dang)
+                STORE_SUBSCR
+
+  63    L6:     LOAD_FAST_LOAD_FAST     18 (stage, t)
+                SWAP                     2
+                LOAD_FAST                0 (self)
+                STORE_ATTR               4 (_dang)
+                LOAD_FAST                0 (self)
+                STORE_ATTR               7 (_tu)
+
+  57    L7:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+                RETURN_CONST             0 (None)
+        L8:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L9)
+                RERAISE                  2
+        L9:     POP_TOP
+       L10:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                RETURN_CONST             0 (None)
+
+  --   L11:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L3 to L4 -> L8 [1] lasti
+  L5 to L7 -> L8 [1] lasti
+  L8 to L10 -> L11 [3] lasti
+
+Disassembly of <code object chot at 0x0000016DC8F5D5C0, file "bilisub\nhat_ky.py", line 65>:
+  65            RESUME                   0
+
+  66            LOAD_FAST                0 (self)
+                LOAD_ATTR                0 (_lock)
+                BEFORE_WITH
+        L1:     POP_TOP
+
+  67            LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (_dang)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       99 (to L2)
+
+  68            LOAD_FAST                0 (self)
+                LOAD_ATTR                5 (_now + NULL|self)
+                CALL                     0
+                STORE_FAST               1 (t)
+
+  69            LOAD_FAST                0 (self)
+                LOAD_ATTR                6 (_khau)
+                LOAD_ATTR                9 (get + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (_dang)
+                LOAD_CONST               1 (0.0)
+                CALL                     2
+                LOAD_FAST_LOAD_FAST     16 (t, self)
+                LOAD_ATTR               10 (_tu)
+                BINARY_OP               10 (-)
+                BINARY_OP                0 (+)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR                6 (_khau)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (_dang)
+                STORE_SUBSCR
+
+  70            LOAD_CONST               2 ('')
+                LOAD_FAST                0 (self)
+                STORE_ATTR               1 (_dang)
+
+  71    L2:     LOAD_FAST                0 (self)
+                LOAD_ATTR                6 (_khau)
+                LOAD_ATTR               13 (items + NULL|self)
+                CALL                     0
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      2 (k)
+                LOAD_FAST_AND_CLEAR      3 (v)
+                SWAP                     3
+        L3:     BUILD_MAP                0
+                SWAP                     2
+                GET_ITER
+        L4:     FOR_ITER                26 (to L7)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST   35 (k, v)
+                LOAD_FAST                3 (v)
+                LOAD_CONST               3 (0.5)
+                COMPARE_OP             188 (bool(>=))
+        L5:     POP_JUMP_IF_TRUE         2 (to L6)
+                JUMP_BACKWARD           13 (to L4)
+        L6:     LOAD_FAST                2 (k)
+                LOAD_GLOBAL             15 (round + NULL)
+                LOAD_FAST                3 (v)
+                LOAD_CONST               4 (1)
+                CALL                     2
+                MAP_ADD                  2
+                JUMP_BACKWARD           28 (to L4)
+        L7:     END_FOR
+                POP_TOP
+        L8:     SWAP                     3
+                STORE_FAST               3 (v)
+                STORE_FAST               2 (k)
+
+  66    L9:     SWAP                     2
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+                RETURN_VALUE
+
+  --   L10:     SWAP                     2
+                POP_TOP
+
+  71            SWAP                     3
+                STORE_FAST               3 (v)
+                STORE_FAST               2 (k)
+                RERAISE                  0
+
+  66   L11:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L12)
+                RERAISE                  2
+       L12:     POP_TOP
+       L13:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                RETURN_CONST             0 (None)
+
+  --   L14:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L11 [1] lasti
+  L3 to L5 -> L10 [4]
+  L6 to L8 -> L10 [4]
+  L8 to L9 -> L11 [1] lasti
+  L10 to L11 -> L11 [1] lasti
+  L11 to L13 -> L14 [3] lasti
+
+Disassembly of <code object fmt_khoang at 0x0000016DC8EA5A30, file "bilisub\nhat_ky.py", line 74>:
+  74           RESUME                   0
+
+  76           NOP
+
+  77   L1:     LOAD_GLOBAL              1 (max + NULL)
+               LOAD_CONST               1 (0)
+               LOAD_GLOBAL              3 (int + NULL)
+               LOAD_GLOBAL              5 (round + NULL)
+               LOAD_GLOBAL              7 (float + NULL)
+               LOAD_FAST                0 (giay)
+               CALL                     1
+               CALL                     1
+               CALL                     1
+               CALL                     2
+               STORE_FAST               1 (s)
+
+  80   L2:     LOAD_FAST                1 (s)
+               LOAD_CONST               3 (60)
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE        5 (to L3)
+
+  81           LOAD_FAST                1 (s)
+               FORMAT_SIMPLE
+               LOAD_CONST               4 ('″')
+               BUILD_STRING             2
+               RETURN_VALUE
+
+  82   L3:     LOAD_FAST                1 (s)
+               LOAD_CONST               5 (3600)
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE       15 (to L4)
+
+  83           LOAD_FAST                1 (s)
+               LOAD_CONST               3 (60)
+               BINARY_OP                2 (//)
+               FORMAT_SIMPLE
+               LOAD_CONST               6 ('′')
+               LOAD_FAST                1 (s)
+               LOAD_CONST               3 (60)
+               BINARY_OP                6 (%)
+               LOAD_CONST               7 ('02d')
+               FORMAT_WITH_SPEC
+               LOAD_CONST               4 ('″')
+               BUILD_STRING             4
+               RETURN_VALUE
+
+  84   L4:     LOAD_FAST                1 (s)
+               LOAD_CONST               5 (3600)
+               BINARY_OP                2 (//)
+               FORMAT_SIMPLE
+               LOAD_CONST               8 ('g')
+               LOAD_FAST                1 (s)
+               LOAD_CONST               5 (3600)
+               BINARY_OP                6 (%)
+               LOAD_CONST               3 (60)
+               BINARY_OP                2 (//)
+               LOAD_CONST               7 ('02d')
+               FORMAT_WITH_SPEC
+               LOAD_CONST               6 ('′')
+               BUILD_STRING             4
+               RETURN_VALUE
+
+  --   L5:     PUSH_EXC_INFO
+
+  78           LOAD_GLOBAL              8 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L7)
+               POP_TOP
+
+  79   L6:     POP_EXCEPT
+               RETURN_CONST             2 ('?')
+
+  78   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L5 [0]
+  L5 to L6 -> L8 [1] lasti
+  L7 to L8 -> L8 [1] lasti
+
+Disassembly of <code object tom_tat_khau at 0x0000016DC8EB5C50, file "bilisub\nhat_ky.py", line 87>:
+  87           RESUME                   0
+
+  89           NOP
+
+  90   L1:     LOAD_GLOBAL              1 (sorted + NULL)
+               LOAD_CONST               1 (<code object <genexpr> at 0x0000016DC8EADCE0, file "bilisub\nhat_ky.py", line 90>)
+               MAKE_FUNCTION
+               LOAD_FAST                0 (khau)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L2)
+               POP_TOP
+               BUILD_MAP                0
+       L2:     LOAD_ATTR                3 (items + NULL|self)
+               CALL                     0
+               GET_ITER
+               CALL                     0
+
+  91           LOAD_CONST               2 (<code object <lambda> at 0x0000016DC8EB9D10, file "bilisub\nhat_ky.py", line 91>)
+               MAKE_FUNCTION
+
+  90           LOAD_CONST               3 (('key',))
+               CALL_KW                  2
+
+  91           LOAD_CONST               4 (None)
+               LOAD_GLOBAL              5 (max + NULL)
+               LOAD_CONST               5 (1)
+               LOAD_FAST                1 (top)
+               CALL                     2
+
+  90           BINARY_SLICE
+               STORE_FAST               2 (cap)
+
+  92           LOAD_CONST               6 (' · ')
+               LOAD_ATTR                7 (join + NULL|self)
+               LOAD_CONST               7 (<code object <genexpr> at 0x0000016DC8E07EB0, file "bilisub\nhat_ky.py", line 92>)
+               MAKE_FUNCTION
+               LOAD_FAST                2 (cap)
+               GET_ITER
+               CALL                     0
+               CALL                     1
+       L3:     RETURN_VALUE
+
+  --   L4:     PUSH_EXC_INFO
+
+  93           LOAD_GLOBAL              8 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L6)
+               POP_TOP
+
+  94   L5:     POP_EXCEPT
+               RETURN_CONST             8 ('')
+
+  93   L6:     RERAISE                  0
+
+  --   L7:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L4 [0]
+  L4 to L5 -> L7 [1] lasti
+  L6 to L7 -> L7 [1] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC8EADCE0, file "bilisub\nhat_ky.py", line 90>:
+  90           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                20 (to L3)
+               UNPACK_SEQUENCE          2
+               STORE_FAST_STORE_FAST   18 (k, v)
+               LOAD_FAST                1 (k)
+               LOAD_GLOBAL              1 (float + NULL)
+               LOAD_FAST                2 (v)
+               CALL                     1
+               BUILD_TUPLE              2
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           22 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object <lambda> at 0x0000016DC8EB9D10, file "bilisub\nhat_ky.py", line 91>:
+ 91           RESUME                   0
+              LOAD_FAST                0 (x)
+              LOAD_CONST               1 (1)
+              BINARY_SUBSCR
+              UNARY_NEGATIVE
+              RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC8E07EB0, file "bilisub\nhat_ky.py", line 92>:
+  92           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                42 (to L3)
+               UNPACK_SEQUENCE          2
+               STORE_FAST_STORE_FAST   18 (k, v)
+               LOAD_GLOBAL              0 (TEN_KHAU)
+               LOAD_ATTR                3 (get + NULL|self)
+               LOAD_FAST_LOAD_FAST     17 (k, k)
+               CALL                     2
+               FORMAT_SIMPLE
+               LOAD_CONST               0 (' ')
+               LOAD_GLOBAL              5 (fmt_khoang + NULL)
+               LOAD_FAST                2 (v)
+               CALL                     1
+               FORMAT_SIMPLE
+               BUILD_STRING             3
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           44 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object ghi at 0x0000016DC8FB5E50, file "bilisub\nhat_ky.py", line 97>:
+  97            RESUME                   0
+
+  99            NOP
+
+ 100    L1:     LOAD_GLOBAL              1 (_duong_so + NULL)
+                CALL                     0
+                STORE_FAST               1 (p)
+
+ 101            LOAD_FAST                1 (p)
+                LOAD_ATTR                2 (parent)
+                LOAD_ATTR                5 (mkdir + NULL|self)
+                LOAD_CONST               1 (True)
+                LOAD_CONST               1 (True)
+                LOAD_CONST               2 (('parents', 'exist_ok'))
+                CALL_KW                  2
+                POP_TOP
+
+ 102            LOAD_FAST                1 (p)
+                LOAD_ATTR                7 (open + NULL|self)
+                LOAD_CONST               3 ('a')
+                LOAD_CONST               4 ('utf-8')
+                LOAD_CONST               5 (('encoding',))
+                CALL_KW                  2
+                BEFORE_WITH
+        L2:     STORE_FAST               2 (f)
+
+ 103            LOAD_FAST                2 (f)
+                LOAD_ATTR                9 (write + NULL|self)
+                LOAD_GLOBAL             10 (json)
+                LOAD_ATTR               12 (dumps)
+                PUSH_NULL
+                LOAD_FAST                0 (muc)
+                LOAD_CONST               6 (False)
+                LOAD_CONST               7 (('ensure_ascii',))
+                CALL_KW                  2
+                LOAD_GLOBAL             15 (chr + NULL)
+                LOAD_CONST               8 (10)
+                CALL                     1
+                BINARY_OP                0 (+)
+                CALL                     1
+                POP_TOP
+
+ 102    L3:     LOAD_CONST               9 (None)
+                LOAD_CONST               9 (None)
+                LOAD_CONST               9 (None)
+                CALL                     2
+                POP_TOP
+
+ 105    L4:     LOAD_FAST                1 (p)
+                LOAD_ATTR                7 (open + NULL|self)
+                LOAD_CONST              10 ('r')
+                LOAD_CONST               4 ('utf-8')
+                LOAD_CONST              11 ('replace')
+                LOAD_CONST              12 (('encoding', 'errors'))
+                CALL_KW                  3
+                BEFORE_WITH
+        L5:     STORE_FAST               2 (f)
+
+ 106            LOAD_FAST                2 (f)
+                LOAD_ATTR               17 (readlines + NULL|self)
+                CALL                     0
+                STORE_FAST               3 (dong)
+
+ 105    L6:     LOAD_CONST               9 (None)
+                LOAD_CONST               9 (None)
+                LOAD_CONST               9 (None)
+                CALL                     2
+                POP_TOP
+
+ 107    L7:     LOAD_GLOBAL             19 (len + NULL)
+                LOAD_FAST_CHECK          3 (dong)
+                CALL                     1
+                LOAD_GLOBAL             20 (_TRAN_DON)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       79 (to L9)
+
+ 108            LOAD_FAST                1 (p)
+                LOAD_ATTR               23 (with_suffix + NULL|self)
+                LOAD_CONST              13 ('.jsonl.tmp')
+                CALL                     1
+                STORE_FAST               4 (tmp)
+
+ 109            LOAD_FAST                4 (tmp)
+                LOAD_ATTR               25 (write_text + NULL|self)
+                LOAD_CONST              14 ('')
+                LOAD_ATTR               27 (join + NULL|self)
+                LOAD_FAST                3 (dong)
+                LOAD_GLOBAL             28 (GIU_TOI_DA)
+                UNARY_NEGATIVE
+                LOAD_CONST               9 (None)
+                BINARY_SLICE
+                CALL                     1
+                LOAD_CONST               4 ('utf-8')
+                LOAD_CONST               5 (('encoding',))
+                CALL_KW                  2
+                POP_TOP
+
+ 110            LOAD_GLOBAL             30 (os)
+                LOAD_ATTR               32 (replace)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST     65 (tmp, p)
+                CALL                     2
+                POP_TOP
+        L8:     RETURN_CONST             9 (None)
+
+ 107    L9:     RETURN_CONST             9 (None)
+
+ 102   L10:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L11)
+                RERAISE                  2
+       L11:     POP_TOP
+       L12:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                JUMP_BACKWARD_NO_INTERRUPT 155 (to L4)
+
+  --   L13:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+ 105   L14:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L15)
+                RERAISE                  2
+       L15:     POP_TOP
+       L16:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                JUMP_BACKWARD_NO_INTERRUPT 130 (to L7)
+
+  --   L17:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L18:     PUSH_EXC_INFO
+
+ 111            LOAD_GLOBAL             34 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L20)
+                POP_TOP
+
+ 112   L19:     POP_EXCEPT
+                RETURN_CONST             9 (None)
+
+ 111   L20:     RERAISE                  0
+
+  --   L21:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L18 [0]
+  L2 to L3 -> L10 [1] lasti
+  L3 to L5 -> L18 [0]
+  L5 to L6 -> L14 [1] lasti
+  L6 to L8 -> L18 [0]
+  L10 to L12 -> L13 [3] lasti
+  L12 to L14 -> L18 [0]
+  L14 to L16 -> L17 [3] lasti
+  L16 to L18 -> L18 [0]
+  L18 to L19 -> L21 [1] lasti
+  L20 to L21 -> L21 [1] lasti
+
+Disassembly of <code object doc at 0x0000016DC9216FA0, file "bilisub\nhat_ky.py", line 115>:
+ 115            RESUME                   0
+
+ 117            BUILD_LIST               0
+                STORE_FAST               1 (ra)
+
+ 118            NOP
+
+ 119    L1:     LOAD_GLOBAL              1 (_duong_so + NULL)
+                CALL                     0
+                LOAD_ATTR                3 (open + NULL|self)
+                LOAD_CONST               1 ('r')
+                LOAD_CONST               2 ('utf-8')
+                LOAD_CONST               3 ('replace')
+                LOAD_CONST               4 (('encoding', 'errors'))
+                CALL_KW                  3
+                BEFORE_WITH
+        L2:     STORE_FAST               2 (f)
+
+ 120            LOAD_FAST                2 (f)
+                LOAD_ATTR                5 (readlines + NULL|self)
+                CALL                     0
+                STORE_FAST               3 (dong)
+
+ 119    L3:     LOAD_CONST               5 (None)
+                LOAD_CONST               5 (None)
+                LOAD_CONST               5 (None)
+                CALL                     2
+                POP_TOP
+
+ 121    L4:     LOAD_GLOBAL              7 (reversed + NULL)
+                LOAD_FAST_CHECK          3 (dong)
+                LOAD_GLOBAL              9 (max + NULL)
+                LOAD_CONST               6 (1)
+                LOAD_FAST                0 (n)
+                CALL                     2
+                UNARY_NEGATIVE
+                LOAD_CONST               7 (2)
+                BINARY_OP                5 (*)
+                LOAD_CONST               5 (None)
+                BINARY_SLICE
+                CALL                     1
+                GET_ITER
+        L5:     FOR_ITER               107 (to L12)
+                STORE_FAST               4 (line)
+
+ 122            LOAD_FAST                4 (line)
+                LOAD_ATTR               11 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               4 (line)
+
+ 123            LOAD_FAST                4 (line)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L6)
+
+ 124            JUMP_BACKWARD           28 (to L5)
+
+ 125    L6:     NOP
+
+ 126    L7:     LOAD_GLOBAL             12 (json)
+                LOAD_ATTR               14 (loads)
+                PUSH_NULL
+                LOAD_FAST                4 (line)
+                CALL                     1
+                STORE_FAST               5 (m)
+
+ 127            LOAD_GLOBAL             17 (isinstance + NULL)
+                LOAD_FAST                5 (m)
+                LOAD_GLOBAL             18 (dict)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       17 (to L8)
+
+ 128            LOAD_FAST                1 (ra)
+                LOAD_ATTR               21 (append + NULL|self)
+                LOAD_FAST                5 (m)
+                CALL                     1
+                POP_TOP
+
+ 131    L8:     LOAD_GLOBAL             25 (len + NULL)
+                LOAD_FAST                1 (ra)
+                CALL                     1
+                LOAD_FAST                0 (n)
+                COMPARE_OP             188 (bool(>=))
+        L9:     POP_JUMP_IF_TRUE         2 (to L10)
+                JUMP_BACKWARD          106 (to L5)
+
+ 132   L10:     POP_TOP
+
+ 135   L11:     LOAD_FAST                1 (ra)
+                RETURN_VALUE
+
+ 121   L12:     END_FOR
+                POP_TOP
+       L13:     NOP
+
+ 135            LOAD_FAST                1 (ra)
+                RETURN_VALUE
+
+ 119   L14:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L15)
+                RERAISE                  2
+       L15:     POP_TOP
+       L16:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                JUMP_BACKWARD_NO_INTERRUPT 156 (to L4)
+
+  --   L17:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L18:     PUSH_EXC_INFO
+
+ 129            LOAD_GLOBAL             22 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L20)
+                POP_TOP
+
+ 130   L19:     POP_EXCEPT
+                JUMP_BACKWARD          144 (to L5)
+
+ 129   L20:     RERAISE                  0
+
+  --   L21:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L22:     PUSH_EXC_INFO
+
+ 133            LOAD_GLOBAL             22 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L24)
+                POP_TOP
+
+ 134   L23:     POP_EXCEPT
+
+ 135            LOAD_FAST                1 (ra)
+                RETURN_VALUE
+
+ 133   L24:     RERAISE                  0
+
+  --   L25:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L22 [0]
+  L2 to L3 -> L14 [1] lasti
+  L3 to L6 -> L22 [0]
+  L7 to L8 -> L18 [1]
+  L8 to L9 -> L22 [0]
+  L10 to L11 -> L22 [0]
+  L12 to L13 -> L22 [0]
+  L14 to L16 -> L17 [3] lasti
+  L16 to L18 -> L22 [0]
+  L18 to L19 -> L21 [2] lasti
+  L19 to L20 -> L22 [0]
+  L20 to L21 -> L21 [2] lasti
+  L21 to L22 -> L22 [0]
+  L22 to L23 -> L25 [1] lasti
+  L24 to L25 -> L25 [1] lasti

@@ -1,0 +1,1763 @@
+=== FILE: bilisub\gui\api_keys.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('Dialog nhập API key — gom thẻ gọn: Chế độ/Model AI · API key (ẩn khi Credit) · Giọng & Tải.')
+              STORE_NAME               0 (__doc__)
+
+  2           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+  4           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (('QThread', 'pyqtSignal'))
+              IMPORT_NAME              3 (PyQt6.QtCore)
+              IMPORT_FROM              4 (QThread)
+              STORE_NAME               4 (QThread)
+              IMPORT_FROM              5 (pyqtSignal)
+              STORE_NAME               5 (pyqtSignal)
+              POP_TOP
+
+  5           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('QComboBox', 'QDialog', 'QFormLayout', 'QFrame', 'QGroupBox', 'QHBoxLayout', 'QLabel', 'QLineEdit', 'QPlainTextEdit', 'QPushButton', 'QScrollArea', 'QVBoxLayout', 'QWidget'))
+              IMPORT_NAME              6 (PyQt6.QtWidgets)
+              IMPORT_FROM              7 (QComboBox)
+              STORE_NAME               7 (QComboBox)
+              IMPORT_FROM              8 (QDialog)
+              STORE_NAME               8 (QDialog)
+              IMPORT_FROM              9 (QFormLayout)
+              STORE_NAME               9 (QFormLayout)
+              IMPORT_FROM             10 (QFrame)
+              STORE_NAME              10 (QFrame)
+              IMPORT_FROM             11 (QGroupBox)
+              STORE_NAME              11 (QGroupBox)
+              IMPORT_FROM             12 (QHBoxLayout)
+              STORE_NAME              12 (QHBoxLayout)
+              IMPORT_FROM             13 (QLabel)
+              STORE_NAME              13 (QLabel)
+              IMPORT_FROM             14 (QLineEdit)
+              STORE_NAME              14 (QLineEdit)
+              IMPORT_FROM             15 (QPlainTextEdit)
+              STORE_NAME              15 (QPlainTextEdit)
+              IMPORT_FROM             16 (QPushButton)
+              STORE_NAME              16 (QPushButton)
+              IMPORT_FROM             17 (QScrollArea)
+              STORE_NAME              17 (QScrollArea)
+              IMPORT_FROM             18 (QVBoxLayout)
+              STORE_NAME              18 (QVBoxLayout)
+              IMPORT_FROM             19 (QWidget)
+              STORE_NAME              19 (QWidget)
+              POP_TOP
+
+ 10           LOAD_CONST               5 (2)
+              LOAD_CONST               6 (('credit',))
+              IMPORT_NAME             20
+              IMPORT_FROM             21 (credit)
+              STORE_NAME              21 (credit)
+              POP_TOP
+
+ 13           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST               7 (<code object _BalanceWorker at 0x0000016DC8EAE010, file "bilisub\gui\api_keys.py", line 13>)
+              MAKE_FUNCTION
+              LOAD_CONST               8 ('_BalanceWorker')
+              LOAD_NAME                4 (QThread)
+              CALL                     3
+              STORE_NAME              22 (_BalanceWorker)
+
+ 28           BUILD_LIST               0
+              LOAD_CONST               9 ((('gemini', 'Gemini', 'aistudio.google.com/app/apikey'), ('deepseek', 'DeepSeek', 'platform.deepseek.com/api_keys'), ('glm', 'GLM z.ai (chữ nghệ thuật FREE)', 'z.ai → API Keys'), ('groq', 'Groq', 'console.groq.com/keys'), ('cerebras', 'Cerebras', 'cloud.cerebras.ai'), ('sambanova', 'SambaNova', 'cloud.sambanova.ai'), ('openrouter', 'OpenRouter', 'openrouter.ai/settings/keys')))
+              LIST_EXTEND              1
+              STORE_NAME              23 (KEY_PROVIDERS)
+
+ 38           LOAD_CONST              10 ('color:#64748b; font-size:11px;')
+              STORE_NAME              24 (_HINT)
+
+ 41           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              11 (<code object ApiKeysDialog at 0x0000016DC8EA2AF0, file "bilisub\gui\api_keys.py", line 41>)
+              MAKE_FUNCTION
+              LOAD_CONST              12 ('ApiKeysDialog')
+              LOAD_NAME                8 (QDialog)
+              CALL                     3
+              STORE_NAME              25 (ApiKeysDialog)
+              RETURN_CONST            13 (None)
+
+Disassembly of <code object _BalanceWorker at 0x0000016DC8EAE010, file "bilisub\gui\api_keys.py", line 13>:
+  --           MAKE_CELL                0 (__class__)
+
+  13           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('_BalanceWorker')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (13)
+               STORE_NAME               3 (__firstlineno__)
+
+  14           LOAD_CONST               2 ('Lấy số dư credit ở luồng riêng (khỏi treo dialog khi mạng chậm).')
+               STORE_NAME               4 (__doc__)
+
+  15           LOAD_NAME                5 (pyqtSignal)
+               PUSH_NULL
+               LOAD_NAME                6 (object)
+               CALL                     1
+               STORE_NAME               7 (done)
+
+  17           LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               3 (<code object __init__ at 0x0000016DC90E1830, file "bilisub\gui\api_keys.py", line 17>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               STORE_NAME               8 (__init__)
+
+  21           LOAD_CONST               4 (<code object run at 0x0000016DC8E06D30, file "bilisub\gui\api_keys.py", line 21>)
+               MAKE_FUNCTION
+               STORE_NAME               9 (run)
+               LOAD_CONST               5 (('_s',))
+               STORE_NAME              10 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME              11 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC90E1830, file "bilisub\gui\api_keys.py", line 17>:
+  --           COPY_FREE_VARS           1
+
+  17           RESUME                   0
+
+  18           LOAD_GLOBAL              0 (super)
+               LOAD_DEREF               2 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+               CALL                     0
+               POP_TOP
+
+  19           LOAD_FAST_LOAD_FAST     16 (settings, self)
+               STORE_ATTR               2 (_s)
+               RETURN_CONST             0 (None)
+
+Disassembly of <code object run at 0x0000016DC8E06D30, file "bilisub\gui\api_keys.py", line 21>:
+ 21           RESUME                   0
+
+ 24           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (done)
+              LOAD_ATTR                3 (emit + NULL|self)
+              LOAD_GLOBAL              4 (credit)
+              LOAD_ATTR                6 (balance_status)
+              PUSH_NULL
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                8 (_s)
+              CALL                     1
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object ApiKeysDialog at 0x0000016DC8EA2AF0, file "bilisub\gui\api_keys.py", line 41>:
+  --           MAKE_CELL                0 (__class__)
+
+  41           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('ApiKeysDialog')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (41)
+               STORE_NAME               3 (__firstlineno__)
+
+  42           LOAD_CONST              11 ((None,))
+               LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               2 (<code object __init__ at 0x0000016DC8CE6BD0, file "bilisub\gui\api_keys.py", line 42>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME               4 (__init__)
+
+ 211           LOAD_CONST               3 (<code object _on_mode_change at 0x0000016DC8D86810, file "bilisub\gui\api_keys.py", line 211>)
+               MAKE_FUNCTION
+               STORE_NAME               5 (_on_mode_change)
+
+ 221           LOAD_CONST               4 (<code object _refresh_balance at 0x0000016DC8F5D320, file "bilisub\gui\api_keys.py", line 221>)
+               MAKE_FUNCTION
+               STORE_NAME               6 (_refresh_balance)
+
+ 241           LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               5 (<code object closeEvent at 0x0000016DC90ED4D0, file "bilisub\gui\api_keys.py", line 241>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               STORE_NAME               7 (closeEvent)
+
+ 248           LOAD_CONST               6 (<code object _on_balance at 0x0000016DC8F5D980, file "bilisub\gui\api_keys.py", line 248>)
+               MAKE_FUNCTION
+               STORE_NAME               8 (_on_balance)
+
+ 260           LOAD_CONST               7 (<code object _open_topup at 0x0000016DC90E5CE0, file "bilisub\gui\api_keys.py", line 260>)
+               MAKE_FUNCTION
+               STORE_NAME               9 (_open_topup)
+
+ 267           LOAD_CONST               8 (<code object _save at 0x0000016DC93B77D0, file "bilisub\gui\api_keys.py", line 267>)
+               MAKE_FUNCTION
+               STORE_NAME              10 (_save)
+
+ 293           LOAD_CONST              12 (('return', 'list[str]'))
+               LOAD_CONST               9 (<code object providers_with_keys at 0x0000016DC8E0B630, file "bilisub\gui\api_keys.py", line 293>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               STORE_NAME              11 (providers_with_keys)
+               LOAD_CONST              10 (('_bw', '_byok_box', '_cnote', '_credit_row', '_fields', 'ai_mode', 'ai_model', 'bal_lbl', 'btn_topup', 'custom_key', 'custom_model', 'custom_url', 'douyin_api', 'proxy_url', 'settings', 'tiktok', 'vbee_app', 'vbee_custom', 'vbee_tok', 'vivibe_custom', 'vivibe_key'))
+               STORE_NAME              12 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME              13 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC8CE6BD0, file "bilisub\gui\api_keys.py", line 42>:
+  --            COPY_FREE_VARS           1
+
+  42            RESUME                   0
+
+  43            LOAD_GLOBAL              0 (super)
+                LOAD_DEREF              24 (__class__)
+                LOAD_FAST                0 (self)
+                LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+                LOAD_FAST                2 (parent)
+                CALL                     1
+                POP_TOP
+
+  46            NOP
+
+  47    L1:     LOAD_CONST               1 (1)
+                LOAD_CONST               2 (('QSS',))
+                IMPORT_NAME              2 (main_window)
+                IMPORT_FROM              3 (QSS)
+                STORE_FAST               3 (QSS)
+                POP_TOP
+
+  48            LOAD_FAST                0 (self)
+                LOAD_ATTR                9 (setStyleSheet + NULL|self)
+                LOAD_FAST                3 (QSS)
+                CALL                     1
+                POP_TOP
+
+  51    L2:     LOAD_FAST_LOAD_FAST     16 (settings, self)
+                STORE_ATTR               6 (settings)
+
+  52            LOAD_FAST                0 (self)
+                LOAD_ATTR               15 (setWindowTitle + NULL|self)
+                LOAD_CONST               3 ('🔑 API Key & Chế độ AI')
+                CALL                     1
+                POP_TOP
+
+  53            LOAD_FAST                0 (self)
+                LOAD_ATTR               17 (resize + NULL|self)
+                LOAD_CONST               4 (620)
+                LOAD_CONST               5 (680)
+                CALL                     2
+                POP_TOP
+
+  54            LOAD_FAST                0 (self)
+                LOAD_ATTR               19 (setMinimumSize + NULL|self)
+                LOAD_CONST               6 (460)
+                LOAD_CONST               7 (320)
+                CALL                     2
+                POP_TOP
+
+  55            BUILD_MAP                0
+                LOAD_FAST                0 (self)
+                STORE_ATTR              10 (_fields)
+
+  57            LOAD_GLOBAL             23 (QVBoxLayout + NULL)
+                LOAD_FAST                0 (self)
+                CALL                     1
+                STORE_FAST               4 (_outer)
+
+  58            LOAD_FAST                4 (_outer)
+                LOAD_ATTR               25 (setContentsMargins + NULL|self)
+                LOAD_CONST               8 (0)
+                LOAD_CONST               8 (0)
+                LOAD_CONST               8 (0)
+                LOAD_CONST               8 (0)
+                CALL                     4
+                POP_TOP
+
+  59            LOAD_FAST                4 (_outer)
+                LOAD_ATTR               27 (setSpacing + NULL|self)
+                LOAD_CONST               8 (0)
+                CALL                     1
+                POP_TOP
+
+  60            LOAD_GLOBAL             29 (QWidget + NULL)
+                CALL                     0
+                STORE_FAST               5 (_host)
+
+  61            LOAD_GLOBAL             23 (QVBoxLayout + NULL)
+                LOAD_FAST                5 (_host)
+                CALL                     1
+                STORE_FAST               6 (root)
+
+  62            LOAD_FAST                6 (root)
+                LOAD_ATTR               25 (setContentsMargins + NULL|self)
+                LOAD_CONST               9 (14)
+                LOAD_CONST              10 (12)
+                LOAD_CONST               9 (14)
+                LOAD_CONST              10 (12)
+                CALL                     4
+                POP_TOP
+
+  63            LOAD_FAST                6 (root)
+                LOAD_ATTR               27 (setSpacing + NULL|self)
+                LOAD_CONST              11 (11)
+                CALL                     1
+                POP_TOP
+
+  66            LOAD_GLOBAL             31 (QGroupBox + NULL)
+                LOAD_CONST              12 ('🤖  Chế độ & Model AI')
+                CALL                     1
+                STORE_FAST               7 (gb_ai)
+
+  67            LOAD_GLOBAL             33 (QFormLayout + NULL)
+                LOAD_FAST                7 (gb_ai)
+                CALL                     1
+                STORE_FAST               8 (f1)
+
+  68            LOAD_FAST                8 (f1)
+                LOAD_ATTR               27 (setSpacing + NULL|self)
+                LOAD_CONST              13 (8)
+                CALL                     1
+                POP_TOP
+
+  69            LOAD_FAST                8 (f1)
+                LOAD_ATTR               25 (setContentsMargins + NULL|self)
+                LOAD_CONST              10 (12)
+                LOAD_CONST               9 (14)
+                LOAD_CONST              10 (12)
+                LOAD_CONST              10 (12)
+                CALL                     4
+                POP_TOP
+
+  71            LOAD_GLOBAL             35 (QComboBox + NULL)
+                CALL                     0
+                LOAD_FAST                0 (self)
+                STORE_ATTR              18 (ai_mode)
+
+  72            LOAD_FAST                0 (self)
+                LOAD_ATTR               36 (ai_mode)
+                LOAD_ATTR               39 (addItem + NULL|self)
+                LOAD_CONST              14 ('Credit — dùng credit, KHÔNG cần nhập key')
+                LOAD_CONST              15 ('credit')
+                CALL                     2
+                POP_TOP
+
+  73            LOAD_FAST                0 (self)
+                LOAD_ATTR               36 (ai_mode)
+                LOAD_ATTR               39 (addItem + NULL|self)
+                LOAD_CONST              16 ('BYOK — tự nhập key (miễn phí)')
+                LOAD_CONST              17 ('byok')
+                CALL                     2
+                POP_TOP
+
+  74            LOAD_FAST                0 (self)
+                LOAD_ATTR               36 (ai_mode)
+                LOAD_ATTR               41 (setCurrentIndex + NULL|self)
+                LOAD_GLOBAL             43 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST              18 ('ai_credit_mode')
+                LOAD_CONST              19 (True)
+                CALL                     3
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L3)
+                LOAD_CONST               8 (0)
+                JUMP_FORWARD             1 (to L4)
+        L3:     LOAD_CONST               1 (1)
+        L4:     CALL                     1
+                POP_TOP
+
+  75            LOAD_FAST                0 (self)
+                LOAD_ATTR               36 (ai_mode)
+                LOAD_ATTR               44 (currentIndexChanged)
+                LOAD_ATTR               47 (connect + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               48 (_on_mode_change)
+                CALL                     1
+                POP_TOP
+
+  76            LOAD_FAST                8 (f1)
+                LOAD_ATTR               51 (addRow + NULL|self)
+                LOAD_CONST              20 ('Chế độ AI:')
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               36 (ai_mode)
+                CALL                     2
+                POP_TOP
+
+  79            LOAD_GLOBAL             35 (QComboBox + NULL)
+                CALL                     0
+                LOAD_FAST                0 (self)
+                STORE_ATTR              26 (ai_model)
+
+  80            LOAD_FAST                0 (self)
+                LOAD_ATTR               52 (ai_model)
+                LOAD_ATTR               39 (addItem + NULL|self)
+                LOAD_CONST              21 ('Gemini (Google) — mặc định')
+                LOAD_CONST              22 ('gemini')
+                CALL                     2
+                POP_TOP
+
+  81            LOAD_FAST                0 (self)
+                LOAD_ATTR               52 (ai_model)
+                LOAD_ATTR               39 (addItem + NULL|self)
+                LOAD_CONST              23 ('DeepSeek — dịch phim Trung sát nghĩa, rẻ (đọc ảnh vẫn dùng Gemini)')
+
+  82            LOAD_CONST              24 ('deepseek')
+
+  81            CALL                     2
+                POP_TOP
+
+  83            LOAD_FAST                0 (self)
+                LOAD_ATTR               52 (ai_model)
+                LOAD_ATTR               41 (setCurrentIndex + NULL|self)
+
+  84            LOAD_GLOBAL             43 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST              25 ('ai_provider')
+                LOAD_CONST              22 ('gemini')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L5)
+                POP_TOP
+                LOAD_CONST              22 ('gemini')
+        L5:     LOAD_CONST              24 ('deepseek')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE        2 (to L6)
+                LOAD_CONST               1 (1)
+                JUMP_FORWARD             1 (to L7)
+        L6:     LOAD_CONST               8 (0)
+
+  83    L7:     CALL                     1
+                POP_TOP
+
+  85            LOAD_FAST                8 (f1)
+                LOAD_ATTR               51 (addRow + NULL|self)
+                LOAD_CONST              26 ('Model AI:')
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               52 (ai_model)
+                CALL                     2
+                POP_TOP
+
+  87            LOAD_GLOBAL             55 (QLineEdit + NULL)
+                LOAD_GLOBAL             43 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST              27 ('credit_proxy_url')
+                LOAD_CONST              28 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L8)
+                POP_TOP
+                LOAD_CONST              28 ('')
+        L8:     CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              28 (proxy_url)
+
+  88            LOAD_FAST                0 (self)
+                LOAD_ATTR               56 (proxy_url)
+                LOAD_ATTR               59 (setPlaceholderText + NULL|self)
+                LOAD_CONST              29 ('để trống = mặc định (https://credit.peipeimedia.com)')
+                CALL                     1
+                POP_TOP
+
+  89            LOAD_FAST                8 (f1)
+                LOAD_ATTR               51 (addRow + NULL|self)
+                LOAD_CONST              30 ('Máy chủ credit:')
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               56 (proxy_url)
+                CALL                     2
+                POP_TOP
+
+  91            LOAD_GLOBAL             61 (QHBoxLayout + NULL)
+                CALL                     0
+                STORE_FAST               9 (brow)
+
+  92            LOAD_FAST                9 (brow)
+                LOAD_ATTR               25 (setContentsMargins + NULL|self)
+                LOAD_CONST               8 (0)
+                LOAD_CONST               8 (0)
+                LOAD_CONST               8 (0)
+                LOAD_CONST               8 (0)
+                CALL                     4
+                POP_TOP
+
+  93            LOAD_GLOBAL             63 (QLabel + NULL)
+                LOAD_CONST              31 ('Số dư: —')
+                CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              32 (bal_lbl)
+
+  94            LOAD_FAST                0 (self)
+                LOAD_ATTR               64 (bal_lbl)
+                LOAD_ATTR                9 (setStyleSheet + NULL|self)
+                LOAD_CONST              32 ('color:#22c55e; font-weight:bold;')
+                CALL                     1
+                POP_TOP
+
+  95            LOAD_GLOBAL             67 (QPushButton + NULL)
+                LOAD_CONST              33 ('🔄 Kiểm tra')
+                CALL                     1
+                STORE_FAST              10 (btn_bal)
+
+  96            LOAD_FAST               10 (btn_bal)
+                LOAD_ATTR               68 (clicked)
+                LOAD_ATTR               47 (connect + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               70 (_refresh_balance)
+                CALL                     1
+                POP_TOP
+
+  97            LOAD_GLOBAL             67 (QPushButton + NULL)
+                LOAD_CONST              34 ('➕ Mua thêm')
+                CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              36 (btn_topup)
+
+  98            LOAD_FAST                0 (self)
+                LOAD_ATTR               72 (btn_topup)
+                LOAD_ATTR               75 (setObjectName + NULL|self)
+                LOAD_CONST              35 ('primary')
+                CALL                     1
+                POP_TOP
+
+  99            LOAD_FAST                0 (self)
+                LOAD_ATTR               72 (btn_topup)
+                LOAD_ATTR               68 (clicked)
+                LOAD_ATTR               47 (connect + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               76 (_open_topup)
+                CALL                     1
+                POP_TOP
+
+ 100            LOAD_FAST                9 (brow)
+                LOAD_ATTR               79 (addWidget + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               64 (bal_lbl)
+                LOAD_CONST               1 (1)
+                CALL                     2
+                POP_TOP
+
+ 101            LOAD_FAST                9 (brow)
+                LOAD_ATTR               79 (addWidget + NULL|self)
+                LOAD_FAST               10 (btn_bal)
+                CALL                     1
+                POP_TOP
+
+ 102            LOAD_FAST                9 (brow)
+                LOAD_ATTR               79 (addWidget + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               72 (btn_topup)
+                CALL                     1
+                POP_TOP
+
+ 103            LOAD_GLOBAL             29 (QWidget + NULL)
+                CALL                     0
+                LOAD_FAST                0 (self)
+                STORE_ATTR              40 (_credit_row)
+
+ 104            LOAD_FAST                0 (self)
+                LOAD_ATTR               80 (_credit_row)
+                LOAD_ATTR               83 (setLayout + NULL|self)
+                LOAD_FAST                9 (brow)
+                CALL                     1
+                POP_TOP
+
+ 105            LOAD_FAST                8 (f1)
+                LOAD_ATTR               51 (addRow + NULL|self)
+                LOAD_CONST              36 ('Số dư:')
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               80 (_credit_row)
+                CALL                     2
+                POP_TOP
+
+ 107            LOAD_GLOBAL             63 (QLabel + NULL)
+                LOAD_CONST              37 ('Chế độ Credit: mọi tác vụ AI chạy bằng credit — không cần nhập key. Hết thì bấm ➕ Mua thêm.')
+                CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              42 (_cnote)
+
+ 109            LOAD_FAST                0 (self)
+                LOAD_ATTR               84 (_cnote)
+                LOAD_ATTR               87 (setWordWrap + NULL|self)
+                LOAD_CONST              19 (True)
+                CALL                     1
+                POP_TOP
+
+ 110            LOAD_FAST                0 (self)
+                LOAD_ATTR               84 (_cnote)
+                LOAD_ATTR                9 (setStyleSheet + NULL|self)
+                LOAD_GLOBAL             88 (_HINT)
+                CALL                     1
+                POP_TOP
+
+ 111            LOAD_FAST                8 (f1)
+                LOAD_ATTR               51 (addRow + NULL|self)
+                LOAD_CONST              28 ('')
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               84 (_cnote)
+                CALL                     2
+                POP_TOP
+
+ 112            LOAD_FAST                6 (root)
+                LOAD_ATTR               79 (addWidget + NULL|self)
+                LOAD_FAST                7 (gb_ai)
+                CALL                     1
+                POP_TOP
+
+ 115            LOAD_GLOBAL             31 (QGroupBox + NULL)
+                LOAD_CONST              38 ('🔑  API key dịch  ·  chỉ cần khi Chế độ = BYOK')
+                CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              45 (_byok_box)
+
+ 116            LOAD_GLOBAL             33 (QFormLayout + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               90 (_byok_box)
+                CALL                     1
+                STORE_FAST              11 (f2)
+
+ 117            LOAD_FAST               11 (f2)
+                LOAD_ATTR               27 (setSpacing + NULL|self)
+                LOAD_CONST              13 (8)
+                CALL                     1
+                POP_TOP
+
+ 118            LOAD_FAST               11 (f2)
+                LOAD_ATTR               25 (setContentsMargins + NULL|self)
+                LOAD_CONST              10 (12)
+                LOAD_CONST               9 (14)
+                LOAD_CONST              10 (12)
+                LOAD_CONST              10 (12)
+                CALL                     4
+                POP_TOP
+
+ 119            LOAD_GLOBAL             92 (KEY_PROVIDERS)
+                GET_ITER
+        L9:     FOR_ITER               195 (to L12)
+                UNPACK_SEQUENCE          3
+                STORE_FAST_STORE_FAST  205 (code, label)
+                STORE_FAST              14 (link)
+
+ 120            LOAD_FAST               12 (code)
+                LOAD_CONST              22 ('gemini')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       91 (to L10)
+
+ 121            LOAD_GLOBAL             95 (QPlainTextEdit + NULL)
+                CALL                     0
+                STORE_FAST              15 (w)
+
+ 122            LOAD_FAST               15 (w)
+                LOAD_ATTR               97 (setFixedHeight + NULL|self)
+                LOAD_CONST              39 (52)
+                CALL                     1
+                POP_TOP
+
+ 123            LOAD_FAST               15 (w)
+                LOAD_ATTR               59 (setPlaceholderText + NULL|self)
+                LOAD_CONST              40 ('nhiều key mỗi dòng 1 key  ·  lấy ở ')
+                LOAD_FAST               14 (link)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                CALL                     1
+                POP_TOP
+
+ 124            LOAD_FAST               15 (w)
+                LOAD_ATTR               99 (setPlainText + NULL|self)
+                LOAD_FAST                1 (settings)
+                LOAD_ATTR              100 (api_keys)
+                LOAD_ATTR              103 (get + NULL|self)
+                LOAD_FAST               12 (code)
+                LOAD_CONST              28 ('')
+                CALL                     2
+                CALL                     1
+                POP_TOP
+                JUMP_FORWARD            57 (to L11)
+
+ 126   L10:     LOAD_GLOBAL             55 (QLineEdit + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_ATTR              100 (api_keys)
+                LOAD_ATTR              103 (get + NULL|self)
+                LOAD_FAST               12 (code)
+                LOAD_CONST              28 ('')
+                CALL                     2
+                CALL                     1
+                STORE_FAST              15 (w)
+
+ 127            LOAD_FAST               15 (w)
+                LOAD_ATTR               59 (setPlaceholderText + NULL|self)
+                LOAD_CONST              41 ('dán key  ·  lấy ở ')
+                LOAD_FAST               14 (link)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                CALL                     1
+                POP_TOP
+
+ 128   L11:     LOAD_FAST_LOAD_FAST    240 (w, self)
+                LOAD_ATTR               20 (_fields)
+                LOAD_FAST               12 (code)
+                STORE_SUBSCR
+
+ 129            LOAD_FAST               11 (f2)
+                LOAD_ATTR               51 (addRow + NULL|self)
+                LOAD_FAST               13 (label)
+                FORMAT_SIMPLE
+                LOAD_CONST              42 (':')
+                BUILD_STRING             2
+                LOAD_FAST               15 (w)
+                CALL                     2
+                POP_TOP
+                JUMP_BACKWARD          197 (to L9)
+
+ 119   L12:     END_FOR
+                POP_TOP
+
+ 131            LOAD_GLOBAL             55 (QLineEdit + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_ATTR              104 (custom_base_url)
+                CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              53 (custom_url)
+
+ 132            LOAD_FAST                0 (self)
+                LOAD_ATTR              106 (custom_url)
+                LOAD_ATTR               59 (setPlaceholderText + NULL|self)
+                LOAD_CONST              43 ('https://.../v1')
+                CALL                     1
+                POP_TOP
+
+ 133            LOAD_GLOBAL             55 (QLineEdit + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_ATTR              100 (api_keys)
+                LOAD_ATTR              103 (get + NULL|self)
+                LOAD_CONST              44 ('custom')
+                LOAD_CONST              28 ('')
+                CALL                     2
+                CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              54 (custom_key)
+
+ 134            LOAD_FAST                0 (self)
+                LOAD_ATTR              108 (custom_key)
+                LOAD_ATTR               59 (setPlaceholderText + NULL|self)
+                LOAD_CONST              45 ('API key')
+                CALL                     1
+                POP_TOP
+
+ 135            LOAD_GLOBAL             55 (QLineEdit + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_ATTR              110 (custom_model)
+                CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              55 (custom_model)
+
+ 136            LOAD_FAST                0 (self)
+                LOAD_ATTR              110 (custom_model)
+                LOAD_ATTR               59 (setPlaceholderText + NULL|self)
+                LOAD_CONST              46 ('model')
+                CALL                     1
+                POP_TOP
+
+ 137            LOAD_GLOBAL             61 (QHBoxLayout + NULL)
+                CALL                     0
+                STORE_FAST              16 (crow)
+
+ 138            LOAD_FAST               16 (crow)
+                LOAD_ATTR               25 (setContentsMargins + NULL|self)
+                LOAD_CONST               8 (0)
+                LOAD_CONST               8 (0)
+                LOAD_CONST               8 (0)
+                LOAD_CONST               8 (0)
+                CALL                     4
+                POP_TOP
+
+ 139            LOAD_FAST               16 (crow)
+                LOAD_ATTR               79 (addWidget + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR              106 (custom_url)
+                LOAD_CONST              47 (3)
+                CALL                     2
+                POP_TOP
+
+ 140            LOAD_FAST               16 (crow)
+                LOAD_ATTR               79 (addWidget + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR              108 (custom_key)
+                LOAD_CONST              48 (2)
+                CALL                     2
+                POP_TOP
+
+ 141            LOAD_FAST               16 (crow)
+                LOAD_ATTR               79 (addWidget + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR              110 (custom_model)
+                LOAD_CONST              48 (2)
+                CALL                     2
+                POP_TOP
+
+ 142            LOAD_GLOBAL             29 (QWidget + NULL)
+                CALL                     0
+                STORE_FAST              17 (cwrap)
+
+ 143            LOAD_FAST               17 (cwrap)
+                LOAD_ATTR               83 (setLayout + NULL|self)
+                LOAD_FAST               16 (crow)
+                CALL                     1
+                POP_TOP
+
+ 144            LOAD_FAST               11 (f2)
+                LOAD_ATTR               51 (addRow + NULL|self)
+                LOAD_CONST              49 ('Custom:')
+                LOAD_FAST               17 (cwrap)
+                CALL                     2
+                POP_TOP
+
+ 145            LOAD_FAST                6 (root)
+                LOAD_ATTR               79 (addWidget + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               90 (_byok_box)
+                CALL                     1
+                POP_TOP
+
+ 148            LOAD_GLOBAL             31 (QGroupBox + NULL)
+                LOAD_CONST              50 ('🎙  Giọng nói  &  Tải video')
+                CALL                     1
+                STORE_FAST              18 (gb_more)
+
+ 149            LOAD_GLOBAL             33 (QFormLayout + NULL)
+                LOAD_FAST               18 (gb_more)
+                CALL                     1
+                STORE_FAST              19 (f3)
+
+ 150            LOAD_FAST               19 (f3)
+                LOAD_ATTR               27 (setSpacing + NULL|self)
+                LOAD_CONST              13 (8)
+                CALL                     1
+                POP_TOP
+
+ 151            LOAD_FAST               19 (f3)
+                LOAD_ATTR               25 (setContentsMargins + NULL|self)
+                LOAD_CONST              10 (12)
+                LOAD_CONST               9 (14)
+                LOAD_CONST              10 (12)
+                LOAD_CONST              10 (12)
+                CALL                     4
+                POP_TOP
+
+ 153            LOAD_GLOBAL             55 (QLineEdit + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_ATTR              112 (tiktok_session)
+                CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              57 (tiktok)
+
+ 154            LOAD_FAST                0 (self)
+                LOAD_ATTR              114 (tiktok)
+                LOAD_ATTR               59 (setPlaceholderText + NULL|self)
+                LOAD_CONST              51 ('cookie sessionid TikTok (cho giọng CapCut)')
+                CALL                     1
+                POP_TOP
+
+ 155            LOAD_FAST               19 (f3)
+                LOAD_ATTR               51 (addRow + NULL|self)
+                LOAD_CONST              52 ('TikTok session:')
+                LOAD_FAST                0 (self)
+                LOAD_ATTR              114 (tiktok)
+                CALL                     2
+                POP_TOP
+
+ 157            LOAD_GLOBAL             55 (QLineEdit + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_ATTR              116 (vbee_app_id)
+                CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              59 (vbee_app)
+
+ 158            LOAD_FAST                0 (self)
+                LOAD_ATTR              118 (vbee_app)
+                LOAD_ATTR               59 (setPlaceholderText + NULL|self)
+                LOAD_CONST              53 ('app_id (UUID) — vbee.vn › API')
+                CALL                     1
+                POP_TOP
+
+ 159            LOAD_GLOBAL             55 (QLineEdit + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_ATTR              120 (vbee_token)
+                CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              61 (vbee_tok)
+
+ 160            LOAD_FAST                0 (self)
+                LOAD_ATTR              122 (vbee_tok)
+                LOAD_ATTR               59 (setPlaceholderText + NULL|self)
+                LOAD_CONST              54 ('access_token — nhập xong tool tự nạp đủ giọng của bạn')
+                CALL                     1
+                POP_TOP
+
+ 161            LOAD_FAST               19 (f3)
+                LOAD_ATTR               51 (addRow + NULL|self)
+                LOAD_CONST              55 ('Vbee app_id:')
+                LOAD_FAST                0 (self)
+                LOAD_ATTR              118 (vbee_app)
+                CALL                     2
+                POP_TOP
+
+ 162            LOAD_FAST               19 (f3)
+                LOAD_ATTR               51 (addRow + NULL|self)
+                LOAD_CONST              56 ('Vbee token:')
+                LOAD_FAST                0 (self)
+                LOAD_ATTR              122 (vbee_tok)
+                CALL                     2
+                POP_TOP
+
+ 164            LOAD_GLOBAL             95 (QPlainTextEdit + NULL)
+                LOAD_GLOBAL             43 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST              57 ('vbee_custom_voices')
+                LOAD_CONST              28 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L13)
+                POP_TOP
+                LOAD_CONST              28 ('')
+       L13:     CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              62 (vbee_custom)
+
+ 165            LOAD_FAST                0 (self)
+                LOAD_ATTR              124 (vbee_custom)
+                LOAD_ATTR               97 (setFixedHeight + NULL|self)
+                LOAD_CONST              58 (48)
+                CALL                     1
+                POP_TOP
+
+ 166            LOAD_FAST                0 (self)
+                LOAD_ATTR              124 (vbee_custom)
+                LOAD_ATTR               59 (setPlaceholderText + NULL|self)
+
+ 167            LOAD_CONST              59 ('(tuỳ chọn) mỗi dòng 1 mã giọng Vbee, có thể kèm | Tên — thường KHÔNG cần')
+
+ 166            CALL                     1
+                POP_TOP
+
+ 168            LOAD_FAST               19 (f3)
+                LOAD_ATTR               51 (addRow + NULL|self)
+                LOAD_CONST              60 ('Vbee giọng thêm:')
+                LOAD_FAST                0 (self)
+                LOAD_ATTR              124 (vbee_custom)
+                CALL                     2
+                POP_TOP
+
+ 171            LOAD_GLOBAL             55 (QLineEdit + NULL)
+                LOAD_GLOBAL             43 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST              61 ('vivibe_api_key')
+                LOAD_CONST              28 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L14)
+                POP_TOP
+                LOAD_CONST              28 ('')
+       L14:     CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              63 (vivibe_key)
+
+ 172            LOAD_FAST                0 (self)
+                LOAD_ATTR              126 (vivibe_key)
+                LOAD_ATTR               59 (setPlaceholderText + NULL|self)
+                LOAD_CONST              62 ('API key — tạo tại vivibe.app › API Keys (miễn phí)')
+                CALL                     1
+                POP_TOP
+
+ 173            LOAD_FAST               19 (f3)
+                LOAD_ATTR               51 (addRow + NULL|self)
+                LOAD_CONST              63 ('Vivibe API key:')
+                LOAD_FAST                0 (self)
+                LOAD_ATTR              126 (vivibe_key)
+                CALL                     2
+                POP_TOP
+
+ 175            LOAD_GLOBAL             95 (QPlainTextEdit + NULL)
+                LOAD_GLOBAL             43 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST              64 ('vivibe_custom_voices')
+                LOAD_CONST              28 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L15)
+                POP_TOP
+                LOAD_CONST              28 ('')
+       L15:     CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              64 (vivibe_custom)
+
+ 176            LOAD_FAST                0 (self)
+                LOAD_ATTR              128 (vivibe_custom)
+                LOAD_ATTR               97 (setFixedHeight + NULL|self)
+                LOAD_CONST              58 (48)
+                CALL                     1
+                POP_TOP
+
+ 177            LOAD_FAST                0 (self)
+                LOAD_ATTR              128 (vivibe_custom)
+                LOAD_ATTR               59 (setPlaceholderText + NULL|self)
+
+ 178            LOAD_CONST              65 ("mỗi dòng 1 mã giọng Vivibe (userVoiceId), có thể kèm | Tên — lấy ở web Vivibe: chọn giọng › nút 'API Code'")
+
+ 177            CALL                     1
+                POP_TOP
+
+ 180            LOAD_FAST               19 (f3)
+                LOAD_ATTR               51 (addRow + NULL|self)
+                LOAD_CONST              66 ('Vivibe giọng thêm:')
+                LOAD_FAST                0 (self)
+                LOAD_ATTR              128 (vivibe_custom)
+                CALL                     2
+                POP_TOP
+
+ 182            LOAD_GLOBAL             55 (QLineEdit + NULL)
+                LOAD_GLOBAL             43 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST              67 ('douyin_api')
+                LOAD_CONST              28 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L16)
+                POP_TOP
+                LOAD_CONST              28 ('')
+       L16:     CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              65 (douyin_api)
+
+ 183            LOAD_FAST                0 (self)
+                LOAD_ATTR              130 (douyin_api)
+                LOAD_ATTR               59 (setPlaceholderText + NULL|self)
+                LOAD_CONST              68 ('http://IP:port máy tự host (để trống = dùng public)')
+                CALL                     1
+                POP_TOP
+
+ 184            LOAD_FAST               19 (f3)
+                LOAD_ATTR               51 (addRow + NULL|self)
+                LOAD_CONST              69 ('Douyin API riêng:')
+                LOAD_FAST                0 (self)
+                LOAD_ATTR              130 (douyin_api)
+                CALL                     2
+                POP_TOP
+
+ 185            LOAD_FAST                6 (root)
+                LOAD_ATTR               79 (addWidget + NULL|self)
+                LOAD_FAST               18 (gb_more)
+                CALL                     1
+                POP_TOP
+
+ 186            LOAD_FAST                6 (root)
+                LOAD_ATTR              133 (addStretch + NULL|self)
+                LOAD_CONST               1 (1)
+                CALL                     1
+                POP_TOP
+
+ 189            LOAD_GLOBAL            135 (QScrollArea + NULL)
+                CALL                     0
+                STORE_FAST              20 (_scroll)
+
+ 190            LOAD_FAST               20 (_scroll)
+                LOAD_ATTR              137 (setWidgetResizable + NULL|self)
+                LOAD_CONST              19 (True)
+                CALL                     1
+                POP_TOP
+
+ 191            LOAD_FAST               20 (_scroll)
+                LOAD_ATTR              139 (setFrameShape + NULL|self)
+                LOAD_GLOBAL            140 (QFrame)
+                LOAD_ATTR              142 (Shape)
+                LOAD_ATTR              144 (NoFrame)
+                CALL                     1
+                POP_TOP
+
+ 192            LOAD_FAST               20 (_scroll)
+                LOAD_ATTR              147 (setWidget + NULL|self)
+                LOAD_FAST                5 (_host)
+                CALL                     1
+                POP_TOP
+
+ 193            LOAD_FAST                4 (_outer)
+                LOAD_ATTR               79 (addWidget + NULL|self)
+                LOAD_FAST               20 (_scroll)
+                LOAD_CONST               1 (1)
+                CALL                     2
+                POP_TOP
+
+ 195            LOAD_GLOBAL             61 (QHBoxLayout + NULL)
+                CALL                     0
+                STORE_FAST              21 (rowb)
+
+ 196            LOAD_FAST               21 (rowb)
+                LOAD_ATTR               25 (setContentsMargins + NULL|self)
+                LOAD_CONST               9 (14)
+                LOAD_CONST              13 (8)
+                LOAD_CONST               9 (14)
+                LOAD_CONST              10 (12)
+                CALL                     4
+                POP_TOP
+
+ 197            LOAD_FAST               21 (rowb)
+                LOAD_ATTR              133 (addStretch + NULL|self)
+                LOAD_CONST               1 (1)
+                CALL                     1
+                POP_TOP
+
+ 198            LOAD_GLOBAL             67 (QPushButton + NULL)
+                LOAD_CONST              70 ('💾 Lưu')
+                CALL                     1
+                STORE_FAST              22 (ok)
+
+ 199            LOAD_FAST               22 (ok)
+                LOAD_ATTR               75 (setObjectName + NULL|self)
+                LOAD_CONST              35 ('primary')
+                CALL                     1
+                POP_TOP
+
+ 200            LOAD_FAST               22 (ok)
+                LOAD_ATTR               68 (clicked)
+                LOAD_ATTR               47 (connect + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR              148 (_save)
+                CALL                     1
+                POP_TOP
+
+ 201            LOAD_GLOBAL             67 (QPushButton + NULL)
+                LOAD_CONST              71 ('Huỷ')
+                CALL                     1
+                STORE_FAST              23 (cancel)
+
+ 202            LOAD_FAST               23 (cancel)
+                LOAD_ATTR               68 (clicked)
+                LOAD_ATTR               47 (connect + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR              150 (reject)
+                CALL                     1
+                POP_TOP
+
+ 203            LOAD_FAST               21 (rowb)
+                LOAD_ATTR               79 (addWidget + NULL|self)
+                LOAD_FAST               22 (ok)
+                CALL                     1
+                POP_TOP
+
+ 204            LOAD_FAST               21 (rowb)
+                LOAD_ATTR               79 (addWidget + NULL|self)
+                LOAD_FAST               23 (cancel)
+                CALL                     1
+                POP_TOP
+
+ 205            LOAD_FAST                4 (_outer)
+                LOAD_ATTR              153 (addLayout + NULL|self)
+                LOAD_FAST               21 (rowb)
+                CALL                     1
+                POP_TOP
+
+ 207            LOAD_CONST               0 (None)
+                LOAD_FAST                0 (self)
+                STORE_ATTR              77 (_bw)
+
+ 208            LOAD_FAST                0 (self)
+                LOAD_ATTR               49 (_on_mode_change + NULL|self)
+                CALL                     0
+                POP_TOP
+                RETURN_CONST             0 (None)
+
+  --   L17:     PUSH_EXC_INFO
+
+  49            LOAD_GLOBAL             10 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L19)
+                POP_TOP
+
+  50   L18:     POP_EXCEPT
+                EXTENDED_ARG            11
+                JUMP_BACKWARD_NO_INTERRUPT 2886 (to L2)
+
+  49   L19:     RERAISE                  0
+
+  --   L20:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L17 [0]
+  L17 to L18 -> L20 [1] lasti
+  L19 to L20 -> L20 [1] lasti
+
+Disassembly of <code object _on_mode_change at 0x0000016DC8D86810, file "bilisub\gui\api_keys.py", line 211>:
+211           RESUME                   0
+
+212           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (ai_mode)
+              LOAD_ATTR                3 (currentData + NULL|self)
+              CALL                     0
+              LOAD_CONST               1 ('credit')
+              COMPARE_OP              72 (==)
+              STORE_FAST               1 (credit_on)
+
+214           LOAD_FAST                0 (self)
+              LOAD_ATTR                4 (_byok_box)
+              LOAD_ATTR                7 (setVisible + NULL|self)
+              LOAD_FAST                1 (credit_on)
+              TO_BOOL
+              UNARY_NOT
+              CALL                     1
+              POP_TOP
+
+215           LOAD_FAST                0 (self)
+              LOAD_ATTR                8 (proxy_url)
+              LOAD_ATTR               11 (setEnabled + NULL|self)
+              LOAD_FAST                1 (credit_on)
+              CALL                     1
+              POP_TOP
+
+216           LOAD_FAST                0 (self)
+              LOAD_ATTR               12 (_credit_row)
+              LOAD_ATTR               11 (setEnabled + NULL|self)
+              LOAD_FAST                1 (credit_on)
+              CALL                     1
+              POP_TOP
+
+217           LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (_cnote)
+              LOAD_ATTR                7 (setVisible + NULL|self)
+              LOAD_FAST                1 (credit_on)
+              CALL                     1
+              POP_TOP
+
+218           LOAD_FAST                1 (credit_on)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       17 (to L1)
+
+219           LOAD_FAST                0 (self)
+              LOAD_ATTR               17 (_refresh_balance + NULL|self)
+              CALL                     0
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+218   L1:     RETURN_CONST             0 (None)
+
+Disassembly of <code object _refresh_balance at 0x0000016DC8F5D320, file "bilisub\gui\api_keys.py", line 221>:
+221           RESUME                   0
+
+223           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (proxy_url)
+              LOAD_ATTR                3 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR                5 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                6 (settings)
+              STORE_ATTR               4 (credit_proxy_url)
+
+224           LOAD_GLOBAL             10 (credit)
+              LOAD_ATTR               12 (license_key)
+              PUSH_NULL
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_TRUE        28 (to L1)
+
+225           LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (bal_lbl)
+              LOAD_ATTR               17 (setText + NULL|self)
+              LOAD_CONST               1 ('Số dư: (chưa kích hoạt license/credit)')
+              CALL                     1
+              POP_TOP
+
+226           RETURN_CONST             0 (None)
+
+232   L1:     LOAD_GLOBAL             19 (getattr + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_CONST               2 ('_bw')
+              LOAD_CONST               0 (None)
+              CALL                     3
+              STORE_FAST               1 (_old)
+
+233           LOAD_FAST                1 (_old)
+              POP_JUMP_IF_NONE        49 (to L2)
+              LOAD_FAST                1 (_old)
+              LOAD_ATTR               21 (isRunning + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE       28 (to L2)
+
+234           LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (bal_lbl)
+              LOAD_ATTR               17 (setText + NULL|self)
+              LOAD_CONST               3 ('Số dư: đang kiểm tra… (đang chờ máy chủ trả lời)')
+              CALL                     1
+              POP_TOP
+
+235           RETURN_CONST             0 (None)
+
+236   L2:     LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (bal_lbl)
+              LOAD_ATTR               17 (setText + NULL|self)
+              LOAD_CONST               4 ('Số dư: đang kiểm tra…')
+              CALL                     1
+              POP_TOP
+
+237           LOAD_GLOBAL             23 (_BalanceWorker + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                6 (settings)
+              CALL                     1
+              LOAD_FAST                0 (self)
+              STORE_ATTR              12 (_bw)
+
+238           LOAD_FAST                0 (self)
+              LOAD_ATTR               24 (_bw)
+              LOAD_ATTR               26 (done)
+              LOAD_ATTR               29 (connect + NULL|self)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               30 (_on_balance)
+              CALL                     1
+              POP_TOP
+
+239           LOAD_FAST                0 (self)
+              LOAD_ATTR               24 (_bw)
+              LOAD_ATTR               33 (start + NULL|self)
+              CALL                     0
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object closeEvent at 0x0000016DC90ED4D0, file "bilisub\gui\api_keys.py", line 241>:
+  --           COPY_FREE_VARS           1
+
+ 241           RESUME                   0
+
+ 243           LOAD_GLOBAL              1 (getattr + NULL)
+               LOAD_FAST                0 (self)
+               LOAD_CONST               1 ('_bw')
+               LOAD_CONST               2 (None)
+               CALL                     3
+               STORE_FAST               2 (_bw)
+
+ 244           LOAD_FAST                2 (_bw)
+               POP_JUMP_IF_NONE        38 (to L1)
+               LOAD_FAST                2 (_bw)
+               LOAD_ATTR                3 (isRunning + NULL|self)
+               CALL                     0
+               TO_BOOL
+               POP_JUMP_IF_FALSE       17 (to L1)
+
+ 245           LOAD_FAST                2 (_bw)
+               LOAD_ATTR                5 (wait + NULL|self)
+               LOAD_CONST               3 (3000)
+               CALL                     1
+               POP_TOP
+
+ 246   L1:     LOAD_GLOBAL              6 (super)
+               LOAD_DEREF               3 (__class__)
+               LOAD_FAST                0 (self)
+               LOAD_SUPER_ATTR         17 (closeEvent + NULL|self)
+               LOAD_FAST                1 (e)
+               CALL                     1
+               POP_TOP
+               RETURN_CONST             2 (None)
+
+Disassembly of <code object _on_balance at 0x0000016DC8F5D980, file "bilisub\gui\api_keys.py", line 248>:
+248           RESUME                   0
+
+249           LOAD_GLOBAL              1 (isinstance + NULL)
+              LOAD_FAST                1 (res)
+              LOAD_GLOBAL              2 (tuple)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_FALSE        2 (to L1)
+              LOAD_FAST                1 (res)
+              JUMP_FORWARD            39 (to L4)
+      L1:     LOAD_FAST_LOAD_FAST     17 (res, res)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       16 (to L2)
+              LOAD_GLOBAL              4 (credit)
+              LOAD_ATTR                6 (BAL_OK)
+              JUMP_FORWARD            15 (to L3)
+      L2:     LOAD_GLOBAL              4 (credit)
+              LOAD_ATTR                8 (BAL_OFFLINE)
+      L3:     BUILD_TUPLE              2
+      L4:     UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST   35 (data, code)
+
+250           LOAD_GLOBAL              4 (credit)
+              LOAD_ATTR               10 (BAL_NO_LICENSE)
+              LOAD_CONST               1 ('chưa kích hoạt license')
+
+251           LOAD_GLOBAL              4 (credit)
+              LOAD_ATTR               12 (BAL_EXPIRED)
+              LOAD_CONST               2 ('LICENSE ĐÃ HẾT HẠN — nhập key mới ở nút 🔑 Bản quyền')
+
+252           LOAD_GLOBAL              4 (credit)
+              LOAD_ATTR               14 (BAL_REVOKED)
+              LOAD_CONST               3 ('license bị thu hồi — liên hệ người bán')
+
+253           LOAD_GLOBAL              4 (credit)
+              LOAD_ATTR               16 (BAL_UNREGISTERED)
+              LOAD_CONST               4 ('license hết hạn / chưa đăng ký — nhập key mới ở nút 🔑 Bản quyền')
+
+254           LOAD_GLOBAL              4 (credit)
+              LOAD_ATTR                8 (BAL_OFFLINE)
+              LOAD_CONST               5 ('không nối được máy chủ — kiểm tra mạng/tường lửa')
+
+250           BUILD_MAP                5
+
+254           LOAD_ATTR               19 (get + NULL|self)
+              LOAD_FAST                3 (code)
+              CALL                     1
+
+250           STORE_FAST               4 (why)
+
+255           LOAD_FAST                4 (why)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        30 (to L5)
+              LOAD_FAST                2 (data)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       23 (to L5)
+              LOAD_FAST                2 (data)
+              LOAD_ATTR               19 (get + NULL|self)
+              LOAD_CONST               6 ('ok')
+              LOAD_CONST               7 (True)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_TRUE        40 (to L7)
+
+256   L5:     LOAD_FAST                0 (self)
+              LOAD_ATTR               20 (bal_lbl)
+              LOAD_ATTR               23 (setText + NULL|self)
+              LOAD_CONST               8 ('Số dư: (%s)')
+              LOAD_FAST                4 (why)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L6)
+              POP_TOP
+              LOAD_CONST               9 ('không lấy được — kiểm tra kết nối/máy chủ')
+      L6:     BINARY_OP                6 (%)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+258   L7:     LOAD_FAST                0 (self)
+              LOAD_ATTR               20 (bal_lbl)
+              LOAD_ATTR               23 (setText + NULL|self)
+              LOAD_CONST              10 ('Số dư: ')
+              LOAD_GLOBAL             25 (int + NULL)
+              LOAD_FAST                2 (data)
+              LOAD_ATTR               19 (get + NULL|self)
+              LOAD_CONST              11 ('total')
+              LOAD_CONST              12 (0)
+              CALL                     2
+              CALL                     1
+              LOAD_CONST              13 (',')
+              FORMAT_WITH_SPEC
+              LOAD_CONST              14 (' credit')
+              BUILD_STRING             3
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _open_topup at 0x0000016DC90E5CE0, file "bilisub\gui\api_keys.py", line 260>:
+260           RESUME                   0
+
+261           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (proxy_url)
+              LOAD_ATTR                3 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR                5 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                6 (settings)
+              STORE_ATTR               4 (credit_proxy_url)
+
+262           LOAD_CONST               1 (1)
+              LOAD_CONST               2 (('TopupDialog',))
+              IMPORT_NAME              5 (topup_dialog)
+              IMPORT_FROM              6 (TopupDialog)
+              STORE_FAST               1 (TopupDialog)
+              POP_TOP
+
+263           LOAD_FAST                1 (TopupDialog)
+              PUSH_NULL
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                6 (settings)
+              LOAD_FAST                0 (self)
+              CALL                     2
+              STORE_FAST               2 (dlg)
+
+264           LOAD_FAST                2 (dlg)
+              LOAD_ATTR               15 (exec + NULL|self)
+              CALL                     0
+              POP_TOP
+
+265           LOAD_FAST                0 (self)
+              LOAD_ATTR               17 (_refresh_balance + NULL|self)
+              CALL                     0
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _save at 0x0000016DC93B77D0, file "bilisub\gui\api_keys.py", line 267>:
+267           RESUME                   0
+
+268           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (_fields)
+              LOAD_ATTR                3 (items + NULL|self)
+              CALL                     0
+              GET_ITER
+      L1:     FOR_ITER                97 (to L4)
+              UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST   18 (code, w)
+
+269           LOAD_GLOBAL              5 (isinstance + NULL)
+              LOAD_FAST                2 (w)
+              LOAD_GLOBAL              6 (QPlainTextEdit)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_FALSE       16 (to L2)
+              LOAD_FAST                2 (w)
+              LOAD_ATTR                9 (toPlainText + NULL|self)
+              CALL                     0
+              JUMP_FORWARD            15 (to L3)
+      L2:     LOAD_FAST                2 (w)
+              LOAD_ATTR               11 (text + NULL|self)
+              CALL                     0
+      L3:     STORE_FAST               3 (val)
+
+270           LOAD_FAST                3 (val)
+              LOAD_ATTR               13 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              LOAD_ATTR               16 (api_keys)
+              LOAD_FAST                1 (code)
+              STORE_SUBSCR
+              JUMP_BACKWARD           99 (to L1)
+
+268   L4:     END_FOR
+              POP_TOP
+
+271           LOAD_FAST                0 (self)
+              LOAD_ATTR               18 (custom_url)
+              LOAD_ATTR               11 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR               13 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              STORE_ATTR              10 (custom_base_url)
+
+272           LOAD_FAST                0 (self)
+              LOAD_ATTR               22 (custom_key)
+              LOAD_ATTR               11 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR               13 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              LOAD_ATTR               16 (api_keys)
+              LOAD_CONST               1 ('custom')
+              STORE_SUBSCR
+
+273           LOAD_FAST                0 (self)
+              LOAD_ATTR               24 (custom_model)
+              LOAD_ATTR               11 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR               13 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              STORE_ATTR              12 (custom_model)
+
+274           LOAD_FAST                0 (self)
+              LOAD_ATTR               26 (tiktok)
+              LOAD_ATTR               11 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR               13 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              STORE_ATTR              14 (tiktok_session)
+
+275           LOAD_FAST                0 (self)
+              LOAD_ATTR               30 (vbee_app)
+              LOAD_ATTR               11 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR               13 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              STORE_ATTR              16 (vbee_app_id)
+
+276           LOAD_FAST                0 (self)
+              LOAD_ATTR               34 (vbee_tok)
+              LOAD_ATTR               11 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR               13 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              STORE_ATTR              18 (vbee_token)
+
+277           LOAD_FAST                0 (self)
+              LOAD_ATTR               38 (vbee_custom)
+              LOAD_ATTR                9 (toPlainText + NULL|self)
+              CALL                     0
+              LOAD_ATTR               13 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              STORE_ATTR              20 (vbee_custom_voices)
+
+278           LOAD_FAST                0 (self)
+              LOAD_ATTR               42 (vivibe_key)
+              LOAD_ATTR               11 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR               13 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              STORE_ATTR              22 (vivibe_api_key)
+
+279           LOAD_FAST                0 (self)
+              LOAD_ATTR               46 (vivibe_custom)
+              LOAD_ATTR                9 (toPlainText + NULL|self)
+              CALL                     0
+              LOAD_ATTR               13 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              STORE_ATTR              24 (vivibe_custom_voices)
+
+280           LOAD_FAST                0 (self)
+              LOAD_ATTR               50 (douyin_api)
+              LOAD_ATTR               11 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR               13 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              STORE_ATTR              25 (douyin_api)
+
+281           LOAD_FAST                0 (self)
+              LOAD_ATTR               52 (ai_mode)
+              LOAD_ATTR               55 (currentData + NULL|self)
+              CALL                     0
+              LOAD_CONST               2 ('credit')
+              COMPARE_OP              72 (==)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              STORE_ATTR              28 (ai_credit_mode)
+
+282           LOAD_FAST                0 (self)
+              LOAD_ATTR               58 (ai_model)
+              LOAD_ATTR               55 (currentData + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              STORE_ATTR              30 (ai_provider)
+
+283           LOAD_FAST                0 (self)
+              LOAD_ATTR               62 (proxy_url)
+              LOAD_ATTR               11 (text + NULL|self)
+              CALL                     0
+              LOAD_ATTR               13 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              STORE_ATTR              32 (credit_proxy_url)
+
+285           LOAD_CONST               3 (0)
+              LOAD_CONST               0 (None)
+              IMPORT_NAME             33 (os)
+              STORE_FAST               4 (os)
+
+286           LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              LOAD_ATTR               50 (douyin_api)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       36 (to L5)
+
+287           LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              LOAD_ATTR               50 (douyin_api)
+              LOAD_FAST                4 (os)
+              LOAD_ATTR               68 (environ)
+              LOAD_CONST               4 ('BILISUB_DOUYIN_API')
+              STORE_SUBSCR
+              JUMP_FORWARD            28 (to L6)
+
+289   L5:     LOAD_FAST                4 (os)
+              LOAD_ATTR               68 (environ)
+              LOAD_ATTR               71 (pop + NULL|self)
+              LOAD_CONST               4 ('BILISUB_DOUYIN_API')
+              LOAD_CONST               0 (None)
+              CALL                     2
+              POP_TOP
+
+290   L6:     LOAD_FAST                0 (self)
+              LOAD_ATTR               14 (settings)
+              LOAD_ATTR               73 (save + NULL|self)
+              CALL                     0
+              POP_TOP
+
+291           LOAD_FAST                0 (self)
+              LOAD_ATTR               75 (accept + NULL|self)
+              CALL                     0
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object providers_with_keys at 0x0000016DC8E0B630, file "bilisub\gui\api_keys.py", line 293>:
+ 293           RESUME                   0
+
+ 294           LOAD_FAST                0 (self)
+               LOAD_ATTR                0 (settings)
+               LOAD_ATTR                2 (api_keys)
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      1 (c)
+               SWAP                     2
+       L1:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L2:     FOR_ITER                48 (to L5)
+               STORE_FAST_LOAD_FAST    16 (c, self)
+               LOAD_ATTR                0 (settings)
+               LOAD_ATTR                2 (api_keys)
+               LOAD_ATTR                5 (get + NULL|self)
+               LOAD_FAST                1 (c)
+               CALL                     1
+               TO_BOOL
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           46 (to L2)
+       L4:     LOAD_FAST                1 (c)
+               LIST_APPEND              2
+               JUMP_BACKWARD           50 (to L2)
+       L5:     END_FOR
+               POP_TOP
+       L6:     SWAP                     2
+               STORE_FAST               1 (c)
+               RETURN_VALUE
+
+  --   L7:     SWAP                     2
+               POP_TOP
+
+ 294           SWAP                     2
+               STORE_FAST               1 (c)
+               RERAISE                  0
+ExceptionTable:
+  L1 to L3 -> L7 [2]
+  L4 to L6 -> L7 [2]

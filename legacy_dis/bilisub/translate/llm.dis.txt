@@ -1,0 +1,2021 @@
+=== FILE: bilisub\translate\llm.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('Dịch phụ đề bằng LLM OpenAI-compatible: gộp batch, failover provider/key,\ngiữ ngữ cảnh xuyên video (context) + glossary, có bước tự review lại.')
+              STORE_NAME               0 (__doc__)
+
+  3           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+  5           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (json)
+              STORE_NAME               3 (json)
+
+  6           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (re)
+              STORE_NAME               4 (re)
+
+  7           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              5 (time)
+              STORE_NAME               5 (time)
+
+  8           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Callable', 'Optional'))
+              IMPORT_NAME              6 (typing)
+              IMPORT_FROM              7 (Callable)
+              STORE_NAME               7 (Callable)
+              IMPORT_FROM              8 (Optional)
+              STORE_NAME               8 (Optional)
+              POP_TOP
+
+ 10           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              9 (requests)
+              STORE_NAME               9 (requests)
+
+ 12           LOAD_CONST               5 (2)
+              LOAD_CONST               6 (('LLM_PROVIDERS', 'DEFAULT_FALLBACK_ORDER', 'Settings'))
+              IMPORT_NAME             10 (config)
+              IMPORT_FROM             11 (LLM_PROVIDERS)
+              STORE_NAME              11 (LLM_PROVIDERS)
+              IMPORT_FROM             12 (DEFAULT_FALLBACK_ORDER)
+              STORE_NAME              12 (DEFAULT_FALLBACK_ORDER)
+              IMPORT_FROM             13 (Settings)
+              STORE_NAME              13 (Settings)
+              POP_TOP
+
+ 13           LOAD_CONST               5 (2)
+              LOAD_CONST               7 (('SubtitleEntry', 'TranslationPlan'))
+              IMPORT_NAME             14 (models)
+              IMPORT_FROM             15 (SubtitleEntry)
+              STORE_NAME              15 (SubtitleEntry)
+              IMPORT_FROM             16 (TranslationPlan)
+              STORE_NAME              16 (TranslationPlan)
+              POP_TOP
+
+ 14           LOAD_CONST               8 (1)
+              LOAD_CONST               9 (('prompts',))
+              IMPORT_NAME             17
+              IMPORT_FROM             18 (prompts)
+              STORE_NAME              18 (prompts)
+              POP_TOP
+
+ 16           LOAD_NAME                8 (Optional)
+              LOAD_NAME                7 (Callable)
+              LOAD_NAME               19 (int)
+              LOAD_NAME               19 (int)
+              LOAD_NAME               20 (str)
+              BUILD_LIST               3
+              LOAD_CONST               3 (None)
+              BUILD_TUPLE              2
+              BINARY_SUBSCR
+              BINARY_SUBSCR
+              STORE_NAME              21 (ProgressCB)
+
+ 18           LOAD_CONST              10 (80)
+              STORE_NAME              22 (MAX_ITEMS_PER_CALL)
+
+ 19           LOAD_CONST              11 (8000)
+              STORE_NAME              23 (MAX_CHARS_PER_CALL)
+
+ 20           LOAD_CONST              12 (6)
+              STORE_NAME              24 (CONTEXT_LINES)
+
+ 21           LOAD_NAME                4 (re)
+              LOAD_ATTR               50 (compile)
+              PUSH_NULL
+              LOAD_CONST              13 ('<think>[\\s\\S]*?</think>')
+              LOAD_NAME                4 (re)
+              LOAD_ATTR               52 (I)
+              CALL                     2
+              STORE_NAME              27 (_THINK_RE)
+
+ 22           LOAD_NAME                4 (re)
+              LOAD_ATTR               50 (compile)
+              PUSH_NULL
+              LOAD_CONST              14 ('^```(?:json)?\\s*|\\s*```$')
+              LOAD_NAME                4 (re)
+              LOAD_ATTR               52 (I)
+              LOAD_NAME                4 (re)
+              LOAD_ATTR               56 (M)
+              BINARY_OP                7 (|)
+              CALL                     2
+              STORE_NAME              29 (_FENCE_RE)
+
+ 25           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              15 (<code object TranslationError at 0x0000016DC8EB8FF0, file "bilisub\translate\llm.py", line 25>)
+              MAKE_FUNCTION
+              LOAD_CONST              16 ('TranslationError')
+              LOAD_NAME               30 (Exception)
+              CALL                     3
+              STORE_NAME              31 (TranslationError)
+
+ 29           LOAD_CONST              23 (('raw', 'str', 'return', 'list[str]'))
+              LOAD_CONST              17 (<code object split_keys at 0x0000016DC8E0BDB0, file "bilisub\translate\llm.py", line 29>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              32 (split_keys)
+
+ 33           LOAD_CONST              24 (('text', 'str', 'return', 'Optional[dict]'))
+              LOAD_CONST              18 (<code object _extract_json at 0x0000016DC8D27390, file "bilisub\translate\llm.py", line 33>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              33 (_extract_json)
+
+ 57           LOAD_CONST              25 (('text', 'str', 'return', 'Optional[str]'))
+              LOAD_CONST              19 (<code object _first_json_object at 0x0000016DC8EA2AF0, file "bilisub\translate\llm.py", line 57>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              34 (_first_json_object)
+
+ 62           LOAD_CONST              25 (('text', 'str', 'return', 'Optional[str]'))
+              LOAD_CONST              20 (<code object _first_json_array at 0x0000016DC8E07730, file "bilisub\translate\llm.py", line 62>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              35 (_first_json_array)
+
+ 67           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              21 (<code object LLMTranslator at 0x0000016DC8E0B7B0, file "bilisub\translate\llm.py", line 67>)
+              MAKE_FUNCTION
+              LOAD_CONST              22 ('LLMTranslator')
+              CALL                     2
+              STORE_NAME              36 (LLMTranslator)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object TranslationError at 0x0000016DC8EB8FF0, file "bilisub\translate\llm.py", line 25>:
+ 25           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('TranslationError')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (25)
+              STORE_NAME               3 (__firstlineno__)
+
+ 26           LOAD_CONST               2 (())
+              STORE_NAME               4 (__static_attributes__)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object split_keys at 0x0000016DC8E0BDB0, file "bilisub\translate\llm.py", line 29>:
+  29           RESUME                   0
+
+  30           LOAD_GLOBAL              0 (re)
+               LOAD_ATTR                2 (split)
+               PUSH_NULL
+               LOAD_CONST               1 ('[\\s,;]+')
+               LOAD_FAST                0 (raw)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L1)
+               POP_TOP
+               LOAD_CONST               2 ('')
+       L1:     CALL                     2
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      1 (k)
+               SWAP                     2
+       L2:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L3:     FOR_ITER                41 (to L6)
+               STORE_FAST_LOAD_FAST    17 (k, k)
+               LOAD_ATTR                5 (strip + NULL|self)
+               CALL                     0
+               TO_BOOL
+       L4:     POP_JUMP_IF_TRUE         2 (to L5)
+               JUMP_BACKWARD           25 (to L3)
+       L5:     LOAD_FAST                1 (k)
+               LOAD_ATTR                5 (strip + NULL|self)
+               CALL                     0
+               LIST_APPEND              2
+               JUMP_BACKWARD           43 (to L3)
+       L6:     END_FOR
+               POP_TOP
+       L7:     SWAP                     2
+               STORE_FAST               1 (k)
+               RETURN_VALUE
+
+  --   L8:     SWAP                     2
+               POP_TOP
+
+  30           SWAP                     2
+               STORE_FAST               1 (k)
+               RERAISE                  0
+ExceptionTable:
+  L2 to L4 -> L8 [2]
+  L5 to L7 -> L8 [2]
+
+Disassembly of <code object _extract_json at 0x0000016DC8D27390, file "bilisub\translate\llm.py", line 33>:
+  33            RESUME                   0
+
+  34            LOAD_FAST                0 (text)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L1)
+
+  35            RETURN_CONST             0 (None)
+
+  36    L1:     LOAD_GLOBAL              0 (_THINK_RE)
+                LOAD_ATTR                3 (sub + NULL|self)
+                LOAD_CONST               1 ('')
+                LOAD_FAST                0 (text)
+                CALL                     2
+                STORE_FAST               0 (text)
+
+  37            LOAD_GLOBAL              4 (_FENCE_RE)
+                LOAD_ATTR                3 (sub + NULL|self)
+                LOAD_CONST               1 ('')
+                LOAD_FAST                0 (text)
+                CALL                     2
+                LOAD_ATTR                7 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               0 (text)
+
+  39            LOAD_FAST                0 (text)
+                LOAD_GLOBAL              9 (_first_json_object + NULL)
+                LOAD_FAST                0 (text)
+                CALL                     1
+                LOAD_GLOBAL             11 (_first_json_array + NULL)
+                LOAD_FAST                0 (text)
+                CALL                     1
+                BUILD_TUPLE              3
+                GET_ITER
+        L2:     FOR_ITER               110 (to L10)
+                STORE_FAST               1 (candidate)
+
+  40            LOAD_FAST                1 (candidate)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L3)
+
+  41            JUMP_BACKWARD           12 (to L2)
+
+  42    L3:     NOP
+
+  43    L4:     LOAD_GLOBAL             12 (json)
+                LOAD_ATTR               14 (loads)
+                PUSH_NULL
+                LOAD_FAST                1 (candidate)
+                CALL                     1
+                STORE_FAST               2 (data)
+
+  46    L5:     LOAD_GLOBAL             19 (isinstance + NULL)
+                LOAD_FAST                2 (data)
+                LOAD_GLOBAL             20 (list)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE        6 (to L6)
+
+  47            LOAD_CONST               2 ('items')
+                LOAD_FAST                2 (data)
+                BUILD_MAP                1
+                SWAP                     2
+                POP_TOP
+                RETURN_VALUE
+
+  48    L6:     LOAD_GLOBAL             19 (isinstance + NULL)
+                LOAD_FAST                2 (data)
+                LOAD_GLOBAL             22 (dict)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L7)
+                JUMP_BACKWARD           85 (to L2)
+
+  49    L7:     LOAD_CONST               2 ('items')
+                LOAD_FAST                2 (data)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE        4 (to L8)
+
+  50            LOAD_FAST                2 (data)
+                SWAP                     2
+                POP_TOP
+                RETURN_VALUE
+
+  52    L8:     LOAD_CONST               3 ('translations')
+                LOAD_FAST                2 (data)
+                CONTAINS_OP              0
+                POP_JUMP_IF_TRUE         2 (to L9)
+                JUMP_BACKWARD          103 (to L2)
+
+  53    L9:     LOAD_CONST               2 ('items')
+                LOAD_FAST                2 (data)
+                LOAD_CONST               3 ('translations')
+                BINARY_SUBSCR
+                BUILD_MAP                1
+                SWAP                     2
+                POP_TOP
+                RETURN_VALUE
+
+  39   L10:     END_FOR
+                POP_TOP
+
+  54            RETURN_CONST             0 (None)
+
+  --   L11:     PUSH_EXC_INFO
+
+  44            LOAD_GLOBAL             16 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L13)
+                POP_TOP
+
+  45   L12:     POP_EXCEPT
+                JUMP_BACKWARD          128 (to L2)
+
+  44   L13:     RERAISE                  0
+
+  --   L14:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L4 to L5 -> L11 [1]
+  L11 to L12 -> L14 [2] lasti
+  L13 to L14 -> L14 [2] lasti
+
+Disassembly of <code object _first_json_object at 0x0000016DC8EA2AF0, file "bilisub\translate\llm.py", line 57>:
+ 57           RESUME                   0
+
+ 58           LOAD_GLOBAL              0 (re)
+              LOAD_ATTR                2 (search)
+              PUSH_NULL
+              LOAD_CONST               1 ('\\{[\\s\\S]*\\}')
+              LOAD_FAST                0 (text)
+              CALL                     2
+              STORE_FAST               1 (m)
+
+ 59           LOAD_FAST                1 (m)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       17 (to L1)
+              LOAD_FAST                1 (m)
+              LOAD_ATTR                5 (group + NULL|self)
+              LOAD_CONST               2 (0)
+              CALL                     1
+              RETURN_VALUE
+      L1:     LOAD_CONST               0 (None)
+              RETURN_VALUE
+
+Disassembly of <code object _first_json_array at 0x0000016DC8E07730, file "bilisub\translate\llm.py", line 62>:
+ 62           RESUME                   0
+
+ 63           LOAD_GLOBAL              0 (re)
+              LOAD_ATTR                2 (search)
+              PUSH_NULL
+              LOAD_CONST               1 ('\\[[\\s\\S]*\\]')
+              LOAD_FAST                0 (text)
+              CALL                     2
+              STORE_FAST               1 (m)
+
+ 64           LOAD_FAST                1 (m)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       26 (to L1)
+              LOAD_CONST               2 ('{')
+              LOAD_CONST               3 ('"items":')
+              LOAD_FAST                1 (m)
+              LOAD_ATTR                5 (group + NULL|self)
+              LOAD_CONST               4 (0)
+              CALL                     1
+              FORMAT_SIMPLE
+              BUILD_STRING             2
+              BINARY_OP                0 (+)
+              LOAD_CONST               5 ('}')
+              BINARY_OP                0 (+)
+              RETURN_VALUE
+      L1:     LOAD_CONST               0 (None)
+              RETURN_VALUE
+
+Disassembly of <code object LLMTranslator at 0x0000016DC8E0B7B0, file "bilisub\translate\llm.py", line 67>:
+ 67           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('LLMTranslator')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (67)
+              STORE_NAME               3 (__firstlineno__)
+
+ 68           LOAD_CONST               2 (None)
+              LOAD_CONST               3 (('log',))
+              BUILD_CONST_KEY_MAP      1
+              LOAD_CONST              18 (('settings', 'Settings', 'log', 'Optional[Callable[[str], None]]'))
+              LOAD_CONST               4 (<code object __init__ at 0x0000016DC8EAFBB0, file "bilisub\translate\llm.py", line 68>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME               4 (__init__)
+
+ 74           LOAD_CONST              19 (('return', 'list[str]'))
+              LOAD_CONST               5 (<code object _available_providers at 0x0000016DC8D27620, file "bilisub\translate\llm.py", line 74>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               5 (_available_providers)
+
+ 89           LOAD_CONST              20 (('return', 'bool'))
+              LOAD_CONST               6 (<code object has_credentials at 0x0000016DC90E1F30, file "bilisub\translate\llm.py", line 89>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               6 (has_credentials)
+
+ 93           LOAD_CONST              21 ((4096,))
+              LOAD_CONST              22 (('provider', 'str', 'api_key', 'str', 'messages', 'list[dict]', 'max_tokens', 'int', 'return', 'str'))
+              LOAD_CONST               7 (<code object _chat at 0x0000016DC93A5250, file "bilisub\translate\llm.py", line 93>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME               7 (_chat)
+
+126           LOAD_CONST              21 ((4096,))
+              LOAD_CONST              23 (('messages', 'list[dict]', 'max_tokens', 'int', 'return', 'str'))
+              LOAD_CONST               8 (<code object _chat_failover at 0x0000016DC8F5C7B0, file "bilisub\translate\llm.py", line 126>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME               8 (_chat_failover)
+
+148           LOAD_CONST              24 (('entries', 'list[SubtitleEntry]', 'return', 'list[list[SubtitleEntry]]'))
+              LOAD_CONST               9 (<code object _make_batches at 0x0000016DC8F46590, file "bilisub\translate\llm.py", line 148>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               9 (_make_batches)
+
+161           LOAD_CONST              25 (('entries', 'list[SubtitleEntry]', 'return', 'TranslationPlan'))
+              LOAD_CONST              10 (<code object plan at 0x0000016DC90DD770, file "bilisub\translate\llm.py", line 161>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              10 (plan)
+
+178           LOAD_CONST              11 (False)
+
+179           LOAD_CONST               2 (None)
+
+172           LOAD_CONST              12 (('review', 'progress'))
+              BUILD_CONST_KEY_MAP      2
+
+174           NOP
+
+172           NOP
+
+176           NOP
+
+172           NOP
+
+177           NOP
+
+172           NOP
+
+178           NOP
+
+172           NOP
+
+179           NOP
+
+172           NOP
+
+180           NOP
+
+172           LOAD_CONST              26 (('entries', 'list[SubtitleEntry]', 'source_language', 'str', 'target_language', 'str', 'review', 'bool', 'progress', 'ProgressCB', 'return', 'list[SubtitleEntry]'))
+              LOAD_CONST              13 (<code object translate at 0x0000016DC8F5A5C0, file "bilisub\translate\llm.py", line 172>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              11 (translate)
+
+230           LOAD_CONST              14 (<code object _translate_raw at 0x0000016DC8FC8330, file "bilisub\translate\llm.py", line 230>)
+              MAKE_FUNCTION
+              STORE_NAME              12 (_translate_raw)
+
+244           LOAD_NAME               13 (staticmethod)
+
+245           LOAD_CONST              27 (('items', 'list', 'batch', 'list[SubtitleEntry]', 'return', 'None'))
+              LOAD_CONST              15 (<code object _apply at 0x0000016DC8F82420, file "bilisub\translate\llm.py", line 244>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+
+244           CALL                     0
+
+245           STORE_NAME              14 (_apply)
+
+260           LOAD_CONST              16 (<code object _review at 0x0000016DC8FB6410, file "bilisub\translate\llm.py", line 260>)
+              MAKE_FUNCTION
+              STORE_NAME              15 (_review)
+              LOAD_CONST              17 (('glossary', 'log', 's'))
+              STORE_NAME              16 (__static_attributes__)
+              RETURN_CONST             2 (None)
+
+Disassembly of <code object __init__ at 0x0000016DC8EAFBB0, file "bilisub\translate\llm.py", line 68>:
+ 68           RESUME                   0
+
+ 69           LOAD_FAST_LOAD_FAST     16 (settings, self)
+              STORE_ATTR               0 (s)
+
+ 70           LOAD_FAST                2 (log)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         3 (to L1)
+              POP_TOP
+              LOAD_CONST               1 (<code object <lambda> at 0x0000016DC9135070, file "bilisub\translate\llm.py", line 70>)
+              MAKE_FUNCTION
+      L1:     LOAD_FAST                0 (self)
+              STORE_ATTR               1 (log)
+
+ 71           BUILD_MAP                0
+              LOAD_FAST                0 (self)
+              STORE_ATTR               2 (glossary)
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object <lambda> at 0x0000016DC9135070, file "bilisub\translate\llm.py", line 70>:
+ 70           RESUME                   0
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _available_providers at 0x0000016DC8D27620, file "bilisub\translate\llm.py", line 74>:
+  74            RESUME                   0
+
+  75            LOAD_FAST                0 (self)
+                LOAD_ATTR                0 (s)
+                LOAD_ATTR                2 (provider)
+                STORE_FAST               1 (chosen)
+
+  76            LOAD_FAST                1 (chosen)
+                BUILD_LIST               1
+                LOAD_GLOBAL              4 (DEFAULT_FALLBACK_ORDER)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      2 (p)
+                SWAP                     2
+        L1:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L2:     FOR_ITER                12 (to L5)
+                STORE_FAST_LOAD_FAST    34 (p, p)
+                LOAD_FAST                1 (chosen)
+                COMPARE_OP             119 (bool(!=))
+        L3:     POP_JUMP_IF_TRUE         2 (to L4)
+                JUMP_BACKWARD           10 (to L2)
+        L4:     LOAD_FAST                2 (p)
+                LIST_APPEND              2
+                JUMP_BACKWARD           14 (to L2)
+        L5:     END_FOR
+                POP_TOP
+        L6:     SWAP                     2
+                STORE_FAST               2 (p)
+                BINARY_OP                0 (+)
+                STORE_FAST               3 (order)
+
+  77            BUILD_LIST               0
+                STORE_FAST               4 (out)
+
+  78            LOAD_FAST                3 (order)
+                GET_ITER
+        L7:     FOR_ITER               146 (to L11)
+                STORE_FAST               2 (p)
+
+  79            LOAD_GLOBAL              6 (LLM_PROVIDERS)
+                LOAD_ATTR                8 (get)
+                PUSH_NULL
+                LOAD_FAST                2 (p)
+                CALL                     1
+                STORE_FAST               5 (spec)
+
+  80            LOAD_FAST                5 (spec)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L8)
+
+  81            JUMP_BACKWARD           34 (to L7)
+
+  82    L8:     LOAD_FAST                5 (spec)
+                LOAD_ATTR               10 (needs_key)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       43 (to L9)
+                LOAD_GLOBAL             13 (split_keys + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR                0 (s)
+                LOAD_ATTR               15 (get_key + NULL|self)
+                LOAD_FAST                2 (p)
+                CALL                     1
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L9)
+
+  83            JUMP_BACKWARD           94 (to L7)
+
+  84    L9:     LOAD_FAST                2 (p)
+                LOAD_CONST               1 ('custom')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       29 (to L10)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR                0 (s)
+                LOAD_ATTR               16 (custom_base_url)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L10)
+
+  85            JUMP_BACKWARD          129 (to L7)
+
+  86   L10:     LOAD_FAST                4 (out)
+                LOAD_ATTR               19 (append + NULL|self)
+                LOAD_FAST                2 (p)
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD          148 (to L7)
+
+  78   L11:     END_FOR
+                POP_TOP
+
+  87            LOAD_FAST                4 (out)
+                RETURN_VALUE
+
+  --   L12:     SWAP                     2
+                POP_TOP
+
+  76            SWAP                     2
+                STORE_FAST               2 (p)
+                RERAISE                  0
+ExceptionTable:
+  L1 to L3 -> L12 [3]
+  L4 to L6 -> L12 [3]
+
+Disassembly of <code object has_credentials at 0x0000016DC90E1F30, file "bilisub\translate\llm.py", line 89>:
+ 89           RESUME                   0
+
+ 90           LOAD_GLOBAL              1 (bool + NULL)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                3 (_available_providers + NULL|self)
+              CALL                     0
+              CALL                     1
+              RETURN_VALUE
+
+Disassembly of <code object _chat at 0x0000016DC93A5250, file "bilisub\translate\llm.py", line 93>:
+  93            RESUME                   0
+
+  94            LOAD_FAST                0 (self)
+                LOAD_ATTR                0 (s)
+                LOAD_ATTR                3 (base_url_for + NULL|self)
+                LOAD_FAST                1 (provider)
+                CALL                     1
+                LOAD_ATTR                5 (rstrip + NULL|self)
+                LOAD_CONST               1 ('/')
+                CALL                     1
+                STORE_FAST               5 (base)
+
+  95            LOAD_FAST_LOAD_FAST     85 (base, base)
+                LOAD_ATTR                7 (endswith + NULL|self)
+                LOAD_CONST               2 ('/chat/completions')
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                LOAD_CONST               2 ('/chat/completions')
+                JUMP_FORWARD             1 (to L2)
+        L1:     LOAD_CONST               3 ('')
+        L2:     BINARY_OP                0 (+)
+                STORE_FAST               6 (url)
+
+  96            LOAD_FAST                0 (self)
+                LOAD_ATTR                0 (s)
+                LOAD_ATTR                9 (model_for + NULL|self)
+                LOAD_FAST                1 (provider)
+                CALL                     1
+                STORE_FAST               7 (model)
+
+  97            LOAD_CONST               4 ('Content-Type')
+                LOAD_CONST               5 ('application/json')
+                BUILD_MAP                1
+                STORE_FAST               8 (headers)
+
+  98            LOAD_FAST                2 (api_key)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        8 (to L3)
+
+  99            LOAD_CONST               6 ('Bearer ')
+                LOAD_FAST                2 (api_key)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                LOAD_FAST                8 (headers)
+                LOAD_CONST               7 ('Authorization')
+                STORE_SUBSCR
+
+ 100    L3:     LOAD_FAST                1 (provider)
+                LOAD_CONST               8 ('openrouter')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       10 (to L4)
+
+ 101            LOAD_CONST               9 ('https://local.bilisub')
+                LOAD_FAST                8 (headers)
+                LOAD_CONST              10 ('HTTP-Referer')
+                STORE_SUBSCR
+
+ 102            LOAD_CONST              11 ('PeiPeiReup')
+                LOAD_FAST                8 (headers)
+                LOAD_CONST              12 ('X-Title')
+                STORE_SUBSCR
+
+ 104    L4:     LOAD_FAST                7 (model)
+
+ 105            LOAD_FAST                3 (messages)
+
+ 106            LOAD_CONST              13 (0.3)
+
+ 107            LOAD_FAST                4 (max_tokens)
+
+ 108            LOAD_CONST              14 ('type')
+                LOAD_CONST              15 ('json_object')
+                BUILD_MAP                1
+
+ 103            LOAD_CONST              16 (('model', 'messages', 'temperature', 'max_tokens', 'response_format'))
+                BUILD_CONST_KEY_MAP      5
+                STORE_FAST               9 (payload)
+
+ 110            LOAD_GLOBAL             11 (str + NULL)
+                LOAD_FAST                7 (model)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L5)
+                POP_TOP
+                LOAD_CONST               3 ('')
+        L5:     CALL                     1
+                LOAD_ATTR               13 (lower + NULL|self)
+                CALL                     0
+                LOAD_ATTR               15 (startswith + NULL|self)
+                LOAD_CONST              17 ('deepseek')
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE        7 (to L6)
+
+ 112            LOAD_CONST              14 ('type')
+                LOAD_CONST              18 ('disabled')
+                BUILD_MAP                1
+                LOAD_FAST                9 (payload)
+                LOAD_CONST              19 ('thinking')
+                STORE_SUBSCR
+
+ 113    L6:     LOAD_GLOBAL             16 (requests)
+                LOAD_ATTR               18 (post)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST    104 (url, headers)
+                LOAD_FAST                9 (payload)
+                LOAD_CONST              20 (180)
+                LOAD_CONST              21 (('headers', 'json', 'timeout'))
+                CALL_KW                  4
+                STORE_FAST              10 (r)
+
+ 115            LOAD_FAST               10 (r)
+                LOAD_ATTR               20 (status_code)
+                LOAD_CONST              22 (400)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       46 (to L7)
+                LOAD_CONST              23 ('response_format')
+                LOAD_FAST                9 (payload)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       40 (to L7)
+
+ 116            LOAD_FAST                9 (payload)
+                LOAD_ATTR               23 (pop + NULL|self)
+                LOAD_CONST              23 ('response_format')
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+
+ 117            LOAD_GLOBAL             16 (requests)
+                LOAD_ATTR               18 (post)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST    104 (url, headers)
+                LOAD_FAST                9 (payload)
+                LOAD_CONST              20 (180)
+                LOAD_CONST              21 (('headers', 'json', 'timeout'))
+                CALL_KW                  4
+                STORE_FAST              10 (r)
+
+ 118    L7:     LOAD_FAST               10 (r)
+                LOAD_ATTR               20 (status_code)
+                LOAD_CONST              24 (200)
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE       42 (to L8)
+
+ 119            LOAD_GLOBAL             25 (TranslationError + NULL)
+                LOAD_FAST                1 (provider)
+                FORMAT_SIMPLE
+                LOAD_CONST              25 (' HTTP ')
+                LOAD_FAST               10 (r)
+                LOAD_ATTR               20 (status_code)
+                FORMAT_SIMPLE
+                LOAD_CONST              26 (': ')
+                LOAD_FAST               10 (r)
+                LOAD_ATTR               26 (text)
+                LOAD_CONST               0 (None)
+                LOAD_CONST              24 (200)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             5
+                CALL                     1
+                RAISE_VARARGS            1
+
+ 120    L8:     LOAD_FAST               10 (r)
+                LOAD_ATTR               29 (json + NULL|self)
+                CALL                     0
+                STORE_FAST              11 (data)
+
+ 121            NOP
+
+ 122    L9:     LOAD_FAST               11 (data)
+                LOAD_CONST              27 ('choices')
+                BINARY_SUBSCR
+                LOAD_CONST              28 (0)
+                BINARY_SUBSCR
+                LOAD_CONST              29 ('message')
+                BINARY_SUBSCR
+                LOAD_CONST              30 ('content')
+                BINARY_SUBSCR
+       L10:     RETURN_VALUE
+
+  --   L11:     PUSH_EXC_INFO
+
+ 123            LOAD_GLOBAL             30 (KeyError)
+                LOAD_GLOBAL             32 (IndexError)
+                BUILD_TUPLE              2
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       29 (to L12)
+                POP_TOP
+
+ 124            LOAD_GLOBAL             25 (TranslationError + NULL)
+                LOAD_FAST                1 (provider)
+                FORMAT_SIMPLE
+                LOAD_CONST              31 (' phản hồi không có choices: ')
+                LOAD_GLOBAL             11 (str + NULL)
+                LOAD_FAST               11 (data)
+                CALL                     1
+                LOAD_CONST               0 (None)
+                LOAD_CONST              24 (200)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             3
+                CALL                     1
+                RAISE_VARARGS            1
+
+ 123   L12:     RERAISE                  0
+
+  --   L13:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L9 to L10 -> L11 [0]
+  L11 to L13 -> L13 [1] lasti
+
+Disassembly of <code object _chat_failover at 0x0000016DC8F5C7B0, file "bilisub\translate\llm.py", line 126>:
+  --            MAKE_CELL               11 (msg)
+
+ 126            RESUME                   0
+
+ 127            LOAD_CONST               0 (None)
+                STORE_FAST               3 (last_err)
+
+ 128            LOAD_FAST                0 (self)
+                LOAD_ATTR                1 (_available_providers + NULL|self)
+                CALL                     0
+                GET_ITER
+        L1:     FOR_ITER               138 (to L10)
+                STORE_FAST               4 (provider)
+
+ 129            LOAD_GLOBAL              2 (LLM_PROVIDERS)
+                LOAD_FAST                4 (provider)
+                BINARY_SUBSCR
+                STORE_FAST               5 (spec)
+
+ 130            LOAD_GLOBAL              5 (split_keys + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR                6 (s)
+                LOAD_ATTR                9 (get_key + NULL|self)
+                LOAD_FAST                4 (provider)
+                CALL                     1
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         3 (to L2)
+                POP_TOP
+                LOAD_CONST               1 ('')
+                BUILD_LIST               1
+        L2:     STORE_FAST               6 (keys)
+
+ 131            LOAD_FAST                6 (keys)
+                GET_ITER
+        L3:     FOR_ITER                74 (to L9)
+                STORE_FAST               7 (key)
+
+ 132            LOAD_GLOBAL             11 (range + NULL)
+                LOAD_CONST               2 (2)
+                CALL                     1
+                GET_ITER
+        L4:     FOR_ITER                26 (to L7)
+                STORE_FAST               8 (attempt)
+
+ 133            NOP
+
+ 134    L5:     LOAD_FAST                0 (self)
+                LOAD_ATTR               13 (_chat + NULL|self)
+                LOAD_FAST_LOAD_FAST     71 (provider, key)
+                LOAD_FAST_LOAD_FAST     18 (messages, max_tokens)
+                CALL                     4
+        L6:     SWAP                     2
+                POP_TOP
+                SWAP                     2
+                POP_TOP
+                SWAP                     2
+                POP_TOP
+                RETURN_VALUE
+
+ 132    L7:     END_FOR
+                POP_TOP
+
+ 144    L8:     LOAD_FAST                0 (self)
+                LOAD_ATTR               23 (log + NULL|self)
+                LOAD_FAST                5 (spec)
+                LOAD_ATTR               24 (label)
+                FORMAT_SIMPLE
+                LOAD_CONST               9 (' key lỗi, chuyển tiếp...')
+                BUILD_STRING             2
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD           76 (to L3)
+
+ 131    L9:     END_FOR
+                POP_TOP
+                JUMP_BACKWARD          140 (to L1)
+
+ 128   L10:     END_FOR
+                POP_TOP
+
+ 145            LOAD_GLOBAL             15 (TranslationError + NULL)
+                LOAD_CONST              10 ('Tất cả provider đều thất bại. Lỗi cuối: ')
+                LOAD_FAST                3 (last_err)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                CALL                     1
+                RAISE_VARARGS            1
+
+  --   L11:     PUSH_EXC_INFO
+
+ 135            LOAD_GLOBAL             14 (TranslationError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE      134 (to L16)
+                STORE_FAST               9 (e)
+
+ 136   L12:     LOAD_FAST                9 (e)
+                STORE_FAST               3 (last_err)
+
+ 137            LOAD_GLOBAL             17 (str + NULL)
+                LOAD_FAST                9 (e)
+                CALL                     1
+                LOAD_ATTR               19 (lower + NULL|self)
+                CALL                     0
+                STORE_DEREF             11 (msg)
+
+ 138            LOAD_GLOBAL             21 (any + NULL)
+                LOAD_FAST               11 (msg)
+                BUILD_TUPLE              1
+                LOAD_CONST               3 (<code object <genexpr> at 0x0000016DC90E1C30, file "bilisub\translate\llm.py", line 138>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                LOAD_CONST               4 (('429', 'quota', 'rate', 'overload', '503', '502'))
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE       69 (to L14)
+
+ 139            LOAD_CONST               5 (3)
+                LOAD_FAST                8 (attempt)
+                LOAD_CONST               6 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                STORE_FAST              10 (wait)
+
+ 140            LOAD_FAST                0 (self)
+                LOAD_ATTR               23 (log + NULL|self)
+                LOAD_FAST                5 (spec)
+                LOAD_ATTR               24 (label)
+                FORMAT_SIMPLE
+                LOAD_CONST               7 (' bị giới hạn, đợi ')
+                LOAD_FAST               10 (wait)
+                FORMAT_SIMPLE
+                LOAD_CONST               8 ('s rồi thử tiếp...')
+                BUILD_STRING             4
+                CALL                     1
+                POP_TOP
+
+ 141            LOAD_GLOBAL             26 (time)
+                LOAD_ATTR               28 (sleep)
+                PUSH_NULL
+                LOAD_FAST               10 (wait)
+                CALL                     1
+                POP_TOP
+
+ 142   L13:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST               9 (e)
+                DELETE_FAST              9 (e)
+                JUMP_BACKWARD          214 (to L4)
+
+ 143   L14:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST               9 (e)
+                DELETE_FAST              9 (e)
+                POP_TOP
+                JUMP_BACKWARD          191 (to L8)
+
+  --   L15:     LOAD_CONST               0 (None)
+                STORE_FAST               9 (e)
+                DELETE_FAST              9 (e)
+                RERAISE                  1
+
+ 135   L16:     RERAISE                  0
+
+  --   L17:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L5 to L6 -> L11 [3]
+  L11 to L12 -> L17 [4] lasti
+  L12 to L13 -> L15 [4] lasti
+  L15 to L17 -> L17 [4] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E1C30, file "bilisub\translate\llm.py", line 138>:
+  --           COPY_FREE_VARS           1
+
+ 138           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                 9 (to L3)
+               STORE_FAST_LOAD_FAST    17 (t, t)
+               LOAD_DEREF               2 (msg)
+               CONTAINS_OP              0
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           11 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object _make_batches at 0x0000016DC8F46590, file "bilisub\translate\llm.py", line 148>:
+148           RESUME                   0
+
+149           BUILD_LIST               0
+              BUILD_LIST               0
+              LOAD_CONST               1 (0)
+              STORE_FAST_STORE_FAST   67 (chars, cur)
+              STORE_FAST               2 (batches)
+
+150           LOAD_FAST                1 (entries)
+              GET_ITER
+      L1:     FOR_ITER               123 (to L5)
+              STORE_FAST               5 (e)
+
+151           LOAD_FAST                5 (e)
+              LOAD_ATTR                0 (text)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L2)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L2:     STORE_FAST               6 (t)
+
+152           LOAD_FAST                3 (cur)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       61 (to L4)
+              LOAD_GLOBAL              3 (len + NULL)
+              LOAD_FAST                3 (cur)
+              CALL                     1
+              LOAD_GLOBAL              4 (MAX_ITEMS_PER_CALL)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_TRUE        22 (to L3)
+              LOAD_FAST                4 (chars)
+              LOAD_GLOBAL              3 (len + NULL)
+              LOAD_FAST                6 (t)
+              CALL                     1
+              BINARY_OP                0 (+)
+              LOAD_GLOBAL              6 (MAX_CHARS_PER_CALL)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE       20 (to L4)
+
+153   L3:     LOAD_FAST                2 (batches)
+              LOAD_ATTR                9 (append + NULL|self)
+              LOAD_FAST                3 (cur)
+              CALL                     1
+              POP_TOP
+
+154           BUILD_LIST               0
+              LOAD_CONST               1 (0)
+              STORE_FAST_STORE_FAST   67 (chars, cur)
+
+155   L4:     LOAD_FAST                3 (cur)
+              LOAD_ATTR                9 (append + NULL|self)
+              LOAD_FAST                5 (e)
+              CALL                     1
+              POP_TOP
+
+156           LOAD_FAST                4 (chars)
+              LOAD_GLOBAL              3 (len + NULL)
+              LOAD_FAST                6 (t)
+              CALL                     1
+              BINARY_OP               13 (+=)
+              STORE_FAST               4 (chars)
+              JUMP_BACKWARD          125 (to L1)
+
+150   L5:     END_FOR
+              POP_TOP
+
+157           LOAD_FAST                3 (cur)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       17 (to L6)
+
+158           LOAD_FAST                2 (batches)
+              LOAD_ATTR                9 (append + NULL|self)
+              LOAD_FAST                3 (cur)
+              CALL                     1
+              POP_TOP
+
+159   L6:     LOAD_FAST                2 (batches)
+              RETURN_VALUE
+
+Disassembly of <code object plan at 0x0000016DC90DD770, file "bilisub\translate\llm.py", line 161>:
+161           RESUME                   0
+
+162           LOAD_FAST                0 (self)
+              LOAD_ATTR                1 (_available_providers + NULL|self)
+              CALL                     0
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         3 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('(chưa có key)')
+              BUILD_LIST               1
+      L1:     LOAD_CONST               2 (0)
+              BINARY_SUBSCR
+              STORE_FAST               2 (prov)
+
+163           LOAD_FAST                0 (self)
+              LOAD_ATTR                3 (_make_batches + NULL|self)
+              LOAD_FAST                1 (entries)
+              CALL                     1
+              STORE_FAST               3 (batches)
+
+164           LOAD_GLOBAL              5 (TranslationPlan + NULL)
+
+165           LOAD_FAST                2 (prov)
+              LOAD_GLOBAL              7 (len + NULL)
+              LOAD_FAST                1 (entries)
+              CALL                     1
+
+166           LOAD_GLOBAL              9 (sum + NULL)
+              LOAD_CONST               3 (<code object <genexpr> at 0x0000016DC9129590, file "bilisub\translate\llm.py", line 166>)
+              MAKE_FUNCTION
+              LOAD_FAST                1 (entries)
+              GET_ITER
+              CALL                     0
+              CALL                     1
+
+167           LOAD_GLOBAL              7 (len + NULL)
+              LOAD_FAST                3 (batches)
+              CALL                     1
+              LOAD_GLOBAL             10 (MAX_ITEMS_PER_CALL)
+
+168           LOAD_FAST                2 (prov)
+              LOAD_GLOBAL             12 (LLM_PROVIDERS)
+              CONTAINS_OP              0
+              POP_JUMP_IF_FALSE       35 (to L2)
+              LOAD_GLOBAL             12 (LLM_PROVIDERS)
+              LOAD_ATTR               14 (get)
+              PUSH_NULL
+              LOAD_FAST                2 (prov)
+              LOAD_CONST               0 (None)
+              CALL                     2
+              LOAD_ATTR               16 (label)
+
+164           LOAD_CONST               4 (('provider', 'total_entries', 'total_chars', 'call_count', 'max_items_per_call', 'label'))
+              CALL_KW                  6
+              RETURN_VALUE
+
+168   L2:     LOAD_FAST                2 (prov)
+
+164           LOAD_CONST               4 (('provider', 'total_entries', 'total_chars', 'call_count', 'max_items_per_call', 'label'))
+              CALL_KW                  6
+              RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC9129590, file "bilisub\translate\llm.py", line 166>:
+ 166           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                26 (to L3)
+               STORE_FAST               1 (e)
+               LOAD_GLOBAL              1 (len + NULL)
+               LOAD_FAST                1 (e)
+               LOAD_ATTR                2 (text)
+               CALL                     1
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           28 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object translate at 0x0000016DC8F5A5C0, file "bilisub\translate\llm.py", line 172>:
+172            RESUME                   0
+
+181            LOAD_FAST                0 (self)
+               LOAD_ATTR                1 (has_credentials + NULL|self)
+               CALL                     0
+               TO_BOOL
+               POP_JUMP_IF_TRUE        11 (to L1)
+
+182            LOAD_GLOBAL              3 (TranslationError + NULL)
+
+183            LOAD_CONST               1 ('Chưa có API key nào dùng được. Hãy nhập key Gemini/Groq/Cerebras/SambaNova/OpenRouter.')
+
+182            CALL                     1
+               RAISE_VARARGS            1
+
+185    L1:     LOAD_FAST                2 (source_language)
+               LOAD_CONST               2 ('auto')
+               COMPARE_OP             119 (bool(!=))
+               POP_JUMP_IF_FALSE       22 (to L2)
+               LOAD_GLOBAL              4 (prompts)
+               LOAD_ATTR                6 (lang_name)
+               PUSH_NULL
+               LOAD_FAST                2 (source_language)
+               CALL                     1
+               JUMP_FORWARD             1 (to L3)
+       L2:     LOAD_CONST               3 ('the source language')
+       L3:     STORE_FAST               6 (src)
+
+186            LOAD_GLOBAL              4 (prompts)
+               LOAD_ATTR                6 (lang_name)
+               PUSH_NULL
+               LOAD_FAST                3 (target_language)
+               CALL                     1
+               STORE_FAST               7 (tgt)
+
+187            LOAD_FAST                0 (self)
+               LOAD_ATTR                9 (_make_batches + NULL|self)
+               LOAD_FAST                1 (entries)
+               CALL                     1
+               STORE_FAST               8 (batches)
+
+188            LOAD_GLOBAL             11 (len + NULL)
+               LOAD_FAST                8 (batches)
+               CALL                     1
+               STORE_FAST               9 (total)
+
+189            BUILD_LIST               0
+               STORE_FAST              10 (recent)
+
+191            LOAD_GLOBAL             13 (enumerate + NULL)
+               LOAD_FAST                8 (batches)
+               LOAD_CONST               4 (1)
+               CALL                     2
+               GET_ITER
+       L4:     EXTENDED_ARG             2
+               FOR_ITER               512 (to L13)
+               UNPACK_SEQUENCE          2
+               STORE_FAST_STORE_FAST  188 (bi, batch)
+
+192            LOAD_FAST                5 (progress)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       32 (to L5)
+
+193            LOAD_FAST                5 (progress)
+               PUSH_NULL
+               LOAD_FAST               11 (bi)
+               LOAD_CONST               4 (1)
+               BINARY_OP               10 (-)
+               LOAD_FAST                9 (total)
+               LOAD_CONST               5 ('Đang dịch batch ')
+               LOAD_FAST               11 (bi)
+               FORMAT_SIMPLE
+               LOAD_CONST               6 ('/')
+               LOAD_FAST                9 (total)
+               FORMAT_SIMPLE
+               LOAD_CONST               7 (' (')
+               LOAD_GLOBAL             11 (len + NULL)
+               LOAD_FAST               12 (batch)
+               CALL                     1
+               FORMAT_SIMPLE
+               LOAD_CONST               8 (' block)...')
+               BUILD_STRING             7
+               CALL                     3
+               POP_TOP
+
+194    L5:     LOAD_CONST               9 ('\n')
+               LOAD_ATTR               15 (join + NULL|self)
+               LOAD_CONST              10 (<code object <genexpr> at 0x0000016DC9129B30, file "bilisub\translate\llm.py", line 194>)
+               MAKE_FUNCTION
+               LOAD_FAST               12 (batch)
+               GET_ITER
+               CALL                     0
+               CALL                     1
+               STORE_FAST              13 (lines)
+
+195            LOAD_CONST               9 ('\n')
+               LOAD_ATTR               15 (join + NULL|self)
+               LOAD_FAST               10 (recent)
+               LOAD_GLOBAL             16 (CONTEXT_LINES)
+               UNARY_NEGATIVE
+               LOAD_CONST               0 (None)
+               BINARY_SLICE
+               CALL                     1
+               STORE_FAST              14 (context)
+
+196            LOAD_CONST               9 ('\n')
+               LOAD_ATTR               15 (join + NULL|self)
+               LOAD_CONST              11 (<code object <genexpr> at 0x0000016DC90E1630, file "bilisub\translate\llm.py", line 196>)
+               MAKE_FUNCTION
+               LOAD_GLOBAL             19 (list + NULL)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               20 (glossary)
+               LOAD_ATTR               23 (items + NULL|self)
+               CALL                     0
+               CALL                     1
+               LOAD_CONST               0 (None)
+               LOAD_CONST              12 (30)
+               BINARY_SLICE
+               GET_ITER
+               CALL                     0
+               CALL                     1
+               STORE_FAST              15 (glossary)
+
+197            LOAD_GLOBAL              4 (prompts)
+               LOAD_ATTR               24 (build_translate_prompt)
+               PUSH_NULL
+
+198            LOAD_FAST_LOAD_FAST    103 (src, tgt)
+               LOAD_FAST               13 (lines)
+
+199            LOAD_GLOBAL             11 (len + NULL)
+               LOAD_FAST               12 (batch)
+               CALL                     1
+               LOAD_FAST_LOAD_FAST    239 (context, glossary)
+
+197            LOAD_CONST              13 (('source_language', 'target_language', 'lines', 'count', 'context', 'glossary'))
+               CALL_KW                  6
+               STORE_FAST              16 (prompt)
+
+201            LOAD_FAST                0 (self)
+               LOAD_ATTR               27 (_chat_failover + NULL|self)
+
+202            LOAD_CONST              14 ('system')
+               LOAD_GLOBAL              4 (prompts)
+               LOAD_ATTR               28 (SYSTEM)
+               LOAD_CONST              15 (('role', 'content'))
+               BUILD_CONST_KEY_MAP      2
+
+203            LOAD_CONST              16 ('user')
+               LOAD_FAST               16 (prompt)
+               LOAD_CONST              15 (('role', 'content'))
+               BUILD_CONST_KEY_MAP      2
+
+202            BUILD_LIST               2
+
+204            LOAD_GLOBAL             31 (min + NULL)
+               LOAD_CONST              17 (8192)
+               LOAD_GLOBAL             33 (max + NULL)
+               LOAD_CONST              18 (2200)
+               LOAD_CONST              19 (200)
+               LOAD_GLOBAL             11 (len + NULL)
+               LOAD_FAST               12 (batch)
+               CALL                     1
+               LOAD_CONST              20 (120)
+               BINARY_OP                5 (*)
+               BINARY_OP                0 (+)
+               CALL                     2
+               CALL                     2
+
+201            LOAD_CONST              21 (('max_tokens',))
+               CALL_KW                  2
+               STORE_FAST              17 (content)
+
+206            LOAD_GLOBAL             35 (_extract_json + NULL)
+               LOAD_FAST               17 (content)
+               CALL                     1
+               STORE_FAST              18 (data)
+
+207            LOAD_FAST               18 (data)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        6 (to L6)
+               LOAD_CONST              22 ('items')
+               LOAD_FAST               18 (data)
+               CONTAINS_OP              1
+               POP_JUMP_IF_FALSE      153 (to L8)
+
+209    L6:     LOAD_GLOBAL             11 (len + NULL)
+               LOAD_FAST               12 (batch)
+               CALL                     1
+               LOAD_CONST              23 (4)
+               COMPARE_OP             148 (bool(>))
+               POP_JUMP_IF_FALSE      118 (to L7)
+
+210            LOAD_FAST                0 (self)
+               LOAD_ATTR               37 (log + NULL|self)
+               LOAD_CONST              24 ('Batch ')
+               LOAD_FAST               11 (bi)
+               FORMAT_SIMPLE
+               LOAD_CONST              25 (' parse lỗi, tự chia nhỏ...')
+               BUILD_STRING             3
+               CALL                     1
+               POP_TOP
+
+211            LOAD_GLOBAL             11 (len + NULL)
+               LOAD_FAST               12 (batch)
+               CALL                     1
+               LOAD_CONST              26 (2)
+               BINARY_OP                2 (//)
+               STORE_FAST              19 (mid)
+
+212            LOAD_FAST                0 (self)
+               LOAD_ATTR               39 (_apply + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               41 (_translate_raw + NULL|self)
+               LOAD_FAST               12 (batch)
+               LOAD_CONST               0 (None)
+               LOAD_FAST               19 (mid)
+               BINARY_SLICE
+               LOAD_FAST_LOAD_FAST    103 (src, tgt)
+               LOAD_FAST               10 (recent)
+               CALL                     4
+               LOAD_FAST               12 (batch)
+               LOAD_CONST               0 (None)
+               LOAD_FAST               19 (mid)
+               BINARY_SLICE
+               CALL                     2
+               POP_TOP
+
+213            LOAD_FAST                0 (self)
+               LOAD_ATTR               39 (_apply + NULL|self)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR               41 (_translate_raw + NULL|self)
+               LOAD_FAST               12 (batch)
+               LOAD_FAST               19 (mid)
+               LOAD_CONST               0 (None)
+               BINARY_SLICE
+               LOAD_FAST_LOAD_FAST    103 (src, tgt)
+               LOAD_FAST               10 (recent)
+               CALL                     4
+               LOAD_FAST               12 (batch)
+               LOAD_FAST               19 (mid)
+               LOAD_CONST               0 (None)
+               BINARY_SLICE
+               CALL                     2
+               POP_TOP
+               JUMP_FORWARD            41 (to L9)
+
+215    L7:     LOAD_GLOBAL              3 (TranslationError + NULL)
+               LOAD_CONST              27 ('Không parse được JSON ở batch ')
+               LOAD_FAST               11 (bi)
+               FORMAT_SIMPLE
+               LOAD_CONST              28 (': ')
+               LOAD_FAST               17 (content)
+               LOAD_CONST               0 (None)
+               LOAD_CONST              29 (150)
+               BINARY_SLICE
+               FORMAT_SIMPLE
+               BUILD_STRING             4
+               CALL                     1
+               RAISE_VARARGS            1
+
+217    L8:     LOAD_FAST                0 (self)
+               LOAD_ATTR               39 (_apply + NULL|self)
+               LOAD_FAST               18 (data)
+               LOAD_CONST              22 ('items')
+               BINARY_SUBSCR
+               LOAD_FAST               12 (batch)
+               CALL                     2
+               POP_TOP
+
+219    L9:     LOAD_FAST               12 (batch)
+               GET_ITER
+      L10:     FOR_ITER                49 (to L12)
+               STORE_FAST              20 (e)
+
+220            LOAD_FAST               20 (e)
+               LOAD_ATTR               42 (translated)
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L11)
+               JUMP_BACKWARD           22 (to L10)
+
+221   L11:     LOAD_FAST               10 (recent)
+               LOAD_ATTR               45 (append + NULL|self)
+               LOAD_FAST               20 (e)
+               LOAD_ATTR               42 (translated)
+               CALL                     1
+               POP_TOP
+               JUMP_BACKWARD           51 (to L10)
+
+219   L12:     END_FOR
+               POP_TOP
+               EXTENDED_ARG             2
+               JUMP_BACKWARD          515 (to L4)
+
+191   L13:     END_FOR
+               POP_TOP
+
+223            LOAD_FAST                4 (review)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       18 (to L14)
+
+224            LOAD_FAST                0 (self)
+               LOAD_ATTR               47 (_review + NULL|self)
+               LOAD_FAST_LOAD_FAST     23 (entries, tgt)
+               LOAD_FAST                5 (progress)
+               CALL                     3
+               POP_TOP
+
+226   L14:     LOAD_FAST                5 (progress)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        9 (to L15)
+
+227            LOAD_FAST                5 (progress)
+               PUSH_NULL
+               LOAD_FAST_LOAD_FAST    153 (total, total)
+               LOAD_CONST              30 ('Hoàn thành dịch!')
+               CALL                     3
+               POP_TOP
+
+228   L15:     LOAD_FAST                1 (entries)
+               RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC9129B30, file "bilisub\translate\llm.py", line 194>:
+ 194           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                31 (to L3)
+               STORE_FAST_LOAD_FAST    17 (e, e)
+               LOAD_ATTR                0 (index)
+               FORMAT_SIMPLE
+               LOAD_CONST               0 ('|')
+               LOAD_FAST                1 (e)
+               LOAD_ATTR                2 (text)
+               FORMAT_SIMPLE
+               BUILD_STRING             3
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           33 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E1630, file "bilisub\translate\llm.py", line 196>:
+ 196           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                14 (to L3)
+               UNPACK_SEQUENCE          2
+               STORE_FAST_STORE_FAST   18 (k, v)
+               LOAD_FAST                1 (k)
+               FORMAT_SIMPLE
+               LOAD_CONST               0 (' => ')
+               LOAD_FAST                2 (v)
+               FORMAT_SIMPLE
+               BUILD_STRING             3
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           16 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object _translate_raw at 0x0000016DC8FC8330, file "bilisub\translate\llm.py", line 230>:
+230           RESUME                   0
+
+231           LOAD_CONST               1 ('\n')
+              LOAD_ATTR                1 (join + NULL|self)
+              LOAD_CONST               2 (<code object <genexpr> at 0x0000016DC9128FF0, file "bilisub\translate\llm.py", line 231>)
+              MAKE_FUNCTION
+              LOAD_FAST                1 (batch)
+              GET_ITER
+              CALL                     0
+              CALL                     1
+              STORE_FAST               5 (lines)
+
+232           LOAD_GLOBAL              2 (prompts)
+              LOAD_ATTR                4 (build_translate_prompt)
+              PUSH_NULL
+
+233           LOAD_FAST_LOAD_FAST     35 (src, tgt)
+              LOAD_FAST                5 (lines)
+
+234           LOAD_GLOBAL              7 (len + NULL)
+              LOAD_FAST                1 (batch)
+              CALL                     1
+              LOAD_CONST               1 ('\n')
+              LOAD_ATTR                1 (join + NULL|self)
+              LOAD_FAST                4 (recent)
+              LOAD_GLOBAL              8 (CONTEXT_LINES)
+              UNARY_NEGATIVE
+              LOAD_CONST               0 (None)
+              BINARY_SLICE
+              CALL                     1
+
+232           LOAD_CONST               3 (('source_language', 'target_language', 'lines', 'count', 'context'))
+              CALL_KW                  5
+              STORE_FAST               6 (prompt)
+
+236           LOAD_FAST                0 (self)
+              LOAD_ATTR               11 (_chat_failover + NULL|self)
+
+237           LOAD_CONST               4 ('system')
+              LOAD_GLOBAL              2 (prompts)
+              LOAD_ATTR               12 (SYSTEM)
+              LOAD_CONST               5 (('role', 'content'))
+              BUILD_CONST_KEY_MAP      2
+
+238           LOAD_CONST               6 ('user')
+              LOAD_FAST                6 (prompt)
+              LOAD_CONST               5 (('role', 'content'))
+              BUILD_CONST_KEY_MAP      2
+
+237           BUILD_LIST               2
+
+239           LOAD_GLOBAL             15 (min + NULL)
+              LOAD_CONST               7 (8192)
+              LOAD_GLOBAL             17 (max + NULL)
+              LOAD_CONST               8 (2200)
+              LOAD_CONST               9 (200)
+              LOAD_GLOBAL              7 (len + NULL)
+              LOAD_FAST                1 (batch)
+              CALL                     1
+              LOAD_CONST              10 (120)
+              BINARY_OP                5 (*)
+              BINARY_OP                0 (+)
+              CALL                     2
+              CALL                     2
+
+236           LOAD_CONST              11 (('max_tokens',))
+              CALL_KW                  2
+              STORE_FAST               7 (content)
+
+241           LOAD_GLOBAL             19 (_extract_json + NULL)
+              LOAD_FAST                7 (content)
+              CALL                     1
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         4 (to L1)
+              POP_TOP
+              LOAD_CONST              12 ('items')
+              BUILD_LIST               0
+              BUILD_MAP                1
+      L1:     STORE_FAST               8 (data)
+
+242           LOAD_FAST                8 (data)
+              LOAD_ATTR               21 (get + NULL|self)
+              LOAD_CONST              12 ('items')
+              BUILD_LIST               0
+              CALL                     2
+              RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC9128FF0, file "bilisub\translate\llm.py", line 231>:
+ 231           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                31 (to L3)
+               STORE_FAST_LOAD_FAST    17 (e, e)
+               LOAD_ATTR                0 (index)
+               FORMAT_SIMPLE
+               LOAD_CONST               0 ('|')
+               LOAD_FAST                1 (e)
+               LOAD_ATTR                2 (text)
+               FORMAT_SIMPLE
+               BUILD_STRING             3
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           33 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object _apply at 0x0000016DC8F82420, file "bilisub\translate\llm.py", line 244>:
+ 244            RESUME                   0
+
+ 246            LOAD_FAST                1 (batch)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      2 (e)
+                SWAP                     2
+        L1:     BUILD_MAP                0
+                SWAP                     2
+                GET_ITER
+        L2:     FOR_ITER                15 (to L3)
+                STORE_FAST_LOAD_FAST    34 (e, e)
+                LOAD_ATTR                0 (index)
+                LOAD_FAST                2 (e)
+                MAP_ADD                  2
+                JUMP_BACKWARD           17 (to L2)
+        L3:     END_FOR
+                POP_TOP
+        L4:     STORE_FAST               3 (by_index)
+                STORE_FAST               2 (e)
+
+ 247            LOAD_FAST                0 (items)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L5)
+                POP_TOP
+                BUILD_LIST               0
+        L5:     GET_ITER
+        L6:     FOR_ITER                98 (to L10)
+                STORE_FAST               4 (it)
+
+ 248            NOP
+
+ 249    L7:     LOAD_GLOBAL              3 (int + NULL)
+                LOAD_FAST                4 (it)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST               1 ('index')
+                CALL                     1
+                CALL                     1
+                STORE_FAST               5 (idx)
+
+ 252    L8:     LOAD_FAST                3 (by_index)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_FAST                5 (idx)
+                CALL                     1
+                STORE_FAST               2 (e)
+
+ 253            LOAD_FAST                2 (e)
+                POP_JUMP_IF_NOT_NONE     2 (to L9)
+                JUMP_BACKWARD           52 (to L6)
+
+ 254    L9:     LOAD_GLOBAL             11 (str + NULL)
+                LOAD_FAST                4 (it)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST               2 ('translated')
+                LOAD_CONST               3 ('')
+                CALL                     2
+                CALL                     1
+                LOAD_ATTR               13 (strip + NULL|self)
+                CALL                     0
+                LOAD_FAST                2 (e)
+                STORE_ATTR               7 (translated)
+                JUMP_BACKWARD          100 (to L6)
+
+ 247   L10:     END_FOR
+                POP_TOP
+
+ 256            LOAD_FAST                1 (batch)
+                GET_ITER
+       L11:     FOR_ITER                39 (to L13)
+                STORE_FAST               2 (e)
+
+ 257            LOAD_FAST                2 (e)
+                LOAD_ATTR               14 (translated)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L12)
+                JUMP_BACKWARD           22 (to L11)
+
+ 258   L12:     LOAD_FAST                2 (e)
+                LOAD_ATTR               16 (text)
+                LOAD_FAST                2 (e)
+                STORE_ATTR               7 (translated)
+                JUMP_BACKWARD           41 (to L11)
+
+ 256   L13:     END_FOR
+                POP_TOP
+                RETURN_CONST             0 (None)
+
+  --   L14:     SWAP                     2
+                POP_TOP
+
+ 246            SWAP                     2
+                STORE_FAST               2 (e)
+                RERAISE                  0
+
+  --   L15:     PUSH_EXC_INFO
+
+ 250            LOAD_GLOBAL              6 (TypeError)
+                LOAD_GLOBAL              8 (ValueError)
+                BUILD_TUPLE              2
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L17)
+                POP_TOP
+
+ 251   L16:     POP_EXCEPT
+                JUMP_BACKWARD          172 (to L6)
+
+ 250   L17:     RERAISE                  0
+
+  --   L18:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L14 [2]
+  L7 to L8 -> L15 [1]
+  L15 to L16 -> L18 [2] lasti
+  L17 to L18 -> L18 [2] lasti
+
+Disassembly of <code object _review at 0x0000016DC8FB6410, file "bilisub\translate\llm.py", line 260>:
+ 260            RESUME                   0
+
+ 261            NOP
+
+ 262    L1:     LOAD_FAST                3 (progress)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       10 (to L2)
+
+ 263            LOAD_FAST                3 (progress)
+                PUSH_NULL
+                LOAD_CONST               1 (0)
+                LOAD_CONST               2 (1)
+                LOAD_CONST               3 ('Đang review lại bản dịch...')
+                CALL                     3
+                POP_TOP
+
+ 264    L2:     LOAD_FAST                0 (self)
+                LOAD_ATTR                1 (_make_batches + NULL|self)
+                LOAD_FAST                1 (entries)
+                CALL                     1
+                STORE_FAST               4 (batches)
+
+ 265            LOAD_FAST                4 (batches)
+                GET_ITER
+        L3:     FOR_ITER               172 (to L5)
+                STORE_FAST               5 (batch)
+
+ 266            LOAD_CONST               4 ('\n')
+                LOAD_ATTR                3 (join + NULL|self)
+                LOAD_CONST               5 (<code object <genexpr> at 0x0000016DC8E07230, file "bilisub\translate\llm.py", line 266>)
+                MAKE_FUNCTION
+                LOAD_FAST                5 (batch)
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                STORE_FAST               6 (lines)
+
+ 267            LOAD_FAST                0 (self)
+                LOAD_ATTR                5 (_chat_failover + NULL|self)
+
+ 268            LOAD_CONST               6 ('system')
+                LOAD_GLOBAL              6 (prompts)
+                LOAD_ATTR                8 (SYSTEM)
+                LOAD_CONST               7 (('role', 'content'))
+                BUILD_CONST_KEY_MAP      2
+
+ 269            LOAD_CONST               8 ('user')
+                LOAD_GLOBAL              6 (prompts)
+                LOAD_ATTR               10 (build_review_prompt)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST     38 (tgt, lines)
+                LOAD_CONST               9 (('target_language', 'lines'))
+                CALL_KW                  2
+                LOAD_CONST               7 (('role', 'content'))
+                BUILD_CONST_KEY_MAP      2
+
+ 268            BUILD_LIST               2
+
+ 270            LOAD_GLOBAL             13 (min + NULL)
+                LOAD_CONST              10 (4096)
+                LOAD_GLOBAL             15 (max + NULL)
+                LOAD_CONST              11 (2200)
+                LOAD_CONST              12 (200)
+                LOAD_GLOBAL             17 (len + NULL)
+                LOAD_FAST                5 (batch)
+                CALL                     1
+                LOAD_CONST              13 (80)
+                BINARY_OP                5 (*)
+                BINARY_OP                0 (+)
+                CALL                     2
+                CALL                     2
+
+ 267            LOAD_CONST              14 (('max_tokens',))
+                CALL_KW                  2
+                STORE_FAST               7 (content)
+
+ 272            LOAD_GLOBAL             19 (_extract_json + NULL)
+                LOAD_FAST                7 (content)
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L4)
+                POP_TOP
+                BUILD_MAP                0
+        L4:     STORE_FAST               8 (data)
+
+ 273            LOAD_FAST                0 (self)
+                LOAD_ATTR               21 (_apply + NULL|self)
+                LOAD_FAST                8 (data)
+                LOAD_ATTR               23 (get + NULL|self)
+                LOAD_CONST              15 ('items')
+                BUILD_LIST               0
+                CALL                     2
+                LOAD_FAST                5 (batch)
+                CALL                     2
+                POP_TOP
+                JUMP_BACKWARD          174 (to L3)
+
+ 265    L5:     END_FOR
+                POP_TOP
+        L6:     RETURN_CONST             0 (None)
+
+  --    L7:     PUSH_EXC_INFO
+
+ 274            LOAD_GLOBAL             24 (TranslationError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       30 (to L11)
+                STORE_FAST               9 (e)
+
+ 275    L8:     LOAD_FAST                0 (self)
+                LOAD_ATTR               27 (log + NULL|self)
+                LOAD_CONST              16 ('Review bỏ qua (lỗi): ')
+                LOAD_FAST                9 (e)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                CALL                     1
+                POP_TOP
+        L9:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST               9 (e)
+                DELETE_FAST              9 (e)
+                RETURN_CONST             0 (None)
+
+  --   L10:     LOAD_CONST               0 (None)
+                STORE_FAST               9 (e)
+                DELETE_FAST              9 (e)
+                RERAISE                  1
+
+ 274   L11:     RERAISE                  0
+
+  --   L12:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L6 -> L7 [0]
+  L7 to L8 -> L12 [1] lasti
+  L8 to L9 -> L10 [1] lasti
+  L10 to L12 -> L12 [1] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC8E07230, file "bilisub\translate\llm.py", line 266>:
+ 266           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                44 (to L3)
+               STORE_FAST_LOAD_FAST    17 (e, e)
+               LOAD_ATTR                0 (index)
+               FORMAT_SIMPLE
+               LOAD_CONST               0 ('|')
+               LOAD_FAST                1 (e)
+               LOAD_ATTR                2 (text)
+               FORMAT_SIMPLE
+               LOAD_CONST               0 ('|')
+               LOAD_FAST                1 (e)
+               LOAD_ATTR                4 (translated)
+               FORMAT_SIMPLE
+               BUILD_STRING             5
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           46 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti

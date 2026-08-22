@@ -1,0 +1,768 @@
+=== FILE: bilisub\tts\edge.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           SETUP_ANNOTATIONS
+              LOAD_CONST               0 ('Edge TTS (miễn phí, giọng Microsoft Neural).\n\n★21/08 TRẦN CHỜ CHỐNG TREO (vá theo tổng soát bug treo — Boss duyệt "xử lý tất cả, không\nrủi ro"): Microsoft siết Edge từ 19/08 kiểu NHẬN kết nối websocket rồi im lặng giữ mở —\n`await comm.save()` không bao giờ trả về. Trần sock_read=60s của edge-tts 7.2.8 bị aiohttp\n3.14.x VÔ HIỆU khi nâng cấp websocket (reset read_timeout=None) ⇒ phải tự đặt trần ở tầng\ntool. Cách vá KHÔNG RỦI RO: chạy asyncio.run trong luồng con + join(TRẦN) — câu khoẻ mạnh\n(3-5s) không đổi một byte hành vi; câu treo thì sau TRẦN ném TimeoutError vào ĐÚNG vòng\nretry cũ (3 lượt) → hết lượt nổi lỗi lên đường xử lý câu-hỏng sẵn có của engine.\nPhanh tay: BILISUB_EDGE_TIMEOUT=0 (trần mỗi lượt synth, mặc định 90s) ·\nBILISUB_EDGE_LIST_TIMEOUT=0 (trần lấy danh sách giọng, mặc định 8s) — đặt 0 = y hệt cũ.\n⚠ Luồng con bị bỏ rơi khi trần nổ là luồng ĐÃ treo trong thư viện — daemon=True để không\ncản tool thoát; không có cách huỷ coroutine kẹt trong C-socket từ ngoài.\n')
+              STORE_NAME               0 (__doc__)
+
+ 15           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 17           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (asyncio)
+              STORE_NAME               3 (asyncio)
+
+ 18           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (os)
+              STORE_NAME               4 (os)
+
+ 19           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              5 (threading)
+              STORE_NAME               5 (threading)
+
+ 21           LOAD_CONST               3 (None)
+              STORE_GLOBAL             6 (_VOICE_CACHE)
+              LOAD_CONST               4 ('list | None')
+              LOAD_NAME                7 (__annotations__)
+              LOAD_CONST               5 ('_VOICE_CACHE')
+              STORE_SUBSCR
+
+ 29           LOAD_CONST               1 (0)
+              STORE_GLOBAL             8 (_lien_tiep_treo)
+
+ 30           LOAD_NAME                5 (threading)
+              LOAD_ATTR               18 (Lock)
+              PUSH_NULL
+              CALL                     0
+              STORE_NAME              10 (_fuse_lock)
+
+ 33           LOAD_CONST              16 (('return', 'int'))
+              LOAD_CONST               6 (<code object _fuse_nguong at 0x0000016DC8CABE00, file "bilisub\tts\edge.py", line 33>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              11 (_fuse_nguong)
+
+ 40           LOAD_CONST              17 (('return', 'None'))
+              LOAD_CONST               7 (<code object _fuse_reset at 0x0000016DC8EAF990, file "bilisub\tts\edge.py", line 40>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              12 (_fuse_reset)
+
+ 46           LOAD_CONST              16 (('return', 'int'))
+              LOAD_CONST               8 (<code object _fuse_cong at 0x0000016DC8EA3210, file "bilisub\tts\edge.py", line 46>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              13 (_fuse_cong)
+
+ 53           LOAD_CONST              18 (('env', 'str', 'mac_dinh', 'float', 'return', 'float'))
+              LOAD_CONST               9 (<code object _tran at 0x0000016DC90EE130, file "bilisub\tts\edge.py", line 53>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              14 (_tran)
+
+ 61           LOAD_CONST              19 (('timeout', 'float', 'viec', 'str'))
+              LOAD_CONST              10 (<code object _run_coro_co_tran at 0x0000016DC8EF4780, file "bilisub\tts\edge.py", line 61>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              15 (_run_coro_co_tran)
+
+ 91           LOAD_CONST              20 (('return', 'list[dict]'))
+              LOAD_CONST              11 (<code object list_voices at 0x0000016DC96181A0, file "bilisub\tts\edge.py", line 91>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              16 (list_voices)
+
+114           LOAD_CONST              12 ('+0%')
+              LOAD_CONST              13 ('+0Hz')
+              LOAD_CONST              14 (('rate', 'pitch'))
+              BUILD_CONST_KEY_MAP      2
+              LOAD_CONST              21 (('text', 'str', 'voice', 'str', 'out_mp3', 'str', 'rate', 'str', 'pitch', 'str', 'return', 'None'))
+              LOAD_CONST              15 (<code object synth at 0x0000016DC8FB2400, file "bilisub\tts\edge.py", line 114>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              17 (synth)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object _fuse_nguong at 0x0000016DC8CABE00, file "bilisub\tts\edge.py", line 33>:
+  33           RESUME                   0
+
+  34           NOP
+
+  35   L1:     LOAD_GLOBAL              1 (int + NULL)
+               LOAD_GLOBAL              3 (float + NULL)
+               LOAD_GLOBAL              4 (os)
+               LOAD_ATTR                6 (environ)
+               LOAD_ATTR                9 (get + NULL|self)
+               LOAD_CONST               1 ('BILISUB_EDGE_FUSE')
+               LOAD_CONST               2 ('')
+               CALL                     2
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L2)
+               POP_TOP
+               LOAD_CONST               3 (8)
+       L2:     CALL                     1
+               CALL                     1
+       L3:     RETURN_VALUE
+
+  --   L4:     PUSH_EXC_INFO
+
+  36           LOAD_GLOBAL             10 (ValueError)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L6)
+               POP_TOP
+
+  37   L5:     POP_EXCEPT
+               RETURN_CONST             3 (8)
+
+  36   L6:     RERAISE                  0
+
+  --   L7:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L4 [0]
+  L4 to L5 -> L7 [1] lasti
+  L6 to L7 -> L7 [1] lasti
+
+Disassembly of <code object _fuse_reset at 0x0000016DC8EAF990, file "bilisub\tts\edge.py", line 40>:
+  40           RESUME                   0
+
+  42           LOAD_GLOBAL              0 (_fuse_lock)
+               BEFORE_WITH
+       L1:     POP_TOP
+
+  43           LOAD_CONST               1 (0)
+               STORE_GLOBAL             1 (_lien_tiep_treo)
+
+  42   L2:     LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               CALL                     2
+               POP_TOP
+               RETURN_CONST             0 (None)
+       L3:     PUSH_EXC_INFO
+               WITH_EXCEPT_START
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L4)
+               RERAISE                  2
+       L4:     POP_TOP
+       L5:     POP_EXCEPT
+               POP_TOP
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [1] lasti
+  L3 to L5 -> L6 [3] lasti
+
+Disassembly of <code object _fuse_cong at 0x0000016DC8EA3210, file "bilisub\tts\edge.py", line 46>:
+  46           RESUME                   0
+
+  48           LOAD_GLOBAL              0 (_fuse_lock)
+               BEFORE_WITH
+       L1:     POP_TOP
+
+  49           LOAD_GLOBAL              2 (_lien_tiep_treo)
+               LOAD_CONST               1 (1)
+               BINARY_OP               13 (+=)
+               STORE_GLOBAL             1 (_lien_tiep_treo)
+
+  50           LOAD_GLOBAL              2 (_lien_tiep_treo)
+
+  48   L2:     SWAP                     2
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               CALL                     2
+               POP_TOP
+               RETURN_VALUE
+       L3:     PUSH_EXC_INFO
+               WITH_EXCEPT_START
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L4)
+               RERAISE                  2
+       L4:     POP_TOP
+       L5:     POP_EXCEPT
+               POP_TOP
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [1] lasti
+  L3 to L5 -> L6 [3] lasti
+
+Disassembly of <code object _tran at 0x0000016DC90EE130, file "bilisub\tts\edge.py", line 53>:
+  53           RESUME                   0
+
+  54           NOP
+
+  55   L1:     LOAD_GLOBAL              1 (float + NULL)
+               LOAD_GLOBAL              2 (os)
+               LOAD_ATTR                4 (environ)
+               LOAD_ATTR                7 (get + NULL|self)
+               LOAD_FAST                0 (env)
+               LOAD_CONST               1 ('')
+               CALL                     2
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L2)
+               POP_TOP
+               LOAD_FAST                1 (mac_dinh)
+       L2:     CALL                     1
+               STORE_FAST               2 (v)
+
+  58   L3:     LOAD_FAST                2 (v)
+               RETURN_VALUE
+
+  --   L4:     PUSH_EXC_INFO
+
+  56           LOAD_GLOBAL              8 (ValueError)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        6 (to L6)
+               POP_TOP
+
+  57           LOAD_FAST                1 (mac_dinh)
+               STORE_FAST               2 (v)
+       L5:     POP_EXCEPT
+
+  58           LOAD_FAST                2 (v)
+               RETURN_VALUE
+
+  56   L6:     RERAISE                  0
+
+  --   L7:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L4 [0]
+  L4 to L5 -> L7 [1] lasti
+  L6 to L7 -> L7 [1] lasti
+
+Disassembly of <code object _run_coro_co_tran at 0x0000016DC8EF4780, file "bilisub\tts\edge.py", line 61>:
+  --           MAKE_CELL                0 (coro_fn)
+               MAKE_CELL                5 (box)
+
+  61           RESUME                   0
+
+  67           LOAD_FAST                1 (timeout)
+               LOAD_CONST               1 (0)
+               COMPARE_OP              58 (bool(<=))
+               POP_JUMP_IF_FALSE       27 (to L1)
+
+  68           LOAD_GLOBAL              0 (asyncio)
+               LOAD_ATTR                2 (run)
+               PUSH_NULL
+               LOAD_DEREF               0 (coro_fn)
+               PUSH_NULL
+               CALL                     0
+               CALL                     1
+               RETURN_VALUE
+
+  69   L1:     BUILD_MAP                0
+               STORE_DEREF              5 (box)
+
+  71           LOAD_FAST                5 (box)
+               LOAD_FAST                0 (coro_fn)
+               BUILD_TUPLE              2
+               LOAD_CONST               2 (<code object _th at 0x0000016DC8EC3360, file "bilisub\tts\edge.py", line 71>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               STORE_FAST               3 (_th)
+
+  77           LOAD_GLOBAL              4 (threading)
+               LOAD_ATTR                6 (Thread)
+               PUSH_NULL
+               LOAD_FAST                3 (_th)
+               LOAD_CONST               3 (True)
+               LOAD_CONST               4 ('edge-')
+               LOAD_FAST                2 (viec)
+               FORMAT_SIMPLE
+               BUILD_STRING             2
+               LOAD_CONST               5 (('target', 'daemon', 'name'))
+               CALL_KW                  3
+               STORE_FAST               4 (t)
+
+  78           LOAD_FAST                4 (t)
+               LOAD_ATTR                9 (start + NULL|self)
+               CALL                     0
+               POP_TOP
+
+  79           LOAD_FAST                4 (t)
+               LOAD_ATTR               11 (join + NULL|self)
+               LOAD_FAST                1 (timeout)
+               CALL                     1
+               POP_TOP
+
+  80           LOAD_FAST                4 (t)
+               LOAD_ATTR               13 (is_alive + NULL|self)
+               CALL                     0
+               TO_BOOL
+               POP_JUMP_IF_FALSE       19 (to L2)
+
+  81           LOAD_GLOBAL             15 (TimeoutError + NULL)
+
+  82           LOAD_CONST               6 ('Edge TTS không trả lời sau ')
+               LOAD_FAST                1 (timeout)
+               LOAD_CONST               7 ('.0f')
+               FORMAT_WITH_SPEC
+               LOAD_CONST               8 ('s (')
+               LOAD_FAST                2 (viec)
+               FORMAT_SIMPLE
+               LOAD_CONST               9 (') — máy chủ Microsoft đang siết/giữ kết nối. Nếu lặp lại nhiều câu, hãy đổi sang giọng 🗣 Việt offline (không phụ thuộc Microsoft).')
+               BUILD_STRING             5
+
+  81           CALL                     1
+               RAISE_VARARGS            1
+
+  86   L2:     LOAD_CONST              10 ('ex')
+               LOAD_DEREF               5 (box)
+               CONTAINS_OP              0
+               POP_JUMP_IF_FALSE        5 (to L3)
+
+  87           LOAD_DEREF               5 (box)
+               LOAD_CONST              10 ('ex')
+               BINARY_SUBSCR
+               RAISE_VARARGS            1
+
+  88   L3:     LOAD_DEREF               5 (box)
+               LOAD_ATTR               17 (get + NULL|self)
+               LOAD_CONST              11 ('ret')
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object _th at 0x0000016DC8EC3360, file "bilisub\tts\edge.py", line 71>:
+  --           COPY_FREE_VARS           2
+
+  71           RESUME                   0
+
+  72           NOP
+
+  73   L1:     LOAD_GLOBAL              0 (asyncio)
+               LOAD_ATTR                2 (run)
+               PUSH_NULL
+               LOAD_DEREF               2 (coro_fn)
+               PUSH_NULL
+               CALL                     0
+               CALL                     1
+               LOAD_DEREF               1 (box)
+               LOAD_CONST               1 ('ret')
+               STORE_SUBSCR
+       L2:     RETURN_CONST             0 (None)
+
+  --   L3:     PUSH_EXC_INFO
+
+  74           LOAD_GLOBAL              4 (BaseException)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       15 (to L7)
+               STORE_FAST               0 (ex)
+
+  75   L4:     LOAD_FAST                0 (ex)
+               LOAD_DEREF               1 (box)
+               LOAD_CONST               2 ('ex')
+               STORE_SUBSCR
+       L5:     POP_EXCEPT
+               LOAD_CONST               0 (None)
+               STORE_FAST               0 (ex)
+               DELETE_FAST              0 (ex)
+               RETURN_CONST             0 (None)
+
+  --   L6:     LOAD_CONST               0 (None)
+               STORE_FAST               0 (ex)
+               DELETE_FAST              0 (ex)
+               RERAISE                  1
+
+  74   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L8 [1] lasti
+  L4 to L5 -> L6 [1] lasti
+  L6 to L8 -> L8 [1] lasti
+
+Disassembly of <code object list_voices at 0x0000016DC96181A0, file "bilisub\tts\edge.py", line 91>:
+  --           MAKE_CELL                1 (edge_tts)
+
+  91           RESUME                   0
+
+  99           LOAD_GLOBAL              0 (_VOICE_CACHE)
+               POP_JUMP_IF_NONE         6 (to L1)
+
+ 100           LOAD_GLOBAL              0 (_VOICE_CACHE)
+               RETURN_VALUE
+
+ 101   L1:     NOP
+
+ 102   L2:     LOAD_CONST               2 (0)
+               LOAD_CONST               1 (None)
+               IMPORT_NAME              1 (edge_tts)
+               STORE_DEREF              1 (edge_tts)
+
+ 104           LOAD_FAST                1 (edge_tts)
+               BUILD_TUPLE              1
+               LOAD_CONST               3 (<code object _run at 0x0000016DC8EAD8A0, file "bilisub\tts\edge.py", line 104>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               STORE_FAST               0 (_run)
+
+ 107           LOAD_GLOBAL              5 (_run_coro_co_tran + NULL)
+               LOAD_FAST                0 (_run)
+               LOAD_GLOBAL              7 (_tran + NULL)
+               LOAD_CONST               4 ('BILISUB_EDGE_LIST_TIMEOUT')
+               LOAD_CONST               5 (8.0)
+               CALL                     2
+
+ 108           LOAD_CONST               6 ('lấy danh sách giọng')
+
+ 107           CALL                     3
+               STORE_GLOBAL             0 (_VOICE_CACHE)
+
+ 111   L3:     LOAD_GLOBAL              0 (_VOICE_CACHE)
+               RETURN_VALUE
+
+  --   L4:     PUSH_EXC_INFO
+
+ 109           LOAD_GLOBAL              8 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       10 (to L6)
+               POP_TOP
+
+ 110           BUILD_LIST               0
+               STORE_GLOBAL             0 (_VOICE_CACHE)
+       L5:     POP_EXCEPT
+
+ 111           LOAD_GLOBAL              0 (_VOICE_CACHE)
+               RETURN_VALUE
+
+ 109   L6:     RERAISE                  0
+
+  --   L7:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L4 [0]
+  L4 to L5 -> L7 [1] lasti
+  L6 to L7 -> L7 [1] lasti
+
+Disassembly of <code object _run at 0x0000016DC8EAD8A0, file "bilisub\tts\edge.py", line 104>:
+  --           COPY_FREE_VARS           1
+
+ 104           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+
+ 105           LOAD_DEREF               0 (edge_tts)
+               LOAD_ATTR                1 (list_voices + NULL|self)
+               CALL                     0
+               GET_AWAITABLE            0
+               LOAD_CONST               0 (None)
+       L2:     SEND                     3 (to L5)
+       L3:     YIELD_VALUE              1
+       L4:     RESUME                   3
+               JUMP_BACKWARD_NO_INTERRUPT 5 (to L2)
+       L5:     END_SEND
+               RETURN_VALUE
+       L6:     CLEANUP_THROW
+       L7:     JUMP_BACKWARD_NO_INTERRUPT 4 (to L5)
+
+  --   L8:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L8 [0] lasti
+  L3 to L4 -> L6 [2]
+  L4 to L7 -> L8 [0] lasti
+
+Disassembly of <code object synth at 0x0000016DC8FB2400, file "bilisub\tts\edge.py", line 114>:
+  --            MAKE_CELL                0 (text)
+                MAKE_CELL                1 (voice)
+                MAKE_CELL                2 (out_mp3)
+                MAKE_CELL                3 (rate)
+                MAKE_CELL                4 (pitch)
+                MAKE_CELL               13 (edge_tts)
+
+ 114            RESUME                   0
+
+ 120            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              0 (os)
+                STORE_FAST               5 (_os)
+
+ 121            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              1 (time)
+                STORE_FAST               6 (time)
+
+ 123            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              2 (edge_tts)
+                STORE_DEREF             13 (edge_tts)
+
+ 125            LOAD_FAST               13 (edge_tts)
+                LOAD_FAST                2 (out_mp3)
+                LOAD_FAST                4 (pitch)
+                LOAD_FAST                3 (rate)
+                LOAD_FAST                0 (text)
+                LOAD_FAST                1 (voice)
+                BUILD_TUPLE              6
+                LOAD_CONST               3 (<code object _run at 0x0000016DC8EA36D0, file "bilisub\tts\edge.py", line 125>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                STORE_FAST               7 (_run)
+
+ 129            LOAD_GLOBAL              7 (_tran + NULL)
+                LOAD_CONST               4 ('BILISUB_EDGE_TIMEOUT')
+                LOAD_CONST               5 (90.0)
+                CALL                     2
+                STORE_FAST               8 (tran)
+
+ 130            LOAD_GLOBAL              9 (_fuse_nguong + NULL)
+                CALL                     0
+                STORE_FAST               9 (nguong)
+
+ 131            LOAD_CONST               2 (None)
+                STORE_FAST              10 (last)
+
+ 132            LOAD_GLOBAL             11 (range + NULL)
+                LOAD_CONST               6 (3)
+                CALL                     1
+                GET_ITER
+        L1:     FOR_ITER               206 (to L8)
+                STORE_FAST              11 (attempt)
+
+ 133            NOP
+
+ 134    L2:     LOAD_GLOBAL             13 (_run_coro_co_tran + NULL)
+                LOAD_FAST_LOAD_FAST    120 (_run, tran)
+                LOAD_CONST               7 ('đọc câu')
+                CALL                     3
+                POP_TOP
+
+ 135            LOAD_FAST                5 (_os)
+                LOAD_ATTR               14 (path)
+                LOAD_ATTR               17 (exists + NULL|self)
+                LOAD_DEREF               2 (out_mp3)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE       43 (to L4)
+                LOAD_FAST                5 (_os)
+                LOAD_ATTR               14 (path)
+                LOAD_ATTR               19 (getsize + NULL|self)
+                LOAD_DEREF               2 (out_mp3)
+                CALL                     1
+                LOAD_CONST               1 (0)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       12 (to L4)
+
+ 136            LOAD_GLOBAL             21 (_fuse_reset + NULL)
+                CALL                     0
+                POP_TOP
+
+ 137    L3:     POP_TOP
+                RETURN_CONST             2 (None)
+
+ 138    L4:     LOAD_GLOBAL             23 (RuntimeError + NULL)
+                LOAD_CONST               8 ('edge-tts trả file rỗng')
+                CALL                     1
+                STORE_FAST              10 (last)
+
+ 150    L5:     NOP
+
+ 151    L6:     LOAD_FAST                5 (_os)
+                LOAD_ATTR               14 (path)
+                LOAD_ATTR               17 (exists + NULL|self)
+                LOAD_DEREF               2 (out_mp3)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE       48 (to L7)
+                LOAD_FAST                5 (_os)
+                LOAD_ATTR               14 (path)
+                LOAD_ATTR               19 (getsize + NULL|self)
+                LOAD_DEREF               2 (out_mp3)
+                CALL                     1
+                LOAD_CONST               1 (0)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       17 (to L7)
+
+ 152            LOAD_FAST                5 (_os)
+                LOAD_ATTR               31 (remove + NULL|self)
+                LOAD_DEREF               2 (out_mp3)
+                CALL                     1
+                POP_TOP
+
+ 155    L7:     LOAD_FAST                6 (time)
+                LOAD_ATTR               35 (sleep + NULL|self)
+                LOAD_CONST              11 (0.7)
+                LOAD_FAST               11 (attempt)
+                LOAD_CONST              12 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD          208 (to L1)
+
+ 132    L8:     END_FOR
+                POP_TOP
+
+ 156            LOAD_FAST               10 (last)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L9)
+                LOAD_FAST               10 (last)
+                RAISE_VARARGS            1
+        L9:     LOAD_GLOBAL             23 (RuntimeError + NULL)
+                LOAD_CONST              13 ('edge-tts thất bại')
+                CALL                     1
+                RAISE_VARARGS            1
+
+  --   L10:     PUSH_EXC_INFO
+
+ 139            LOAD_GLOBAL             24 (TimeoutError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       48 (to L14)
+                STORE_FAST              12 (ex)
+
+ 140   L11:     LOAD_FAST               12 (ex)
+                STORE_FAST              10 (last)
+
+ 141            LOAD_FAST                9 (nguong)
+                LOAD_CONST               1 (0)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       30 (to L12)
+                LOAD_GLOBAL             27 (_fuse_cong + NULL)
+                CALL                     0
+                LOAD_FAST                9 (nguong)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE       16 (to L12)
+
+ 142            LOAD_GLOBAL             25 (TimeoutError + NULL)
+
+ 143            LOAD_CONST               9 ('Edge TTS đã không trả lời ')
+                LOAD_FAST                9 (nguong)
+                FORMAT_SIMPLE
+                LOAD_CONST              10 (" câu LIÊN TIẾP — máy chủ Microsoft đang chặn/siết diện rộng. Dừng sớm để bạn khỏi chờ vô ích: hãy đổi sang giọng 🗣 Việt offline (nút 'Giọng đọc' → mục 🗣) rồi chạy lại — phần đã dịch được nhớ sẵn, KHÔNG tốn credit dịch lại.")
+                BUILD_STRING             3
+
+ 142            CALL                     1
+
+ 147            LOAD_FAST               12 (ex)
+
+ 142            RAISE_VARARGS            2
+
+  --   L12:     POP_EXCEPT
+                LOAD_CONST               2 (None)
+                STORE_FAST              12 (ex)
+                DELETE_FAST             12 (ex)
+                JUMP_BACKWARD_NO_INTERRUPT 181 (to L5)
+       L13:     LOAD_CONST               2 (None)
+                STORE_FAST              12 (ex)
+                DELETE_FAST             12 (ex)
+                RERAISE                  1
+
+ 148   L14:     LOAD_GLOBAL             28 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       12 (to L18)
+                STORE_FAST              12 (ex)
+
+ 149   L15:     LOAD_FAST               12 (ex)
+                STORE_FAST              10 (last)
+       L16:     POP_EXCEPT
+                LOAD_CONST               2 (None)
+                STORE_FAST              12 (ex)
+                DELETE_FAST             12 (ex)
+                JUMP_BACKWARD_NO_INTERRUPT 201 (to L5)
+
+  --   L17:     LOAD_CONST               2 (None)
+                STORE_FAST              12 (ex)
+                DELETE_FAST             12 (ex)
+                RERAISE                  1
+
+ 148   L18:     RERAISE                  0
+
+  --   L19:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L20:     PUSH_EXC_INFO
+
+ 153            LOAD_GLOBAL             32 (OSError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L22)
+                POP_TOP
+
+ 154   L21:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 140 (to L7)
+
+ 153   L22:     RERAISE                  0
+
+  --   L23:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L10 [1]
+  L4 to L5 -> L10 [1]
+  L6 to L7 -> L20 [1]
+  L10 to L11 -> L19 [2] lasti
+  L11 to L12 -> L13 [2] lasti
+  L13 to L15 -> L19 [2] lasti
+  L15 to L16 -> L17 [2] lasti
+  L17 to L19 -> L19 [2] lasti
+  L20 to L21 -> L23 [2] lasti
+  L22 to L23 -> L23 [2] lasti
+
+Disassembly of <code object _run at 0x0000016DC8EA36D0, file "bilisub\tts\edge.py", line 125>:
+  --           COPY_FREE_VARS           6
+
+ 125           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+
+ 126           LOAD_DEREF               1 (edge_tts)
+               LOAD_ATTR                1 (Communicate + NULL|self)
+               LOAD_DEREF               5 (text)
+               LOAD_DEREF               6 (voice)
+               LOAD_DEREF               4 (rate)
+               LOAD_DEREF               3 (pitch)
+               LOAD_CONST               1 (('rate', 'pitch'))
+               CALL_KW                  4
+               STORE_FAST               0 (comm)
+
+ 127           LOAD_FAST                0 (comm)
+               LOAD_ATTR                3 (save + NULL|self)
+               LOAD_DEREF               2 (out_mp3)
+               CALL                     1
+               GET_AWAITABLE            0
+               LOAD_CONST               0 (None)
+       L2:     SEND                     3 (to L5)
+       L3:     YIELD_VALUE              1
+       L4:     RESUME                   3
+               JUMP_BACKWARD_NO_INTERRUPT 5 (to L2)
+       L5:     END_SEND
+               POP_TOP
+               RETURN_CONST             0 (None)
+       L6:     CLEANUP_THROW
+       L7:     JUMP_BACKWARD_NO_INTERRUPT 5 (to L5)
+
+  --   L8:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L8 [0] lasti
+  L3 to L4 -> L6 [2]
+  L4 to L7 -> L8 [0] lasti

@@ -1,0 +1,726 @@
+=== FILE: bilisub\translate\nguoi_noi.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  2           LOAD_CONST               0 ('★2026-08-19 F\'\' XƯNG HÔ — NGƯỜI NÓI KHÔNG TÊN (chống "mày/tao" của DeepSeek).\n\nBỐI CẢNH (A/B 19/08, memory `xung-ho-may-tao-deepseek-bang-nhan-vat`): phim 寒门 cảnh\nvợ chồng/hàng xóm, DeepSeek sinh "mày/tao" 17/135 câu. Luật chữ trong prompt (B/C) và\nví dụ chung (E2) đều VÔ HIỆU với DeepSeek; chỉ BẢNG NHÂN VẬT có tác dụng: thí nghiệm F\nđưa "người nói không tên có định danh ổn định" (他娘/瑾儿他爹/二嫂/钱嫂子…) vào bảng kèm\nself/address ⇒ mày/tao 17 → 0.\n\nTHIẾT KẾ "KHÔNG RỦI RO" (Boss chốt 19/08 "phải làm KHÔNG có rủi ro mà dịch vẫn chuẩn"):\n  · LƯỢT GỌI RIÊNG (không đụng lượt bảng nhân vật cũ) → JSON speakers.\n  · BỘ LỌC TẤT ĐỊNH (hàm thuần `loc()` — không AI): định danh ≥3 lần trong nguồn ·\n    không trùng tên nhân vật/thuật ngữ đã có · self/address PHẢI thuộc ALLOW ·\n    cấm mày/tao · nhãn không lẫn chữ Hán · trần 12 người · thứ tự tất định.\n  · Khối render chèn DƯỚI bảng nhân vật cũ (`ghep()` chỉ NỐI — bảng cũ giữ nguyên byte).\n  · KHÔNG bump `_PROMPT_VERSION` (phim cũ không bị dịch lại).\n  · PHANH TAY: env `BILISUB_SPEAKERS_OFF=1` → tắt toàn bộ, hành vi y hệt bản cũ.\n  · MỌI nhánh lỗi (API chết, JSON rác, lọc rỗng) → khối rỗng → prompt y hệt bản cũ.\nChỉ chạy khi ĐÍCH là tiếng Việt (allowlist là từ xưng hô Việt).\n')
+              STORE_NAME               0 (__doc__)
+
+ 21           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 23           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (os)
+              STORE_NAME               3 (os)
+
+ 24           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (re)
+              STORE_NAME               4 (re)
+
+ 26           LOAD_CONST               4 ('BILISUB_SPEAKERS_OFF')
+              STORE_NAME               5 (TAT_ENV)
+
+ 27           LOAD_CONST               5 ('BILISUB_SPEAKERS_ON')
+              STORE_NAME               6 (BAT_ENV)
+
+ 31           LOAD_CONST               6 (False)
+              STORE_NAME               7 (BAT_MAC_DINH)
+
+ 32           LOAD_CONST               7 (12)
+              STORE_NAME               8 (TRAN_SO_NGUOI)
+
+ 33           LOAD_CONST               8 (3)
+              STORE_NAME               9 (NGUONG_LAP)
+
+ 36           LOAD_NAME               10 (frozenset)
+              PUSH_NULL
+
+ 37           LOAD_CONST               9 ('tôi ta con cháu em anh chị ông bà mình mẹ bố cha má ba nương thiếp chàng ngươi cô chú bác thím dì cậu mợ')
+
+ 38           LOAD_ATTR               23 (split + NULL|self)
+              CALL                     0
+
+ 36           CALL                     1
+
+ 39           LOAD_NAME               10 (frozenset)
+              PUSH_NULL
+              BUILD_LIST               0
+              LOAD_CONST              10 (('phụ thân', 'mẫu thân', 'phu quân', 'nương tử'))
+              LIST_EXTEND              1
+              CALL                     1
+
+ 36           BINARY_OP                7 (|)
+              STORE_NAME              12 (ALLOW)
+
+ 40           LOAD_CONST              11 (('mày', 'tao'))
+              STORE_NAME              13 (CAM)
+
+ 41           LOAD_NAME                4 (re)
+              LOAD_ATTR               28 (compile)
+              PUSH_NULL
+              LOAD_CONST              12 ('[㐀-䶿一-鿿]')
+              CALL                     1
+              STORE_NAME              15 (_HAN)
+
+ 44           LOAD_CONST              18 (('return', 'bool'))
+              LOAD_CONST              13 (<code object tat at 0x0000016DC8EB68D0, file "bilisub\translate\nguoi_noi.py", line 44>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              16 (tat)
+
+ 53           LOAD_CONST              19 (('source_language', 'str', 'text', 'str', 'return', 'str'))
+              LOAD_CONST              14 (<code object build_prompt at 0x0000016DC9129110, file "bilisub\translate\nguoi_noi.py", line 53>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              17 (build_prompt)
+
+ 79           LOAD_CONST              20 (('full_text', 'str', 'return', 'list'))
+              LOAD_CONST              15 (<code object loc at 0x0000016DC93A1780, file "bilisub\translate\nguoi_noi.py", line 79>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              18 (loc)
+
+125           LOAD_CONST              21 (('return', 'str'))
+              LOAD_CONST              16 (<code object render at 0x0000016DC8F58B00, file "bilisub\translate\nguoi_noi.py", line 125>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              19 (render)
+
+144           LOAD_CONST              22 (('char_sheet', 'str', 'khoi', 'str', 'return', 'str'))
+              LOAD_CONST              17 (<code object ghep at 0x0000016DC90EDBB0, file "bilisub\translate\nguoi_noi.py", line 144>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              20 (ghep)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object tat at 0x0000016DC8EB68D0, file "bilisub\translate\nguoi_noi.py", line 44>:
+ 44           RESUME                   0
+
+ 46           LOAD_GLOBAL              0 (os)
+              LOAD_ATTR                2 (environ)
+              LOAD_ATTR                5 (get + NULL|self)
+              LOAD_GLOBAL              6 (TAT_ENV)
+              LOAD_CONST               1 ('')
+              CALL                     2
+              LOAD_CONST               2 ('1')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE        1 (to L1)
+
+ 47           RETURN_CONST             3 (True)
+
+ 48   L1:     LOAD_GLOBAL              8 (BAT_MAC_DINH)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        41 (to L2)
+              LOAD_GLOBAL              0 (os)
+              LOAD_ATTR                2 (environ)
+              LOAD_ATTR                5 (get + NULL|self)
+              LOAD_GLOBAL             10 (BAT_ENV)
+              LOAD_CONST               1 ('')
+              CALL                     2
+              LOAD_CONST               2 ('1')
+              COMPARE_OP             119 (bool(!=))
+              POP_JUMP_IF_FALSE        1 (to L2)
+
+ 49           RETURN_CONST             3 (True)
+
+ 50   L2:     RETURN_CONST             4 (False)
+
+Disassembly of <code object build_prompt at 0x0000016DC9129110, file "bilisub\translate\nguoi_noi.py", line 53>:
+ 53           RESUME                   0
+
+ 55           LOAD_CONST               1 (' / ')
+              LOAD_ATTR                1 (join + NULL|self)
+              LOAD_GLOBAL              3 (sorted + NULL)
+              LOAD_GLOBAL              4 (ALLOW)
+              CALL                     1
+              CALL                     1
+              STORE_FAST               2 (allow)
+
+ 56           LOAD_CONST               2 ("You are analyzing a video's subtitles (")
+              LOAD_FAST                0 (source_language)
+              FORMAT_SIMPLE
+              LOAD_CONST               3 (") for ONE narrow task.\n\nFind RECURRING UNNAMED SPEAKERS: individuals who have NO proper name in the text but are\nreferred to consistently by ONE kinship/nickname identifier — e.g. 他娘 (his mom), 瑾儿他爹\n(Jin'er's dad), 二嫂 (second sister-in-law), 钱嫂子 (Mrs. Qian). Each identifier must refer\nto ONE specific recurring person. Do NOT list characters that already have a proper name.\nDo NOT list generic one-off role words (路人, 老板, 服务员…).\n\nFor each, give fixed Vietnamese forms of address, choosing self/address ONLY from this list:\n")
+
+ 65           LOAD_FAST                2 (allow)
+              FORMAT_SIMPLE
+              LOAD_CONST               4 ('\n\nReturn EXACTLY ONE JSON object:\n{"speakers":[{"original":"<identifier as written in source>",\n "label":"<short Vietnamese description of who this is, no Chinese characters>",\n "self":"<ONE word from the list — how this person says \'I\'>",\n "address":"<ONE word from the list — how others address this person>"}]}\nIf none, use an empty array. Never invent identifiers not present in the text.\n\nSUBTITLES:\n')
+
+ 75           LOAD_FAST                1 (text)
+              FORMAT_SIMPLE
+              LOAD_CONST               5 ('\n')
+
+ 56           BUILD_STRING             7
+              RETURN_VALUE
+
+Disassembly of <code object loc at 0x0000016DC93A1780, file "bilisub\translate\nguoi_noi.py", line 79>:
+  --            MAKE_CELL               14 (label)
+
+  79            RESUME                   0
+
+  91            LOAD_FAST                1 (full_text)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                LOAD_CONST               1 ('')
+        L1:     STORE_FAST               1 (full_text)
+
+  92            BUILD_LIST               0
+                LOAD_GLOBAL              1 (set + NULL)
+                CALL                     0
+                STORE_FAST_STORE_FAST   67 (seen, ra)
+
+  95            LOAD_GLOBAL              3 (sorted + NULL)
+                LOAD_CONST               2 (<code object <genexpr> at 0x0000016DC9128A50, file "bilisub\translate\nguoi_noi.py", line 95>)
+                MAKE_FUNCTION
+                LOAD_FAST                0 (items)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                BUILD_LIST               0
+        L2:     GET_ITER
+                CALL                     0
+
+  96            LOAD_CONST               3 (<code object <lambda> at 0x0000016DC8E90B70, file "bilisub\translate\nguoi_noi.py", line 96>)
+                MAKE_FUNCTION
+
+  95            LOAD_CONST               4 (('key',))
+                CALL_KW                  2
+                STORE_FAST               5 (muc_vao)
+
+  98            LOAD_FAST                5 (muc_vao)
+                GET_ITER
+        L3:     EXTENDED_ARG             1
+                FOR_ITER               485 (to L18)
+                STORE_FAST               6 (it)
+
+  99            LOAD_GLOBAL              5 (str + NULL)
+                LOAD_FAST                6 (it)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST               5 ('original')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L4)
+                POP_TOP
+                LOAD_CONST               1 ('')
+        L4:     CALL                     1
+                LOAD_ATTR                9 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               7 (o)
+
+ 100            LOAD_FAST                7 (o)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       46 (to L5)
+                LOAD_GLOBAL             11 (len + NULL)
+                LOAD_FAST                7 (o)
+                CALL                     1
+                LOAD_CONST               6 (20)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_TRUE        31 (to L5)
+                LOAD_GLOBAL             12 (_HAN)
+                LOAD_ATTR               15 (search + NULL|self)
+                LOAD_FAST                7 (o)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE        5 (to L5)
+                LOAD_FAST_LOAD_FAST    116 (o, seen)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE        2 (to L6)
+
+ 101    L5:     JUMP_BACKWARD          108 (to L3)
+
+ 102    L6:     LOAD_FAST                1 (full_text)
+                LOAD_ATTR               17 (count + NULL|self)
+                LOAD_FAST                7 (o)
+                CALL                     1
+                STORE_FAST               8 (so_lan)
+
+ 103            LOAD_FAST                8 (so_lan)
+                LOAD_GLOBAL             18 (NGUONG_LAP)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        2 (to L7)
+
+ 104            JUMP_BACKWARD          137 (to L3)
+
+ 105    L7:     LOAD_FAST_LOAD_FAST    114 (o, glossary)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L8)
+                POP_TOP
+                BUILD_MAP                0
+        L8:     CONTAINS_OP              0
+                POP_JUMP_IF_FALSE        2 (to L9)
+
+ 106            JUMP_BACKWARD          153 (to L3)
+
+ 107    L9:     LOAD_GLOBAL              5 (str + NULL)
+                LOAD_FAST                6 (it)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST               7 ('self')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L10)
+                POP_TOP
+                LOAD_CONST               1 ('')
+       L10:     CALL                     1
+                LOAD_ATTR                9 (strip + NULL|self)
+                CALL                     0
+                LOAD_ATTR               21 (lower + NULL|self)
+                CALL                     0
+                STORE_FAST               9 (tu_xung)
+
+ 108            LOAD_GLOBAL              5 (str + NULL)
+                LOAD_FAST                6 (it)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST               8 ('address')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L11)
+                POP_TOP
+                LOAD_CONST               1 ('')
+       L11:     CALL                     1
+                LOAD_ATTR                9 (strip + NULL|self)
+                CALL                     0
+                LOAD_ATTR               21 (lower + NULL|self)
+                CALL                     0
+                STORE_FAST              10 (goi)
+
+ 109            LOAD_FAST                9 (tu_xung)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       13 (to L12)
+                LOAD_FAST                9 (tu_xung)
+                LOAD_GLOBAL             22 (ALLOW)
+                CONTAINS_OP              1
+                POP_JUMP_IF_FALSE        3 (to L12)
+
+ 110            EXTENDED_ARG             1
+                JUMP_BACKWARD          299 (to L3)
+
+ 111   L12:     LOAD_FAST               10 (goi)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       13 (to L13)
+                LOAD_FAST               10 (goi)
+                LOAD_GLOBAL             22 (ALLOW)
+                CONTAINS_OP              1
+                POP_JUMP_IF_FALSE        3 (to L13)
+
+ 112            EXTENDED_ARG             1
+                JUMP_BACKWARD          319 (to L3)
+
+ 113   L13:     LOAD_FAST                9 (tu_xung)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        10 (to L14)
+                LOAD_FAST               10 (goi)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         3 (to L14)
+
+ 114            EXTENDED_ARG             1
+                JUMP_BACKWARD          336 (to L3)
+
+ 115   L14:     LOAD_GLOBAL              5 (str + NULL)
+                LOAD_FAST                6 (it)
+                LOAD_ATTR                7 (get + NULL|self)
+                LOAD_CONST               9 ('label')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L15)
+                POP_TOP
+                LOAD_CONST               1 ('')
+       L15:     CALL                     1
+                LOAD_ATTR                9 (strip + NULL|self)
+                CALL                     0
+                LOAD_CONST              10 (None)
+                LOAD_CONST              11 (40)
+                BINARY_SLICE
+                STORE_DEREF             14 (label)
+
+ 116            LOAD_GLOBAL             12 (_HAN)
+                LOAD_ATTR               15 (search + NULL|self)
+                LOAD_DEREF              14 (label)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        30 (to L16)
+                LOAD_GLOBAL             25 (any + NULL)
+                LOAD_FAST               14 (label)
+                BUILD_TUPLE              1
+                LOAD_CONST              12 (<code object <genexpr> at 0x0000016DC8EA3470, file "bilisub\translate\nguoi_noi.py", line 116>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                LOAD_GLOBAL             26 (CAM)
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L17)
+
+ 117   L16:     LOAD_CONST               1 ('')
+                STORE_DEREF             14 (label)
+
+ 118   L17:     LOAD_FAST                4 (seen)
+                LOAD_ATTR               29 (add + NULL|self)
+                LOAD_FAST                7 (o)
+                CALL                     1
+                POP_TOP
+
+ 119            LOAD_FAST                3 (ra)
+                LOAD_ATTR               31 (append + NULL|self)
+                LOAD_FAST                7 (o)
+                LOAD_DEREF              14 (label)
+                LOAD_FAST                9 (tu_xung)
+
+ 120            LOAD_FAST_LOAD_FAST    168 (goi, so_lan)
+
+ 119            LOAD_CONST              13 (('original', 'label', 'self', 'address', '_lap'))
+                BUILD_CONST_KEY_MAP      5
+                CALL                     1
+                POP_TOP
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          488 (to L3)
+
+  98   L18:     END_FOR
+                POP_TOP
+
+ 121            LOAD_FAST                3 (ra)
+                LOAD_ATTR               33 (sort + NULL|self)
+                LOAD_CONST              14 (<code object <lambda> at 0x0000016DC8EBAF70, file "bilisub\translate\nguoi_noi.py", line 121>)
+                MAKE_FUNCTION
+                LOAD_CONST               4 (('key',))
+                CALL_KW                  1
+                POP_TOP
+
+ 122            LOAD_FAST                3 (ra)
+                LOAD_CONST              10 (None)
+                LOAD_GLOBAL             34 (TRAN_SO_NGUOI)
+                BINARY_SLICE
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     11 (x)
+                LOAD_FAST_AND_CLEAR     12 (k)
+                LOAD_FAST_AND_CLEAR     13 (v)
+                SWAP                     4
+       L19:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L20:     FOR_ITER                47 (to L27)
+                STORE_FAST_LOAD_FAST   187 (x, x)
+                LOAD_ATTR               37 (items + NULL|self)
+                CALL                     0
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     12 (k)
+                LOAD_FAST_AND_CLEAR     13 (v)
+                SWAP                     3
+       L21:     BUILD_MAP                0
+                SWAP                     2
+                GET_ITER
+       L22:     FOR_ITER                15 (to L25)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  205 (k, v)
+                LOAD_FAST               12 (k)
+                LOAD_CONST              15 ('_lap')
+                COMPARE_OP             119 (bool(!=))
+       L23:     POP_JUMP_IF_TRUE         2 (to L24)
+                JUMP_BACKWARD           13 (to L22)
+       L24:     LOAD_FAST_LOAD_FAST    205 (k, v)
+                MAP_ADD                  2
+                JUMP_BACKWARD           17 (to L22)
+       L25:     END_FOR
+                POP_TOP
+       L26:     SWAP                     3
+                STORE_FAST              13 (v)
+                STORE_FAST              12 (k)
+                LIST_APPEND              2
+                JUMP_BACKWARD           49 (to L20)
+       L27:     END_FOR
+                POP_TOP
+       L28:     SWAP                     4
+                STORE_FAST              13 (v)
+                STORE_FAST              12 (k)
+                STORE_FAST              11 (x)
+                RETURN_VALUE
+
+  --   L29:     SWAP                     2
+                POP_TOP
+
+ 122            SWAP                     3
+                STORE_FAST              13 (v)
+                STORE_FAST              12 (k)
+                RERAISE                  0
+
+  --   L30:     SWAP                     2
+                POP_TOP
+
+ 122            SWAP                     4
+                STORE_FAST              13 (v)
+                STORE_FAST              12 (k)
+                STORE_FAST              11 (x)
+                RERAISE                  0
+ExceptionTable:
+  L19 to L21 -> L30 [4]
+  L21 to L23 -> L29 [8]
+  L24 to L26 -> L29 [8]
+  L26 to L28 -> L30 [4]
+  L29 to L30 -> L30 [4]
+
+Disassembly of <code object <genexpr> at 0x0000016DC9128A50, file "bilisub\translate\nguoi_noi.py", line 95>:
+  95           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                30 (to L5)
+               STORE_FAST               1 (it)
+               LOAD_GLOBAL              1 (isinstance + NULL)
+               LOAD_FAST                1 (it)
+               LOAD_GLOBAL              2 (dict)
+               CALL                     2
+               TO_BOOL
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           26 (to L2)
+       L4:     LOAD_FAST                1 (it)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           32 (to L2)
+       L5:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L6:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L6 [0] lasti
+  L4 to L6 -> L6 [0] lasti
+
+Disassembly of <code object <lambda> at 0x0000016DC8E90B70, file "bilisub\translate\nguoi_noi.py", line 96>:
+ 96           RESUME                   0
+              LOAD_GLOBAL              1 (str + NULL)
+              LOAD_FAST                0 (x)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_CONST               1 ('original')
+              CALL                     1
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L1:     CALL                     1
+              LOAD_GLOBAL              1 (str + NULL)
+              LOAD_FAST                0 (x)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_CONST               3 ('label')
+              CALL                     1
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L2)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L2:     CALL                     1
+
+ 97           LOAD_GLOBAL              1 (str + NULL)
+              LOAD_FAST                0 (x)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_CONST               4 ('self')
+              CALL                     1
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L3:     CALL                     1
+              LOAD_GLOBAL              1 (str + NULL)
+              LOAD_FAST                0 (x)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_CONST               5 ('address')
+              CALL                     1
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L4)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L4:     CALL                     1
+
+ 96           BUILD_TUPLE              4
+              RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC8EA3470, file "bilisub\translate\nguoi_noi.py", line 116>:
+  --           COPY_FREE_VARS           1
+
+ 116           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                37 (to L3)
+               STORE_FAST_LOAD_FAST    17 (c, c)
+               LOAD_DEREF               2 (label)
+               LOAD_ATTR                1 (lower + NULL|self)
+               CALL                     0
+               LOAD_ATTR                3 (split + NULL|self)
+               CALL                     0
+               CONTAINS_OP              0
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           39 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object <lambda> at 0x0000016DC8EBAF70, file "bilisub\translate\nguoi_noi.py", line 121>:
+121           RESUME                   0
+              LOAD_FAST                0 (x)
+              LOAD_CONST               1 ('_lap')
+              BINARY_SUBSCR
+              UNARY_NEGATIVE
+              LOAD_FAST                0 (x)
+              LOAD_CONST               2 ('original')
+              BINARY_SUBSCR
+              BUILD_TUPLE              2
+              RETURN_VALUE
+
+Disassembly of <code object render at 0x0000016DC8F58B00, file "bilisub\translate\nguoi_noi.py", line 125>:
+125           RESUME                   0
+
+127           LOAD_FAST                0 (items)
+              TO_BOOL
+              POP_JUMP_IF_TRUE         1 (to L1)
+
+128           RETURN_CONST             1 ('')
+
+131   L1:     LOAD_CONST               2 ('NGƯỜI NÓI KHÔNG TÊN (định danh lặp lại, KHÔNG phải tên riêng — áp xưng hô cố định y như nhân vật có tên):')
+              BUILD_LIST               1
+              STORE_FAST               1 (dong)
+
+133           LOAD_FAST                0 (items)
+              GET_ITER
+      L2:     FOR_ITER               125 (to L6)
+              STORE_FAST               2 (it)
+
+134           LOAD_FAST                2 (it)
+              LOAD_ATTR                1 (get + NULL|self)
+              LOAD_CONST               3 ('label')
+              CALL                     1
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+              POP_TOP
+              LOAD_CONST               4 ('người nói không tên')
+      L3:     STORE_FAST               3 (nhan)
+
+135           LOAD_CONST               5 ('- ')
+              LOAD_FAST                2 (it)
+              LOAD_CONST               6 ('original')
+              BINARY_SUBSCR
+              FORMAT_SIMPLE
+              LOAD_CONST               7 (' => ')
+              LOAD_FAST                3 (nhan)
+              FORMAT_SIMPLE
+              BUILD_STRING             4
+              STORE_FAST               4 (d)
+
+136           LOAD_FAST                2 (it)
+              LOAD_ATTR                1 (get + NULL|self)
+              LOAD_CONST               8 ('self')
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE       12 (to L4)
+
+137           LOAD_FAST                4 (d)
+              LOAD_CONST               9 (", TỰ XƯNG (ngôi 1) luôn '")
+              LOAD_FAST                2 (it)
+              LOAD_CONST               8 ('self')
+              BINARY_SUBSCR
+              FORMAT_SIMPLE
+              LOAD_CONST              10 ("'")
+              BUILD_STRING             3
+              BINARY_OP               13 (+=)
+              STORE_FAST               4 (d)
+
+138   L4:     LOAD_FAST                2 (it)
+              LOAD_ATTR                1 (get + NULL|self)
+              LOAD_CONST              11 ('address')
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE       12 (to L5)
+
+139           LOAD_FAST                4 (d)
+              LOAD_CONST              12 (", khi nói VỚI người này gọi (ngôi 2) '")
+              LOAD_FAST                2 (it)
+              LOAD_CONST              11 ('address')
+              BINARY_SUBSCR
+              FORMAT_SIMPLE
+              LOAD_CONST              10 ("'")
+              BUILD_STRING             3
+              BINARY_OP               13 (+=)
+              STORE_FAST               4 (d)
+
+140   L5:     LOAD_FAST                1 (dong)
+              LOAD_ATTR                3 (append + NULL|self)
+              LOAD_FAST                4 (d)
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD          127 (to L2)
+
+133   L6:     END_FOR
+              POP_TOP
+
+141           LOAD_CONST              13 ('\n')
+              LOAD_ATTR                5 (join + NULL|self)
+              LOAD_FAST                1 (dong)
+              CALL                     1
+              RETURN_VALUE
+
+Disassembly of <code object ghep at 0x0000016DC90EDBB0, file "bilisub\translate\nguoi_noi.py", line 144>:
+144           RESUME                   0
+
+146           LOAD_FAST                1 (khoi)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     LOAD_ATTR                1 (strip + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L2)
+
+147           LOAD_FAST                0 (char_sheet)
+              RETURN_VALUE
+
+148   L2:     LOAD_FAST                0 (char_sheet)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L3:     LOAD_ATTR                1 (strip + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L4)
+
+149           LOAD_FAST                1 (khoi)
+              RETURN_VALUE
+
+150   L4:     LOAD_FAST                0 (char_sheet)
+              FORMAT_SIMPLE
+              LOAD_CONST               2 ('\n')
+              LOAD_FAST                1 (khoi)
+              FORMAT_SIMPLE
+              BUILD_STRING             3
+              RETURN_VALUE

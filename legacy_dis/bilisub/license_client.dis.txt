@@ -1,0 +1,2652 @@
+=== FILE: bilisub\license_client.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  2           LOAD_CONST               0 ('Client license (hybrid): kích hoạt online, xác minh chữ ký Ed25519 offline.\n\nPublic key nhúng cứng -> không giả được server. UI nằm ở gui/license_dialog.py.\nLưu ý: license verify client-side về bản chất có thể bị patch nhị phân;\nlớp bảo vệ cuối cùng là obfuscation khi đóng gói + server bắt buộc online.\n\nDÙNG NGUYÊN THÂN file gốc dùng chung nhiều tool PeiPei — chỉ đổi PRODUCT_ID.\n')
+              STORE_NAME               0 (__doc__)
+
+ 10           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (None)
+              IMPORT_NAME              1 (base64)
+              STORE_NAME               1 (base64)
+
+ 11           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (None)
+              IMPORT_NAME              2 (hashlib)
+              STORE_NAME               2 (hashlib)
+
+ 12           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (None)
+              IMPORT_NAME              3 (json)
+              STORE_NAME               3 (json)
+
+ 13           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (None)
+              IMPORT_NAME              4 (os)
+              STORE_NAME               4 (os)
+
+ 14           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (None)
+              IMPORT_NAME              5 (uuid)
+              STORE_NAME               5 (uuid)
+
+ 15           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (('datetime', 'timedelta', 'timezone'))
+              IMPORT_NAME              6 (datetime)
+              IMPORT_FROM              6 (datetime)
+              STORE_NAME               6 (datetime)
+              IMPORT_FROM              7 (timedelta)
+              STORE_NAME               7 (timedelta)
+              IMPORT_FROM              8 (timezone)
+              STORE_NAME               8 (timezone)
+              POP_TOP
+
+ 17           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (None)
+              IMPORT_NAME              9 (requests)
+              STORE_NAME               9 (requests)
+
+ 18           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Ed25519PublicKey',))
+              IMPORT_NAME             10 (cryptography.hazmat.primitives.asymmetric.ed25519)
+              IMPORT_FROM             11 (Ed25519PublicKey)
+              STORE_NAME              11 (Ed25519PublicKey)
+              POP_TOP
+
+ 20           LOAD_CONST               5 (1)
+              LOAD_CONST               6 (('config',))
+              IMPORT_NAME             12
+              IMPORT_FROM             13 (config)
+              STORE_NAME              13 (config)
+              POP_TOP
+
+ 23           LOAD_CONST               7 ('akMkNnMw7EG0hGSK7HBiY/M7ERcKYfFLIAL7hD1Dvy0=')
+              STORE_NAME              14 (PUBLIC_KEY_B64)
+
+ 27           LOAD_CONST               8 ('peipei-reup')
+              STORE_NAME              15 (PRODUCT_ID)
+
+ 30           LOAD_NAME                7 (timedelta)
+              PUSH_NULL
+              LOAD_CONST               9 (12)
+              LOAD_CONST              10 (('hours',))
+              CALL_KW                  1
+              STORE_NAME              16 (CLOCK_TOLERANCE)
+
+ 31           LOAD_NAME                4 (os)
+              LOAD_ATTR               34 (path)
+              LOAD_ATTR               37 (join + NULL|self)
+              LOAD_NAME               13 (config)
+              LOAD_ATTR               38 (DATA_DIR)
+              LOAD_CONST              11 ('.cstate.json')
+              CALL                     2
+              STORE_NAME              20 (_CSTATE_FILE)
+
+ 35           LOAD_CONST              12 (<code object _utcnow at 0x0000016DC9129C50, file "bilisub\license_client.py", line 35>)
+              MAKE_FUNCTION
+              STORE_NAME              21 (_utcnow)
+
+ 39           LOAD_CONST              13 (<code object _parse at 0x0000016DC8E0BAB0, file "bilisub\license_client.py", line 39>)
+              MAKE_FUNCTION
+              STORE_NAME              22 (_parse)
+
+ 47           LOAD_CONST              14 ('payload')
+              LOAD_NAME               23 (dict)
+              LOAD_CONST              15 ('return')
+              LOAD_NAME               24 (bytes)
+              BUILD_TUPLE              4
+              LOAD_CONST              16 (<code object _canonical at 0x0000016DC9128DB0, file "bilisub\license_client.py", line 47>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              25 (_canonical)
+
+ 53           LOAD_CONST              15 ('return')
+              LOAD_NAME               26 (bool)
+              BUILD_TUPLE              2
+              LOAD_CONST              17 (<code object _verify at 0x0000016DC90E5620, file "bilisub\license_client.py", line 53>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              27 (_verify)
+
+ 63           LOAD_CONST              18 (<code object _win_machine_guid at 0x0000016DC90D08F0, file "bilisub\license_client.py", line 63>)
+              MAKE_FUNCTION
+              STORE_NAME              28 (_win_machine_guid)
+
+ 76           LOAD_CONST              19 (<code object _volume_serial at 0x0000016DC8E91890, file "bilisub\license_client.py", line 76>)
+              MAKE_FUNCTION
+              STORE_NAME              29 (_volume_serial)
+
+ 88           LOAD_CONST              20 (<code object _raw_machine at 0x0000016DC90EDBB0, file "bilisub\license_client.py", line 88>)
+              MAKE_FUNCTION
+              STORE_NAME              30 (_raw_machine)
+
+107           LOAD_CONST              21 (<code object _stable_machine at 0x0000016DC90E1430, file "bilisub\license_client.py", line 107>)
+              MAKE_FUNCTION
+              STORE_NAME              31 (_stable_machine)
+
+115           LOAD_CONST              22 ('raw')
+              LOAD_NAME               32 (str)
+              LOAD_CONST              15 ('return')
+              LOAD_NAME               32 (str)
+              BUILD_TUPLE              4
+              LOAD_CONST              23 (<code object _fmt_mid at 0x0000016DC8EA5D70, file "bilisub\license_client.py", line 115>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              33 (_fmt_mid)
+
+120           LOAD_CONST              15 ('return')
+              LOAD_NAME               32 (str)
+              BUILD_TUPLE              2
+              LOAD_CONST              24 (<code object hw_fingerprint at 0x0000016DC8EB5C50, file "bilisub\license_client.py", line 120>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              34 (hw_fingerprint)
+
+141           LOAD_CONST              25 (<code object _mid_file at 0x0000016DC8EAFCC0, file "bilisub\license_client.py", line 141>)
+              MAKE_FUNCTION
+              STORE_NAME              35 (_mid_file)
+
+146           LOAD_CONST              15 ('return')
+              LOAD_NAME               23 (dict)
+              BUILD_TUPLE              2
+              LOAD_CONST              26 (<code object _load_pinned at 0x0000016DC90E6040, file "bilisub\license_client.py", line 146>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              36 (_load_pinned)
+
+155           LOAD_CONST              27 ('mid')
+              LOAD_NAME               32 (str)
+              LOAD_CONST              15 ('return')
+              LOAD_CONST               2 (None)
+              BUILD_TUPLE              4
+              LOAD_CONST              28 (<code object _pin_mid at 0x0000016DC8E90F30, file "bilisub\license_client.py", line 155>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              37 (_pin_mid)
+
+167           LOAD_CONST              15 ('return')
+              LOAD_NAME               32 (str)
+              BUILD_TUPLE              2
+              LOAD_CONST              29 (<code object get_machine_id at 0x0000016DC8D26430, file "bilisub\license_client.py", line 167>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              38 (get_machine_id)
+
+196           LOAD_CONST              30 (<code object _save_token at 0x0000016DC90E63A0, file "bilisub\license_client.py", line 196>)
+              MAKE_FUNCTION
+              STORE_NAME              39 (_save_token)
+
+202           LOAD_CONST              31 (<code object _load_token at 0x0000016DC8E0B7B0, file "bilisub\license_client.py", line 202>)
+              MAKE_FUNCTION
+              STORE_NAME              40 (_load_token)
+
+210           LOAD_CONST              32 (<code object _delete_token at 0x0000016DC8E07230, file "bilisub\license_client.py", line 210>)
+              MAKE_FUNCTION
+              STORE_NAME              41 (_delete_token)
+
+218           LOAD_CONST              33 (<code object _load_hwm at 0x0000016DC8EB5DE0, file "bilisub\license_client.py", line 218>)
+              MAKE_FUNCTION
+              STORE_NAME              42 (_load_hwm)
+
+226           LOAD_CONST              34 (<code object _save_hwm at 0x0000016DC8E916B0, file "bilisub\license_client.py", line 226>)
+              MAKE_FUNCTION
+              STORE_NAME              43 (_save_hwm)
+
+235           LOAD_CONST              35 (<code object _clock_ok at 0x0000016DC8E07EB0, file "bilisub\license_client.py", line 235>)
+              MAKE_FUNCTION
+              STORE_NAME              44 (_clock_ok)
+
+245           LOAD_CONST              53 ((None,))
+              LOAD_CONST              36 (<code object _st at 0x0000016DC8EB8FF0, file "bilisub\license_client.py", line 245>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              45 (_st)
+
+250           LOAD_CONST              37 (<code object check at 0x0000016DC8F87CB0, file "bilisub\license_client.py", line 250>)
+              MAKE_FUNCTION
+              STORE_NAME              46 (check)
+
+280           LOAD_CONST              38 (<code object _err at 0x0000016DC8EB5160, file "bilisub\license_client.py", line 280>)
+              MAKE_FUNCTION
+              STORE_NAME              47 (_err)
+
+287           LOAD_CONST              39 (<code object _env_payload at 0x0000016DC8EC30C0, file "bilisub\license_client.py", line 287>)
+              MAKE_FUNCTION
+              STORE_NAME              48 (_env_payload)
+
+305           LOAD_CONST              40 (<code object _post at 0x0000016DC8EF4780, file "bilisub\license_client.py", line 305>)
+              MAKE_FUNCTION
+              STORE_NAME              49 (_post)
+
+320           LOAD_CONST              41 (<code object activate at 0x0000016DC8FADAD0, file "bilisub\license_client.py", line 320>)
+              MAKE_FUNCTION
+              STORE_NAME              50 (activate)
+
+343           LOAD_CONST              42 (<code object refresh at 0x0000016DC8FE2360, file "bilisub\license_client.py", line 343>)
+              MAKE_FUNCTION
+              STORE_NAME              51 (refresh)
+
+380           LOAD_CONST              43 (<code object _ver_tuple at 0x0000016DC8EA5BD0, file "bilisub\license_client.py", line 380>)
+              MAKE_FUNCTION
+              STORE_NAME              52 (_ver_tuple)
+
+390           LOAD_CONST              44 ('u')
+              LOAD_NAME               32 (str)
+              LOAD_CONST              15 ('return')
+              LOAD_NAME               26 (bool)
+              BUILD_TUPLE              4
+              LOAD_CONST              45 (<code object _valid_dl_url at 0x0000016DC90D0FF0, file "bilisub\license_client.py", line 390>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              53 (_valid_dl_url)
+
+405           LOAD_CONST              46 (<code object check_update at 0x0000016DC8F48F90, file "bilisub\license_client.py", line 405>)
+              MAKE_FUNCTION
+              STORE_NAME              54 (check_update)
+
+437           LOAD_CONST              54 ((False,))
+              LOAD_CONST              47 ('force')
+              LOAD_NAME               26 (bool)
+              BUILD_TUPLE              2
+              LOAD_CONST              48 (<code object maybe_refresh at 0x0000016DC8EA3A60, file "bilisub\license_client.py", line 437>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              55 (maybe_refresh)
+
+450           LOAD_CONST              15 ('return')
+              LOAD_NAME               26 (bool)
+              BUILD_TUPLE              2
+              LOAD_CONST              49 (<code object is_active at 0x0000016DC8E06AB0, file "bilisub\license_client.py", line 450>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              56 (is_active)
+
+465           LOAD_CONST              15 ('return')
+              LOAD_NAME               32 (str)
+              BUILD_TUPLE              2
+              LOAD_CONST              50 (<code object blocked_reason at 0x0000016DC8EA2FB0, file "bilisub\license_client.py", line 465>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              57 (blocked_reason)
+
+474           LOAD_CONST              51 (<code object days_left at 0x0000016DC90D0E30, file "bilisub\license_client.py", line 474>)
+              MAKE_FUNCTION
+              STORE_NAME              58 (days_left)
+
+487           LOAD_CONST              52 (<code object status_text at 0x0000016DC8DB24C0, file "bilisub\license_client.py", line 487>)
+              MAKE_FUNCTION
+              STORE_NAME              59 (status_text)
+              RETURN_CONST             2 (None)
+
+Disassembly of <code object _utcnow at 0x0000016DC9129C50, file "bilisub\license_client.py", line 35>:
+ 35           RESUME                   0
+
+ 36           LOAD_GLOBAL              0 (datetime)
+              LOAD_ATTR                2 (now)
+              PUSH_NULL
+              LOAD_GLOBAL              4 (timezone)
+              LOAD_ATTR                6 (utc)
+              CALL                     1
+              RETURN_VALUE
+
+Disassembly of <code object _parse at 0x0000016DC8E0BAB0, file "bilisub\license_client.py", line 39>:
+ 39           RESUME                   0
+
+ 41           LOAD_GLOBAL              0 (datetime)
+              LOAD_ATTR                2 (fromisoformat)
+              PUSH_NULL
+              LOAD_GLOBAL              5 (str + NULL)
+              LOAD_FAST                0 (iso)
+              CALL                     1
+              LOAD_ATTR                7 (replace + NULL|self)
+              LOAD_CONST               1 ('Z')
+              LOAD_CONST               2 ('+00:00')
+              CALL                     2
+              CALL                     1
+              STORE_FAST               1 (dt)
+
+ 42           LOAD_FAST                1 (dt)
+              LOAD_ATTR                8 (tzinfo)
+              POP_JUMP_IF_NOT_NONE    29 (to L1)
+
+ 43           LOAD_FAST                1 (dt)
+              LOAD_ATTR                7 (replace + NULL|self)
+              LOAD_GLOBAL             10 (timezone)
+              LOAD_ATTR               12 (utc)
+              LOAD_CONST               3 (('tzinfo',))
+              CALL_KW                  1
+              STORE_FAST               1 (dt)
+
+ 44   L1:     LOAD_FAST                1 (dt)
+              RETURN_VALUE
+
+Disassembly of <code object _canonical at 0x0000016DC9128DB0, file "bilisub\license_client.py", line 47>:
+ 47           RESUME                   0
+
+ 49           LOAD_GLOBAL              0 (json)
+              LOAD_ATTR                2 (dumps)
+              PUSH_NULL
+              LOAD_FAST                0 (payload)
+              LOAD_CONST               1 (True)
+              LOAD_CONST               2 ((',', ':'))
+
+ 50           LOAD_CONST               3 (False)
+
+ 49           LOAD_CONST               4 (('sort_keys', 'separators', 'ensure_ascii'))
+              CALL_KW                  4
+
+ 50           LOAD_ATTR                5 (encode + NULL|self)
+              LOAD_CONST               5 ('utf-8')
+              CALL                     1
+
+ 49           RETURN_VALUE
+
+Disassembly of <code object _verify at 0x0000016DC90E5620, file "bilisub\license_client.py", line 53>:
+  53           RESUME                   0
+
+  54           NOP
+
+  55   L1:     LOAD_GLOBAL              0 (Ed25519PublicKey)
+               LOAD_ATTR                2 (from_public_bytes)
+               PUSH_NULL
+               LOAD_GLOBAL              4 (base64)
+               LOAD_ATTR                6 (b64decode)
+               PUSH_NULL
+               LOAD_GLOBAL              8 (PUBLIC_KEY_B64)
+               CALL                     1
+               CALL                     1
+               STORE_FAST               2 (pub)
+
+  56           LOAD_FAST                2 (pub)
+               LOAD_ATTR               11 (verify + NULL|self)
+               LOAD_GLOBAL              4 (base64)
+               LOAD_ATTR                6 (b64decode)
+               PUSH_NULL
+               LOAD_FAST                1 (sig_b64)
+               CALL                     1
+               LOAD_GLOBAL             13 (_canonical + NULL)
+               LOAD_FAST                0 (payload)
+               CALL                     1
+               CALL                     2
+               POP_TOP
+
+  57   L2:     RETURN_CONST             1 (True)
+
+  --   L3:     PUSH_EXC_INFO
+
+  58           LOAD_GLOBAL             14 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L5)
+               POP_TOP
+
+  59   L4:     POP_EXCEPT
+               RETURN_CONST             2 (False)
+
+  58   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object _win_machine_guid at 0x0000016DC90D08F0, file "bilisub\license_client.py", line 63>:
+  63           RESUME                   0
+
+  64           NOP
+
+  65   L1:     LOAD_CONST               1 (0)
+               LOAD_CONST               0 (None)
+               IMPORT_NAME              0 (winreg)
+               STORE_FAST               0 (winreg)
+
+  66           LOAD_FAST                0 (winreg)
+               LOAD_ATTR                3 (OpenKey + NULL|self)
+
+  67           LOAD_FAST                0 (winreg)
+               LOAD_ATTR                4 (HKEY_LOCAL_MACHINE)
+               LOAD_CONST               2 ('SOFTWARE\\Microsoft\\Cryptography')
+
+  68           LOAD_CONST               1 (0)
+               LOAD_FAST                0 (winreg)
+               LOAD_ATTR                6 (KEY_READ)
+               LOAD_FAST                0 (winreg)
+               LOAD_ATTR                8 (KEY_WOW64_64KEY)
+               BINARY_OP                7 (|)
+
+  66           CALL                     4
+               STORE_FAST               1 (k)
+
+  69           LOAD_FAST                0 (winreg)
+               LOAD_ATTR               11 (QueryValueEx + NULL|self)
+               LOAD_FAST                1 (k)
+               LOAD_CONST               3 ('MachineGuid')
+               CALL                     2
+               UNPACK_SEQUENCE          2
+               STORE_FAST_STORE_FAST   35 (val, _)
+
+  70           LOAD_FAST                0 (winreg)
+               LOAD_ATTR               13 (CloseKey + NULL|self)
+               LOAD_FAST                1 (k)
+               CALL                     1
+               POP_TOP
+
+  71           LOAD_FAST                2 (val)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L2)
+               POP_TOP
+               LOAD_CONST               4 ('')
+       L2:     RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+  72           LOAD_GLOBAL             14 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L5)
+               POP_TOP
+
+  73   L4:     POP_EXCEPT
+               RETURN_CONST             4 ('')
+
+  72   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object _volume_serial at 0x0000016DC8E91890, file "bilisub\license_client.py", line 76>:
+  76           RESUME                   0
+
+  77           NOP
+
+  78   L1:     LOAD_CONST               1 (0)
+               LOAD_CONST               0 (None)
+               IMPORT_NAME              0 (ctypes)
+               STORE_FAST               0 (ctypes)
+
+  79           LOAD_FAST                0 (ctypes)
+               LOAD_ATTR                3 (c_ulong + NULL|self)
+               LOAD_CONST               1 (0)
+               CALL                     1
+               STORE_FAST               1 (serial)
+
+  80           LOAD_FAST                0 (ctypes)
+               LOAD_ATTR                4 (windll)
+               LOAD_ATTR                6 (kernel32)
+               LOAD_ATTR                9 (GetVolumeInformationW + NULL|self)
+
+  81           LOAD_FAST                0 (ctypes)
+               LOAD_ATTR               11 (c_wchar_p + NULL|self)
+               LOAD_CONST               2 ('C:\\')
+               CALL                     1
+               LOAD_CONST               0 (None)
+               LOAD_CONST               1 (0)
+               LOAD_FAST                0 (ctypes)
+               LOAD_ATTR               13 (byref + NULL|self)
+               LOAD_FAST                1 (serial)
+               CALL                     1
+
+  82           LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               1 (0)
+
+  80           CALL                     8
+               POP_TOP
+
+  83           LOAD_GLOBAL             15 (str + NULL)
+               LOAD_FAST                1 (serial)
+               LOAD_ATTR               16 (value)
+               CALL                     1
+       L2:     RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+  84           LOAD_GLOBAL             18 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L5)
+               POP_TOP
+
+  85   L4:     POP_EXCEPT
+               RETURN_CONST             3 ('')
+
+  84   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object _raw_machine at 0x0000016DC90EDBB0, file "bilisub\license_client.py", line 88>:
+ 88           RESUME                   0
+
+100           LOAD_CONST               1 ('guid:')
+              LOAD_GLOBAL              1 (_win_machine_guid + NULL)
+              CALL                     0
+              BINARY_OP                0 (+)
+
+101           LOAD_CONST               2 ('vol:')
+              LOAD_GLOBAL              3 (_volume_serial + NULL)
+              CALL                     0
+              BINARY_OP                0 (+)
+
+102           LOAD_CONST               3 ('node:')
+              LOAD_GLOBAL              5 (str + NULL)
+              LOAD_GLOBAL              6 (uuid)
+              LOAD_ATTR                8 (getnode)
+              PUSH_NULL
+              CALL                     0
+              CALL                     1
+              BINARY_OP                0 (+)
+
+ 99           BUILD_LIST               3
+              STORE_FAST               0 (parts)
+
+104           LOAD_CONST               4 ('|')
+              LOAD_ATTR               11 (join + NULL|self)
+              LOAD_FAST                0 (parts)
+              CALL                     1
+              RETURN_VALUE
+
+Disassembly of <code object _stable_machine at 0x0000016DC90E1430, file "bilisub\license_client.py", line 107>:
+107           RESUME                   0
+
+112           LOAD_CONST               1 ('guid:')
+              LOAD_GLOBAL              1 (_win_machine_guid + NULL)
+              CALL                     0
+              BINARY_OP                0 (+)
+              LOAD_CONST               2 ('|vol:')
+              BINARY_OP                0 (+)
+              LOAD_GLOBAL              3 (_volume_serial + NULL)
+              CALL                     0
+              BINARY_OP                0 (+)
+              RETURN_VALUE
+
+Disassembly of <code object _fmt_mid at 0x0000016DC8EA5D70, file "bilisub\license_client.py", line 115>:
+  --           MAKE_CELL                1 (h)
+
+ 115           RESUME                   0
+
+ 116           LOAD_GLOBAL              0 (hashlib)
+               LOAD_ATTR                2 (sha256)
+               PUSH_NULL
+               LOAD_FAST                0 (raw)
+               LOAD_ATTR                5 (encode + NULL|self)
+               CALL                     0
+               CALL                     1
+               LOAD_ATTR                7 (hexdigest + NULL|self)
+               CALL                     0
+               LOAD_ATTR                9 (upper + NULL|self)
+               CALL                     0
+               STORE_DEREF              1 (h)
+
+ 117           LOAD_CONST               1 ('-')
+               LOAD_ATTR               11 (join + NULL|self)
+               LOAD_FAST                1 (h)
+               BUILD_TUPLE              1
+               LOAD_CONST               2 (<code object <genexpr> at 0x0000016DC90E1530, file "bilisub\license_client.py", line 117>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               LOAD_GLOBAL             13 (range + NULL)
+               LOAD_CONST               3 (0)
+               LOAD_CONST               4 (16)
+               LOAD_CONST               5 (4)
+               CALL                     3
+               GET_ITER
+               CALL                     0
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E1530, file "bilisub\license_client.py", line 117>:
+  --           COPY_FREE_VARS           1
+
+ 117           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                12 (to L3)
+               STORE_FAST               1 (i)
+               LOAD_DEREF               2 (h)
+               LOAD_FAST_LOAD_FAST     17 (i, i)
+               LOAD_CONST               0 (4)
+               BINARY_OP                0 (+)
+               BINARY_SLICE
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           14 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object hw_fingerprint at 0x0000016DC8EB5C50, file "bilisub\license_client.py", line 120>:
+ 120           RESUME                   0
+
+ 135           NOP
+
+ 136   L1:     LOAD_GLOBAL              0 (hashlib)
+               LOAD_ATTR                2 (sha256)
+               PUSH_NULL
+               LOAD_GLOBAL              5 (_stable_machine + NULL)
+               CALL                     0
+               LOAD_ATTR                7 (encode + NULL|self)
+               CALL                     0
+               CALL                     1
+               LOAD_ATTR                9 (hexdigest + NULL|self)
+               CALL                     0
+               LOAD_ATTR               11 (upper + NULL|self)
+               CALL                     0
+               LOAD_CONST               1 (None)
+               LOAD_CONST               2 (16)
+               BINARY_SLICE
+       L2:     RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+ 137           LOAD_GLOBAL             12 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L5)
+               POP_TOP
+
+ 138   L4:     POP_EXCEPT
+               RETURN_CONST             3 ('')
+
+ 137   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object _mid_file at 0x0000016DC8EAFCC0, file "bilisub\license_client.py", line 141>:
+141           RESUME                   0
+
+142           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('Path',))
+              IMPORT_NAME              0 (pathlib)
+              IMPORT_FROM              1 (Path)
+              STORE_FAST               0 (_P)
+              POP_TOP
+
+143           LOAD_FAST                0 (_P)
+              PUSH_NULL
+              LOAD_GLOBAL              4 (config)
+              LOAD_ATTR                6 (DATA_DIR)
+              CALL                     1
+              LOAD_CONST               3 ('machine_id.json')
+              BINARY_OP               11 (/)
+              RETURN_VALUE
+
+Disassembly of <code object _load_pinned at 0x0000016DC90E6040, file "bilisub\license_client.py", line 146>:
+ 146            RESUME                   0
+
+ 147            NOP
+
+ 148    L1:     LOAD_GLOBAL              1 (open + NULL)
+                LOAD_GLOBAL              3 (_mid_file + NULL)
+                CALL                     0
+                LOAD_CONST               1 ('r')
+                LOAD_CONST               2 ('utf-8')
+                LOAD_CONST               3 (('encoding',))
+                CALL_KW                  3
+                BEFORE_WITH
+        L2:     STORE_FAST               0 (f)
+
+ 149            LOAD_GLOBAL              4 (json)
+                LOAD_ATTR                6 (load)
+                PUSH_NULL
+                LOAD_FAST                0 (f)
+                CALL                     1
+                STORE_FAST               1 (d)
+
+ 148    L3:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+
+ 150    L4:     LOAD_GLOBAL              9 (isinstance + NULL)
+                LOAD_FAST_CHECK          1 (d)
+                LOAD_GLOBAL             10 (dict)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L6)
+                LOAD_FAST                1 (d)
+        L5:     RETURN_VALUE
+        L6:     BUILD_MAP                0
+        L7:     RETURN_VALUE
+
+ 148    L8:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L9)
+                RERAISE                  2
+        L9:     POP_TOP
+       L10:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                JUMP_BACKWARD_NO_INTERRUPT 39 (to L4)
+
+  --   L11:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L12:     PUSH_EXC_INFO
+
+ 151            LOAD_GLOBAL             12 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        5 (to L14)
+                POP_TOP
+
+ 152            BUILD_MAP                0
+                SWAP                     2
+       L13:     POP_EXCEPT
+                RETURN_VALUE
+
+ 151   L14:     RERAISE                  0
+
+  --   L15:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L12 [0]
+  L2 to L3 -> L8 [1] lasti
+  L3 to L5 -> L12 [0]
+  L6 to L7 -> L12 [0]
+  L8 to L10 -> L11 [3] lasti
+  L10 to L12 -> L12 [0]
+  L12 to L13 -> L15 [1] lasti
+  L14 to L15 -> L15 [1] lasti
+
+Disassembly of <code object _pin_mid at 0x0000016DC8E90F30, file "bilisub\license_client.py", line 155>:
+ 155            RESUME                   0
+
+ 158            NOP
+
+ 159    L1:     LOAD_GLOBAL              0 (os)
+                LOAD_ATTR                2 (makedirs)
+                PUSH_NULL
+                LOAD_GLOBAL              4 (config)
+                LOAD_ATTR                6 (DATA_DIR)
+                LOAD_CONST               1 (True)
+                LOAD_CONST               2 (('exist_ok',))
+                CALL_KW                  2
+                POP_TOP
+
+ 160            LOAD_GLOBAL              9 (open + NULL)
+                LOAD_GLOBAL             11 (_mid_file + NULL)
+                CALL                     0
+                LOAD_CONST               3 ('w')
+                LOAD_CONST               4 ('utf-8')
+                LOAD_CONST               5 (('encoding',))
+                CALL_KW                  3
+                BEFORE_WITH
+        L2:     STORE_FAST               1 (f)
+
+ 161            LOAD_GLOBAL             12 (json)
+                LOAD_ATTR               14 (dump)
+                PUSH_NULL
+                LOAD_FAST                0 (mid)
+                LOAD_GLOBAL             17 (_stable_machine + NULL)
+                CALL                     0
+                LOAD_CONST               6 (('machine_id', 'fp'))
+                BUILD_CONST_KEY_MAP      2
+                LOAD_FAST                1 (f)
+
+ 162            LOAD_CONST               7 (False)
+                LOAD_CONST               8 (2)
+
+ 161            LOAD_CONST               9 (('ensure_ascii', 'indent'))
+                CALL_KW                  4
+                POP_TOP
+
+ 160    L3:     LOAD_CONST              10 (None)
+                LOAD_CONST              10 (None)
+                LOAD_CONST              10 (None)
+                CALL                     2
+                POP_TOP
+        L4:     RETURN_CONST            10 (None)
+        L5:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L6)
+                RERAISE                  2
+        L6:     POP_TOP
+        L7:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+        L8:     RETURN_CONST            10 (None)
+
+  --    L9:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L10:     PUSH_EXC_INFO
+
+ 163            LOAD_GLOBAL             18 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L12)
+                POP_TOP
+
+ 164   L11:     POP_EXCEPT
+                RETURN_CONST            10 (None)
+
+ 163   L12:     RERAISE                  0
+
+  --   L13:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L10 [0]
+  L2 to L3 -> L5 [1] lasti
+  L3 to L4 -> L10 [0]
+  L5 to L7 -> L9 [3] lasti
+  L7 to L8 -> L10 [0]
+  L9 to L10 -> L10 [0]
+  L10 to L11 -> L13 [1] lasti
+  L12 to L13 -> L13 [1] lasti
+
+Disassembly of <code object get_machine_id at 0x0000016DC8D26430, file "bilisub\license_client.py", line 167>:
+ 167            RESUME                   0
+
+ 178            LOAD_GLOBAL              1 (_load_pinned + NULL)
+                CALL                     0
+                STORE_FAST               0 (pin)
+
+ 179            LOAD_FAST                0 (pin)
+                LOAD_ATTR                3 (get + NULL|self)
+                LOAD_CONST               1 ('machine_id')
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE       34 (to L1)
+                LOAD_FAST                0 (pin)
+                LOAD_ATTR                3 (get + NULL|self)
+                LOAD_CONST               2 ('fp')
+                CALL                     1
+                LOAD_GLOBAL              5 (_stable_machine + NULL)
+                CALL                     0
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE        5 (to L1)
+
+ 180            LOAD_FAST                0 (pin)
+                LOAD_CONST               1 ('machine_id')
+                BINARY_SUBSCR
+                RETURN_VALUE
+
+ 182    L1:     NOP
+
+ 183    L2:     LOAD_GLOBAL              7 (_load_token + NULL)
+                CALL                     0
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L3)
+                POP_TOP
+                BUILD_MAP                0
+        L3:     STORE_FAST               1 (tok)
+
+ 184            LOAD_FAST                1 (tok)
+                LOAD_ATTR                3 (get + NULL|self)
+                LOAD_CONST               3 ('payload')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L4)
+                POP_TOP
+                BUILD_MAP                0
+        L4:     LOAD_ATTR                3 (get + NULL|self)
+                LOAD_CONST               1 ('machine_id')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L5)
+                POP_TOP
+                LOAD_CONST               4 ('')
+        L5:     LOAD_ATTR                9 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               2 (old)
+
+ 187    L6:     LOAD_FAST                2 (old)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       13 (to L7)
+
+ 188            LOAD_GLOBAL             13 (_pin_mid + NULL)
+                LOAD_FAST                2 (old)
+                CALL                     1
+                POP_TOP
+
+ 189            LOAD_FAST                2 (old)
+                RETURN_VALUE
+
+ 190    L7:     LOAD_GLOBAL             15 (_fmt_mid + NULL)
+                LOAD_GLOBAL              5 (_stable_machine + NULL)
+                CALL                     0
+                CALL                     1
+                STORE_FAST               3 (mid)
+
+ 191            LOAD_GLOBAL             13 (_pin_mid + NULL)
+                LOAD_FAST                3 (mid)
+                CALL                     1
+                POP_TOP
+
+ 192            LOAD_FAST                3 (mid)
+                RETURN_VALUE
+
+  --    L8:     PUSH_EXC_INFO
+
+ 185            LOAD_GLOBAL             10 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        5 (to L10)
+                POP_TOP
+
+ 186            LOAD_CONST               4 ('')
+                STORE_FAST               2 (old)
+        L9:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 66 (to L6)
+
+ 185   L10:     RERAISE                  0
+
+  --   L11:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L6 -> L8 [0]
+  L8 to L9 -> L11 [1] lasti
+  L10 to L11 -> L11 [1] lasti
+
+Disassembly of <code object _save_token at 0x0000016DC90E63A0, file "bilisub\license_client.py", line 196>:
+ 196           RESUME                   0
+
+ 197           LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                2 (makedirs)
+               PUSH_NULL
+               LOAD_GLOBAL              4 (config)
+               LOAD_ATTR                6 (DATA_DIR)
+               LOAD_CONST               1 (True)
+               LOAD_CONST               2 (('exist_ok',))
+               CALL_KW                  2
+               POP_TOP
+
+ 198           LOAD_GLOBAL              9 (open + NULL)
+               LOAD_GLOBAL              4 (config)
+               LOAD_ATTR               10 (LICENSE_FILE)
+               LOAD_CONST               3 ('w')
+               LOAD_CONST               4 ('utf-8')
+               LOAD_CONST               5 (('encoding',))
+               CALL_KW                  3
+               BEFORE_WITH
+       L1:     STORE_FAST               1 (f)
+
+ 199           LOAD_GLOBAL             12 (json)
+               LOAD_ATTR               14 (dump)
+               PUSH_NULL
+               LOAD_FAST_LOAD_FAST      1 (data, f)
+               LOAD_CONST               6 (False)
+               LOAD_CONST               7 (2)
+               LOAD_CONST               8 (('ensure_ascii', 'indent'))
+               CALL_KW                  4
+               POP_TOP
+
+ 198   L2:     LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               CALL                     2
+               POP_TOP
+               RETURN_CONST             0 (None)
+       L3:     PUSH_EXC_INFO
+               WITH_EXCEPT_START
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L4)
+               RERAISE                  2
+       L4:     POP_TOP
+       L5:     POP_EXCEPT
+               POP_TOP
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [1] lasti
+  L3 to L5 -> L6 [3] lasti
+
+Disassembly of <code object _load_token at 0x0000016DC8E0B7B0, file "bilisub\license_client.py", line 202>:
+ 202            RESUME                   0
+
+ 203            NOP
+
+ 204    L1:     LOAD_GLOBAL              1 (open + NULL)
+                LOAD_GLOBAL              2 (config)
+                LOAD_ATTR                4 (LICENSE_FILE)
+                LOAD_CONST               1 ('r')
+                LOAD_CONST               2 ('utf-8')
+                LOAD_CONST               3 (('encoding',))
+                CALL_KW                  3
+                BEFORE_WITH
+        L2:     STORE_FAST               0 (f)
+
+ 205            LOAD_GLOBAL              6 (json)
+                LOAD_ATTR                8 (load)
+                PUSH_NULL
+                LOAD_FAST                0 (f)
+                CALL                     1
+
+ 204    L3:     SWAP                     2
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+        L4:     RETURN_VALUE
+        L5:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L6)
+                RERAISE                  2
+        L6:     POP_TOP
+        L7:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+        L8:     RETURN_CONST             0 (None)
+
+  --    L9:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L10:     PUSH_EXC_INFO
+
+ 206            LOAD_GLOBAL             10 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L12)
+                POP_TOP
+
+ 207   L11:     POP_EXCEPT
+                RETURN_CONST             0 (None)
+
+ 206   L12:     RERAISE                  0
+
+  --   L13:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L10 [0]
+  L2 to L3 -> L5 [1] lasti
+  L3 to L4 -> L10 [0]
+  L5 to L7 -> L9 [3] lasti
+  L7 to L8 -> L10 [0]
+  L9 to L10 -> L10 [0]
+  L10 to L11 -> L13 [1] lasti
+  L12 to L13 -> L13 [1] lasti
+
+Disassembly of <code object _delete_token at 0x0000016DC8E07230, file "bilisub\license_client.py", line 210>:
+ 210           RESUME                   0
+
+ 211           NOP
+
+ 212   L1:     LOAD_GLOBAL              0 (os)
+               LOAD_ATTR                2 (remove)
+               PUSH_NULL
+               LOAD_GLOBAL              4 (config)
+               LOAD_ATTR                6 (LICENSE_FILE)
+               CALL                     1
+               POP_TOP
+       L2:     RETURN_CONST             0 (None)
+
+  --   L3:     PUSH_EXC_INFO
+
+ 213           LOAD_GLOBAL              8 (OSError)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L5)
+               POP_TOP
+
+ 214   L4:     POP_EXCEPT
+               RETURN_CONST             0 (None)
+
+ 213   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object _load_hwm at 0x0000016DC8EB5DE0, file "bilisub\license_client.py", line 218>:
+ 218            RESUME                   0
+
+ 219            NOP
+
+ 220    L1:     LOAD_GLOBAL              1 (open + NULL)
+                LOAD_GLOBAL              2 (_CSTATE_FILE)
+                LOAD_CONST               1 ('r')
+                LOAD_CONST               2 ('utf-8')
+                LOAD_CONST               3 (('encoding',))
+                CALL_KW                  3
+                BEFORE_WITH
+        L2:     STORE_FAST               0 (f)
+
+ 221            LOAD_GLOBAL              5 (_parse + NULL)
+                LOAD_GLOBAL              6 (json)
+                LOAD_ATTR                8 (load)
+                PUSH_NULL
+                LOAD_FAST                0 (f)
+                CALL                     1
+                LOAD_CONST               4 ('hwm')
+                BINARY_SUBSCR
+                CALL                     1
+
+ 220    L3:     SWAP                     2
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+        L4:     RETURN_VALUE
+        L5:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L6)
+                RERAISE                  2
+        L6:     POP_TOP
+        L7:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+        L8:     RETURN_CONST             0 (None)
+
+  --    L9:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L10:     PUSH_EXC_INFO
+
+ 222            LOAD_GLOBAL             10 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L12)
+                POP_TOP
+
+ 223   L11:     POP_EXCEPT
+                RETURN_CONST             0 (None)
+
+ 222   L12:     RERAISE                  0
+
+  --   L13:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L10 [0]
+  L2 to L3 -> L5 [1] lasti
+  L3 to L4 -> L10 [0]
+  L5 to L7 -> L9 [3] lasti
+  L7 to L8 -> L10 [0]
+  L9 to L10 -> L10 [0]
+  L10 to L11 -> L13 [1] lasti
+  L12 to L13 -> L13 [1] lasti
+
+Disassembly of <code object _save_hwm at 0x0000016DC8E916B0, file "bilisub\license_client.py", line 226>:
+ 226            RESUME                   0
+
+ 227            NOP
+
+ 228    L1:     LOAD_GLOBAL              0 (os)
+                LOAD_ATTR                2 (makedirs)
+                PUSH_NULL
+                LOAD_GLOBAL              4 (config)
+                LOAD_ATTR                6 (DATA_DIR)
+                LOAD_CONST               1 (True)
+                LOAD_CONST               2 (('exist_ok',))
+                CALL_KW                  2
+                POP_TOP
+
+ 229            LOAD_GLOBAL              9 (open + NULL)
+                LOAD_GLOBAL             10 (_CSTATE_FILE)
+                LOAD_CONST               3 ('w')
+                LOAD_CONST               4 ('utf-8')
+                LOAD_CONST               5 (('encoding',))
+                CALL_KW                  3
+                BEFORE_WITH
+        L2:     STORE_FAST               1 (f)
+
+ 230            LOAD_GLOBAL             12 (json)
+                LOAD_ATTR               14 (dump)
+                PUSH_NULL
+                LOAD_CONST               6 ('hwm')
+                LOAD_FAST                0 (dt)
+                LOAD_ATTR               17 (isoformat + NULL|self)
+                CALL                     0
+                BUILD_MAP                1
+                LOAD_FAST                1 (f)
+                CALL                     2
+                POP_TOP
+
+ 229    L3:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+        L4:     RETURN_CONST             0 (None)
+        L5:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L6)
+                RERAISE                  2
+        L6:     POP_TOP
+        L7:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+        L8:     RETURN_CONST             0 (None)
+
+  --    L9:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L10:     PUSH_EXC_INFO
+
+ 231            LOAD_GLOBAL             18 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L12)
+                POP_TOP
+
+ 232   L11:     POP_EXCEPT
+                RETURN_CONST             0 (None)
+
+ 231   L12:     RERAISE                  0
+
+  --   L13:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L10 [0]
+  L2 to L3 -> L5 [1] lasti
+  L3 to L4 -> L10 [0]
+  L5 to L7 -> L9 [3] lasti
+  L7 to L8 -> L10 [0]
+  L9 to L10 -> L10 [0]
+  L10 to L11 -> L13 [1] lasti
+  L12 to L13 -> L13 [1] lasti
+
+Disassembly of <code object _clock_ok at 0x0000016DC8E07EB0, file "bilisub\license_client.py", line 235>:
+235           RESUME                   0
+
+237           LOAD_GLOBAL              1 (_load_hwm + NULL)
+              CALL                     0
+              STORE_FAST               1 (hwm)
+
+238           LOAD_FAST                1 (hwm)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       13 (to L1)
+              LOAD_FAST_LOAD_FAST      1 (now, hwm)
+              LOAD_GLOBAL              2 (CLOCK_TOLERANCE)
+              BINARY_OP               10 (-)
+              COMPARE_OP              18 (bool(<))
+              POP_JUMP_IF_FALSE        1 (to L1)
+
+239           RETURN_CONST             1 (False)
+
+240   L1:     LOAD_FAST                1 (hwm)
+              TO_BOOL
+              POP_JUMP_IF_FALSE        5 (to L2)
+              LOAD_FAST_LOAD_FAST      1 (now, hwm)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE       11 (to L3)
+
+241   L2:     LOAD_GLOBAL              5 (_save_hwm + NULL)
+              LOAD_FAST                0 (now)
+              CALL                     1
+              POP_TOP
+
+242   L3:     RETURN_CONST             2 (True)
+
+Disassembly of <code object _st at 0x0000016DC8EB8FF0, file "bilisub\license_client.py", line 245>:
+245           RESUME                   0
+
+246           LOAD_FAST_LOAD_FAST      1 (status, message)
+              LOAD_FAST                2 (info)
+              LOAD_CONST               1 (('status', 'message', 'info'))
+              BUILD_CONST_KEY_MAP      3
+              RETURN_VALUE
+
+Disassembly of <code object check at 0x0000016DC8F87CB0, file "bilisub\license_client.py", line 250>:
+ 250            RESUME                   0
+
+ 251            NOP
+
+ 252    L1:     LOAD_GLOBAL              1 (_load_token + NULL)
+                CALL                     0
+                STORE_FAST               0 (tok)
+
+ 253            LOAD_FAST                0 (tok)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        12 (to L3)
+
+ 254            LOAD_GLOBAL              3 (_st + NULL)
+                LOAD_CONST               1 ('NOT_ACTIVATED')
+                LOAD_CONST               2 ('Chưa kích hoạt.')
+                CALL                     2
+        L2:     RETURN_VALUE
+
+ 255    L3:     LOAD_FAST                0 (tok)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST               3 ('payload')
+                CALL                     1
+                LOAD_FAST                0 (tok)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST               4 ('signature')
+                CALL                     1
+                STORE_FAST_STORE_FAST   33 (sig, payload)
+
+ 256            LOAD_FAST                1 (payload)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       23 (to L4)
+                LOAD_FAST                2 (sig)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       16 (to L4)
+                LOAD_GLOBAL              7 (_verify + NULL)
+                LOAD_FAST_LOAD_FAST     18 (payload, sig)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_TRUE        12 (to L6)
+
+ 257    L4:     LOAD_GLOBAL              3 (_st + NULL)
+                LOAD_CONST               5 ('INVALID_SIGNATURE')
+                LOAD_CONST               6 ('License không hợp lệ (chữ ký sai).')
+                CALL                     2
+        L5:     RETURN_VALUE
+
+ 258    L6:     LOAD_FAST                1 (payload)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST               7 ('machine_id')
+                CALL                     1
+                LOAD_GLOBAL              9 (get_machine_id + NULL)
+                CALL                     0
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE       12 (to L8)
+
+ 259            LOAD_GLOBAL              3 (_st + NULL)
+                LOAD_CONST               8 ('WRONG_MACHINE')
+                LOAD_CONST               9 ('License này không dùng được trên máy hiện tại.')
+                CALL                     2
+        L7:     RETURN_VALUE
+
+ 260    L8:     LOAD_FAST                1 (payload)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST              10 ('product')
+                LOAD_CONST              11 ('default')
+                CALL                     2
+                LOAD_GLOBAL             10 (PRODUCT_ID)
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE       12 (to L10)
+
+ 261            LOAD_GLOBAL              3 (_st + NULL)
+                LOAD_CONST              12 ('WRONG_PRODUCT')
+                LOAD_CONST              13 ('License này không dành cho phần mềm này.')
+                CALL                     2
+        L9:     RETURN_VALUE
+
+ 262   L10:     LOAD_GLOBAL             13 (_utcnow + NULL)
+                CALL                     0
+                STORE_FAST               3 (now)
+
+ 263            LOAD_GLOBAL             15 (_clock_ok + NULL)
+                LOAD_FAST                3 (now)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        13 (to L12)
+
+ 264            LOAD_GLOBAL              3 (_st + NULL)
+                LOAD_CONST              14 ('NEEDS_RECHECK')
+                LOAD_CONST              15 ('Phát hiện đồng hồ hệ thống bị chỉnh lùi — cần kết nối mạng để xác thực lại.')
+                LOAD_FAST                1 (payload)
+                CALL                     3
+       L11:     RETURN_VALUE
+
+ 265   L12:     LOAD_FAST                1 (payload)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST              16 ('expires_at')
+                CALL                     1
+                STORE_FAST               4 (exp)
+
+ 266            LOAD_FAST                4 (exp)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       28 (to L14)
+                LOAD_GLOBAL             17 (_parse + NULL)
+                LOAD_FAST                4 (exp)
+                CALL                     1
+                LOAD_FAST                3 (now)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       13 (to L14)
+
+ 267            LOAD_GLOBAL              3 (_st + NULL)
+                LOAD_CONST              17 ('EXPIRED')
+                LOAD_CONST              18 ('License đã hết hạn.')
+                LOAD_FAST                1 (payload)
+                CALL                     3
+       L13:     RETURN_VALUE
+
+ 268   L14:     LOAD_GLOBAL             17 (_parse + NULL)
+                LOAD_FAST                1 (payload)
+                LOAD_CONST              19 ('token_exp')
+                BINARY_SUBSCR
+                CALL                     1
+                STORE_FAST               5 (token_exp)
+
+ 269            LOAD_GLOBAL             19 (timedelta + NULL)
+                LOAD_GLOBAL             21 (int + NULL)
+                LOAD_FAST                1 (payload)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST              20 ('grace_days')
+                LOAD_CONST              21 (0)
+                CALL                     2
+                CALL                     1
+                LOAD_CONST              22 (('days',))
+                CALL_KW                  1
+                STORE_FAST               6 (grace)
+
+ 270            LOAD_FAST_LOAD_FAST     53 (now, token_exp)
+                LOAD_FAST                6 (grace)
+                BINARY_OP                0 (+)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE       13 (to L16)
+
+ 271            LOAD_GLOBAL              3 (_st + NULL)
+                LOAD_CONST              14 ('NEEDS_RECHECK')
+                LOAD_CONST              23 ('Cần kết nối mạng để xác thực lại.')
+                LOAD_FAST                1 (payload)
+                CALL                     3
+       L15:     RETURN_VALUE
+
+ 272   L16:     LOAD_FAST_LOAD_FAST     53 (now, token_exp)
+                COMPARE_OP             188 (bool(>=))
+                POP_JUMP_IF_FALSE       13 (to L18)
+
+ 273            LOAD_GLOBAL              3 (_st + NULL)
+                LOAD_CONST              24 ('GRACE')
+                LOAD_CONST              25 ('Đang dùng hạn offline tạm thời, hãy kết nối mạng.')
+                LOAD_FAST                1 (payload)
+                CALL                     3
+       L17:     RETURN_VALUE
+
+ 274   L18:     LOAD_GLOBAL              3 (_st + NULL)
+                LOAD_CONST              26 ('VALID')
+                LOAD_CONST              27 ('Hợp lệ.')
+                LOAD_FAST                1 (payload)
+                CALL                     3
+       L19:     RETURN_VALUE
+
+  --   L20:     PUSH_EXC_INFO
+
+ 275            LOAD_GLOBAL             22 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       25 (to L25)
+                STORE_FAST               7 (e)
+
+ 276   L21:     LOAD_GLOBAL              3 (_st + NULL)
+                LOAD_CONST               5 ('INVALID_SIGNATURE')
+                LOAD_CONST              28 ('Không đọc được license: ')
+                LOAD_FAST                7 (e)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                CALL                     2
+       L22:     SWAP                     2
+       L23:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST               7 (e)
+                DELETE_FAST              7 (e)
+                RETURN_VALUE
+
+  --   L24:     LOAD_CONST               0 (None)
+                STORE_FAST               7 (e)
+                DELETE_FAST              7 (e)
+                RERAISE                  1
+
+ 275   L25:     RERAISE                  0
+
+  --   L26:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L20 [0]
+  L3 to L5 -> L20 [0]
+  L6 to L7 -> L20 [0]
+  L8 to L9 -> L20 [0]
+  L10 to L11 -> L20 [0]
+  L12 to L13 -> L20 [0]
+  L14 to L15 -> L20 [0]
+  L16 to L17 -> L20 [0]
+  L18 to L19 -> L20 [0]
+  L20 to L21 -> L26 [1] lasti
+  L21 to L22 -> L24 [1] lasti
+  L22 to L23 -> L26 [1] lasti
+  L24 to L26 -> L26 [1] lasti
+
+Disassembly of <code object _err at 0x0000016DC8EB5160, file "bilisub\license_client.py", line 280>:
+ 280           RESUME                   0
+
+ 281           NOP
+
+ 282   L1:     LOAD_FAST                0 (r)
+               LOAD_ATTR                1 (json + NULL|self)
+               CALL                     0
+               LOAD_ATTR                3 (get + NULL|self)
+               LOAD_CONST               1 ('detail')
+               LOAD_CONST               2 ('Lỗi ')
+               LOAD_FAST                0 (r)
+               LOAD_ATTR                4 (status_code)
+               FORMAT_SIMPLE
+               BUILD_STRING             2
+               CALL                     2
+       L2:     RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+ 283           LOAD_GLOBAL              6 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       34 (to L5)
+               POP_TOP
+
+ 284           LOAD_CONST               2 ('Lỗi ')
+               LOAD_FAST                0 (r)
+               LOAD_ATTR                4 (status_code)
+               FORMAT_SIMPLE
+               LOAD_CONST               3 (': ')
+               LOAD_FAST                0 (r)
+               LOAD_ATTR                8 (text)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               4 (120)
+               BINARY_SLICE
+               FORMAT_SIMPLE
+               BUILD_STRING             4
+               SWAP                     2
+       L4:     POP_EXCEPT
+               RETURN_VALUE
+
+ 283   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object _env_payload at 0x0000016DC8EC30C0, file "bilisub\license_client.py", line 287>:
+ 287           RESUME                   0
+
+ 297           NOP
+
+ 298   L1:     LOAD_CONST               1 (1)
+               LOAD_CONST               2 (('env_summary',))
+               IMPORT_NAME              0 (diag_onnx)
+               IMPORT_FROM              1 (env_summary)
+               STORE_FAST               0 (env_summary)
+               POP_TOP
+
+ 299           LOAD_FAST                0 (env_summary)
+               PUSH_NULL
+               CALL                     0
+               STORE_FAST               1 (e)
+
+ 300           LOAD_GLOBAL              5 (isinstance + NULL)
+               LOAD_FAST                1 (e)
+               LOAD_GLOBAL              6 (dict)
+               CALL                     2
+               TO_BOOL
+               POP_JUMP_IF_FALSE        9 (to L3)
+               LOAD_FAST                1 (e)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        2 (to L3)
+               LOAD_FAST                1 (e)
+       L2:     RETURN_VALUE
+       L3:     LOAD_CONST               3 (None)
+       L4:     RETURN_VALUE
+
+  --   L5:     PUSH_EXC_INFO
+
+ 301           LOAD_GLOBAL              8 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L7)
+               POP_TOP
+
+ 302   L6:     POP_EXCEPT
+               RETURN_CONST             3 (None)
+
+ 301   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L5 [0]
+  L3 to L4 -> L5 [0]
+  L5 to L6 -> L8 [1] lasti
+  L7 to L8 -> L8 [1] lasti
+
+Disassembly of <code object _post at 0x0000016DC8EF4780, file "bilisub\license_client.py", line 305>:
+305           RESUME                   0
+
+306           LOAD_GLOBAL              1 (get_machine_id + NULL)
+              CALL                     0
+              STORE_FAST               2 (mid)
+
+307           LOAD_GLOBAL              2 (config)
+              LOAD_ATTR                4 (LICENSE_SERVER_URL)
+              LOAD_ATTR                7 (rstrip + NULL|self)
+              LOAD_CONST               1 ('/')
+              CALL                     1
+              LOAD_FAST                0 (endpoint)
+              BINARY_OP                0 (+)
+              STORE_FAST               3 (url)
+
+308           LOAD_FAST                1 (license_key)
+              LOAD_ATTR                9 (strip + NULL|self)
+              CALL                     0
+              LOAD_FAST                2 (mid)
+              LOAD_CONST               2 (('license_key', 'machine_id'))
+              BUILD_CONST_KEY_MAP      2
+              STORE_FAST               4 (body)
+
+309           LOAD_GLOBAL             11 (_env_payload + NULL)
+              CALL                     0
+              STORE_FAST               5 (env)
+
+310           LOAD_FAST                5 (env)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        23 (to L1)
+
+311           LOAD_GLOBAL             12 (requests)
+              LOAD_ATTR               14 (post)
+              PUSH_NULL
+              LOAD_FAST_LOAD_FAST     52 (url, body)
+              LOAD_CONST               3 (20)
+              LOAD_CONST               4 (('json', 'timeout'))
+              CALL_KW                  3
+              LOAD_FAST                2 (mid)
+              BUILD_TUPLE              2
+              RETURN_VALUE
+
+312   L1:     LOAD_GLOBAL             12 (requests)
+              LOAD_ATTR               14 (post)
+              PUSH_NULL
+              LOAD_FAST                3 (url)
+              LOAD_GLOBAL             17 (dict + NULL)
+              LOAD_FAST_LOAD_FAST     69 (body, env)
+              LOAD_CONST               5 (('env',))
+              CALL_KW                  2
+              LOAD_CONST               3 (20)
+              LOAD_CONST               4 (('json', 'timeout'))
+              CALL_KW                  3
+              STORE_FAST               6 (r)
+
+315           LOAD_FAST                6 (r)
+              LOAD_ATTR               18 (status_code)
+              LOAD_CONST               6 ((400, 422))
+              CONTAINS_OP              0
+              POP_JUMP_IF_FALSE       23 (to L2)
+
+316           LOAD_GLOBAL             12 (requests)
+              LOAD_ATTR               14 (post)
+              PUSH_NULL
+              LOAD_FAST_LOAD_FAST     52 (url, body)
+              LOAD_CONST               3 (20)
+              LOAD_CONST               4 (('json', 'timeout'))
+              CALL_KW                  3
+              LOAD_FAST                2 (mid)
+              BUILD_TUPLE              2
+              RETURN_VALUE
+
+317   L2:     LOAD_FAST_LOAD_FAST     98 (r, mid)
+              BUILD_TUPLE              2
+              RETURN_VALUE
+
+Disassembly of <code object activate at 0x0000016DC8FADAD0, file "bilisub\license_client.py", line 320>:
+ 320            RESUME                   0
+
+ 321            NOP
+
+ 322    L1:     LOAD_GLOBAL              1 (_post + NULL)
+                LOAD_CONST               1 ('/api/activate')
+                LOAD_FAST                0 (license_key)
+                CALL                     2
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST   18 (r, mid)
+
+ 325    L2:     LOAD_FAST                1 (r)
+                LOAD_ATTR                6 (status_code)
+                LOAD_CONST               4 (200)
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE       13 (to L3)
+
+ 326            LOAD_CONST               2 (False)
+                LOAD_GLOBAL              9 (_err + NULL)
+                LOAD_FAST                1 (r)
+                CALL                     1
+                BUILD_TUPLE              2
+                RETURN_VALUE
+
+ 327    L3:     NOP
+
+ 328    L4:     LOAD_FAST                1 (r)
+                LOAD_ATTR               11 (json + NULL|self)
+                CALL                     0
+                STORE_FAST               4 (data)
+
+ 331    L5:     LOAD_FAST                4 (data)
+                LOAD_ATTR               15 (get + NULL|self)
+                LOAD_CONST               6 ('payload')
+                BUILD_MAP                0
+                CALL                     2
+                STORE_FAST               5 (payload)
+
+ 332            LOAD_GLOBAL             17 (_verify + NULL)
+                LOAD_FAST_LOAD_FAST     84 (payload, data)
+                LOAD_ATTR               15 (get + NULL|self)
+                LOAD_CONST               7 ('signature')
+                LOAD_CONST               8 ('')
+                CALL                     2
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       21 (to L6)
+
+ 333            LOAD_FAST                5 (payload)
+                LOAD_ATTR               15 (get + NULL|self)
+                LOAD_CONST               9 ('machine_id')
+                CALL                     1
+                LOAD_FAST                2 (mid)
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE        1 (to L7)
+
+ 334    L6:     RETURN_CONST            10 ((False, 'Phản hồi server không hợp lệ.'))
+
+ 336    L7:     LOAD_FAST                5 (payload)
+                LOAD_ATTR               15 (get + NULL|self)
+                LOAD_CONST              11 ('product')
+                LOAD_CONST              12 ('default')
+                CALL                     2
+                LOAD_GLOBAL             18 (PRODUCT_ID)
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE        1 (to L8)
+
+ 337            RETURN_CONST            13 ((False, 'Key này thuộc phần mềm khác, không dùng cho PeiPei Dub.'))
+
+ 338    L8:     LOAD_GLOBAL             21 (_save_token + NULL)
+                LOAD_FAST                4 (data)
+                CALL                     1
+                POP_TOP
+
+ 339            LOAD_GLOBAL             23 (_save_hwm + NULL)
+                LOAD_GLOBAL             25 (_utcnow + NULL)
+                CALL                     0
+                CALL                     1
+                POP_TOP
+
+ 340            RETURN_CONST            14 ((True, 'Kích hoạt thành công.'))
+
+  --    L9:     PUSH_EXC_INFO
+
+ 323            LOAD_GLOBAL              2 (requests)
+                LOAD_ATTR                4 (RequestException)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       17 (to L14)
+                STORE_FAST               3 (e)
+
+ 324   L10:     LOAD_CONST               2 (False)
+                LOAD_CONST               3 ('Không kết nối được server license: ')
+                LOAD_FAST                3 (e)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                BUILD_TUPLE              2
+       L11:     SWAP                     2
+       L12:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST               3 (e)
+                DELETE_FAST              3 (e)
+                RETURN_VALUE
+
+  --   L13:     LOAD_CONST               0 (None)
+                STORE_FAST               3 (e)
+                DELETE_FAST              3 (e)
+                RERAISE                  1
+
+ 323   L14:     RERAISE                  0
+
+  --   L15:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L16:     PUSH_EXC_INFO
+
+ 329            LOAD_GLOBAL             12 (ValueError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L18)
+                POP_TOP
+
+ 330   L17:     POP_EXCEPT
+                RETURN_CONST             5 ((False, 'Phản hồi server không hợp lệ (không phải JSON).'))
+
+ 329   L18:     RERAISE                  0
+
+  --   L19:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L9 [0]
+  L4 to L5 -> L16 [0]
+  L9 to L10 -> L15 [1] lasti
+  L10 to L11 -> L13 [1] lasti
+  L11 to L12 -> L15 [1] lasti
+  L13 to L15 -> L15 [1] lasti
+  L16 to L17 -> L19 [1] lasti
+  L18 to L19 -> L19 [1] lasti
+
+Disassembly of <code object refresh at 0x0000016DC8FE2360, file "bilisub\license_client.py", line 343>:
+ 343            RESUME                   0
+
+ 345            LOAD_GLOBAL              1 (_load_token + NULL)
+                CALL                     0
+                STORE_FAST               0 (tok)
+
+ 346            LOAD_FAST                0 (tok)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L1)
+
+ 347            RETURN_CONST             1 ((False, 'Chưa kích hoạt.'))
+
+ 348    L1:     LOAD_FAST                0 (tok)
+                LOAD_ATTR                3 (get + NULL|self)
+                LOAD_CONST               2 ('payload')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                BUILD_MAP                0
+        L2:     LOAD_ATTR                3 (get + NULL|self)
+                LOAD_CONST               3 ('key')
+                CALL                     1
+                STORE_FAST               1 (key)
+
+ 349            LOAD_FAST                1 (key)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L3)
+
+ 350            RETURN_CONST             4 ((False, 'Token không hợp lệ.'))
+
+ 351    L3:     NOP
+
+ 352    L4:     LOAD_GLOBAL              5 (_post + NULL)
+                LOAD_CONST               5 ('/api/refresh')
+                LOAD_FAST                1 (key)
+                CALL                     2
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST   35 (r, mid)
+
+ 355    L5:     LOAD_FAST                2 (r)
+                LOAD_ATTR               10 (status_code)
+                LOAD_CONST               7 (200)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE      122 (to L9)
+
+ 356            NOP
+
+ 357    L6:     LOAD_FAST                2 (r)
+                LOAD_ATTR               13 (json + NULL|self)
+                CALL                     0
+                STORE_FAST               4 (data)
+
+ 360    L7:     LOAD_GLOBAL             17 (_verify + NULL)
+                LOAD_FAST                4 (data)
+                LOAD_ATTR                3 (get + NULL|self)
+                LOAD_CONST               2 ('payload')
+                BUILD_MAP                0
+                CALL                     2
+                LOAD_FAST                4 (data)
+                LOAD_ATTR                3 (get + NULL|self)
+                LOAD_CONST               9 ('signature')
+                LOAD_CONST              10 ('')
+                CALL                     2
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       55 (to L8)
+
+ 361            LOAD_FAST                4 (data)
+                LOAD_CONST               2 ('payload')
+                BINARY_SUBSCR
+                LOAD_ATTR                3 (get + NULL|self)
+                LOAD_CONST              11 ('machine_id')
+                CALL                     1
+                LOAD_FAST                3 (mid)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       31 (to L8)
+
+ 362            LOAD_GLOBAL             19 (_save_token + NULL)
+                LOAD_FAST                4 (data)
+                CALL                     1
+                POP_TOP
+
+ 363            LOAD_GLOBAL             21 (_save_hwm + NULL)
+                LOAD_GLOBAL             23 (_utcnow + NULL)
+                CALL                     0
+                CALL                     1
+                POP_TOP
+
+ 364            RETURN_CONST            12 ((True, 'Đã gia hạn.'))
+
+ 365    L8:     RETURN_CONST             8 ((False, 'Phản hồi server không hợp lệ.'))
+
+ 366    L9:     LOAD_FAST                2 (r)
+                LOAD_ATTR               10 (status_code)
+                LOAD_CONST              13 ((401, 403, 404))
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       83 (to L13)
+
+ 369            NOP
+
+ 370   L10:     LOAD_FAST                2 (r)
+                LOAD_ATTR               13 (json + NULL|self)
+                CALL                     0
+                STORE_FAST               5 (body)
+
+ 373   L11:     LOAD_GLOBAL             25 (isinstance + NULL)
+                LOAD_FAST                5 (body)
+                LOAD_GLOBAL             26 (dict)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       44 (to L12)
+                BUILD_SET                0
+                LOAD_CONST              15 (frozenset({'code', 'detail', 'error'}))
+                SET_UPDATE               1
+                LOAD_GLOBAL             29 (set + NULL)
+                LOAD_FAST                5 (body)
+                CALL                     1
+                BINARY_OP                1 (&)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       23 (to L12)
+
+ 374            LOAD_GLOBAL             31 (_delete_token + NULL)
+                CALL                     0
+                POP_TOP
+
+ 375            LOAD_CONST              16 (False)
+                LOAD_GLOBAL             33 (_err + NULL)
+                LOAD_FAST                2 (r)
+                CALL                     1
+                BUILD_TUPLE              2
+                RETURN_VALUE
+
+ 376   L12:     RETURN_CONST             6 ((False, 'offline'))
+
+ 377   L13:     LOAD_CONST              16 (False)
+                LOAD_GLOBAL             33 (_err + NULL)
+                LOAD_FAST                2 (r)
+                CALL                     1
+                BUILD_TUPLE              2
+                RETURN_VALUE
+
+  --   L14:     PUSH_EXC_INFO
+
+ 353            LOAD_GLOBAL              6 (requests)
+                LOAD_ATTR                8 (RequestException)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L16)
+                POP_TOP
+
+ 354   L15:     POP_EXCEPT
+                RETURN_CONST             6 ((False, 'offline'))
+
+ 353   L16:     RERAISE                  0
+
+  --   L17:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L18:     PUSH_EXC_INFO
+
+ 358            LOAD_GLOBAL             14 (ValueError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L20)
+                POP_TOP
+
+ 359   L19:     POP_EXCEPT
+                RETURN_CONST             8 ((False, 'Phản hồi server không hợp lệ.'))
+
+ 358   L20:     RERAISE                  0
+
+  --   L21:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L22:     PUSH_EXC_INFO
+
+ 371            LOAD_GLOBAL             14 (ValueError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        5 (to L24)
+                POP_TOP
+
+ 372            LOAD_CONST              14 (None)
+                STORE_FAST               5 (body)
+       L23:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 135 (to L11)
+
+ 371   L24:     RERAISE                  0
+
+  --   L25:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L4 to L5 -> L14 [0]
+  L6 to L7 -> L18 [0]
+  L10 to L11 -> L22 [0]
+  L14 to L15 -> L17 [1] lasti
+  L16 to L17 -> L17 [1] lasti
+  L18 to L19 -> L21 [1] lasti
+  L20 to L21 -> L21 [1] lasti
+  L22 to L23 -> L25 [1] lasti
+  L24 to L25 -> L25 [1] lasti
+
+Disassembly of <code object _ver_tuple at 0x0000016DC8EA5BD0, file "bilisub\license_client.py", line 380>:
+ 380           RESUME                   0
+
+ 381           BUILD_LIST               0
+               STORE_FAST               1 (out)
+
+ 382           LOAD_GLOBAL              1 (str + NULL)
+               LOAD_FAST                0 (s)
+               CALL                     1
+               LOAD_ATTR                3 (split + NULL|self)
+               LOAD_CONST               1 ('.')
+               CALL                     1
+               GET_ITER
+       L1:     FOR_ITER                30 (to L4)
+               STORE_FAST               2 (x)
+
+ 383           NOP
+
+ 384   L2:     LOAD_FAST                1 (out)
+               LOAD_ATTR                5 (append + NULL|self)
+               LOAD_GLOBAL              7 (int + NULL)
+               LOAD_FAST                2 (x)
+               CALL                     1
+               CALL                     1
+               POP_TOP
+       L3:     JUMP_BACKWARD           32 (to L1)
+
+ 382   L4:     END_FOR
+               POP_TOP
+
+ 387           LOAD_GLOBAL             11 (tuple + NULL)
+               LOAD_FAST                1 (out)
+               CALL                     1
+               RETURN_VALUE
+
+  --   L5:     PUSH_EXC_INFO
+
+ 385           LOAD_GLOBAL              8 (ValueError)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       21 (to L7)
+               POP_TOP
+
+ 386           LOAD_FAST                1 (out)
+               LOAD_ATTR                5 (append + NULL|self)
+               LOAD_CONST               2 (0)
+               CALL                     1
+               POP_TOP
+       L6:     POP_EXCEPT
+               JUMP_BACKWARD           75 (to L1)
+
+ 385   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L5 [1]
+  L5 to L6 -> L8 [2] lasti
+  L7 to L8 -> L8 [2] lasti
+
+Disassembly of <code object _valid_dl_url at 0x0000016DC90D0FF0, file "bilisub\license_client.py", line 390>:
+ 390           RESUME                   0
+
+ 394           NOP
+
+ 395   L1:     LOAD_CONST               1 (0)
+               LOAD_CONST               2 (('urlparse',))
+               IMPORT_NAME              0 (urllib.parse)
+               IMPORT_FROM              1 (urlparse)
+               STORE_FAST               1 (urlparse)
+               POP_TOP
+
+ 396           LOAD_FAST                1 (urlparse)
+               PUSH_NULL
+               LOAD_FAST                0 (u)
+               CALL                     1
+               STORE_FAST               2 (p)
+
+ 397           LOAD_FAST                2 (p)
+               LOAD_ATTR                4 (scheme)
+               LOAD_CONST               3 ('https')
+               COMPARE_OP             119 (bool(!=))
+               POP_JUMP_IF_TRUE        17 (to L2)
+               LOAD_FAST                2 (p)
+               LOAD_ATTR                6 (hostname)
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L3)
+
+ 398   L2:     RETURN_CONST             4 (False)
+
+ 399   L3:     LOAD_FAST                2 (p)
+               LOAD_ATTR                6 (hostname)
+               LOAD_ATTR                9 (lower + NULL|self)
+               CALL                     0
+               STORE_FAST               3 (host)
+
+ 400           LOAD_FAST                3 (host)
+               LOAD_CONST               5 ('github.com')
+               COMPARE_OP              72 (==)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE        17 (to L4)
+               POP_TOP
+               LOAD_FAST                3 (host)
+               LOAD_ATTR               11 (endswith + NULL|self)
+               LOAD_CONST               6 ('.githubusercontent.com')
+               CALL                     1
+       L4:     RETURN_VALUE
+
+  --   L5:     PUSH_EXC_INFO
+
+ 401           LOAD_GLOBAL             12 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L7)
+               POP_TOP
+
+ 402   L6:     POP_EXCEPT
+               RETURN_CONST             4 (False)
+
+ 401   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L5 [0]
+  L3 to L4 -> L5 [0]
+  L5 to L6 -> L8 [1] lasti
+  L7 to L8 -> L8 [1] lasti
+
+Disassembly of <code object check_update at 0x0000016DC8F48F90, file "bilisub\license_client.py", line 405>:
+ 405            RESUME                   0
+
+ 414            LOAD_GLOBAL              1 (getattr + NULL)
+                LOAD_GLOBAL              2 (config)
+                LOAD_CONST               1 ('UPDATE_MANIFEST_URL')
+                LOAD_CONST               2 ('')
+                CALL                     3
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                LOAD_CONST               2 ('')
+        L1:     LOAD_ATTR                5 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               0 (url)
+
+ 415            LOAD_FAST                0 (url)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L2)
+
+ 416            RETURN_CONST             3 (None)
+
+ 417    L2:     NOP
+
+ 418    L3:     LOAD_GLOBAL              6 (requests)
+                LOAD_ATTR                8 (get)
+                PUSH_NULL
+                LOAD_FAST                0 (url)
+                LOAD_CONST               4 (10)
+                LOAD_CONST               5 ('Cache-Control')
+                LOAD_CONST               6 ('no-cache')
+                BUILD_MAP                1
+                LOAD_CONST               7 (('timeout', 'headers'))
+                CALL_KW                  3
+                STORE_FAST               1 (r)
+
+ 419            LOAD_FAST                1 (r)
+                LOAD_ATTR               10 (status_code)
+                LOAD_CONST               8 (200)
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE        1 (to L5)
+
+ 420    L4:     RETURN_CONST             3 (None)
+
+ 421    L5:     LOAD_FAST                1 (r)
+                LOAD_ATTR               13 (json + NULL|self)
+                CALL                     0
+                STORE_FAST               2 (d)
+
+ 424            LOAD_GLOBAL             15 (isinstance + NULL)
+                LOAD_FAST                2 (d)
+                LOAD_GLOBAL             16 (dict)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       49 (to L6)
+                LOAD_GLOBAL             15 (isinstance + NULL)
+                LOAD_FAST                2 (d)
+                LOAD_ATTR                9 (get + NULL|self)
+                LOAD_GLOBAL             18 (PRODUCT_ID)
+                CALL                     1
+                LOAD_GLOBAL             16 (dict)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE        9 (to L6)
+
+ 425            LOAD_FAST                2 (d)
+                LOAD_GLOBAL             18 (PRODUCT_ID)
+                BINARY_SUBSCR
+                STORE_FAST               2 (d)
+
+ 426    L6:     LOAD_GLOBAL             21 (str + NULL)
+                LOAD_FAST                2 (d)
+                LOAD_ATTR                9 (get + NULL|self)
+                LOAD_CONST               9 ('latest_version')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        26 (to L7)
+                POP_TOP
+                LOAD_FAST                2 (d)
+                LOAD_ATTR                9 (get + NULL|self)
+                LOAD_CONST              10 ('latest')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L7)
+                POP_TOP
+                LOAD_CONST               2 ('')
+        L7:     CALL                     1
+                LOAD_ATTR                5 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               3 (latest)
+
+ 427            LOAD_GLOBAL             21 (str + NULL)
+                LOAD_FAST                2 (d)
+                LOAD_ATTR                9 (get + NULL|self)
+                LOAD_CONST              11 ('download_url')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        26 (to L8)
+                POP_TOP
+                LOAD_FAST                2 (d)
+                LOAD_ATTR                9 (get + NULL|self)
+                LOAD_CONST              12 ('url')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L8)
+                POP_TOP
+                LOAD_CONST               2 ('')
+        L8:     CALL                     1
+                LOAD_ATTR                5 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               4 (dl)
+
+ 428            LOAD_FAST                3 (latest)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       38 (to L9)
+                LOAD_GLOBAL             23 (_ver_tuple + NULL)
+                LOAD_FAST                3 (latest)
+                CALL                     1
+                LOAD_GLOBAL             23 (_ver_tuple + NULL)
+                LOAD_GLOBAL              2 (config)
+                LOAD_ATTR               24 (APP_VERSION)
+                CALL                     1
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_TRUE         1 (to L10)
+
+ 429    L9:     RETURN_CONST             3 (None)
+
+ 430   L10:     LOAD_GLOBAL             27 (_valid_dl_url + NULL)
+                LOAD_FAST                4 (dl)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L12)
+
+ 431   L11:     RETURN_CONST             3 (None)
+
+ 432   L12:     LOAD_FAST_LOAD_FAST     52 (latest, dl)
+                LOAD_GLOBAL             21 (str + NULL)
+                LOAD_FAST                2 (d)
+                LOAD_ATTR                9 (get + NULL|self)
+                LOAD_CONST              13 ('message')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L13)
+                POP_TOP
+                LOAD_CONST               2 ('')
+       L13:     CALL                     1
+                LOAD_ATTR                5 (strip + NULL|self)
+                CALL                     0
+                LOAD_CONST              14 (('latest', 'url', 'message'))
+                BUILD_CONST_KEY_MAP      3
+       L14:     RETURN_VALUE
+
+  --   L15:     PUSH_EXC_INFO
+
+ 433            LOAD_GLOBAL             28 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L17)
+                POP_TOP
+
+ 434   L16:     POP_EXCEPT
+                RETURN_CONST             3 (None)
+
+ 433   L17:     RERAISE                  0
+
+  --   L18:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L3 to L4 -> L15 [0]
+  L5 to L9 -> L15 [0]
+  L10 to L11 -> L15 [0]
+  L12 to L14 -> L15 [0]
+  L15 to L16 -> L18 [1] lasti
+  L17 to L18 -> L18 [1] lasti
+
+Disassembly of <code object maybe_refresh at 0x0000016DC8EA3A60, file "bilisub\license_client.py", line 437>:
+ 437           RESUME                   0
+
+ 442           LOAD_GLOBAL              1 (_load_token + NULL)
+               CALL                     0
+               TO_BOOL
+               POP_JUMP_IF_FALSE       12 (to L3)
+
+ 443           NOP
+
+ 444   L1:     LOAD_GLOBAL              3 (refresh + NULL)
+               CALL                     0
+               POP_TOP
+       L2:     RETURN_CONST             1 (None)
+
+ 442   L3:     RETURN_CONST             1 (None)
+
+  --   L4:     PUSH_EXC_INFO
+
+ 445           LOAD_GLOBAL              4 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L6)
+               POP_TOP
+
+ 446   L5:     POP_EXCEPT
+               RETURN_CONST             1 (None)
+
+ 445   L6:     RERAISE                  0
+
+  --   L7:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L4 [0]
+  L4 to L5 -> L7 [1] lasti
+  L6 to L7 -> L7 [1] lasti
+
+Disassembly of <code object is_active at 0x0000016DC8E06AB0, file "bilisub\license_client.py", line 450>:
+ 450           RESUME                   0
+
+ 457           LOAD_GLOBAL              1 (getattr + NULL)
+               LOAD_GLOBAL              2 (config)
+               LOAD_CONST               1 ('LICENSE_ENABLED')
+               LOAD_CONST               2 (True)
+               CALL                     3
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L1)
+
+ 458           RETURN_CONST             2 (True)
+
+ 459   L1:     NOP
+
+ 460   L2:     LOAD_GLOBAL              5 (check + NULL)
+               CALL                     0
+               LOAD_CONST               3 ('status')
+               BINARY_SUBSCR
+               LOAD_CONST               4 (('VALID', 'GRACE'))
+               CONTAINS_OP              0
+       L3:     RETURN_VALUE
+
+  --   L4:     PUSH_EXC_INFO
+
+ 461           LOAD_GLOBAL              6 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L6)
+               POP_TOP
+
+ 462   L5:     POP_EXCEPT
+               RETURN_CONST             5 (False)
+
+ 461   L6:     RERAISE                  0
+
+  --   L7:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L4 [0]
+  L4 to L5 -> L7 [1] lasti
+  L6 to L7 -> L7 [1] lasti
+
+Disassembly of <code object blocked_reason at 0x0000016DC8EA2FB0, file "bilisub\license_client.py", line 465>:
+465           RESUME                   0
+
+467           LOAD_GLOBAL              1 (is_active + NULL)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE        1 (to L1)
+
+468           RETURN_CONST             1 ('')
+
+469   L1:     LOAD_GLOBAL              3 (check + NULL)
+              CALL                     0
+              STORE_FAST               0 (st)
+
+470           LOAD_CONST               2 ('🔑 Bản quyền: ')
+              LOAD_FAST                0 (st)
+              LOAD_ATTR                5 (get + NULL|self)
+              LOAD_CONST               3 ('message')
+              LOAD_CONST               4 ('License không hợp lệ.')
+              CALL                     2
+              BINARY_OP                0 (+)
+
+471           LOAD_CONST               5 (" Bấm '🔑 Bản quyền' ở thanh bên trái để nhập key mới.")
+
+470           BINARY_OP                0 (+)
+              RETURN_VALUE
+
+Disassembly of <code object days_left at 0x0000016DC90D0E30, file "bilisub\license_client.py", line 474>:
+ 474           RESUME                   0
+
+ 476           NOP
+
+ 477   L1:     LOAD_GLOBAL              1 (check + NULL)
+               CALL                     0
+               LOAD_ATTR                3 (get + NULL|self)
+               LOAD_CONST               1 ('info')
+               CALL                     1
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L2)
+               POP_TOP
+               BUILD_MAP                0
+       L2:     STORE_FAST               0 (p)
+
+ 478           LOAD_FAST                0 (p)
+               LOAD_ATTR                3 (get + NULL|self)
+               LOAD_CONST               2 ('expires_at')
+               CALL                     1
+               STORE_FAST               1 (exp)
+
+ 479           LOAD_FAST                1 (exp)
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L4)
+
+ 480   L3:     RETURN_CONST             3 (None)
+
+ 481   L4:     LOAD_GLOBAL              5 (max + NULL)
+               LOAD_CONST               4 (0)
+               LOAD_GLOBAL              7 (_parse + NULL)
+               LOAD_FAST                1 (exp)
+               CALL                     1
+               LOAD_GLOBAL              9 (_utcnow + NULL)
+               CALL                     0
+               BINARY_OP               10 (-)
+               LOAD_ATTR               10 (days)
+               CALL                     2
+       L5:     RETURN_VALUE
+
+  --   L6:     PUSH_EXC_INFO
+
+ 482           LOAD_GLOBAL             12 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L8)
+               POP_TOP
+
+ 483   L7:     POP_EXCEPT
+               RETURN_CONST             3 (None)
+
+ 482   L8:     RERAISE                  0
+
+  --   L9:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L6 [0]
+  L4 to L5 -> L6 [0]
+  L6 to L7 -> L9 [1] lasti
+  L8 to L9 -> L9 [1] lasti
+
+Disassembly of <code object status_text at 0x0000016DC8DB24C0, file "bilisub\license_client.py", line 487>:
+ 487            RESUME                   0
+
+ 488            LOAD_GLOBAL              1 (check + NULL)
+                CALL                     0
+                STORE_FAST               0 (st)
+
+ 489            LOAD_FAST                0 (st)
+                LOAD_ATTR                3 (get + NULL|self)
+                LOAD_CONST               1 ('info')
+                CALL                     1
+                STORE_FAST               1 (p)
+
+ 490            LOAD_FAST                0 (st)
+                LOAD_CONST               2 ('status')
+                BINARY_SUBSCR
+                LOAD_CONST               3 (('VALID', 'GRACE'))
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE      118 (to L7)
+                LOAD_FAST                1 (p)
+                TO_BOOL
+                POP_JUMP_IF_FALSE      111 (to L7)
+
+ 491            LOAD_FAST                1 (p)
+                LOAD_CONST               4 ('plan')
+                BINARY_SUBSCR
+                LOAD_CONST               5 ('lifetime')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE        2 (to L1)
+                LOAD_CONST               6 ('Trọn đời')
+                JUMP_FORWARD             1 (to L2)
+        L1:     LOAD_CONST               7 ('Thuê bao')
+        L2:     STORE_FAST               2 (plan)
+
+ 492            LOAD_FAST                1 (p)
+                LOAD_ATTR                3 (get + NULL|self)
+                LOAD_CONST               8 ('expires_at')
+                CALL                     1
+                STORE_FAST               3 (exp)
+
+ 493            NOP
+
+ 494    L3:     LOAD_FAST                3 (exp)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       66 (to L5)
+
+ 495            LOAD_GLOBAL              5 (max + NULL)
+                LOAD_CONST               9 (0)
+                LOAD_GLOBAL              7 (_parse + NULL)
+                LOAD_FAST                3 (exp)
+                CALL                     1
+                LOAD_GLOBAL              9 (_utcnow + NULL)
+                CALL                     0
+                BINARY_OP               10 (-)
+                LOAD_ATTR               10 (days)
+                CALL                     2
+                STORE_FAST               4 (days)
+
+ 496            LOAD_CONST              10 ('License: ')
+                LOAD_FAST                2 (plan)
+                FORMAT_SIMPLE
+                LOAD_CONST              11 (' | Hết hạn ')
+                LOAD_GLOBAL             13 (str + NULL)
+                LOAD_FAST                3 (exp)
+                CALL                     1
+                LOAD_CONST               0 (None)
+                LOAD_CONST              12 (10)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                LOAD_CONST              13 (' (còn ')
+                LOAD_FAST                4 (days)
+                FORMAT_SIMPLE
+                LOAD_CONST              14 (' ngày)')
+                BUILD_STRING             7
+        L4:     RETURN_VALUE
+
+ 494    L5:     NOP
+
+ 499    L6:     LOAD_CONST              10 ('License: ')
+                LOAD_FAST                2 (plan)
+                FORMAT_SIMPLE
+                LOAD_CONST              15 (' (vĩnh viễn)')
+                BUILD_STRING             3
+                RETURN_VALUE
+
+ 500    L7:     LOAD_CONST              10 ('License: ')
+                LOAD_FAST                0 (st)
+                LOAD_CONST              16 ('message')
+                BINARY_SUBSCR
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                RETURN_VALUE
+
+  --    L8:     PUSH_EXC_INFO
+
+ 497            LOAD_GLOBAL             14 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L10)
+                POP_TOP
+
+ 498    L9:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 26 (to L6)
+
+ 497   L10:     RERAISE                  0
+
+  --   L11:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L3 to L4 -> L8 [0]
+  L8 to L9 -> L11 [1] lasti
+  L10 to L11 -> L11 [1] lasti

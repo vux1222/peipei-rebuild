@@ -1,0 +1,1268 @@
+=== FILE: bilisub\tts\tiktok.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('TikTok/CapCut TTS — chất lượng cao, cần cookie sessionid.\n\nEndpoint reverse-engineer từ tool cũ. Chỉ dùng nếu Boss có session hợp lệ.\n')
+              STORE_NAME               0 (__doc__)
+
+  5           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+  7           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (base64)
+              STORE_NAME               3 (base64)
+
+  8           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (re)
+              STORE_NAME               4 (re)
+
+  9           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              5 (subprocess)
+              STORE_NAME               5 (subprocess)
+
+ 10           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              6 (threading)
+              STORE_NAME               6 (threading)
+
+ 11           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              7 (time)
+              STORE_NAME               7 (time)
+
+ 12           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Path',))
+              IMPORT_NAME              8 (pathlib)
+              IMPORT_FROM              9 (Path)
+              STORE_NAME               9 (Path)
+              POP_TOP
+
+ 14           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME             10 (requests)
+              STORE_NAME              10 (requests)
+
+ 16           LOAD_CONST               5 (2)
+              LOAD_CONST               6 (('find_ffmpeg', '_no_window_kwargs'))
+              IMPORT_NAME             11 (ffmpeg_utils)
+              IMPORT_FROM             12 (find_ffmpeg)
+              STORE_NAME              12 (find_ffmpeg)
+              IMPORT_FROM             13 (_no_window_kwargs)
+              STORE_NAME              13 (_no_window_kwargs)
+              POP_TOP
+
+ 18           LOAD_CONST               7 ('https://api16-normal-v6.tiktokv.com/media/api/text/speech/invoke/')
+              STORE_NAME              14 (_ENDPOINT)
+
+ 19           LOAD_CONST               8 ('com.zhiliaoapp.musically/2022600030 (Linux; U; Android 7.1.2; es_ES; SM-G988N; Build/NRD90M;tt-ok/3.12.13.1)')
+              STORE_NAME              15 (_UA)
+
+ 21           LOAD_NAME                4 (re)
+              LOAD_ATTR               32 (compile)
+              PUSH_NULL
+              LOAD_CONST               9 ('([.!?。！？,，;；\\n])')
+              CALL                     1
+              STORE_NAME              17 (_SENT_SPLIT)
+
+ 28           LOAD_NAME                4 (re)
+              LOAD_ATTR               32 (compile)
+              PUSH_NULL
+              LOAD_CONST              10 ('\\b([vV])i\\b')
+              CALL                     1
+              STORE_NAME              18 (_ROMAN_VI)
+
+ 31           LOAD_CONST              27 (('text', 'str', 'return', 'str'))
+              LOAD_CONST              11 (<code object _viet_safe at 0x0000016DC8EAD8A0, file "bilisub\tts\tiktok.py", line 31>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              19 (_viet_safe)
+
+ 35           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              12 (<code object TikTokTTSError at 0x0000016DC8EB8C70, file "bilisub\tts\tiktok.py", line 35>)
+              MAKE_FUNCTION
+              LOAD_CONST              13 ('TikTokTTSError')
+              LOAD_NAME               20 (Exception)
+              CALL                     3
+              STORE_NAME              21 (TikTokTTSError)
+
+ 51           LOAD_CONST              14 (4.0)
+              STORE_NAME              22 (_PACE_MAX)
+
+ 52           LOAD_CONST              15 (1.8)
+              STORE_NAME              23 (_PACE_GROW)
+
+ 53           LOAD_CONST              16 (0.3)
+              STORE_NAME              24 (_PACE_SEED)
+
+ 54           LOAD_CONST              17 (0.8)
+              STORE_NAME              25 (_PACE_DECAY)
+
+ 55           LOAD_CONST              18 (0.05)
+              STORE_NAME              26 (_PACE_RESET)
+
+ 58           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              19 (<code object _Pacer at 0x0000016DC9129D70, file "bilisub\tts\tiktok.py", line 58>)
+              MAKE_FUNCTION
+              LOAD_CONST              20 ('_Pacer')
+              CALL                     2
+              STORE_NAME              27 (_Pacer)
+
+105           LOAD_NAME               27 (_Pacer)
+              PUSH_NULL
+              CALL                     0
+              STORE_NAME              28 (PACER)
+
+108           LOAD_CONST              28 (('raw', 'str', 'return', 'str'))
+              LOAD_CONST              21 (<code object clean_session at 0x0000016DC8E0B7B0, file "bilisub\tts\tiktok.py", line 108>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              29 (clean_session)
+
+114           LOAD_CONST              29 ((200,))
+              LOAD_CONST              30 (('text', 'str', 'max_chars', 'int', 'return', 'list[str]'))
+              LOAD_CONST              22 (<code object _chunks at 0x0000016DC8D399F0, file "bilisub\tts\tiktok.py", line 114>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              30 (_chunks)
+
+127           LOAD_CONST              23 (3)
+              LOAD_CONST              24 (('tries',))
+              BUILD_CONST_KEY_MAP      1
+              LOAD_CONST              31 (('text', 'str', 'voice', 'str', 'session_id', 'str', 'out_mp3', 'str', 'tries', 'int', 'return', 'None'))
+              LOAD_CONST              25 (<code object _one at 0x0000016DC8F4BB00, file "bilisub\tts\tiktok.py", line 127>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              31 (_one)
+
+185           LOAD_CONST              32 (('text', 'str', 'voice', 'str', 'out_mp3', 'str', 'session_id', 'str', 'return', 'None'))
+              LOAD_CONST              26 (<code object synth at 0x0000016DC8FB78D0, file "bilisub\tts\tiktok.py", line 185>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              32 (synth)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object _viet_safe at 0x0000016DC8EAD8A0, file "bilisub\tts\tiktok.py", line 31>:
+ 31           RESUME                   0
+
+ 32           LOAD_GLOBAL              0 (_ROMAN_VI)
+              LOAD_ATTR                3 (sub + NULL|self)
+              LOAD_CONST               1 (<code object <lambda> at 0x0000016DC90E2130, file "bilisub\tts\tiktok.py", line 32>)
+              MAKE_FUNCTION
+              LOAD_FAST                0 (text)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L1:     CALL                     2
+              RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC90E2130, file "bilisub\tts\tiktok.py", line 32>:
+ 32           RESUME                   0
+              LOAD_FAST                0 (m)
+              LOAD_ATTR                1 (group + NULL|self)
+              LOAD_CONST               1 (1)
+              CALL                     1
+              LOAD_CONST               2 ('y')
+              BINARY_OP                0 (+)
+              RETURN_VALUE
+
+Disassembly of <code object TikTokTTSError at 0x0000016DC8EB8C70, file "bilisub\tts\tiktok.py", line 35>:
+ 35           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('TikTokTTSError')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (35)
+              STORE_NAME               3 (__firstlineno__)
+
+ 36           LOAD_CONST               2 (())
+              STORE_NAME               4 (__static_attributes__)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object _Pacer at 0x0000016DC9129D70, file "bilisub\tts\tiktok.py", line 58>:
+ 58           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('_Pacer')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (58)
+              STORE_NAME               3 (__firstlineno__)
+
+ 59           LOAD_CONST               2 ('Giữ khoảng cách tối thiểu giữa 2 request TTS, dùng chung cho MỌI luồng.')
+              STORE_NAME               4 (__doc__)
+
+ 61           LOAD_CONST              11 (('return', 'None'))
+              LOAD_CONST               3 (<code object __init__ at 0x0000016DC8E07EB0, file "bilisub\tts\tiktok.py", line 61>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               5 (__init__)
+
+ 68           LOAD_CONST              11 (('return', 'None'))
+              LOAD_CONST               4 (<code object wait at 0x0000016DC8F4D970, file "bilisub\tts\tiktok.py", line 68>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               6 (wait)
+
+ 80           LOAD_CONST              11 (('return', 'None'))
+              LOAD_CONST               5 (<code object on_block at 0x0000016DC90D0FF0, file "bilisub\tts\tiktok.py", line 80>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               7 (on_block)
+
+ 85           LOAD_CONST              11 (('return', 'None'))
+              LOAD_CONST               6 (<code object on_ok at 0x0000016DC8EA5BD0, file "bilisub\tts\tiktok.py", line 85>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               8 (on_ok)
+
+ 92           LOAD_CONST              12 (('return', 'str'))
+              LOAD_CONST               7 (<code object stats at 0x0000016DC9618760, file "bilisub\tts\tiktok.py", line 92>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               9 (stats)
+
+ 97           LOAD_CONST              11 (('return', 'None'))
+              LOAD_CONST               8 (<code object reset at 0x0000016DC8EC3360, file "bilisub\tts\tiktok.py", line 97>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              10 (reset)
+              LOAD_CONST               9 (('_gap', '_lock', '_next', 'blocked', 'waited'))
+              STORE_NAME              11 (__static_attributes__)
+              RETURN_CONST            10 (None)
+
+Disassembly of <code object __init__ at 0x0000016DC8E07EB0, file "bilisub\tts\tiktok.py", line 61>:
+ 61           RESUME                   0
+
+ 62           LOAD_GLOBAL              0 (threading)
+              LOAD_ATTR                2 (Lock)
+              PUSH_NULL
+              CALL                     0
+              LOAD_FAST                0 (self)
+              STORE_ATTR               2 (_lock)
+
+ 63           LOAD_CONST               1 (0.0)
+              LOAD_FAST                0 (self)
+              STORE_ATTR               3 (_gap)
+
+ 64           LOAD_CONST               1 (0.0)
+              LOAD_FAST                0 (self)
+              STORE_ATTR               4 (_next)
+
+ 65           LOAD_CONST               2 (0)
+              LOAD_FAST                0 (self)
+              STORE_ATTR               5 (blocked)
+
+ 66           LOAD_CONST               1 (0.0)
+              LOAD_FAST                0 (self)
+              STORE_ATTR               6 (waited)
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object wait at 0x0000016DC8F4D970, file "bilisub\tts\tiktok.py", line 68>:
+  68            RESUME                   0
+
+  69            LOAD_FAST                0 (self)
+                LOAD_ATTR                0 (_lock)
+                BEFORE_WITH
+        L1:     POP_TOP
+
+  70            LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (_gap)
+                LOAD_CONST               1 (0)
+                COMPARE_OP              58 (bool(<=))
+                POP_JUMP_IF_FALSE       10 (to L3)
+
+  71            NOP
+
+  69    L2:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+                RETURN_CONST             0 (None)
+
+  72    L3:     LOAD_GLOBAL              4 (time)
+                LOAD_ATTR                6 (monotonic)
+                PUSH_NULL
+                CALL                     0
+                STORE_FAST               1 (now)
+
+  73            LOAD_GLOBAL              9 (max + NULL)
+                LOAD_CONST               2 (0.0)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               10 (_next)
+                LOAD_FAST                1 (now)
+                BINARY_OP               10 (-)
+                CALL                     2
+                STORE_FAST               2 (delay)
+
+  74            LOAD_GLOBAL              9 (max + NULL)
+                LOAD_FAST_LOAD_FAST     16 (now, self)
+                LOAD_ATTR               10 (_next)
+                CALL                     2
+                LOAD_FAST                0 (self)
+                LOAD_ATTR                2 (_gap)
+                BINARY_OP                0 (+)
+                LOAD_FAST                0 (self)
+                STORE_ATTR               5 (_next)
+
+  69    L4:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+
+  75    L5:     LOAD_FAST_CHECK          2 (delay)
+                LOAD_CONST               1 (0)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       65 (to L9)
+
+  76            LOAD_FAST                0 (self)
+                LOAD_ATTR                0 (_lock)
+                BEFORE_WITH
+        L6:     POP_TOP
+
+  77            LOAD_FAST                0 (self)
+                COPY                     1
+                LOAD_ATTR               12 (waited)
+                LOAD_FAST                2 (delay)
+                BINARY_OP               13 (+=)
+                SWAP                     2
+                STORE_ATTR               6 (waited)
+
+  76    L7:     LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                LOAD_CONST               0 (None)
+                CALL                     2
+                POP_TOP
+
+  78    L8:     LOAD_GLOBAL              4 (time)
+                LOAD_ATTR               14 (sleep)
+                PUSH_NULL
+                LOAD_FAST                2 (delay)
+                CALL                     1
+                POP_TOP
+                RETURN_CONST             0 (None)
+
+  75    L9:     RETURN_CONST             0 (None)
+
+  69   L10:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L11)
+                RERAISE                  2
+       L11:     POP_TOP
+       L12:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                JUMP_BACKWARD_NO_INTERRUPT 86 (to L5)
+
+  --   L13:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+  76   L14:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L15)
+                RERAISE                  2
+       L15:     POP_TOP
+       L16:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                JUMP_BACKWARD_NO_INTERRUPT 55 (to L8)
+
+  --   L17:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L10 [1] lasti
+  L3 to L4 -> L10 [1] lasti
+  L6 to L7 -> L14 [1] lasti
+  L10 to L12 -> L13 [3] lasti
+  L14 to L16 -> L17 [3] lasti
+
+Disassembly of <code object on_block at 0x0000016DC90D0FF0, file "bilisub\tts\tiktok.py", line 80>:
+  80           RESUME                   0
+
+  81           LOAD_FAST                0 (self)
+               LOAD_ATTR                0 (_lock)
+               BEFORE_WITH
+       L1:     POP_TOP
+
+  82           LOAD_FAST                0 (self)
+               COPY                     1
+               LOAD_ATTR                2 (blocked)
+               LOAD_CONST               1 (1)
+               BINARY_OP               13 (+=)
+               SWAP                     2
+               STORE_ATTR               1 (blocked)
+
+  83           LOAD_GLOBAL              5 (min + NULL)
+               LOAD_GLOBAL              6 (_PACE_MAX)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR                8 (_gap)
+               LOAD_CONST               2 (0)
+               COMPARE_OP             148 (bool(>))
+               POP_JUMP_IF_FALSE       19 (to L2)
+               LOAD_FAST                0 (self)
+               LOAD_ATTR                8 (_gap)
+               LOAD_GLOBAL             10 (_PACE_GROW)
+               BINARY_OP                5 (*)
+               JUMP_FORWARD             5 (to L3)
+       L2:     LOAD_GLOBAL             12 (_PACE_SEED)
+       L3:     CALL                     2
+               LOAD_FAST                0 (self)
+               STORE_ATTR               4 (_gap)
+
+  81   L4:     LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               CALL                     2
+               POP_TOP
+               RETURN_CONST             0 (None)
+       L5:     PUSH_EXC_INFO
+               WITH_EXCEPT_START
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L6)
+               RERAISE                  2
+       L6:     POP_TOP
+       L7:     POP_EXCEPT
+               POP_TOP
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L5 [1] lasti
+  L5 to L7 -> L8 [3] lasti
+
+Disassembly of <code object on_ok at 0x0000016DC8EA5BD0, file "bilisub\tts\tiktok.py", line 85>:
+  85           RESUME                   0
+
+  86           LOAD_FAST                0 (self)
+               LOAD_ATTR                0 (_lock)
+               BEFORE_WITH
+       L1:     POP_TOP
+
+  87           LOAD_FAST                0 (self)
+               LOAD_ATTR                2 (_gap)
+               LOAD_CONST               1 (0)
+               COMPARE_OP             148 (bool(>))
+               POP_JUMP_IF_FALSE       52 (to L2)
+
+  88           LOAD_FAST                0 (self)
+               COPY                     1
+               LOAD_ATTR                2 (_gap)
+               LOAD_GLOBAL              4 (_PACE_DECAY)
+               BINARY_OP               18 (*=)
+               SWAP                     2
+               STORE_ATTR               1 (_gap)
+
+  89           LOAD_FAST                0 (self)
+               LOAD_ATTR                2 (_gap)
+               LOAD_GLOBAL              6 (_PACE_RESET)
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE        7 (to L2)
+
+  90           LOAD_CONST               2 (0.0)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               1 (_gap)
+
+  86   L2:     LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               CALL                     2
+               POP_TOP
+               RETURN_CONST             0 (None)
+       L3:     PUSH_EXC_INFO
+               WITH_EXCEPT_START
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L4)
+               RERAISE                  2
+       L4:     POP_TOP
+       L5:     POP_EXCEPT
+               POP_TOP
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [1] lasti
+  L3 to L5 -> L6 [3] lasti
+
+Disassembly of <code object stats at 0x0000016DC9618760, file "bilisub\tts\tiktok.py", line 92>:
+  92           RESUME                   0
+
+  93           LOAD_FAST                0 (self)
+               LOAD_ATTR                0 (_lock)
+               BEFORE_WITH
+       L1:     POP_TOP
+
+  94           LOAD_FAST                0 (self)
+               LOAD_ATTR                2 (blocked)
+               FORMAT_SIMPLE
+               LOAD_CONST               1 (' lần server chặn · giãn nhịp tổng ')
+               LOAD_FAST                0 (self)
+               LOAD_ATTR                4 (waited)
+               LOAD_CONST               2 ('.0f')
+               FORMAT_WITH_SPEC
+               LOAD_CONST               3 ('s · nhịp hiện tại ')
+
+  95           LOAD_FAST                0 (self)
+               LOAD_ATTR                6 (_gap)
+               LOAD_CONST               4 ('.2f')
+               FORMAT_WITH_SPEC
+               LOAD_CONST               5 ('s')
+
+  94           BUILD_STRING             6
+
+  93   L2:     SWAP                     2
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               CALL                     2
+               POP_TOP
+               RETURN_VALUE
+       L3:     PUSH_EXC_INFO
+               WITH_EXCEPT_START
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L4)
+               RERAISE                  2
+       L4:     POP_TOP
+       L5:     POP_EXCEPT
+               POP_TOP
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [1] lasti
+  L3 to L5 -> L6 [3] lasti
+
+Disassembly of <code object reset at 0x0000016DC8EC3360, file "bilisub\tts\tiktok.py", line 97>:
+  97           RESUME                   0
+
+  98           LOAD_FAST                0 (self)
+               LOAD_ATTR                0 (_lock)
+               BEFORE_WITH
+       L1:     POP_TOP
+
+  99           LOAD_CONST               1 (0.0)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               1 (_gap)
+
+ 100           LOAD_CONST               1 (0.0)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               2 (_next)
+
+ 101           LOAD_CONST               2 (0)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               3 (blocked)
+
+ 102           LOAD_CONST               1 (0.0)
+               LOAD_FAST                0 (self)
+               STORE_ATTR               4 (waited)
+
+  98   L2:     LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               0 (None)
+               CALL                     2
+               POP_TOP
+               RETURN_CONST             0 (None)
+       L3:     PUSH_EXC_INFO
+               WITH_EXCEPT_START
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L4)
+               RERAISE                  2
+       L4:     POP_TOP
+       L5:     POP_EXCEPT
+               POP_TOP
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [1] lasti
+  L3 to L5 -> L6 [3] lasti
+
+Disassembly of <code object clean_session at 0x0000016DC8E0B7B0, file "bilisub\tts\tiktok.py", line 108>:
+108           RESUME                   0
+
+109           LOAD_FAST                0 (raw)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     LOAD_ATTR                1 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               0 (raw)
+
+110           LOAD_FAST                0 (raw)
+              LOAD_ATTR                3 (replace + NULL|self)
+              LOAD_CONST               2 ('sessionid=')
+              LOAD_CONST               1 ('')
+              CALL                     2
+              LOAD_ATTR                1 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               0 (raw)
+
+111           LOAD_FAST                0 (raw)
+              LOAD_ATTR                5 (split + NULL|self)
+              LOAD_CONST               3 (',')
+              CALL                     1
+              LOAD_CONST               4 (0)
+              BINARY_SUBSCR
+              LOAD_ATTR                1 (strip + NULL|self)
+              CALL                     0
+              RETURN_VALUE
+
+Disassembly of <code object _chunks at 0x0000016DC8D399F0, file "bilisub\tts\tiktok.py", line 114>:
+ 114            RESUME                   0
+
+ 115            LOAD_GLOBAL              0 (_SENT_SPLIT)
+                LOAD_ATTR                3 (split + NULL|self)
+                LOAD_FAST                0 (text)
+                CALL                     1
+                STORE_FAST               2 (parts)
+
+ 116            BUILD_LIST               0
+                LOAD_CONST               1 ('')
+                STORE_FAST_STORE_FAST   67 (cur, out)
+
+ 117            LOAD_FAST                2 (parts)
+                GET_ITER
+        L1:     FOR_ITER                74 (to L3)
+                STORE_FAST               5 (p)
+
+ 118            LOAD_GLOBAL              5 (len + NULL)
+                LOAD_FAST                4 (cur)
+                CALL                     1
+                LOAD_GLOBAL              5 (len + NULL)
+                LOAD_FAST                5 (p)
+                CALL                     1
+                BINARY_OP                0 (+)
+                LOAD_FAST                1 (max_chars)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       40 (to L2)
+                LOAD_FAST                4 (cur)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       33 (to L2)
+
+ 119            LOAD_FAST                3 (out)
+                LOAD_ATTR                7 (append + NULL|self)
+                LOAD_FAST                4 (cur)
+                LOAD_ATTR                9 (strip + NULL|self)
+                CALL                     0
+                CALL                     1
+                POP_TOP
+
+ 120            LOAD_CONST               1 ('')
+                STORE_FAST               4 (cur)
+
+ 121    L2:     LOAD_FAST_LOAD_FAST     69 (cur, p)
+                BINARY_OP               13 (+=)
+                STORE_FAST               4 (cur)
+                JUMP_BACKWARD           76 (to L1)
+
+ 117    L3:     END_FOR
+                POP_TOP
+
+ 122            LOAD_FAST                4 (cur)
+                LOAD_ATTR                9 (strip + NULL|self)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_FALSE       31 (to L4)
+
+ 123            LOAD_FAST                3 (out)
+                LOAD_ATTR                7 (append + NULL|self)
+                LOAD_FAST                4 (cur)
+                LOAD_ATTR                9 (strip + NULL|self)
+                CALL                     0
+                CALL                     1
+                POP_TOP
+
+ 124    L4:     LOAD_FAST                3 (out)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      6 (c)
+                SWAP                     2
+        L5:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L6:     FOR_ITER                13 (to L9)
+                STORE_FAST_LOAD_FAST   102 (c, c)
+                TO_BOOL
+        L7:     POP_JUMP_IF_TRUE         2 (to L8)
+                JUMP_BACKWARD           11 (to L6)
+        L8:     LOAD_FAST                6 (c)
+                LIST_APPEND              2
+                JUMP_BACKWARD           15 (to L6)
+        L9:     END_FOR
+                POP_TOP
+       L10:     SWAP                     2
+                STORE_FAST               6 (c)
+                RETURN_VALUE
+
+  --   L11:     SWAP                     2
+                POP_TOP
+
+ 124            SWAP                     2
+                STORE_FAST               6 (c)
+                RERAISE                  0
+ExceptionTable:
+  L5 to L7 -> L11 [2]
+  L8 to L10 -> L11 [2]
+
+Disassembly of <code object _one at 0x0000016DC8F4BB00, file "bilisub\tts\tiktok.py", line 127>:
+ 127            RESUME                   0
+
+ 137            LOAD_FAST                1 (voice)
+
+ 138            LOAD_FAST                0 (text)
+                LOAD_ATTR                1 (replace + NULL|self)
+                LOAD_CONST               1 ('+')
+                LOAD_CONST               2 ('plus')
+                CALL                     2
+                LOAD_ATTR                1 (replace + NULL|self)
+                LOAD_CONST               3 ('&')
+                LOAD_CONST               4 ('and')
+                CALL                     2
+
+ 139            LOAD_CONST               5 ('0')
+
+ 140            LOAD_CONST               6 ('1233')
+
+ 136            LOAD_CONST               7 (('text_speaker', 'req_text', 'speaker_map_type', 'aid'))
+                BUILD_CONST_KEY_MAP      4
+                STORE_FAST               5 (params)
+
+ 142            LOAD_GLOBAL              2 (_UA)
+                LOAD_CONST               8 ('sessionid=')
+                LOAD_FAST                2 (session_id)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                LOAD_CONST               9 (('User-Agent', 'Cookie'))
+                BUILD_CONST_KEY_MAP      2
+                STORE_FAST               6 (headers)
+
+ 143            LOAD_CONST              10 ('')
+                STORE_FAST               7 (last)
+
+ 144            LOAD_GLOBAL              5 (range + NULL)
+                LOAD_GLOBAL              7 (max + NULL)
+                LOAD_CONST              11 (1)
+                LOAD_FAST                4 (tries)
+                CALL                     2
+                CALL                     1
+                GET_ITER
+        L1:     EXTENDED_ARG             1
+                FOR_ITER               474 (to L13)
+                STORE_FAST               8 (attempt)
+
+ 145            LOAD_GLOBAL              8 (PACER)
+                LOAD_ATTR               11 (wait + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 146            NOP
+
+ 147    L2:     LOAD_GLOBAL             12 (requests)
+                LOAD_ATTR               14 (post)
+                PUSH_NULL
+                LOAD_GLOBAL             16 (_ENDPOINT)
+                LOAD_FAST_LOAD_FAST     86 (params, headers)
+                LOAD_CONST              12 (30)
+                LOAD_CONST              13 (('params', 'headers', 'timeout'))
+                CALL_KW                  4
+                STORE_FAST               9 (r)
+
+ 153    L3:     LOAD_FAST                9 (r)
+                LOAD_ATTR               28 (status_code)
+                LOAD_CONST              18 (200)
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE       90 (to L5)
+
+ 154            LOAD_CONST              19 ('HTTP ')
+                LOAD_FAST                9 (r)
+                LOAD_ATTR               28 (status_code)
+                FORMAT_SIMPLE
+                LOAD_CONST              20 (': ')
+                LOAD_FAST                9 (r)
+                LOAD_ATTR               30 (text)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L4)
+                POP_TOP
+                LOAD_CONST              10 ('')
+        L4:     LOAD_CONST              15 (None)
+                LOAD_CONST              21 (110)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             4
+                STORE_FAST               7 (last)
+
+ 155            LOAD_GLOBAL              8 (PACER)
+                LOAD_ATTR               23 (on_block + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 156            LOAD_GLOBAL             24 (time)
+                LOAD_ATTR               26 (sleep)
+                PUSH_NULL
+                LOAD_CONST              17 (0.7)
+                LOAD_FAST                8 (attempt)
+                LOAD_CONST              11 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                CALL                     1
+                POP_TOP
+
+ 157            JUMP_BACKWARD          157 (to L1)
+
+ 158    L5:     NOP
+
+ 159    L6:     LOAD_FAST                9 (r)
+                LOAD_ATTR               33 (json + NULL|self)
+                CALL                     0
+                STORE_FAST              11 (data)
+
+ 165    L7:     LOAD_FAST               11 (data)
+                LOAD_ATTR               37 (get + NULL|self)
+                LOAD_CONST              23 ('status_code')
+                CALL                     1
+                LOAD_CONST              24 (0)
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE      113 (to L10)
+
+ 166            LOAD_FAST               11 (data)
+                LOAD_ATTR               37 (get + NULL|self)
+                LOAD_CONST              25 ('message')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L8)
+                POP_TOP
+                LOAD_CONST              26 ('Unknown error')
+        L8:     STORE_FAST              12 (msg)
+
+ 167            LOAD_CONST              27 ("couldn't load speech")
+                LOAD_FAST               12 (msg)
+                LOAD_ATTR               39 (lower + NULL|self)
+                CALL                     0
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       11 (to L9)
+
+ 168            LOAD_GLOBAL             41 (TikTokTTSError + NULL)
+                LOAD_CONST              28 ('Session ID không hợp lệ hoặc đã hết hạn.')
+                CALL                     1
+                RAISE_VARARGS            1
+
+ 169    L9:     LOAD_CONST              29 ('TikTok TTS lỗi: ')
+                LOAD_FAST               12 (msg)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                STORE_FAST               7 (last)
+
+ 170            LOAD_GLOBAL              8 (PACER)
+                LOAD_ATTR               23 (on_block + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 171            LOAD_GLOBAL             24 (time)
+                LOAD_ATTR               26 (sleep)
+                PUSH_NULL
+                LOAD_CONST              17 (0.7)
+                LOAD_FAST                8 (attempt)
+                LOAD_CONST              11 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                CALL                     1
+                POP_TOP
+
+ 172            EXTENDED_ARG             1
+                JUMP_BACKWARD          308 (to L1)
+
+ 173   L10:     LOAD_FAST               11 (data)
+                LOAD_ATTR               37 (get + NULL|self)
+                LOAD_CONST              30 ('data')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L11)
+                POP_TOP
+                BUILD_MAP                0
+       L11:     LOAD_ATTR               37 (get + NULL|self)
+                LOAD_CONST              31 ('v_str')
+                CALL                     1
+                STORE_FAST              13 (v_str)
+
+ 174            LOAD_FAST               13 (v_str)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        53 (to L12)
+
+ 175            LOAD_CONST              32 ('không nhận được audio data')
+                STORE_FAST               7 (last)
+
+ 176            LOAD_GLOBAL              8 (PACER)
+                LOAD_ATTR               23 (on_block + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 177            LOAD_GLOBAL             24 (time)
+                LOAD_ATTR               26 (sleep)
+                PUSH_NULL
+                LOAD_CONST              17 (0.7)
+                LOAD_FAST                8 (attempt)
+                LOAD_CONST              11 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                CALL                     1
+                POP_TOP
+
+ 178            EXTENDED_ARG             1
+                JUMP_BACKWARD          409 (to L1)
+
+ 179   L12:     LOAD_GLOBAL             43 (Path + NULL)
+                LOAD_FAST                3 (out_mp3)
+                CALL                     1
+                LOAD_ATTR               45 (write_bytes + NULL|self)
+                LOAD_GLOBAL             46 (base64)
+                LOAD_ATTR               48 (b64decode)
+                PUSH_NULL
+                LOAD_FAST               13 (v_str)
+                CALL                     1
+                CALL                     1
+                POP_TOP
+
+ 180            LOAD_GLOBAL              8 (PACER)
+                LOAD_ATTR               51 (on_ok + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 181            POP_TOP
+                RETURN_CONST            15 (None)
+
+ 144   L13:     END_FOR
+                POP_TOP
+
+ 182            LOAD_GLOBAL             41 (TikTokTTSError + NULL)
+                LOAD_CONST              33 ('TikTok/CapCut TTS lỗi sau ')
+                LOAD_FAST                4 (tries)
+                FORMAT_SIMPLE
+                LOAD_CONST              34 (' lần thử — ')
+                LOAD_FAST                7 (last)
+                FORMAT_SIMPLE
+                BUILD_STRING             4
+                CALL                     1
+                RAISE_VARARGS            1
+
+  --   L14:     PUSH_EXC_INFO
+
+ 148            LOAD_GLOBAL             12 (requests)
+                LOAD_ATTR               18 (RequestException)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       77 (to L18)
+                STORE_FAST              10 (ex)
+
+ 149   L15:     LOAD_CONST              14 ('lỗi mạng: ')
+                LOAD_GLOBAL             21 (str + NULL)
+                LOAD_FAST               10 (ex)
+                CALL                     1
+                LOAD_CONST              15 (None)
+                LOAD_CONST              16 (90)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                STORE_FAST               7 (last)
+
+ 150            LOAD_GLOBAL              8 (PACER)
+                LOAD_ATTR               23 (on_block + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 151            LOAD_GLOBAL             24 (time)
+                LOAD_ATTR               26 (sleep)
+                PUSH_NULL
+                LOAD_CONST              17 (0.7)
+                LOAD_FAST                8 (attempt)
+                LOAD_CONST              11 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                CALL                     1
+                POP_TOP
+
+ 152   L16:     POP_EXCEPT
+                LOAD_CONST              15 (None)
+                STORE_FAST              10 (ex)
+                DELETE_FAST             10 (ex)
+                EXTENDED_ARG             2
+                JUMP_BACKWARD          588 (to L1)
+
+  --   L17:     LOAD_CONST              15 (None)
+                STORE_FAST              10 (ex)
+                DELETE_FAST             10 (ex)
+                RERAISE                  1
+
+ 148   L18:     RERAISE                  0
+
+  --   L19:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L20:     PUSH_EXC_INFO
+
+ 160            LOAD_GLOBAL             34 (ValueError)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       80 (to L23)
+                POP_TOP
+
+ 161            LOAD_CONST              22 ('phản hồi không phải JSON: ')
+                LOAD_FAST                9 (r)
+                LOAD_ATTR               30 (text)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L21)
+                POP_TOP
+                LOAD_CONST              10 ('')
+       L21:     LOAD_CONST              15 (None)
+                LOAD_CONST              21 (110)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                STORE_FAST               7 (last)
+
+ 162            LOAD_GLOBAL              8 (PACER)
+                LOAD_ATTR               23 (on_block + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 163            LOAD_GLOBAL             24 (time)
+                LOAD_ATTR               26 (sleep)
+                PUSH_NULL
+                LOAD_CONST              17 (0.7)
+                LOAD_FAST                8 (attempt)
+                LOAD_CONST              11 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                CALL                     1
+                POP_TOP
+
+ 164   L22:     POP_EXCEPT
+                EXTENDED_ARG             2
+                JUMP_BACKWARD          685 (to L1)
+
+ 160   L23:     RERAISE                  0
+
+  --   L24:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L14 [1]
+  L6 to L7 -> L20 [1]
+  L14 to L15 -> L19 [2] lasti
+  L15 to L16 -> L17 [2] lasti
+  L17 to L19 -> L19 [2] lasti
+  L20 to L22 -> L24 [2] lasti
+  L23 to L24 -> L24 [2] lasti
+
+Disassembly of <code object synth at 0x0000016DC8FB78D0, file "bilisub\tts\tiktok.py", line 185>:
+185           RESUME                   0
+
+186           LOAD_GLOBAL              1 (clean_session + NULL)
+              LOAD_FAST                3 (session_id)
+              CALL                     1
+              STORE_FAST               3 (session_id)
+
+187           LOAD_FAST                3 (session_id)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        11 (to L1)
+
+188           LOAD_GLOBAL              3 (TikTokTTSError + NULL)
+              LOAD_CONST               1 ('Cần TikTok Session ID để dùng giọng CapCut.')
+              CALL                     1
+              RAISE_VARARGS            1
+
+189   L1:     LOAD_GLOBAL              5 (_viet_safe + NULL)
+              LOAD_FAST                0 (text)
+              CALL                     1
+              STORE_FAST               0 (text)
+
+190           LOAD_GLOBAL              7 (_chunks + NULL)
+              LOAD_FAST                0 (text)
+              CALL                     1
+              STORE_FAST               4 (chunks)
+
+191           LOAD_GLOBAL              9 (len + NULL)
+              LOAD_FAST                4 (chunks)
+              CALL                     1
+              LOAD_CONST               2 (1)
+              COMPARE_OP              58 (bool(<=))
+              POP_JUMP_IF_FALSE       13 (to L2)
+
+192           LOAD_GLOBAL             11 (_one + NULL)
+              LOAD_FAST_LOAD_FAST      1 (text, voice)
+              LOAD_FAST_LOAD_FAST     50 (session_id, out_mp3)
+              CALL                     4
+              POP_TOP
+
+193           RETURN_CONST             0 (None)
+
+195   L2:     LOAD_GLOBAL             13 (Path + NULL)
+              LOAD_FAST                2 (out_mp3)
+              CALL                     1
+              LOAD_ATTR               14 (parent)
+              STORE_FAST               5 (tmp_dir)
+
+196           BUILD_LIST               0
+              STORE_FAST               6 (parts)
+
+197           LOAD_GLOBAL             17 (enumerate + NULL)
+              LOAD_FAST                4 (chunks)
+              CALL                     1
+              GET_ITER
+      L3:     FOR_ITER                74 (to L4)
+              UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST  120 (i, c)
+
+198           LOAD_FAST                5 (tmp_dir)
+              LOAD_GLOBAL             13 (Path + NULL)
+              LOAD_FAST                2 (out_mp3)
+              CALL                     1
+              LOAD_ATTR               18 (stem)
+              FORMAT_SIMPLE
+              LOAD_CONST               3 ('_c')
+              LOAD_FAST                7 (i)
+              FORMAT_SIMPLE
+              LOAD_CONST               4 ('.mp3')
+              BUILD_STRING             4
+              BINARY_OP               11 (/)
+              STORE_FAST               9 (p)
+
+199           LOAD_GLOBAL             11 (_one + NULL)
+              LOAD_FAST_LOAD_FAST    129 (c, voice)
+              LOAD_FAST                3 (session_id)
+              LOAD_GLOBAL             21 (str + NULL)
+              LOAD_FAST                9 (p)
+              CALL                     1
+              CALL                     4
+              POP_TOP
+
+200           LOAD_FAST                6 (parts)
+              LOAD_ATTR               23 (append + NULL|self)
+              LOAD_FAST                9 (p)
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD           76 (to L3)
+
+197   L4:     END_FOR
+              POP_TOP
+
+201           LOAD_FAST                5 (tmp_dir)
+              LOAD_GLOBAL             13 (Path + NULL)
+              LOAD_FAST                2 (out_mp3)
+              CALL                     1
+              LOAD_ATTR               18 (stem)
+              FORMAT_SIMPLE
+              LOAD_CONST               5 ('.list.txt')
+              BUILD_STRING             2
+              BINARY_OP               11 (/)
+              STORE_FAST              10 (listfile)
+
+202           LOAD_FAST               10 (listfile)
+              LOAD_ATTR               25 (write_text + NULL|self)
+              LOAD_CONST               6 ('')
+              LOAD_ATTR               27 (join + NULL|self)
+              LOAD_CONST               7 (<code object <genexpr> at 0x0000016DC9128A50, file "bilisub\tts\tiktok.py", line 202>)
+              MAKE_FUNCTION
+              LOAD_FAST                6 (parts)
+              GET_ITER
+              CALL                     0
+              CALL                     1
+              LOAD_CONST               8 ('utf-8')
+              LOAD_CONST               9 (('encoding',))
+              CALL_KW                  2
+              POP_TOP
+
+203           LOAD_GLOBAL             28 (subprocess)
+              LOAD_ATTR               30 (run)
+              PUSH_NULL
+              LOAD_GLOBAL             33 (find_ffmpeg + NULL)
+              CALL                     0
+              LOAD_CONST              10 ('-y')
+              LOAD_CONST              11 ('-f')
+              LOAD_CONST              12 ('concat')
+              LOAD_CONST              13 ('-safe')
+              LOAD_CONST              14 ('0')
+
+204           LOAD_CONST              15 ('-i')
+              LOAD_GLOBAL             21 (str + NULL)
+              LOAD_FAST               10 (listfile)
+              CALL                     1
+              LOAD_CONST              16 ('-c')
+              LOAD_CONST              17 ('copy')
+              LOAD_FAST                2 (out_mp3)
+
+203           BUILD_LIST              11
+              BUILD_TUPLE              1
+              LOAD_CONST              18 ('capture_output')
+
+205           LOAD_CONST              19 (True)
+
+203           BUILD_MAP                1
+
+205           LOAD_GLOBAL             35 (_no_window_kwargs + NULL)
+              CALL                     0
+
+203           DICT_MERGE               1
+              CALL_FUNCTION_EX         1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object <genexpr> at 0x0000016DC9128A50, file "bilisub\tts\tiktok.py", line 202>:
+ 202           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                25 (to L3)
+               STORE_FAST               1 (p)
+               LOAD_CONST               0 ("file '")
+               LOAD_FAST                1 (p)
+               LOAD_ATTR                1 (as_posix + NULL|self)
+               CALL                     0
+               FORMAT_SIMPLE
+               LOAD_CONST               1 ("'\n")
+               BUILD_STRING             3
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           27 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             2 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti

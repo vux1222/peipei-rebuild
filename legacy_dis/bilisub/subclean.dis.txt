@@ -1,0 +1,292 @@
+=== FILE: bilisub\subclean.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('Dọn rác text OCR + loại CHỮ TĨNH — Đợt 1 vá "dịch thiếu" (★30/07).\n\nBối cảnh (điều tra 30/07 + góp ý cộng đồng): text OCR hay dính ký tự rác đầu/đuôi câu\n(♪ … 【】 ~ —), khoảng trắng chèn giữa chữ Hán, và "câu" thực chất là CHỮ TĨNH trên màn\n(mã tập, watermark chữ, nhãn cố định) đứng hàng chục giây. Hậu quả đo được:\n  * rác đầu câu → phép so echo-src trượt → bản dịch ĐÚNG bị vứt oan (tái hiện sống 30/07);\n  * chữ tĩnh thành dòng phụ đề vô nghĩa chiếm chỗ, dịch tốn credit.\n\nToàn bộ hàm THUẦN (quy tắc 45) — không I/O, không settings.\n')
+              STORE_NAME               0 (__doc__)
+
+ 11           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 13           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (re)
+              STORE_NAME               3 (re)
+
+ 17           LOAD_NAME                3 (re)
+              LOAD_ATTR                8 (compile)
+              PUSH_NULL
+              LOAD_CONST               4 ('[♪♫♬♩【】〖〗\u3000]')
+              CALL                     1
+              STORE_NAME               5 (_REMOVE_ANY)
+
+ 19           LOAD_CONST               5 ('♪♫♬♩·•‥…~〜―—–-_=+|/\\<>*#@^`°※☆★●◆■▲▼◇○◎ \t\r\n')
+              STORE_NAME               6 (_EDGE_GARBAGE)
+
+ 28           LOAD_NAME                3 (re)
+              LOAD_ATTR                8 (compile)
+              PUSH_NULL
+              LOAD_CONST               6 ('[^\\W_]')
+              LOAD_NAME                3 (re)
+              LOAD_ATTR               14 (UNICODE)
+              CALL                     2
+              STORE_NAME               8 (_MEANING)
+
+ 30           LOAD_NAME                3 (re)
+              LOAD_ATTR                8 (compile)
+              PUSH_NULL
+              LOAD_CONST               7 ('(?<=[⺀-鿿])[ \\t]+(?=[⺀-鿿])')
+              CALL                     1
+              STORE_NAME               9 (_CJK_SPACE)
+
+ 33           LOAD_CONST               8 (30000)
+              STORE_NAME              10 (STATIC_MIN_MS)
+
+ 36           LOAD_CONST              14 (('s', 'str', 'return', 'str'))
+              LOAD_CONST               9 (<code object clean_text at 0x0000016DC8E4E630, file "bilisub\subclean.py", line 36>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              11 (clean_text)
+
+ 53           LOAD_NAME                3 (re)
+              LOAD_ATTR                8 (compile)
+              PUSH_NULL
+              LOAD_CONST              10 ('[一-鿿]')
+              CALL                     1
+              STORE_NAME              12 (_CJK_CHAR)
+
+ 54           LOAD_NAME                3 (re)
+              LOAD_ATTR                8 (compile)
+              PUSH_NULL
+              LOAD_CONST              11 ('[A-Za-zÀ-ỹ]')
+              CALL                     1
+              STORE_NAME              13 (_HAS_LATIN)
+
+ 57           LOAD_CONST              15 (('text', 'str', 'return', 'str'))
+              LOAD_CONST              12 (<code object strip_residual_cjk at 0x0000016DC9077DA0, file "bilisub\subclean.py", line 57>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              14 (strip_residual_cjk)
+
+ 86           LOAD_NAME               15 (frozenset)
+              PUSH_NULL
+              CALL                     0
+
+ 87           LOAD_NAME               10 (STATIC_MIN_MS)
+
+ 86           BUILD_TUPLE              2
+
+ 87           NOP
+
+ 86           NOP
+
+ 87           NOP
+
+ 86           LOAD_CONST              16 (('entries', 'list', 'min_ms', 'int', 'return', 'tuple[list, list]'))
+              LOAD_CONST              13 (<code object split_static at 0x0000016DC8EB5C50, file "bilisub\subclean.py", line 86>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              16 (split_static)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object clean_text at 0x0000016DC8E4E630, file "bilisub\subclean.py", line 36>:
+ 36           RESUME                   0
+
+ 38           LOAD_GLOBAL              0 (_REMOVE_ANY)
+              LOAD_ATTR                3 (sub + NULL|self)
+              LOAD_CONST               1 ('')
+              LOAD_FAST                0 (s)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     CALL                     2
+              STORE_FAST               1 (t)
+
+ 39           LOAD_GLOBAL              4 (_CJK_SPACE)
+              LOAD_ATTR                3 (sub + NULL|self)
+              LOAD_CONST               1 ('')
+              LOAD_FAST                1 (t)
+              CALL                     2
+              STORE_FAST               1 (t)
+
+ 40           LOAD_GLOBAL              6 (re)
+              LOAD_ATTR                2 (sub)
+              PUSH_NULL
+              LOAD_CONST               2 ('\\s+')
+              LOAD_CONST               3 (' ')
+              LOAD_FAST                1 (t)
+              CALL                     3
+              LOAD_ATTR                9 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               1 (t)
+
+ 41           LOAD_FAST                1 (t)
+              LOAD_ATTR                9 (strip + NULL|self)
+              LOAD_GLOBAL             10 (_EDGE_GARBAGE)
+              CALL                     1
+              LOAD_ATTR                9 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               1 (t)
+
+ 42           LOAD_GLOBAL             12 (_MEANING)
+              LOAD_ATTR               15 (search + NULL|self)
+              LOAD_FAST                1 (t)
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         1 (to L2)
+
+ 43           RETURN_CONST             1 ('')
+
+ 44   L2:     LOAD_FAST                1 (t)
+              RETURN_VALUE
+
+Disassembly of <code object strip_residual_cjk at 0x0000016DC9077DA0, file "bilisub\subclean.py", line 57>:
+ 57           RESUME                   0
+
+ 68           LOAD_FAST                0 (text)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     STORE_FAST               1 (s)
+
+ 69           LOAD_GLOBAL              0 (_CJK_CHAR)
+              LOAD_ATTR                3 (search + NULL|self)
+              LOAD_FAST                1 (s)
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L2)
+
+ 70           LOAD_FAST                0 (text)
+              RETURN_VALUE
+
+ 71   L2:     LOAD_GLOBAL              4 (_HAS_LATIN)
+              LOAD_ATTR                3 (search + NULL|self)
+              LOAD_FAST                1 (s)
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+
+ 72           LOAD_FAST                0 (text)
+              RETURN_VALUE
+
+ 74   L3:     LOAD_GLOBAL              6 (re)
+              LOAD_ATTR                8 (sub)
+              PUSH_NULL
+              LOAD_CONST               2 ('(?<=[A-Za-zÀ-ỹĐđ])[一-鿿]+|[一-鿿]+(?=[A-Za-zÀ-ỹĐđ])')
+              LOAD_CONST               1 ('')
+              LOAD_FAST                1 (s)
+              CALL                     3
+              STORE_FAST               2 (base)
+
+ 75           LOAD_FAST_LOAD_FAST     33 (base, s)
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE        2 (to L4)
+
+ 76           LOAD_FAST                0 (text)
+              RETURN_VALUE
+
+ 78   L4:     LOAD_GLOBAL              6 (re)
+              LOAD_ATTR                8 (sub)
+              PUSH_NULL
+              LOAD_CONST               3 ('(?<=\\s)[A-Za-zĐđ](?=\\s|$|[,.;:!?…])')
+              LOAD_CONST               1 ('')
+              LOAD_FAST                2 (base)
+              CALL                     3
+              STORE_FAST               3 (out)
+
+ 79           LOAD_GLOBAL              6 (re)
+              LOAD_ATTR                8 (sub)
+              PUSH_NULL
+              LOAD_CONST               4 ('\\s+([,.;:!?…])')
+              LOAD_CONST               5 ('\\1')
+              LOAD_FAST                3 (out)
+              CALL                     3
+              STORE_FAST               3 (out)
+
+ 80           LOAD_GLOBAL              6 (re)
+              LOAD_ATTR                8 (sub)
+              PUSH_NULL
+              LOAD_CONST               6 ('\\s{2,}')
+              LOAD_CONST               7 (' ')
+              LOAD_FAST                3 (out)
+              CALL                     3
+              LOAD_ATTR               11 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               3 (out)
+
+ 81           LOAD_FAST                3 (out)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        38 (to L5)
+
+ 82           LOAD_GLOBAL              6 (re)
+              LOAD_ATTR                8 (sub)
+              PUSH_NULL
+              LOAD_CONST               6 ('\\s{2,}')
+              LOAD_CONST               7 (' ')
+              LOAD_FAST                2 (base)
+              CALL                     3
+              LOAD_ATTR               11 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               3 (out)
+
+ 83   L5:     LOAD_FAST                3 (out)
+              RETURN_VALUE
+
+Disassembly of <code object split_static at 0x0000016DC8EB5C50, file "bilisub\subclean.py", line 86>:
+ 86           RESUME                   0
+
+ 94           BUILD_LIST               0
+              BUILD_LIST               0
+              STORE_FAST_STORE_FAST   67 (static, keep)
+
+ 95           LOAD_FAST                0 (entries)
+              GET_ITER
+      L1:     FOR_ITER                83 (to L3)
+              STORE_FAST               5 (e)
+
+ 96           LOAD_GLOBAL              1 (id + NULL)
+              LOAD_FAST                5 (e)
+              CALL                     1
+              LOAD_FAST                1 (protected_ids)
+              CONTAINS_OP              1
+              POP_JUMP_IF_FALSE       48 (to L2)
+              LOAD_FAST                5 (e)
+              LOAD_ATTR                2 (end_ms)
+              LOAD_FAST                5 (e)
+              LOAD_ATTR                4 (start_ms)
+              BINARY_OP               10 (-)
+              LOAD_FAST                2 (min_ms)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_FALSE       19 (to L2)
+
+ 97           LOAD_FAST                4 (static)
+              LOAD_ATTR                7 (append + NULL|self)
+              LOAD_FAST                5 (e)
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD           66 (to L1)
+
+ 99   L2:     LOAD_FAST                3 (keep)
+              LOAD_ATTR                7 (append + NULL|self)
+              LOAD_FAST                5 (e)
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD           85 (to L1)
+
+ 95   L3:     END_FOR
+              POP_TOP
+
+100           LOAD_FAST_LOAD_FAST     52 (keep, static)
+              BUILD_TUPLE              2
+              RETURN_VALUE

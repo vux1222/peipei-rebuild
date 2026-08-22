@@ -1,0 +1,347 @@
+=== FILE: bilisub\giahan.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  2           LOAD_CONST               0 ('GIA HẠN ONLINE — Đợt 2 phía tool (20/08/2026), logic THUẦN để test thẳng.\n\nĐợt 1 (web peipeimedia + credit-proxy) đã LIVE: khách dán key CŨ khi mua PeiPei Dub trên\nweb → key MỚI tự cộng ngày còn dư + tự chuyển credit dư (bia `giahan_to` phía proxy).\nFile này chỉ lo 3 việc PHỤ TRỢ trong tool:\n  1. Dựng link mở trang gia hạn (kèm key hiện tại để web tự điền).\n  2. Luật "có nên nhắc sắp hết hạn không" (còn ≤3 ngày, 1 lần mỗi phiên, không chen khi bận).\n  3. Công tắc phanh: env BILISUB_GIAHAN_HINT_OFF=1 tắt nhắc + banner (nút bấm tay vẫn còn —\n     khách chủ động bấm thì không có gì phải phanh).\n\nKHÔNG import Qt/GUI ở đây — GUI chỉ gọi sang; giữ file thuần cho test.\n')
+              STORE_NAME               0 (__doc__)
+
+ 14           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 16           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (os)
+              STORE_NAME               3 (os)
+
+ 17           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('quote',))
+              IMPORT_NAME              4 (urllib.parse)
+              IMPORT_FROM              5 (quote)
+              STORE_NAME               5 (quote)
+              POP_TOP
+
+ 20           LOAD_CONST               5 ('https://peipeimedia.com')
+              STORE_NAME               6 (WEB_GOC)
+
+ 22           LOAD_CONST               6 (3)
+              STORE_NAME               7 (NHAC_TRUOC_NGAY)
+
+ 25           LOAD_CONST              13 (('return', 'str'))
+              LOAD_CONST               7 (<code object _goc at 0x0000016DC90EDA50, file "bilisub\giahan.py", line 25>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               8 (_goc)
+
+ 29           LOAD_CONST              14 (('return', 'bool'))
+              LOAD_CONST               8 (<code object hint_on at 0x0000016DC8EA29C0, file "bilisub\giahan.py", line 29>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME               9 (hint_on)
+
+ 34           LOAD_CONST              15 (('',))
+              LOAD_CONST              16 (('key', 'str', 'return', 'str'))
+              LOAD_CONST               9 (<code object giahan_url at 0x0000016DC8CABE00, file "bilisub\giahan.py", line 34>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              10 (giahan_url)
+
+ 43           LOAD_CONST              17 (('da_nhac', 'bool', 'busy', 'bool', 'return', 'bool'))
+              LOAD_CONST              10 (<code object nen_nhac at 0x0000016DC8EB6100, file "bilisub\giahan.py", line 43>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              11 (nen_nhac)
+
+ 54           LOAD_CONST              18 ((4,))
+              LOAD_CONST              19 (('tran_ngay', 'int', 'return', 'bool'))
+              LOAD_CONST              11 (<code object la_key_ngan at 0x0000016DC9160310, file "bilisub\giahan.py", line 54>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              12 (la_key_ngan)
+
+ 74           LOAD_CONST              15 (('',))
+              LOAD_CONST              20 (('key', 'str', 'return', 'bool'))
+              LOAD_CONST              12 (<code object mo_web_giahan at 0x0000016DC8E06D30, file "bilisub\giahan.py", line 74>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              13 (mo_web_giahan)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object _goc at 0x0000016DC90EDA50, file "bilisub\giahan.py", line 25>:
+ 25           RESUME                   0
+
+ 26           LOAD_GLOBAL              0 (os)
+              LOAD_ATTR                2 (environ)
+              LOAD_ATTR                5 (get + NULL|self)
+              LOAD_CONST               1 ('BILISUB_GIAHAN_URL')
+              LOAD_CONST               2 ('')
+              CALL                     2
+              LOAD_ATTR                7 (strip + NULL|self)
+              CALL                     0
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         6 (to L1)
+              POP_TOP
+              LOAD_GLOBAL              8 (WEB_GOC)
+      L1:     LOAD_ATTR               11 (rstrip + NULL|self)
+              LOAD_CONST               3 ('/')
+              CALL                     1
+              RETURN_VALUE
+
+Disassembly of <code object hint_on at 0x0000016DC8EA29C0, file "bilisub\giahan.py", line 29>:
+ 29           RESUME                   0
+
+ 31           LOAD_GLOBAL              0 (os)
+              LOAD_ATTR                2 (environ)
+              LOAD_ATTR                5 (get + NULL|self)
+              LOAD_CONST               1 ('BILISUB_GIAHAN_HINT_OFF')
+              LOAD_CONST               2 ('')
+              CALL                     2
+              LOAD_ATTR                7 (strip + NULL|self)
+              CALL                     0
+              LOAD_CONST               3 ('1')
+              COMPARE_OP             103 (!=)
+              RETURN_VALUE
+
+Disassembly of <code object giahan_url at 0x0000016DC8CABE00, file "bilisub\giahan.py", line 34>:
+ 34           RESUME                   0
+
+ 36           LOAD_GLOBAL              1 (_goc + NULL)
+              CALL                     0
+              LOAD_CONST               1 ('/?buy=peipei-dub')
+              BINARY_OP                0 (+)
+              STORE_FAST               1 (u)
+
+ 37           LOAD_FAST                0 (key)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L1:     LOAD_ATTR                3 (strip + NULL|self)
+              CALL                     0
+              LOAD_ATTR                5 (upper + NULL|self)
+              CALL                     0
+              STORE_FAST               2 (k)
+
+ 38           LOAD_FAST                2 (k)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       16 (to L2)
+
+ 39           LOAD_FAST                1 (u)
+              LOAD_CONST               3 ('&giahan=')
+              LOAD_GLOBAL              7 (quote + NULL)
+              LOAD_FAST                2 (k)
+              LOAD_CONST               4 ('-')
+              LOAD_CONST               5 (('safe',))
+              CALL_KW                  2
+              BINARY_OP                0 (+)
+              BINARY_OP               13 (+=)
+              STORE_FAST               1 (u)
+
+ 40   L2:     LOAD_FAST                1 (u)
+              RETURN_VALUE
+
+Disassembly of <code object nen_nhac at 0x0000016DC8EB6100, file "bilisub\giahan.py", line 43>:
+  43            RESUME                   0
+
+  46            LOAD_GLOBAL              1 (hint_on + NULL)
+                CALL                     0
+                TO_BOOL
+                POP_JUMP_IF_FALSE       14 (to L1)
+                LOAD_FAST                1 (da_nhac)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         7 (to L1)
+                LOAD_FAST                2 (busy)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        1 (to L2)
+
+  47    L1:     RETURN_CONST             1 (False)
+
+  48    L2:     NOP
+
+  49    L3:     LOAD_FAST                0 (days_left)
+                LOAD_CONST               2 (None)
+                IS_OP                    1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE       34 (to L6)
+                POP_TOP
+                LOAD_CONST               3 (0)
+                LOAD_GLOBAL              3 (int + NULL)
+                LOAD_FAST                0 (days_left)
+                CALL                     1
+                SWAP                     2
+                COPY                     2
+                COMPARE_OP              42 (<=)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE        9 (to L5)
+                POP_TOP
+                LOAD_GLOBAL              4 (NHAC_TRUOC_NGAY)
+                COMPARE_OP              42 (<=)
+        L4:     RETURN_VALUE
+        L5:     SWAP                     2
+                POP_TOP
+        L6:     RETURN_VALUE
+
+  --    L7:     PUSH_EXC_INFO
+
+  50            LOAD_GLOBAL              6 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L9)
+                POP_TOP
+
+  51    L8:     POP_EXCEPT
+                RETURN_CONST             1 (False)
+
+  50    L9:     RERAISE                  0
+
+  --   L10:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L3 to L4 -> L7 [0]
+  L5 to L6 -> L7 [0]
+  L7 to L8 -> L10 [1] lasti
+  L9 to L10 -> L10 [1] lasti
+
+Disassembly of <code object la_key_ngan at 0x0000016DC9160310, file "bilisub\giahan.py", line 54>:
+  --           MAKE_CELL                4 (datetime)
+
+  54           RESUME                   0
+
+  61           NOP
+
+  62   L1:     LOAD_CONST               1 (0)
+               LOAD_CONST               2 (('datetime',))
+               IMPORT_NAME              0 (datetime)
+               IMPORT_FROM              0 (datetime)
+               STORE_DEREF              4 (datetime)
+               POP_TOP
+
+  64           LOAD_FAST                4 (datetime)
+               BUILD_TUPLE              1
+               LOAD_CONST               3 (<code object _p at 0x0000016DC8EC30C0, file "bilisub\giahan.py", line 64>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               STORE_FAST               3 (_p)
+
+  67           LOAD_FAST                0 (issued_at)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        7 (to L2)
+               LOAD_FAST                1 (expires_at)
+               TO_BOOL
+               POP_JUMP_IF_TRUE         1 (to L3)
+
+  68   L2:     RETURN_CONST             4 (False)
+
+  69   L3:     LOAD_FAST                3 (_p)
+               PUSH_NULL
+               LOAD_FAST                1 (expires_at)
+               CALL                     1
+               LOAD_FAST                3 (_p)
+               PUSH_NULL
+               LOAD_FAST                0 (issued_at)
+               CALL                     1
+               BINARY_OP               10 (-)
+               LOAD_ATTR                3 (total_seconds + NULL|self)
+               CALL                     0
+               LOAD_FAST                2 (tran_ngay)
+               LOAD_CONST               5 (86400)
+               BINARY_OP                5 (*)
+               COMPARE_OP              42 (<=)
+       L4:     RETURN_VALUE
+
+  --   L5:     PUSH_EXC_INFO
+
+  70           LOAD_GLOBAL              4 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L7)
+               POP_TOP
+
+  71   L6:     POP_EXCEPT
+               RETURN_CONST             4 (False)
+
+  70   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L5 [0]
+  L3 to L4 -> L5 [0]
+  L5 to L6 -> L8 [1] lasti
+  L7 to L8 -> L8 [1] lasti
+
+Disassembly of <code object _p at 0x0000016DC8EC30C0, file "bilisub\giahan.py", line 64>:
+  --           COPY_FREE_VARS           1
+
+  64           RESUME                   0
+
+  65           LOAD_DEREF               1 (datetime)
+               LOAD_ATTR                1 (fromisoformat + NULL|self)
+               LOAD_GLOBAL              3 (str + NULL)
+               LOAD_FAST                0 (s)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L1)
+               POP_TOP
+               LOAD_CONST               1 ('')
+       L1:     CALL                     1
+               LOAD_ATTR                5 (strip + NULL|self)
+               CALL                     0
+               LOAD_ATTR                7 (replace + NULL|self)
+               LOAD_CONST               2 ('Z')
+               LOAD_CONST               3 ('+00:00')
+               CALL                     2
+               CALL                     1
+               RETURN_VALUE
+
+Disassembly of <code object mo_web_giahan at 0x0000016DC8E06D30, file "bilisub\giahan.py", line 74>:
+  74           RESUME                   0
+
+  76           NOP
+
+  77   L1:     LOAD_CONST               1 (0)
+               LOAD_CONST               2 (None)
+               IMPORT_NAME              0 (webbrowser)
+               STORE_FAST               1 (webbrowser)
+
+  78           LOAD_GLOBAL              3 (bool + NULL)
+               LOAD_FAST                1 (webbrowser)
+               LOAD_ATTR                5 (open + NULL|self)
+               LOAD_GLOBAL              7 (giahan_url + NULL)
+               LOAD_FAST                0 (key)
+               CALL                     1
+               CALL                     1
+               CALL                     1
+       L2:     RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+  79           LOAD_GLOBAL              8 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L5)
+               POP_TOP
+
+  80   L4:     POP_EXCEPT
+               RETURN_CONST             3 (False)
+
+  79   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti

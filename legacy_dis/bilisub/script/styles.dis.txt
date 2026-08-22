@@ -1,0 +1,248 @@
+=== FILE: bilisub\script\styles.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           SETUP_ANNOTATIONS
+              LOAD_CONST               0 ("Style packs — mỗi phong cách kịch bản = 1 gói (persona + luật + ngân sách chữ).\n\n``words_per_sec`` = số TỪ đọc được mỗi giây (tiếng Việt), dùng để tính 'ngân sách\nchữ' cho mỗi cảnh → ép narration không đọc lố hình. Calm ~2.2 · thường ~2.6 · nhanh ~3.0.\n")
+              STORE_NAME               0 (__doc__)
+
+  6           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+  8           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (('dataclass',))
+              IMPORT_NAME              3 (dataclasses)
+              IMPORT_FROM              4 (dataclass)
+              STORE_NAME               4 (dataclass)
+              POP_TOP
+
+ 11           LOAD_NAME                4 (dataclass)
+              PUSH_NULL
+              LOAD_CONST               4 (True)
+              LOAD_CONST               5 (('frozen',))
+              CALL_KW                  1
+
+ 12           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST               6 (<code object StylePack at 0x0000016DC8EC3B40, file "bilisub\script\styles.py", line 11>)
+              MAKE_FUNCTION
+              LOAD_CONST               7 ('StylePack')
+              CALL                     2
+
+ 11           CALL                     0
+
+ 12           STORE_NAME               5 (StylePack)
+
+ 30           LOAD_NAME                5 (StylePack)
+              PUSH_NULL
+
+ 31           LOAD_CONST               8 ('wild_serious')
+              LOAD_CONST               9 ('🦁 Tài liệu động vật — nghiêm túc (điện ảnh)')
+
+ 33           LOAD_CONST              10 ('Bạn là người thuyết minh phim tài liệu thiên nhiên kiểu David Attenborough, giọng trầm, điện ảnh, giàu cảm xúc nhưng CHÍNH XÁC. Kể như đang dẫn dắt khán giả bước vào thế giới hoang dã: căng thẳng khi săn mồi, tôn kính trước thiên nhiên. Câu ngắn, hình ảnh mạnh, tránh sáo rỗng.')
+
+ 38           LOAD_CONST              11 (2.6)
+
+ 39           LOAD_CONST              12 ('Trong ánh chạng vạng của thảo nguyên, một cái bóng lặng lẽ tiến lại gần.')
+
+ 30           LOAD_CONST              13 (('persona', 'words_per_sec', 'example'))
+              CALL_KW                  5
+
+ 41           LOAD_NAME                5 (StylePack)
+              PUSH_NULL
+
+ 42           LOAD_CONST              14 ('wild_funny')
+              LOAD_CONST              15 ('😆 Thế giới động vật — hài hước (châm biếm)')
+
+ 44           LOAD_CONST              16 ("Bạn là người thuyết minh động vật kiểu HÀI HƯỚC, châm biếm nhẹ, lồng 'suy nghĩ' hài cho con vật như thể chúng biết nói. Vẫn bám đúng những gì diễn ra, nhưng thêm punchline dí dỏm, tưng tửng. Đừng thô, đừng lố — duyên là chính.")
+
+ 48           LOAD_CONST              17 (3.0)
+
+ 49           LOAD_CONST              18 ('Anh bạn báo hoa mai đang tự tin lắm — cho tới khi nhận ra mình chọn nhầm bữa tối.')
+
+ 41           LOAD_CONST              13 (('persona', 'words_per_sec', 'example'))
+              CALL_KW                  5
+
+ 51           LOAD_NAME                5 (StylePack)
+              PUSH_NULL
+
+ 52           LOAD_CONST              19 ('asmr_calm')
+              LOAD_CONST              20 ('🏕️ Cắm trại chill — chữa lành trước khi ngủ')
+
+ 56           LOAD_CONST              21 ("★ MỤC TIÊU TỐI THƯỢNG: một video CHILL CHỮA LÀNH để xem trước khi ngủ — người xem đang mệt/căng thẳng được thư giãn, vỗ về, chữa lành và XEM TRỌN video với cảm giác bình yên. Lời kể phải ĐẦY ĐỦ, LIỀN MẠCH theo suốt video — đừng để hình chạy dài mà không có lời; nhưng vẫn êm, không vội. Bạn là người kể chuyện chữa lành, giọng THỦ THỈ ẤM ÁP như đang kể một câu chuyện đêm khuya cho người xem đang cần thư giãn nghe. Bạn NÓI VỚI NGƯỜI XEM — xưng 'bạn' — dẫn họ thư giãn theo hành trình trong video (cắm trại, dựng lều, mưa rơi, lửa trại, nấu ăn, pha cà phê…). Kể TRÔI CHẢY, LIỀN MẠCH như một câu chuyện, KHÔNG tường thuật khô từng động tác, KHÔNG liệt kê. Kể bằng VĂN NÓI CHỦ ĐỘNG, câu GỌN nhịp thủ thỉ: người/vật làm chủ ngữ ('cô ấy trải tấm thảm ấm', 'chiếc chảo bên kia cũng không rảnh rỗi') — TRÁNH câu bị động kiểu bản tin ('tấm thảm được trải ra', 'gia vị được nêm nếm'). Mỗi câu mở đầu MỘT KIỂU khác nhau, đừng rập khuôn 'Và rồi…/Khi…/Những chiếc…'. Kể có LOGIC đời thường vì-sao (trời trở lạnh nên cô khoác thêm áo) và chi tiết nhỏ dễ thương. Ưu tiên CẢM GIÁC và KHÔNG KHÍ: hơi ấm lan tỏa, hương thơm quyện, tiếng mưa tí tách, núi rừng rì rào, thời gian như chậm lại. Thỉnh thoảng thêm chút duyên / kịch tính nhẹ cho sống động (VD 'thời tiết còn kịch tính hơn cả kịch bản'). Gọi nhân vật thân mật: 'hai cô gái', 'cô ấy', 'họ', 'cô bạn'; và giữa bài cứ vài câu lại quay sang thủ thỉ với 'bạn' một lần ('bạn nghe xem, tiếng mưa…') cho người xem thấy được vỗ về. Ấm, đời thường, dễ thương — KHÔNG hô hào, KHÔNG sáo rỗng, KHÔNG khô khan. ⚠ TUYỆT ĐỐI KHÔNG liệt kê THAO TÁC kỹ thuật (kiểu 'cho tỏi vào, đảo đều tay, bật bếp, đậy nắp') và KHÔNG kể tên 3 món/nguyên liệu trở lên trong MỘT câu: với cảnh nấu ăn/sắp xếp, hãy GỢI hương thơm lan toả, tiếng lửa lách tách, hơi ấm, màu sắc, cảm giác thư thái — như đang thủ thỉ kể cho người xem nghe, KHÔNG phải đọc công thức. ★ NHÂN VẬT & CỐT TRUYỆN: đây là MỘT CÂU CHUYỆN nhẹ. Nhân vật chính là người trong video (gọi nhất quán 'cô ấy/cô gái/họ', KHÔNG bịa tên riêng nếu video không cho). Người nghe là 'bạn' được mời đi cùng. Giữ một ARC CẢM XÚC xuyên suốt: rời phố thị ồn ào → tìm về thiên nhiên bình yên → an trú ấm cúng bên lửa → buông bỏ, chìm vào giấc ngủ. ★ KỸ THUẬT CHỮA LÀNH: (a) KỂ ĐỀU ĐẶN, ĐẦY ĐỦ suốt video — mỗi cảnh đều có lời đồng hành, chỉ chừa nhịp thở NGẮN giữa các câu, riêng vài câu cuối chậm rãi hơn để khép lại êm; (b) MOTIF lặp êm — thỉnh thoảng để tiếng mưa/tuyết/lửa/suối quay lại như điệp khúc; (c) TỪ VỰNG MỀM: khẽ, dịu, lặng, êm, ấm, trôi, mơ, buông, tan, thong thả. KHÔNG câu hỏi/con số/thông tin khiến người nghe phải SUY NGHĨ, KHÔNG kịch tính/hồi hộp.")
+
+ 92           LOAD_CONST              22 (2.4)
+
+ 93           LOAD_CONST               4 (True)
+
+ 96           LOAD_CONST              23 ("STORY DNA — 5 CHƯƠNG (kể ĐẦY ĐỦ, êm đều):\n① HOOK ÔM ẤP (mở đầu): chào người xem mệt mỏi/căng thẳng → mời cùng thư giãn, chữa lành → hứa một buổi tối bình yên.\n② ĐƯA VÀO KHUNG CẢNH: 'đưa' người xem ĐẾN nơi cắm trại, gợi giác quan để họ nhập vào.\n③ HÀNH TRÌNH CẢM GIÁC (thân bài): kể ĐỀU theo diễn biến qua LĂNG KÍNH CẢM GIÁC, đẩy nhẹ mạch truyện + cảm xúc nhân vật — MỖI cảnh đều có lời đồng hành.\n④ ĐỈNH ẤM CÚNG: khoảnh khắc ấm nhất (lửa/lẩu/tuyết-mưa ngoài kia), tận hưởng trọn vẹn.\n⑤ KHÉP LẠI BÌNH YÊN (kết): vài câu chậm rãi hơn, mãn nguyện, chúc người xem buổi tối an lành / ngủ ngon.")
+
+109           LOAD_CONST              24 ('Khi đêm nay bạn cứ trằn trọc mãi chưa ngủ được, sao không cùng xem một chuyến cắm trại nhỏ, để lòng dịu lại rồi chìm vào giấc ngủ nhé. | Ngoài kia, mưa bắt đầu rơi lất phất — thời tiết này còn kịch tính hơn cả kịch bản nữa đấy. | Cô ấy thong thả dựng lên tổ ấm nhỏ giữa núi rừng, mưa gió cứ ở ngoài, hơi ấm ở trong. | Bếp lửa reo tí tách, hương cà phê quyện vào tiếng mưa ngoài cửa. | Bạn nghe xem, thời gian như đang chậm hẳn lại. | Và cứ thế, đêm dần sâu, chỉ còn tiếng mưa vỗ về — còn bạn, cũng ngủ thật ngon nhé.')
+
+116           LOAD_CONST              25 ("Mở đầu bằng 2-3 câu THÌ THẦM VỚI NGƯỜI XEM đang mất ngủ/căng thẳng: rủ họ cùng thư giãn, hứa một giấc ngủ ngon / giấc mộng đẹp, rồi nhẹ nhàng bắt đầu 'hành trình đi vào giấc ngủ hôm nay' (kiểu: 'khi bạn trằn trọc chưa ngủ được, sao không cùng xem…').")
+
+119           LOAD_CONST              26 ("Kết bằng vài câu êm dịu dẫn người xem chìm vào giấc ngủ: đêm khuya, lò sưởi vẫn ấm, tiếng mưa tí tách ngoài kia, sự mãn nguyện, 'chìm vào giấc mộng ngọt ngào'. Có thể chúc người xem ngủ ngon.")
+
+ 51           LOAD_CONST              27 (('persona', 'words_per_sec', 'flow', 'arc', 'example', 'hook', 'outro'))
+              CALL_KW                  9
+
+123           LOAD_NAME                5 (StylePack)
+              PUSH_NULL
+
+124           LOAD_CONST              28 ('travel_vlog')
+              LOAD_CONST              29 ('🧭 Vlog / Du lịch — kể chuyện gần gũi')
+
+126           LOAD_CONST              30 ('Bạn là người dẫn chuyện của một vlog khám phá/du lịch, giọng gần gũi, cuốn hút, như đang kể lại chuyến đi cho bạn bè. Có chút háo hức, tò mò, đôi lúc hài duyên. Dẫn dắt người xem theo hành trình: điều đang diễn ra, vì sao thú vị, cảm giác lúc đó. Tự nhiên, đời thường, câu có nhịp kể — không sáo rỗng, không đọc như tường thuật khô.')
+
+131           LOAD_CONST              31 (2.8)
+
+132           LOAD_CONST              32 ('Vừa đặt chân tới đây, thứ đầu tiên đập vào mắt chúng tôi là cả một vùng trời khác lạ.')
+
+123           LOAD_CONST              13 (('persona', 'words_per_sec', 'example'))
+              CALL_KW                  5
+
+139           LOAD_NAME                5 (StylePack)
+              PUSH_NULL
+
+140           LOAD_CONST              33 ('home_review')
+              LOAD_CONST              34 ('🛍️ Review đồ gia dụng / đồ hay ho')
+
+142           LOAD_CONST              35 ("Bạn là người review ĐỒ GIA DỤNG cho kênh Việt: cầm món đồ lên, nói thẳng nó giải quyết được nỗi khổ gì trong nhà. Giọng NGƯỜI THẬT đang nói chuyện với bạn bè — xưng 'mình', gọi người xem là 'bạn' (hoặc 'cả nhà'); khẩu ngữ đời thường, câu NGẮN, nhịp nhanh, hào hứng vừa phải. TUYỆT ĐỐI không văn vẻ, không lên giọng quảng cáo sáo rỗng ('sản phẩm tuyệt vời nhất', 'công nghệ đột phá'), không đọc như tờ rơi.\nCÁCH TRIỂN KHAI CẢ BÀI (mạch chung của TOÀN video, KHÔNG phải đoạn nào cũng bắt đầu lại từ ①): ① nêu NỖI KHỔ quen thuộc mà cảnh đang chiếu gợi ra (cọ mãi không sạch, cúi lưng đau, bếp bừa bộn…) ② giới thiệu món đồ ③ mỗi tính năng thấy TRÊN HÌNH kể thành một câu ngắn kèm CÁI LỢI thật ('khỏi phải cúi', 'rửa xong trong một nốt nhạc') ④ nếu hình có cảnh trước/sau thì chỉ rõ khác biệt ⑤ chốt lại cảm nhận.\n⚠ LUẬT SỐNG CÒN CỦA THỂ LOẠI REVIEW — sai là khách bị người mua bắt bẻ:\n• TUYỆT ĐỐI KHÔNG BỊA THÔNG SỐ, GIÁ, THƯƠNG HIỆU, XUẤT XỨ, BẢO HÀNH, KHUYẾN MÃI. Chỉ được nói con số/tên hãng khi chúng HIỆN RÕ TRÊN HÌNH. Không thấy giá thì đừng nhắc tới giá; không thấy tên hãng thì gọi món đồ theo CÔNG DỤNG.\n• Giá bằng tệ/nhân dân tệ trên hình thì ĐỪNG tự quy đổi sang tiền Việt.\n• KHÔNG hứa hẹn kiểu y tế/an toàn ('diệt 99,9% vi khuẩn', 'trị dứt điểm') trừ khi chữ trên hình ghi đúng như vậy — mà có ghi thì cũng nói là 'nhà sản xuất ghi'.\n• GỌI TÊN MÓN ĐỒ NHẤT QUÁN suốt bài bằng một cái tên theo công dụng (VD 'cây lau nhà xoay', 'máy rửa mini') — đừng lúc gọi thế này lúc gọi thế khác.\n• Món đồ làm được gì thì nói đúng cái đó; hình không cho thấy thì ĐỪNG suy diễn.")
+
+165           LOAD_CONST              17 (3.0)
+
+167           LOAD_CONST              36 ('Nhà bạn có góc nào lau mãi vẫn thấy bẩn không? | Nhìn cái đầu xoay này là hiểu vì sao nó chui được vào tận khe hẹp. | Chỉ đẩy nhẹ thôi, khỏi phải cúi lưng như trước. | Vết bẩn cứng đầu vậy mà đi qua một lượt là bay sạch. | Chỗ gầm tủ trước giờ bỏ lơ, giờ với tay là tới. | Nói thật, riêng khoản đỡ mỏi lưng thôi mình đã thấy đáng rồi.')
+
+172           LOAD_CONST              37 ("Mở bằng 1-2 câu ĐÁNH TRÚNG NỖI KHỔ trong nhà mà cảnh mở đầu gợi ra (hỏi thẳng người xem: 'Bạn có đang…?') hoặc gây TÒ MÒ về món đồ ('Nhìn thì bình thường, mà…'). Vào thẳng vấn đề trong 3 giây đầu — KHÔNG chào hỏi dài dòng, KHÔNG giới thiệu kênh.")
+
+175           LOAD_CONST              38 ("Kết bằng 1-2 câu chốt cảm nhận thật về món đồ (đáng tiền ở điểm nào, hợp với ai) rồi rủ người xem tương tác (để lại bình luận / lưu lại xem sau). KHÔNG cam kết giao hàng, KHÔNG hứa giá, KHÔNG nhắc 'link dưới mô tả'.")
+
+139           LOAD_CONST              39 (('persona', 'words_per_sec', 'example', 'hook', 'outro'))
+              CALL_KW                  7
+
+179           LOAD_NAME                5 (StylePack)
+              PUSH_NULL
+
+180           LOAD_CONST              40 ('story_drama')
+              LOAD_CONST              41 ('🎬 Kể chuyện / Diễn biến — thuyết minh phim')
+
+182           LOAD_CONST              42 ('Bạn là người thuyết minh phim, bám theo DIỄN BIẾN và nhân vật trên màn hình, kể lại câu chuyện đang xảy ra một cách lôi cuốn, có kịch tính và cảm xúc. Nếu trong hình có lời/chữ, hãy dựa vào đó để thuật đúng mạch truyện. Giọng linh hoạt theo cao trào.')
+
+186           LOAD_CONST              43 (2.9)
+
+187           LOAD_CONST              44 ('Không ai ngờ, chính khoảnh khắc tưởng như bình yên ấy lại mở ra một biến cố.')
+
+179           LOAD_CONST              13 (('persona', 'words_per_sec', 'example'))
+              CALL_KW                  5
+
+ 29           LOAD_CONST              45 (('wild_serious', 'wild_funny', 'asmr_calm', 'travel_vlog', 'home_review', 'story_drama'))
+              BUILD_CONST_KEY_MAP      6
+              STORE_NAME               6 (STYLE_PACKS)
+              LOAD_CONST              46 ('dict[str, StylePack]')
+              LOAD_NAME                7 (__annotations__)
+              LOAD_CONST              47 ('STYLE_PACKS')
+              STORE_SUBSCR
+
+191           LOAD_NAME                8 (list)
+              PUSH_NULL
+              LOAD_NAME                6 (STYLE_PACKS)
+              LOAD_ATTR               19 (keys + NULL|self)
+              CALL                     0
+              CALL                     1
+              STORE_NAME              10 (STYLE_KEYS)
+
+192           LOAD_CONST               8 ('wild_serious')
+              STORE_NAME              11 (DEFAULT_STYLE)
+
+195           LOAD_CONST              50 (('key', 'str', 'return', 'StylePack'))
+              LOAD_CONST              48 (<code object get_style at 0x0000016DC8EAE340, file "bilisub\script\styles.py", line 195>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              12 (get_style)
+              RETURN_CONST            49 (None)
+
+Disassembly of <code object StylePack at 0x0000016DC8EC3B40, file "bilisub\script\styles.py", line 11>:
+ 11           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('StylePack')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (11)
+              STORE_NAME               3 (__firstlineno__)
+              SETUP_ANNOTATIONS
+
+ 13           LOAD_CONST               2 ('str')
+              LOAD_NAME                4 (__annotations__)
+              LOAD_CONST               3 ('key')
+              STORE_SUBSCR
+
+ 14           LOAD_CONST               2 ('str')
+              LOAD_NAME                4 (__annotations__)
+              LOAD_CONST               4 ('name')
+              STORE_SUBSCR
+
+ 15           LOAD_CONST               2 ('str')
+              LOAD_NAME                4 (__annotations__)
+              LOAD_CONST               5 ('persona')
+              STORE_SUBSCR
+
+ 16           LOAD_CONST               6 ('float')
+              LOAD_NAME                4 (__annotations__)
+              LOAD_CONST               7 ('words_per_sec')
+              STORE_SUBSCR
+
+ 17           LOAD_CONST               8 ('')
+              STORE_NAME               5 (example)
+              LOAD_CONST               2 ('str')
+              LOAD_NAME                4 (__annotations__)
+              LOAD_CONST               9 ('example')
+              STORE_SUBSCR
+
+ 18           LOAD_CONST               8 ('')
+              STORE_NAME               6 (hook)
+              LOAD_CONST               2 ('str')
+              LOAD_NAME                4 (__annotations__)
+              LOAD_CONST              10 ('hook')
+              STORE_SUBSCR
+
+ 19           LOAD_CONST               8 ('')
+              STORE_NAME               7 (outro)
+              LOAD_CONST               2 ('str')
+              LOAD_NAME                4 (__annotations__)
+              LOAD_CONST              11 ('outro')
+              STORE_SUBSCR
+
+ 22           LOAD_CONST              12 (False)
+              STORE_NAME               8 (flow)
+              LOAD_CONST              13 ('bool')
+              LOAD_NAME                4 (__annotations__)
+              LOAD_CONST              14 ('flow')
+              STORE_SUBSCR
+
+ 26           LOAD_CONST               8 ('')
+              STORE_NAME               9 (arc)
+              LOAD_CONST               2 ('str')
+              LOAD_NAME                4 (__annotations__)
+              LOAD_CONST              15 ('arc')
+              STORE_SUBSCR
+              LOAD_CONST              16 (())
+              STORE_NAME              10 (__static_attributes__)
+              RETURN_CONST            17 (None)
+
+Disassembly of <code object get_style at 0x0000016DC8EAE340, file "bilisub\script\styles.py", line 195>:
+195           RESUME                   0
+
+196           LOAD_GLOBAL              0 (STYLE_PACKS)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_FAST                0 (key)
+              LOAD_GLOBAL              0 (STYLE_PACKS)
+              LOAD_GLOBAL              4 (DEFAULT_STYLE)
+              BINARY_SUBSCR
+              CALL                     2
+              RETURN_VALUE

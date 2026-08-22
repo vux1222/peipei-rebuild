@@ -1,0 +1,749 @@
+=== FILE: bilisub\ocr_chay_chu.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('★17/08 KIỂU PHỤ ĐỀ "GÕ CHỮ" (typewriter) — FILE RIÊNG, TÁCH BIỆT luật gom câu cũ.\n\nVÌ SAO CÓ FILE NÀY — Boss test video ngắn ``会接话的人…_video.mp4`` (56s, Bilibili): phụ đề\nTrung **hiện dần từng chữ** (~10 chữ/giây), mỗi câu chỉ sống 0,7-1,2s. Máy quét chữ 2 khung/\ngiây chụp khung đầu = NỬA câu (``你有``), khung sau mới đủ (``你有病吧``). Luật gom câu cũ\n(:func:`bilisub.ocr._near_same_text`, siết 06/08 "chuỗi con phải dài ≥60%" để cứu câu đáp\nngắn ``什么``) coi nửa→đủ là HAI câu; luật "tha khung đọc hụt" 14/08 lại BỎ đúng khung đủ.\nĐo (đáp án 35 câu, đọc 10 khung/giây): tool ra 41 "câu" — 16 đúng · **14 chỉ còn nửa đầu**\n· 3 mảnh thừa ⇒ dịch + đọc mảnh cụt như câu riêng ("Cậu không sao" → "Cậu không sao thì lau\nđi") — đúng cái "loạn" trên thành phẩm.\n\n**ĐÂY KHÔNG PHẢI LỖI VIDEO — là MỘT KIỂU PHỤ ĐỀ KHÁC** (Boss chốt) ⇒ dạy tool thêm kiểu\nnày, **TÁCH BIỆT** đường cũ (Boss: "đừng gộp, không là hỏng tool"):\n  • MỌI luật mới nằm ở file này. ``ocr.py`` chỉ có Ổ CẮM ``same_text=`` trong\n    ``build_main_entries`` / ``_entries_from_fullframe`` (mặc định ``None`` = chạy Y HỆT cũ),\n    một lời gọi :func:`gop_entries` TRƯỚC vòng gộp cũ cho vùng đã dò thấy, và quét lại\n    :data:`FPS_QUET_LAI` khung/giây khi dò thấy.\n  • Phim thường: máy dò IM (đo clip 5′: 1,4% cặp khung "nối dài" · video gõ chữ: 56,8%) ⇒\n    danh sách câu không đổi một ký tự (hồi quy ``scratch/exp_typewriter_20260817.py``).\n\nSỐ ĐO (cùng video, ``scratch/exp_tw_*.json``): cũ 2fps 16 đúng/14 cụt/3 mảnh · +luật gộp 2fps\n27/3/0 (0 giây thêm) · +quét lại 4fps 32/0/0 (OCR 15s→29s) · 5fps không hơn 4fps.\nHàm THUẦN (rule 45), không đụng file/log — caller (ocr.py) tự log.\n')
+              STORE_NAME               0 (__doc__)
+
+ 25           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 27           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (re)
+              STORE_NAME               3 (re)
+
+ 30           LOAD_CONST               4 (0.2)
+              STORE_NAME               4 (NGUONG_TI_LE)
+
+ 31           LOAD_CONST               5 (5)
+              STORE_NAME               5 (MIN_CAP_NOI_DAI)
+
+ 32           LOAD_CONST               6 (4.0)
+              STORE_NAME               6 (FPS_QUET_LAI)
+
+ 33           LOAD_CONST               7 (1.0)
+              STORE_NAME               7 (FPS_DO_TOI_THIEU)
+
+ 34           LOAD_CONST               8 (1500)
+              STORE_NAME               8 (_MERGE_GAP_MS)
+
+ 36           LOAD_NAME                3 (re)
+              LOAD_ATTR               18 (compile)
+              PUSH_NULL
+              LOAD_CONST               9 ('[一-鿿㐀-䶿]')
+              CALL                     1
+              STORE_NAME              10 (_CJK_RE)
+
+ 39           LOAD_CONST              18 (('t', 'str', 'return', 'str'))
+              LOAD_CONST              10 (<code object _norm at 0x0000016DC9129110, file "bilisub\ocr_chay_chu.py", line 39>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              11 (_norm)
+
+ 43           LOAD_CONST              19 (('return', 'str'))
+              LOAD_CONST              11 (<code object _text_hang_day at 0x0000016DC8E4EA30, file "bilisub\ocr_chay_chu.py", line 43>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              12 (_text_hang_day)
+
+ 54           LOAD_CONST              20 (('return', 'tuple'))
+              LOAD_CONST              12 (<code object dem_noi_dai at 0x0000016DC8EC5B60, file "bilisub\ocr_chay_chu.py", line 54>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              13 (dem_noi_dai)
+
+ 69           LOAD_CONST              21 (('return', 'bool'))
+              LOAD_CONST              13 (<code object la_sub_chay_chu at 0x0000016DC91297D0, file "bilisub\ocr_chay_chu.py", line 69>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              14 (la_sub_chay_chu)
+
+ 75           LOAD_CONST              22 (('return', 'set'))
+              LOAD_CONST              14 (<code object do_vung at 0x0000016DC90DD1A0, file "bilisub\ocr_chay_chu.py", line 75>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              15 (do_vung)
+
+ 90           LOAD_CONST              23 (('prev', 'str', 'cur', 'str', 'return', 'bool'))
+              LOAD_CONST              15 (<code object near_same at 0x0000016DC8EA56F0, file "bilisub\ocr_chay_chu.py", line 90>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              16 (near_same)
+
+100           LOAD_NAME                8 (_MERGE_GAP_MS)
+              BUILD_TUPLE              1
+              LOAD_CONST              24 (('entries', 'list', 'gap_ms', 'int', 'return', 'list'))
+              LOAD_CONST              16 (<code object gop_entries at 0x0000016DC8F85410, file "bilisub\ocr_chay_chu.py", line 100>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              17 (gop_entries)
+
+119           LOAD_CONST              25 (('fps', 'float', 'da_quet_lai', 'bool', 'return', 'bool'))
+              LOAD_CONST              17 (<code object can_quet_lai at 0x0000016DC9199170, file "bilisub\ocr_chay_chu.py", line 119>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              18 (can_quet_lai)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object _norm at 0x0000016DC9129110, file "bilisub\ocr_chay_chu.py", line 39>:
+ 39           RESUME                   0
+
+ 40           LOAD_CONST               1 ('')
+              LOAD_ATTR                1 (join + NULL|self)
+              LOAD_FAST                0 (t)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     LOAD_ATTR                3 (split + NULL|self)
+              CALL                     0
+              CALL                     1
+              RETURN_VALUE
+
+Disassembly of <code object _text_hang_day at 0x0000016DC8E4EA30, file "bilisub\ocr_chay_chu.py", line 43>:
+  --            MAKE_CELL                4 (cy_max)
+
+  43            RESUME                   0
+
+  46            LOAD_FAST                0 (boxes)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                BUILD_LIST               0
+        L1:     GET_ITER
+                LOAD_FAST_AND_CLEAR      1 (b)
+                SWAP                     2
+        L2:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L3:     FOR_ITER                45 (to L7)
+                STORE_FAST               1 (b)
+                LOAD_GLOBAL              0 (_CJK_RE)
+                LOAD_ATTR                3 (search + NULL|self)
+                LOAD_FAST                1 (b)
+                LOAD_CONST               1 (2)
+                BINARY_SUBSCR
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L4)
+                POP_TOP
+                LOAD_CONST               2 ('')
+        L4:     CALL                     1
+                TO_BOOL
+        L5:     POP_JUMP_IF_TRUE         2 (to L6)
+                JUMP_BACKWARD           43 (to L3)
+        L6:     LOAD_FAST                1 (b)
+                LIST_APPEND              2
+                JUMP_BACKWARD           47 (to L3)
+        L7:     END_FOR
+                POP_TOP
+        L8:     STORE_FAST               2 (cjk)
+                STORE_FAST               1 (b)
+
+  47            LOAD_FAST                2 (cjk)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L9)
+
+  48            RETURN_CONST             2 ('')
+
+  49    L9:     LOAD_GLOBAL              5 (max + NULL)
+                LOAD_CONST               3 (<code object <genexpr> at 0x0000016DC91BD130, file "bilisub\ocr_chay_chu.py", line 49>)
+                MAKE_FUNCTION
+                LOAD_FAST                2 (cjk)
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                STORE_DEREF              4 (cy_max)
+
+  50            LOAD_GLOBAL              7 (sorted + NULL)
+                LOAD_FAST                4 (cy_max)
+                BUILD_TUPLE              1
+                LOAD_CONST               4 (<code object <genexpr> at 0x0000016DC8EAE340, file "bilisub\ocr_chay_chu.py", line 50>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                LOAD_FAST                2 (cjk)
+                GET_ITER
+                CALL                     0
+                LOAD_CONST               5 (<code object <lambda> at 0x0000016DC8EB9B50, file "bilisub\ocr_chay_chu.py", line 50>)
+                MAKE_FUNCTION
+                LOAD_CONST               6 (('key',))
+                CALL_KW                  2
+                STORE_FAST               3 (row)
+
+  51            LOAD_GLOBAL              9 (_norm + NULL)
+                LOAD_CONST               2 ('')
+                LOAD_ATTR               11 (join + NULL|self)
+                LOAD_CONST               7 (<code object <genexpr> at 0x0000016DC91BD230, file "bilisub\ocr_chay_chu.py", line 51>)
+                MAKE_FUNCTION
+                LOAD_FAST                3 (row)
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                CALL                     1
+                RETURN_VALUE
+
+  --   L10:     SWAP                     2
+                POP_TOP
+
+  46            SWAP                     2
+                STORE_FAST               1 (b)
+                RERAISE                  0
+ExceptionTable:
+  L2 to L5 -> L10 [2]
+  L6 to L8 -> L10 [2]
+
+Disassembly of <code object <genexpr> at 0x0000016DC91BD130, file "bilisub\ocr_chay_chu.py", line 49>:
+  49           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                 9 (to L3)
+               STORE_FAST_LOAD_FAST    17 (b, b)
+               LOAD_CONST               0 (1)
+               BINARY_SUBSCR
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           11 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC8EAE340, file "bilisub\ocr_chay_chu.py", line 50>:
+  --           COPY_FREE_VARS           1
+
+  50           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                21 (to L5)
+               STORE_FAST               1 (b)
+               LOAD_DEREF               2 (cy_max)
+               LOAD_FAST                1 (b)
+               LOAD_CONST               0 (1)
+               BINARY_SUBSCR
+               BINARY_OP               10 (-)
+               LOAD_CONST               1 (0.04)
+               COMPARE_OP              58 (bool(<=))
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           17 (to L2)
+       L4:     LOAD_FAST                1 (b)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           23 (to L2)
+       L5:     END_FOR
+               POP_TOP
+               RETURN_CONST             2 (None)
+
+  --   L6:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L6 [0] lasti
+  L4 to L6 -> L6 [0] lasti
+
+Disassembly of <code object <lambda> at 0x0000016DC8EB9B50, file "bilisub\ocr_chay_chu.py", line 50>:
+ 50           RESUME                   0
+              LOAD_FAST                0 (b)
+              LOAD_CONST               1 (0)
+              BINARY_SUBSCR
+              RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC91BD230, file "bilisub\ocr_chay_chu.py", line 51>:
+  51           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                 9 (to L3)
+               STORE_FAST_LOAD_FAST    17 (b, b)
+               LOAD_CONST               0 (2)
+               BINARY_SUBSCR
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           11 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object dem_noi_dai at 0x0000016DC8EC5B60, file "bilisub\ocr_chay_chu.py", line 54>:
+ 54           RESUME                   0
+
+ 57           LOAD_CONST               1 (0)
+              COPY                     1
+              STORE_FAST_STORE_FAST   18 (n_doi, n_noi)
+
+ 58           LOAD_CONST               2 ('')
+              STORE_FAST               3 (prev)
+
+ 59           LOAD_FAST                0 (frames_boxes)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              BUILD_LIST               0
+      L1:     GET_ITER
+      L2:     FOR_ITER               103 (to L6)
+              UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST   69 (_ts, boxes)
+
+ 60           LOAD_GLOBAL              1 (_text_hang_day + NULL)
+              LOAD_FAST                5 (boxes)
+              CALL                     1
+              STORE_FAST               6 (cur)
+
+ 61           LOAD_FAST                3 (prev)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       78 (to L5)
+              LOAD_FAST                6 (cur)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       71 (to L5)
+              LOAD_FAST_LOAD_FAST     54 (prev, cur)
+              COMPARE_OP             119 (bool(!=))
+              POP_JUMP_IF_FALSE       66 (to L5)
+
+ 62           LOAD_FAST                1 (n_doi)
+              LOAD_CONST               3 (1)
+              BINARY_OP               13 (+=)
+              STORE_FAST               1 (n_doi)
+
+ 63           LOAD_GLOBAL              3 (len + NULL)
+              LOAD_FAST                6 (cur)
+              CALL                     1
+              LOAD_GLOBAL              3 (len + NULL)
+              LOAD_FAST                3 (prev)
+              CALL                     1
+              SWAP                     2
+              COPY                     2
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE        6 (to L3)
+              LOAD_CONST               4 (2)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_FALSE       30 (to L5)
+              JUMP_FORWARD             2 (to L4)
+      L3:     POP_TOP
+              JUMP_FORWARD            27 (to L5)
+      L4:     LOAD_FAST                6 (cur)
+              LOAD_ATTR                5 (startswith + NULL|self)
+              LOAD_FAST                3 (prev)
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE        5 (to L5)
+
+ 64           LOAD_FAST                2 (n_noi)
+              LOAD_CONST               3 (1)
+              BINARY_OP               13 (+=)
+              STORE_FAST               2 (n_noi)
+
+ 65   L5:     LOAD_FAST                6 (cur)
+              STORE_FAST               3 (prev)
+              JUMP_BACKWARD          105 (to L2)
+
+ 59   L6:     END_FOR
+              POP_TOP
+
+ 66           LOAD_FAST_LOAD_FAST     18 (n_doi, n_noi)
+              BUILD_TUPLE              2
+              RETURN_VALUE
+
+Disassembly of <code object la_sub_chay_chu at 0x0000016DC91297D0, file "bilisub\ocr_chay_chu.py", line 69>:
+ 69           RESUME                   0
+
+ 71           LOAD_GLOBAL              1 (dem_noi_dai + NULL)
+              LOAD_FAST                0 (frames_boxes)
+              CALL                     1
+              UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST   18 (n_doi, n_noi)
+
+ 72           LOAD_FAST                2 (n_noi)
+              LOAD_GLOBAL              2 (MIN_CAP_NOI_DAI)
+              COMPARE_OP             172 (>=)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE       12 (to L1)
+              POP_TOP
+              LOAD_FAST                2 (n_noi)
+              LOAD_GLOBAL              4 (NGUONG_TI_LE)
+              LOAD_FAST                1 (n_doi)
+              BINARY_OP                5 (*)
+              COMPARE_OP             172 (>=)
+      L1:     RETURN_VALUE
+
+Disassembly of <code object do_vung at 0x0000016DC90DD1A0, file "bilisub\ocr_chay_chu.py", line 75>:
+  75            RESUME                   0
+
+  77            LOAD_GLOBAL              1 (set + NULL)
+                CALL                     0
+                STORE_FAST               4 (ra)
+
+  78            LOAD_GLOBAL              3 (enumerate + NULL)
+                LOAD_FAST                2 (kinds)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                BUILD_LIST               0
+        L1:     CALL                     1
+                GET_ITER
+        L2:     FOR_ITER                92 (to L10)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST   86 (zi, kind)
+
+  79            LOAD_FAST                6 (kind)
+                LOAD_CONST               1 ('overlay')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE        2 (to L3)
+
+  80            JUMP_BACKWARD           13 (to L2)
+
+  81    L3:     LOAD_FAST_LOAD_FAST     83 (zi, af_zi)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        10 (to L4)
+                POP_TOP
+                LOAD_GLOBAL              1 (set + NULL)
+                CALL                     0
+        L4:     CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       17 (to L5)
+                LOAD_FAST                1 (af_frames)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_FAST                5 (zi)
+                CALL                     1
+                JUMP_FORWARD             3 (to L6)
+        L5:     LOAD_FAST_LOAD_FAST      5 (main_frames, zi)
+                BINARY_SUBSCR
+        L6:     STORE_FAST               7 (fr)
+
+  82            NOP
+
+  83    L7:     LOAD_GLOBAL              7 (la_sub_chay_chu + NULL)
+                LOAD_FAST                7 (fr)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE       19 (to L9)
+
+  84            LOAD_FAST                4 (ra)
+                LOAD_ATTR                9 (add + NULL|self)
+                LOAD_FAST                5 (zi)
+                CALL                     1
+                POP_TOP
+        L8:     JUMP_BACKWARD           92 (to L2)
+
+  83    L9:     JUMP_BACKWARD           94 (to L2)
+
+  78   L10:     END_FOR
+                POP_TOP
+
+  87            LOAD_FAST                4 (ra)
+                RETURN_VALUE
+
+  --   L11:     PUSH_EXC_INFO
+
+  85            LOAD_GLOBAL             10 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L13)
+                POP_TOP
+
+  86   L12:     POP_EXCEPT
+                JUMP_BACKWARD          111 (to L2)
+
+  85   L13:     RERAISE                  0
+
+  --   L14:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L7 to L8 -> L11 [1]
+  L11 to L12 -> L14 [2] lasti
+  L13 to L14 -> L14 [2] lasti
+
+Disassembly of <code object near_same at 0x0000016DC8EA56F0, file "bilisub\ocr_chay_chu.py", line 90>:
+ 90           RESUME                   0
+
+ 93           LOAD_CONST               1 (1)
+              LOAD_CONST               2 (('_near_same_text',))
+              IMPORT_NAME              0 (ocr)
+              IMPORT_FROM              1 (_near_same_text)
+              STORE_FAST               2 (_near_same_text)
+              POP_TOP
+
+ 94           LOAD_FAST                2 (_near_same_text)
+              PUSH_NULL
+              LOAD_FAST_LOAD_FAST      1 (prev, cur)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_FALSE        1 (to L1)
+
+ 95           RETURN_CONST             3 (True)
+
+ 96   L1:     LOAD_GLOBAL              5 (_norm + NULL)
+              LOAD_FAST                0 (prev)
+              CALL                     1
+              LOAD_GLOBAL              5 (_norm + NULL)
+              LOAD_FAST                1 (cur)
+              CALL                     1
+              STORE_FAST_STORE_FAST   67 (b, a)
+
+ 97           LOAD_GLOBAL              7 (len + NULL)
+              LOAD_FAST                4 (b)
+              CALL                     1
+              LOAD_GLOBAL              7 (len + NULL)
+              LOAD_FAST                3 (a)
+              CALL                     1
+              SWAP                     2
+              COPY                     2
+              COMPARE_OP             132 (>)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE        5 (to L2)
+              POP_TOP
+              LOAD_CONST               1 (1)
+              COMPARE_OP             172 (>=)
+              JUMP_FORWARD             2 (to L3)
+      L2:     SWAP                     2
+              POP_TOP
+      L3:     COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE       17 (to L4)
+              POP_TOP
+              LOAD_FAST                4 (b)
+              LOAD_ATTR                9 (startswith + NULL|self)
+              LOAD_FAST                3 (a)
+              CALL                     1
+      L4:     RETURN_VALUE
+
+Disassembly of <code object gop_entries at 0x0000016DC8F85410, file "bilisub\ocr_chay_chu.py", line 100>:
+100           RESUME                   0
+
+103           BUILD_LIST               0
+              STORE_FAST               2 (out)
+
+104           LOAD_FAST                0 (entries)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              BUILD_LIST               0
+      L1:     GET_ITER
+      L2:     EXTENDED_ARG             1
+              FOR_ITER               388 (to L8)
+              STORE_FAST               3 (e)
+
+105           LOAD_FAST                2 (out)
+              TO_BOOL
+              EXTENDED_ARG             1
+              POP_JUMP_IF_FALSE      359 (to L7)
+              LOAD_GLOBAL              1 (near_same + NULL)
+              LOAD_FAST                2 (out)
+              LOAD_CONST               1 (-1)
+              BINARY_SUBSCR
+              LOAD_ATTR                2 (text)
+              LOAD_FAST                3 (e)
+              LOAD_ATTR                2 (text)
+              CALL                     2
+              TO_BOOL
+              EXTENDED_ARG             1
+              POP_JUMP_IF_FALSE      318 (to L7)
+              LOAD_FAST                3 (e)
+              LOAD_ATTR                4 (start_ms)
+              LOAD_FAST                2 (out)
+              LOAD_CONST               1 (-1)
+              BINARY_SUBSCR
+              LOAD_ATTR                6 (end_ms)
+              BINARY_OP               10 (-)
+              LOAD_FAST                1 (gap_ms)
+              COMPARE_OP              58 (bool(<=))
+              EXTENDED_ARG             1
+              POP_JUMP_IF_FALSE      285 (to L7)
+
+106           LOAD_GLOBAL              9 (max + NULL)
+              LOAD_FAST                2 (out)
+              LOAD_CONST               1 (-1)
+              BINARY_SUBSCR
+              LOAD_ATTR                6 (end_ms)
+              LOAD_FAST                3 (e)
+              LOAD_ATTR                6 (end_ms)
+              CALL                     2
+              LOAD_FAST                2 (out)
+              LOAD_CONST               1 (-1)
+              BINARY_SUBSCR
+              STORE_ATTR               3 (end_ms)
+
+107           LOAD_GLOBAL             11 (len + NULL)
+              LOAD_FAST                3 (e)
+              LOAD_ATTR                2 (text)
+              CALL                     1
+              LOAD_GLOBAL             11 (len + NULL)
+              LOAD_FAST                2 (out)
+              LOAD_CONST               1 (-1)
+              BINARY_SUBSCR
+              LOAD_ATTR                2 (text)
+              CALL                     1
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE       20 (to L3)
+
+108           LOAD_FAST                3 (e)
+              LOAD_ATTR                2 (text)
+              LOAD_FAST                2 (out)
+              LOAD_CONST               1 (-1)
+              BINARY_SUBSCR
+              STORE_ATTR               1 (text)
+
+109   L3:     LOAD_FAST                3 (e)
+              LOAD_ATTR               12 (bbox)
+              TO_BOOL
+              POP_JUMP_IF_FALSE      155 (to L6)
+
+110           LOAD_FAST                2 (out)
+              LOAD_CONST               1 (-1)
+              BINARY_SUBSCR
+              LOAD_ATTR               12 (bbox)
+              STORE_FAST               4 (mb)
+
+111           LOAD_FAST                4 (mb)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        12 (to L4)
+              LOAD_FAST                3 (e)
+              LOAD_ATTR               12 (bbox)
+              JUMP_FORWARD           109 (to L5)
+
+112   L4:     LOAD_GLOBAL             15 (min + NULL)
+              LOAD_FAST                4 (mb)
+              LOAD_CONST               2 (0)
+              BINARY_SUBSCR
+              LOAD_FAST                3 (e)
+              LOAD_ATTR               12 (bbox)
+              LOAD_CONST               2 (0)
+              BINARY_SUBSCR
+              CALL                     2
+              LOAD_GLOBAL             15 (min + NULL)
+              LOAD_FAST                4 (mb)
+              LOAD_CONST               3 (1)
+              BINARY_SUBSCR
+              LOAD_FAST                3 (e)
+              LOAD_ATTR               12 (bbox)
+              LOAD_CONST               3 (1)
+              BINARY_SUBSCR
+              CALL                     2
+
+113           LOAD_GLOBAL              9 (max + NULL)
+              LOAD_FAST                4 (mb)
+              LOAD_CONST               4 (2)
+              BINARY_SUBSCR
+              LOAD_FAST                3 (e)
+              LOAD_ATTR               12 (bbox)
+              LOAD_CONST               4 (2)
+              BINARY_SUBSCR
+              CALL                     2
+              LOAD_GLOBAL              9 (max + NULL)
+              LOAD_FAST                4 (mb)
+              LOAD_CONST               5 (3)
+              BINARY_SUBSCR
+              LOAD_FAST                3 (e)
+              LOAD_ATTR               12 (bbox)
+              LOAD_CONST               5 (3)
+              BINARY_SUBSCR
+              CALL                     2
+
+111           BUILD_TUPLE              4
+      L5:     LOAD_FAST                2 (out)
+              LOAD_CONST               1 (-1)
+              BINARY_SUBSCR
+              STORE_ATTR               6 (bbox)
+              EXTENDED_ARG             1
+              JUMP_BACKWARD          368 (to L2)
+
+109   L6:     EXTENDED_ARG             1
+              JUMP_BACKWARD          371 (to L2)
+
+115   L7:     LOAD_FAST                2 (out)
+              LOAD_ATTR               17 (append + NULL|self)
+              LOAD_FAST                3 (e)
+              CALL                     1
+              POP_TOP
+              EXTENDED_ARG             1
+              JUMP_BACKWARD          391 (to L2)
+
+104   L8:     END_FOR
+              POP_TOP
+
+116           LOAD_FAST                2 (out)
+              RETURN_VALUE
+
+Disassembly of <code object can_quet_lai at 0x0000016DC9199170, file "bilisub\ocr_chay_chu.py", line 119>:
+ 119           RESUME                   0
+
+ 122           NOP
+
+ 123   L1:     LOAD_GLOBAL              1 (float + NULL)
+               LOAD_FAST                0 (fps)
+               CALL                     1
+               STORE_FAST               2 (f)
+
+ 126   L2:     LOAD_FAST                1 (da_quet_lai)
+               TO_BOOL
+               UNARY_NOT
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_FALSE       29 (to L4)
+               POP_TOP
+               LOAD_GLOBAL              6 (FPS_DO_TOI_THIEU)
+               LOAD_FAST                2 (f)
+               SWAP                     2
+               COPY                     2
+               COMPARE_OP              42 (<=)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_FALSE        9 (to L3)
+               POP_TOP
+               LOAD_GLOBAL              8 (FPS_QUET_LAI)
+               COMPARE_OP               2 (<)
+               RETURN_VALUE
+       L3:     SWAP                     2
+               POP_TOP
+       L4:     RETURN_VALUE
+
+  --   L5:     PUSH_EXC_INFO
+
+ 124           LOAD_GLOBAL              2 (TypeError)
+               LOAD_GLOBAL              4 (ValueError)
+               BUILD_TUPLE              2
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L7)
+               POP_TOP
+
+ 125   L6:     POP_EXCEPT
+               RETURN_CONST             1 (False)
+
+ 124   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L5 [0]
+  L5 to L6 -> L8 [1] lasti
+  L7 to L8 -> L8 [1] lasti

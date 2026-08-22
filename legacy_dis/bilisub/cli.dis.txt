@@ -1,0 +1,755 @@
+=== FILE: bilisub\cli.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('CLI headless để chạy/kiểm thử pipeline mà không cần GUI.\n\nVí dụ:\n    python -m bilisub.cli run --video in.mp4 --sub-lang vi --voice vi-VN-HoaiMyNeural\n    python -m bilisub.cli run --srt in.srt --video in.mp4\n    python -m bilisub.cli import-keys "C:\\...\\Tool VietSub\\settings.json"\n')
+              STORE_NAME               0 (__doc__)
+
+  8           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 10           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (argparse)
+              STORE_NAME               3 (argparse)
+
+ 11           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (sys)
+              STORE_NAME               4 (sys)
+
+ 12           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Path',))
+              IMPORT_NAME              5 (pathlib)
+              IMPORT_FROM              6 (Path)
+              STORE_NAME               6 (Path)
+              POP_TOP
+
+ 14           LOAD_CONST               5 (1)
+              LOAD_CONST               6 (('Settings',))
+              IMPORT_NAME              7 (config)
+              IMPORT_FROM              8 (Settings)
+              STORE_NAME               8 (Settings)
+              POP_TOP
+
+ 15           LOAD_CONST               5 (1)
+              LOAD_CONST               7 (('PipelineInput', 'run_pipeline'))
+              IMPORT_NAME              9 (pipeline)
+              IMPORT_FROM             10 (PipelineInput)
+              STORE_NAME              10 (PipelineInput)
+              IMPORT_FROM             11 (run_pipeline)
+              STORE_NAME              11 (run_pipeline)
+              POP_TOP
+
+ 18           LOAD_CONST              14 (('m', 'str', 'return', 'None'))
+              LOAD_CONST               8 (<code object _log at 0x0000016DC8CBEB50, file "bilisub\cli.py", line 18>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              12 (_log)
+
+ 22           LOAD_CONST              15 (('stage', 'str', 'pct', 'int', 'return', 'None'))
+              LOAD_CONST               9 (<code object _progress at 0x0000016DC90F0B70, file "bilisub\cli.py", line 22>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              13 (_progress)
+
+ 26           LOAD_CONST              16 (('return', 'int'))
+              LOAD_CONST              10 (<code object cmd_run at 0x0000016DC8F5F7D0, file "bilisub\cli.py", line 26>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              14 (cmd_run)
+
+ 80           LOAD_CONST              16 (('return', 'int'))
+              LOAD_CONST              11 (<code object cmd_import_keys at 0x0000016DC87C51E0, file "bilisub\cli.py", line 80>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              15 (cmd_import_keys)
+
+ 88           LOAD_CONST              17 ((None,))
+              LOAD_CONST              16 (('return', 'int'))
+              LOAD_CONST              12 (<code object main at 0x0000016DC8F9D550, file "bilisub\cli.py", line 88>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              16 (main)
+
+128           LOAD_NAME               17 (__name__)
+              LOAD_CONST              13 ('__main__')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       13 (to L1)
+
+129           LOAD_NAME               18 (SystemExit)
+              PUSH_NULL
+              LOAD_NAME               16 (main)
+              PUSH_NULL
+              CALL                     0
+              CALL                     1
+              RAISE_VARARGS            1
+
+128   L1:     RETURN_CONST             3 (None)
+
+Disassembly of <code object _log at 0x0000016DC8CBEB50, file "bilisub\cli.py", line 18>:
+ 18           RESUME                   0
+
+ 19           LOAD_GLOBAL              1 (print + NULL)
+              LOAD_CONST               1 ('  ')
+              LOAD_FAST                0 (m)
+              FORMAT_SIMPLE
+              BUILD_STRING             2
+              LOAD_CONST               2 (True)
+              LOAD_CONST               3 (('flush',))
+              CALL_KW                  2
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _progress at 0x0000016DC90F0B70, file "bilisub\cli.py", line 22>:
+ 22           RESUME                   0
+
+ 23           LOAD_GLOBAL              1 (print + NULL)
+              LOAD_CONST               1 ('    [')
+              LOAD_FAST                0 (stage)
+              FORMAT_SIMPLE
+              LOAD_CONST               2 ('] ')
+              LOAD_FAST                1 (pct)
+              FORMAT_SIMPLE
+              LOAD_CONST               3 ('%')
+              BUILD_STRING             5
+              LOAD_CONST               4 ('\r')
+              LOAD_CONST               5 (True)
+              LOAD_CONST               6 (('end', 'flush'))
+              CALL_KW                  3
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object cmd_run at 0x0000016DC8F5F7D0, file "bilisub\cli.py", line 26>:
+ 26            RESUME                   0
+
+ 27            LOAD_FAST                0 (args)
+               LOAD_ATTR                0 (settings)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       32 (to L1)
+               LOAD_GLOBAL              2 (Settings)
+               LOAD_ATTR                4 (load)
+               PUSH_NULL
+               LOAD_FAST                0 (args)
+               LOAD_ATTR                0 (settings)
+               CALL                     1
+               JUMP_FORWARD            20 (to L2)
+       L1:     LOAD_GLOBAL              2 (Settings)
+               LOAD_ATTR                4 (load)
+               PUSH_NULL
+               CALL                     0
+       L2:     STORE_FAST               1 (s)
+
+ 28            LOAD_FAST                0 (args)
+               LOAD_ATTR                6 (provider)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       17 (to L3)
+
+ 29            LOAD_FAST                0 (args)
+               LOAD_ATTR                6 (provider)
+               LOAD_FAST                1 (s)
+               STORE_ATTR               3 (provider)
+
+ 30    L3:     LOAD_FAST                0 (args)
+               LOAD_ATTR                8 (src_lang)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       17 (to L4)
+
+ 31            LOAD_FAST                0 (args)
+               LOAD_ATTR                8 (src_lang)
+               LOAD_FAST                1 (s)
+               STORE_ATTR               5 (source_language)
+
+ 32    L4:     LOAD_FAST                0 (args)
+               LOAD_ATTR               12 (sub_lang)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       17 (to L5)
+
+ 33            LOAD_FAST                0 (args)
+               LOAD_ATTR               12 (sub_lang)
+               LOAD_FAST                1 (s)
+               STORE_ATTR               7 (subtitle_language)
+
+ 34    L5:     LOAD_FAST                0 (args)
+               LOAD_ATTR               16 (voice_lang)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       17 (to L6)
+
+ 35            LOAD_FAST                0 (args)
+               LOAD_ATTR               16 (voice_lang)
+               LOAD_FAST                1 (s)
+               STORE_ATTR               9 (voice_language)
+
+ 36    L6:     LOAD_FAST                0 (args)
+               LOAD_ATTR               20 (voice)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       17 (to L7)
+
+ 37            LOAD_FAST                0 (args)
+               LOAD_ATTR               20 (voice)
+               LOAD_FAST                1 (s)
+               STORE_ATTR              11 (tts_voice)
+
+ 38    L7:     LOAD_FAST                0 (args)
+               LOAD_ATTR               24 (speed)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       17 (to L8)
+
+ 39            LOAD_FAST                0 (args)
+               LOAD_ATTR               24 (speed)
+               LOAD_FAST                1 (s)
+               STORE_ATTR              13 (video_speed)
+
+ 40    L8:     LOAD_FAST                0 (args)
+               LOAD_ATTR               28 (asr_model)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       17 (to L9)
+
+ 41            LOAD_FAST                0 (args)
+               LOAD_ATTR               28 (asr_model)
+               LOAD_FAST                1 (s)
+               STORE_ATTR              14 (asr_model)
+
+ 42    L9:     LOAD_FAST                0 (args)
+               LOAD_ATTR               30 (no_parallel)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        7 (to L10)
+
+ 43            LOAD_CONST               1 (False)
+               LOAD_FAST                1 (s)
+               STORE_ATTR              16 (parallel_translate)
+
+ 44   L10:     LOAD_FAST                0 (args)
+               LOAD_ATTR               34 (no_local)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        7 (to L11)
+
+ 45            LOAD_CONST               1 (False)
+               LOAD_FAST                1 (s)
+               STORE_ATTR              18 (use_local_fallback)
+
+ 46   L11:     LOAD_FAST                0 (args)
+               LOAD_ATTR               38 (local_provider)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       24 (to L12)
+
+ 47            LOAD_FAST                0 (args)
+               LOAD_ATTR               38 (local_provider)
+               LOAD_FAST                1 (s)
+               STORE_ATTR              19 (local_provider)
+
+ 48            LOAD_CONST               2 (True)
+               LOAD_FAST                1 (s)
+               STORE_ATTR              18 (use_local_fallback)
+
+ 49   L12:     LOAD_FAST                0 (args)
+               LOAD_ATTR               40 (no_resume)
+               TO_BOOL
+               POP_JUMP_IF_FALSE        7 (to L13)
+
+ 50            LOAD_CONST               1 (False)
+               LOAD_FAST                1 (s)
+               STORE_ATTR              21 (resume)
+
+ 52   L13:     LOAD_GLOBAL             45 (PipelineInput + NULL)
+
+ 53            LOAD_FAST                0 (args)
+               LOAD_ATTR               46 (video)
+               LOAD_FAST                0 (args)
+               LOAD_ATTR               48 (srt)
+               LOAD_FAST                0 (args)
+               LOAD_ATTR               50 (out)
+
+ 54            LOAD_FAST                0 (args)
+               LOAD_ATTR               52 (source)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L14)
+               POP_TOP
+               LOAD_CONST               3 ('auto')
+
+ 55   L14:     LOAD_FAST                0 (args)
+               LOAD_ATTR               20 (voice)
+               LOAD_FAST                0 (args)
+               LOAD_ATTR               54 (no_translate)
+               TO_BOOL
+               UNARY_NOT
+
+ 56            LOAD_FAST                0 (args)
+               LOAD_ATTR               56 (review)
+               LOAD_FAST                0 (args)
+               LOAD_ATTR               58 (no_tts)
+               TO_BOOL
+               UNARY_NOT
+
+ 57            LOAD_FAST                0 (args)
+               LOAD_ATTR               60 (no_render)
+               TO_BOOL
+               UNARY_NOT
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_FALSE       21 (to L15)
+               POP_TOP
+               LOAD_GLOBAL             63 (bool + NULL)
+               LOAD_FAST                0 (args)
+               LOAD_ATTR               46 (video)
+               CALL                     1
+
+ 52   L15:     LOAD_CONST               4 (('video_path', 'srt_path', 'output_path', 'source', 'voice', 'do_translate', 'do_review', 'do_tts', 'do_render'))
+               CALL_KW                  9
+               STORE_FAST               2 (inp)
+
+ 63            LOAD_FAST                0 (args)
+               LOAD_ATTR               54 (no_translate)
+               TO_BOOL
+               POP_JUMP_IF_TRUE        42 (to L18)
+
+ 64            LOAD_CONST               5 (1)
+               LOAD_CONST               6 (('local_problem',))
+               IMPORT_NAME             32 (preflight)
+               IMPORT_FROM             33 (local_problem)
+               STORE_FAST               3 (local_problem)
+               POP_TOP
+
+ 65            LOAD_FAST                3 (local_problem)
+               PUSH_NULL
+               LOAD_FAST                1 (s)
+               CALL                     1
+               STORE_FAST               4 (_lp)
+
+ 66            LOAD_FAST                4 (_lp)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       21 (to L18)
+
+ 67            LOAD_FAST                4 (_lp)
+               GET_ITER
+      L16:     FOR_ITER                14 (to L17)
+               STORE_FAST               5 (_m)
+
+ 68            LOAD_GLOBAL             69 (print + NULL)
+               LOAD_FAST                5 (_m)
+               CALL                     1
+               POP_TOP
+               JUMP_BACKWARD           16 (to L16)
+
+ 67   L17:     END_FOR
+               POP_TOP
+
+ 69            RETURN_CONST             7 (2)
+
+ 70   L18:     LOAD_GLOBAL             71 (run_pipeline + NULL)
+               LOAD_FAST_LOAD_FAST     18 (s, inp)
+               LOAD_GLOBAL             72 (_log)
+               LOAD_GLOBAL             74 (_progress)
+               LOAD_CONST               8 (('log', 'progress'))
+               CALL_KW                  4
+               STORE_FAST               6 (res)
+
+ 71            LOAD_GLOBAL             69 (print + NULL)
+               CALL                     0
+               POP_TOP
+
+ 72            LOAD_GLOBAL             69 (print + NULL)
+               LOAD_CONST               9 ('=== KẾT QUẢ ===')
+               CALL                     1
+               POP_TOP
+
+ 73            LOAD_GLOBAL             69 (print + NULL)
+               LOAD_CONST              10 ('  SRT dịch : ')
+               LOAD_FAST                6 (res)
+               LOAD_ATTR               76 (srt_out)
+               FORMAT_SIMPLE
+               BUILD_STRING             2
+               CALL                     1
+               POP_TOP
+
+ 74            LOAD_GLOBAL             69 (print + NULL)
+               LOAD_CONST              11 ('  ASS      : ')
+               LOAD_FAST                6 (res)
+               LOAD_ATTR               78 (ass_out)
+               FORMAT_SIMPLE
+               BUILD_STRING             2
+               CALL                     1
+               POP_TOP
+
+ 75            LOAD_GLOBAL             69 (print + NULL)
+               LOAD_CONST              12 ('  Audio    : ')
+               LOAD_FAST                6 (res)
+               LOAD_ATTR               80 (audio_out)
+               FORMAT_SIMPLE
+               BUILD_STRING             2
+               CALL                     1
+               POP_TOP
+
+ 76            LOAD_GLOBAL             69 (print + NULL)
+               LOAD_CONST              13 ('  Video    : ')
+               LOAD_FAST                6 (res)
+               LOAD_ATTR               82 (video_out)
+               FORMAT_SIMPLE
+               BUILD_STRING             2
+               CALL                     1
+               POP_TOP
+
+ 77            RETURN_CONST            14 (0)
+
+Disassembly of <code object cmd_import_keys at 0x0000016DC87C51E0, file "bilisub\cli.py", line 80>:
+  80           RESUME                   0
+
+  81           LOAD_GLOBAL              0 (Settings)
+               LOAD_ATTR                2 (import_from_mhvietsub)
+               PUSH_NULL
+               LOAD_FAST                0 (args)
+               LOAD_ATTR                4 (path)
+               CALL                     1
+               STORE_FAST               1 (s)
+
+  82           LOAD_FAST                0 (args)
+               LOAD_ATTR                6 (out)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       27 (to L1)
+               LOAD_FAST                1 (s)
+               LOAD_ATTR                9 (save + NULL|self)
+               LOAD_FAST                0 (args)
+               LOAD_ATTR                6 (out)
+               CALL                     1
+               JUMP_FORWARD            15 (to L2)
+       L1:     LOAD_FAST                1 (s)
+               LOAD_ATTR                9 (save + NULL|self)
+               CALL                     0
+       L2:     STORE_FAST               2 (out)
+
+  83           LOAD_GLOBAL             11 (print + NULL)
+               LOAD_CONST               1 ('Đã nhập key từ ')
+               LOAD_FAST                0 (args)
+               LOAD_ATTR                4 (path)
+               FORMAT_SIMPLE
+               LOAD_CONST               2 (' -> ')
+               LOAD_FAST                2 (out)
+               FORMAT_SIMPLE
+               BUILD_STRING             4
+               CALL                     1
+               POP_TOP
+
+  84           LOAD_GLOBAL             11 (print + NULL)
+               LOAD_CONST               3 ('Providers có key: ')
+               LOAD_FAST                1 (s)
+               LOAD_ATTR               12 (api_keys)
+               LOAD_ATTR               15 (items + NULL|self)
+               CALL                     0
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      3 (k)
+               LOAD_FAST_AND_CLEAR      4 (v)
+               SWAP                     3
+       L3:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L4:     FOR_ITER                16 (to L7)
+               UNPACK_SEQUENCE          2
+               STORE_FAST_STORE_FAST   52 (k, v)
+               LOAD_FAST                4 (v)
+               TO_BOOL
+       L5:     POP_JUMP_IF_TRUE         2 (to L6)
+               JUMP_BACKWARD           14 (to L4)
+       L6:     LOAD_FAST                3 (k)
+               LIST_APPEND              2
+               JUMP_BACKWARD           18 (to L4)
+       L7:     END_FOR
+               POP_TOP
+       L8:     SWAP                     3
+               STORE_FAST               4 (v)
+               STORE_FAST               3 (k)
+               FORMAT_SIMPLE
+               BUILD_STRING             2
+               CALL                     1
+               POP_TOP
+
+  85           RETURN_CONST             4 (0)
+
+  --   L9:     SWAP                     2
+               POP_TOP
+
+  84           SWAP                     3
+               STORE_FAST               4 (v)
+               STORE_FAST               3 (k)
+               RERAISE                  0
+ExceptionTable:
+  L3 to L5 -> L9 [6]
+  L6 to L8 -> L9 [6]
+
+Disassembly of <code object main at 0x0000016DC8F9D550, file "bilisub\cli.py", line 88>:
+  88           RESUME                   0
+
+  89           LOAD_GLOBAL              0 (argparse)
+               LOAD_ATTR                2 (ArgumentParser)
+               PUSH_NULL
+               LOAD_CONST               1 ('bilisub')
+               LOAD_CONST               2 ('PeiPeiReup CLI')
+               LOAD_CONST               3 (('prog', 'description'))
+               CALL_KW                  2
+               STORE_FAST               1 (p)
+
+  90           LOAD_FAST                1 (p)
+               LOAD_ATTR                5 (add_subparsers + NULL|self)
+               LOAD_CONST               4 ('cmd')
+               LOAD_CONST               5 (True)
+               LOAD_CONST               6 (('dest', 'required'))
+               CALL_KW                  2
+               STORE_FAST               2 (sub)
+
+  92           LOAD_FAST                2 (sub)
+               LOAD_ATTR                7 (add_parser + NULL|self)
+               LOAD_CONST               7 ('run')
+               LOAD_CONST               8 ('Chạy pipeline')
+               LOAD_CONST               9 (('help',))
+               CALL_KW                  2
+               STORE_FAST               3 (r)
+
+  93           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              10 ('--video')
+               CALL                     1
+               POP_TOP
+
+  94           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              11 ('--srt')
+               CALL                     1
+               POP_TOP
+
+  95           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              12 ('--out')
+               CALL                     1
+               POP_TOP
+
+  96           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              13 ('--source')
+               BUILD_LIST               0
+               LOAD_CONST              14 (('auto', 'srt', 'asr', 'hardsub'))
+               LIST_EXTEND              1
+               LOAD_CONST              15 ('Nguồn phụ đề')
+               LOAD_CONST              16 (('choices', 'help'))
+               CALL_KW                  3
+               POP_TOP
+
+  97           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              17 ('--settings')
+               CALL                     1
+               POP_TOP
+
+  98           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              18 ('--provider')
+               CALL                     1
+               POP_TOP
+
+  99           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              19 ('--src-lang')
+               LOAD_CONST              20 ('src_lang')
+               LOAD_CONST              21 (('dest',))
+               CALL_KW                  2
+               POP_TOP
+
+ 100           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              22 ('--sub-lang')
+               LOAD_CONST              23 ('sub_lang')
+               LOAD_CONST              21 (('dest',))
+               CALL_KW                  2
+               POP_TOP
+
+ 101           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              24 ('--voice-lang')
+               LOAD_CONST              25 ('voice_lang')
+               LOAD_CONST              21 (('dest',))
+               CALL_KW                  2
+               POP_TOP
+
+ 102           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              26 ('--voice')
+               CALL                     1
+               POP_TOP
+
+ 103           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              27 ('--speed')
+               LOAD_GLOBAL             10 (float)
+               LOAD_CONST              28 (('type',))
+               CALL_KW                  2
+               POP_TOP
+
+ 104           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              29 ('--asr-model')
+               LOAD_CONST              30 ('asr_model')
+               LOAD_CONST              21 (('dest',))
+               CALL_KW                  2
+               POP_TOP
+
+ 105           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              31 ('--review')
+               LOAD_CONST              32 ('store_true')
+               LOAD_CONST              33 (('action',))
+               CALL_KW                  2
+               POP_TOP
+
+ 106           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              34 ('--no-translate')
+               LOAD_CONST              32 ('store_true')
+               LOAD_CONST              33 (('action',))
+               CALL_KW                  2
+               POP_TOP
+
+ 107           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              35 ('--no-tts')
+               LOAD_CONST              32 ('store_true')
+               LOAD_CONST              33 (('action',))
+               CALL_KW                  2
+               POP_TOP
+
+ 108           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              36 ('--no-render')
+               LOAD_CONST              32 ('store_true')
+               LOAD_CONST              33 (('action',))
+               CALL_KW                  2
+               POP_TOP
+
+ 109           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              37 ('--no-parallel')
+               LOAD_CONST              32 ('store_true')
+               LOAD_CONST              38 ('Tắt dịch song song')
+               LOAD_CONST              39 (('action', 'help'))
+               CALL_KW                  3
+               POP_TOP
+
+ 110           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              40 ('--no-local')
+               LOAD_CONST              32 ('store_true')
+               LOAD_CONST              41 ('Tắt tầng đáy local')
+               LOAD_CONST              39 (('action', 'help'))
+               CALL_KW                  3
+               POP_TOP
+
+ 111           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              42 ('--local-provider')
+               LOAD_CONST              43 ('local_provider')
+               LOAD_CONST              44 ('ollama | lmstudio')
+               LOAD_CONST              45 (('dest', 'help'))
+               CALL_KW                  3
+               POP_TOP
+
+ 112           LOAD_FAST                3 (r)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              46 ('--no-resume')
+               LOAD_CONST              32 ('store_true')
+               LOAD_CONST              47 ('Bỏ qua checkpoint')
+               LOAD_CONST              39 (('action', 'help'))
+               CALL_KW                  3
+               POP_TOP
+
+ 113           LOAD_FAST                3 (r)
+               LOAD_ATTR               13 (set_defaults + NULL|self)
+               LOAD_GLOBAL             14 (cmd_run)
+               LOAD_CONST              48 (('func',))
+               CALL_KW                  1
+               POP_TOP
+
+ 115           LOAD_FAST                2 (sub)
+               LOAD_ATTR                7 (add_parser + NULL|self)
+               LOAD_CONST              49 ('import-keys')
+               LOAD_CONST              50 ('Nhập key từ settings.json tool cũ')
+               LOAD_CONST               9 (('help',))
+               CALL_KW                  2
+               STORE_FAST               4 (ik)
+
+ 116           LOAD_FAST                4 (ik)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              51 ('path')
+               CALL                     1
+               POP_TOP
+
+ 117           LOAD_FAST                4 (ik)
+               LOAD_ATTR                9 (add_argument + NULL|self)
+               LOAD_CONST              12 ('--out')
+               CALL                     1
+               POP_TOP
+
+ 118           LOAD_FAST                4 (ik)
+               LOAD_ATTR               13 (set_defaults + NULL|self)
+               LOAD_GLOBAL             16 (cmd_import_keys)
+               LOAD_CONST              48 (('func',))
+               CALL_KW                  1
+               POP_TOP
+
+ 120           LOAD_FAST                1 (p)
+               LOAD_ATTR               19 (parse_args + NULL|self)
+               LOAD_FAST                0 (argv)
+               CALL                     1
+               STORE_FAST               5 (args)
+
+ 121           NOP
+
+ 122   L1:     LOAD_FAST                5 (args)
+               LOAD_ATTR               21 (func + NULL|self)
+               LOAD_FAST                5 (args)
+               CALL                     1
+       L2:     RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+ 123           LOAD_GLOBAL             22 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       37 (to L7)
+               STORE_FAST               6 (e)
+
+ 124   L4:     LOAD_GLOBAL             25 (print + NULL)
+               LOAD_CONST              52 ('\nLỖI: ')
+               LOAD_FAST                6 (e)
+               FORMAT_SIMPLE
+               BUILD_STRING             2
+               LOAD_GLOBAL             26 (sys)
+               LOAD_ATTR               28 (stderr)
+               LOAD_CONST              53 (('file',))
+               CALL_KW                  2
+               POP_TOP
+
+ 125   L5:     POP_EXCEPT
+               LOAD_CONST               0 (None)
+               STORE_FAST               6 (e)
+               DELETE_FAST              6 (e)
+               RETURN_CONST            54 (1)
+
+  --   L6:     LOAD_CONST               0 (None)
+               STORE_FAST               6 (e)
+               DELETE_FAST              6 (e)
+               RERAISE                  1
+
+ 123   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L8 [1] lasti
+  L4 to L5 -> L6 [1] lasti
+  L6 to L8 -> L8 [1] lasti

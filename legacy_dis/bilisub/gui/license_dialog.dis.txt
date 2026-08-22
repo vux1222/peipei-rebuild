@@ -1,0 +1,1144 @@
+=== FILE: bilisub\gui\license_dialog.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ("Hộp thoại KÍCH HOẠT bản quyền (PyQt6) — hiện khi license chưa hợp lệ.\n\nKhách copy 'Mã máy' gửi người bán để lấy license key, rồi dán key vào kích hoạt.\n")
+              STORE_NAME               0 (__doc__)
+
+  5           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('Qt',))
+              IMPORT_NAME              1 (PyQt6.QtCore)
+              IMPORT_FROM              2 (Qt)
+              STORE_NAME               2 (Qt)
+              POP_TOP
+
+  6           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (('QDialog', 'QVBoxLayout', 'QHBoxLayout', 'QLabel', 'QLineEdit', 'QPushButton', 'QApplication'))
+              IMPORT_NAME              3 (PyQt6.QtWidgets)
+              IMPORT_FROM              4 (QDialog)
+              STORE_NAME               4 (QDialog)
+              IMPORT_FROM              5 (QVBoxLayout)
+              STORE_NAME               5 (QVBoxLayout)
+              IMPORT_FROM              6 (QHBoxLayout)
+              STORE_NAME               6 (QHBoxLayout)
+              IMPORT_FROM              7 (QLabel)
+              STORE_NAME               7 (QLabel)
+              IMPORT_FROM              8 (QLineEdit)
+              STORE_NAME               8 (QLineEdit)
+              IMPORT_FROM              9 (QPushButton)
+              STORE_NAME               9 (QPushButton)
+              IMPORT_FROM             10 (QApplication)
+              STORE_NAME              10 (QApplication)
+              POP_TOP
+
+ 11           LOAD_CONST               4 (2)
+              LOAD_CONST               5 (('license_client',))
+              IMPORT_NAME             11
+              IMPORT_FROM             12 (license_client)
+              STORE_NAME              12 (license_client)
+              POP_TOP
+
+ 12           LOAD_CONST               4 (2)
+              LOAD_CONST               6 (('humanize_error',))
+              IMPORT_NAME             13 (errors)
+              IMPORT_FROM             14 (humanize_error)
+              STORE_NAME              14 (humanize_error)
+              POP_TOP
+
+ 14           LOAD_CONST               7 ('\nQDialog { background: #eef0f4; }\nQLabel#Title { font-size: 20px; font-weight: 800; color: #1f2533; }\nQLabel#Sub { color: #737a8c; font-size: 12px; }\nQLabel#Err { color: #dc2626; font-size: 12px; font-weight: 600; }\nQLabel#Ok { color: #059669; font-size: 12px; font-weight: 600; }\nQLabel#MidLabel { color: #737a8c; font-size: 12px; }\nQLineEdit {\n    background: #ffffff; border: 1px solid #d3d7e0; border-radius: 8px;\n    padding: 10px 12px; font-size: 14px; color: #1f2533;\n}\nQLineEdit:read-only { background: #f3f4f8; color: #1f2533; font-weight: 700; }\nQLineEdit:focus { border: 1px solid #4f46e5; }\nQPushButton#Primary {\n    background: #4f46e5; border: none; border-radius: 8px; color: white;\n    font-size: 15px; font-weight: 700; padding: 12px;\n}\nQPushButton#Primary:hover { background: #6366f1; }\nQPushButton#Primary:disabled { background: #a5a3e8; }\nQPushButton#Ghost {\n    background: #ffffff; border: 1px solid #d3d7e0; border-radius: 8px;\n    color: #1f2533; padding: 9px 12px; font-size: 13px;\n}\nQPushButton#Ghost:hover { border: 1px solid #4f46e5; }\n')
+              STORE_NAME              15 (_STYLE)
+
+ 41           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST               8 (<code object LicenseDialog at 0x0000016DC8EA2C20, file "bilisub\gui\license_dialog.py", line 41>)
+              MAKE_FUNCTION
+              LOAD_CONST               9 ('LicenseDialog')
+              LOAD_NAME                4 (QDialog)
+              CALL                     3
+              STORE_NAME              16 (LicenseDialog)
+              RETURN_CONST            10 (None)
+
+Disassembly of <code object LicenseDialog at 0x0000016DC8EA2C20, file "bilisub\gui\license_dialog.py", line 41>:
+  --           MAKE_CELL                0 (__class__)
+
+  41           RESUME                   0
+               LOAD_NAME                0 (__name__)
+               STORE_NAME               1 (__module__)
+               LOAD_CONST               0 ('LicenseDialog')
+               STORE_NAME               2 (__qualname__)
+               LOAD_CONST               1 (41)
+               STORE_NAME               3 (__firstlineno__)
+
+  42           LOAD_CONST               2 ("Trả về Accepted khi kích hoạt thành công (license VALID/GRACE).\n\n★27/07 `allow_close=True` → mở được TỪ TRONG APP bất cứ lúc nào (nút '🔑 Bản quyền').\nTrước đây hộp này CHỈ hiện lúc khởi động khi license đã hỏng ⇒ khách hết hạn dùng thử,\nđã mua key tháng rồi mà **không có chỗ nào để nhập** (phải xoá tay license.json) —\nđúng lỗi Boss báo 27/07.\n")
+               STORE_NAME               4 (__doc__)
+
+  50           LOAD_CONST              12 ((None, False))
+               LOAD_CONST               3 ('allow_close')
+               LOAD_NAME                5 (bool)
+               BUILD_TUPLE              2
+               LOAD_FAST                0 (__class__)
+               BUILD_TUPLE              1
+               LOAD_CONST               4 (<code object __init__ at 0x0000016DC93B7010, file "bilisub\gui\license_dialog.py", line 50>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+               SET_FUNCTION_ATTRIBUTE   1 (defaults)
+               STORE_NAME               6 (__init__)
+
+ 148           LOAD_NAME                7 (staticmethod)
+
+ 149           LOAD_CONST               5 ('return')
+               LOAD_NAME                8 (str)
+               BUILD_TUPLE              2
+               LOAD_CONST               6 (<code object _current_text at 0x0000016DC8F6F0C0, file "bilisub\gui\license_dialog.py", line 148>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   4 (annotations)
+
+ 148           CALL                     0
+
+ 149           STORE_NAME               9 (_current_text)
+
+ 165           LOAD_CONST               7 (<code object _mo_giahan at 0x0000016DC8D27100, file "bilisub\gui\license_dialog.py", line 165>)
+               MAKE_FUNCTION
+               STORE_NAME              10 (_mo_giahan)
+
+ 180           LOAD_CONST               8 (<code object _copy_mid at 0x0000016DC90DDB50, file "bilisub\gui\license_dialog.py", line 180>)
+               MAKE_FUNCTION
+               STORE_NAME              11 (_copy_mid)
+
+ 186           LOAD_CONST               9 (<code object _set_err at 0x0000016DC8E07D70, file "bilisub\gui\license_dialog.py", line 186>)
+               MAKE_FUNCTION
+               STORE_NAME              12 (_set_err)
+
+ 190           LOAD_CONST              10 (<code object _activate at 0x0000016DC8CE6BD0, file "bilisub\gui\license_dialog.py", line 190>)
+               MAKE_FUNCTION
+               STORE_NAME              13 (_activate)
+               LOAD_CONST              11 (('btn', 'btn_giahan', 'key', 'mid', 'msg'))
+               STORE_NAME              14 (__static_attributes__)
+               LOAD_FAST                0 (__class__)
+               COPY                     1
+               STORE_NAME              15 (__classcell__)
+               RETURN_VALUE
+
+Disassembly of <code object __init__ at 0x0000016DC93B7010, file "bilisub\gui\license_dialog.py", line 50>:
+  --            COPY_FREE_VARS           1
+
+  50            RESUME                   0
+
+  51            LOAD_GLOBAL              0 (super)
+                LOAD_DEREF              13 (__class__)
+                LOAD_FAST                0 (self)
+                LOAD_SUPER_ATTR          5 (__init__ + NULL|self)
+                LOAD_FAST                1 (parent)
+                CALL                     1
+                POP_TOP
+
+  52            LOAD_FAST                0 (self)
+                LOAD_ATTR                5 (setWindowTitle + NULL|self)
+                LOAD_CONST               1 ('PeiPei Dub — Kích hoạt bản quyền')
+                CALL                     1
+                POP_TOP
+
+  53            LOAD_FAST                0 (self)
+                LOAD_ATTR                7 (setFixedWidth + NULL|self)
+                LOAD_CONST               2 (440)
+                CALL                     1
+                POP_TOP
+
+  54            LOAD_FAST                0 (self)
+                LOAD_ATTR                9 (setStyleSheet + NULL|self)
+                LOAD_GLOBAL             10 (_STYLE)
+                CALL                     1
+                POP_TOP
+
+  55            LOAD_FAST                0 (self)
+                LOAD_ATTR               13 (setWindowFlags + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               15 (windowFlags + NULL|self)
+                CALL                     0
+                LOAD_GLOBAL             16 (Qt)
+                LOAD_ATTR               18 (WindowType)
+                LOAD_ATTR               20 (WindowStaysOnTopHint)
+                BINARY_OP                7 (|)
+                CALL                     1
+                POP_TOP
+
+  57            LOAD_GLOBAL             23 (QVBoxLayout + NULL)
+                LOAD_FAST                0 (self)
+                CALL                     1
+                STORE_FAST               3 (lay)
+
+  58            LOAD_FAST                3 (lay)
+                LOAD_ATTR               25 (setContentsMargins + NULL|self)
+                LOAD_CONST               3 (28)
+                LOAD_CONST               4 (26)
+                LOAD_CONST               3 (28)
+                LOAD_CONST               5 (24)
+                CALL                     4
+                POP_TOP
+
+  59            LOAD_FAST                3 (lay)
+                LOAD_ATTR               27 (setSpacing + NULL|self)
+                LOAD_CONST               6 (10)
+                CALL                     1
+                POP_TOP
+
+  61            LOAD_GLOBAL             29 (QLabel + NULL)
+                LOAD_CONST               7 ('🔑  Kích hoạt bản quyền')
+                CALL                     1
+                STORE_FAST               4 (title)
+
+  62            LOAD_FAST                4 (title)
+                LOAD_ATTR               31 (setObjectName + NULL|self)
+                LOAD_CONST               8 ('Title')
+                CALL                     1
+                POP_TOP
+
+  63            LOAD_GLOBAL             29 (QLabel + NULL)
+                LOAD_CONST               9 ("Gửi 'Mã máy' bên dưới cho người bán để nhận license key, rồi dán key vào ô và bấm Kích hoạt.")
+                CALL                     1
+                STORE_FAST               5 (sub)
+
+  65            LOAD_FAST                5 (sub)
+                LOAD_ATTR               31 (setObjectName + NULL|self)
+                LOAD_CONST              10 ('Sub')
+                CALL                     1
+                POP_TOP
+
+  66            LOAD_FAST                5 (sub)
+                LOAD_ATTR               33 (setWordWrap + NULL|self)
+                LOAD_CONST              11 (True)
+                CALL                     1
+                POP_TOP
+
+  67            LOAD_FAST                3 (lay)
+                LOAD_ATTR               35 (addWidget + NULL|self)
+                LOAD_FAST                4 (title)
+                CALL                     1
+                POP_TOP
+
+  68            LOAD_FAST                3 (lay)
+                LOAD_ATTR               35 (addWidget + NULL|self)
+                LOAD_FAST                5 (sub)
+                CALL                     1
+                POP_TOP
+
+  71            LOAD_GLOBAL             29 (QLabel + NULL)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               37 (_current_text + NULL|self)
+                CALL                     0
+                CALL                     1
+                STORE_FAST               6 (cur)
+
+  72            LOAD_FAST                6 (cur)
+                LOAD_ATTR               31 (setObjectName + NULL|self)
+                LOAD_CONST              12 ('MidLabel')
+                CALL                     1
+                POP_TOP
+
+  73            LOAD_FAST                6 (cur)
+                LOAD_ATTR               33 (setWordWrap + NULL|self)
+                LOAD_CONST              11 (True)
+                CALL                     1
+                POP_TOP
+
+  74            LOAD_FAST                3 (lay)
+                LOAD_ATTR               35 (addWidget + NULL|self)
+                LOAD_FAST                6 (cur)
+                CALL                     1
+                POP_TOP
+
+  75            LOAD_FAST                3 (lay)
+                LOAD_ATTR               39 (addSpacing + NULL|self)
+                LOAD_CONST              13 (6)
+                CALL                     1
+                POP_TOP
+
+  78            LOAD_GLOBAL             29 (QLabel + NULL)
+                LOAD_CONST              14 ('Mã máy của bạn:')
+                CALL                     1
+                STORE_FAST               7 (midlbl)
+
+  79            LOAD_FAST                7 (midlbl)
+                LOAD_ATTR               31 (setObjectName + NULL|self)
+                LOAD_CONST              12 ('MidLabel')
+                CALL                     1
+                POP_TOP
+
+  80            LOAD_FAST                3 (lay)
+                LOAD_ATTR               35 (addWidget + NULL|self)
+                LOAD_FAST                7 (midlbl)
+                CALL                     1
+                POP_TOP
+
+  81            LOAD_GLOBAL             41 (QHBoxLayout + NULL)
+                CALL                     0
+                STORE_FAST               8 (midrow)
+
+  82            LOAD_FAST                8 (midrow)
+                LOAD_ATTR               27 (setSpacing + NULL|self)
+                LOAD_CONST              15 (8)
+                CALL                     1
+                POP_TOP
+
+  83            LOAD_GLOBAL             43 (QLineEdit + NULL)
+                LOAD_GLOBAL             44 (license_client)
+                LOAD_ATTR               46 (get_machine_id)
+                PUSH_NULL
+                CALL                     0
+                CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              24 (mid)
+
+  84            LOAD_FAST                0 (self)
+                LOAD_ATTR               48 (mid)
+                LOAD_ATTR               51 (setReadOnly + NULL|self)
+                LOAD_CONST              11 (True)
+                CALL                     1
+                POP_TOP
+
+  85            LOAD_FAST                0 (self)
+                LOAD_ATTR               48 (mid)
+                LOAD_ATTR               53 (setCursorPosition + NULL|self)
+                LOAD_CONST              16 (0)
+                CALL                     1
+                POP_TOP
+
+  86            LOAD_GLOBAL             55 (QPushButton + NULL)
+                LOAD_CONST              17 ('📋 Copy')
+                CALL                     1
+                STORE_FAST               9 (btn_copy)
+
+  87            LOAD_FAST                9 (btn_copy)
+                LOAD_ATTR               31 (setObjectName + NULL|self)
+                LOAD_CONST              18 ('Ghost')
+                CALL                     1
+                POP_TOP
+
+  88            LOAD_FAST                9 (btn_copy)
+                LOAD_ATTR               57 (setCursor + NULL|self)
+                LOAD_GLOBAL             16 (Qt)
+                LOAD_ATTR               58 (CursorShape)
+                LOAD_ATTR               60 (PointingHandCursor)
+                CALL                     1
+                POP_TOP
+
+  89            LOAD_FAST                9 (btn_copy)
+                LOAD_ATTR               62 (clicked)
+                LOAD_ATTR               65 (connect + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               66 (_copy_mid)
+                CALL                     1
+                POP_TOP
+
+  90            LOAD_FAST                8 (midrow)
+                LOAD_ATTR               35 (addWidget + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               48 (mid)
+                LOAD_CONST              19 (1)
+                CALL                     2
+                POP_TOP
+
+  91            LOAD_FAST                8 (midrow)
+                LOAD_ATTR               35 (addWidget + NULL|self)
+                LOAD_FAST                9 (btn_copy)
+                CALL                     1
+                POP_TOP
+
+  92            LOAD_FAST                3 (lay)
+                LOAD_ATTR               69 (addLayout + NULL|self)
+                LOAD_FAST                8 (midrow)
+                CALL                     1
+                POP_TOP
+
+  93            LOAD_FAST                3 (lay)
+                LOAD_ATTR               39 (addSpacing + NULL|self)
+                LOAD_CONST              13 (6)
+                CALL                     1
+                POP_TOP
+
+  96            LOAD_GLOBAL             29 (QLabel + NULL)
+                LOAD_CONST              20 ('License key:')
+                CALL                     1
+                STORE_FAST              10 (keylbl)
+
+  97            LOAD_FAST               10 (keylbl)
+                LOAD_ATTR               31 (setObjectName + NULL|self)
+                LOAD_CONST              12 ('MidLabel')
+                CALL                     1
+                POP_TOP
+
+  98            LOAD_FAST                3 (lay)
+                LOAD_ATTR               35 (addWidget + NULL|self)
+                LOAD_FAST               10 (keylbl)
+                CALL                     1
+                POP_TOP
+
+  99            LOAD_GLOBAL             43 (QLineEdit + NULL)
+                CALL                     0
+                LOAD_FAST                0 (self)
+                STORE_ATTR              35 (key)
+
+ 100            LOAD_FAST                0 (self)
+                LOAD_ATTR               70 (key)
+                LOAD_ATTR               73 (setPlaceholderText + NULL|self)
+                LOAD_CONST              21 ('Dán license key vào đây...')
+                CALL                     1
+                POP_TOP
+
+ 101            LOAD_FAST                0 (self)
+                LOAD_ATTR               70 (key)
+                LOAD_ATTR               74 (returnPressed)
+                LOAD_ATTR               65 (connect + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               76 (_activate)
+                CALL                     1
+                POP_TOP
+
+ 102            LOAD_FAST                3 (lay)
+                LOAD_ATTR               35 (addWidget + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               70 (key)
+                CALL                     1
+                POP_TOP
+
+ 104            LOAD_GLOBAL             29 (QLabel + NULL)
+                LOAD_CONST              22 ('')
+                CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              39 (msg)
+
+ 105            LOAD_FAST                0 (self)
+                LOAD_ATTR               78 (msg)
+                LOAD_ATTR               31 (setObjectName + NULL|self)
+                LOAD_CONST              23 ('Err')
+                CALL                     1
+                POP_TOP
+
+ 106            LOAD_FAST                0 (self)
+                LOAD_ATTR               78 (msg)
+                LOAD_ATTR               33 (setWordWrap + NULL|self)
+                LOAD_CONST              11 (True)
+                CALL                     1
+                POP_TOP
+
+ 109            LOAD_FAST                0 (self)
+                LOAD_ATTR               78 (msg)
+                LOAD_ATTR               81 (setTextInteractionFlags + NULL|self)
+                LOAD_GLOBAL             16 (Qt)
+                LOAD_ATTR               82 (TextInteractionFlag)
+                LOAD_ATTR               84 (TextSelectableByMouse)
+                CALL                     1
+                POP_TOP
+
+ 110            LOAD_FAST                3 (lay)
+                LOAD_ATTR               35 (addWidget + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               78 (msg)
+                CALL                     1
+                POP_TOP
+
+ 112            LOAD_GLOBAL             55 (QPushButton + NULL)
+                LOAD_CONST              24 ('Kích hoạt')
+                CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              43 (btn)
+
+ 113            LOAD_FAST                0 (self)
+                LOAD_ATTR               86 (btn)
+                LOAD_ATTR               31 (setObjectName + NULL|self)
+                LOAD_CONST              25 ('Primary')
+                CALL                     1
+                POP_TOP
+
+ 114            LOAD_FAST                0 (self)
+                LOAD_ATTR               86 (btn)
+                LOAD_ATTR               57 (setCursor + NULL|self)
+                LOAD_GLOBAL             16 (Qt)
+                LOAD_ATTR               58 (CursorShape)
+                LOAD_ATTR               60 (PointingHandCursor)
+                CALL                     1
+                POP_TOP
+
+ 115            LOAD_FAST                0 (self)
+                LOAD_ATTR               86 (btn)
+                LOAD_ATTR               62 (clicked)
+                LOAD_ATTR               65 (connect + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               76 (_activate)
+                CALL                     1
+                POP_TOP
+
+ 116            LOAD_FAST                3 (lay)
+                LOAD_ATTR               35 (addWidget + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               86 (btn)
+                CALL                     1
+                POP_TOP
+
+ 121            NOP
+
+ 122    L1:     LOAD_GLOBAL             89 (bool + NULL)
+                LOAD_GLOBAL             44 (license_client)
+                LOAD_ATTR               90 (check)
+                PUSH_NULL
+                CALL                     0
+                LOAD_ATTR               93 (get + NULL|self)
+                LOAD_CONST              26 ('info')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                BUILD_MAP                0
+        L2:     LOAD_ATTR               93 (get + NULL|self)
+                LOAD_CONST              27 ('key')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L3)
+                POP_TOP
+                LOAD_CONST              22 ('')
+        L3:     LOAD_ATTR               95 (strip + NULL|self)
+                CALL                     0
+                CALL                     1
+                STORE_FAST              11 (_co_key)
+
+ 125    L4:     LOAD_GLOBAL             55 (QPushButton + NULL)
+
+ 126            LOAD_FAST               11 (_co_key)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L5)
+                LOAD_CONST              29 ('🌐 Gia hạn online — tự cộng ngày dư + chuyển credit dư')
+                JUMP_FORWARD             1 (to L6)
+
+ 127    L5:     LOAD_CONST              30 ('🌐 Mua key online — thanh toán tự động, nhận key ngay')
+
+ 125    L6:     CALL                     1
+                LOAD_FAST                0 (self)
+                STORE_ATTR              49 (btn_giahan)
+
+ 128            LOAD_FAST                0 (self)
+                LOAD_ATTR               98 (btn_giahan)
+                LOAD_ATTR               31 (setObjectName + NULL|self)
+                LOAD_CONST              18 ('Ghost')
+                CALL                     1
+                POP_TOP
+
+ 129            LOAD_FAST                0 (self)
+                LOAD_ATTR               98 (btn_giahan)
+                LOAD_ATTR               57 (setCursor + NULL|self)
+                LOAD_GLOBAL             16 (Qt)
+                LOAD_ATTR               58 (CursorShape)
+                LOAD_ATTR               60 (PointingHandCursor)
+                CALL                     1
+                POP_TOP
+
+ 130            LOAD_FAST                0 (self)
+                LOAD_ATTR               98 (btn_giahan)
+                LOAD_ATTR              101 (setToolTip + NULL|self)
+
+ 132            LOAD_FAST               11 (_co_key)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L7)
+
+ 130            LOAD_CONST              31 ('Mở trang peipeimedia.com, dán sẵn key hiện tại.\nThanh toán xong quay lại đây dán key MỚI là chạy tiếp.')
+                JUMP_FORWARD             1 (to L8)
+
+ 133    L7:     LOAD_CONST              32 ('Mở trang peipeimedia.com — mua gói, key về ngay trên web.')
+
+ 130    L8:     CALL                     1
+                POP_TOP
+
+ 134            LOAD_FAST                0 (self)
+                LOAD_ATTR               98 (btn_giahan)
+                LOAD_ATTR               62 (clicked)
+                LOAD_ATTR               65 (connect + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR              102 (_mo_giahan)
+                CALL                     1
+                POP_TOP
+
+ 135            LOAD_FAST                3 (lay)
+                LOAD_ATTR               35 (addWidget + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR               98 (btn_giahan)
+                CALL                     1
+                POP_TOP
+
+ 139            LOAD_FAST                2 (allow_close)
+                TO_BOOL
+                POP_JUMP_IF_FALSE      123 (to L9)
+
+ 140            LOAD_GLOBAL             55 (QPushButton + NULL)
+                LOAD_CONST              33 ('Đóng')
+                CALL                     1
+                STORE_FAST              12 (close)
+
+ 141            LOAD_FAST               12 (close)
+                LOAD_ATTR               31 (setObjectName + NULL|self)
+                LOAD_CONST              18 ('Ghost')
+                CALL                     1
+                POP_TOP
+
+ 142            LOAD_FAST               12 (close)
+                LOAD_ATTR               57 (setCursor + NULL|self)
+                LOAD_GLOBAL             16 (Qt)
+                LOAD_ATTR               58 (CursorShape)
+                LOAD_ATTR               60 (PointingHandCursor)
+                CALL                     1
+                POP_TOP
+
+ 143            LOAD_FAST               12 (close)
+                LOAD_ATTR               62 (clicked)
+                LOAD_ATTR               65 (connect + NULL|self)
+                LOAD_FAST                0 (self)
+                LOAD_ATTR              104 (reject)
+                CALL                     1
+                POP_TOP
+
+ 144            LOAD_FAST                3 (lay)
+                LOAD_ATTR               35 (addWidget + NULL|self)
+                LOAD_FAST               12 (close)
+                CALL                     1
+                POP_TOP
+
+ 146    L9:     LOAD_FAST                0 (self)
+                LOAD_ATTR               70 (key)
+                LOAD_ATTR              107 (setFocus + NULL|self)
+                CALL                     0
+                POP_TOP
+                RETURN_CONST             0 (None)
+
+  --   L10:     PUSH_EXC_INFO
+
+ 123            LOAD_GLOBAL             96 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        6 (to L12)
+                POP_TOP
+
+ 124            LOAD_CONST              28 (False)
+                STORE_FAST              11 (_co_key)
+       L11:     POP_EXCEPT
+                EXTENDED_ARG             1
+                JUMP_BACKWARD_NO_INTERRUPT 385 (to L4)
+
+ 123   L12:     RERAISE                  0
+
+  --   L13:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L10 [0]
+  L10 to L11 -> L13 [1] lasti
+  L12 to L13 -> L13 [1] lasti
+
+Disassembly of <code object _current_text at 0x0000016DC8F6F0C0, file "bilisub\gui\license_dialog.py", line 148>:
+ 148            RESUME                   0
+
+ 151            NOP
+
+ 152    L1:     LOAD_GLOBAL              0 (license_client)
+                LOAD_ATTR                2 (check)
+                PUSH_NULL
+                CALL                     0
+                STORE_FAST               0 (st)
+
+ 153            LOAD_FAST                0 (st)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST               1 ('info')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                BUILD_MAP                0
+        L2:     STORE_FAST               1 (p)
+
+ 154            LOAD_FAST                1 (p)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST               2 ('key')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L3)
+                POP_TOP
+                LOAD_CONST               3 ('')
+        L3:     LOAD_ATTR                7 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               2 (key)
+
+ 155            LOAD_GLOBAL              9 (len + NULL)
+                LOAD_FAST                2 (key)
+                CALL                     1
+                LOAD_CONST               4 (14)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE       14 (to L4)
+                LOAD_FAST                2 (key)
+                LOAD_CONST               5 (None)
+                LOAD_CONST               6 (8)
+                BINARY_SLICE
+                LOAD_CONST               7 ('…')
+                BINARY_OP                0 (+)
+                LOAD_FAST                2 (key)
+                LOAD_CONST               8 (-4)
+                LOAD_CONST               5 (None)
+                BINARY_SLICE
+                BINARY_OP                0 (+)
+                JUMP_FORWARD            10 (to L5)
+        L4:     LOAD_FAST                2 (key)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L5)
+                POP_TOP
+                LOAD_CONST               9 ('—')
+        L5:     STORE_FAST               3 (masked)
+
+ 156            LOAD_GLOBAL             11 (str + NULL)
+                LOAD_FAST                1 (p)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST              10 ('expires_at')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L6)
+                POP_TOP
+                LOAD_CONST               3 ('')
+        L6:     CALL                     1
+                LOAD_CONST               5 (None)
+                LOAD_CONST              11 (10)
+                BINARY_SLICE
+                STORE_FAST               4 (exp)
+
+ 157            LOAD_FAST                0 (st)
+                LOAD_CONST              12 ('status')
+                BINARY_SUBSCR
+                LOAD_CONST              13 (('VALID', 'GRACE'))
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       47 (to L10)
+
+ 158            LOAD_GLOBAL              0 (license_client)
+                LOAD_ATTR               12 (days_left)
+                PUSH_NULL
+                CALL                     0
+                STORE_FAST               5 (d)
+
+ 159            LOAD_CONST              14 ('hết hạn ')
+                LOAD_FAST                4 (exp)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                LOAD_FAST                5 (d)
+                POP_JUMP_IF_NONE         6 (to L7)
+                LOAD_CONST              15 (' (còn ')
+                LOAD_FAST                5 (d)
+                FORMAT_SIMPLE
+                LOAD_CONST              16 (' ngày)')
+                BUILD_STRING             3
+                JUMP_FORWARD             1 (to L8)
+        L7:     LOAD_CONST               3 ('')
+        L8:     BINARY_OP                0 (+)
+                STORE_FAST               6 (han)
+
+ 160            LOAD_CONST              17 ('Đang dùng key: ')
+                LOAD_FAST                3 (masked)
+                FORMAT_SIMPLE
+                LOAD_CONST              18 (' — ')
+                LOAD_FAST                6 (han)
+                FORMAT_SIMPLE
+                LOAD_CONST              19 ('. Nhập key mới bên dưới để GIA HẠN / ĐỔI key.')
+                BUILD_STRING             5
+        L9:     RETURN_VALUE
+
+ 161   L10:     LOAD_CONST              20 ('⚠ ')
+                LOAD_FAST                0 (st)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST              21 ('message')
+                LOAD_CONST               3 ('')
+                CALL                     2
+                FORMAT_SIMPLE
+                LOAD_CONST              22 (' (key: ')
+                LOAD_FAST                3 (masked)
+                FORMAT_SIMPLE
+                BUILD_STRING             4
+                LOAD_FAST                4 (exp)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        5 (to L11)
+                LOAD_CONST              23 (', hạn ')
+                LOAD_FAST                4 (exp)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                JUMP_FORWARD             1 (to L12)
+       L11:     LOAD_CONST               3 ('')
+       L12:     BINARY_OP                0 (+)
+                LOAD_CONST              24 (')')
+                BINARY_OP                0 (+)
+       L13:     RETURN_VALUE
+
+  --   L14:     PUSH_EXC_INFO
+
+ 162            LOAD_GLOBAL             14 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L16)
+                POP_TOP
+
+ 163   L15:     POP_EXCEPT
+                RETURN_CONST            25 ('Chưa có license trên máy này.')
+
+ 162   L16:     RERAISE                  0
+
+  --   L17:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L9 -> L14 [0]
+  L10 to L13 -> L14 [0]
+  L14 to L15 -> L17 [1] lasti
+  L16 to L17 -> L17 [1] lasti
+
+Disassembly of <code object _mo_giahan at 0x0000016DC8D27100, file "bilisub\gui\license_dialog.py", line 165>:
+ 165            RESUME                   0
+
+ 167            LOAD_CONST               1 (2)
+                LOAD_CONST               2 (('giahan',))
+                IMPORT_NAME              0
+                IMPORT_FROM              1 (giahan)
+                STORE_FAST               1 (giahan)
+                POP_TOP
+
+ 168            NOP
+
+ 169    L1:     LOAD_GLOBAL              4 (license_client)
+                LOAD_ATTR                6 (check)
+                PUSH_NULL
+                CALL                     0
+                STORE_FAST               2 (st)
+
+ 170            LOAD_FAST                2 (st)
+                LOAD_ATTR                9 (get + NULL|self)
+                LOAD_CONST               3 ('info')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                BUILD_MAP                0
+        L2:     LOAD_ATTR                9 (get + NULL|self)
+                LOAD_CONST               4 ('key')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L3)
+                POP_TOP
+                LOAD_CONST               5 ('')
+        L3:     LOAD_ATTR               11 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               3 (key)
+
+ 173    L4:     LOAD_FAST                1 (giahan)
+                LOAD_ATTR               15 (mo_web_giahan + NULL|self)
+                LOAD_FAST                3 (key)
+                CALL                     1
+                STORE_FAST               4 (ok)
+
+ 174            LOAD_FAST                0 (self)
+                LOAD_ATTR               16 (msg)
+                LOAD_ATTR               19 (setStyleSheet + NULL|self)
+                LOAD_FAST                4 (ok)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L5)
+                LOAD_CONST               6 ('color:#059669; font-weight:600;')
+                JUMP_FORWARD             1 (to L6)
+
+ 175    L5:     LOAD_CONST               7 ('color:#dc2626; font-weight:600;')
+
+ 174    L6:     CALL                     1
+                POP_TOP
+
+ 176            LOAD_FAST                0 (self)
+                LOAD_ATTR               16 (msg)
+                LOAD_ATTR               21 (setText + NULL|self)
+
+ 177            LOAD_FAST                4 (ok)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        7 (to L7)
+
+ 176            LOAD_CONST               8 ('Đã mở trang gia hạn trong trình duyệt — thanh toán xong dán key MỚI vào ô trên rồi bấm Kích hoạt.')
+                CALL                     1
+                POP_TOP
+                RETURN_CONST            10 (None)
+
+ 178    L7:     LOAD_CONST               9 ('Không mở được trình duyệt — vào tay: ')
+                LOAD_FAST                1 (giahan)
+                LOAD_ATTR               23 (giahan_url + NULL|self)
+                LOAD_FAST                3 (key)
+                CALL                     1
+                BINARY_OP                0 (+)
+
+ 176            CALL                     1
+                POP_TOP
+                RETURN_CONST            10 (None)
+
+  --    L8:     PUSH_EXC_INFO
+
+ 171            LOAD_GLOBAL             12 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        5 (to L10)
+                POP_TOP
+
+ 172            LOAD_CONST               5 ('')
+                STORE_FAST               3 (key)
+        L9:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 127 (to L4)
+
+ 171   L10:     RERAISE                  0
+
+  --   L11:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L8 [0]
+  L8 to L9 -> L11 [1] lasti
+  L10 to L11 -> L11 [1] lasti
+
+Disassembly of <code object _copy_mid at 0x0000016DC90DDB50, file "bilisub\gui\license_dialog.py", line 180>:
+180           RESUME                   0
+
+181           LOAD_GLOBAL              0 (QApplication)
+              LOAD_ATTR                2 (clipboard)
+              PUSH_NULL
+              CALL                     0
+              LOAD_ATTR                5 (setText + NULL|self)
+              LOAD_FAST                0 (self)
+              LOAD_ATTR                6 (mid)
+              LOAD_ATTR                9 (text + NULL|self)
+              CALL                     0
+              CALL                     1
+              POP_TOP
+
+182           LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (msg)
+              LOAD_ATTR               13 (setObjectName + NULL|self)
+              LOAD_CONST               1 ('Ok')
+              CALL                     1
+              POP_TOP
+
+183           LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (msg)
+              LOAD_ATTR               15 (setStyleSheet + NULL|self)
+              LOAD_CONST               2 ('color:#059669; font-weight:600;')
+              CALL                     1
+              POP_TOP
+
+184           LOAD_FAST                0 (self)
+              LOAD_ATTR               10 (msg)
+              LOAD_ATTR                5 (setText + NULL|self)
+              LOAD_CONST               3 ('Đã copy mã máy. Gửi cho người bán để lấy key.')
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _set_err at 0x0000016DC8E07D70, file "bilisub\gui\license_dialog.py", line 186>:
+186           RESUME                   0
+
+187           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (msg)
+              LOAD_ATTR                3 (setStyleSheet + NULL|self)
+              LOAD_CONST               1 ('color:#dc2626; font-weight:600;')
+              CALL                     1
+              POP_TOP
+
+188           LOAD_FAST                0 (self)
+              LOAD_ATTR                0 (msg)
+              LOAD_ATTR                5 (setText + NULL|self)
+              LOAD_FAST                1 (text)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _activate at 0x0000016DC8CE6BD0, file "bilisub\gui\license_dialog.py", line 190>:
+ 190            RESUME                   0
+
+ 191            LOAD_FAST                0 (self)
+                LOAD_ATTR                0 (key)
+                LOAD_ATTR                3 (text + NULL|self)
+                CALL                     0
+                LOAD_ATTR                5 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               1 (key)
+
+ 192            LOAD_FAST                1 (key)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        17 (to L1)
+
+ 193            LOAD_FAST                0 (self)
+                LOAD_ATTR                7 (_set_err + NULL|self)
+                LOAD_CONST               1 ('Hãy dán license key.')
+                CALL                     1
+                RETURN_VALUE
+
+ 194    L1:     LOAD_FAST                0 (self)
+                LOAD_ATTR                8 (btn)
+                LOAD_ATTR               11 (setEnabled + NULL|self)
+                LOAD_CONST               2 (False)
+                CALL                     1
+                POP_TOP
+
+ 195            LOAD_FAST                0 (self)
+                LOAD_ATTR                8 (btn)
+                LOAD_ATTR               13 (setText + NULL|self)
+                LOAD_CONST               3 ('Đang kích hoạt...')
+                CALL                     1
+                POP_TOP
+
+ 196            LOAD_FAST                0 (self)
+                LOAD_ATTR               14 (msg)
+                LOAD_ATTR               17 (setStyleSheet + NULL|self)
+                LOAD_CONST               4 ('color:#737a8c; font-weight:600;')
+                CALL                     1
+                POP_TOP
+
+ 197            LOAD_FAST                0 (self)
+                LOAD_ATTR               14 (msg)
+                LOAD_ATTR               13 (setText + NULL|self)
+                LOAD_CONST               5 ('Đang kết nối server, vui lòng đợi...')
+                CALL                     1
+                POP_TOP
+
+ 198            LOAD_GLOBAL             18 (QApplication)
+                LOAD_ATTR               20 (processEvents)
+                PUSH_NULL
+                CALL                     0
+                POP_TOP
+
+ 199            NOP
+
+ 200    L2:     LOAD_GLOBAL             22 (license_client)
+                LOAD_ATTR               24 (activate)
+                PUSH_NULL
+                LOAD_FAST                1 (key)
+                CALL                     1
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST   35 (ok, info)
+
+ 203    L3:     LOAD_FAST                2 (ok)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       68 (to L6)
+                LOAD_GLOBAL             22 (license_client)
+                LOAD_ATTR               28 (check)
+                PUSH_NULL
+                CALL                     0
+                LOAD_CONST               7 ('status')
+                BINARY_SUBSCR
+                LOAD_CONST               8 (('VALID', 'GRACE'))
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       40 (to L6)
+
+ 204            NOP
+
+ 205    L4:     LOAD_CONST               9 (2)
+                LOAD_CONST              10 (('credit',))
+                IMPORT_NAME             15
+                IMPORT_FROM             16 (credit)
+                STORE_FAST               5 (credit)
+                POP_TOP
+
+ 206            LOAD_FAST                5 (credit)
+                LOAD_ATTR               35 (reset_session + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 209    L5:     LOAD_FAST                0 (self)
+                LOAD_ATTR               37 (accept + NULL|self)
+                CALL                     0
+                POP_TOP
+
+ 210            RETURN_CONST             0 (None)
+
+ 211    L6:     LOAD_FAST                0 (self)
+                LOAD_ATTR                8 (btn)
+                LOAD_ATTR               11 (setEnabled + NULL|self)
+                LOAD_CONST              11 (True)
+                CALL                     1
+                POP_TOP
+
+ 212            LOAD_FAST                0 (self)
+                LOAD_ATTR                8 (btn)
+                LOAD_ATTR               13 (setText + NULL|self)
+                LOAD_CONST              12 ('Kích hoạt')
+                CALL                     1
+                POP_TOP
+
+ 213            LOAD_FAST                0 (self)
+                LOAD_ATTR                7 (_set_err + NULL|self)
+                LOAD_GLOBAL             39 (humanize_error + NULL)
+                LOAD_FAST                3 (info)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L7)
+                POP_TOP
+                LOAD_CONST              13 ('Kích hoạt thất bại.')
+        L7:     CALL                     1
+                CALL                     1
+                POP_TOP
+
+ 214            LOAD_FAST                0 (self)
+                LOAD_ATTR                0 (key)
+                LOAD_ATTR               41 (setFocus + NULL|self)
+                CALL                     0
+                POP_TOP
+                RETURN_CONST             0 (None)
+
+  --    L8:     PUSH_EXC_INFO
+
+ 201            LOAD_GLOBAL             26 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       16 (to L12)
+                STORE_FAST               4 (e)
+
+ 202    L9:     LOAD_CONST               2 (False)
+                LOAD_CONST               6 ('Lỗi: ')
+                LOAD_FAST                4 (e)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                STORE_FAST_STORE_FAST   50 (info, ok)
+       L10:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST               4 (e)
+                DELETE_FAST              4 (e)
+                JUMP_BACKWARD_NO_INTERRUPT 212 (to L3)
+
+  --   L11:     LOAD_CONST               0 (None)
+                STORE_FAST               4 (e)
+                DELETE_FAST              4 (e)
+                RERAISE                  1
+
+ 201   L12:     RERAISE                  0
+
+  --   L13:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L14:     PUSH_EXC_INFO
+
+ 207            LOAD_GLOBAL             26 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L16)
+                POP_TOP
+
+ 208   L15:     POP_EXCEPT
+                JUMP_BACKWARD_NO_INTERRUPT 174 (to L5)
+
+ 207   L16:     RERAISE                  0
+
+  --   L17:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L8 [0]
+  L4 to L5 -> L14 [0]
+  L8 to L9 -> L13 [1] lasti
+  L9 to L10 -> L11 [1] lasti
+  L11 to L13 -> L13 [1] lasti
+  L14 to L15 -> L17 [1] lasti
+  L16 to L17 -> L17 [1] lasti

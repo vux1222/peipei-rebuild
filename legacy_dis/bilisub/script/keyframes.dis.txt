@@ -1,0 +1,814 @@
+=== FILE: bilisub\script\keyframes.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ("Trích 'cảnh' đại diện từ video: phát hiện chuyển cảnh (ffmpeg scene) + cắt lưới đều,\nrồi lấy 1 keyframe/cảnh. Đầu ra là list SceneNote (chưa có mô tả — 'mắt' VLM điền sau).\n\nKhông cắt đều máy móc: ưu tiên mốc CHUYỂN CẢNH thật, xen thêm lưới để cảnh dài không bị\nthiếu hình; gộp cảnh quá ngắn, giới hạn tổng số frame (tiết kiệm chi phí VLM).\n")
+              STORE_NAME               0 (__doc__)
+
+  7           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+  9           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (re)
+              STORE_NAME               3 (re)
+
+ 10           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (subprocess)
+              STORE_NAME               4 (subprocess)
+
+ 11           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Path',))
+              IMPORT_NAME              5 (pathlib)
+              IMPORT_FROM              6 (Path)
+              STORE_NAME               6 (Path)
+              POP_TOP
+
+ 12           LOAD_CONST               1 (0)
+              LOAD_CONST               5 (('Callable', 'Optional'))
+              IMPORT_NAME              7 (typing)
+              IMPORT_FROM              8 (Callable)
+              STORE_NAME               8 (Callable)
+              IMPORT_FROM              9 (Optional)
+              STORE_NAME               9 (Optional)
+              POP_TOP
+
+ 14           LOAD_CONST               6 (2)
+              LOAD_CONST               7 (('find_ffmpeg', 'probe', '_no_window_kwargs'))
+              IMPORT_NAME             10 (ffmpeg_utils)
+              IMPORT_FROM             11 (find_ffmpeg)
+              STORE_NAME              11 (find_ffmpeg)
+              IMPORT_FROM             12 (probe)
+              STORE_NAME              12 (probe)
+              IMPORT_FROM             13 (_no_window_kwargs)
+              STORE_NAME              13 (_no_window_kwargs)
+              POP_TOP
+
+ 15           LOAD_CONST               8 (1)
+              LOAD_CONST               9 (('SceneNote',))
+              IMPORT_NAME             14 (models)
+              IMPORT_FROM             15 (SceneNote)
+              STORE_NAME              15 (SceneNote)
+              POP_TOP
+
+ 17           LOAD_NAME                3 (re)
+              LOAD_ATTR               32 (compile)
+              PUSH_NULL
+              LOAD_CONST              10 ('pts_time:([0-9]+\\.?[0-9]*)')
+              CALL                     1
+              STORE_NAME              17 (_PTS)
+
+ 20           LOAD_CONST              11 (0.3)
+
+ 21           LOAD_CONST               3 (None)
+
+ 20           LOAD_CONST              12 (('threshold', 'log'))
+              BUILD_CONST_KEY_MAP      2
+
+ 21           NOP
+
+ 20           NOP
+
+ 21           NOP
+
+ 20           LOAD_CONST              21 (('video', 'str', 'threshold', 'float', 'log', 'Optional[Callable[[str], None]]', 'return', 'list[float]'))
+              LOAD_CONST              13 (<code object detect_scene_times at 0x0000016DC8E4E630, file "bilisub\script\keyframes.py", line 20>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              18 (detect_scene_times)
+
+ 35           LOAD_CONST              14 (48)
+              LOAD_CONST              15 (1.5)
+
+ 36           LOAD_CONST              16 (8.0)
+              LOAD_CONST              11 (0.3)
+
+ 37           LOAD_CONST               3 (None)
+
+ 35           LOAD_CONST              17 (('max_frames', 'min_scene_s', 'max_scene_s', 'scene_threshold', 'log'))
+              BUILD_CONST_KEY_MAP      5
+
+ 36           NOP
+
+ 35           NOP
+
+ 36           NOP
+
+ 35           NOP
+
+ 37           NOP
+
+ 35           NOP
+
+ 37           NOP
+
+ 35           LOAD_CONST              22 (('video', 'str', 'max_frames', 'int', 'min_scene_s', 'float', 'max_scene_s', 'float', 'scene_threshold', 'float', 'log', 'Optional[Callable[[str], None]]', 'return', 'list[tuple[int, int]]'))
+              LOAD_CONST              18 (<code object plan_scenes at 0x0000016DC8EEE890, file "bilisub\script\keyframes.py", line 35>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              19 (plan_scenes)
+
+ 85           LOAD_CONST              14 (48)
+
+ 86           LOAD_CONST               3 (None)
+
+ 85           LOAD_CONST              19 (('max_frames', 'log'))
+              BUILD_CONST_KEY_MAP      2
+
+ 86           NOP
+
+ 85           NOP
+
+ 87           NOP
+
+ 85           LOAD_CONST              23 (('video', 'str', 'out_dir', 'str', 'max_frames', 'int', 'log', 'Optional[Callable[[str], None]]', 'return', 'list[SceneNote]'))
+              LOAD_CONST              20 (<code object extract_scenes at 0x0000016DC8F7EDC0, file "bilisub\script\keyframes.py", line 85>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              20 (extract_scenes)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object detect_scene_times at 0x0000016DC8E4E630, file "bilisub\script\keyframes.py", line 20>:
+  20           RESUME                   0
+
+  23           LOAD_GLOBAL              1 (find_ffmpeg + NULL)
+               CALL                     0
+               STORE_FAST               3 (ff)
+
+  24           LOAD_FAST                3 (ff)
+               LOAD_CONST               1 ('-hide_banner')
+               LOAD_CONST               2 ('-i')
+               LOAD_FAST                0 (video)
+               LOAD_CONST               3 ('-filter:v')
+
+  25           LOAD_CONST               4 ("select='gt(scene,")
+               LOAD_FAST                1 (threshold)
+               FORMAT_SIMPLE
+               LOAD_CONST               5 (")',showinfo")
+               BUILD_STRING             3
+               LOAD_CONST               6 ('-f')
+               LOAD_CONST               7 ('null')
+               LOAD_CONST               8 ('-')
+
+  24           BUILD_LIST               9
+               STORE_FAST               4 (cmd)
+
+  29           LOAD_GLOBAL              2 (subprocess)
+               LOAD_ATTR                4 (run)
+               PUSH_NULL
+               LOAD_FAST                4 (cmd)
+               BUILD_TUPLE              1
+               LOAD_CONST               9 (True)
+               LOAD_CONST               9 (True)
+               LOAD_CONST              10 ('utf-8')
+               LOAD_CONST              11 ('replace')
+               LOAD_CONST              12 (('capture_output', 'text', 'encoding', 'errors'))
+               BUILD_CONST_KEY_MAP      4
+
+  30           LOAD_GLOBAL              7 (_no_window_kwargs + NULL)
+               CALL                     0
+
+  29           DICT_MERGE               1
+               CALL_FUNCTION_EX         1
+               STORE_FAST               5 (p)
+
+  31           LOAD_GLOBAL              8 (_PTS)
+               LOAD_ATTR               11 (findall + NULL|self)
+               LOAD_FAST                5 (p)
+               LOAD_ATTR               12 (stderr)
+               COPY                     1
+               TO_BOOL
+               POP_JUMP_IF_TRUE         2 (to L1)
+               POP_TOP
+               LOAD_CONST              13 ('')
+       L1:     CALL                     1
+               GET_ITER
+               LOAD_FAST_AND_CLEAR      6 (m)
+               SWAP                     2
+       L2:     BUILD_LIST               0
+               SWAP                     2
+               GET_ITER
+       L3:     FOR_ITER                14 (to L4)
+               STORE_FAST               6 (m)
+               LOAD_GLOBAL             15 (float + NULL)
+               LOAD_FAST                6 (m)
+               CALL                     1
+               LIST_APPEND              2
+               JUMP_BACKWARD           16 (to L3)
+       L4:     END_FOR
+               POP_TOP
+       L5:     STORE_FAST               7 (times)
+               STORE_FAST               6 (m)
+
+  32           LOAD_GLOBAL             17 (sorted + NULL)
+               LOAD_GLOBAL             19 (set + NULL)
+               LOAD_FAST                7 (times)
+               CALL                     1
+               CALL                     1
+               RETURN_VALUE
+
+  --   L6:     SWAP                     2
+               POP_TOP
+
+  31           SWAP                     2
+               STORE_FAST               6 (m)
+               RERAISE                  0
+ExceptionTable:
+  L2 to L5 -> L6 [2]
+
+Disassembly of <code object plan_scenes at 0x0000016DC8EEE890, file "bilisub\script\keyframes.py", line 35>:
+  --            MAKE_CELL               22 (segs)
+
+  35            RESUME                   0
+
+  39            LOAD_FAST                5 (log)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         3 (to L1)
+                POP_TOP
+                LOAD_CONST               1 (<code object <lambda> at 0x0000016DC9136A70, file "bilisub\script\keyframes.py", line 39>)
+                MAKE_FUNCTION
+        L1:     STORE_FAST               5 (log)
+
+  40            LOAD_GLOBAL              1 (probe + NULL)
+                LOAD_FAST                0 (video)
+                CALL                     1
+                STORE_FAST               6 (info)
+
+  41            LOAD_FAST                6 (info)
+                LOAD_ATTR                2 (duration_ms)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+                POP_TOP
+                LOAD_CONST               2 (0)
+        L2:     LOAD_CONST               3 (1000.0)
+                BINARY_OP               11 (/)
+                STORE_FAST               7 (dur)
+
+  42            LOAD_FAST                7 (dur)
+                LOAD_CONST               2 (0)
+                COMPARE_OP              58 (bool(<=))
+                POP_JUMP_IF_FALSE       11 (to L3)
+
+  43            LOAD_GLOBAL              5 (ValueError + NULL)
+                LOAD_CONST               4 ('Không đọc được thời lượng video.')
+                CALL                     1
+                RAISE_VARARGS            1
+
+  45    L3:     LOAD_GLOBAL              7 (detect_scene_times + NULL)
+                LOAD_FAST_LOAD_FAST      4 (video, scene_threshold)
+                LOAD_FAST                5 (log)
+                LOAD_CONST               5 (('threshold', 'log'))
+                CALL_KW                  3
+                STORE_FAST               8 (cuts)
+
+  46            LOAD_FAST                5 (log)
+                PUSH_NULL
+                LOAD_CONST               6 ('ffmpeg phát hiện ')
+                LOAD_GLOBAL              9 (len + NULL)
+                LOAD_FAST                8 (cuts)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST               7 (' mốc chuyển cảnh.')
+                BUILD_STRING             3
+                CALL                     1
+                POP_TOP
+
+  49            LOAD_CONST               8 (0.0)
+                BUILD_LIST               1
+                LOAD_FAST                8 (cuts)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      9 (c)
+                SWAP                     2
+        L4:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L5:     FOR_ITER                24 (to L11)
+                STORE_FAST               9 (c)
+                LOAD_CONST               2 (0)
+                LOAD_FAST                9 (c)
+                SWAP                     2
+                COPY                     2
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        8 (to L8)
+                LOAD_FAST                7 (dur)
+                COMPARE_OP              18 (bool(<))
+        L6:     POP_JUMP_IF_TRUE         2 (to L7)
+                JUMP_BACKWARD           18 (to L5)
+        L7:     JUMP_FORWARD             3 (to L10)
+        L8:     POP_TOP
+        L9:     JUMP_BACKWARD           22 (to L5)
+       L10:     LOAD_FAST                9 (c)
+                LIST_APPEND              2
+                JUMP_BACKWARD           26 (to L5)
+       L11:     END_FOR
+                POP_TOP
+       L12:     SWAP                     2
+                STORE_FAST               9 (c)
+                BINARY_OP                0 (+)
+                LOAD_FAST                7 (dur)
+                BUILD_LIST               1
+                BINARY_OP                0 (+)
+                STORE_FAST              10 (bounds)
+
+  50            LOAD_GLOBAL             11 (sorted + NULL)
+                LOAD_GLOBAL             13 (set + NULL)
+                LOAD_CONST               9 (<code object <genexpr> at 0x0000016DC8EAD8A0, file "bilisub\script\keyframes.py", line 50>)
+                MAKE_FUNCTION
+                LOAD_FAST               10 (bounds)
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                CALL                     1
+                STORE_FAST              10 (bounds)
+
+  53            BUILD_LIST               0
+                STORE_FAST              11 (dense)
+
+  54            LOAD_GLOBAL             15 (zip + NULL)
+                LOAD_FAST_LOAD_FAST    170 (bounds, bounds)
+                LOAD_CONST              10 (1)
+                LOAD_CONST              11 (None)
+                BINARY_SLICE
+                CALL                     2
+                GET_ITER
+       L13:     FOR_ITER               116 (to L18)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  205 (a, b)
+
+  55            LOAD_FAST               11 (dense)
+                LOAD_ATTR               17 (append + NULL|self)
+                LOAD_FAST               12 (a)
+                CALL                     1
+                POP_TOP
+
+  56            LOAD_FAST_LOAD_FAST    220 (b, a)
+                BINARY_OP               10 (-)
+                STORE_FAST              14 (seg)
+
+  57            LOAD_FAST_LOAD_FAST    227 (seg, max_scene_s)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_TRUE         2 (to L14)
+                JUMP_BACKWARD           33 (to L13)
+
+  58   L14:     LOAD_GLOBAL             19 (int + NULL)
+                LOAD_FAST_LOAD_FAST    227 (seg, max_scene_s)
+                BINARY_OP                2 (//)
+                CALL                     1
+                STORE_FAST              15 (n)
+
+  59            LOAD_GLOBAL             21 (range + NULL)
+                LOAD_CONST              10 (1)
+                LOAD_FAST               15 (n)
+                LOAD_CONST              10 (1)
+                BINARY_OP                0 (+)
+                CALL                     2
+                GET_ITER
+       L15:     FOR_ITER                51 (to L17)
+                STORE_FAST              16 (k)
+
+  60            LOAD_FAST               12 (a)
+                LOAD_FAST               16 (k)
+                LOAD_FAST_LOAD_FAST    239 (seg, n)
+                LOAD_CONST              10 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP               11 (/)
+                BINARY_OP                5 (*)
+                BINARY_OP                0 (+)
+                STORE_FAST              17 (t)
+
+  61            LOAD_FAST               17 (t)
+                LOAD_FAST               13 (b)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_TRUE         2 (to L16)
+                JUMP_BACKWARD           24 (to L15)
+
+  62   L16:     LOAD_FAST               11 (dense)
+                LOAD_ATTR               17 (append + NULL|self)
+                LOAD_GLOBAL             23 (round + NULL)
+                LOAD_FAST               17 (t)
+                LOAD_CONST              12 (2)
+                CALL                     2
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD           53 (to L15)
+
+  59   L17:     END_FOR
+                POP_TOP
+                JUMP_BACKWARD          118 (to L13)
+
+  54   L18:     END_FOR
+                POP_TOP
+
+  63            LOAD_FAST               11 (dense)
+                LOAD_ATTR               17 (append + NULL|self)
+                LOAD_FAST                7 (dur)
+                CALL                     1
+                POP_TOP
+
+  64            LOAD_GLOBAL             11 (sorted + NULL)
+                LOAD_GLOBAL             13 (set + NULL)
+                LOAD_FAST               11 (dense)
+                CALL                     1
+                CALL                     1
+                STORE_FAST              11 (dense)
+
+  67            BUILD_LIST               0
+                STORE_DEREF             22 (segs)
+
+  68            LOAD_GLOBAL             15 (zip + NULL)
+                LOAD_FAST_LOAD_FAST    187 (dense, dense)
+                LOAD_CONST              10 (1)
+                LOAD_CONST              11 (None)
+                BINARY_SLICE
+                CALL                     2
+                GET_ITER
+       L19:     FOR_ITER                53 (to L21)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  205 (a, b)
+
+  69            LOAD_FAST_LOAD_FAST    220 (b, a)
+                BINARY_OP               10 (-)
+                LOAD_FAST                2 (min_scene_s)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       22 (to L20)
+                LOAD_DEREF              22 (segs)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       15 (to L20)
+
+  70            LOAD_DEREF              22 (segs)
+                LOAD_CONST              13 (-1)
+                BINARY_SUBSCR
+                LOAD_CONST               2 (0)
+                BINARY_SUBSCR
+                LOAD_FAST               13 (b)
+                BUILD_TUPLE              2
+                LOAD_DEREF              22 (segs)
+                LOAD_CONST              13 (-1)
+                STORE_SUBSCR
+                JUMP_BACKWARD           35 (to L19)
+
+  72   L20:     LOAD_DEREF              22 (segs)
+                LOAD_ATTR               17 (append + NULL|self)
+                LOAD_FAST_LOAD_FAST    205 (a, b)
+                BUILD_TUPLE              2
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD           55 (to L19)
+
+  68   L21:     END_FOR
+                POP_TOP
+
+  75            LOAD_GLOBAL              9 (len + NULL)
+                LOAD_DEREF              22 (segs)
+                CALL                     1
+                LOAD_FAST                1 (max_frames)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE      169 (to L25)
+
+  76   L22:     LOAD_GLOBAL             25 (min + NULL)
+                LOAD_GLOBAL             21 (range + NULL)
+                LOAD_GLOBAL              9 (len + NULL)
+                LOAD_DEREF              22 (segs)
+                CALL                     1
+                CALL                     1
+                LOAD_FAST               22 (segs)
+                BUILD_TUPLE              1
+                LOAD_CONST              14 (<code object <lambda> at 0x0000016DC90F17A0, file "bilisub\script\keyframes.py", line 76>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                LOAD_CONST              15 (('key',))
+                CALL_KW                  2
+                STORE_FAST              18 (i)
+
+  77            LOAD_FAST               18 (i)
+                LOAD_CONST              10 (1)
+                BINARY_OP                0 (+)
+                LOAD_GLOBAL              9 (len + NULL)
+                LOAD_DEREF              22 (segs)
+                CALL                     1
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        5 (to L23)
+                LOAD_FAST               18 (i)
+                LOAD_CONST              10 (1)
+                BINARY_OP                0 (+)
+                JUMP_FORWARD             4 (to L24)
+       L23:     LOAD_FAST               18 (i)
+                LOAD_CONST              10 (1)
+                BINARY_OP               10 (-)
+       L24:     STORE_FAST              19 (j)
+
+  78            LOAD_GLOBAL             25 (min + NULL)
+                LOAD_DEREF              22 (segs)
+                LOAD_FAST               18 (i)
+                BINARY_SUBSCR
+                LOAD_CONST               2 (0)
+                BINARY_SUBSCR
+                LOAD_DEREF              22 (segs)
+                LOAD_FAST               19 (j)
+                BINARY_SUBSCR
+                LOAD_CONST               2 (0)
+                BINARY_SUBSCR
+                CALL                     2
+                STORE_FAST              20 (lo)
+                LOAD_GLOBAL             27 (max + NULL)
+                LOAD_DEREF              22 (segs)
+                LOAD_FAST               18 (i)
+                BINARY_SUBSCR
+                LOAD_CONST              10 (1)
+                BINARY_SUBSCR
+                LOAD_DEREF              22 (segs)
+                LOAD_FAST               19 (j)
+                BINARY_SUBSCR
+                LOAD_CONST              10 (1)
+                BINARY_SUBSCR
+                CALL                     2
+                STORE_FAST              21 (hi)
+
+  79            LOAD_FAST               20 (lo)
+                LOAD_FAST               21 (hi)
+                BUILD_TUPLE              2
+                LOAD_DEREF              22 (segs)
+                LOAD_GLOBAL             25 (min + NULL)
+                LOAD_FAST               18 (i)
+                LOAD_FAST               19 (j)
+                CALL                     2
+                STORE_SUBSCR
+
+  80            LOAD_DEREF              22 (segs)
+                LOAD_ATTR               29 (pop + NULL|self)
+                LOAD_GLOBAL             27 (max + NULL)
+                LOAD_FAST               18 (i)
+                LOAD_FAST               19 (j)
+                CALL                     2
+                CALL                     1
+                POP_TOP
+
+  75            LOAD_GLOBAL              9 (len + NULL)
+                LOAD_DEREF              22 (segs)
+                CALL                     1
+                LOAD_FAST                1 (max_frames)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE        2 (to L25)
+                JUMP_BACKWARD          169 (to L22)
+
+  82   L25:     LOAD_DEREF              22 (segs)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     12 (a)
+                LOAD_FAST_AND_CLEAR     13 (b)
+                SWAP                     3
+       L26:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L27:     FOR_ITER                33 (to L28)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  205 (a, b)
+                LOAD_GLOBAL             19 (int + NULL)
+                LOAD_FAST               12 (a)
+                LOAD_CONST              16 (1000)
+                BINARY_OP                5 (*)
+                CALL                     1
+                LOAD_GLOBAL             19 (int + NULL)
+                LOAD_FAST               13 (b)
+                LOAD_CONST              16 (1000)
+                BINARY_OP                5 (*)
+                CALL                     1
+                BUILD_TUPLE              2
+                LIST_APPEND              2
+                JUMP_BACKWARD           35 (to L27)
+       L28:     END_FOR
+                POP_TOP
+       L29:     SWAP                     3
+                STORE_FAST              13 (b)
+                STORE_FAST              12 (a)
+                RETURN_VALUE
+
+  --   L30:     SWAP                     2
+                POP_TOP
+
+  49            SWAP                     2
+                STORE_FAST               9 (c)
+                RERAISE                  0
+
+  --   L31:     SWAP                     2
+                POP_TOP
+
+  82            SWAP                     3
+                STORE_FAST              13 (b)
+                STORE_FAST              12 (a)
+                RERAISE                  0
+ExceptionTable:
+  L4 to L6 -> L30 [3]
+  L7 to L9 -> L30 [3]
+  L10 to L12 -> L30 [3]
+  L26 to L29 -> L31 [3]
+
+Disassembly of <code object <lambda> at 0x0000016DC9136A70, file "bilisub\script\keyframes.py", line 39>:
+ 39           RESUME                   0
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object <genexpr> at 0x0000016DC8EAD8A0, file "bilisub\script\keyframes.py", line 50>:
+  50           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                17 (to L3)
+               STORE_FAST               1 (b)
+               LOAD_GLOBAL              1 (round + NULL)
+               LOAD_FAST                1 (b)
+               LOAD_CONST               0 (2)
+               CALL                     2
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           19 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object <lambda> at 0x0000016DC90F17A0, file "bilisub\script\keyframes.py", line 76>:
+  --           COPY_FREE_VARS           1
+
+  76           RESUME                   0
+               LOAD_DEREF               1 (segs)
+               LOAD_FAST                0 (j)
+               BINARY_SUBSCR
+               LOAD_CONST               1 (1)
+               BINARY_SUBSCR
+               LOAD_DEREF               1 (segs)
+               LOAD_FAST                0 (j)
+               BINARY_SUBSCR
+               LOAD_CONST               2 (0)
+               BINARY_SUBSCR
+               BINARY_OP               10 (-)
+               RETURN_VALUE
+
+Disassembly of <code object extract_scenes at 0x0000016DC8F7EDC0, file "bilisub\script\keyframes.py", line 85>:
+ 85           RESUME                   0
+
+ 89           LOAD_FAST                3 (log)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         3 (to L1)
+              POP_TOP
+              LOAD_CONST               1 (<code object <lambda> at 0x0000016DC9136660, file "bilisub\script\keyframes.py", line 89>)
+              MAKE_FUNCTION
+      L1:     STORE_FAST               3 (log)
+
+ 90           LOAD_GLOBAL              1 (find_ffmpeg + NULL)
+              CALL                     0
+              STORE_FAST               5 (ff)
+
+ 91           LOAD_GLOBAL              3 (Path + NULL)
+              LOAD_FAST                1 (out_dir)
+              CALL                     1
+              STORE_FAST               6 (out)
+
+ 92           LOAD_FAST                6 (out)
+              LOAD_ATTR                5 (mkdir + NULL|self)
+              LOAD_CONST               2 (True)
+              LOAD_CONST               2 (True)
+              LOAD_CONST               3 (('parents', 'exist_ok'))
+              CALL_KW                  2
+              POP_TOP
+
+ 93           LOAD_GLOBAL              7 (plan_scenes + NULL)
+              LOAD_FAST                0 (video)
+              BUILD_TUPLE              1
+              LOAD_FAST_LOAD_FAST     35 (max_frames, log)
+              LOAD_CONST               4 (('max_frames', 'log'))
+              BUILD_CONST_KEY_MAP      2
+              LOAD_FAST                4 (plan_kw)
+              DICT_MERGE               1
+              CALL_FUNCTION_EX         1
+              STORE_FAST               7 (segs)
+
+ 94           LOAD_FAST                3 (log)
+              PUSH_NULL
+              LOAD_CONST               5 ('Chia ')
+              LOAD_GLOBAL              9 (len + NULL)
+              LOAD_FAST                7 (segs)
+              CALL                     1
+              FORMAT_SIMPLE
+              LOAD_CONST               6 (' cảnh, trích keyframe...')
+              BUILD_STRING             3
+              CALL                     1
+              POP_TOP
+
+ 95           BUILD_LIST               0
+              STORE_FAST               8 (notes)
+
+ 96           LOAD_GLOBAL             11 (enumerate + NULL)
+              LOAD_FAST                7 (segs)
+              CALL                     1
+              GET_ITER
+      L2:     FOR_ITER               140 (to L5)
+              UNPACK_SEQUENCE          2
+              STORE_FAST               9 (i)
+              UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST  171 (s_ms, e_ms)
+
+ 97           LOAD_FAST_LOAD_FAST    171 (s_ms, e_ms)
+              BINARY_OP                0 (+)
+              LOAD_CONST               7 (2000.0)
+              BINARY_OP               11 (/)
+              STORE_FAST              12 (mid)
+
+ 98           LOAD_FAST                6 (out)
+              LOAD_CONST               8 ('scene_')
+              LOAD_FAST                9 (i)
+              LOAD_CONST               9 ('03d')
+              FORMAT_WITH_SPEC
+              LOAD_CONST              10 ('.jpg')
+              BUILD_STRING             3
+              BINARY_OP               11 (/)
+              STORE_FAST              13 (fp)
+
+ 99           LOAD_GLOBAL             12 (subprocess)
+              LOAD_ATTR               14 (run)
+              PUSH_NULL
+
+100           LOAD_FAST                5 (ff)
+              LOAD_CONST              11 ('-hide_banner')
+              LOAD_CONST              12 ('-loglevel')
+              LOAD_CONST              13 ('error')
+              LOAD_CONST              14 ('-ss')
+              LOAD_FAST               12 (mid)
+              LOAD_CONST              15 ('.3f')
+              FORMAT_WITH_SPEC
+
+101           LOAD_CONST              16 ('-i')
+              LOAD_FAST                0 (video)
+              LOAD_CONST              17 ('-frames:v')
+              LOAD_CONST              18 ('1')
+              LOAD_CONST              19 ('-q:v')
+              LOAD_CONST              20 ('3')
+              LOAD_CONST              21 ('-y')
+              LOAD_GLOBAL             17 (str + NULL)
+              LOAD_FAST               13 (fp)
+              CALL                     1
+
+100           BUILD_LIST              14
+
+ 99           BUILD_TUPLE              1
+              LOAD_CONST              22 ('capture_output')
+
+102           LOAD_CONST               2 (True)
+
+ 99           BUILD_MAP                1
+
+102           LOAD_GLOBAL             19 (_no_window_kwargs + NULL)
+              CALL                     0
+
+ 99           DICT_MERGE               1
+              CALL_FUNCTION_EX         1
+              POP_TOP
+
+103           LOAD_FAST                8 (notes)
+              LOAD_ATTR               21 (append + NULL|self)
+              LOAD_GLOBAL             23 (SceneNote + NULL)
+              LOAD_FAST_LOAD_FAST    171 (s_ms, e_ms)
+
+104           LOAD_FAST               13 (fp)
+              LOAD_ATTR               25 (exists + NULL|self)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE       11 (to L3)
+              LOAD_GLOBAL             17 (str + NULL)
+              LOAD_FAST               13 (fp)
+              CALL                     1
+              JUMP_FORWARD             1 (to L4)
+      L3:     LOAD_CONST              23 ('')
+
+103   L4:     LOAD_CONST              24 (('start_ms', 'end_ms', 'frame_path'))
+              CALL_KW                  3
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD          142 (to L2)
+
+ 96   L5:     END_FOR
+              POP_TOP
+
+105           LOAD_FAST                8 (notes)
+              RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC9136660, file "bilisub\script\keyframes.py", line 89>:
+ 89           RESUME                   0
+              RETURN_CONST             0 (None)

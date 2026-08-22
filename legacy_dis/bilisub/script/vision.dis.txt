@@ -1,0 +1,1281 @@
+=== FILE: bilisub\script\vision.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ("'Mắt' cho autoscript — mô tả cảnh từ keyframe.\n\nBackend Gemini (native generateContent, ảnh base64). TẮT 'thinking' (thinkingBudget=0)\nvì mô tả cảnh không cần suy luận — tránh ngốn token output làm câu bị cụt.\nĐiền ``SceneNote.description`` tại chỗ. (Có thể thêm backend local Ollama-vision sau.)\n")
+              STORE_NAME               0 (__doc__)
+
+  7           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+  9           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (base64)
+              STORE_NAME               3 (base64)
+
+ 10           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (os)
+              STORE_NAME               4 (os)
+
+ 11           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              5 (time)
+              STORE_NAME               5 (time)
+
+ 12           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('ThreadPoolExecutor',))
+              IMPORT_NAME              6 (concurrent.futures)
+              IMPORT_FROM              7 (ThreadPoolExecutor)
+              STORE_NAME               7 (ThreadPoolExecutor)
+              POP_TOP
+
+ 13           LOAD_CONST               1 (0)
+              LOAD_CONST               5 (('Path',))
+              IMPORT_NAME              8 (pathlib)
+              IMPORT_FROM              9 (Path)
+              STORE_NAME               9 (Path)
+              POP_TOP
+
+ 14           LOAD_CONST               1 (0)
+              LOAD_CONST               6 (('Callable', 'Optional'))
+              IMPORT_NAME             10 (typing)
+              IMPORT_FROM             11 (Callable)
+              STORE_NAME              11 (Callable)
+              IMPORT_FROM             12 (Optional)
+              STORE_NAME              12 (Optional)
+              POP_TOP
+
+ 16           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME             13 (requests)
+              STORE_NAME              13 (requests)
+
+ 18           LOAD_CONST               7 (2)
+              LOAD_CONST               8 (('credit',))
+              IMPORT_NAME             14
+              IMPORT_FROM             15 (credit)
+              STORE_NAME              15 (credit)
+              POP_TOP
+
+ 19           LOAD_CONST               7 (2)
+              LOAD_CONST               9 (('DEEPSEEK_VISION_MODEL',))
+              IMPORT_NAME             16 (config)
+              IMPORT_FROM             17 (DEEPSEEK_VISION_MODEL)
+              STORE_NAME              17 (DEEPSEEK_VISION_MODEL)
+              POP_TOP
+
+ 20           LOAD_CONST              10 (1)
+              LOAD_CONST              11 (('SceneNote',))
+              IMPORT_NAME             18 (models)
+              IMPORT_FROM             19 (SceneNote)
+              STORE_NAME              19 (SceneNote)
+              POP_TOP
+
+ 22           BUILD_SET                0
+              LOAD_CONST              12 (frozenset({429, 529, 500, 502, 503}))
+              SET_UPDATE               1
+              STORE_NAME              20 (_RETRY_STATUS)
+
+ 24           LOAD_NAME                4 (os)
+              LOAD_ATTR               42 (environ)
+              LOAD_ATTR               45 (get + NULL|self)
+
+ 25           LOAD_CONST              13 ('BILISUB_GEMINI_BASE')
+              LOAD_CONST              14 ('https://generativelanguage.googleapis.com/v1beta')
+
+ 24           CALL                     2
+
+ 26           LOAD_ATTR               47 (rstrip + NULL|self)
+              LOAD_CONST              15 ('/')
+              CALL                     1
+
+ 24           STORE_NAME              24 (_BASE)
+
+ 28           LOAD_CONST              16 ('bằng tiếng Việt')
+              LOAD_CONST              17 ('in English')
+              LOAD_CONST              18 ('用中文')
+              LOAD_CONST              19 (('vi', 'en', 'zh'))
+              BUILD_CONST_KEY_MAP      3
+              STORE_NAME              25 (_LANG)
+
+ 31           LOAD_CONST              20 ('Bạn là hệ thống mô tả cảnh video. Mô tả KHÁCH QUAN trong 1-2 câu {lang}: chủ thể (người/động vật/vật thể), hành động, bối cảnh, thời điểm/ánh sáng. CHỈ mô tả thứ NHÌN THẤY trong khung hình. BỎ QUA hoàn toàn chữ/phụ đề/logo/watermark trên màn hình. Không suy diễn, không thêm cảm xúc, không lời dẫn.')
+
+ 30           STORE_NAME              26 (_PROMPT)
+
+ 38           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              21 (<code object VisionError at 0x0000016DC8EBB050, file "bilisub\script\vision.py", line 38>)
+              MAKE_FUNCTION
+              LOAD_CONST              22 ('VisionError')
+              LOAD_NAME               27 (Exception)
+              CALL                     3
+              STORE_NAME              28 (VisionError)
+
+ 42           LOAD_CONST              31 (('return', 'str'))
+              LOAD_CONST              23 (<code object _gemini_key at 0x0000016DC8EB5C50, file "bilisub\script\vision.py", line 42>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              29 (_gemini_key)
+
+ 48           LOAD_NAME               26 (_PROMPT)
+              LOAD_NAME               24 (_BASE)
+
+ 49           LOAD_CONST              24 (300)
+
+ 47           BUILD_TUPLE              3
+
+ 48           NOP
+
+ 47           NOP
+
+ 48           NOP
+
+ 47           NOP
+
+ 49           NOP
+
+ 47           NOP
+
+ 49           NOP
+
+ 47           LOAD_CONST              32 (('frame_path', 'str', 'api_key', 'str', 'model', 'str', 'lang_txt', 'str', 'prompt_tmpl', 'str', 'base', 'str', 'max_out', 'int', 'return', 'str'))
+              LOAD_CONST              25 (<code object _describe_one at 0x0000016DC8F61F80, file "bilisub\script\vision.py", line 47>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              30 (_describe_one)
+
+102           NOP
+
+103           NOP
+
+102           NOP
+
+103           NOP
+
+102           NOP
+
+103           NOP
+
+102           LOAD_CONST              33 (('frame_path', 'str', 'api_key', 'str', 'model', 'str', 'lang_txt', 'str', 'prompt_tmpl', 'str', 'base', 'str', 'return', 'str'))
+              LOAD_CONST              26 (<code object _describe_one_deepseek at 0x0000016DC8D2B960, file "bilisub\script\vision.py", line 102>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              31 (_describe_one_deepseek)
+
+147           LOAD_CONST               3 (None)
+
+148           LOAD_CONST              27 ('vi')
+              LOAD_CONST              28 (4)
+              LOAD_CONST               3 (None)
+
+149           LOAD_CONST              24 (300)
+
+150           LOAD_CONST               3 (None)
+
+151           LOAD_CONST               3 (None)
+
+146           LOAD_CONST              29 (('model', 'target_language', 'threads', 'prompt', 'max_out', 'progress', 'log'))
+              BUILD_CONST_KEY_MAP      7
+
+147           NOP
+
+146           NOP
+
+147           NOP
+
+146           NOP
+
+148           NOP
+
+146           NOP
+
+148           NOP
+
+146           NOP
+
+148           NOP
+
+146           NOP
+
+149           NOP
+
+146           NOP
+
+150           NOP
+
+146           NOP
+
+151           NOP
+
+146           NOP
+
+152           NOP
+
+146           LOAD_CONST              34 (('scenes', 'list[SceneNote]', 'model', 'Optional[str]', 'target_language', 'str', 'threads', 'int', 'prompt', 'Optional[str]', 'max_out', 'int', 'progress', 'Optional[Callable[[int, int, str], None]]', 'log', 'Optional[Callable[[str], None]]', 'return', 'list[SceneNote]'))
+              LOAD_CONST              30 (<code object describe_scenes at 0x0000016DC8FE1F10, file "bilisub\script\vision.py", line 146>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              32 (describe_scenes)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object VisionError at 0x0000016DC8EBB050, file "bilisub\script\vision.py", line 38>:
+ 38           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('VisionError')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (38)
+              STORE_NAME               3 (__firstlineno__)
+
+ 39           LOAD_CONST               2 (())
+              STORE_NAME               4 (__static_attributes__)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object _gemini_key at 0x0000016DC8EB5C50, file "bilisub\script\vision.py", line 42>:
+ 42           RESUME                   0
+
+ 43           LOAD_FAST                0 (settings)
+              LOAD_ATTR                0 (api_keys)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_CONST               1 ('gemini')
+              LOAD_CONST               2 ('')
+              CALL                     2
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L1:     LOAD_ATTR                5 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               1 (raw)
+
+ 44           LOAD_FAST                1 (raw)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       33 (to L2)
+              LOAD_FAST                1 (raw)
+              LOAD_ATTR                7 (splitlines + NULL|self)
+              CALL                     0
+              LOAD_CONST               3 (0)
+              BINARY_SUBSCR
+              LOAD_ATTR                5 (strip + NULL|self)
+              CALL                     0
+              RETURN_VALUE
+      L2:     LOAD_CONST               2 ('')
+              RETURN_VALUE
+
+Disassembly of <code object _describe_one at 0x0000016DC8F61F80, file "bilisub\script\vision.py", line 47>:
+  47            RESUME                   0
+
+  50            LOAD_CONST               1 (2)
+                LOAD_CONST               2 (('gemini_quirks',))
+                IMPORT_NAME              0
+                IMPORT_FROM              1 (gemini_quirks)
+                STORE_FAST               7 (gemini_quirks)
+                POP_TOP
+
+  51            LOAD_GLOBAL              4 (base64)
+                LOAD_ATTR                6 (b64encode)
+                PUSH_NULL
+                LOAD_GLOBAL              9 (Path + NULL)
+                LOAD_FAST                0 (frame_path)
+                CALL                     1
+                LOAD_ATTR               11 (read_bytes + NULL|self)
+                CALL                     0
+                CALL                     1
+                LOAD_ATTR               13 (decode + NULL|self)
+                CALL                     0
+                STORE_FAST               8 (b64)
+
+  52            LOAD_FAST                5 (base)
+                FORMAT_SIMPLE
+                LOAD_CONST               3 ('/models/')
+                LOAD_FAST                2 (model)
+                FORMAT_SIMPLE
+                LOAD_CONST               4 (':generateContent?key=')
+                LOAD_FAST                1 (api_key)
+                FORMAT_SIMPLE
+                BUILD_STRING             5
+                STORE_FAST               9 (url)
+
+  57            LOAD_CONST               5 (0.4)
+                LOAD_GLOBAL             15 (max + NULL)
+                LOAD_CONST               6 (50)
+                LOAD_GLOBAL             17 (int + NULL)
+                LOAD_FAST                6 (max_out)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                LOAD_CONST               7 (300)
+        L1:     CALL                     1
+                CALL                     2
+
+  58            LOAD_CONST               8 ('thinkingBudget')
+                LOAD_CONST               9 (0)
+                BUILD_MAP                1
+
+  57            LOAD_CONST              10 (('temperature', 'maxOutputTokens', 'thinkingConfig'))
+                BUILD_CONST_KEY_MAP      3
+                STORE_FAST              10 (_gc)
+
+  60            LOAD_CONST              11 ('contents')
+                LOAD_CONST              12 ('parts')
+
+  61            LOAD_CONST              13 ('inline_data')
+                LOAD_CONST              14 ('image/jpeg')
+                LOAD_FAST                8 (b64)
+                LOAD_CONST              15 (('mime_type', 'data'))
+                BUILD_CONST_KEY_MAP      2
+                BUILD_MAP                1
+
+  62            LOAD_CONST              16 ('text')
+                LOAD_FAST                4 (prompt_tmpl)
+                LOAD_ATTR               19 (format + NULL|self)
+                LOAD_FAST                3 (lang_txt)
+                LOAD_CONST              17 (('lang',))
+                CALL_KW                  1
+                BUILD_MAP                1
+
+  60            BUILD_LIST               2
+                BUILD_MAP                1
+                BUILD_LIST               1
+
+  59            BUILD_MAP                1
+                STORE_FAST              11 (body)
+
+  65            LOAD_CONST              18 ('')
+                STORE_FAST              12 (last)
+
+  66            LOAD_GLOBAL             21 (range + NULL)
+                LOAD_CONST              19 (4)
+                CALL                     1
+                GET_ITER
+        L2:     FOR_ITER               244 (to L10)
+                STORE_FAST              13 (attempt)
+
+  68            LOAD_FAST                7 (gemini_quirks)
+                LOAD_ATTR               23 (gen_config + NULL|self)
+                LOAD_FAST_LOAD_FAST     42 (model, _gc)
+                CALL                     2
+                LOAD_FAST               11 (body)
+                LOAD_CONST              20 ('generationConfig')
+                STORE_SUBSCR
+
+  69            NOP
+
+  70    L3:     LOAD_GLOBAL             24 (requests)
+                LOAD_ATTR               26 (post)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST    155 (url, body)
+                LOAD_CONST              21 (60)
+                LOAD_CONST              22 (('json', 'timeout'))
+                CALL_KW                  3
+                STORE_FAST              14 (r)
+
+  75    L4:     LOAD_FAST               14 (r)
+                LOAD_ATTR               36 (status_code)
+                LOAD_CONST              26 (200)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       53 (to L7)
+
+  76            LOAD_FAST               14 (r)
+                LOAD_ATTR               39 (json + NULL|self)
+                CALL                     0
+                STORE_FAST              16 (d)
+
+  77            NOP
+
+  78    L5:     LOAD_FAST               16 (d)
+                LOAD_CONST              27 ('candidates')
+                BINARY_SUBSCR
+                LOAD_CONST               9 (0)
+                BINARY_SUBSCR
+                LOAD_CONST              28 ('content')
+                BINARY_SUBSCR
+                LOAD_CONST              12 ('parts')
+                BINARY_SUBSCR
+                LOAD_CONST               9 (0)
+                BINARY_SUBSCR
+                LOAD_CONST              16 ('text')
+                BINARY_SUBSCR
+                LOAD_ATTR               41 (strip + NULL|self)
+                CALL                     0
+        L6:     SWAP                     2
+                POP_TOP
+                RETURN_VALUE
+
+  92    L7:     LOAD_CONST              33 ('HTTP ')
+                LOAD_FAST               14 (r)
+                LOAD_ATTR               36 (status_code)
+                FORMAT_SIMPLE
+                LOAD_CONST              34 (': ')
+                LOAD_FAST               14 (r)
+                LOAD_ATTR               46 (text)
+                LOAD_CONST               0 (None)
+                LOAD_CONST              23 (160)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             4
+                STORE_FAST              12 (last)
+
+  93            LOAD_FAST               14 (r)
+                LOAD_ATTR               36 (status_code)
+                LOAD_CONST              35 (400)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       24 (to L8)
+                LOAD_FAST                7 (gemini_quirks)
+                LOAD_ATTR               49 (mark_no_think + NULL|self)
+                LOAD_FAST_LOAD_FAST     43 (model, body)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L8)
+
+  94            JUMP_BACKWARD          185 (to L2)
+
+  95    L8:     LOAD_FAST               14 (r)
+                LOAD_ATTR               36 (status_code)
+                LOAD_GLOBAL             50 (_RETRY_STATUS)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       39 (to L9)
+                LOAD_FAST               13 (attempt)
+                LOAD_CONST              31 (3)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       33 (to L9)
+
+  96            LOAD_GLOBAL             32 (time)
+                LOAD_ATTR               34 (sleep)
+                PUSH_NULL
+                LOAD_CONST              24 (1.5)
+                LOAD_FAST               13 (attempt)
+                LOAD_CONST              25 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                LOAD_CONST              24 (1.5)
+                BINARY_OP                0 (+)
+                CALL                     1
+                POP_TOP
+
+  97            JUMP_BACKWARD          244 (to L2)
+
+  98    L9:     POP_TOP
+                JUMP_FORWARD             2 (to L11)
+
+  66   L10:     END_FOR
+                POP_TOP
+
+  99   L11:     LOAD_GLOBAL             53 (VisionError + NULL)
+                LOAD_CONST              36 ('Gemini vision ')
+                LOAD_FAST               12 (last)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                CALL                     1
+                RAISE_VARARGS            1
+
+  --   L12:     PUSH_EXC_INFO
+
+  71            LOAD_GLOBAL             24 (requests)
+                LOAD_ATTR               28 (RequestException)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       54 (to L16)
+                STORE_FAST              15 (ex)
+
+  72   L13:     LOAD_GLOBAL             31 (str + NULL)
+                LOAD_FAST               15 (ex)
+                CALL                     1
+                LOAD_CONST               0 (None)
+                LOAD_CONST              23 (160)
+                BINARY_SLICE
+                STORE_FAST              12 (last)
+
+  73            LOAD_GLOBAL             32 (time)
+                LOAD_ATTR               34 (sleep)
+                PUSH_NULL
+                LOAD_CONST              24 (1.5)
+                LOAD_FAST               13 (attempt)
+                LOAD_CONST              25 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                CALL                     1
+                POP_TOP
+
+  74   L14:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST              15 (ex)
+                DELETE_FAST             15 (ex)
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          331 (to L2)
+
+  --   L15:     LOAD_CONST               0 (None)
+                STORE_FAST              15 (ex)
+                DELETE_FAST             15 (ex)
+                RERAISE                  1
+
+  71   L16:     RERAISE                  0
+
+  --   L17:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L18:     PUSH_EXC_INFO
+
+  79            LOAD_GLOBAL             42 (KeyError)
+                LOAD_GLOBAL             44 (IndexError)
+                BUILD_TUPLE              2
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       99 (to L21)
+                POP_TOP
+
+  85            LOAD_CONST              29 ('200 rỗng/SAFETY: ')
+                LOAD_GLOBAL             31 (str + NULL)
+                LOAD_FAST               16 (d)
+                CALL                     1
+                LOAD_CONST               0 (None)
+                LOAD_CONST              30 (140)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                STORE_FAST              12 (last)
+
+  86            LOAD_FAST               13 (attempt)
+                LOAD_CONST              31 (3)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       71 (to L20)
+
+  88            LOAD_FAST                4 (prompt_tmpl)
+                LOAD_ATTR               19 (format + NULL|self)
+                LOAD_FAST                3 (lang_txt)
+                LOAD_CONST              17 (('lang',))
+                CALL_KW                  1
+                LOAD_CONST              32 (' ')
+                LOAD_FAST               13 (attempt)
+                LOAD_CONST              25 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                BINARY_OP                0 (+)
+
+  87            LOAD_FAST               11 (body)
+                LOAD_CONST              11 ('contents')
+                BINARY_SUBSCR
+                LOAD_CONST               9 (0)
+                BINARY_SUBSCR
+                LOAD_CONST              12 ('parts')
+                BINARY_SUBSCR
+                LOAD_CONST              25 (1)
+                BINARY_SUBSCR
+                LOAD_CONST              16 ('text')
+                STORE_SUBSCR
+
+  89            LOAD_GLOBAL             32 (time)
+                LOAD_ATTR               34 (sleep)
+                PUSH_NULL
+                LOAD_CONST              24 (1.5)
+                LOAD_FAST               13 (attempt)
+                LOAD_CONST              25 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                CALL                     1
+                POP_TOP
+
+  90   L19:     POP_EXCEPT
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          449 (to L2)
+
+  91   L20:     POP_EXCEPT
+                POP_TOP
+                JUMP_BACKWARD          205 (to L11)
+
+  79   L21:     RERAISE                  0
+
+  --   L22:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L3 to L4 -> L12 [1]
+  L5 to L6 -> L18 [1]
+  L12 to L13 -> L17 [2] lasti
+  L13 to L14 -> L15 [2] lasti
+  L15 to L17 -> L17 [2] lasti
+  L18 to L19 -> L22 [2] lasti
+  L21 to L22 -> L22 [2] lasti
+
+Disassembly of <code object _describe_one_deepseek at 0x0000016DC8D2B960, file "bilisub\script\vision.py", line 102>:
+ 102            RESUME                   0
+
+ 106            LOAD_GLOBAL              0 (base64)
+                LOAD_ATTR                2 (b64encode)
+                PUSH_NULL
+                LOAD_GLOBAL              5 (Path + NULL)
+                LOAD_FAST                0 (frame_path)
+                CALL                     1
+                LOAD_ATTR                7 (read_bytes + NULL|self)
+                CALL                     0
+                CALL                     1
+                LOAD_ATTR                9 (decode + NULL|self)
+                CALL                     0
+                STORE_FAST               6 (b64)
+
+ 107            LOAD_FAST                5 (base)
+                LOAD_ATTR               11 (rstrip + NULL|self)
+                LOAD_CONST               1 ('/')
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST               2 ('/chat/completions')
+                BUILD_STRING             2
+                STORE_FAST               7 (url)
+
+ 109            LOAD_FAST                2 (model)
+
+ 110            LOAD_CONST               3 ('user')
+
+ 111            LOAD_CONST               4 ('text')
+                LOAD_FAST                4 (prompt_tmpl)
+                LOAD_ATTR               13 (format + NULL|self)
+                LOAD_FAST                3 (lang_txt)
+                LOAD_CONST               5 (('lang',))
+                CALL_KW                  1
+                LOAD_CONST               6 (('type', 'text'))
+                BUILD_CONST_KEY_MAP      2
+
+ 112            LOAD_CONST               7 ('image_url')
+                LOAD_CONST               8 ('url')
+                LOAD_CONST               9 ('data:image/jpeg;base64,')
+                LOAD_FAST                6 (b64)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                BUILD_MAP                1
+                LOAD_CONST              10 (('type', 'image_url'))
+                BUILD_CONST_KEY_MAP      2
+
+ 110            BUILD_LIST               2
+                LOAD_CONST              11 (('role', 'content'))
+                BUILD_CONST_KEY_MAP      2
+                BUILD_LIST               1
+
+ 114            LOAD_CONST              12 (0.4)
+                LOAD_CONST              13 (300)
+
+ 108            LOAD_CONST              14 (('model', 'messages', 'temperature', 'max_tokens'))
+                BUILD_CONST_KEY_MAP      4
+                STORE_FAST               8 (body)
+
+ 116            LOAD_CONST              15 ('Bearer ')
+                LOAD_FAST                1 (api_key)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                LOAD_CONST              16 ('application/json')
+                LOAD_CONST              17 (('Authorization', 'Content-Type'))
+                BUILD_CONST_KEY_MAP      2
+                STORE_FAST               9 (headers)
+
+ 117            LOAD_CONST              18 ('')
+                STORE_FAST              10 (last)
+
+ 118            LOAD_GLOBAL             15 (range + NULL)
+                LOAD_CONST              19 (4)
+                CALL                     1
+                GET_ITER
+        L1:     FOR_ITER               188 (to L9)
+                STORE_FAST              11 (attempt)
+
+ 119            NOP
+
+ 120    L2:     LOAD_GLOBAL             16 (requests)
+                LOAD_ATTR               18 (post)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST    120 (url, body)
+                LOAD_FAST                9 (headers)
+                LOAD_CONST              20 (60)
+                LOAD_CONST              21 (('json', 'headers', 'timeout'))
+                CALL_KW                  4
+                STORE_FAST              12 (r)
+
+ 125    L3:     LOAD_FAST               12 (r)
+                LOAD_ATTR               28 (status_code)
+                LOAD_CONST              26 (200)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       56 (to L7)
+
+ 126            LOAD_FAST               12 (r)
+                LOAD_ATTR               31 (json + NULL|self)
+                CALL                     0
+                STORE_FAST              14 (d)
+
+ 127            NOP
+
+ 128    L4:     LOAD_FAST               14 (d)
+                LOAD_CONST              27 ('choices')
+                BINARY_SUBSCR
+                LOAD_CONST              28 (0)
+                BINARY_SUBSCR
+                LOAD_CONST              29 ('message')
+                BINARY_SUBSCR
+                LOAD_CONST              30 ('content')
+                BINARY_SUBSCR
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L5)
+                POP_TOP
+                LOAD_CONST              18 ('')
+        L5:     LOAD_ATTR               33 (strip + NULL|self)
+                CALL                     0
+        L6:     SWAP                     2
+                POP_TOP
+                RETURN_VALUE
+
+ 138    L7:     LOAD_CONST              36 ('HTTP ')
+                LOAD_FAST               12 (r)
+                LOAD_ATTR               28 (status_code)
+                FORMAT_SIMPLE
+                LOAD_CONST              37 (': ')
+                LOAD_FAST               12 (r)
+                LOAD_ATTR               38 (text)
+                LOAD_CONST              22 (None)
+                LOAD_CONST              23 (160)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             4
+                STORE_FAST              10 (last)
+
+ 139            LOAD_FAST               12 (r)
+                LOAD_ATTR               28 (status_code)
+                LOAD_GLOBAL             40 (_RETRY_STATUS)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       39 (to L8)
+                LOAD_FAST               11 (attempt)
+                LOAD_CONST              33 (3)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       33 (to L8)
+
+ 140            LOAD_GLOBAL             24 (time)
+                LOAD_ATTR               26 (sleep)
+                PUSH_NULL
+                LOAD_CONST              24 (1.5)
+                LOAD_FAST               11 (attempt)
+                LOAD_CONST              25 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                LOAD_CONST              24 (1.5)
+                BINARY_OP                0 (+)
+                CALL                     1
+                POP_TOP
+
+ 141            JUMP_BACKWARD          188 (to L1)
+
+ 142    L8:     POP_TOP
+                JUMP_FORWARD             2 (to L10)
+
+ 118    L9:     END_FOR
+                POP_TOP
+
+ 143   L10:     LOAD_GLOBAL             43 (VisionError + NULL)
+                LOAD_CONST              38 ('DeepSeek vision ')
+                LOAD_FAST               10 (last)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                CALL                     1
+                RAISE_VARARGS            1
+
+  --   L11:     PUSH_EXC_INFO
+
+ 121            LOAD_GLOBAL             16 (requests)
+                LOAD_ATTR               20 (RequestException)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       54 (to L15)
+                STORE_FAST              13 (ex)
+
+ 122   L12:     LOAD_GLOBAL             23 (str + NULL)
+                LOAD_FAST               13 (ex)
+                CALL                     1
+                LOAD_CONST              22 (None)
+                LOAD_CONST              23 (160)
+                BINARY_SLICE
+                STORE_FAST              10 (last)
+
+ 123            LOAD_GLOBAL             24 (time)
+                LOAD_ATTR               26 (sleep)
+                PUSH_NULL
+                LOAD_CONST              24 (1.5)
+                LOAD_FAST               11 (attempt)
+                LOAD_CONST              25 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                CALL                     1
+                POP_TOP
+
+ 124   L13:     POP_EXCEPT
+                LOAD_CONST              22 (None)
+                STORE_FAST              13 (ex)
+                DELETE_FAST             13 (ex)
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          275 (to L1)
+
+  --   L14:     LOAD_CONST              22 (None)
+                STORE_FAST              13 (ex)
+                DELETE_FAST             13 (ex)
+                RERAISE                  1
+
+ 121   L15:     RERAISE                  0
+
+  --   L16:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L17:     PUSH_EXC_INFO
+
+ 129            LOAD_GLOBAL             34 (KeyError)
+                LOAD_GLOBAL             36 (IndexError)
+                BUILD_TUPLE              2
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       99 (to L20)
+                POP_TOP
+
+ 131            LOAD_CONST              31 ('200 rỗng: ')
+                LOAD_GLOBAL             23 (str + NULL)
+                LOAD_FAST               14 (d)
+                CALL                     1
+                LOAD_CONST              22 (None)
+                LOAD_CONST              32 (140)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                STORE_FAST              10 (last)
+
+ 132            LOAD_FAST               11 (attempt)
+                LOAD_CONST              33 (3)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE       71 (to L19)
+
+ 134            LOAD_FAST                4 (prompt_tmpl)
+                LOAD_ATTR               13 (format + NULL|self)
+                LOAD_FAST                3 (lang_txt)
+                LOAD_CONST               5 (('lang',))
+                CALL_KW                  1
+                LOAD_CONST              34 (' ')
+                LOAD_FAST               11 (attempt)
+                LOAD_CONST              25 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                BINARY_OP                0 (+)
+
+ 133            LOAD_FAST                8 (body)
+                LOAD_CONST              35 ('messages')
+                BINARY_SUBSCR
+                LOAD_CONST              28 (0)
+                BINARY_SUBSCR
+                LOAD_CONST              30 ('content')
+                BINARY_SUBSCR
+                LOAD_CONST              28 (0)
+                BINARY_SUBSCR
+                LOAD_CONST               4 ('text')
+                STORE_SUBSCR
+
+ 135            LOAD_GLOBAL             24 (time)
+                LOAD_ATTR               26 (sleep)
+                PUSH_NULL
+                LOAD_CONST              24 (1.5)
+                LOAD_FAST               11 (attempt)
+                LOAD_CONST              25 (1)
+                BINARY_OP                0 (+)
+                BINARY_OP                5 (*)
+                CALL                     1
+                POP_TOP
+
+ 136   L18:     POP_EXCEPT
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          393 (to L1)
+
+ 137   L19:     POP_EXCEPT
+                POP_TOP
+                JUMP_BACKWARD          205 (to L10)
+
+ 129   L20:     RERAISE                  0
+
+  --   L21:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L11 [1]
+  L4 to L6 -> L17 [1]
+  L11 to L12 -> L16 [2] lasti
+  L12 to L13 -> L14 [2] lasti
+  L14 to L16 -> L16 [2] lasti
+  L17 to L18 -> L21 [2] lasti
+  L20 to L21 -> L21 [2] lasti
+
+Disassembly of <code object describe_scenes at 0x0000016DC8FE1F10, file "bilisub\script\vision.py", line 146>:
+  --            MAKE_CELL                0 (scenes)
+                MAKE_CELL                2 (model)
+                MAKE_CELL                6 (max_out)
+                MAKE_CELL               18 (api_key)
+                MAKE_CELL               19 (base)
+                MAKE_CELL               20 (lang_txt)
+                MAKE_CELL               21 (prompt_tmpl)
+
+ 146            RESUME                   0
+
+ 158            LOAD_FAST                8 (log)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         3 (to L1)
+                POP_TOP
+                LOAD_CONST               1 (<code object <lambda> at 0x0000016DC9136320, file "bilisub\script\vision.py", line 158>)
+                MAKE_FUNCTION
+        L1:     STORE_FAST               8 (log)
+
+ 161            LOAD_GLOBAL              0 (credit)
+                LOAD_ATTR                2 (gemini_endpoint)
+                PUSH_NULL
+                LOAD_FAST                1 (settings)
+                LOAD_GLOBAL              5 (_gemini_key + NULL)
+                LOAD_FAST                1 (settings)
+                CALL                     1
+                CALL                     2
+                UNPACK_SEQUENCE          2
+                STORE_DEREF             19 (base)
+                STORE_DEREF             18 (api_key)
+
+ 162            LOAD_DEREF               2 (model)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        13 (to L2)
+                POP_TOP
+                LOAD_GLOBAL              7 (getattr + NULL)
+                LOAD_FAST                1 (settings)
+                LOAD_CONST               2 ('autoscript_vision_model')
+                LOAD_CONST               3 ('gemini-3.5-flash')
+                CALL                     3
+        L2:     STORE_DEREF              2 (model)
+
+ 163            LOAD_DEREF              18 (api_key)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        86 (to L5)
+
+ 164            LOAD_GLOBAL              0 (credit)
+                LOAD_ATTR                8 (credit_on)
+                PUSH_NULL
+                LOAD_FAST                1 (settings)
+                CALL                     1
+                TO_BOOL
+                POP_JUMP_IF_FALSE       11 (to L3)
+
+ 165            LOAD_GLOBAL             11 (VisionError + NULL)
+                LOAD_CONST               4 ('Chưa kích hoạt license/credit cho chế độ Credit.')
+                CALL                     1
+                RAISE_VARARGS            1
+
+ 166    L3:     LOAD_GLOBAL              0 (credit)
+                LOAD_ATTR               12 (active_provider)
+                PUSH_NULL
+                LOAD_FAST                1 (settings)
+                CALL                     1
+                LOAD_CONST               5 ('deepseek')
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE       11 (to L4)
+
+ 167            LOAD_GLOBAL             11 (VisionError + NULL)
+
+ 168            LOAD_CONST               6 ('Bước ĐỌC HÌNH (đọc panel/cảnh) cần GEMINI — DeepSeek chỉ dịch chữ, KHÔNG đọc ảnh. → Bật Chế độ Credit, HOẶC nhập key Gemini ở 🔑 API Keys.')
+
+ 167            CALL                     1
+                RAISE_VARARGS            1
+
+ 170    L4:     LOAD_GLOBAL             11 (VisionError + NULL)
+                LOAD_CONST               7 ('Chưa có Gemini API key (nhập ở 🔑 API Keys) cho bước hiểu hình ảnh.')
+                CALL                     1
+                RAISE_VARARGS            1
+
+ 171    L5:     LOAD_GLOBAL             14 (_LANG)
+                LOAD_ATTR               17 (get + NULL|self)
+                LOAD_FAST                3 (target_language)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L6)
+                POP_TOP
+                LOAD_CONST               8 ('vi')
+        L6:     LOAD_CONST               9 (None)
+                LOAD_CONST              10 (2)
+                BINARY_SLICE
+                LOAD_ATTR               19 (lower + NULL|self)
+                CALL                     0
+                LOAD_GLOBAL             14 (_LANG)
+                LOAD_CONST               8 ('vi')
+                BINARY_SUBSCR
+                CALL                     2
+                STORE_DEREF             20 (lang_txt)
+
+ 172            LOAD_FAST                5 (prompt)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         6 (to L7)
+                POP_TOP
+                LOAD_GLOBAL             20 (_PROMPT)
+        L7:     STORE_DEREF             21 (prompt_tmpl)
+
+ 173            LOAD_GLOBAL             23 (enumerate + NULL)
+                LOAD_DEREF               0 (scenes)
+                CALL                     1
+                GET_ITER
+                LOAD_FAST_AND_CLEAR      9 (i)
+                LOAD_FAST_AND_CLEAR     10 (s)
+                SWAP                     3
+        L8:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+        L9:     FOR_ITER                26 (to L12)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  154 (i, s)
+                LOAD_FAST               10 (s)
+                LOAD_ATTR               24 (frame_path)
+                TO_BOOL
+       L10:     POP_JUMP_IF_TRUE         2 (to L11)
+                JUMP_BACKWARD           24 (to L9)
+       L11:     LOAD_FAST                9 (i)
+                LIST_APPEND              2
+                JUMP_BACKWARD           28 (to L9)
+       L12:     END_FOR
+                POP_TOP
+       L13:     STORE_FAST              11 (todo)
+                STORE_FAST               9 (i)
+                STORE_FAST              10 (s)
+
+ 174            LOAD_FAST                8 (log)
+                PUSH_NULL
+                LOAD_CONST              11 ("Gemini '")
+                LOAD_DEREF               2 (model)
+                FORMAT_SIMPLE
+                LOAD_CONST              12 ("' mô tả ")
+                LOAD_GLOBAL             27 (len + NULL)
+                LOAD_FAST               11 (todo)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              13 (' cảnh...')
+                BUILD_STRING             5
+                CALL                     1
+                POP_TOP
+
+ 176            LOAD_CONST              22 (('i', 'int'))
+                LOAD_FAST               18 (api_key)
+                LOAD_FAST               19 (base)
+                LOAD_FAST               20 (lang_txt)
+                LOAD_FAST                6 (max_out)
+                LOAD_FAST                2 (model)
+                LOAD_FAST               21 (prompt_tmpl)
+                LOAD_FAST                0 (scenes)
+                BUILD_TUPLE              7
+                LOAD_CONST              14 (<code object _job at 0x0000016DC90EDA50, file "bilisub\script\vision.py", line 176>)
+                MAKE_FUNCTION
+                SET_FUNCTION_ATTRIBUTE   8 (closure)
+                SET_FUNCTION_ATTRIBUTE   4 (annotations)
+                STORE_FAST              12 (_job)
+
+ 183            LOAD_CONST              15 (0)
+                STORE_FAST              13 (done)
+
+ 184            LOAD_CONST              15 (0)
+                STORE_FAST              14 (errs)
+
+ 185            LOAD_GLOBAL             29 (ThreadPoolExecutor + NULL)
+                LOAD_GLOBAL             31 (max + NULL)
+                LOAD_CONST              16 (1)
+                LOAD_FAST                4 (threads)
+                CALL                     2
+                LOAD_CONST              17 (('max_workers',))
+                CALL_KW                  1
+                BEFORE_WITH
+       L14:     STORE_FAST              15 (ex)
+
+ 186            LOAD_FAST               15 (ex)
+                LOAD_ATTR               33 (map + NULL|self)
+                LOAD_FAST_LOAD_FAST    203 (_job, todo)
+                CALL                     2
+                GET_ITER
+       L15:     FOR_ITER                78 (to L20)
+                UNPACK_SEQUENCE          3
+                STORE_FAST               9 (i)
+                STORE_FAST              16 (desc)
+                STORE_FAST              17 (err)
+
+ 187            LOAD_FAST               13 (done)
+                LOAD_CONST              16 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST              13 (done)
+
+ 188            LOAD_FAST               17 (err)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        6 (to L16)
+
+ 189            LOAD_FAST               14 (errs)
+                LOAD_CONST              16 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST              14 (errs)
+                JUMP_FORWARD            10 (to L17)
+
+ 191   L16:     LOAD_FAST               16 (desc)
+                LOAD_DEREF               0 (scenes)
+                LOAD_FAST                9 (i)
+                BINARY_SUBSCR
+                STORE_ATTR              17 (description)
+
+ 192   L17:     LOAD_FAST                7 (progress)
+                TO_BOOL
+       L18:     POP_JUMP_IF_TRUE         2 (to L19)
+                JUMP_BACKWARD           44 (to L15)
+
+ 193   L19:     LOAD_FAST                7 (progress)
+                PUSH_NULL
+                LOAD_FAST               13 (done)
+                LOAD_GLOBAL             27 (len + NULL)
+                LOAD_FAST               11 (todo)
+                CALL                     1
+                LOAD_CONST              18 ('Hiểu video ')
+                LOAD_FAST               13 (done)
+                FORMAT_SIMPLE
+                LOAD_CONST              19 ('/')
+                LOAD_GLOBAL             27 (len + NULL)
+                LOAD_FAST               11 (todo)
+                CALL                     1
+                FORMAT_SIMPLE
+                BUILD_STRING             4
+                CALL                     3
+                POP_TOP
+                JUMP_BACKWARD           80 (to L15)
+
+ 186   L20:     END_FOR
+                POP_TOP
+
+ 185   L21:     LOAD_CONST               9 (None)
+                LOAD_CONST               9 (None)
+                LOAD_CONST               9 (None)
+                CALL                     2
+                POP_TOP
+
+ 194   L22:     LOAD_FAST               14 (errs)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       24 (to L23)
+
+ 195            LOAD_FAST                8 (log)
+                PUSH_NULL
+                LOAD_CONST              20 ('Cảnh mô tả lỗi: ')
+                LOAD_FAST               14 (errs)
+                FORMAT_SIMPLE
+                LOAD_CONST              19 ('/')
+                LOAD_GLOBAL             27 (len + NULL)
+                LOAD_FAST               11 (todo)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              21 (' (bỏ qua, vẫn viết phần còn lại).')
+                BUILD_STRING             5
+                CALL                     1
+                POP_TOP
+
+ 196   L23:     LOAD_DEREF               0 (scenes)
+                RETURN_VALUE
+
+  --   L24:     SWAP                     2
+                POP_TOP
+
+ 173            SWAP                     3
+                STORE_FAST              10 (s)
+                STORE_FAST               9 (i)
+                RERAISE                  0
+
+ 185   L25:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L26)
+                RERAISE                  2
+       L26:     POP_TOP
+       L27:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                JUMP_BACKWARD_NO_INTERRUPT 53 (to L22)
+
+  --   L28:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L8 to L10 -> L24 [3]
+  L11 to L13 -> L24 [3]
+  L14 to L18 -> L25 [1] lasti
+  L19 to L21 -> L25 [1] lasti
+  L25 to L27 -> L28 [3] lasti
+
+Disassembly of <code object <lambda> at 0x0000016DC9136320, file "bilisub\script\vision.py", line 158>:
+158           RESUME                   0
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _job at 0x0000016DC90EDA50, file "bilisub\script\vision.py", line 176>:
+  --           COPY_FREE_VARS           7
+
+ 176           RESUME                   0
+
+ 177           NOP
+
+ 178   L1:     LOAD_FAST                0 (i)
+               LOAD_GLOBAL              1 (_describe_one + NULL)
+               LOAD_DEREF               8 (scenes)
+               LOAD_FAST                0 (i)
+               BINARY_SUBSCR
+               LOAD_ATTR                2 (frame_path)
+               LOAD_DEREF               2 (api_key)
+               LOAD_DEREF               6 (model)
+               LOAD_DEREF               4 (lang_txt)
+
+ 179           LOAD_DEREF               7 (prompt_tmpl)
+               LOAD_DEREF               3 (base)
+               LOAD_DEREF               5 (max_out)
+
+ 178           LOAD_CONST               1 (('max_out',))
+               CALL_KW                  7
+
+ 179           LOAD_CONST               2 ('')
+
+ 178           BUILD_TUPLE              3
+       L2:     RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+ 180           LOAD_GLOBAL              4 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       27 (to L8)
+               STORE_FAST               1 (ex)
+
+ 181   L4:     LOAD_FAST                0 (i)
+               LOAD_CONST               2 ('')
+               LOAD_GLOBAL              7 (str + NULL)
+               LOAD_FAST                1 (ex)
+               CALL                     1
+               LOAD_CONST               0 (None)
+               LOAD_CONST               3 (120)
+               BINARY_SLICE
+               BUILD_TUPLE              3
+       L5:     SWAP                     2
+       L6:     POP_EXCEPT
+               LOAD_CONST               0 (None)
+               STORE_FAST               1 (ex)
+               DELETE_FAST              1 (ex)
+               RETURN_VALUE
+
+  --   L7:     LOAD_CONST               0 (None)
+               STORE_FAST               1 (ex)
+               DELETE_FAST              1 (ex)
+               RERAISE                  1
+
+ 180   L8:     RERAISE                  0
+
+  --   L9:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L9 [1] lasti
+  L4 to L5 -> L7 [1] lasti
+  L5 to L6 -> L9 [1] lasti
+  L7 to L9 -> L9 [1] lasti

@@ -1,0 +1,564 @@
+=== FILE: bilisub\tien_do.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  2           LOAD_CONST               0 ('📊 NÓI THẬT TRÊN THANH TIẾN ĐỘ (21/08/2026 — món A3, Boss duyệt "🟢 Mức 1").\n\nBệnh chữa ở đây: thanh trạng thái chỉ hiện ``[sep] 3%`` / ``[tts] 47%`` — không tên\ntiếng Việt, KHÔNG nói còn bao lâu, không nói đang chờ gì ⇒ khách tưởng tool treo rồi\ntắt giữa chừng (làn sóng 21/08: tách nhạc 20 phút/1%, nạp model clone 3-30 phút % đứng\nim, sau "Tạo giọng 100%" còn khâu ✂ gọn câu tụt % về 0 dưới cùng cái tên ``[tts]``).\n\nModule THUẦN LOGIC — không import Qt, không đụng pipeline. Giao diện gọi ``mo_ta()``\nmỗi nhịp progress + mỗi giây (để đồng hồ chạy cả khi % đứng im). Ước tính "còn bao lâu"\ntính TỪ CHÍNH nhịp % đã chạy, nên không cần một byte thay đổi nào trong ocr/tách\nnhạc/render.\n\nPhanh tay: ``BILISUB_ETA_OFF=1`` ⇒ trả đúng chuỗi cũ ``[stage] pct%``.\n')
+              STORE_NAME               0 (__doc__)
+
+ 16           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 18           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (os)
+              STORE_NAME               3 (os)
+
+ 22           BUILD_MAP                0
+
+ 23           LOAD_CONST               4 ('ocr')
+              LOAD_CONST               5 ('🔎 Đọc chữ trong video')
+
+ 22           MAP_ADD                  1
+
+ 24           LOAD_CONST               6 ('asr')
+              LOAD_CONST               7 ('👂 Nghe thoại')
+
+ 22           MAP_ADD                  1
+
+ 25           LOAD_CONST               8 ('vision')
+              LOAD_CONST               9 ('👁 AI đọc chữ')
+
+ 22           MAP_ADD                  1
+
+ 26           LOAD_CONST              10 ('arttext')
+              LOAD_CONST              11 ('🎨 Đọc chữ nghệ thuật')
+
+ 22           MAP_ADD                  1
+
+ 27           LOAD_CONST              12 ('frames')
+              LOAD_CONST              13 ('🖼 Lấy khung hình')
+
+ 22           MAP_ADD                  1
+
+ 28           LOAD_CONST              14 ('translate')
+              LOAD_CONST              15 ('🌐 Dịch')
+
+ 22           MAP_ADD                  1
+
+ 29           LOAD_CONST              16 ('tts')
+              LOAD_CONST              17 ('🎙 Tạo giọng')
+
+ 22           MAP_ADD                  1
+
+ 30           LOAD_CONST              18 ('tts_model')
+              LOAD_CONST              19 ('🎙 Nạp model giọng')
+
+ 22           MAP_ADD                  1
+
+ 31           LOAD_CONST              20 ('tts_gon')
+              LOAD_CONST              21 ('✂ Gọn câu & đọc lại')
+
+ 22           MAP_ADD                  1
+
+ 32           LOAD_CONST              22 ('sep')
+              LOAD_CONST              23 ('🎼 Tách nhạc')
+
+ 22           MAP_ADD                  1
+
+ 33           LOAD_CONST              24 ('render')
+              LOAD_CONST              25 ('🎬 Xuất video')
+
+ 22           MAP_ADD                  1
+
+ 34           LOAD_CONST              26 ('video')
+              LOAD_CONST              27 ('🎬 Dựng video')
+
+ 22           MAP_ADD                  1
+
+ 35           LOAD_CONST              28 ('download')
+              LOAD_CONST              29 ('📥 Tải video')
+
+ 22           MAP_ADD                  1
+
+ 36           LOAD_CONST              30 ('qc')
+              LOAD_CONST              31 ('🔍 Tự kiểm tra')
+
+ 22           MAP_ADD                  1
+
+ 37           LOAD_CONST              32 ('bulk')
+              LOAD_CONST              33 ('📚 Chạy hàng loạt')
+
+ 22           MAP_ADD                  1
+
+ 38           LOAD_CONST              34 ('done')
+              LOAD_CONST              35 ('✅ Hoàn thành')
+
+ 22           MAP_ADD                  1
+              STORE_NAME               4 (TEN_KHAU)
+
+ 42           LOAD_CONST              18 ('tts_model')
+              BUILD_SET                1
+              STORE_NAME               5 (KHAU_CHO)
+
+ 44           LOAD_CONST              36 (20.0)
+              STORE_NAME               6 (NGUONG_ETA_S)
+
+ 45           LOAD_CONST              37 (30.0)
+              STORE_NAME               7 (NGUONG_HIEN_ETA_S)
+
+ 46           LOAD_CONST              37 (30.0)
+              STORE_NAME               8 (NGUONG_IM_S)
+
+ 47           LOAD_CONST              38 (3)
+              STORE_NAME               9 (NGUONG_DA_PCT)
+
+ 51           LOAD_CONST              46 (('return', 'bool'))
+              LOAD_CONST              39 (<code object tat at 0x0000016DC8EAE780, file "bilisub\tien_do.py", line 51>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              10 (tat)
+
+ 56           LOAD_CONST              47 (('return', 'str'))
+              LOAD_CONST              40 (<code object dong_ho at 0x0000016DC90E5E90, file "bilisub\tien_do.py", line 56>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              11 (dong_ho)
+
+ 69           LOAD_CONST              47 (('return', 'str'))
+              LOAD_CONST              41 (<code object uoc_con at 0x0000016DC8E90D50, file "bilisub\tien_do.py", line 69>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              12 (uoc_con)
+
+ 87           LOAD_CONST              48 (('return', 'int'))
+              LOAD_CONST              42 (<code object _phan_tram at 0x0000016DC8E06830, file "bilisub\tien_do.py", line 87>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              13 (_phan_tram)
+
+ 94           LOAD_CONST              43 (0.0)
+              LOAD_CONST               1 (0)
+
+ 95           LOAD_CONST              43 (0.0)
+
+ 94           LOAD_CONST              44 (('giay_khau', 'pct_dau', 'giay_im'))
+              BUILD_CONST_KEY_MAP      3
+
+ 95           NOP
+
+ 94           NOP
+
+ 95           NOP
+
+ 94           LOAD_CONST              49 (('stage', 'str', 'giay_khau', 'float', 'pct_dau', 'int', 'giay_im', 'float', 'return', 'str'))
+              LOAD_CONST              45 (<code object mo_ta at 0x0000016DC8F6C8F0, file "bilisub\tien_do.py", line 94>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              14 (mo_ta)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object tat at 0x0000016DC8EAE780, file "bilisub\tien_do.py", line 51>:
+ 51           RESUME                   0
+
+ 53           LOAD_GLOBAL              0 (os)
+              LOAD_ATTR                2 (environ)
+              LOAD_ATTR                5 (get + NULL|self)
+              LOAD_CONST               1 ('BILISUB_ETA_OFF')
+              CALL                     1
+              LOAD_CONST               2 ('1')
+              COMPARE_OP              72 (==)
+              RETURN_VALUE
+
+Disassembly of <code object dong_ho at 0x0000016DC90E5E90, file "bilisub\tien_do.py", line 56>:
+  56           RESUME                   0
+
+  58           NOP
+
+  59   L1:     LOAD_GLOBAL              1 (max + NULL)
+               LOAD_CONST               1 (0)
+               LOAD_GLOBAL              3 (int + NULL)
+               LOAD_GLOBAL              5 (round + NULL)
+               LOAD_GLOBAL              7 (float + NULL)
+               LOAD_FAST                0 (giay)
+               CALL                     1
+               CALL                     1
+               CALL                     1
+               CALL                     2
+               STORE_FAST               1 (s)
+
+  62   L2:     LOAD_FAST                1 (s)
+               LOAD_CONST               3 (60)
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE        5 (to L3)
+
+  63           LOAD_FAST                1 (s)
+               FORMAT_SIMPLE
+               LOAD_CONST               4 ('″')
+               BUILD_STRING             2
+               RETURN_VALUE
+
+  64   L3:     LOAD_FAST                1 (s)
+               LOAD_CONST               5 (3600)
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE       15 (to L4)
+
+  65           LOAD_FAST                1 (s)
+               LOAD_CONST               3 (60)
+               BINARY_OP                2 (//)
+               FORMAT_SIMPLE
+               LOAD_CONST               6 ('′')
+               LOAD_FAST                1 (s)
+               LOAD_CONST               3 (60)
+               BINARY_OP                6 (%)
+               LOAD_CONST               7 ('02d')
+               FORMAT_WITH_SPEC
+               LOAD_CONST               4 ('″')
+               BUILD_STRING             4
+               RETURN_VALUE
+
+  66   L4:     LOAD_FAST                1 (s)
+               LOAD_CONST               5 (3600)
+               BINARY_OP                2 (//)
+               FORMAT_SIMPLE
+               LOAD_CONST               8 ('g')
+               LOAD_FAST                1 (s)
+               LOAD_CONST               5 (3600)
+               BINARY_OP                6 (%)
+               LOAD_CONST               3 (60)
+               BINARY_OP                2 (//)
+               LOAD_CONST               7 ('02d')
+               FORMAT_WITH_SPEC
+               LOAD_CONST               6 ('′')
+               BUILD_STRING             4
+               RETURN_VALUE
+
+  --   L5:     PUSH_EXC_INFO
+
+  60           LOAD_GLOBAL              8 (TypeError)
+               LOAD_GLOBAL             10 (ValueError)
+               BUILD_TUPLE              2
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L7)
+               POP_TOP
+
+  61   L6:     POP_EXCEPT
+               RETURN_CONST             2 ('?')
+
+  60   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L5 [0]
+  L5 to L6 -> L8 [1] lasti
+  L7 to L8 -> L8 [1] lasti
+
+Disassembly of <code object uoc_con at 0x0000016DC8E90D50, file "bilisub\tien_do.py", line 69>:
+  69           RESUME                   0
+
+  72           NOP
+
+  73   L1:     LOAD_GLOBAL              1 (float + NULL)
+               LOAD_FAST                0 (giay)
+               CALL                     1
+               STORE_FAST               1 (s)
+
+  76   L2:     LOAD_FAST                1 (s)
+               LOAD_CONST               2 (90)
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE        1 (to L3)
+
+  77           RETURN_CONST             3 ('còn dưới 2 phút')
+
+  78   L3:     LOAD_FAST                1 (s)
+               LOAD_CONST               4 (3600)
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE       29 (to L4)
+
+  79           LOAD_GLOBAL              7 (int + NULL)
+               LOAD_GLOBAL              9 (round + NULL)
+               LOAD_FAST                1 (s)
+               LOAD_CONST               5 (60.0)
+               BINARY_OP               11 (/)
+               CALL                     1
+               CALL                     1
+               STORE_FAST               2 (p)
+
+  80           LOAD_CONST               6 ('còn ~')
+               LOAD_FAST                2 (p)
+               FORMAT_SIMPLE
+               LOAD_CONST               7 (' phút')
+               BUILD_STRING             3
+               RETURN_VALUE
+
+  81   L4:     LOAD_FAST                1 (s)
+               LOAD_CONST               8 (3600.0)
+               BINARY_OP               11 (/)
+               STORE_FAST               3 (g)
+
+  82           LOAD_FAST                3 (g)
+               LOAD_CONST               9 (10)
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE       23 (to L5)
+
+  83           LOAD_CONST               6 ('còn ~')
+               LOAD_FAST                3 (g)
+               LOAD_CONST              10 ('.1f')
+               FORMAT_WITH_SPEC
+               LOAD_CONST              11 (' giờ')
+               BUILD_STRING             3
+               LOAD_ATTR               11 (replace + NULL|self)
+               LOAD_CONST              12 ('.')
+               LOAD_CONST              13 (',')
+               CALL                     2
+               RETURN_VALUE
+
+  84   L5:     LOAD_CONST               6 ('còn ~')
+               LOAD_GLOBAL              7 (int + NULL)
+               LOAD_GLOBAL              9 (round + NULL)
+               LOAD_FAST                3 (g)
+               CALL                     1
+               CALL                     1
+               FORMAT_SIMPLE
+               LOAD_CONST              11 (' giờ')
+               BUILD_STRING             3
+               RETURN_VALUE
+
+  --   L6:     PUSH_EXC_INFO
+
+  74           LOAD_GLOBAL              2 (TypeError)
+               LOAD_GLOBAL              4 (ValueError)
+               BUILD_TUPLE              2
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L8)
+               POP_TOP
+
+  75   L7:     POP_EXCEPT
+               RETURN_CONST             1 ('')
+
+  74   L8:     RERAISE                  0
+
+  --   L9:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L6 [0]
+  L6 to L7 -> L9 [1] lasti
+  L8 to L9 -> L9 [1] lasti
+
+Disassembly of <code object _phan_tram at 0x0000016DC8E06830, file "bilisub\tien_do.py", line 87>:
+  87           RESUME                   0
+
+  88           NOP
+
+  89   L1:     LOAD_GLOBAL              1 (max + NULL)
+               LOAD_CONST               1 (0)
+               LOAD_GLOBAL              3 (min + NULL)
+               LOAD_CONST               2 (100)
+               LOAD_GLOBAL              5 (int + NULL)
+               LOAD_FAST                0 (pct)
+               CALL                     1
+               CALL                     2
+               CALL                     2
+       L2:     RETURN_VALUE
+
+  --   L3:     PUSH_EXC_INFO
+
+  90           LOAD_GLOBAL              6 (TypeError)
+               LOAD_GLOBAL              8 (ValueError)
+               BUILD_TUPLE              2
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE        3 (to L5)
+               POP_TOP
+
+  91   L4:     POP_EXCEPT
+               RETURN_CONST             1 (0)
+
+  90   L5:     RERAISE                  0
+
+  --   L6:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L3 [0]
+  L3 to L4 -> L6 [1] lasti
+  L5 to L6 -> L6 [1] lasti
+
+Disassembly of <code object mo_ta at 0x0000016DC8F6C8F0, file "bilisub\tien_do.py", line 94>:
+ 94           RESUME                   0
+
+102           LOAD_GLOBAL              1 (str + NULL)
+              LOAD_FAST                0 (stage)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('')
+      L1:     CALL                     1
+              LOAD_ATTR                3 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               0 (stage)
+
+103           LOAD_GLOBAL              5 (_phan_tram + NULL)
+              LOAD_FAST                1 (pct)
+              CALL                     1
+              STORE_FAST               1 (pct)
+
+104           LOAD_GLOBAL              7 (tat + NULL)
+              CALL                     0
+              TO_BOOL
+              POP_JUMP_IF_FALSE        9 (to L2)
+
+105           LOAD_CONST               2 ('[')
+              LOAD_FAST                0 (stage)
+              FORMAT_SIMPLE
+              LOAD_CONST               3 ('] ')
+              LOAD_FAST                1 (pct)
+              FORMAT_SIMPLE
+              LOAD_CONST               4 ('%')
+              BUILD_STRING             5
+              RETURN_VALUE
+
+106   L2:     LOAD_GLOBAL              8 (TEN_KHAU)
+              LOAD_ATTR               11 (get + NULL|self)
+              LOAD_FAST                0 (stage)
+              CALL                     1
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         6 (to L3)
+              POP_TOP
+              LOAD_CONST               2 ('[')
+              LOAD_FAST                0 (stage)
+              FORMAT_SIMPLE
+              LOAD_CONST               5 (']')
+              BUILD_STRING             3
+      L3:     STORE_FAST               5 (ten)
+
+108           LOAD_FAST                0 (stage)
+              LOAD_CONST               6 ('done')
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE        2 (to L4)
+
+109           LOAD_FAST                5 (ten)
+              RETURN_VALUE
+
+112   L4:     LOAD_FAST                0 (stage)
+              LOAD_GLOBAL             12 (KHAU_CHO)
+              CONTAINS_OP              0
+              POP_JUMP_IF_FALSE       29 (to L6)
+
+113           LOAD_FAST                5 (ten)
+              FORMAT_SIMPLE
+              LOAD_CONST               7 ('… ')
+              LOAD_GLOBAL             15 (dong_ho + NULL)
+              LOAD_FAST                2 (giay_khau)
+              CALL                     1
+              FORMAT_SIMPLE
+              BUILD_STRING             3
+              STORE_FAST               6 (cau)
+
+114           LOAD_FAST                2 (giay_khau)
+              LOAD_CONST               8 (45)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_FALSE        5 (to L5)
+
+118           LOAD_FAST                6 (cau)
+              LOAD_CONST               9 (' — nạp lần đầu thường lâu (máy không có gói ⚡ thì lâu hơn); tool vẫn đang chờ, có giới hạn')
+              BINARY_OP               13 (+=)
+              STORE_FAST               6 (cau)
+
+120   L5:     LOAD_FAST                6 (cau)
+              RETURN_VALUE
+
+122   L6:     LOAD_FAST                5 (ten)
+              FORMAT_SIMPLE
+              LOAD_CONST              10 (' ')
+              LOAD_FAST                1 (pct)
+              FORMAT_SIMPLE
+              LOAD_CONST               4 ('%')
+              BUILD_STRING             4
+              STORE_FAST               6 (cau)
+
+125           LOAD_FAST                4 (giay_im)
+              LOAD_GLOBAL             16 (NGUONG_IM_S)
+              COMPARE_OP             172 (>=)
+              STORE_FAST               7 (dang_im)
+
+129           LOAD_FAST                7 (dang_im)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        81 (to L7)
+              LOAD_FAST                1 (pct)
+              LOAD_CONST              11 (100)
+              COMPARE_OP              18 (bool(<))
+              POP_JUMP_IF_FALSE       75 (to L7)
+              LOAD_FAST                2 (giay_khau)
+              LOAD_GLOBAL             18 (NGUONG_ETA_S)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_FALSE       65 (to L7)
+
+130           LOAD_FAST_LOAD_FAST     19 (pct, pct_dau)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE       60 (to L7)
+              LOAD_FAST_LOAD_FAST     19 (pct, pct_dau)
+              BINARY_OP               10 (-)
+              LOAD_GLOBAL             20 (NGUONG_DA_PCT)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_FALSE       48 (to L7)
+
+131           LOAD_FAST_LOAD_FAST     19 (pct, pct_dau)
+              BINARY_OP               10 (-)
+              LOAD_FAST                2 (giay_khau)
+              BINARY_OP               11 (/)
+              STORE_FAST               8 (toc)
+
+132           LOAD_FAST                8 (toc)
+              LOAD_CONST              12 (0)
+              COMPARE_OP             148 (bool(>))
+              POP_JUMP_IF_FALSE       35 (to L7)
+
+133           LOAD_CONST              11 (100)
+              LOAD_FAST                1 (pct)
+              BINARY_OP               10 (-)
+              LOAD_FAST                8 (toc)
+              BINARY_OP               11 (/)
+              STORE_FAST               9 (con)
+
+134           LOAD_FAST                9 (con)
+              LOAD_GLOBAL             22 (NGUONG_HIEN_ETA_S)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_FALSE       17 (to L7)
+
+135           LOAD_FAST                6 (cau)
+              LOAD_CONST              13 (' · ')
+              LOAD_GLOBAL             25 (uoc_con + NULL)
+              LOAD_FAST                9 (con)
+              CALL                     1
+              BINARY_OP                0 (+)
+              BINARY_OP               13 (+=)
+              STORE_FAST               6 (cau)
+
+138   L7:     LOAD_FAST                7 (dang_im)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       18 (to L8)
+
+139           LOAD_FAST                6 (cau)
+              LOAD_CONST              14 (' (đang chạy, chưa nhích ')
+              LOAD_GLOBAL             15 (dong_ho + NULL)
+              LOAD_FAST                4 (giay_im)
+              CALL                     1
+              FORMAT_SIMPLE
+              LOAD_CONST              15 (')')
+              BUILD_STRING             3
+              BINARY_OP               13 (+=)
+              STORE_FAST               6 (cau)
+
+140   L8:     LOAD_FAST                6 (cau)
+              RETURN_VALUE

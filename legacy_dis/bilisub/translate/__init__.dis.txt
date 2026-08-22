@@ -1,0 +1,34 @@
+=== FILE: bilisub\translate\__init__.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 (1)
+              LOAD_CONST               1 (('LLMTranslator', 'TranslationError'))
+              IMPORT_NAME              0 (llm)
+              IMPORT_FROM              1 (LLMTranslator)
+              STORE_NAME               1 (LLMTranslator)
+              IMPORT_FROM              2 (TranslationError)
+              STORE_NAME               2 (TranslationError)
+              POP_TOP
+
+  2           LOAD_CONST               0 (1)
+              LOAD_CONST               2 (('TieredTranslator',))
+              IMPORT_NAME              3 (tiered)
+              IMPORT_FROM              4 (TieredTranslator)
+              STORE_NAME               4 (TieredTranslator)
+              POP_TOP
+
+  3           LOAD_CONST               0 (1)
+              LOAD_CONST               3 (('job_path_for',))
+              IMPORT_NAME              5 (checkpoint)
+              IMPORT_FROM              6 (job_path_for)
+              STORE_NAME               6 (job_path_for)
+              POP_TOP
+
+  5           BUILD_LIST               0
+              LOAD_CONST               4 (('LLMTranslator', 'TieredTranslator', 'TranslationError', 'job_path_for'))
+              LIST_EXTEND              1
+              STORE_NAME               7 (__all__)
+              RETURN_CONST             5 (None)

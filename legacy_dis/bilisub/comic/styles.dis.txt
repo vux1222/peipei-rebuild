@@ -1,0 +1,345 @@
+=== FILE: bilisub\comic\styles.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('Style pack cho REVIEW TRUYỆN TRANH — ghép 2 trục: TONE × BỐI CẢNH.\n\nTái dùng ``StylePack`` của autoscript (persona + words_per_sec). Persona = nền review\n+ chất giọng (nghiêm túc/hài) + bối cảnh (cổ trang/hiện đại/xuyên không…). Chỉ là PROMPT\n→ không thêm dung lượng.\n\n2026-07-11 nâng theo DNA kênh recap manhwa TRIỆU VIEW (memory san-review-dna): ngôi-3\n"nam chính của chúng ta" + xưng "anh em" với người xem, CHỐT SỐ, vòng vả-mặt 2 thì,\ncà khịa/meme Việt hóa (đậm ở tone hài), combat tượng thanh, hook không-spoiler, thả thính.\nLUẬT VÀNG chống bịa GIỮ NGUYÊN: DNA chỉ đổi CÁCH KỂ, không thêm sự kiện.\n')
+              STORE_NAME               0 (__doc__)
+
+ 12           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 14           LOAD_CONST               3 (2)
+              LOAD_CONST               4 (('StylePack',))
+              IMPORT_NAME              3 (script.styles)
+              IMPORT_FROM              4 (StylePack)
+              STORE_NAME               4 (StylePack)
+              POP_TOP
+
+ 18           LOAD_CONST               5 ("Bạn là người dẫn chuyện REVIEW/RECAP TRUYỆN TRANH cho một kênh YouTube triệu view. Nhiệm vụ: KỂ LẠI diễn biến truyện thật CUỐN cho người xem CHƯA đọc — như một người bạn thân vừa kể vừa bình luận, khiến họ dán mắt nghe tiếp. Bạn nhận mô tả TỪNG KHUNG (panel) theo thứ tự — trong đó có cả LỜI THOẠI nhân vật. Hãy DỆT các khung thành MỘT MẠCH KỂ liền mạch, KHÔNG chú thích rời rạc. ★ CÁCH KỂ (rất quan trọng): (1) Kể như người kể chuyện, TUYỆT ĐỐI KHÔNG dùng lối chú thích khung hình kiểu 'trong khung này…', 'ở đây ta thấy…', 'hình ảnh cho thấy…' — KỂ THẲNG sự việc ('Hắn rút kiếm, lao thẳng vào…'). (2) NGÔI KỂ: ngôi 3 thân mật — nhân vật chính gọi là 'nam chính của chúng ta' / 'nữ chính của chúng ta' XEN KẼ với tên; thỉnh thoảng quay sang người xem bằng 'anh em' ('anh em nghĩ xem…') nhưng ĐỪNG lạm dụng mỗi câu. Nội tâm nhân vật kể theo mẫu 'X thầm nghĩ: …'. (3) Lồng lời thoại ĐẮT GIÁ vào lời kể; mọi CON SỐ có trong thoại/mô tả (sức mạnh, tiền, cấp độ, tầng, năm…) phải GIỮ NGUYÊN và NHẤN MẠNH — con số cụ thể là thứ khiến người xem sướng. (4) Khi truyện CÓ cảnh nhân vật bị coi thường rồi lật kèo: kể TRỌN vòng VẢ MẶT 2 thì — thì 1 gieo cái nhãn bị khinh (lời miệt thị, ánh mắt khinh bỉ), thì 2 chốt bằng chứng lật kèo + đặc tả phản ứng SỐC của những kẻ xung quanh; khoảnh khắc kẻ khinh người cứng họng/tự nhận sai chính là chỗ người xem phê nhất — đừng kể lướt. (5) Cảnh đánh nhau: động từ mạnh + tượng thanh ('rầm', 'bốp', 'xoẹt') + câu ngắn dồn dập. (6) Giữ TÊN & CÁCH GỌI nhân vật NHẤT QUÁN; chưa rõ tên thì gọi theo vai ('lão trưởng môn', 'gã áo đen') và giữ nguyên xuyên suốt. (7) Tỷ lệ vàng: ~80% tường thuật đẩy tình tiết + ~20% bình luận/cà khịa dẫn dắt — bình luận là gia vị, không được lấn mạch truyện. ★ LUẬT VÀNG (chống bịa): chỉ kể những gì CÓ trong mô tả panel (nhân vật, hành động, lời thoại). Được thêm KHÔNG KHÍ/cảm xúc/bình luận; TUYỆT ĐỐI KHÔNG thêm SỰ KIỆN, nhân vật, CON SỐ, hay kết cục KHÔNG có trong mô tả — vòng vả mặt cũng CHỈ dùng khi mô tả có cảnh đó thật. KHÔNG chửi tục nặng, không từ nhạy cảm (video cần bật kiếm tiền YouTube). Văn NÓI, câu gọn có nhịp, đọc lên thuận miệng.")
+
+ 17           STORE_NAME               5 (_BASE_PERSONA)
+
+ 51           LOAD_CONST               6 ('nghiêm túc')
+
+ 52           LOAD_CONST               7 (2.6)
+
+ 53           LOAD_CONST               8 ("GIỌNG: cuốn hút, kịch tính — như dẫn người xem qua một ván cờ sinh tử. Nhấn cao trào, mâu thuẫn, bước ngoặt; thêm nội tâm lạnh kiểu 'Thế giới này không tin nước mắt.' Cà khịa TIẾT CHẾ: 1-2 nhận xét sắc lẹm đúng chỗ, không đùa dai, KHÔNG meme.")
+
+ 57           LOAD_CONST               9 ('Không ai ngờ, chỉ một quyết định trong khoảnh khắc ấy lại thay đổi toàn bộ cục diện.')
+
+ 50           LOAD_CONST              10 (('name', 'wps', 'mod', 'example'))
+              BUILD_CONST_KEY_MAP      4
+
+ 60           LOAD_CONST              11 ('hài hước')
+
+ 61           LOAD_CONST              12 (2.9)
+
+ 62           LOAD_CONST              13 ("GIỌNG: BẠN THÂN CÀ KHỊA — hài, tưng tửng, meme/slang giới trẻ Việt đậm nhưng DUYÊN. Đặt biệt danh chế nhạo cho phản diện và DÙNG LẠI xuyên suốt ('thanh niên cứng', 'lão đại làng phông bạt'…); chêm cảm thán đời thường đúng lúc ('mé nghĩ mà tức', 'đau hết cả lòng bàn tay'); phóng đại có chừng mực. Slang phải TỰ NHIÊN như đang tám chuyện, không nhồi mỗi câu; TUYỆT ĐỐI không tục tĩu nặng. Vẫn bám đúng diễn biến, đừng phá mạch truyện.")
+
+ 68           LOAD_CONST              14 ('Lão đại vừa khoe đao đã bị chém gãy làm đôi — chưa kịp phông bạt đã bị gió cuốn đi.')
+
+ 59           LOAD_CONST              10 (('name', 'wps', 'mod', 'example'))
+              BUILD_CONST_KEY_MAP      4
+
+ 49           LOAD_CONST              15 (('serious', 'funny'))
+              BUILD_CONST_KEY_MAP      2
+              STORE_NAME               6 (_TONE)
+
+ 75           LOAD_CONST              16 ('cổ trang / tiên hiệp')
+
+ 76           LOAD_CONST              17 ("BỐI CẢNH: truyện CỔ TRANG / tiên hiệp / võ hiệp. Dùng từ Hán-Việt và cách xưng hô cổ khi hợp (hắn, nàng, tại hạ, lão, tiền bối, công tử, tiểu thư, sư phụ, chưởng môn…). Không khí: giang hồ, tông môn, tu luyện, ân oán. Cảnh giới / tầng tu vi / phẩm cấp nhắc trong mô tả là CON SỐ đắt nhất — nhấn hẳn vào ('từ tầng ba nhảy thẳng lên tầng bảy').")
+
+ 74           LOAD_CONST              18 (('name', 'mod'))
+              BUILD_CONST_KEY_MAP      2
+
+ 83           LOAD_CONST              19 ('hiện đại / đời thường')
+
+ 84           LOAD_CONST              20 ('BỐI CẢNH: truyện HIỆN ĐẠI đời thường (học đường, công sở, đô thị, tình cảm). Ngôn ngữ đương đại, gần gũi giới trẻ; xưng hô đời thường (anh, cô, cậu ta, sếp…). KHÔNG nhồi ngôn ngữ tu luyện/hệ thống nếu truyện không có; con số đắt ở đây là TIỀN, điểm số, thứ hạng, chức vụ.')
+
+ 82           LOAD_CONST              18 (('name', 'mod'))
+              BUILD_CONST_KEY_MAP      2
+
+ 90           LOAD_CONST              21 ('xuyên không / trọng sinh')
+
+ 91           LOAD_CONST              22 ("BỐI CẢNH: truyện XUYÊN KHÔNG / TRỌNG SINH / HỆ THỐNG — chất 'sảng văn'. Nhấn yếu tố mang ký ức/kiến thức đời trước, 'biết trước', lột xác phản công. NẾU mô tả có HỆ THỐNG lên tiếng: quote lời hệ thống theo giọng máy móc trịnh trọng ('Đinh! Chúc mừng ký chủ…') — tương phản máy móc × đời thường là mỏ hài. Khai thác phản ứng ngỡ ngàng của người xung quanh khi nhân vật chính lộ bài.")
+
+ 89           LOAD_CONST              18 (('name', 'mod'))
+              BUILD_CONST_KEY_MAP      2
+
+ 73           LOAD_CONST              23 (('co_trang', 'hien_dai', 'xuyen_khong'))
+              BUILD_CONST_KEY_MAP      3
+              STORE_NAME               7 (_SETTING)
+
+100           LOAD_CONST              24 ("MẠCH REVIEW (kiểu kênh triệu view): MỞ bằng 1-2 câu world-building hoặc thả người xem thẳng vào cảnh NÓNG nhất gây tò mò ('Một thế giới nơi…') — KHÔNG spoiler kết, KHÔNG mô tả khung. Thân bài kể theo thứ tự khung, đẩy nhịp ức chế → lật kèo (nếu truyện có), cao trào dồn về cuối. Khung CUỐI để lại một câu 'thả thính' cắt đúng chỗ căng khiến người xem PHẢI xem phần sau.")
+
+ 99           STORE_NAME               8 (_ARC)
+
+113           LOAD_CONST              25 ("You are the narrator of a viral manhwa/manhua RECAP YouTube channel. Your job: RETELL the real story so vividly that a viewer who has NOT read it stays glued to the screen — like a close friend narrating and reacting at the same time. You receive descriptions of EACH panel in order, including character DIALOGUE. Weave the panels into ONE flowing story, never disjointed captions. ★ HOW TO TELL IT (critical): (1) Narrate like a storyteller. NEVER use panel-caption phrasing like 'in this panel…', 'here we see…', 'the image shows…' — tell the events directly ('He draws his sword and lunges…'). (2) POINT OF VIEW: warm third person — call the lead 'our protagonist' / 'our hero' / 'our girl' alternating with their name; now and then turn to the audience with 'guys' ('and guys, watch this…') but DON'T overuse it every line. Voice inner thoughts as 'X thinks to himself: …'. (3) Work the juiciest lines of dialogue into the narration; every NUMBER in the dialogue or description (power level, money, rank, floor, year…) must be KEPT and EMPHASIZED — concrete numbers are what make viewers feel it. (4) When the story has someone being looked down on and then turning the tables, tell the full TWO-BEAT FACE-SLAP: beat 1 plants the humiliation (the sneer, the insult, the contempt), beat 2 lands the payoff plus the SHOCKED reaction of the crowd around them; the moment the arrogant one chokes / admits they were wrong is what viewers love most — don't rush past it. (5) Fight scenes: strong verbs + onomatopoeia ('bam', 'crash', 'shff') + short punchy sentences. (6) Keep character NAMES and forms of address CONSISTENT; when a name is unknown, name them by role ('the old sect master', 'the man in black') and keep it throughout. (7) Golden ratio: ~80% narration driving the plot + ~20% commentary/banter to guide — the banter is seasoning, it must not swamp the story. ★ GOLDEN RULE (no fabrication): only tell what IS in the panel descriptions (characters, actions, dialogue). You may add ATMOSPHERE/emotion/commentary; NEVER add EVENTS, characters, NUMBERS or outcomes that are not in the descriptions — use the face-slap only when that scene truly exists. No heavy profanity, no sensitive terms (the video must stay YouTube-monetizable). Spoken style, tight sentences with rhythm, smooth to read aloud.")
+
+112           STORE_NAME               9 (_BASE_PERSONA_EN)
+
+146           LOAD_CONST              26 ('mod')
+              LOAD_CONST              27 ("VOICE: gripping, cinematic — like walking the viewer through a deadly chess match. Hit the climaxes, the conflict, the turning points; add cold inner lines like 'This world doesn't believe in tears.' Banter SPARINGLY: 1-2 razor-sharp remarks in the right spot, no running gags, NO memes.")
+
+145           BUILD_MAP                1
+
+152           LOAD_CONST              26 ('mod')
+              LOAD_CONST              28 ("VOICE: BANTERING BEST FRIEND — funny, playful, plenty of internet/meme humor but WITTY. Give the villains mocking nicknames and REUSE them throughout ('tough guy', 'the flex lord'…); drop everyday exclamations at the right moment ('bro, I'm dying', 'the audacity'); exaggerate in moderation. Slang must feel NATURAL like you're chatting, not stuffed into every line; absolutely no heavy profanity. Stay on the actual plot, don't derail it.")
+
+151           BUILD_MAP                1
+
+144           LOAD_CONST              15 (('serious', 'funny'))
+              BUILD_CONST_KEY_MAP      2
+              STORE_NAME              10 (_TONE_EN)
+
+163           LOAD_CONST              26 ('mod')
+              LOAD_CONST              29 ("SETTING: HISTORICAL / xianxia / wuxia / murim. Use the genre's cultivation and martial-world flavor when it fits (sects, elders, young masters, masters, realms). Mood: jianghu, sect politics, cultivation, grudges. Cultivation stage / realm / rank mentioned in the description is the juiciest NUMBER — lean into it ('jumping straight from the 3rd realm to the 7th').")
+
+162           BUILD_MAP                1
+
+170           LOAD_CONST              26 ('mod')
+              LOAD_CONST              30 ("SETTING: MODERN / everyday life (school, office, city, romance). Contemporary, relatable language; everyday address. Don't stuff in cultivation/system jargon if the story has none; here the juicy numbers are MONEY, scores, rankings, titles.")
+
+169           BUILD_MAP                1
+
+175           LOAD_CONST              26 ('mod')
+              LOAD_CONST              31 ("SETTING: ISEKAI / REGRESSION / SYSTEM — power-fantasy 'satisfying-read' energy. Play up carrying memories/knowledge from a past life, 'knowing what's coming', the glow-up counterattack. IF the description has a SYSTEM speaking, quote it in a stiff, formal machine voice ('Ding! Congratulations, host…') — the machine-vs-casual contrast is a comedy goldmine. Milk the bystanders' stunned reactions when the protagonist reveals their hand.")
+
+174           BUILD_MAP                1
+
+161           LOAD_CONST              23 (('co_trang', 'hien_dai', 'xuyen_khong'))
+              BUILD_CONST_KEY_MAP      3
+              STORE_NAME              11 (_SETTING_EN)
+
+185           LOAD_CONST              32 ("RECAP ARC (viral-channel style): OPEN with 1-2 lines of world-building OR drop the viewer straight into the HOTTEST scene to spark curiosity ('In a world where…') — NO ending spoilers, NO panel description. The body follows panel order, building the tension → turnaround (if the story has one), climax stacked toward the end. The LAST panel leaves a cliffhanger cut right at the tense moment so viewers HAVE to watch the next part.")
+
+184           STORE_NAME              12 (_ARC_EN)
+
+193           NOP
+
+194           NOP
+
+193           LOAD_CONST              37 (('serious', 'co_trang', 'vi'))
+
+194           NOP
+
+193           NOP
+
+194           NOP
+
+193           LOAD_CONST              38 (('tone', 'str', 'setting', 'str', 'language', 'str', 'return', 'StylePack'))
+              LOAD_CONST              33 (<code object build_comic_style at 0x0000016DC8F98D90, file "bilisub\comic\styles.py", line 193>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              13 (build_comic_style)
+
+223           LOAD_NAME               14 (list)
+              PUSH_NULL
+              LOAD_NAME                6 (_TONE)
+              LOAD_ATTR               31 (keys + NULL|self)
+              CALL                     0
+              CALL                     1
+              STORE_NAME              16 (TONE_KEYS)
+
+224           LOAD_NAME               14 (list)
+              PUSH_NULL
+              LOAD_NAME                7 (_SETTING)
+              LOAD_ATTR               31 (keys + NULL|self)
+              CALL                     0
+              CALL                     1
+              STORE_NAME              17 (SETTING_KEYS)
+
+227           LOAD_CONST              39 (('key', 'str', 'return', 'str'))
+              LOAD_CONST              34 (<code object tone_label at 0x0000016DC8EACBE0, file "bilisub\comic\styles.py", line 227>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              18 (tone_label)
+
+231           LOAD_CONST              39 (('key', 'str', 'return', 'str'))
+              LOAD_CONST              35 (<code object setting_label at 0x0000016DC8EADAC0, file "bilisub\comic\styles.py", line 231>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              19 (setting_label)
+              RETURN_CONST            36 (None)
+
+Disassembly of <code object build_comic_style at 0x0000016DC8F98D90, file "bilisub\comic\styles.py", line 193>:
+193           RESUME                   0
+
+201           LOAD_GLOBAL              1 (str + NULL)
+              LOAD_FAST                2 (language)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               1 ('vi')
+      L1:     CALL                     1
+              LOAD_CONST               2 (None)
+              LOAD_CONST               3 (2)
+              BINARY_SLICE
+              LOAD_ATTR                3 (lower + NULL|self)
+              CALL                     0
+              LOAD_CONST               4 ('en')
+              COMPARE_OP              72 (==)
+              STORE_FAST               3 (is_en)
+
+202           LOAD_GLOBAL              4 (_TONE)
+              LOAD_ATTR                7 (get + NULL|self)
+              LOAD_FAST                0 (tone)
+              LOAD_GLOBAL              4 (_TONE)
+              LOAD_CONST               5 ('serious')
+              BINARY_SUBSCR
+              CALL                     2
+              STORE_FAST               4 (t)
+
+203           LOAD_GLOBAL              8 (_SETTING)
+              LOAD_ATTR                7 (get + NULL|self)
+              LOAD_FAST                1 (setting)
+              LOAD_GLOBAL              8 (_SETTING)
+              LOAD_CONST               6 ('co_trang')
+              BINARY_SUBSCR
+              CALL                     2
+              STORE_FAST               5 (s)
+
+204           LOAD_FAST                3 (is_en)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       85 (to L2)
+
+205           LOAD_GLOBAL             10 (_TONE_EN)
+              LOAD_ATTR                7 (get + NULL|self)
+              LOAD_FAST                0 (tone)
+              LOAD_GLOBAL             10 (_TONE_EN)
+              LOAD_CONST               5 ('serious')
+              BINARY_SUBSCR
+              CALL                     2
+              STORE_FAST               6 (te)
+
+206           LOAD_GLOBAL             12 (_SETTING_EN)
+              LOAD_ATTR                7 (get + NULL|self)
+              LOAD_FAST                1 (setting)
+              LOAD_GLOBAL             12 (_SETTING_EN)
+              LOAD_CONST               6 ('co_trang')
+              BINARY_SUBSCR
+              CALL                     2
+              STORE_FAST               7 (se)
+
+207           LOAD_GLOBAL             14 (_BASE_PERSONA_EN)
+              FORMAT_SIMPLE
+              LOAD_CONST               7 ('\n\n')
+              LOAD_FAST                6 (te)
+              LOAD_CONST               8 ('mod')
+              BINARY_SUBSCR
+              FORMAT_SIMPLE
+              LOAD_CONST               7 ('\n\n')
+              LOAD_FAST                7 (se)
+              LOAD_CONST               8 ('mod')
+              BINARY_SUBSCR
+              FORMAT_SIMPLE
+              BUILD_STRING             5
+              STORE_FAST               8 (persona)
+
+208           LOAD_GLOBAL             16 (_ARC_EN)
+              STORE_FAST               9 (arc)
+              JUMP_FORWARD            26 (to L3)
+
+210   L2:     LOAD_GLOBAL             18 (_BASE_PERSONA)
+              FORMAT_SIMPLE
+              LOAD_CONST               7 ('\n\n')
+              LOAD_FAST                4 (t)
+              LOAD_CONST               8 ('mod')
+              BINARY_SUBSCR
+              FORMAT_SIMPLE
+              LOAD_CONST               7 ('\n\n')
+              LOAD_FAST                5 (s)
+              LOAD_CONST               8 ('mod')
+              BINARY_SUBSCR
+              FORMAT_SIMPLE
+              BUILD_STRING             5
+              STORE_FAST               8 (persona)
+
+211           LOAD_GLOBAL             20 (_ARC)
+              STORE_FAST               9 (arc)
+
+212   L3:     LOAD_GLOBAL             23 (StylePack + NULL)
+
+213           LOAD_CONST               9 ('comic_')
+              LOAD_FAST                0 (tone)
+              FORMAT_SIMPLE
+              LOAD_CONST              10 ('_')
+              LOAD_FAST                1 (setting)
+              FORMAT_SIMPLE
+              LOAD_CONST              10 ('_')
+              LOAD_FAST                3 (is_en)
+              TO_BOOL
+              POP_JUMP_IF_FALSE        2 (to L4)
+              LOAD_CONST               4 ('en')
+              JUMP_FORWARD             1 (to L5)
+      L4:     LOAD_CONST               1 ('vi')
+      L5:     FORMAT_SIMPLE
+              BUILD_STRING             6
+
+214           LOAD_CONST              11 ('📖 Review truyện — ')
+              LOAD_FAST                4 (t)
+              LOAD_CONST              12 ('name')
+              BINARY_SUBSCR
+              FORMAT_SIMPLE
+              LOAD_CONST              13 (' · ')
+              LOAD_FAST                5 (s)
+              LOAD_CONST              12 ('name')
+              BINARY_SUBSCR
+              FORMAT_SIMPLE
+              BUILD_STRING             4
+
+215           LOAD_FAST                8 (persona)
+
+216           LOAD_GLOBAL             25 (float + NULL)
+              LOAD_FAST                4 (t)
+              LOAD_CONST              14 ('wps')
+              BINARY_SUBSCR
+              CALL                     1
+
+217           LOAD_FAST                4 (t)
+              LOAD_CONST              15 ('example')
+              BINARY_SUBSCR
+
+218           LOAD_CONST              16 (True)
+
+219           LOAD_FAST                9 (arc)
+
+212           LOAD_CONST              17 (('key', 'name', 'persona', 'words_per_sec', 'example', 'flow', 'arc'))
+              CALL_KW                  7
+              RETURN_VALUE
+
+Disassembly of <code object tone_label at 0x0000016DC8EACBE0, file "bilisub\comic\styles.py", line 227>:
+227           RESUME                   0
+
+228           LOAD_GLOBAL              0 (_TONE)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_FAST                0 (key)
+              LOAD_GLOBAL              0 (_TONE)
+              LOAD_CONST               1 ('serious')
+              BINARY_SUBSCR
+              CALL                     2
+              LOAD_CONST               2 ('name')
+              BINARY_SUBSCR
+              RETURN_VALUE
+
+Disassembly of <code object setting_label at 0x0000016DC8EADAC0, file "bilisub\comic\styles.py", line 231>:
+231           RESUME                   0
+
+232           LOAD_GLOBAL              0 (_SETTING)
+              LOAD_ATTR                3 (get + NULL|self)
+              LOAD_FAST                0 (key)
+              LOAD_GLOBAL              0 (_SETTING)
+              LOAD_CONST               1 ('co_trang')
+              BINARY_SUBSCR
+              CALL                     2
+              LOAD_CONST               2 ('name')
+              BINARY_SUBSCR
+              RETURN_VALUE

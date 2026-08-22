@@ -1,0 +1,1853 @@
+=== FILE: bilisub\comic\watermark.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('Che WATERMARK quảng bá của web truyện NẰM TRONG ảnh (giữa khoảng trắng hoặc đè tranh).\n\nCách làm (offline, KHÔNG tốn credit): OCR rapidocr quét từng ảnh nguồn theo BĂNG ngang\n(strip webtoon cao hàng nghìn px mà đưa nguyên vào OCR sẽ bị downscale → chữ bé quá trượt)\n→ bắt dòng chữ QUẢNG BÁ ("TRUY CẬP …", tên miền web, "VIỆT HÓA BỞI…", "nhóm dịch/fanpage"…)\n→ CHE theo nền:\n- box nằm giữa NỀN TRƠN (trắng/đen/màu phẳng — kiểu vlogtruyen) → TÔ đúng màu nền = mất sạch;\n- box ĐÈ LÊN TRANH (kiểu beeng.net) → làm MỜ Gaussian (không đọc ra chữ, tranh không thủng).\n\nChống che nhầm lời thoại: pattern MẠNH (tên miền, "việt hóa bởi", "nhóm dịch"…) tự đứng một\nmình; pattern YẾU ("truy cập", "xem truyện"…) chỉ được che khi CÙNG ảnh đã có ít nhất 1 dòng\nmạnh (watermark web luôn đi cả cụm nhiều dòng).\n\nChỉ ảnh CÓ watermark mới được re-encode; ảnh sạch trả về NGUYÊN đường dẫn gốc (không giảm\nchất lượng). Khác ``comic_crop_pct`` (chỉ xén watermark SÁT MÉP) — module này xử được\nwatermark ở GIỮA ảnh. Lỗi OCR/thiếu model → fail-open: trả nguyên danh sách ảnh, có log.\n')
+              STORE_NAME               0 (__doc__)
+
+ 18           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 20           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (re)
+              STORE_NAME               3 (re)
+
+ 21           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (unicodedata)
+              STORE_NAME               4 (unicodedata)
+
+ 22           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Path',))
+              IMPORT_NAME              5 (pathlib)
+              IMPORT_FROM              6 (Path)
+              STORE_NAME               6 (Path)
+              POP_TOP
+
+ 23           LOAD_CONST               1 (0)
+              LOAD_CONST               5 (('Callable', 'Optional'))
+              IMPORT_NAME              7 (typing)
+              IMPORT_FROM              8 (Callable)
+              STORE_NAME               8 (Callable)
+              IMPORT_FROM              9 (Optional)
+              STORE_NAME               9 (Optional)
+              POP_TOP
+
+ 26           LOAD_CONST               6 (<code object _log at 0x0000016DC90F1A70, file "bilisub\comic\watermark.py", line 26>)
+              MAKE_FUNCTION
+              STORE_NAME              10 (_log)
+
+ 30           LOAD_CONST              28 (('s', 'str', 'return', 'str'))
+              LOAD_CONST               7 (<code object _norm at 0x0000016DC90DD1A0, file "bilisub\comic\watermark.py", line 30>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              11 (_norm)
+
+ 42           LOAD_NAME                3 (re)
+              LOAD_ATTR               24 (compile)
+              PUSH_NULL
+              LOAD_CONST               8 ('([a-z0-9][a-z0-9\\-]{1,40})\\.(net|com|vn|org|info|me|tv|xyz|top|site|online|club|pro|cc)(?![a-z0-9])')
+              CALL                     1
+              STORE_NAME              13 (_DOMAIN)
+
+ 44           LOAD_NAME               13 (_DOMAIN)
+
+ 45           LOAD_NAME                3 (re)
+              LOAD_ATTR               24 (compile)
+              PUSH_NULL
+              LOAD_CONST               9 ('viet hoa boi')
+              CALL                     1
+
+ 46           LOAD_NAME                3 (re)
+              LOAD_ATTR               24 (compile)
+              PUSH_NULL
+              LOAD_CONST              10 ('thuc hien boi')
+              CALL                     1
+
+ 47           LOAD_NAME                3 (re)
+              LOAD_ATTR               24 (compile)
+              PUSH_NULL
+              LOAD_CONST              11 ('(nhom|team) dich')
+              CALL                     1
+
+ 48           LOAD_NAME                3 (re)
+              LOAD_ATTR               24 (compile)
+              PUSH_NULL
+              LOAD_CONST              12 ('fanpage')
+              CALL                     1
+
+ 49           LOAD_NAME                3 (re)
+              LOAD_ATTR               24 (compile)
+              PUSH_NULL
+              LOAD_CONST              13 ('ung ho (nhom|team|tui|bon) (minh|dich)')
+              CALL                     1
+
+ 50           LOAD_NAME                3 (re)
+              LOAD_ATTR               24 (compile)
+              PUSH_NULL
+              LOAD_CONST              14 ('xem la nghien')
+              CALL                     1
+
+ 51           LOAD_NAME                3 (re)
+              LOAD_ATTR               24 (compile)
+              PUSH_NULL
+              LOAD_CONST              15 ('(dang|update|cap nhat) (tai|boi|len) (web|trang|site)')
+              CALL                     1
+
+ 43           BUILD_LIST               8
+              STORE_NAME              14 (_STRONG)
+
+ 55           LOAD_NAME                3 (re)
+              LOAD_ATTR               24 (compile)
+              PUSH_NULL
+              LOAD_CONST              16 ('truy cap')
+              CALL                     1
+
+ 56           LOAD_NAME                3 (re)
+              LOAD_ATTR               24 (compile)
+              PUSH_NULL
+              LOAD_CONST              17 ('xem truyen')
+              CALL                     1
+
+ 57           LOAD_NAME                3 (re)
+              LOAD_ATTR               24 (compile)
+              PUSH_NULL
+              LOAD_CONST              18 ('doc truyen')
+              CALL                     1
+
+ 58           LOAD_NAME                3 (re)
+              LOAD_ATTR               24 (compile)
+              PUSH_NULL
+              LOAD_CONST              19 ('nhanh nhat')
+              CALL                     1
+
+ 59           LOAD_NAME                3 (re)
+              LOAD_ATTR               24 (compile)
+              PUSH_NULL
+              LOAD_CONST              20 ('mien phi')
+              CALL                     1
+
+ 54           BUILD_LIST               5
+              STORE_NAME              15 (_WEAK)
+
+ 63           LOAD_CONST              29 ((None,))
+              LOAD_CONST              30 (('text', 'str', 'brands', 'Optional[set]', 'return', 'int'))
+              LOAD_CONST              21 (<code object _match_tier at 0x0000016DC8EC55F0, file "bilisub\comic\watermark.py", line 63>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              16 (_match_tier)
+
+ 82           LOAD_CONST              31 (('texts', 'list[str]', 'return', 'set'))
+              LOAD_CONST              22 (<code object _learn_brands at 0x0000016DC8EC57C0, file "bilisub\comic\watermark.py", line 82>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              17 (_learn_brands)
+
+ 93           LOAD_CONST              32 ((1100, 140))
+              LOAD_CONST              33 (('h', 'int', 'band', 'int', 'overlap', 'int'))
+              LOAD_CONST              23 (<code object _bands at 0x0000016DC90ED4D0, file "bilisub\comic\watermark.py", line 93>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              18 (_bands)
+
+108           LOAD_CONST              29 ((None,))
+              LOAD_CONST              34 (('brands', 'Optional[set]', 'return', 'tuple[list[tuple[int, int, int, int]], set]'))
+              LOAD_CONST              24 (<code object find_promo_boxes at 0x0000016DC8F61D20, file "bilisub\comic\watermark.py", line 108>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              19 (find_promo_boxes)
+
+162           LOAD_CONST              35 (('box', 'tuple[int, int, int, int]'))
+              LOAD_CONST              25 (<code object _cover at 0x0000016DC8F972D0, file "bilisub\comic\watermark.py", line 162>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              20 (_cover)
+
+195           LOAD_CONST               3 (None)
+
+194           LOAD_CONST              26 (('log',))
+              BUILD_CONST_KEY_MAP      1
+
+195           NOP
+
+194           NOP
+
+195           NOP
+
+194           LOAD_CONST              36 (('paths', 'list[str]', 'out_dir', 'str', 'log', 'Optional[Callable[[str], None]]', 'return', 'list[str]'))
+              LOAD_CONST              27 (<code object clean_images at 0x0000016DC8EEE890, file "bilisub\comic\watermark.py", line 194>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              21 (clean_images)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object _log at 0x0000016DC90F1A70, file "bilisub\comic\watermark.py", line 26>:
+ 26           RESUME                   0
+
+ 27           LOAD_FAST                0 (fn)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         3 (to L1)
+              POP_TOP
+              LOAD_CONST               1 (<code object <lambda> at 0x0000016DC9134440, file "bilisub\comic\watermark.py", line 27>)
+              MAKE_FUNCTION
+      L1:     RETURN_VALUE
+
+Disassembly of <code object <lambda> at 0x0000016DC9134440, file "bilisub\comic\watermark.py", line 27>:
+ 27           RESUME                   0
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object _norm at 0x0000016DC90DD1A0, file "bilisub\comic\watermark.py", line 30>:
+ 30           RESUME                   0
+
+ 32           LOAD_GLOBAL              0 (unicodedata)
+              LOAD_ATTR                2 (normalize)
+              PUSH_NULL
+              LOAD_CONST               1 ('NFD')
+              LOAD_FAST                0 (s)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L1)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L1:     CALL                     2
+              STORE_FAST               0 (s)
+
+ 33           LOAD_CONST               2 ('')
+              LOAD_ATTR                5 (join + NULL|self)
+              LOAD_CONST               3 (<code object <genexpr> at 0x0000016DC8EA2FB0, file "bilisub\comic\watermark.py", line 33>)
+              MAKE_FUNCTION
+              LOAD_FAST                0 (s)
+              GET_ITER
+              CALL                     0
+              CALL                     1
+              STORE_FAST               0 (s)
+
+ 34           LOAD_FAST                0 (s)
+              LOAD_ATTR                7 (replace + NULL|self)
+              LOAD_CONST               4 ('đ')
+              LOAD_CONST               5 ('d')
+              CALL                     2
+              LOAD_ATTR                7 (replace + NULL|self)
+              LOAD_CONST               6 ('Đ')
+              LOAD_CONST               7 ('D')
+              CALL                     2
+              STORE_FAST               0 (s)
+
+ 35           LOAD_GLOBAL              8 (re)
+              LOAD_ATTR               10 (sub)
+              PUSH_NULL
+              LOAD_CONST               8 ('\\s+')
+              LOAD_CONST               9 (' ')
+              LOAD_FAST                0 (s)
+              CALL                     3
+              LOAD_ATTR               13 (strip + NULL|self)
+              CALL                     0
+              LOAD_ATTR               15 (lower + NULL|self)
+              CALL                     0
+              RETURN_VALUE
+
+Disassembly of <code object <genexpr> at 0x0000016DC8EA2FB0, file "bilisub\comic\watermark.py", line 33>:
+  33           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                35 (to L5)
+               STORE_FAST               1 (c)
+               LOAD_GLOBAL              0 (unicodedata)
+               LOAD_ATTR                2 (category)
+               PUSH_NULL
+               LOAD_FAST                1 (c)
+               CALL                     1
+               LOAD_CONST               0 ('Mn')
+               COMPARE_OP             119 (bool(!=))
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           31 (to L2)
+       L4:     LOAD_FAST                1 (c)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           37 (to L2)
+       L5:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L6:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L6 [0] lasti
+  L4 to L6 -> L6 [0] lasti
+
+Disassembly of <code object _match_tier at 0x0000016DC8EC55F0, file "bilisub\comic\watermark.py", line 63>:
+  --           MAKE_CELL                2 (t)
+
+  63           RESUME                   0
+
+  70           LOAD_GLOBAL              1 (_norm + NULL)
+               LOAD_FAST                0 (text)
+               CALL                     1
+               STORE_DEREF              2 (t)
+
+  71           LOAD_GLOBAL              3 (len + NULL)
+               LOAD_DEREF               2 (t)
+               CALL                     1
+               LOAD_CONST               1 (4)
+               COMPARE_OP              18 (bool(<))
+               POP_JUMP_IF_FALSE        1 (to L1)
+
+  72           RETURN_CONST             2 (0)
+
+  73   L1:     LOAD_GLOBAL              5 (any + NULL)
+               LOAD_FAST                2 (t)
+               BUILD_TUPLE              1
+               LOAD_CONST               3 (<code object <genexpr> at 0x0000016DC8EACBE0, file "bilisub\comic\watermark.py", line 73>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               LOAD_GLOBAL              6 (_STRONG)
+               GET_ITER
+               CALL                     0
+               CALL                     1
+               TO_BOOL
+               POP_JUMP_IF_FALSE        1 (to L2)
+
+  74           RETURN_CONST             4 (2)
+
+  75   L2:     LOAD_FAST                1 (brands)
+               TO_BOOL
+               POP_JUMP_IF_FALSE       27 (to L3)
+               LOAD_GLOBAL              5 (any + NULL)
+               LOAD_FAST                2 (t)
+               BUILD_TUPLE              1
+               LOAD_CONST               5 (<code object <genexpr> at 0x0000016DC9129110, file "bilisub\comic\watermark.py", line 75>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               LOAD_FAST                1 (brands)
+               GET_ITER
+               CALL                     0
+               CALL                     1
+               TO_BOOL
+               POP_JUMP_IF_FALSE        1 (to L3)
+
+  76           RETURN_CONST             4 (2)
+
+  77   L3:     LOAD_GLOBAL              5 (any + NULL)
+               LOAD_FAST                2 (t)
+               BUILD_TUPLE              1
+               LOAD_CONST               6 (<code object <genexpr> at 0x0000016DC8EADAC0, file "bilisub\comic\watermark.py", line 77>)
+               MAKE_FUNCTION
+               SET_FUNCTION_ATTRIBUTE   8 (closure)
+               LOAD_GLOBAL              8 (_WEAK)
+               GET_ITER
+               CALL                     0
+               CALL                     1
+               TO_BOOL
+               POP_JUMP_IF_FALSE        1 (to L4)
+
+  78           RETURN_CONST             7 (1)
+
+  79   L4:     RETURN_CONST             2 (0)
+
+Disassembly of <code object <genexpr> at 0x0000016DC8EACBE0, file "bilisub\comic\watermark.py", line 73>:
+  --           COPY_FREE_VARS           1
+
+  73           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                21 (to L3)
+               STORE_FAST_LOAD_FAST    17 (p, p)
+               LOAD_ATTR                1 (search + NULL|self)
+               LOAD_DEREF               2 (t)
+               CALL                     1
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           23 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC9129110, file "bilisub\comic\watermark.py", line 75>:
+  --           COPY_FREE_VARS           1
+
+  75           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                27 (to L5)
+               STORE_FAST               1 (b)
+               LOAD_GLOBAL              1 (len + NULL)
+               LOAD_FAST                1 (b)
+               CALL                     1
+               LOAD_CONST               0 (6)
+               COMPARE_OP             188 (bool(>=))
+       L3:     POP_JUMP_IF_TRUE         2 (to L4)
+               JUMP_BACKWARD           20 (to L2)
+       L4:     LOAD_FAST                1 (b)
+               LOAD_DEREF               2 (t)
+               CONTAINS_OP              0
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           29 (to L2)
+       L5:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L6:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L3 -> L6 [0] lasti
+  L4 to L6 -> L6 [0] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC8EADAC0, file "bilisub\comic\watermark.py", line 77>:
+  --           COPY_FREE_VARS           1
+
+  77           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                21 (to L3)
+               STORE_FAST_LOAD_FAST    17 (p, p)
+               LOAD_ATTR                1 (search + NULL|self)
+               LOAD_DEREF               2 (t)
+               CALL                     1
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           23 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             0 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object _learn_brands at 0x0000016DC8EC57C0, file "bilisub\comic\watermark.py", line 82>:
+ 82           RESUME                   0
+
+ 84           LOAD_GLOBAL              1 (set + NULL)
+              CALL                     0
+              STORE_FAST               1 (out)
+
+ 85           LOAD_FAST                0 (texts)
+              GET_ITER
+      L1:     FOR_ITER               106 (to L5)
+              STORE_FAST               2 (tx)
+
+ 86           LOAD_GLOBAL              2 (_DOMAIN)
+              LOAD_ATTR                5 (finditer + NULL|self)
+              LOAD_GLOBAL              7 (_norm + NULL)
+              LOAD_FAST                2 (tx)
+              CALL                     1
+              CALL                     1
+              GET_ITER
+      L2:     FOR_ITER                69 (to L4)
+              STORE_FAST               3 (m)
+
+ 87           LOAD_FAST                3 (m)
+              LOAD_ATTR                9 (group + NULL|self)
+              LOAD_CONST               1 (1)
+              CALL                     1
+              LOAD_ATTR               11 (strip + NULL|self)
+              LOAD_CONST               2 ('-')
+              CALL                     1
+              STORE_FAST               4 (base)
+
+ 88           LOAD_GLOBAL             13 (len + NULL)
+              LOAD_FAST                4 (base)
+              CALL                     1
+              LOAD_CONST               3 (6)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_TRUE         2 (to L3)
+              JUMP_BACKWARD           52 (to L2)
+
+ 89   L3:     LOAD_FAST                1 (out)
+              LOAD_ATTR               15 (add + NULL|self)
+              LOAD_FAST                4 (base)
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD           71 (to L2)
+
+ 86   L4:     END_FOR
+              POP_TOP
+              JUMP_BACKWARD          108 (to L1)
+
+ 85   L5:     END_FOR
+              POP_TOP
+
+ 90           LOAD_FAST                1 (out)
+              RETURN_VALUE
+
+Disassembly of <code object _bands at 0x0000016DC90ED4D0, file "bilisub\comic\watermark.py", line 93>:
+ 93           RESUME                   0
+
+ 95           LOAD_FAST_LOAD_FAST      1 (h, band)
+              COMPARE_OP              58 (bool(<=))
+              POP_JUMP_IF_FALSE        5 (to L1)
+
+ 96           LOAD_CONST               1 (0)
+              LOAD_FAST                0 (h)
+              BUILD_TUPLE              2
+              BUILD_LIST               1
+              RETURN_VALUE
+
+ 97   L1:     BUILD_LIST               0
+              STORE_FAST               3 (out)
+
+ 98           LOAD_CONST               1 (0)
+              STORE_FAST               4 (top)
+
+ 99           LOAD_FAST_LOAD_FAST     64 (top, h)
+              COMPARE_OP              18 (bool(<))
+              POP_JUMP_IF_FALSE       51 (to L4)
+
+100   L2:     LOAD_GLOBAL              1 (min + NULL)
+              LOAD_FAST_LOAD_FAST      4 (h, top)
+              LOAD_FAST                1 (band)
+              BINARY_OP                0 (+)
+              CALL                     2
+              STORE_FAST               5 (bot)
+
+101           LOAD_FAST                3 (out)
+              LOAD_ATTR                3 (append + NULL|self)
+              LOAD_FAST_LOAD_FAST     69 (top, bot)
+              BUILD_TUPLE              2
+              CALL                     1
+              POP_TOP
+
+102           LOAD_FAST_LOAD_FAST     80 (bot, h)
+              COMPARE_OP             188 (bool(>=))
+              POP_JUMP_IF_FALSE        3 (to L3)
+
+103           NOP
+
+105           LOAD_FAST                3 (out)
+              RETURN_VALUE
+
+104   L3:     LOAD_FAST_LOAD_FAST     82 (bot, overlap)
+              BINARY_OP               10 (-)
+              STORE_FAST               4 (top)
+
+ 99           LOAD_FAST_LOAD_FAST     64 (top, h)
+              COMPARE_OP              18 (bool(<))
+              POP_JUMP_IF_FALSE        2 (to L4)
+              JUMP_BACKWARD           51 (to L2)
+
+105   L4:     LOAD_FAST                3 (out)
+              RETURN_VALUE
+
+Disassembly of <code object find_promo_boxes at 0x0000016DC8F61D20, file "bilisub\comic\watermark.py", line 108>:
+ 108            RESUME                   0
+
+ 114            LOAD_CONST               1 (0)
+                LOAD_CONST               2 (None)
+                IMPORT_NAME              0 (numpy)
+                STORE_FAST               3 (np)
+
+ 116            LOAD_FAST                3 (np)
+                LOAD_ATTR                3 (asarray + NULL|self)
+                LOAD_FAST                0 (im)
+                LOAD_ATTR                5 (convert + NULL|self)
+                LOAD_CONST               3 ('RGB')
+                CALL                     1
+                CALL                     1
+                STORE_FAST               4 (rgb)
+
+ 117            LOAD_FAST                4 (rgb)
+                LOAD_ATTR                7 (mean + NULL|self)
+                LOAD_CONST               4 (2)
+                LOAD_CONST               5 (('axis',))
+                CALL_KW                  1
+                STORE_FAST               5 (gray)
+
+ 118            LOAD_FAST                5 (gray)
+                LOAD_ATTR                8 (shape)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  103 (h, w)
+
+ 119            LOAD_GLOBAL             11 (set + NULL)
+                LOAD_FAST                2 (brands)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                LOAD_CONST               6 (())
+        L1:     CALL                     1
+                STORE_FAST               2 (brands)
+
+ 120            BUILD_LIST               0
+                STORE_FAST               8 (lines)
+
+ 121            LOAD_GLOBAL             13 (_bands + NULL)
+                LOAD_FAST                6 (h)
+                CALL                     1
+                GET_ITER
+        L2:     EXTENDED_ARG             1
+                FOR_ITER               265 (to L18)
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  154 (top, bot)
+
+ 122            LOAD_FAST_LOAD_FAST     89 (gray, top)
+                LOAD_FAST               10 (bot)
+                BINARY_SLICE
+                STORE_FAST              11 (sub)
+
+ 123            LOAD_GLOBAL             15 (float + NULL)
+                LOAD_FAST               11 (sub)
+                LOAD_ATTR               17 (std + NULL|self)
+                CALL                     0
+                CALL                     1
+                LOAD_CONST               7 (5.0)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        2 (to L3)
+
+ 124            JUMP_BACKWARD           41 (to L2)
+
+ 125    L3:     LOAD_FAST                1 (engine)
+                PUSH_NULL
+                LOAD_FAST_LOAD_FAST     73 (rgb, top)
+                LOAD_FAST               10 (bot)
+                BUILD_SLICE              2
+                LOAD_CONST               2 (None)
+                LOAD_CONST               2 (None)
+                BUILD_SLICE              2
+                LOAD_CONST               2 (None)
+                LOAD_CONST               2 (None)
+                LOAD_CONST               8 (-1)
+                BUILD_SLICE              3
+                BUILD_TUPLE              3
+                BINARY_SUBSCR
+                CALL                     1
+                UNPACK_SEQUENCE          2
+                STORE_FAST_STORE_FAST  205 (res, _elapse)
+
+ 126            LOAD_FAST               12 (res)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L4)
+                POP_TOP
+                BUILD_LIST               0
+        L4:     GET_ITER
+        L5:     FOR_ITER               187 (to L17)
+                STORE_FAST              14 (item)
+
+ 127            NOP
+
+ 128    L6:     LOAD_FAST               14 (item)
+                LOAD_CONST               1 (0)
+                BINARY_SUBSCR
+                LOAD_GLOBAL             19 (str + NULL)
+                LOAD_FAST               14 (item)
+                LOAD_CONST               9 (1)
+                BINARY_SUBSCR
+                CALL                     1
+                LOAD_GLOBAL             15 (float + NULL)
+                LOAD_FAST               14 (item)
+                LOAD_CONST               4 (2)
+                BINARY_SUBSCR
+                CALL                     1
+                STORE_FAST              17 (score)
+                STORE_FAST              16 (text)
+                STORE_FAST              15 (box)
+
+ 131    L7:     LOAD_FAST               17 (score)
+                LOAD_CONST              10 (0.55)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        2 (to L8)
+
+ 132            JUMP_BACKWARD           45 (to L5)
+
+ 133    L8:     LOAD_FAST               15 (box)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     18 (p)
+                SWAP                     2
+        L9:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L10:     FOR_ITER                 8 (to L11)
+                STORE_FAST              18 (p)
+                LOAD_FAST               18 (p)
+                LOAD_CONST               1 (0)
+                BINARY_SUBSCR
+                LIST_APPEND              2
+                JUMP_BACKWARD           10 (to L10)
+       L11:     END_FOR
+                POP_TOP
+       L12:     STORE_FAST              19 (xs)
+                STORE_FAST              18 (p)
+
+ 134            LOAD_FAST               15 (box)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     18 (p)
+                SWAP                     2
+       L13:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L14:     FOR_ITER                 8 (to L15)
+                STORE_FAST              18 (p)
+                LOAD_FAST               18 (p)
+                LOAD_CONST               9 (1)
+                BINARY_SUBSCR
+                LIST_APPEND              2
+                JUMP_BACKWARD           10 (to L14)
+       L15:     END_FOR
+                POP_TOP
+       L16:     STORE_FAST              20 (ys)
+                STORE_FAST              18 (p)
+
+ 135            LOAD_FAST                8 (lines)
+                LOAD_ATTR               27 (append + NULL|self)
+                LOAD_GLOBAL             29 (int + NULL)
+                LOAD_GLOBAL             31 (min + NULL)
+                LOAD_FAST               19 (xs)
+                CALL                     1
+                CALL                     1
+                LOAD_GLOBAL             29 (int + NULL)
+                LOAD_GLOBAL             31 (min + NULL)
+                LOAD_FAST               20 (ys)
+                CALL                     1
+                CALL                     1
+                LOAD_FAST                9 (top)
+                BINARY_OP                0 (+)
+                LOAD_GLOBAL             29 (int + NULL)
+                LOAD_GLOBAL             33 (max + NULL)
+                LOAD_FAST               19 (xs)
+                CALL                     1
+                CALL                     1
+                LOAD_GLOBAL             29 (int + NULL)
+                LOAD_GLOBAL             33 (max + NULL)
+                LOAD_FAST               20 (ys)
+                CALL                     1
+                CALL                     1
+                LOAD_FAST                9 (top)
+                BINARY_OP                0 (+)
+                LOAD_FAST               16 (text)
+                BUILD_TUPLE              5
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD          189 (to L5)
+
+ 126   L17:     END_FOR
+                POP_TOP
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          268 (to L2)
+
+ 121   L18:     END_FOR
+                POP_TOP
+
+ 136            LOAD_FAST                8 (lines)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         4 (to L19)
+
+ 137            BUILD_LIST               0
+                LOAD_FAST                2 (brands)
+                BUILD_TUPLE              2
+                RETURN_VALUE
+
+ 138   L19:     LOAD_FAST                2 (brands)
+                LOAD_GLOBAL             35 (_learn_brands + NULL)
+                LOAD_FAST                8 (lines)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     21 (_)
+                LOAD_FAST_AND_CLEAR     22 (t)
+                SWAP                     3
+       L20:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L21:     FOR_ITER                 8 (to L22)
+                EXTENDED_ARG             1
+                UNPACK_EX              256
+                STORE_FAST              21 (_)
+                STORE_FAST              22 (t)
+                LOAD_FAST               22 (t)
+                LIST_APPEND              2
+                JUMP_BACKWARD           10 (to L21)
+       L22:     END_FOR
+                POP_TOP
+       L23:     SWAP                     3
+                STORE_FAST              22 (t)
+                STORE_FAST              21 (_)
+                CALL                     1
+                BINARY_OP               20 (|=)
+                STORE_FAST               2 (brands)
+
+ 139            LOAD_FAST                8 (lines)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     23 (x0)
+                LOAD_FAST_AND_CLEAR     24 (y0)
+                LOAD_FAST_AND_CLEAR     25 (x1)
+                LOAD_FAST_AND_CLEAR     26 (y1)
+                LOAD_FAST_AND_CLEAR     22 (t)
+                SWAP                     6
+       L24:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L25:     FOR_ITER                26 (to L26)
+                UNPACK_SEQUENCE          5
+                STORE_FAST              23 (x0)
+                STORE_FAST              24 (y0)
+                STORE_FAST              25 (x1)
+                STORE_FAST              26 (y1)
+                STORE_FAST              22 (t)
+                LOAD_FAST               23 (x0)
+                LOAD_FAST               24 (y0)
+                LOAD_FAST               25 (x1)
+                LOAD_FAST               26 (y1)
+                LOAD_GLOBAL             37 (_match_tier + NULL)
+                LOAD_FAST               22 (t)
+                LOAD_FAST                2 (brands)
+                CALL                     2
+                BUILD_TUPLE              5
+                LIST_APPEND              2
+                JUMP_BACKWARD           28 (to L25)
+       L26:     END_FOR
+                POP_TOP
+       L27:     STORE_FAST              27 (cands)
+                STORE_FAST              26 (y1)
+                STORE_FAST              25 (x1)
+                STORE_FAST              24 (y0)
+                STORE_FAST              23 (x0)
+                STORE_FAST              22 (t)
+
+ 140            LOAD_FAST               27 (cands)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     28 (c)
+                SWAP                     2
+       L28:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L29:     FOR_ITER                17 (to L32)
+                STORE_FAST              28 (c)
+                LOAD_FAST               28 (c)
+                LOAD_CONST              11 (4)
+                BINARY_SUBSCR
+                TO_BOOL
+       L30:     POP_JUMP_IF_TRUE         2 (to L31)
+                JUMP_BACKWARD           15 (to L29)
+       L31:     LOAD_FAST               28 (c)
+                LIST_APPEND              2
+                JUMP_BACKWARD           19 (to L29)
+       L32:     END_FOR
+                POP_TOP
+       L33:     STORE_FAST              27 (cands)
+                STORE_FAST              28 (c)
+
+ 141            LOAD_FAST               27 (cands)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         4 (to L34)
+
+ 142            BUILD_LIST               0
+                LOAD_FAST                2 (brands)
+                BUILD_TUPLE              2
+                RETURN_VALUE
+
+ 143   L34:     LOAD_GLOBAL             39 (any + NULL)
+                LOAD_CONST              12 (<code object <genexpr> at 0x0000016DC90E1730, file "bilisub\comic\watermark.py", line 143>)
+                MAKE_FUNCTION
+                LOAD_FAST               27 (cands)
+                GET_ITER
+                CALL                     0
+                CALL                     1
+                STORE_FAST              29 (has_strong)
+
+ 144            LOAD_FAST               27 (cands)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     28 (c)
+                SWAP                     2
+       L35:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L36:     FOR_ITER                37 (to L41)
+                STORE_FAST              28 (c)
+                LOAD_FAST               28 (c)
+                LOAD_CONST              11 (4)
+                BINARY_SUBSCR
+                LOAD_CONST               4 (2)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_TRUE        20 (to L40)
+                LOAD_FAST               28 (c)
+                LOAD_CONST              11 (4)
+                BINARY_SUBSCR
+                LOAD_CONST               9 (1)
+                COMPARE_OP              88 (bool(==))
+       L37:     POP_JUMP_IF_TRUE         2 (to L38)
+                JUMP_BACKWARD           23 (to L36)
+       L38:     LOAD_FAST               29 (has_strong)
+                TO_BOOL
+       L39:     POP_JUMP_IF_TRUE         2 (to L40)
+                JUMP_BACKWARD           32 (to L36)
+       L40:     LOAD_FAST               28 (c)
+                LOAD_CONST               2 (None)
+                LOAD_CONST              11 (4)
+                BINARY_SLICE
+                LIST_APPEND              2
+                JUMP_BACKWARD           39 (to L36)
+       L41:     END_FOR
+                POP_TOP
+       L42:     STORE_FAST              30 (picked)
+                STORE_FAST              28 (c)
+
+ 146            BUILD_LIST               0
+                STORE_FAST              31 (out)
+
+ 147            LOAD_FAST               30 (picked)
+                GET_ITER
+       L43:     FOR_ITER               189 (to L49)
+                STORE_FAST              32 (b)
+
+ 148            LOAD_CONST              13 (False)
+                STORE_FAST              33 (dup)
+
+ 149            LOAD_FAST               31 (out)
+                GET_ITER
+       L44:     FOR_ITER               152 (to L46)
+                STORE_FAST              34 (o)
+
+ 150            LOAD_GLOBAL             33 (max + NULL)
+                LOAD_FAST               32 (b)
+                LOAD_CONST               1 (0)
+                BINARY_SUBSCR
+                LOAD_FAST               34 (o)
+                LOAD_CONST               1 (0)
+                BINARY_SUBSCR
+                CALL                     2
+                LOAD_GLOBAL             33 (max + NULL)
+                LOAD_FAST               32 (b)
+                LOAD_CONST               9 (1)
+                BINARY_SUBSCR
+                LOAD_FAST               34 (o)
+                LOAD_CONST               9 (1)
+                BINARY_SUBSCR
+                CALL                     2
+                STORE_FAST              36 (iy0)
+                STORE_FAST              35 (ix0)
+
+ 151            LOAD_GLOBAL             31 (min + NULL)
+                LOAD_FAST               32 (b)
+                LOAD_CONST               4 (2)
+                BINARY_SUBSCR
+                LOAD_FAST               34 (o)
+                LOAD_CONST               4 (2)
+                BINARY_SUBSCR
+                CALL                     2
+                LOAD_GLOBAL             31 (min + NULL)
+                LOAD_FAST               32 (b)
+                LOAD_CONST              14 (3)
+                BINARY_SUBSCR
+                LOAD_FAST               34 (o)
+                LOAD_CONST              14 (3)
+                BINARY_SUBSCR
+                CALL                     2
+                STORE_FAST              38 (iy1)
+                STORE_FAST              37 (ix1)
+
+ 152            LOAD_GLOBAL             33 (max + NULL)
+                LOAD_CONST               1 (0)
+                LOAD_FAST               37 (ix1)
+                LOAD_FAST               35 (ix0)
+                BINARY_OP               10 (-)
+                CALL                     2
+                LOAD_GLOBAL             33 (max + NULL)
+                LOAD_CONST               1 (0)
+                LOAD_FAST               38 (iy1)
+                LOAD_FAST               36 (iy0)
+                BINARY_OP               10 (-)
+                CALL                     2
+                BINARY_OP                5 (*)
+                STORE_FAST              39 (inter)
+
+ 153            LOAD_GLOBAL             33 (max + NULL)
+                LOAD_CONST               9 (1)
+                LOAD_FAST               32 (b)
+                LOAD_CONST               4 (2)
+                BINARY_SUBSCR
+                LOAD_FAST               32 (b)
+                LOAD_CONST               1 (0)
+                BINARY_SUBSCR
+                BINARY_OP               10 (-)
+                LOAD_FAST               32 (b)
+                LOAD_CONST              14 (3)
+                BINARY_SUBSCR
+                LOAD_FAST               32 (b)
+                LOAD_CONST               9 (1)
+                BINARY_SUBSCR
+                BINARY_OP               10 (-)
+                BINARY_OP                5 (*)
+                CALL                     2
+                STORE_FAST              40 (area)
+
+ 154            LOAD_FAST               39 (inter)
+                LOAD_FAST               40 (area)
+                BINARY_OP               11 (/)
+                LOAD_CONST              10 (0.55)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_TRUE         2 (to L45)
+                JUMP_BACKWARD          150 (to L44)
+
+ 155   L45:     LOAD_CONST              15 (True)
+                STORE_FAST              33 (dup)
+
+ 156            POP_TOP
+                JUMP_FORWARD             2 (to L47)
+
+ 149   L46:     END_FOR
+                POP_TOP
+
+ 157   L47:     LOAD_FAST               33 (dup)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        2 (to L48)
+                JUMP_BACKWARD          172 (to L43)
+
+ 158   L48:     LOAD_FAST               31 (out)
+                LOAD_ATTR               27 (append + NULL|self)
+                LOAD_FAST               32 (b)
+                CALL                     1
+                POP_TOP
+                JUMP_BACKWARD          191 (to L43)
+
+ 147   L49:     END_FOR
+                POP_TOP
+
+ 159            LOAD_FAST               31 (out)
+                LOAD_FAST                2 (brands)
+                BUILD_TUPLE              2
+                RETURN_VALUE
+
+  --   L50:     PUSH_EXC_INFO
+
+ 129            LOAD_GLOBAL             20 (IndexError)
+                LOAD_GLOBAL             22 (TypeError)
+                LOAD_GLOBAL             24 (ValueError)
+                BUILD_TUPLE              3
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        5 (to L52)
+                POP_TOP
+
+ 130   L51:     POP_EXCEPT
+                EXTENDED_ARG             2
+                JUMP_BACKWARD          625 (to L5)
+
+ 129   L52:     RERAISE                  0
+
+  --   L53:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L54:     SWAP                     2
+                POP_TOP
+
+ 133            SWAP                     2
+                STORE_FAST              18 (p)
+                RERAISE                  0
+
+  --   L55:     SWAP                     2
+                POP_TOP
+
+ 134            SWAP                     2
+                STORE_FAST              18 (p)
+                RERAISE                  0
+
+  --   L56:     SWAP                     2
+                POP_TOP
+
+ 138            SWAP                     3
+                STORE_FAST              22 (t)
+                STORE_FAST              21 (_)
+                RERAISE                  0
+
+  --   L57:     SWAP                     2
+                POP_TOP
+
+ 139            SWAP                     6
+                STORE_FAST              22 (t)
+                STORE_FAST              26 (y1)
+                STORE_FAST              25 (x1)
+                STORE_FAST              24 (y0)
+                STORE_FAST              23 (x0)
+                RERAISE                  0
+
+  --   L58:     SWAP                     2
+                POP_TOP
+
+ 140            SWAP                     2
+                STORE_FAST              28 (c)
+                RERAISE                  0
+
+  --   L59:     SWAP                     2
+                POP_TOP
+
+ 144            SWAP                     2
+                STORE_FAST              28 (c)
+                RERAISE                  0
+ExceptionTable:
+  L6 to L7 -> L50 [2]
+  L9 to L12 -> L54 [4]
+  L13 to L16 -> L55 [4]
+  L20 to L23 -> L56 [6]
+  L24 to L27 -> L57 [6]
+  L28 to L30 -> L58 [2]
+  L31 to L33 -> L58 [2]
+  L35 to L37 -> L59 [2]
+  L38 to L39 -> L59 [2]
+  L40 to L42 -> L59 [2]
+  L50 to L51 -> L53 [3] lasti
+  L52 to L53 -> L53 [3] lasti
+
+Disassembly of <code object <genexpr> at 0x0000016DC90E1730, file "bilisub\comic\watermark.py", line 143>:
+ 143           RETURN_GENERATOR
+               POP_TOP
+       L1:     RESUME                   0
+               LOAD_FAST                0 (.0)
+               GET_ITER
+       L2:     FOR_ITER                12 (to L3)
+               EXTENDED_ARG             1
+               UNPACK_EX              256
+               STORE_FAST_STORE_FAST   18 (_, t)
+               LOAD_FAST                2 (t)
+               LOAD_CONST               0 (2)
+               COMPARE_OP              72 (==)
+               YIELD_VALUE              0
+               RESUME                   5
+               POP_TOP
+               JUMP_BACKWARD           14 (to L2)
+       L3:     END_FOR
+               POP_TOP
+               RETURN_CONST             1 (None)
+
+  --   L4:     CALL_INTRINSIC_1         3 (INTRINSIC_STOPITERATION_ERROR)
+               RERAISE                  1
+ExceptionTable:
+  L1 to L4 -> L4 [0] lasti
+
+Disassembly of <code object _cover at 0x0000016DC8F972D0, file "bilisub\comic\watermark.py", line 162>:
+162           RESUME                   0
+
+166           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (None)
+              IMPORT_NAME              0 (numpy)
+              STORE_FAST               2 (np)
+
+167           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (('Image', 'ImageFilter'))
+              IMPORT_NAME              1 (PIL)
+              IMPORT_FROM              2 (Image)
+              STORE_FAST               3 (Image)
+              IMPORT_FROM              3 (ImageFilter)
+              STORE_FAST               4 (ImageFilter)
+              POP_TOP
+
+169           LOAD_FAST                0 (im)
+              LOAD_ATTR                8 (size)
+              UNPACK_SEQUENCE          2
+              STORE_FAST_STORE_FAST   86 (w, h)
+
+170           LOAD_CONST               4 (6)
+              STORE_FAST               7 (pad)
+
+171           LOAD_GLOBAL             11 (max + NULL)
+              LOAD_CONST               1 (0)
+              LOAD_FAST                1 (box)
+              LOAD_CONST               1 (0)
+              BINARY_SUBSCR
+              LOAD_FAST                7 (pad)
+              BINARY_OP               10 (-)
+              CALL                     2
+              LOAD_GLOBAL             11 (max + NULL)
+              LOAD_CONST               1 (0)
+              LOAD_FAST                1 (box)
+              LOAD_CONST               5 (1)
+              BINARY_SUBSCR
+              LOAD_FAST                7 (pad)
+              BINARY_OP               10 (-)
+              CALL                     2
+              STORE_FAST_STORE_FAST  152 (y0, x0)
+
+172           LOAD_GLOBAL             13 (min + NULL)
+              LOAD_FAST_LOAD_FAST     81 (w, box)
+              LOAD_CONST               6 (2)
+              BINARY_SUBSCR
+              LOAD_FAST                7 (pad)
+              BINARY_OP                0 (+)
+              CALL                     2
+              LOAD_GLOBAL             13 (min + NULL)
+              LOAD_FAST_LOAD_FAST     97 (h, box)
+              LOAD_CONST               7 (3)
+              BINARY_SUBSCR
+              LOAD_FAST                7 (pad)
+              BINARY_OP                0 (+)
+              CALL                     2
+              STORE_FAST_STORE_FAST  186 (y1, x1)
+
+173           LOAD_FAST_LOAD_FAST    168 (x1, x0)
+              BINARY_OP               10 (-)
+              LOAD_CONST               6 (2)
+              COMPARE_OP              18 (bool(<))
+              POP_JUMP_IF_TRUE         8 (to L1)
+              LOAD_FAST_LOAD_FAST    185 (y1, y0)
+              BINARY_OP               10 (-)
+              LOAD_CONST               6 (2)
+              COMPARE_OP              18 (bool(<))
+              POP_JUMP_IF_FALSE        1 (to L2)
+
+174   L1:     RETURN_CONST             2 (None)
+
+175   L2:     LOAD_FAST                2 (np)
+              LOAD_ATTR               15 (asarray + NULL|self)
+              LOAD_FAST                0 (im)
+              LOAD_ATTR               17 (convert + NULL|self)
+              LOAD_CONST               8 ('RGB')
+              CALL                     1
+              CALL                     1
+              LOAD_ATTR               19 (copy + NULL|self)
+              CALL                     0
+              STORE_FAST              12 (arr)
+
+176           LOAD_CONST               9 (16)
+              STORE_FAST              13 (m)
+
+177           LOAD_GLOBAL             11 (max + NULL)
+              LOAD_CONST               1 (0)
+              LOAD_FAST_LOAD_FAST    141 (x0, m)
+              BINARY_OP               10 (-)
+              CALL                     2
+              LOAD_FAST                8 (x0)
+              STORE_FAST_STORE_FAST  254 (lx1, lx0)
+
+178           LOAD_FAST               10 (x1)
+              LOAD_GLOBAL             13 (min + NULL)
+              LOAD_FAST_LOAD_FAST     90 (w, x1)
+              LOAD_FAST               13 (m)
+              BINARY_OP                0 (+)
+              CALL                     2
+              STORE_FAST              17 (rx1)
+              STORE_FAST              16 (rx0)
+
+179           BUILD_LIST               0
+              STORE_FAST              18 (hard_rows)
+
+180           LOAD_GLOBAL             21 (range + NULL)
+              LOAD_FAST_LOAD_FAST    155 (y0, y1)
+              CALL                     2
+              GET_ITER
+      L3:     FOR_ITER               159 (to L5)
+              STORE_FAST              19 (y)
+
+181           LOAD_FAST                2 (np)
+              LOAD_ATTR               23 (concatenate + NULL|self)
+              LOAD_FAST               12 (arr)
+              LOAD_FAST               19 (y)
+              LOAD_FAST_LOAD_FAST    239 (lx0, lx1)
+              BUILD_SLICE              2
+              BUILD_TUPLE              2
+              BINARY_SUBSCR
+              LOAD_FAST               12 (arr)
+              LOAD_FAST               19 (y)
+              LOAD_FAST               16 (rx0)
+              LOAD_FAST               17 (rx1)
+              BUILD_SLICE              2
+              BUILD_TUPLE              2
+              BINARY_SUBSCR
+              BUILD_LIST               2
+              LOAD_CONST               1 (0)
+              LOAD_CONST              10 (('axis',))
+              CALL_KW                  2
+              STORE_FAST              20 (side)
+
+182           LOAD_FAST               20 (side)
+              LOAD_ATTR                8 (size)
+              TO_BOOL
+              POP_JUMP_IF_FALSE       91 (to L4)
+              LOAD_GLOBAL             25 (float + NULL)
+              LOAD_FAST               20 (side)
+              LOAD_ATTR               27 (std + NULL|self)
+              LOAD_CONST               1 (0)
+              LOAD_CONST              10 (('axis',))
+              CALL_KW                  1
+              LOAD_ATTR               11 (max + NULL|self)
+              CALL                     0
+              CALL                     1
+              LOAD_CONST              11 (14.0)
+              COMPARE_OP              18 (bool(<))
+              POP_JUMP_IF_FALSE       49 (to L4)
+
+183           LOAD_FAST                2 (np)
+              LOAD_ATTR               29 (median + NULL|self)
+              LOAD_FAST               20 (side)
+              LOAD_CONST               1 (0)
+              LOAD_CONST              10 (('axis',))
+              CALL_KW                  2
+              LOAD_ATTR               31 (astype + NULL|self)
+              LOAD_FAST                2 (np)
+              LOAD_ATTR               32 (uint8)
+              CALL                     1
+              LOAD_FAST               12 (arr)
+              LOAD_FAST               19 (y)
+              LOAD_FAST_LOAD_FAST    138 (x0, x1)
+              BUILD_SLICE              2
+              BUILD_TUPLE              2
+              STORE_SUBSCR
+              JUMP_BACKWARD          142 (to L3)
+
+185   L4:     LOAD_FAST               18 (hard_rows)
+              LOAD_ATTR               35 (append + NULL|self)
+              LOAD_FAST               19 (y)
+              CALL                     1
+              POP_TOP
+              JUMP_BACKWARD          161 (to L3)
+
+180   L5:     END_FOR
+              POP_TOP
+
+186           LOAD_FAST                0 (im)
+              LOAD_ATTR               37 (paste + NULL|self)
+              LOAD_FAST                3 (Image)
+              LOAD_ATTR               39 (fromarray + NULL|self)
+              LOAD_FAST               12 (arr)
+              CALL                     1
+              LOAD_CONST              12 ((0, 0))
+              CALL                     2
+              POP_TOP
+
+187           LOAD_FAST               18 (hard_rows)
+              TO_BOOL
+              POP_JUMP_IF_FALSE      138 (to L6)
+
+188           LOAD_GLOBAL             11 (max + NULL)
+              LOAD_FAST                9 (y0)
+              LOAD_GLOBAL             13 (min + NULL)
+              LOAD_FAST               18 (hard_rows)
+              CALL                     1
+              LOAD_CONST               6 (2)
+              BINARY_OP               10 (-)
+              CALL                     2
+              LOAD_GLOBAL             13 (min + NULL)
+              LOAD_FAST               11 (y1)
+              LOAD_GLOBAL             11 (max + NULL)
+              LOAD_FAST               18 (hard_rows)
+              CALL                     1
+              LOAD_CONST               7 (3)
+              BINARY_OP                0 (+)
+              CALL                     2
+              STORE_FAST              22 (hy1)
+              STORE_FAST              21 (hy0)
+
+189           LOAD_GLOBAL             11 (max + NULL)
+              LOAD_CONST              13 (12)
+              LOAD_FAST               22 (hy1)
+              LOAD_FAST               21 (hy0)
+              BINARY_OP               10 (-)
+              LOAD_CONST              14 (4)
+              BINARY_OP                2 (//)
+              CALL                     2
+              STORE_FAST              23 (radius)
+
+190           LOAD_FAST                0 (im)
+              LOAD_ATTR               41 (crop + NULL|self)
+              LOAD_FAST                8 (x0)
+              LOAD_FAST               21 (hy0)
+              LOAD_FAST               10 (x1)
+              LOAD_FAST               22 (hy1)
+              BUILD_TUPLE              4
+              CALL                     1
+              LOAD_ATTR               43 (filter + NULL|self)
+              LOAD_FAST                4 (ImageFilter)
+              LOAD_ATTR               45 (GaussianBlur + NULL|self)
+              LOAD_FAST               23 (radius)
+              CALL                     1
+              CALL                     1
+              STORE_FAST              24 (region)
+
+191           LOAD_FAST                0 (im)
+              LOAD_ATTR               37 (paste + NULL|self)
+              LOAD_FAST               24 (region)
+              LOAD_FAST                8 (x0)
+              LOAD_FAST               21 (hy0)
+              BUILD_TUPLE              2
+              CALL                     2
+              POP_TOP
+              RETURN_CONST             2 (None)
+
+187   L6:     RETURN_CONST             2 (None)
+
+Disassembly of <code object clean_images at 0x0000016DC8EEE890, file "bilisub\comic\watermark.py", line 194>:
+ 194            RESUME                   0
+
+ 201            LOAD_GLOBAL              1 (_log + NULL)
+                LOAD_FAST                2 (log)
+                CALL                     1
+                STORE_FAST               2 (log)
+
+ 202            LOAD_FAST                0 (paths)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+
+ 203            LOAD_FAST                0 (paths)
+                RETURN_VALUE
+
+ 204    L1:     NOP
+
+ 205    L2:     LOAD_CONST               1 (0)
+                LOAD_CONST               2 (('RapidOCR',))
+                IMPORT_NAME              1 (rapidocr_onnxruntime)
+                IMPORT_FROM              2 (RapidOCR)
+                STORE_FAST               3 (RapidOCR)
+                POP_TOP
+
+ 222    L3:     LOAD_CONST               1 (0)
+                LOAD_CONST              15 (('Image',))
+                IMPORT_NAME              8 (PIL)
+                IMPORT_FROM              9 (Image)
+                STORE_FAST               9 (Image)
+                POP_TOP
+
+ 224            LOAD_FAST                2 (log)
+                PUSH_NULL
+                LOAD_CONST              16 ('🧽 Quét watermark quảng bá trong ảnh (OCR trên máy, 0 credit)...')
+                CALL                     1
+                POP_TOP
+
+ 225            NOP
+
+ 226    L4:     LOAD_FAST                3 (RapidOCR)
+                PUSH_NULL
+                CALL                     0
+                STORE_FAST              10 (engine)
+
+ 231    L5:     LOAD_GLOBAL             23 (Path + NULL)
+                LOAD_FAST                1 (out_dir)
+                CALL                     1
+                STORE_FAST              12 (out)
+
+ 232            LOAD_FAST               12 (out)
+                LOAD_ATTR               25 (mkdir + NULL|self)
+                LOAD_CONST               6 (True)
+                LOAD_CONST               6 (True)
+                LOAD_CONST              20 (('parents', 'exist_ok'))
+                CALL_KW                  2
+                POP_TOP
+
+ 233            BUILD_LIST               0
+                STORE_FAST              13 (result)
+
+ 234            LOAD_CONST               1 (0)
+                STORE_FAST              14 (n_img)
+
+ 235            LOAD_CONST               1 (0)
+                STORE_FAST              15 (n_box)
+
+ 236            LOAD_GLOBAL             27 (set + NULL)
+                CALL                     0
+                STORE_FAST              16 (brands)
+
+ 237            LOAD_GLOBAL             29 (enumerate + NULL)
+                LOAD_FAST                0 (paths)
+                CALL                     1
+                GET_ITER
+        L6:     FOR_ITER               206 (to L16)
+                UNPACK_SEQUENCE          2
+                STORE_FAST              17 (i)
+                STORE_FAST              18 (p)
+
+ 238            NOP
+
+ 239    L7:     LOAD_FAST                9 (Image)
+                LOAD_ATTR               31 (open + NULL|self)
+                LOAD_FAST               18 (p)
+                CALL                     1
+                BEFORE_WITH
+        L8:     STORE_FAST              19 (raw)
+
+ 240            LOAD_FAST               19 (raw)
+                LOAD_ATTR               33 (convert + NULL|self)
+                LOAD_CONST              21 ('RGB')
+                CALL                     1
+                STORE_FAST              20 (im)
+
+ 239    L9:     LOAD_CONST              14 (None)
+                LOAD_CONST              14 (None)
+                LOAD_CONST              14 (None)
+                CALL                     2
+                POP_TOP
+
+ 241   L10:     LOAD_GLOBAL             35 (find_promo_boxes + NULL)
+                LOAD_FAST_CHECK         20 (im)
+                LOAD_FAST               10 (engine)
+                LOAD_FAST               16 (brands)
+                CALL                     3
+                UNPACK_SEQUENCE          2
+                STORE_FAST              21 (boxes)
+                STORE_FAST              16 (brands)
+
+ 242            LOAD_FAST               21 (boxes)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        19 (to L12)
+
+ 243            LOAD_FAST               13 (result)
+                LOAD_ATTR               37 (append + NULL|self)
+                LOAD_FAST               18 (p)
+                CALL                     1
+                POP_TOP
+
+ 244   L11:     JUMP_BACKWARD           92 (to L6)
+
+ 245   L12:     LOAD_FAST               21 (boxes)
+                GET_ITER
+       L13:     FOR_ITER                15 (to L14)
+                STORE_FAST              22 (b)
+
+ 246            LOAD_GLOBAL             39 (_cover + NULL)
+                LOAD_FAST               20 (im)
+                LOAD_FAST               22 (b)
+                CALL                     2
+                POP_TOP
+                JUMP_BACKWARD           17 (to L13)
+
+ 245   L14:     END_FOR
+                POP_TOP
+
+ 247            LOAD_FAST               12 (out)
+                LOAD_FAST               17 (i)
+                LOAD_CONST              22 ('04d')
+                FORMAT_WITH_SPEC
+                LOAD_CONST              23 ('_')
+                LOAD_GLOBAL             23 (Path + NULL)
+                LOAD_FAST               18 (p)
+                CALL                     1
+                LOAD_ATTR               40 (stem)
+                FORMAT_SIMPLE
+                LOAD_CONST              24 ('.jpg')
+                BUILD_STRING             4
+                BINARY_OP               11 (/)
+                STORE_FAST              23 (fp)
+
+ 248            LOAD_FAST               20 (im)
+                LOAD_ATTR               43 (save + NULL|self)
+                LOAD_FAST               23 (fp)
+                LOAD_CONST              25 ('JPEG')
+                LOAD_CONST              26 (92)
+                LOAD_CONST              27 (('quality',))
+                CALL_KW                  3
+                POP_TOP
+
+ 249            LOAD_FAST               13 (result)
+                LOAD_ATTR               37 (append + NULL|self)
+                LOAD_GLOBAL             21 (str + NULL)
+                LOAD_FAST               23 (fp)
+                CALL                     1
+                CALL                     1
+                POP_TOP
+
+ 250            LOAD_FAST               14 (n_img)
+                LOAD_CONST              28 (1)
+                BINARY_OP               13 (+=)
+                STORE_FAST              14 (n_img)
+
+ 251            LOAD_FAST               15 (n_box)
+                LOAD_GLOBAL             45 (len + NULL)
+                LOAD_FAST               21 (boxes)
+                CALL                     1
+                BINARY_OP               13 (+=)
+                STORE_FAST              15 (n_box)
+       L15:     JUMP_BACKWARD          208 (to L6)
+
+ 237   L16:     END_FOR
+                POP_TOP
+
+ 255            LOAD_FAST               14 (n_img)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       29 (to L17)
+
+ 256            LOAD_FAST                2 (log)
+                PUSH_NULL
+                LOAD_CONST              32 ('🧽 Đã che ')
+                LOAD_FAST               15 (n_box)
+                FORMAT_SIMPLE
+                LOAD_CONST              33 (' dòng watermark quảng bá trên ')
+                LOAD_FAST               14 (n_img)
+                FORMAT_SIMPLE
+                LOAD_CONST              34 ('/')
+                LOAD_GLOBAL             45 (len + NULL)
+                LOAD_FAST                0 (paths)
+                CALL                     1
+                FORMAT_SIMPLE
+                LOAD_CONST              35 (' ảnh.')
+                BUILD_STRING             7
+                CALL                     1
+                POP_TOP
+
+ 259            LOAD_FAST               13 (result)
+                RETURN_VALUE
+
+ 258   L17:     LOAD_FAST                2 (log)
+                PUSH_NULL
+                LOAD_CONST              36 ('🧽 Không thấy watermark quảng bá trong ảnh nào.')
+                CALL                     1
+                POP_TOP
+
+ 259            LOAD_FAST               13 (result)
+                RETURN_VALUE
+
+  --   L18:     PUSH_EXC_INFO
+
+ 206            LOAD_GLOBAL              6 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE      132 (to L34)
+                STORE_FAST               4 (_e)
+
+ 209   L19:     LOAD_FAST                2 (log)
+                PUSH_NULL
+                LOAD_CONST               3 ('⚠ Không nạp được RapidOCR — bỏ qua bước che watermark (ảnh giữ nguyên).')
+                CALL                     1
+                POP_TOP
+
+ 210   L20:     NOP
+
+ 211   L21:     LOAD_CONST               4 (2)
+                LOAD_CONST               5 (('diagnose', 'write_report'))
+                IMPORT_NAME              4 (diag_onnx)
+                IMPORT_FROM              5 (diagnose)
+                STORE_FAST               5 (diagnose)
+                IMPORT_FROM              6 (write_report)
+                STORE_FAST               6 (write_report)
+                POP_TOP
+
+ 214            LOAD_FAST                5 (diagnose)
+                PUSH_NULL
+                LOAD_CONST               6 (True)
+                LOAD_CONST               6 (True)
+                LOAD_CONST               7 (('skip_imports', 'assume_broken'))
+                CALL_KW                  2
+                STORE_FAST               7 (_rep)
+
+ 215            LOAD_FAST                7 (_rep)
+                LOAD_ATTR               15 (get + NULL|self)
+                LOAD_CONST               8 ('cause_code')
+                CALL                     1
+                LOAD_CONST               9 ('OK')
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE       58 (to L25)
+
+ 216            LOAD_FAST                6 (write_report)
+                PUSH_NULL
+                LOAD_FAST                7 (_rep)
+                CALL                     1
+                STORE_FAST               8 (_p)
+
+ 217            LOAD_FAST                2 (log)
+                PUSH_NULL
+                LOAD_CONST              10 ('   👉 ')
+                LOAD_FAST                7 (_rep)
+                LOAD_ATTR               15 (get + NULL|self)
+                LOAD_CONST              11 ('cause_fix')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L22)
+                POP_TOP
+                LOAD_CONST              12 ('')
+       L22:     FORMAT_SIMPLE
+                BUILD_STRING             2
+
+ 218            LOAD_FAST                8 (_p)
+                TO_BOOL
+                POP_JUMP_IF_FALSE        5 (to L23)
+                LOAD_CONST              13 (' 📄 Báo cáo chi tiết: ')
+                LOAD_FAST                8 (_p)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                JUMP_FORWARD             1 (to L24)
+       L23:     LOAD_CONST              12 ('')
+
+ 217   L24:     BINARY_OP                0 (+)
+                CALL                     1
+                POP_TOP
+
+  --   L25:     JUMP_FORWARD            16 (to L30)
+       L26:     PUSH_EXC_INFO
+
+ 219            LOAD_GLOBAL              6 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        3 (to L28)
+                POP_TOP
+
+ 220   L27:     POP_EXCEPT
+                JUMP_FORWARD             4 (to L30)
+
+ 219   L28:     RERAISE                  0
+
+  --   L29:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+ 221   L30:     LOAD_FAST                0 (paths)
+       L31:     SWAP                     2
+       L32:     POP_EXCEPT
+                LOAD_CONST              14 (None)
+                STORE_FAST               4 (_e)
+                DELETE_FAST              4 (_e)
+                RETURN_VALUE
+
+  --   L33:     LOAD_CONST              14 (None)
+                STORE_FAST               4 (_e)
+                DELETE_FAST              4 (_e)
+                RERAISE                  1
+
+ 206   L34:     RERAISE                  0
+
+  --   L35:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L36:     PUSH_EXC_INFO
+
+ 227            LOAD_GLOBAL              6 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       36 (to L41)
+                STORE_FAST              11 (ex)
+
+ 228   L37:     LOAD_FAST                2 (log)
+                PUSH_NULL
+                LOAD_CONST              17 ('⚠ RapidOCR không khởi tạo được (')
+                LOAD_GLOBAL             21 (str + NULL)
+                LOAD_FAST               11 (ex)
+                CALL                     1
+                LOAD_CONST              14 (None)
+                LOAD_CONST              18 (60)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                LOAD_CONST              19 (') — bỏ qua che watermark.')
+                BUILD_STRING             3
+                CALL                     1
+                POP_TOP
+
+ 229            LOAD_FAST                0 (paths)
+       L38:     SWAP                     2
+       L39:     POP_EXCEPT
+                LOAD_CONST              14 (None)
+                STORE_FAST              11 (ex)
+                DELETE_FAST             11 (ex)
+                RETURN_VALUE
+
+  --   L40:     LOAD_CONST              14 (None)
+                STORE_FAST              11 (ex)
+                DELETE_FAST             11 (ex)
+                RERAISE                  1
+
+ 227   L41:     RERAISE                  0
+
+  --   L42:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+
+ 239   L43:     PUSH_EXC_INFO
+                WITH_EXCEPT_START
+                TO_BOOL
+                POP_JUMP_IF_TRUE         1 (to L44)
+                RERAISE                  2
+       L44:     POP_TOP
+       L45:     POP_EXCEPT
+                POP_TOP
+                POP_TOP
+                EXTENDED_ARG             1
+                JUMP_BACKWARD_NO_INTERRUPT 415 (to L10)
+
+  --   L46:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+       L47:     PUSH_EXC_INFO
+
+ 252            LOAD_GLOBAL              6 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       75 (to L51)
+                STORE_FAST              11 (ex)
+
+ 253   L48:     LOAD_FAST                2 (log)
+                PUSH_NULL
+                LOAD_CONST              29 ('⚠ Che watermark lỗi ở ')
+                LOAD_GLOBAL             23 (Path + NULL)
+                LOAD_FAST               18 (p)
+                CALL                     1
+                LOAD_ATTR               46 (name)
+                FORMAT_SIMPLE
+                LOAD_CONST              30 (' (')
+                LOAD_GLOBAL             21 (str + NULL)
+                LOAD_FAST               11 (ex)
+                CALL                     1
+                LOAD_CONST              14 (None)
+                LOAD_CONST              18 (60)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                LOAD_CONST              31 (') — dùng ảnh gốc.')
+                BUILD_STRING             5
+                CALL                     1
+                POP_TOP
+
+ 254            LOAD_FAST               13 (result)
+                LOAD_ATTR               37 (append + NULL|self)
+                LOAD_FAST               18 (p)
+                CALL                     1
+                POP_TOP
+       L49:     POP_EXCEPT
+                LOAD_CONST              14 (None)
+                STORE_FAST              11 (ex)
+                DELETE_FAST             11 (ex)
+                EXTENDED_ARG             2
+                JUMP_BACKWARD          548 (to L6)
+
+  --   L50:     LOAD_CONST              14 (None)
+                STORE_FAST              11 (ex)
+                DELETE_FAST             11 (ex)
+                RERAISE                  1
+
+ 252   L51:     RERAISE                  0
+
+  --   L52:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L18 [0]
+  L4 to L5 -> L36 [0]
+  L7 to L8 -> L47 [1]
+  L8 to L9 -> L43 [2] lasti
+  L9 to L11 -> L47 [1]
+  L12 to L15 -> L47 [1]
+  L18 to L19 -> L35 [1] lasti
+  L19 to L20 -> L33 [1] lasti
+  L21 to L25 -> L26 [1]
+  L25 to L26 -> L33 [1] lasti
+  L26 to L27 -> L29 [2] lasti
+  L27 to L28 -> L33 [1] lasti
+  L28 to L29 -> L29 [2] lasti
+  L29 to L31 -> L33 [1] lasti
+  L31 to L32 -> L35 [1] lasti
+  L33 to L35 -> L35 [1] lasti
+  L36 to L37 -> L42 [1] lasti
+  L37 to L38 -> L40 [1] lasti
+  L38 to L39 -> L42 [1] lasti
+  L40 to L42 -> L42 [1] lasti
+  L43 to L45 -> L46 [4] lasti
+  L45 to L47 -> L47 [1]
+  L47 to L48 -> L52 [2] lasti
+  L48 to L49 -> L50 [2] lasti
+  L50 to L52 -> L52 [2] lasti

@@ -1,0 +1,1202 @@
+=== FILE: bilisub\tts\vbee.pyc ===
+python: 3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]
+magic: f30d0d0a
+
+  0           RESUME                   0
+
+  1           SETUP_ANNOTATIONS
+              LOAD_CONST               0 ('Vbee TTS — giọng đọc tiếng Việt chất lượng cao (vbee.vn/api/v1).\n\nAPI BẤT ĐỒNG BỘ: tạo request → poll trạng thái → tải file audio. Cần **2** thứ:\n  * ``app_id``      : mã ứng dụng (dạng UUID), gửi trong body.\n  * ``access_token``: token Bearer (chuỗi JWT dài), gửi ở header Authorization.\nCả hai lấy trong dashboard Vbee (mục API/Ứng dụng). Nhập ở hộp thoại 🔑 API Keys.\n\nMã giọng theo convention ``vbee:<voice_code>`` (VD ``vbee:hn_female_ngochuyen_full_48k-fhg``)\nđể không đụng các heuristic engine khác trong ``base.voice_engine()``.\n')
+              STORE_NAME               0 (__doc__)
+
+ 11           LOAD_CONST               1 (0)
+              LOAD_CONST               2 (('annotations',))
+              IMPORT_NAME              1 (__future__)
+              IMPORT_FROM              2 (annotations)
+              STORE_NAME               2 (annotations)
+              POP_TOP
+
+ 13           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              3 (os)
+              STORE_NAME               3 (os)
+
+ 14           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME              4 (time)
+              STORE_NAME               4 (time)
+
+ 15           LOAD_CONST               1 (0)
+              LOAD_CONST               4 (('Path',))
+              IMPORT_NAME              5 (pathlib)
+              IMPORT_FROM              6 (Path)
+              STORE_NAME               6 (Path)
+              POP_TOP
+
+ 16           LOAD_CONST               1 (0)
+              LOAD_CONST               5 (('Callable', 'Optional'))
+              IMPORT_NAME              7 (typing)
+              IMPORT_FROM              8 (Callable)
+              STORE_NAME               8 (Callable)
+              IMPORT_FROM              9 (Optional)
+              STORE_NAME               9 (Optional)
+              POP_TOP
+
+ 18           LOAD_CONST               1 (0)
+              LOAD_CONST               3 (None)
+              IMPORT_NAME             10 (requests)
+              STORE_NAME              10 (requests)
+
+ 20           LOAD_NAME                3 (os)
+              LOAD_ATTR               22 (environ)
+              LOAD_ATTR               25 (get + NULL|self)
+              LOAD_CONST               6 ('BILISUB_VBEE_BASE')
+              LOAD_CONST               7 ('https://vbee.vn/api/v1')
+              CALL                     2
+              LOAD_ATTR               27 (rstrip + NULL|self)
+              LOAD_CONST               8 ('/')
+              CALL                     1
+              STORE_NAME              14 (_BASE)
+
+ 23           LOAD_NAME                3 (os)
+              LOAD_ATTR               22 (environ)
+              LOAD_ATTR               25 (get + NULL|self)
+              LOAD_CONST               9 ('BILISUB_VBEE_CALLBACK')
+              LOAD_CONST              10 ('https://example.com/callback')
+              CALL                     2
+              STORE_NAME              15 (_CALLBACK)
+
+ 26           BUILD_LIST               0
+              LOAD_CONST              11 ((('vbee:hn_female_ngochuyen_full_48k-fhg', '🇻🇳 Ngọc Huyền · Bắc nữ (Vbee)'), ('vbee:hn_male_manhdung_news_48k-fhg', '🇻🇳 Mạnh Dũng · Bắc nam (Vbee)'), ('vbee:hn_female_maiphuong_vdts_48k-fhg', '🇻🇳 Mai Phương · Bắc nữ (Vbee)'), ('vbee:sg_female_thaotrinh_full_48k-fhg', '🇻🇳 Thảo Trinh · Nam nữ (Vbee)'), ('vbee:sg_male_minhhoang_full_48k-fhg', '🇻🇳 Minh Hoàng · Nam nam (Vbee)')))
+              LIST_EXTEND              1
+              STORE_NAME              16 (VBEE_VOICES)
+              LOAD_CONST              12 ('list[tuple[str, str]]')
+              LOAD_NAME               17 (__annotations__)
+              LOAD_CONST              13 ('VBEE_VOICES')
+              STORE_SUBSCR
+
+ 35           BUILD_SET                0
+              LOAD_CONST              14 (frozenset({'DONE', 'COMPLETED', 'SUCCEEDED', 'SUCCESS'}))
+              SET_UPDATE               1
+              STORE_NAME              18 (_DONE)
+
+ 36           BUILD_SET                0
+              LOAD_CONST              15 (frozenset({'ERROR', 'FAILED', 'FAILURE'}))
+              SET_UPDATE               1
+              STORE_NAME              19 (_FAIL)
+
+ 39           LOAD_BUILD_CLASS
+              PUSH_NULL
+              LOAD_CONST              16 (<code object VbeeTTSError at 0x0000016DC8EB8FF0, file "bilisub\tts\vbee.py", line 39>)
+              MAKE_FUNCTION
+              LOAD_CONST              17 ('VbeeTTSError')
+              LOAD_NAME               20 (Exception)
+              CALL                     3
+              STORE_NAME              21 (VbeeTTSError)
+
+ 43           LOAD_CONST              35 (('code', 'str', 'return', 'str'))
+              LOAD_CONST              18 (<code object voice_code at 0x0000016DC8EA3210, file "bilisub\tts\vbee.py", line 43>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              22 (voice_code)
+
+ 48           LOAD_CONST              36 (('r', 'requests.Response', 'return', 'dict'))
+              LOAD_CONST              19 (<code object _json at 0x0000016DC8CABE00, file "bilisub\tts\vbee.py", line 48>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              23 (_json)
+
+ 56           LOAD_CONST              37 (('token', 'str', 'return', 'dict'))
+              LOAD_CONST              20 (<code object _auth at 0x0000016DC8EB90D0, file "bilisub\tts\vbee.py", line 56>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              24 (_auth)
+
+ 63           BUILD_MAP                0
+              STORE_NAME              25 (_VOICES_CACHE)
+              LOAD_CONST              21 ('dict[str, tuple[float, list]]')
+              LOAD_NAME               17 (__annotations__)
+              LOAD_CONST              22 ('_VOICES_CACHE')
+              STORE_SUBSCR
+
+ 64           LOAD_CONST              23 (3600.0)
+              STORE_NAME              26 (_VOICES_TTL)
+
+ 67           LOAD_CONST              24 (20.0)
+              LOAD_CONST              25 (('timeout',))
+              BUILD_CONST_KEY_MAP      1
+              LOAD_CONST              38 (('token', 'str', 'timeout', 'float', 'return', 'list[dict]'))
+              LOAD_CONST              26 (<code object account_voices at 0x0000016DC87BBAB0, file "bilisub\tts\vbee.py", line 67>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              27 (account_voices)
+
+103           LOAD_CONST              39 (('data', 'dict', 'return', 'str'))
+              LOAD_CONST              27 (<code object _extract_request_id at 0x0000016DC8EF4780, file "bilisub\tts\vbee.py", line 103>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              28 (_extract_request_id)
+
+118           LOAD_CONST              40 (('res', 'dict', 'return', 'Optional[str]'))
+              LOAD_CONST              28 (<code object _extract_audio_url at 0x0000016DC9618030, file "bilisub\tts\vbee.py", line 118>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              29 (_extract_audio_url)
+
+126           NOP
+
+127           NOP
+
+126           NOP
+
+127           NOP
+
+126           LOAD_CONST              41 (('req_id', 'str', 'token', 'str', 'timeout', 'float', 'log', 'Callable[[str], None]', 'return', 'str'))
+              LOAD_CONST              29 (<code object _poll at 0x0000016DC8ED0560, file "bilisub\tts\vbee.py", line 126>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              STORE_NAME              30 (_poll)
+
+160           LOAD_CONST              30 (1.0)
+
+161           LOAD_CONST              31 (120.0)
+              LOAD_CONST               3 (None)
+
+159           LOAD_CONST              32 (('speed', 'timeout', 'log'))
+              BUILD_CONST_KEY_MAP      3
+
+160           NOP
+
+159           NOP
+
+160           NOP
+
+159           NOP
+
+160           NOP
+
+159           NOP
+
+161           NOP
+
+159           NOP
+
+161           NOP
+
+159           NOP
+
+161           NOP
+
+159           LOAD_CONST              42 (('text', 'str', 'voice', 'str', 'out_path', 'str', 'app_id', 'str', 'access_token', 'str', 'speed', 'float', 'timeout', 'float', 'log', 'Optional[Callable[[str], None]]', 'return', 'None'))
+              LOAD_CONST              33 (<code object synth at 0x0000016DC8FE22E0, file "bilisub\tts\vbee.py", line 159>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   2 (kwdefaults)
+              STORE_NAME              31 (synth)
+
+200           LOAD_CONST              43 ((30.0,))
+              LOAD_CONST              44 (('app_id', 'str', 'access_token', 'str', 'timeout', 'float', 'return', 'list[dict]'))
+              LOAD_CONST              34 (<code object list_voices at 0x0000016DC8F12510, file "bilisub\tts\vbee.py", line 200>)
+              MAKE_FUNCTION
+              SET_FUNCTION_ATTRIBUTE   4 (annotations)
+              SET_FUNCTION_ATTRIBUTE   1 (defaults)
+              STORE_NAME              32 (list_voices)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object VbeeTTSError at 0x0000016DC8EB8FF0, file "bilisub\tts\vbee.py", line 39>:
+ 39           RESUME                   0
+              LOAD_NAME                0 (__name__)
+              STORE_NAME               1 (__module__)
+              LOAD_CONST               0 ('VbeeTTSError')
+              STORE_NAME               2 (__qualname__)
+              LOAD_CONST               1 (39)
+              STORE_NAME               3 (__firstlineno__)
+
+ 40           LOAD_CONST               2 (())
+              STORE_NAME               4 (__static_attributes__)
+              RETURN_CONST             3 (None)
+
+Disassembly of <code object voice_code at 0x0000016DC8EA3210, file "bilisub\tts\vbee.py", line 43>:
+ 43           RESUME                   0
+
+ 45           LOAD_FAST                0 (code)
+              LOAD_ATTR                1 (startswith + NULL|self)
+              LOAD_CONST               1 ('vbee:')
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_FALSE       21 (to L1)
+              LOAD_FAST                0 (code)
+              LOAD_ATTR                3 (split + NULL|self)
+              LOAD_CONST               2 (':')
+              LOAD_CONST               3 (1)
+              CALL                     2
+              LOAD_CONST               3 (1)
+              BINARY_SUBSCR
+              RETURN_VALUE
+      L1:     LOAD_FAST                0 (code)
+              RETURN_VALUE
+
+Disassembly of <code object _json at 0x0000016DC8CABE00, file "bilisub\tts\vbee.py", line 48>:
+  48           RESUME                   0
+
+  49           NOP
+
+  50   L1:     LOAD_FAST                0 (r)
+               LOAD_ATTR                1 (json + NULL|self)
+               CALL                     0
+               STORE_FAST               1 (d)
+
+  51           LOAD_GLOBAL              3 (isinstance + NULL)
+               LOAD_FAST                1 (d)
+               LOAD_GLOBAL              4 (dict)
+               CALL                     2
+               TO_BOOL
+               POP_JUMP_IF_FALSE        2 (to L3)
+               LOAD_FAST                1 (d)
+       L2:     RETURN_VALUE
+       L3:     LOAD_CONST               1 ('_raw')
+               LOAD_FAST                1 (d)
+               BUILD_MAP                1
+       L4:     RETURN_VALUE
+
+  --   L5:     PUSH_EXC_INFO
+
+  52           LOAD_GLOBAL              6 (Exception)
+               CHECK_EXC_MATCH
+               POP_JUMP_IF_FALSE       20 (to L7)
+               POP_TOP
+
+  53           LOAD_CONST               1 ('_raw')
+               LOAD_FAST                0 (r)
+               LOAD_ATTR                8 (text)
+               LOAD_CONST               0 (None)
+               LOAD_CONST               2 (200)
+               BINARY_SLICE
+               BUILD_MAP                1
+               SWAP                     2
+       L6:     POP_EXCEPT
+               RETURN_VALUE
+
+  52   L7:     RERAISE                  0
+
+  --   L8:     COPY                     3
+               POP_EXCEPT
+               RERAISE                  1
+ExceptionTable:
+  L1 to L2 -> L5 [0]
+  L3 to L4 -> L5 [0]
+  L5 to L6 -> L8 [1] lasti
+  L7 to L8 -> L8 [1] lasti
+
+Disassembly of <code object _auth at 0x0000016DC8EB90D0, file "bilisub\tts\vbee.py", line 56>:
+ 56           RESUME                   0
+
+ 57           LOAD_CONST               1 ('Authorization')
+              LOAD_CONST               2 ('Bearer ')
+              LOAD_FAST                0 (token)
+              FORMAT_SIMPLE
+              BUILD_STRING             2
+              BUILD_MAP                1
+              RETURN_VALUE
+
+Disassembly of <code object account_voices at 0x0000016DC87BBAB0, file "bilisub\tts\vbee.py", line 67>:
+  67            RESUME                   0
+
+  77            LOAD_FAST                0 (token)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L1)
+                POP_TOP
+                LOAD_CONST               1 ('')
+        L1:     LOAD_ATTR                1 (strip + NULL|self)
+                CALL                     0
+                STORE_FAST               2 (tok)
+
+  78            LOAD_FAST                2 (tok)
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L2)
+
+  79            BUILD_LIST               0
+                RETURN_VALUE
+
+  80    L2:     LOAD_CONST               2 (0)
+                LOAD_CONST               3 (None)
+                IMPORT_NAME              1 (hashlib)
+                STORE_FAST               3 (hashlib)
+
+  81            LOAD_FAST                3 (hashlib)
+                LOAD_ATTR                5 (sha1 + NULL|self)
+                LOAD_FAST                2 (tok)
+                LOAD_ATTR                7 (encode + NULL|self)
+                LOAD_CONST               4 ('utf-8')
+                CALL                     1
+                CALL                     1
+                LOAD_ATTR                9 (hexdigest + NULL|self)
+                CALL                     0
+                LOAD_CONST               3 (None)
+                LOAD_CONST               5 (16)
+                BINARY_SLICE
+                STORE_FAST               4 (key)
+
+  82            LOAD_GLOBAL             10 (time)
+                LOAD_ATTR               10 (time)
+                PUSH_NULL
+                CALL                     0
+                STORE_FAST               5 (now)
+
+  83            LOAD_GLOBAL             12 (_VOICES_CACHE)
+                LOAD_ATTR               15 (get + NULL|self)
+                LOAD_FAST                4 (key)
+                CALL                     1
+                STORE_FAST               6 (hit)
+
+  84            LOAD_FAST                6 (hit)
+                TO_BOOL
+                POP_JUMP_IF_FALSE       14 (to L3)
+                LOAD_FAST                6 (hit)
+                LOAD_CONST               2 (0)
+                BINARY_SUBSCR
+                LOAD_FAST                5 (now)
+                COMPARE_OP             148 (bool(>))
+                POP_JUMP_IF_FALSE        5 (to L3)
+
+  85            LOAD_FAST                6 (hit)
+                LOAD_CONST               6 (1)
+                BINARY_SUBSCR
+                RETURN_VALUE
+
+  86    L3:     NOP
+
+  87    L4:     LOAD_GLOBAL             16 (requests)
+                LOAD_ATTR               14 (get)
+                PUSH_NULL
+                LOAD_GLOBAL             18 (_BASE)
+                FORMAT_SIMPLE
+                LOAD_CONST               7 ('/voices')
+                BUILD_STRING             2
+                LOAD_GLOBAL             21 (_auth + NULL)
+                LOAD_FAST                2 (tok)
+                CALL                     1
+                LOAD_FAST                1 (timeout)
+                LOAD_CONST               8 (('headers', 'timeout'))
+                CALL_KW                  3
+                STORE_FAST               7 (r)
+
+  88            LOAD_FAST                7 (r)
+                LOAD_ATTR               22 (status_code)
+                LOAD_CONST               9 (200)
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE       16 (to L6)
+
+  89            LOAD_FAST                5 (now)
+                LOAD_CONST              10 (60.0)
+                BINARY_OP                0 (+)
+                BUILD_LIST               0
+                BUILD_TUPLE              2
+                LOAD_GLOBAL             12 (_VOICES_CACHE)
+                LOAD_FAST                4 (key)
+                STORE_SUBSCR
+
+  90            BUILD_LIST               0
+        L5:     RETURN_VALUE
+
+  91    L6:     LOAD_GLOBAL             25 (_json + NULL)
+                LOAD_FAST                7 (r)
+                CALL                     1
+                STORE_FAST               8 (data)
+
+  92            LOAD_FAST                8 (data)
+                LOAD_ATTR               15 (get + NULL|self)
+                LOAD_CONST              11 ('result')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        50 (to L7)
+                POP_TOP
+                LOAD_FAST                8 (data)
+                LOAD_ATTR               15 (get + NULL|self)
+                LOAD_CONST              12 ('data')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        26 (to L7)
+                POP_TOP
+                LOAD_FAST                8 (data)
+                LOAD_ATTR               15 (get + NULL|self)
+                LOAD_CONST              13 ('_raw')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L7)
+                POP_TOP
+                BUILD_LIST               0
+        L7:     STORE_FAST               9 (res)
+
+  93            LOAD_GLOBAL             27 (isinstance + NULL)
+                LOAD_FAST                9 (res)
+                LOAD_GLOBAL             28 (dict)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       50 (to L9)
+
+  94            LOAD_FAST                9 (res)
+                LOAD_ATTR               15 (get + NULL|self)
+                LOAD_CONST              14 ('voices')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE        26 (to L8)
+                POP_TOP
+                LOAD_FAST                9 (res)
+                LOAD_ATTR               15 (get + NULL|self)
+                LOAD_CONST              15 ('items')
+                CALL                     1
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L8)
+                POP_TOP
+                BUILD_LIST               0
+        L8:     STORE_FAST               9 (res)
+
+  95    L9:     LOAD_FAST                9 (res)
+                GET_ITER
+                LOAD_FAST_AND_CLEAR     10 (v)
+                SWAP                     2
+       L10:     BUILD_LIST               0
+                SWAP                     2
+                GET_ITER
+       L11:     FOR_ITER                52 (to L16)
+                STORE_FAST              10 (v)
+                LOAD_GLOBAL             27 (isinstance + NULL)
+                LOAD_FAST               10 (v)
+                LOAD_GLOBAL             28 (dict)
+                CALL                     2
+                TO_BOOL
+       L12:     POP_JUMP_IF_TRUE         2 (to L13)
+                JUMP_BACKWARD           26 (to L11)
+       L13:     LOAD_FAST               10 (v)
+                LOAD_ATTR               15 (get + NULL|self)
+                LOAD_CONST              16 ('code')
+                CALL                     1
+                TO_BOOL
+       L14:     POP_JUMP_IF_TRUE         2 (to L15)
+                JUMP_BACKWARD           50 (to L11)
+       L15:     LOAD_FAST               10 (v)
+                LIST_APPEND              2
+                JUMP_BACKWARD           54 (to L11)
+       L16:     END_FOR
+                POP_TOP
+       L17:     STORE_FAST              11 (out)
+                STORE_FAST              10 (v)
+
+  99   L18:     LOAD_FAST                5 (now)
+                LOAD_GLOBAL             32 (_VOICES_TTL)
+                BINARY_OP                0 (+)
+                LOAD_FAST               11 (out)
+                BUILD_TUPLE              2
+                LOAD_GLOBAL             12 (_VOICES_CACHE)
+                LOAD_FAST                4 (key)
+                STORE_SUBSCR
+
+ 100            LOAD_FAST               11 (out)
+                RETURN_VALUE
+
+  --   L19:     SWAP                     2
+                POP_TOP
+
+  95            SWAP                     2
+                STORE_FAST              10 (v)
+                RERAISE                  0
+
+  --   L20:     PUSH_EXC_INFO
+
+  96            LOAD_GLOBAL             30 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       19 (to L22)
+                POP_TOP
+
+  97            LOAD_FAST                5 (now)
+                LOAD_CONST              10 (60.0)
+                BINARY_OP                0 (+)
+                BUILD_LIST               0
+                BUILD_TUPLE              2
+                LOAD_GLOBAL             12 (_VOICES_CACHE)
+                LOAD_FAST                4 (key)
+                STORE_SUBSCR
+
+  98            BUILD_LIST               0
+                SWAP                     2
+       L21:     POP_EXCEPT
+                RETURN_VALUE
+
+  96   L22:     RERAISE                  0
+
+  --   L23:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L4 to L5 -> L20 [0]
+  L6 to L10 -> L20 [0]
+  L10 to L12 -> L19 [2]
+  L13 to L14 -> L19 [2]
+  L15 to L17 -> L19 [2]
+  L17 to L18 -> L20 [0]
+  L19 to L20 -> L20 [0]
+  L20 to L21 -> L23 [1] lasti
+  L22 to L23 -> L23 [1] lasti
+
+Disassembly of <code object _extract_request_id at 0x0000016DC8EF4780, file "bilisub\tts\vbee.py", line 103>:
+103           RESUME                   0
+
+104           LOAD_FAST                0 (data)
+              LOAD_ATTR                1 (get + NULL|self)
+              LOAD_CONST               1 ('result')
+              CALL                     1
+              STORE_FAST               1 (res)
+
+105           LOAD_GLOBAL              3 (isinstance + NULL)
+              LOAD_FAST                1 (res)
+              LOAD_GLOBAL              4 (str)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_FALSE        9 (to L1)
+              LOAD_FAST                1 (res)
+              TO_BOOL
+              POP_JUMP_IF_FALSE        2 (to L1)
+
+106           LOAD_FAST                1 (res)
+              RETURN_VALUE
+
+107   L1:     LOAD_GLOBAL              3 (isinstance + NULL)
+              LOAD_FAST                1 (res)
+              LOAD_GLOBAL              6 (dict)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_FALSE       46 (to L5)
+
+108           LOAD_CONST               2 (('request_id', 'id', 'requestId', '_id'))
+              GET_ITER
+      L2:     FOR_ITER                40 (to L4)
+              STORE_FAST               2 (k)
+
+109           LOAD_FAST                1 (res)
+              LOAD_ATTR                1 (get + NULL|self)
+              LOAD_FAST                2 (k)
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+              JUMP_BACKWARD           27 (to L2)
+
+110   L3:     LOAD_GLOBAL              5 (str + NULL)
+              LOAD_FAST_LOAD_FAST     18 (res, k)
+              BINARY_SUBSCR
+              CALL                     1
+              SWAP                     2
+              POP_TOP
+              RETURN_VALUE
+
+108   L4:     END_FOR
+              POP_TOP
+
+112   L5:     LOAD_CONST               3 (('request_id', 'id'))
+              GET_ITER
+      L6:     FOR_ITER                40 (to L8)
+              STORE_FAST               2 (k)
+
+113           LOAD_FAST                0 (data)
+              LOAD_ATTR                1 (get + NULL|self)
+              LOAD_FAST                2 (k)
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L7)
+              JUMP_BACKWARD           27 (to L6)
+
+114   L7:     LOAD_GLOBAL              5 (str + NULL)
+              LOAD_FAST_LOAD_FAST      2 (data, k)
+              BINARY_SUBSCR
+              CALL                     1
+              SWAP                     2
+              POP_TOP
+              RETURN_VALUE
+
+112   L8:     END_FOR
+              POP_TOP
+
+115           LOAD_GLOBAL              9 (VbeeTTSError + NULL)
+              LOAD_CONST               4 ('Vbee: không tìm thấy request_id trong phản hồi: ')
+              LOAD_FAST                0 (data)
+              FORMAT_SIMPLE
+              BUILD_STRING             2
+              CALL                     1
+              RAISE_VARARGS            1
+
+Disassembly of <code object _extract_audio_url at 0x0000016DC9618030, file "bilisub\tts\vbee.py", line 118>:
+118           RESUME                   0
+
+119           LOAD_CONST               1 (('audio_link', 'audio_url', 'link', 'url', 'result'))
+              GET_ITER
+      L1:     FOR_ITER                69 (to L4)
+              STORE_FAST               1 (k)
+
+120           LOAD_FAST                0 (res)
+              LOAD_ATTR                1 (get + NULL|self)
+              LOAD_FAST                1 (k)
+              CALL                     1
+              STORE_FAST               2 (v)
+
+121           LOAD_GLOBAL              3 (isinstance + NULL)
+              LOAD_FAST                2 (v)
+              LOAD_GLOBAL              4 (str)
+              CALL                     2
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L2)
+              JUMP_BACKWARD           43 (to L1)
+      L2:     LOAD_FAST                2 (v)
+              LOAD_ATTR                7 (startswith + NULL|self)
+              LOAD_CONST               2 ('http')
+              CALL                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+              JUMP_BACKWARD           67 (to L1)
+
+122   L3:     LOAD_FAST                2 (v)
+              SWAP                     2
+              POP_TOP
+              RETURN_VALUE
+
+119   L4:     END_FOR
+              POP_TOP
+
+123           RETURN_CONST             0 (None)
+
+Disassembly of <code object _poll at 0x0000016DC8ED0560, file "bilisub\tts\vbee.py", line 126>:
+ 126            RESUME                   0
+
+ 128            LOAD_GLOBAL              0 (time)
+                LOAD_ATTR                0 (time)
+                PUSH_NULL
+                CALL                     0
+                LOAD_FAST                2 (timeout)
+                BINARY_OP                0 (+)
+                STORE_FAST               4 (deadline)
+
+ 129            LOAD_CONST               1 (0.6)
+                STORE_FAST               5 (delay)
+
+ 130            LOAD_CONST               2 ('')
+                STORE_FAST               6 (last)
+
+ 131    L1:     LOAD_GLOBAL              0 (time)
+                LOAD_ATTR                0 (time)
+                PUSH_NULL
+                CALL                     0
+                LOAD_FAST                4 (deadline)
+                COMPARE_OP              18 (bool(<))
+                EXTENDED_ARG             1
+                POP_JUMP_IF_FALSE      297 (to L12)
+
+ 135    L2:     NOP
+
+ 136    L3:     LOAD_GLOBAL              2 (requests)
+                LOAD_ATTR                4 (get)
+                PUSH_NULL
+                LOAD_GLOBAL              6 (_BASE)
+                FORMAT_SIMPLE
+                LOAD_CONST               3 ('/tts/')
+                LOAD_FAST                0 (req_id)
+                FORMAT_SIMPLE
+                BUILD_STRING             3
+                LOAD_GLOBAL              9 (_auth + NULL)
+                LOAD_FAST                1 (token)
+                CALL                     1
+                LOAD_CONST               4 (30)
+                LOAD_CONST               5 (('headers', 'timeout'))
+                CALL_KW                  3
+                STORE_FAST               7 (r)
+
+ 142    L4:     LOAD_GLOBAL             19 (_json + NULL)
+                LOAD_FAST                7 (r)
+                CALL                     1
+                STORE_FAST               9 (data)
+
+ 143            LOAD_GLOBAL             21 (isinstance + NULL)
+                LOAD_FAST                9 (data)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST              11 ('result')
+                CALL                     1
+                LOAD_GLOBAL             22 (dict)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       17 (to L5)
+                LOAD_FAST                9 (data)
+                LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST              11 ('result')
+                CALL                     1
+                JUMP_FORWARD             1 (to L6)
+        L5:     LOAD_FAST                9 (data)
+        L6:     STORE_FAST              10 (res)
+
+ 144            LOAD_GLOBAL             13 (str + NULL)
+                LOAD_FAST               10 (res)
+                COPY                     1
+                TO_BOOL
+                POP_JUMP_IF_TRUE         2 (to L7)
+                POP_TOP
+                BUILD_MAP                0
+        L7:     LOAD_ATTR                5 (get + NULL|self)
+                LOAD_CONST              12 ('status')
+                LOAD_CONST               2 ('')
+                CALL                     2
+                CALL                     1
+                LOAD_ATTR               25 (upper + NULL|self)
+                CALL                     0
+                STORE_FAST              11 (status)
+
+ 145            LOAD_FAST_LOAD_FAST    182 (status, last)
+                COMPARE_OP             119 (bool(!=))
+                POP_JUMP_IF_FALSE        2 (to L8)
+
+ 146            LOAD_FAST               11 (status)
+                STORE_FAST               6 (last)
+
+ 147    L8:     LOAD_FAST               11 (status)
+                LOAD_GLOBAL             26 (_DONE)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       34 (to L10)
+
+ 148            LOAD_GLOBAL             29 (_extract_audio_url + NULL)
+                LOAD_FAST               10 (res)
+                CALL                     1
+                STORE_FAST              12 (url)
+
+ 149            LOAD_FAST               12 (url)
+                TO_BOOL
+                POP_JUMP_IF_TRUE        14 (to L9)
+
+ 150            LOAD_GLOBAL             31 (VbeeTTSError + NULL)
+                LOAD_CONST              13 ('Vbee: xong nhưng thiếu audio_link: ')
+                LOAD_FAST               10 (res)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                CALL                     1
+                RAISE_VARARGS            1
+
+ 151    L9:     LOAD_FAST               12 (url)
+                RETURN_VALUE
+
+ 152   L10:     LOAD_FAST               11 (status)
+                LOAD_GLOBAL             32 (_FAIL)
+                CONTAINS_OP              0
+                POP_JUMP_IF_FALSE       14 (to L11)
+
+ 153            LOAD_GLOBAL             31 (VbeeTTSError + NULL)
+                LOAD_CONST              14 ('Vbee tổng hợp thất bại: ')
+                LOAD_FAST               10 (res)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                CALL                     1
+                RAISE_VARARGS            1
+
+ 154   L11:     LOAD_GLOBAL              0 (time)
+                LOAD_ATTR               14 (sleep)
+                PUSH_NULL
+                LOAD_FAST                5 (delay)
+                CALL                     1
+                POP_TOP
+
+ 155            LOAD_GLOBAL             17 (min + NULL)
+                LOAD_CONST               9 (2.0)
+                LOAD_FAST                5 (delay)
+                LOAD_CONST              15 (1.4)
+                BINARY_OP                5 (*)
+                CALL                     2
+                STORE_FAST               5 (delay)
+
+ 131            LOAD_GLOBAL              0 (time)
+                LOAD_ATTR                0 (time)
+                PUSH_NULL
+                CALL                     0
+                LOAD_FAST                4 (deadline)
+                COMPARE_OP              18 (bool(<))
+                POP_JUMP_IF_FALSE        3 (to L12)
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          297 (to L2)
+
+ 156   L12:     LOAD_GLOBAL             31 (VbeeTTSError + NULL)
+                LOAD_CONST              16 ('Vbee: hết ')
+                LOAD_FAST                2 (timeout)
+                LOAD_CONST              17 ('.0f')
+                FORMAT_WITH_SPEC
+                LOAD_CONST              18 ('s chờ tổng hợp (req_id=')
+                LOAD_FAST                0 (req_id)
+                FORMAT_SIMPLE
+                LOAD_CONST              19 (').')
+                BUILD_STRING             5
+                CALL                     1
+                RAISE_VARARGS            1
+
+  --   L13:     PUSH_EXC_INFO
+
+ 137            LOAD_GLOBAL              2 (requests)
+                LOAD_ATTR               10 (RequestException)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE       73 (to L17)
+                STORE_FAST               8 (ex)
+
+ 138   L14:     LOAD_FAST                3 (log)
+                PUSH_NULL
+                LOAD_CONST               6 ('  (Vbee: mất kết nối lúc chờ — thử lại: ')
+                LOAD_GLOBAL             13 (str + NULL)
+                LOAD_FAST                8 (ex)
+                CALL                     1
+                LOAD_CONST               0 (None)
+                LOAD_CONST               7 (70)
+                BINARY_SLICE
+                FORMAT_SIMPLE
+                LOAD_CONST               8 (')')
+                BUILD_STRING             3
+                CALL                     1
+                POP_TOP
+
+ 139            LOAD_GLOBAL              0 (time)
+                LOAD_ATTR               14 (sleep)
+                PUSH_NULL
+                LOAD_FAST                5 (delay)
+                CALL                     1
+                POP_TOP
+
+ 140            LOAD_GLOBAL             17 (min + NULL)
+                LOAD_CONST               9 (2.0)
+                LOAD_FAST                5 (delay)
+                LOAD_CONST              10 (1.5)
+                BINARY_OP                5 (*)
+                CALL                     2
+                STORE_FAST               5 (delay)
+
+ 141   L15:     POP_EXCEPT
+                LOAD_CONST               0 (None)
+                STORE_FAST               8 (ex)
+                DELETE_FAST              8 (ex)
+                EXTENDED_ARG             1
+                JUMP_BACKWARD          430 (to L1)
+
+  --   L16:     LOAD_CONST               0 (None)
+                STORE_FAST               8 (ex)
+                DELETE_FAST              8 (ex)
+                RERAISE                  1
+
+ 137   L17:     RERAISE                  0
+
+  --   L18:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L3 to L4 -> L13 [0]
+  L13 to L14 -> L18 [1] lasti
+  L14 to L15 -> L16 [1] lasti
+  L16 to L18 -> L18 [1] lasti
+
+Disassembly of <code object synth at 0x0000016DC8FE22E0, file "bilisub\tts\vbee.py", line 159>:
+159           RESUME                   0
+
+163           LOAD_FAST                7 (log)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         3 (to L1)
+              POP_TOP
+              LOAD_CONST               1 (<code object <lambda> at 0x0000016DC9134920, file "bilisub\tts\vbee.py", line 163>)
+              MAKE_FUNCTION
+      L1:     STORE_FAST               7 (log)
+
+164           LOAD_FAST                3 (app_id)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L2)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L2:     LOAD_ATTR                1 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               3 (app_id)
+
+165           LOAD_FAST                4 (access_token)
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE         2 (to L3)
+              POP_TOP
+              LOAD_CONST               2 ('')
+      L3:     LOAD_ATTR                1 (strip + NULL|self)
+              CALL                     0
+              STORE_FAST               4 (access_token)
+
+166           LOAD_FAST                3 (app_id)
+              TO_BOOL
+              POP_JUMP_IF_FALSE        7 (to L4)
+              LOAD_FAST                4 (access_token)
+              TO_BOOL
+              POP_JUMP_IF_TRUE        11 (to L5)
+
+167   L4:     LOAD_GLOBAL              3 (VbeeTTSError + NULL)
+
+168           LOAD_CONST               3 ('Thiếu Vbee app_id hoặc access_token — nhập ở hộp thoại 🔑 API Keys.')
+
+167           CALL                     1
+              RAISE_VARARGS            1
+
+170   L5:     LOAD_GLOBAL              5 (voice_code + NULL)
+              LOAD_FAST                1 (voice)
+              CALL                     1
+              STORE_FAST               8 (vc)
+
+173           LOAD_GLOBAL              6 (requests)
+              LOAD_ATTR                8 (post)
+              PUSH_NULL
+
+174           LOAD_GLOBAL             10 (_BASE)
+              FORMAT_SIMPLE
+              LOAD_CONST               4 ('/tts')
+              BUILD_STRING             2
+
+175           BUILD_MAP                0
+              LOAD_GLOBAL             13 (_auth + NULL)
+              LOAD_FAST                4 (access_token)
+              CALL                     1
+              DICT_UPDATE              1
+              LOAD_CONST               5 ('Content-Type')
+              LOAD_CONST               6 ('application/json')
+              BUILD_MAP                1
+              DICT_UPDATE              1
+
+177           LOAD_FAST                3 (app_id)
+
+178           LOAD_GLOBAL             14 (_CALLBACK)
+
+179           LOAD_FAST                0 (text)
+
+180           LOAD_FAST                8 (vc)
+
+181           LOAD_CONST               7 ('mp3')
+
+182           LOAD_FAST                5 (speed)
+              LOAD_CONST               8 ('.2f')
+              FORMAT_WITH_SPEC
+
+176           LOAD_CONST               9 (('app_id', 'callback_url', 'input_text', 'voice_code', 'audio_type', 'speed_rate'))
+              BUILD_CONST_KEY_MAP      6
+
+184           LOAD_CONST              10 (40)
+
+173           LOAD_CONST              11 (('headers', 'json', 'timeout'))
+              CALL_KW                  4
+              STORE_FAST               9 (r)
+
+186           LOAD_GLOBAL             17 (_json + NULL)
+              LOAD_FAST                9 (r)
+              CALL                     1
+              STORE_FAST              10 (data)
+
+187           LOAD_FAST                9 (r)
+              LOAD_ATTR               18 (status_code)
+              LOAD_CONST              12 (401)
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE       11 (to L6)
+
+188           LOAD_GLOBAL              3 (VbeeTTSError + NULL)
+              LOAD_CONST              13 ('Vbee 401: app_id/access_token sai hoặc hết hạn.')
+              CALL                     1
+              RAISE_VARARGS            1
+
+189   L6:     LOAD_FAST                9 (r)
+              LOAD_ATTR               18 (status_code)
+              LOAD_CONST              14 (200)
+              COMPARE_OP             119 (bool(!=))
+              POP_JUMP_IF_TRUE        21 (to L7)
+              LOAD_FAST               10 (data)
+              LOAD_ATTR               21 (get + NULL|self)
+              LOAD_CONST              15 ('status')
+              CALL                     1
+              LOAD_CONST              16 ((1, '1', True))
+              CONTAINS_OP              1
+              POP_JUMP_IF_FALSE       90 (to L9)
+
+190   L7:     LOAD_FAST               10 (data)
+              LOAD_ATTR               21 (get + NULL|self)
+              LOAD_CONST              17 ('error_message')
+              CALL                     1
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE        39 (to L8)
+              POP_TOP
+              LOAD_FAST               10 (data)
+              LOAD_ATTR               21 (get + NULL|self)
+              LOAD_CONST              18 ('message')
+              CALL                     1
+              COPY                     1
+              TO_BOOL
+              POP_JUMP_IF_TRUE        15 (to L8)
+              POP_TOP
+              LOAD_FAST                9 (r)
+              LOAD_ATTR               22 (text)
+              LOAD_CONST              19 (None)
+              LOAD_CONST              20 (160)
+              BINARY_SLICE
+      L8:     STORE_FAST              11 (msg)
+
+191           LOAD_GLOBAL              3 (VbeeTTSError + NULL)
+              LOAD_CONST              21 ('Vbee tạo yêu cầu lỗi [')
+              LOAD_FAST                9 (r)
+              LOAD_ATTR               18 (status_code)
+              FORMAT_SIMPLE
+              LOAD_CONST              22 (']: ')
+              LOAD_FAST               11 (msg)
+              FORMAT_SIMPLE
+              BUILD_STRING             4
+              CALL                     1
+              RAISE_VARARGS            1
+
+194   L9:     LOAD_GLOBAL             25 (_poll + NULL)
+              LOAD_GLOBAL             27 (_extract_request_id + NULL)
+              LOAD_FAST               10 (data)
+              CALL                     1
+              LOAD_FAST_LOAD_FAST     70 (access_token, timeout)
+              LOAD_FAST                7 (log)
+              CALL                     4
+              STORE_FAST              12 (audio_url)
+
+195           LOAD_GLOBAL              6 (requests)
+              LOAD_ATTR               20 (get)
+              PUSH_NULL
+              LOAD_FAST               12 (audio_url)
+              LOAD_CONST              23 (60)
+              LOAD_CONST              24 (('timeout',))
+              CALL_KW                  2
+              STORE_FAST              13 (ar)
+
+196           LOAD_FAST               13 (ar)
+              LOAD_ATTR               29 (raise_for_status + NULL|self)
+              CALL                     0
+              POP_TOP
+
+197           LOAD_GLOBAL             31 (Path + NULL)
+              LOAD_FAST                2 (out_path)
+              CALL                     1
+              LOAD_ATTR               33 (write_bytes + NULL|self)
+              LOAD_FAST               13 (ar)
+              LOAD_ATTR               34 (content)
+              CALL                     1
+              POP_TOP
+              RETURN_CONST            19 (None)
+
+Disassembly of <code object <lambda> at 0x0000016DC9134920, file "bilisub\tts\vbee.py", line 163>:
+163           RESUME                   0
+              RETURN_CONST             0 (None)
+
+Disassembly of <code object list_voices at 0x0000016DC8F12510, file "bilisub\tts\vbee.py", line 200>:
+ 200            RESUME                   0
+
+ 202            LOAD_CONST               1 (('/voices', '/tts/voices'))
+                GET_ITER
+        L1:     FOR_ITER               181 (to L9)
+                STORE_FAST               3 (path)
+
+ 203            NOP
+
+ 204    L2:     LOAD_GLOBAL              0 (requests)
+                LOAD_ATTR                2 (get)
+                PUSH_NULL
+                LOAD_GLOBAL              4 (_BASE)
+                FORMAT_SIMPLE
+                LOAD_FAST                3 (path)
+                FORMAT_SIMPLE
+                BUILD_STRING             2
+                LOAD_GLOBAL              7 (_auth + NULL)
+                LOAD_FAST                1 (access_token)
+                CALL                     1
+                LOAD_FAST                2 (timeout)
+                LOAD_CONST               2 (('headers', 'timeout'))
+                CALL_KW                  3
+                STORE_FAST               4 (r)
+
+ 205            LOAD_FAST                4 (r)
+                LOAD_ATTR                8 (status_code)
+                LOAD_CONST               3 (200)
+                COMPARE_OP              88 (bool(==))
+                POP_JUMP_IF_FALSE      122 (to L8)
+
+ 206            LOAD_GLOBAL             11 (_json + NULL)
+                LOAD_FAST                4 (r)
+                CALL                     1
+                STORE_FAST               5 (data)
+
+ 207            LOAD_FAST                5 (data)
+                LOAD_ATTR                3 (get + NULL|self)
+                LOAD_CONST               4 ('result')
+                LOAD_FAST                5 (data)
+                CALL                     2
+                STORE_FAST               6 (res)
+
+ 208            LOAD_GLOBAL             13 (isinstance + NULL)
+                LOAD_FAST                6 (res)
+                LOAD_GLOBAL             14 (list)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE        4 (to L4)
+
+ 209            LOAD_FAST                6 (res)
+        L3:     SWAP                     2
+                POP_TOP
+                RETURN_VALUE
+
+ 210    L4:     LOAD_GLOBAL             13 (isinstance + NULL)
+                LOAD_FAST                6 (res)
+                LOAD_GLOBAL             16 (dict)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE       45 (to L7)
+                LOAD_GLOBAL             13 (isinstance + NULL)
+                LOAD_FAST                6 (res)
+                LOAD_ATTR                3 (get + NULL|self)
+                LOAD_CONST               5 ('voices')
+                CALL                     1
+                LOAD_GLOBAL             14 (list)
+                CALL                     2
+                TO_BOOL
+                POP_JUMP_IF_FALSE        7 (to L6)
+
+ 211            LOAD_FAST                6 (res)
+                LOAD_CONST               5 ('voices')
+                BINARY_SUBSCR
+        L5:     SWAP                     2
+                POP_TOP
+                RETURN_VALUE
+
+ 210    L6:     JUMP_BACKWARD          179 (to L1)
+        L7:     JUMP_BACKWARD          181 (to L1)
+
+ 205    L8:     JUMP_BACKWARD          183 (to L1)
+
+ 202    L9:     END_FOR
+                POP_TOP
+
+ 214            BUILD_LIST               0
+                RETURN_VALUE
+
+  --   L10:     PUSH_EXC_INFO
+
+ 212            LOAD_GLOBAL             18 (Exception)
+                CHECK_EXC_MATCH
+                POP_JUMP_IF_FALSE        4 (to L12)
+                POP_TOP
+
+ 213   L11:     POP_EXCEPT
+                JUMP_BACKWARD          200 (to L1)
+
+ 212   L12:     RERAISE                  0
+
+  --   L13:     COPY                     3
+                POP_EXCEPT
+                RERAISE                  1
+ExceptionTable:
+  L2 to L3 -> L10 [1]
+  L4 to L5 -> L10 [1]
+  L10 to L11 -> L13 [2] lasti
+  L12 to L13 -> L13 [2] lasti
