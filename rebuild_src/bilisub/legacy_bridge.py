@@ -77,52 +77,47 @@ def _prepend_env_path(path: Path) -> None:
 
 
 def _insert_legacy_sys_paths(paths: LegacyPaths) -> None:
-    """Expose extracted PYZ packages as fallback imports for legacy bytecode.
+    """Expose extracted dependencies only as fallbacks.
 
-    PyInstaller stores pure-Python dependencies such as requests/urllib3 inside
-    PYZ.  The restored bilisub package can already see its own legacy path, but
-    top-level imports (for example ``import requests``) still need the PYZ root
-    on ``sys.path``.  Keep rebuild_src first so VuxGM-owned replacement modules
-    remain authoritative, then place PYZ and _internal immediately after it.
+    Prefer rebuild_src and the active Python environment first.  This is
+    important for VuxGM-owned modules and packages such as cryptography whose
+    PyInstaller copy is split between PYZ bytecode and native files in
+    ``_internal``.  Missing dependencies (for example requests in the recovered
+    bundle) can still resolve from the old runtime afterwards.
     """
-    source_root = paths.repo_root / "rebuild_src"
-    legacy_entries = [paths.pyz_root, paths.internal_root]
-
-    # Remove duplicate legacy entries first so repeated smoke runs stay stable.
+    legacy_entries = [paths.internal_root, paths.pyz_root]
     legacy_values = {str(p).lower() for p in legacy_entries if p.is_dir()}
+
+    # Remove duplicates so repeated smoke runs keep deterministic ordering.
     sys.path[:] = [p for p in sys.path if str(p).lower() not in legacy_values]
 
-    source_value = str(source_root)
-    try:
-        insert_at = next(i for i, p in enumerate(sys.path) if str(p).lower() == source_value.lower()) + 1
-    except StopIteration:
-        insert_at = 0
-
-    for path in reversed([p for p in legacy_entries if p.is_dir()]):
-        sys.path.insert(insert_at, str(path))
+    # Append rather than prepend: installed/current dependencies win.  Put
+    # _internal before PYZ so packages with native extensions have the best
+    # chance of resolving as a complete filesystem package.
+    for path in legacy_entries:
+        if path.is_dir():
+            sys.path.append(str(path))
 
 
 def _prepare_native_runtime(paths: LegacyPaths) -> None:
-    _insert_legacy_sys_paths(paths)
-
     internal = paths.internal_root
-    if not internal.is_dir():
-        return
+    if internal.is_dir():
+        dll_dirs = [
+            internal,
+            internal / "bin",
+            internal / "PyQt6" / "Qt6" / "bin",
+            internal / "onnxruntime" / "capi",
+        ]
+        for d in dll_dirs:
+            _prepend_env_path(d)
+            if sys.platform == "win32" and d.is_dir() and hasattr(os, "add_dll_directory"):
+                try:
+                    handle = os.add_dll_directory(str(d))
+                    _DLL_HANDLES.append(handle)
+                except OSError:
+                    pass
 
-    dll_dirs = [
-        internal,
-        internal / "bin",
-        internal / "PyQt6" / "Qt6" / "bin",
-        internal / "onnxruntime" / "capi",
-    ]
-    for d in dll_dirs:
-        _prepend_env_path(d)
-        if sys.platform == "win32" and d.is_dir() and hasattr(os, "add_dll_directory"):
-            try:
-                handle = os.add_dll_directory(str(d))
-                _DLL_HANDLES.append(handle)
-            except OSError:
-                pass
+    _insert_legacy_sys_paths(paths)
 
 
 _DLL_HANDLES: list[object] = []
@@ -151,18 +146,21 @@ def _replace_package_path(package: ModuleType, first: Path, second: Path) -> Non
 def prepare_legacy_runtime() -> tuple[LegacyPaths, ModuleType]:
     """Load original bytecode while replacing owned service integrations.
 
-    Legacy modules provide the old UI/feature behavior.  VuxGM source modules are
-    preloaded for license, credit and renewal before legacy paths become first in
-    module resolution, so the retired services are never imported.
+    VuxGM source modules are imported before legacy dependency paths are exposed.
+    That prevents the recovered PyInstaller bundle from shadowing the current
+    license/security stack.  Legacy modules then provide the old UI/feature
+    behavior, while retired license/credit/renewal integrations stay replaced.
     """
     paths = find_legacy_paths()
-    _prepare_native_runtime(paths)
 
     import bilisub
 
     source_bilisub = Path(__file__).resolve().parent
     source_gui = source_bilisub / "gui"
 
+    # Import all VuxGM-owned replacements while normal site-packages still have
+    # precedence.  In particular this ensures license_client gets the working
+    # cryptography installation instead of the split PyInstaller copy.
     from . import config as source_config
 
     source_config.APP_VERSION = "1.0.0"
@@ -173,6 +171,10 @@ def prepare_legacy_runtime() -> tuple[LegacyPaths, ModuleType]:
     from . import giahan as renewal_adapter
     from . import gui as gui_pkg
     from .gui import license_dialog as source_license_dialog
+
+    # Only after VuxGM modules are safely loaded do we expose old dependencies
+    # and native DLL directories for the legacy feature modules.
+    _prepare_native_runtime(paths)
 
     _replace_package_path(bilisub, paths.bilisub_root, source_bilisub)
     _replace_package_path(gui_pkg, source_gui, paths.gui_root)
