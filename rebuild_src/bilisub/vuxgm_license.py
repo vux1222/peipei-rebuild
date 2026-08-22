@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from .license_bootstrap import get_license_public_key
-from .license_client import LicenseClient, LicenseError, LicenseState
+from .license_client import LicenseClient, LicenseError, LicenseState, get_machine_id
 
 
 _client: LicenseClient | None = None
@@ -23,15 +23,41 @@ def _state() -> LicenseState | None:
     return c.state or c.load_cached(allow_grace=True)
 
 
+def _legacy_status(st: LicenseState) -> dict[str, Any]:
+    info = dict(st.payload)
+    info.setdefault("expires_at", st.expires_at)
+    info.setdefault("plan", st.plan)
+    info.setdefault("product", st.product)
+    status = "GRACE" if st.offline else "VALID"
+    return {
+        "status": status,
+        "message": "License hợp lệ." if status == "VALID" else "Đang dùng license offline grace.",
+        "info": info,
+        "payload": info,
+        "expires_at": st.expires_at,
+    }
+
+
 def activate(key: str) -> dict[str, Any]:
     global _last_error
     try:
         st = get_client().activate(key)
         _last_error = ""
-        return {"status": "VALID", "payload": st.payload, "expires_at": st.expires_at}
+        return _legacy_status(st)
     except LicenseError as exc:
         _last_error = str(exc)
-        return {"status": "INVALID", "message": str(exc)}
+        return {"status": "INVALID", "message": str(exc), "info": {}}
+
+
+def refresh() -> dict[str, Any]:
+    global _last_error
+    try:
+        st = get_client().refresh()
+        _last_error = ""
+        return _legacy_status(st)
+    except LicenseError as exc:
+        _last_error = str(exc)
+        return {"status": "INVALID", "message": str(exc), "info": {}}
 
 
 def maybe_refresh(force: bool = False) -> dict[str, Any] | None:
@@ -43,15 +69,13 @@ def maybe_refresh(force: bool = False) -> dict[str, Any] | None:
         else:
             st = c.startup()
         _last_error = ""
-        if st is None:
-            return None
-        return {"status": "GRACE" if st.offline else "VALID", "payload": st.payload, "expires_at": st.expires_at}
+        return _legacy_status(st) if st is not None else None
     except LicenseError as exc:
         _last_error = str(exc)
         if exc.network:
             cached = c.load_cached(allow_grace=True)
             if cached is not None:
-                return {"status": "GRACE", "payload": cached.payload, "expires_at": cached.expires_at}
+                return _legacy_status(cached)
         return None
 
 
@@ -61,16 +85,10 @@ def check() -> dict[str, Any]:
         st = _state()
     except LicenseError as exc:
         _last_error = str(exc)
-        return {"status": "INVALID", "message": str(exc)}
+        return {"status": "INVALID", "message": str(exc), "info": {}}
     if st is None:
-        return {"status": "MISSING", "message": _last_error or "Chưa kích hoạt license."}
-    return {
-        "status": "GRACE" if st.offline else "VALID",
-        "payload": st.payload,
-        "expires_at": st.expires_at,
-        "plan": st.plan,
-        "product": st.product,
-    }
+        return {"status": "MISSING", "message": _last_error or "Chưa kích hoạt license.", "info": {}}
+    return _legacy_status(st)
 
 
 def is_active() -> bool:
@@ -110,12 +128,15 @@ def status_text() -> str:
 def check_update() -> dict[str, Any] | None:
     """Legacy UI compatibility.
 
-    The old updater expected a PeiPei manifest shape. VuxGM's download endpoint is
-    different, so automatic replacement is disabled until the VuxGM manifest API
-    is finalized. Returning None keeps the old UI silent and safe.
+    The old updater expected a different manifest shape.  Automatic replacement
+    stays disabled until the VuxGM update manifest is finalized.
     """
     return None
 
 
 def logout() -> bool:
     return get_client().logout()
+
+
+def hw_fingerprint() -> str:
+    return get_machine_id()
