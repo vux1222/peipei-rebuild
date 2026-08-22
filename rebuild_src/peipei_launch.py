@@ -16,8 +16,12 @@ def main() -> int:
     if "--tu-kiem-giong" in sys.argv:
         return _run_voice_self_test()
 
-    # The clean rebuild uses the user's own VuxGM license service. It is kept
-    # separate from the extracted application's original third-party licensing.
+    # Public product version shown by the app and sent to the VuxGM license API.
+    # Keep legacy internal paths untouched so existing settings/license cache continue to work.
+    from bilisub import config as app_config
+
+    app_config.APP_VERSION = "1.0.0"
+
     from bilisub.gui.licensed_main import main as gui_main
 
     return int(gui_main() or 0)
