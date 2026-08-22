@@ -22,13 +22,19 @@ from typing import Any
 from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
 
-from .config import APP_API_BASE, APP_VERSION, LICENSE_PUBLIC_KEY_B64, app_data_dir
+from .config import APP_API_BASE, APP_VERSION, app_data_dir
 
 
 API_TIMEOUT_SECONDS = 12
 HEARTBEAT_SECONDS = 4 * 60
 CACHE_NAME = "license.dat"
 MACHINE_ID_NAME = "machine_id.txt"
+
+# Production: replace this value with the 32-byte Ed25519 public key returned by
+# https://vuxgm.site/api/license/public-key before building the EXE.
+# Development can temporarily use VUXGM_LICENSE_PUBLIC_KEY in the environment.
+EMBEDDED_PUBLIC_KEY_B64 = ""
+LICENSE_PUBLIC_KEY_B64 = os.environ.get("VUXGM_LICENSE_PUBLIC_KEY", EMBEDDED_PUBLIC_KEY_B64).strip()
 
 
 class LicenseError(RuntimeError):
@@ -105,7 +111,6 @@ def _windows_machine_guid() -> str:
         return ""
     try:
         import winreg
-
         access = winreg.KEY_READ | getattr(winreg, "KEY_WOW64_64KEY", 0)
         with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Cryptography", 0, access) as key:
             value, _ = winreg.QueryValueEx(key, "MachineGuid")
@@ -128,7 +133,6 @@ def _cim_serial(class_name: str) -> str:
 
 
 def get_machine_id() -> str:
-    """Return one stable SHA-256 id and reuse it for activate/refresh/heartbeat/logout."""
     target = app_data_dir() / MACHINE_ID_NAME
     try:
         old = target.read_text(encoding="utf-8").strip().lower()
@@ -157,7 +161,7 @@ class _DATA_BLOB(ctypes.Structure):
     _fields_ = [("cbData", wintypes.DWORD), ("pbData", ctypes.POINTER(ctypes.c_ubyte))]
 
 
-def _to_blob(data: bytes) -> tuple[_DATA_BLOB, Any]:
+def _blob(data: bytes) -> tuple[_DATA_BLOB, Any]:
     buf = (ctypes.c_ubyte * max(1, len(data)))()
     if data:
         ctypes.memmove(buf, data, len(data))
@@ -167,11 +171,9 @@ def _to_blob(data: bytes) -> tuple[_DATA_BLOB, Any]:
 def _protect(data: bytes) -> bytes:
     if sys.platform != "win32":
         return b"PLAIN1:" + data
-    src, keep = _to_blob(data)
+    src, keep = _blob(data)
     dst = _DATA_BLOB()
-    ok = ctypes.windll.crypt32.CryptProtectData(
-        ctypes.byref(src), "VuxGM license", None, None, None, 0x1, ctypes.byref(dst)
-    )
+    ok = ctypes.windll.crypt32.CryptProtectData(ctypes.byref(src), "VuxGM license", None, None, None, 0x1, ctypes.byref(dst))
     _ = keep
     if not ok:
         raise ctypes.WinError()
@@ -186,12 +188,10 @@ def _unprotect(data: bytes) -> bytes:
         if not data.startswith(b"PLAIN1:"):
             raise LicenseError("Không đọc được cache license.")
         return data[7:]
-    src, keep = _to_blob(data)
+    src, keep = _blob(data)
     dst = _DATA_BLOB()
     desc = wintypes.LPWSTR()
-    ok = ctypes.windll.crypt32.CryptUnprotectData(
-        ctypes.byref(src), ctypes.byref(desc), None, None, None, 0x1, ctypes.byref(dst)
-    )
+    ok = ctypes.windll.crypt32.CryptUnprotectData(ctypes.byref(src), ctypes.byref(desc), None, None, None, 0x1, ctypes.byref(dst))
     _ = keep
     if not ok:
         raise ctypes.WinError()
@@ -266,10 +266,7 @@ class LicenseClient:
 
     def _public_key(self) -> Ed25519PublicKey:
         if not self.public_key_b64:
-            raise LicenseError(
-                "App chưa nhúng Ed25519 public key của VuxGM. "
-                "Hãy đặt VUXGM_LICENSE_PUBLIC_KEY trước khi build EXE."
-            )
+            raise LicenseError("App chưa nhúng Ed25519 public key của VuxGM.")
         try:
             raw = base64.b64decode(self.public_key_b64, validate=True)
             if len(raw) != 32:
@@ -309,7 +306,6 @@ class LicenseClient:
             if not allow_grace or now > token_exp + timedelta(days=grace_days):
                 raise LicenseError("Phiên license đã hết hạn, cần kết nối Internet để refresh.")
             offline = True
-
         return LicenseState(key, self.machine_id, dict(payload), signature, offline)
 
     def _save(self, state: LicenseState) -> None:
@@ -404,11 +400,7 @@ class LicenseClient:
             if not state:
                 self.clear_local()
                 return True
-            data = self._request(
-                "license/logout",
-                method="POST",
-                body={"license_key": state.key, "machine_id": self.machine_id},
-            )
+            data = self._request("license/logout", method="POST", body={"license_key": state.key, "machine_id": self.machine_id})
             released = bool(data.get("released"))
             if released:
                 self.clear_local()
