@@ -83,7 +83,8 @@ APP_VERSION = "1.5.72-rebuild"
 
 def app_data_dir() -> Path:
     base = os.environ.get("LOCALAPPDATA") or os.environ.get("APPDATA") or str(Path.home())
-    d = Path(base) / "PeiPeiReup"
+    # Keep clean-rebuild settings isolated from the extracted application's data.
+    d = Path(base) / "VuxGM" / "PeiPeiRebuild"
     d.mkdir(parents=True, exist_ok=True)
     return d
 
@@ -181,7 +182,7 @@ def set_pack_root(path: str) -> Path:
 
 def default_videos_dir(sub: str = "") -> Path:
     base = os.environ.get("USERPROFILE") or str(Path.home())
-    candidates = [Path(base) / "Videos" / "PeiPeiReup", app_data_dir() / "Videos"]
+    candidates = [Path(base) / "Videos" / "PeiPeiRebuild", app_data_dir() / "Videos"]
     for candidate in candidates:
         try:
             d = candidate / sub if sub else candidate
