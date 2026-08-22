@@ -13,10 +13,33 @@ from ..license_client import HEARTBEAT_SECONDS, LicenseClient, LicenseError
 APP_DISPLAY_NAME = "VuxGM Media"
 
 
+def _default_client() -> LicenseClient:
+    # Imported lazily so this dialog can also be used by the legacy bytecode UI,
+    # where bilisub.license_client is replaced by a compatibility facade.
+    from ..vuxgm_license import get_client
+
+    return get_client()
+
+
 class LicenseDialog(QDialog):
-    def __init__(self, client: LicenseClient, parent=None) -> None:
+    def __init__(
+        self,
+        client_or_parent=None,
+        parent=None,
+        *,
+        allow_close: bool = False,
+        client: LicenseClient | None = None,
+    ) -> None:
+        # New rebuild code used LicenseDialog(client, parent).  The old UI used
+        # LicenseDialog(parent, allow_close=True) and LicenseDialog().  Accept all
+        # three forms while routing everything through the VuxGM client.
+        if isinstance(client_or_parent, LicenseClient):
+            client = client_or_parent
+        elif client_or_parent is not None and parent is None:
+            parent = client_or_parent
         super().__init__(parent)
-        self.client = client
+        self.client = client or _default_client()
+        self.allow_close = bool(allow_close)
         self.setWindowTitle(f"Kích hoạt {APP_DISPLAY_NAME}")
         self.setModal(True)
         self.setMinimumWidth(470)
@@ -27,8 +50,8 @@ class LicenseDialog(QDialog):
         root.addWidget(title)
 
         note = QLabel(
-            "Nhập license key để kích hoạt app trên máy này. "
-            "App sẽ xác minh chữ ký Ed25519 trước khi lưu license."
+            "Nhập license key VuxGM để kích hoạt app trên máy này. "
+            "App xác minh chữ ký Ed25519 trước khi lưu license."
         )
         note.setWordWrap(True)
         root.addWidget(note)
@@ -51,7 +74,7 @@ class LicenseDialog(QDialog):
         buy_btn.clicked.connect(lambda: QDesktopServices.openUrl(QUrl(APP_SITE_URL)))
         buttons.addWidget(buy_btn)
 
-        cancel_btn = QPushButton("Thoát")
+        cancel_btn = QPushButton("Để sau" if self.allow_close else "Thoát")
         cancel_btn.clicked.connect(self.reject)
         buttons.addWidget(cancel_btn)
         root.addLayout(buttons)
