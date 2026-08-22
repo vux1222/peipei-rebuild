@@ -1,0 +1,3 @@
+[console_scripts]
+vieneu-stream = apps.web_stream:main
+vieneu-web = apps.gradio_main:main

@@ -1,0 +1,89 @@
+# PeiPei Rebuild
+
+This folder is a clean, editable reconstruction workspace. The extracted `.pyc` reference files on `main` are not modified.
+
+## Current working baseline
+
+The current rebuild can:
+
+- launch a PyQt6 desktop window;
+- inspect a video with FFprobe;
+- import and clean an existing `.srt` file **or run faster-whisper ASR when SRT is blank**;
+- merge very short subtitle cues;
+- export SRT and a basic ASS subtitle track;
+- create a preview clip;
+- render a video with FFmpeg, optionally burning the ASS subtitles;
+- open the project website at `https://vuxgm.site`.
+
+OCR for burned-in subtitles, AI translation, advanced ASS/art-text layout, TTS and the larger production render pipeline are still being reconstructed. The GUI intentionally disables incomplete translation/TTS stages instead of pretending they work.
+
+## Website / API
+
+The clean rebuild defaults to:
+
+```text
+VUXGM_SITE_URL=https://vuxgm.site
+VUXGM_API_BASE=https://vuxgm.site/api
+```
+
+These values belong to this clean rebuild and do not replace or bypass any third-party licensing service from the extracted reference application. Local rebuild settings are isolated under `%LOCALAPPDATA%\VuxGM\PeiPeiRebuild`.
+
+## Run on Windows
+
+Use 64-bit Python 3.13, matching the ABI of the extracted runtime:
+
+```powershell
+cd D:\innoextract670\extracted\app\PeiPeiReup.exe_extracted
+git fetch origin
+git switch rebuild-scaffold
+git pull
+py -3.13 -m pip install -r rebuild_src\requirements-minimal.txt
+py -3.13 rebuild_src\peipei_launch.py
+```
+
+First test options:
+
+- choose a video + existing SRT for the lightest test; or
+- choose only a video and leave SRT blank to let faster-whisper create the transcript.
+
+## FFmpeg
+
+The rebuild searches for FFmpeg in this order: `BILISUB_FFMPEG`, bundled/frozen locations including `_internal\bin`, the working directory, then `PATH`.
+
+If needed in PowerShell:
+
+```powershell
+$env:BILISUB_FFMPEG = "C:\ffmpeg-8.1.2-essentials_build\bin\ffmpeg.exe"
+py -3.13 rebuild_src\peipei_launch.py
+```
+
+To inspect the larger original runtime tree before rebuilding more features:
+
+```powershell
+$env:PEIPEI_APP_ROOT = "D:\innoextract670\extracted\app"
+py -3.13 tools\check_runtime.py
+```
+
+Run the core smoke tests with:
+
+```powershell
+py -3.13 -m unittest -v tests\test_rebuild_core.py
+```
+
+## Source layout
+
+```text
+rebuild_src/
+  peipei_launch.py
+  bilisub/
+    config.py
+    models.py
+    ffmpeg_utils.py
+    srt.py
+    asr.py
+    pipeline.py
+    gui/
+      main_window.py
+```
+
+The next reconstruction targets are burned-subtitle OCR, translation, TTS, and the advanced render layer.

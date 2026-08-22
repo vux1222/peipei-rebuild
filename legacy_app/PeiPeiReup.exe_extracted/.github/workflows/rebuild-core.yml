@@ -1,0 +1,29 @@
+name: rebuild-core
+
+on:
+  push:
+    branches: [rebuild-scaffold]
+  pull_request:
+    branches: [main]
+
+jobs:
+  core-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Compile reconstructed source
+        run: |
+          python -m py_compile \
+            rebuild_src/peipei_launch.py \
+            rebuild_src/bilisub/config.py \
+            rebuild_src/bilisub/models.py \
+            rebuild_src/bilisub/ffmpeg_utils.py \
+            rebuild_src/bilisub/srt.py \
+            rebuild_src/bilisub/asr.py \
+            rebuild_src/bilisub/pipeline.py \
+            rebuild_src/bilisub/gui/main_window.py
+      - name: Run core tests
+        run: python -m unittest -v tests/test_rebuild_core.py

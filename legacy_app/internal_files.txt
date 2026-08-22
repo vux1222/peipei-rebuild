@@ -1,0 +1,2908 @@
+Folder PATH listing for volume New Volume
+Volume serial number is 000002A1 D8B3:BA6F
+D:\INNOEXTRACT670\EXTRACTED\APP\_INTERNAL
+|   81d243bd2c585b0f4821__mypyc.cp313-win_amd64.pyd
+|   base_library.zip
+|   libcrypto-3-x64.dll
+|   libcrypto-3.dll
+|   libffi-8.dll
+|   libssl-3-x64.dll
+|   libssl-3.dll
+|   msvcp140.dll
+|   msvcp140_1.dll
+|   msvcp140_atomic_wait.dll
+|   pyexpat.pyd
+|   python3.dll
+|   python313.dll
+|   select.pyd
+|   sqlite3.dll
+|   unicodedata.pyd
+|   vcruntime140.dll
+|   vcruntime140_1.dll
+|   _asyncio.pyd
+|   _bz2.pyd
+|   _cffi_backend.cp313-win_amd64.pyd
+|   _ctypes.pyd
+|   _decimal.pyd
+|   _elementtree.pyd
+|   _hashlib.pyd
+|   _lzma.pyd
+|   _multiprocessing.pyd
+|   _overlapped.pyd
+|   _queue.pyd
+|   _socket.pyd
+|   _sqlite3.pyd
+|   _ssl.pyd
+|   _uuid.pyd
+|   _wmi.pyd
+|   
++---aiohttp
+|   |   _http_parser.cp313-win_amd64.pyd
+|   |   _http_writer.cp313-win_amd64.pyd
+|   |   
+|   \---_websocket
+|           mask.cp313-win_amd64.pyd
+|           reader_c.cp313-win_amd64.pyd
+|           
++---attrs-26.1.0.dist-info
+|   |   INSTALLER
+|   |   METADATA
+|   |   RECORD
+|   |   WHEEL
+|   |   
+|   \---licenses
+|           LICENSE
+|           
++---av
+|   |   bitstream.pyd
+|   |   buffer.pyd
+|   |   device.pyd
+|   |   dictionary.pyd
+|   |   error.pyd
+|   |   format.pyd
+|   |   frame.pyd
+|   |   index.pyd
+|   |   logging.pyd
+|   |   opaque.pyd
+|   |   packet.pyd
+|   |   plane.pyd
+|   |   stream.pyd
+|   |   utils.pyd
+|   |   _core.pyd
+|   |   
+|   +---audio
+|   |       codeccontext.pyd
+|   |       fifo.pyd
+|   |       format.pyd
+|   |       frame.pyd
+|   |       layout.pyd
+|   |       plane.pyd
+|   |       resampler.pyd
+|   |       stream.pyd
+|   |       
+|   +---codec
+|   |       codec.pyd
+|   |       context.pyd
+|   |       hwaccel.pyd
+|   |       
+|   +---container
+|   |       core.pyd
+|   |       input.pyd
+|   |       output.pyd
+|   |       pyio.pyd
+|   |       streams.pyd
+|   |       
+|   +---filter
+|   |       context.pyd
+|   |       filter.pyd
+|   |       graph.pyd
+|   |       link.pyd
+|   |       loudnorm.pyd
+|   |       
+|   +---sidedata
+|   |       encparams.pyd
+|   |       motionvectors.pyd
+|   |       sidedata.pyd
+|   |       
+|   +---subtitles
+|   |       codeccontext.pyd
+|   |       stream.pyd
+|   |       subtitle.pyd
+|   |       
+|   \---video
+|           codeccontext.pyd
+|           format.pyd
+|           frame.pyd
+|           plane.pyd
+|           reformatter.pyd
+|           stream.pyd
+|           
++---av.libs
+|       avcodec-62-984de33114b7fa384296817dec999c9d.dll
+|       avdevice-62-bf7a3ffbb6a4b577f24a39ea98a958d5.dll
+|       avfilter-11-aef80fc767dc77e0319469b5bdcdf998.dll
+|       avformat-62-b6d6bb16ff0b7753371e2d0b285c9dc0.dll
+|       avutil-60-cc1777f859dcfd98b8019bdf459e774e.dll
+|       libdav1d-959ebc1340f7dfcbcf8e299a26281738.dll
+|       libgcc_s_seh-1-4c0a762e4178b574f72d1ef1f8bb5fc9.dll
+|       libiconv-2-6ce5f4ff92ada49d6f23a8e413455502.dll
+|       libmp3lame-0-da02696cc34a9bbc1d1d4f67a85cfbef.dll
+|       libopencore-amrnb-0-b8933128305cd084d40426d0d2c0d9ef.dll
+|       libopencore-amrwb-0-49da3acfc50704f92538d74aca03c3b8.dll
+|       libopus-0-4369edc456631a3cc933d7918747e5d2.dll
+|       libsharpyuv-8b869e30854bf3db317a2a93d0782c3d.dll
+|       libstdc++-6-2d5c346d47ad531ef9f5185db0e8cef3.dll
+|       libSvtAv1Enc-c4dd99c98ddcdb013e820dbd68a30e26.dll
+|       libvpl-969a52d626b0390fc34f6a4fb0b08d7e.dll
+|       libvpx-1-d869f8b2cb42d58b35545ffbfb0f7509.dll
+|       libwebp-4bf4e57964c7a01c09ce39470d6b67ca.dll
+|       libwebpmux-9cf6581f8709616d9591befbb1a2264b.dll
+|       libwinpthread-1-02332fab016bf884a2a7a7b2ece22ffe.dll
+|       libx264-165-f3a909470ddc2d85ed21eda3d0fb7954.dll
+|       libx265-efe48a158520a59ef99c0a0b3eb835ae.dll
+|       swresample-6-0158536d5c4197d7d623445553ce9472.dll
+|       swscale-9-0c9886c118598c54e159ef2267ff99f3.dll
+|       zlib1-79e0c4f9db71cb511398c504b832d395.dll
+|       
++---bilisub
+|   +---assets
+|   |   |   icon.ico
+|   |   |   logo.png
+|   |   |   logo_src.png
+|   |   |   
+|   |   +---clone_voices
+|   |   |   +---A r?p Nam
+|   |   |   |       A r?p Nam.json
+|   |   |   |       A r?p Nam.pt
+|   |   |   |       
+|   |   |   +---Adam1
+|   |   |   |       Adam1.json
+|   |   |   |       Adam1.pt
+|   |   |   |       
+|   |   |   +---Alberto (TBN nam)
+|   |   |   |       Alberto (TBN nam).json
+|   |   |   |       Alberto (TBN nam).pt
+|   |   |   |       
+|   |   |   +---Aria Bloom (TBN n?)
+|   |   |   |       Aria Bloom (TBN n?).json
+|   |   |   |       Aria Bloom (TBN n?).pt
+|   |   |   |       
+|   |   |   +---El Faraon (TBN nam)
+|   |   |   |       El Faraon (TBN nam).json
+|   |   |   |       El Faraon (TBN nam).pt
+|   |   |   |       
+|   |   |   +---Gi?ng ti?u thuy?t 1
+|   |   |   |       Gi?ng ti?u thuy?t 1.json
+|   |   |   |       Gi?ng ti?u thuy?t 1.pt
+|   |   |   |       
+|   |   |   +---Gi?ng ti?u thuy?t 2
+|   |   |   |       Gi?ng ti?u thuy?t 2.json
+|   |   |   |       Gi?ng ti?u thuy?t 2.pt
+|   |   |   |       
+|   |   |   +---Gi?ng Tu Tiên Vip 2
+|   |   |   |       Gi?ng Tu Tiên Vip 2.json
+|   |   |   |       Gi?ng Tu Tiên Vip 2.pt
+|   |   |   |       
+|   |   |   +---Marcela (TBN n?)
+|   |   |   |       Marcela (TBN n?).json
+|   |   |   |       Marcela (TBN n?).pt
+|   |   |   |       
+|   |   |   +---Ng?c Huy?n VBee 2.0
+|   |   |   |       Ng?c Huy?n VBee 2.0.json
+|   |   |   |       Ng?c Huy?n VBee 2.0.pt
+|   |   |   |       
+|   |   |   +---Phuong Th?o
+|   |   |   |       Phuong Th?o.json
+|   |   |   |       Phuong Th?o.pt
+|   |   |   |       
+|   |   |   +---StickMan Human
+|   |   |   |       StickMan Human.json
+|   |   |   |       StickMan Human.pt
+|   |   |   |       
+|   |   |   +---StickManHistory
+|   |   |   |       StickManHistory.json
+|   |   |   |       StickManHistory.pt
+|   |   |   |       
+|   |   |   +---Thi?n Tâm
+|   |   |   |       Thi?n Tâm.json
+|   |   |   |       Thi?n Tâm.pt
+|   |   |   |       
+|   |   |   \---? r?p n?
+|   |   |           ? r?p n?.json
+|   |   |           ? r?p n?.pt
+|   |   |           
+|   |   \---vieneu_voices
+|   |           voices_v3_turbo.json
+|   |           
+|   \---tts
+|           omnivoice_server.py
+|           
++---bin
+|       ffmpeg.exe
+|       ffprobe.exe
+|       
++---certifi
+|       cacert.pem
+|       py.typed
+|       
++---charset_normalizer
+|       cd.cp313-win_amd64.pyd
+|       md.cp313-win_amd64.pyd
+|       
++---click-8.4.2.dist-info
+|   |   INSTALLER
+|   |   METADATA
+|   |   RECORD
+|   |   WHEEL
+|   |   
+|   \---licenses
+|           LICENSE.txt
+|           
++---cryptography
+|   |   exceptions.py
+|   |   fernet.py
+|   |   py.typed
+|   |   utils.py
+|   |   __about__.py
+|   |   __init__.py
+|   |   
+|   +---hazmat
+|   |   |   _oid.py
+|   |   |   __init__.py
+|   |   |   
+|   |   +---asn1
+|   |   |       asn1.py
+|   |   |       __init__.py
+|   |   |       
+|   |   +---backends
+|   |   |   |   __init__.py
+|   |   |   |   
+|   |   |   \---openssl
+|   |   |           backend.py
+|   |   |           __init__.py
+|   |   |           
+|   |   +---bindings
+|   |   |   |   _rust.pyd
+|   |   |   |   __init__.py
+|   |   |   |   
+|   |   |   +---openssl
+|   |   |   |       binding.py
+|   |   |   |       _conditional.py
+|   |   |   |       __init__.py
+|   |   |   |       
+|   |   |   \---_rust
+|   |   |       |   asn1.pyi
+|   |   |       |   declarative_asn1.pyi
+|   |   |       |   exceptions.pyi
+|   |   |       |   ocsp.pyi
+|   |   |       |   pkcs12.pyi
+|   |   |       |   pkcs7.pyi
+|   |   |       |   test_support.pyi
+|   |   |       |   x509.pyi
+|   |   |       |   _openssl.pyi
+|   |   |       |   __init__.pyi
+|   |   |       |   
+|   |   |       \---openssl
+|   |   |               aead.pyi
+|   |   |               ciphers.pyi
+|   |   |               cmac.pyi
+|   |   |               dh.pyi
+|   |   |               dsa.pyi
+|   |   |               ec.pyi
+|   |   |               ed25519.pyi
+|   |   |               ed448.pyi
+|   |   |               hashes.pyi
+|   |   |               hmac.pyi
+|   |   |               hpke.pyi
+|   |   |               kdf.pyi
+|   |   |               keys.pyi
+|   |   |               mldsa.pyi
+|   |   |               mlkem.pyi
+|   |   |               poly1305.pyi
+|   |   |               rsa.pyi
+|   |   |               x25519.pyi
+|   |   |               x448.pyi
+|   |   |               __init__.pyi
+|   |   |               
+|   |   +---decrepit
+|   |   |   |   __init__.py
+|   |   |   |   
+|   |   |   \---ciphers
+|   |   |           algorithms.py
+|   |   |           modes.py
+|   |   |           __init__.py
+|   |   |           
+|   |   \---primitives
+|   |       |   cmac.py
+|   |       |   constant_time.py
+|   |       |   hashes.py
+|   |       |   hmac.py
+|   |       |   hpke.py
+|   |       |   keywrap.py
+|   |       |   padding.py
+|   |       |   poly1305.py
+|   |       |   _asymmetric.py
+|   |       |   _cipheralgorithm.py
+|   |       |   _modes.py
+|   |       |   _serialization.py
+|   |       |   __init__.py
+|   |       |   
+|   |       +---asymmetric
+|   |       |       dh.py
+|   |       |       dsa.py
+|   |       |       ec.py
+|   |       |       ed25519.py
+|   |       |       ed448.py
+|   |       |       mldsa.py
+|   |       |       mlkem.py
+|   |       |       padding.py
+|   |       |       rsa.py
+|   |       |       types.py
+|   |       |       utils.py
+|   |       |       x25519.py
+|   |       |       x448.py
+|   |       |       __init__.py
+|   |       |       
+|   |       +---ciphers
+|   |       |       aead.py
+|   |       |       algorithms.py
+|   |       |       base.py
+|   |       |       modes.py
+|   |       |       __init__.py
+|   |       |       
+|   |       +---kdf
+|   |       |       argon2.py
+|   |       |       concatkdf.py
+|   |       |       hkdf.py
+|   |       |       kbkdf.py
+|   |       |       pbkdf2.py
+|   |       |       scrypt.py
+|   |       |       x963kdf.py
+|   |       |       __init__.py
+|   |       |       
+|   |       +---serialization
+|   |       |       base.py
+|   |       |       pkcs12.py
+|   |       |       pkcs7.py
+|   |       |       ssh.py
+|   |       |       __init__.py
+|   |       |       
+|   |       \---twofactor
+|   |               hotp.py
+|   |               totp.py
+|   |               __init__.py
+|   |               
+|   \---x509
+|           base.py
+|           certificate_transparency.py
+|           extensions.py
+|           general_name.py
+|           name.py
+|           ocsp.py
+|           oid.py
+|           verification.py
+|           __init__.py
+|           
++---cryptography-49.0.0.dist-info
+|   |   INSTALLER
+|   |   METADATA
+|   |   RECORD
+|   |   REQUESTED
+|   |   WHEEL
+|   |   
+|   +---licenses
+|   |       LICENSE
+|   |       LICENSE.APACHE
+|   |       LICENSE.BSD
+|   |       
+|   \---sboms
+|           cryptography-rust.cyclonedx.json
+|           sbom.json
+|           
++---ctranslate2
+|   |   ctranslate2.dll
+|   |   extensions.py
+|   |   libiomp5md.dll
+|   |   logging.py
+|   |   version.py
+|   |   _ext.cp313-win_amd64.pyd
+|   |   __init__.py
+|   |   
+|   +---converters
+|   |       converter.py
+|   |       eole_ct2.py
+|   |       fairseq.py
+|   |       marian.py
+|   |       openai_gpt2.py
+|   |       opennmt_py.py
+|   |       opennmt_tf.py
+|   |       opus_mt.py
+|   |       transformers.py
+|   |       utils.py
+|   |       __init__.py
+|   |       
+|   +---models
+|   |       __init__.py
+|   |       
+|   \---specs
+|           attention_spec.py
+|           common_spec.py
+|           model_spec.py
+|           transformer_spec.py
+|           wav2vec2bert_spec.py
+|           wav2vec2_spec.py
+|           whisper_spec.py
+|           __init__.py
+|           
++---ctranslate2-4.8.1.dist-info
+|       entry_points.txt
+|       INSTALLER
+|       METADATA
+|       RECORD
+|       top_level.txt
+|       WHEEL
+|       
++---cv2
+|   |   config-3.py
+|   |   config.py
+|   |   cv2.pyd
+|   |   load_config_py3.py
+|   |   opencv_videoio_ffmpeg500_64.dll
+|   |   version.py
+|   |   __init__.py
+|   |   
+|   +---data
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           __init__.cpython-313.pyc
+|   |           
+|   +---mat_wrapper
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           __init__.cpython-313.pyc
+|   |           
+|   +---misc
+|   |   |   version.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           version.cpython-313.pyc
+|   |           __init__.cpython-313.pyc
+|   |           
+|   +---typing
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           __init__.cpython-313.pyc
+|   |           
+|   +---utils
+|   |   |   __init__.py
+|   |   |   
+|   |   \---__pycache__
+|   |           __init__.cpython-313.pyc
+|   |           
+|   \---__pycache__
+|           load_config_py3.cpython-313.pyc
+|           version.cpython-313.pyc
+|           __init__.cpython-313.pyc
+|           
++---edge_tts
+|       communicate.py
+|       constants.py
+|       data_classes.py
+|       drm.py
+|       exceptions.py
+|       py.typed
+|       srt_composer.py
+|       submaker.py
+|       typing.py
+|       util.py
+|       version.py
+|       voices.py
+|       __init__.py
+|       __main__.py
+|       
++---edge_tts-7.2.8.dist-info
+|   |   entry_points.txt
+|   |   INSTALLER
+|   |   METADATA
+|   |   RECORD
+|   |   REQUESTED
+|   |   top_level.txt
+|   |   WHEEL
+|   |   
+|   \---licenses
+|           LICENSE
+|           
++---faster_whisper
+|   |   audio.py
+|   |   feature_extractor.py
+|   |   tokenizer.py
+|   |   transcribe.py
+|   |   utils.py
+|   |   vad.py
+|   |   version.py
+|   |   __init__.py
+|   |   
+|   \---assets
+|           silero_vad_v6.onnx
+|           __init__.py
+|           
++---faster_whisper-1.2.1.dist-info
+|       INSTALLER
+|       LICENSE
+|       METADATA
+|       RECORD
+|       REQUESTED
+|       top_level.txt
+|       WHEEL
+|       
++---frozenlist
+|       _frozenlist.cp313-win_amd64.pyd
+|       
++---hf_xet
+|       hf_xet.pyd
+|       
++---huggingface_hub
+|   |   community.py
+|   |   constants.py
+|   |   dataclasses.py
+|   |   errors.py
+|   |   fastai_utils.py
+|   |   file_download.py
+|   |   hf_api.py
+|   |   hf_file_system.py
+|   |   hub_mixin.py
+|   |   lfs.py
+|   |   py.typed
+|   |   repocard.py
+|   |   repocard_data.py
+|   |   _buckets.py
+|   |   _commit_api.py
+|   |   _commit_scheduler.py
+|   |   _dataset_viewer.py
+|   |   _eval_results.py
+|   |   _inference_endpoints.py
+|   |   _jobs_api.py
+|   |   _local_folder.py
+|   |   _login.py
+|   |   _oauth.py
+|   |   _oidc.py
+|   |   _sandbox.py
+|   |   _sandbox_cache.py
+|   |   _snapshot_download.py
+|   |   _space_api.py
+|   |   _tensorboard_logger.py
+|   |   _tree_cache.py
+|   |   _upload_large_folder.py
+|   |   _upload_pipeline.py
+|   |   _webhooks_payload.py
+|   |   _webhooks_server.py
+|   |   __init__.py
+|   |   
+|   +---cli
+|   |       auth.py
+|   |       buckets.py
+|   |       cache.py
+|   |       collections.py
+|   |       datasets.py
+|   |       deprecated_cli.py
+|   |       discussions.py
+|   |       download.py
+|   |       extensions.py
+|   |       hf.py
+|   |       inference_endpoints.py
+|   |       jobs.py
+|   |       lfs.py
+|   |       models.py
+|   |       papers.py
+|   |       repos.py
+|   |       repo_files.py
+|   |       sandbox.py
+|   |       skills.py
+|   |       spaces.py
+|   |       system.py
+|   |       upload.py
+|   |       upload_large_folder.py
+|   |       webhooks.py
+|   |       _city_game.py
+|   |       _cli_utils.py
+|   |       _completion.py
+|   |       _cp.py
+|   |       _errors.py
+|   |       _file_listing.py
+|   |       _framework.py
+|   |       _help_formatter.py
+|   |       _output.py
+|   |       _skills.py
+|   |       __init__.py
+|   |       
+|   +---inference
+|   |   |   _client.py
+|   |   |   _common.py
+|   |   |   __init__.py
+|   |   |   
+|   |   +---_generated
+|   |   |   |   _async_client.py
+|   |   |   |   __init__.py
+|   |   |   |   
+|   |   |   \---types
+|   |   |           audio_classification.py
+|   |   |           audio_to_audio.py
+|   |   |           automatic_speech_recognition.py
+|   |   |           base.py
+|   |   |           chat_completion.py
+|   |   |           depth_estimation.py
+|   |   |           document_question_answering.py
+|   |   |           feature_extraction.py
+|   |   |           fill_mask.py
+|   |   |           image_classification.py
+|   |   |           image_segmentation.py
+|   |   |           image_text_to_image.py
+|   |   |           image_text_to_video.py
+|   |   |           image_to_image.py
+|   |   |           image_to_text.py
+|   |   |           image_to_video.py
+|   |   |           object_detection.py
+|   |   |           question_answering.py
+|   |   |           sentence_similarity.py
+|   |   |           summarization.py
+|   |   |           table_question_answering.py
+|   |   |           text2text_generation.py
+|   |   |           text_classification.py
+|   |   |           text_generation.py
+|   |   |           text_to_audio.py
+|   |   |           text_to_image.py
+|   |   |           text_to_speech.py
+|   |   |           text_to_video.py
+|   |   |           token_classification.py
+|   |   |           translation.py
+|   |   |           video_classification.py
+|   |   |           visual_question_answering.py
+|   |   |           zero_shot_classification.py
+|   |   |           zero_shot_image_classification.py
+|   |   |           zero_shot_object_detection.py
+|   |   |           __init__.py
+|   |   |           
+|   |   +---_mcp
+|   |   |       agent.py
+|   |   |       cli.py
+|   |   |       constants.py
+|   |   |       mcp_client.py
+|   |   |       types.py
+|   |   |       utils.py
+|   |   |       _cli_hacks.py
+|   |   |       __init__.py
+|   |   |       
+|   |   \---_providers
+|   |           cerebras.py
+|   |           cohere.py
+|   |           deepinfra.py
+|   |           fal_ai.py
+|   |           featherless_ai.py
+|   |           fireworks_ai.py
+|   |           groq.py
+|   |           hf_inference.py
+|   |           novita.py
+|   |           nscale.py
+|   |           openai.py
+|   |           ovhcloud.py
+|   |           publicai.py
+|   |           replicate.py
+|   |           scaleway.py
+|   |           together.py
+|   |           wavespeed.py
+|   |           zai_org.py
+|   |           _common.py
+|   |           __init__.py
+|   |           
+|   +---serialization
+|   |       _base.py
+|   |       _dduf.py
+|   |       _torch.py
+|   |       __init__.py
+|   |       
+|   +---templates
+|   |       datasetcard_template.md
+|   |       modelcard_template.md
+|   |       
+|   +---utils
+|   |       endpoint_helpers.py
+|   |       insecure_hashlib.py
+|   |       logging.py
+|   |       sha.py
+|   |       tqdm.py
+|   |       _auth.py
+|   |       _cache_assets.py
+|   |       _cache_manager.py
+|   |       _chunk_utils.py
+|   |       _datetime.py
+|   |       _deprecation.py
+|   |       _detect_agent.py
+|   |       _dotenv.py
+|   |       _experimental.py
+|   |       _fixes.py
+|   |       _git_credential.py
+|   |       _headers.py
+|   |       _hf_uris.py
+|   |       _http.py
+|   |       _lfs.py
+|   |       _oauth_device.py
+|   |       _pagination.py
+|   |       _parsing.py
+|   |       _paths.py
+|   |       _runtime.py
+|   |       _safetensors.py
+|   |       _subprocess.py
+|   |       _telemetry.py
+|   |       _terminal.py
+|   |       _typing.py
+|   |       _validators.py
+|   |       _verification.py
+|   |       _xet.py
+|   |       _xet_progress_reporting.py
+|   |       __init__.py
+|   |       
+|   \---_hot_reload
+|           client.py
+|           sse_client.py
+|           types.py
+|           __init__.py
+|           
++---huggingface_hub-1.22.0.dist-info
+|   |   entry_points.txt
+|   |   INSTALLER
+|   |   METADATA
+|   |   RECORD
+|   |   top_level.txt
+|   |   WHEEL
+|   |   
+|   \---licenses
+|           LICENSE
+|           
++---multidict
+|       _multidict.cp313-win_amd64.pyd
+|       
++---numpy
+|   +---fft
+|   |       _pocketfft_umath.cp313-win_amd64.pyd
+|   |       
+|   +---linalg
+|   |       _umath_linalg.cp313-win_amd64.pyd
+|   |       
+|   +---random
+|   |       bit_generator.cp313-win_amd64.pyd
+|   |       mtrand.cp313-win_amd64.pyd
+|   |       _bounded_integers.cp313-win_amd64.pyd
+|   |       _common.cp313-win_amd64.pyd
+|   |       _generator.cp313-win_amd64.pyd
+|   |       _mt19937.cp313-win_amd64.pyd
+|   |       _pcg64.cp313-win_amd64.pyd
+|   |       _philox.cp313-win_amd64.pyd
+|   |       _sfc64.cp313-win_amd64.pyd
+|   |       
+|   \---_core
+|           _multiarray_tests.cp313-win_amd64.pyd
+|           _multiarray_umath.cp313-win_amd64.pyd
+|           
++---numpy-2.5.0.dist-info
+|   |   DELVEWHEEL
+|   |   entry_points.txt
+|   |   INSTALLER
+|   |   METADATA
+|   |   RECORD
+|   |   REQUESTED
+|   |   WHEEL
+|   |   
+|   \---licenses
+|       |   LICENSE.txt
+|       |   
+|       \---numpy
+|           +---fft
+|           |   \---pocketfft
+|           |           LICENSE.md
+|           |           
+|           +---linalg
+|           |   \---lapack_lite
+|           |           LICENSE.txt
+|           |           
+|           +---ma
+|           |       LICENSE
+|           |       
+|           +---random
+|           |   |   LICENSE.md
+|           |   |   
+|           |   \---src
+|           |       +---distributions
+|           |       |       LICENSE.md
+|           |       |       
+|           |       +---mt19937
+|           |       |       LICENSE.md
+|           |       |       
+|           |       +---pcg64
+|           |       |       LICENSE.md
+|           |       |       
+|           |       +---philox
+|           |       |       LICENSE.md
+|           |       |       
+|           |       +---sfc64
+|           |       |       LICENSE.md
+|           |       |       
+|           |       \---splitmix64
+|           |               LICENSE.md
+|           |               
+|           \---_core
+|               +---include
+|               |   \---numpy
+|               |       \---libdivide
+|               |               LICENSE.txt
+|               |               
+|               \---src
+|                   +---common
+|                   |   \---pythoncapi-compat
+|                   |           COPYING
+|                   |           
+|                   +---highway
+|                   |       LICENSE
+|                   |       
+|                   +---multiarray
+|                   |       dragon4_LICENSE.txt
+|                   |       
+|                   +---npysort
+|                   |   \---x86-simd-sort
+|                   |           LICENSE.md
+|                   |           
+|                   \---umath
+|                       \---svml
+|                               LICENSE
+|                               
++---numpy.libs
+|       libscipy_openblas64_-b788215d9d47792bcba3a2e2a7114320.dll
+|       msvcp140-a4c2229bdc2a2a630acdc095b4d86008.dll
+|       
++---onnxruntime
+|   |   LICENSE
+|   |   Privacy.md
+|   |   ThirdPartyNotices.txt
+|   |   __init__.py
+|   |   
+|   +---backend
+|   |       backend.py
+|   |       backend_rep.py
+|   |       __init__.py
+|   |       
+|   +---capi
+|   |       build_and_package_info.py
+|   |       convert_npz_to_onnx_adapter.py
+|   |       onnxruntime.dll
+|   |       onnxruntime_collect_build_info.py
+|   |       onnxruntime_inference_collection.py
+|   |       onnxruntime_providers_cuda.dll
+|   |       onnxruntime_providers_shared.dll
+|   |       onnxruntime_providers_tensorrt.dll
+|   |       onnxruntime_pybind11_state.pyd
+|   |       onnxruntime_validation.py
+|   |       version_info.py
+|   |       _ld_preload.py
+|   |       _pybind_state.py
+|   |       __init__.py
+|   |       
+|   +---datasets
+|   |       logreg_iris.onnx
+|   |       mul_1.onnx
+|   |       sigmoid.onnx
+|   |       __init__.py
+|   |       
+|   +---quantization
+|   |   |   base_quantizer.py
+|   |   |   calibrate.py
+|   |   |   matmul_bnb4_quantizer.py
+|   |   |   matmul_nbits_quantizer.py
+|   |   |   onnx_model.py
+|   |   |   onnx_quantizer.py
+|   |   |   preprocess.py
+|   |   |   qdq_loss_debug.py
+|   |   |   qdq_quantizer.py
+|   |   |   quantize.py
+|   |   |   quant_utils.py
+|   |   |   registry.py
+|   |   |   shape_inference.py
+|   |   |   static_quantize_runner.py
+|   |   |   tensor_quant_overrides.py
+|   |   |   __init__.py
+|   |   |   
+|   |   +---CalTableFlatBuffers
+|   |   |       KeyValue.py
+|   |   |       TrtTable.py
+|   |   |       __init__.py
+|   |   |       
+|   |   +---execution_providers
+|   |   |   \---qnn
+|   |   |           fusion_lpnorm.py
+|   |   |           fusion_spacetodepth.py
+|   |   |           mixed_precision_overrides_utils.py
+|   |   |           preprocess.py
+|   |   |           quant_config.py
+|   |   |           __init__.py
+|   |   |           
+|   |   +---fusions
+|   |   |       fusion.py
+|   |   |       fusion_gelu.py
+|   |   |       fusion_layernorm.py
+|   |   |       replace_upsample_with_resize.py
+|   |   |       __init__.py
+|   |   |       
+|   |   +---neural_compressor
+|   |   |       onnx_model.py
+|   |   |       util.py
+|   |   |       weight_only.py
+|   |   |       __init__.py
+|   |   |       
+|   |   \---operators
+|   |           activation.py
+|   |           argmax.py
+|   |           attention.py
+|   |           base_operator.py
+|   |           binary_op.py
+|   |           concat.py
+|   |           conv.py
+|   |           direct_q8.py
+|   |           embed_layernorm.py
+|   |           gather.py
+|   |           gavgpool.py
+|   |           gemm.py
+|   |           lstm.py
+|   |           matmul.py
+|   |           maxpool.py
+|   |           norm.py
+|   |           pad.py
+|   |           pooling.py
+|   |           qdq_base_operator.py
+|   |           resize.py
+|   |           softmax.py
+|   |           split.py
+|   |           where.py
+|   |           __init__.py
+|   |           
+|   +---tools
+|   |   |   check_onnx_model_mobile_usability.py
+|   |   |   convert_onnx_models_to_ort.py
+|   |   |   file_utils.py
+|   |   |   logger.py
+|   |   |   make_dynamic_shape_fixed.py
+|   |   |   offline_tuning.py
+|   |   |   onnxruntime_test.py
+|   |   |   onnx_model_utils.py
+|   |   |   onnx_randomizer.py
+|   |   |   optimize_onnx_model.py
+|   |   |   pytorch_export_contrib_ops.py
+|   |   |   pytorch_export_helpers.py
+|   |   |   reduced_build_config_parser.py
+|   |   |   remove_initializer_from_input.py
+|   |   |   symbolic_shape_infer.py
+|   |   |   update_onnx_opset.py
+|   |   |   __init__.py
+|   |   |   
+|   |   +---mobile_helpers
+|   |   |       coreml_supported_mlprogram_ops.md
+|   |   |       coreml_supported_neuralnetwork_ops.md
+|   |   |       nnapi_supported_ops.md
+|   |   |       usability_checker.py
+|   |   |       __init__.py
+|   |   |       
+|   |   +---ort_format_model
+|   |   |   |   operator_type_usage_processors.py
+|   |   |   |   ort_model_processor.py
+|   |   |   |   types.py
+|   |   |   |   utils.py
+|   |   |   |   __init__.py
+|   |   |   |   
+|   |   |   \---ort_flatbuffers_py
+|   |   |       |   __init__.py
+|   |   |       |   
+|   |   |       \---fbs
+|   |   |               ArgType.py
+|   |   |               ArgTypeAndIndex.py
+|   |   |               Attribute.py
+|   |   |               AttributeType.py
+|   |   |               Checkpoint.py
+|   |   |               DeprecatedKernelCreateInfos.py
+|   |   |               DeprecatedNodeIndexAndKernelDefHash.py
+|   |   |               DeprecatedSessionState.py
+|   |   |               DeprecatedSubGraphSessionState.py
+|   |   |               Dimension.py
+|   |   |               DimensionValue.py
+|   |   |               DimensionValueType.py
+|   |   |               EdgeEnd.py
+|   |   |               FloatProperty.py
+|   |   |               Graph.py
+|   |   |               InferenceSession.py
+|   |   |               IntProperty.py
+|   |   |               KernelTypeStrArgsEntry.py
+|   |   |               KernelTypeStrResolver.py
+|   |   |               MapType.py
+|   |   |               Model.py
+|   |   |               ModuleState.py
+|   |   |               Node.py
+|   |   |               NodeEdge.py
+|   |   |               NodesToOptimizeIndices.py
+|   |   |               NodeType.py
+|   |   |               OperatorSetId.py
+|   |   |               OpIdKernelTypeStrArgsEntry.py
+|   |   |               OptimizerGroup.py
+|   |   |               ParameterOptimizerState.py
+|   |   |               PropertyBag.py
+|   |   |               RuntimeOptimizationRecord.py
+|   |   |               RuntimeOptimizationRecordContainerEntry.py
+|   |   |               RuntimeOptimizations.py
+|   |   |               SequenceType.py
+|   |   |               Shape.py
+|   |   |               SparseTensor.py
+|   |   |               StringProperty.py
+|   |   |               StringStringEntry.py
+|   |   |               Tensor.py
+|   |   |               TensorDataType.py
+|   |   |               TensorTypeAndShape.py
+|   |   |               TypeInfo.py
+|   |   |               TypeInfoValue.py
+|   |   |               ValueInfo.py
+|   |   |               __init__.py
+|   |   |               
+|   |   +---qdq_helpers
+|   |   |       optimize_qdq_model.py
+|   |   |       __init__.py
+|   |   |       
+|   |   \---qnn
+|   |           add_trans_cast.py
+|   |           gen_qnn_ctx_onnx_model.py
+|   |           preprocess.py
+|   |           
+|   \---transformers
+|       |   affinity_helper.py
+|       |   benchmark.py
+|       |   benchmark_helper.py
+|       |   bert_perf_test.py
+|       |   bert_test_data.py
+|       |   compare_bert_results.py
+|       |   constants.py
+|       |   convert_generation.py
+|       |   convert_tf_models_to_pytorch.py
+|       |   convert_to_packing_mode.py
+|       |   dynamo_onnx_helper.py
+|       |   float16.py
+|       |   fusion_attention.py
+|       |   fusion_attention_clip.py
+|       |   fusion_attention_sam2.py
+|       |   fusion_attention_unet.py
+|       |   fusion_attention_vae.py
+|       |   fusion_bart_attention.py
+|       |   fusion_base.py
+|       |   fusion_biasgelu.py
+|       |   fusion_biassplitgelu.py
+|       |   fusion_bias_add.py
+|       |   fusion_conformer_attention.py
+|       |   fusion_constant_fold.py
+|       |   fusion_embedlayer.py
+|       |   fusion_fastgelu.py
+|       |   fusion_gelu.py
+|       |   fusion_gelu_approximation.py
+|       |   fusion_gemmfastgelu.py
+|       |   fusion_gpt_attention.py
+|       |   fusion_gpt_attention_megatron.py
+|       |   fusion_gpt_attention_no_past.py
+|       |   fusion_group_norm.py
+|       |   fusion_layernorm.py
+|       |   fusion_mha_dit.py
+|       |   fusion_mha_mmdit.py
+|       |   fusion_nhwc_conv.py
+|       |   fusion_options.py
+|       |   fusion_qordered_attention.py
+|       |   fusion_qordered_gelu.py
+|       |   fusion_qordered_layernorm.py
+|       |   fusion_qordered_matmul.py
+|       |   fusion_quickgelu.py
+|       |   fusion_reshape.py
+|       |   fusion_rotary_attention.py
+|       |   fusion_shape.py
+|       |   fusion_simplified_layernorm.py
+|       |   fusion_skiplayernorm.py
+|       |   fusion_skip_group_norm.py
+|       |   fusion_transpose.py
+|       |   fusion_utils.py
+|       |   huggingface_models.py
+|       |   import_utils.py
+|       |   io_binding_helper.py
+|       |   large_model_exporter.py
+|       |   machine_info.py
+|       |   metrics.py
+|       |   onnx_exporter.py
+|       |   onnx_model.py
+|       |   onnx_model_bart.py
+|       |   onnx_model_bert.py
+|       |   onnx_model_bert_keras.py
+|       |   onnx_model_bert_tf.py
+|       |   onnx_model_clip.py
+|       |   onnx_model_conformer.py
+|       |   onnx_model_gpt2.py
+|       |   onnx_model_mmdit.py
+|       |   onnx_model_phi.py
+|       |   onnx_model_sam2.py
+|       |   onnx_model_t5.py
+|       |   onnx_model_tnlr.py
+|       |   onnx_model_unet.py
+|       |   onnx_model_vae.py
+|       |   onnx_utils.py
+|       |   optimizer.py
+|       |   past_helper.py
+|       |   profiler.py
+|       |   profile_result_processor.py
+|       |   quantize_helper.py
+|       |   shape_infer_helper.py
+|       |   shape_optimizer.py
+|       |   torch_onnx_export_helper.py
+|       |   __init__.py
+|       |   
+|       \---models
+|           +---bart
+|           |       export.py
+|           |       __init__.py
+|           |       
+|           +---bert
+|           |       eval_squad.py
+|           |       __init__.py
+|           |       
+|           +---gpt2
+|           |       benchmark_gpt2.py
+|           |       convert_to_onnx.py
+|           |       gpt2_helper.py
+|           |       gpt2_parity.py
+|           |       gpt2_tester.py
+|           |       parity_check_helper.py
+|           |       __init__.py
+|           |       
+|           +---llama
+|           |       benchmark.py
+|           |       benchmark_all.py
+|           |       benchmark_e2e.py
+|           |       convert_to_onnx.py
+|           |       dist_settings.py
+|           |       llama_inputs.py
+|           |       llama_parity.py
+|           |       llama_torch.py
+|           |       quant_kv_dataloader.py
+|           |       __init__.py
+|           |       
+|           +---longformer
+|           |       benchmark_longformer.py
+|           |       convert_to_onnx.py
+|           |       generate_test_data.py
+|           |       longformer_helper.py
+|           |       __init__.py
+|           |       
+|           +---phi2
+|           |       convert_to_onnx.py
+|           |       inference_example.py
+|           |       __init__.py
+|           |       
+|           +---sam2
+|           |       benchmark_sam2.py
+|           |       convert_to_onnx.py
+|           |       image_decoder.py
+|           |       image_encoder.py
+|           |       mask_decoder.py
+|           |       nvtx_helper.py
+|           |       prompt_encoder.py
+|           |       sam2_demo.py
+|           |       sam2_image_onnx_predictor.py
+|           |       sam2_utils.py
+|           |       __init__.py
+|           |       
+|           +---stable_diffusion
+|           |       benchmark.py
+|           |       benchmark_controlnet.py
+|           |       demo_txt2img.py
+|           |       demo_txt2img_xl.py
+|           |       demo_utils.py
+|           |       diffusion_models.py
+|           |       diffusion_schedulers.py
+|           |       engine_builder.py
+|           |       engine_builder_ort_cuda.py
+|           |       engine_builder_ort_trt.py
+|           |       engine_builder_tensorrt.py
+|           |       engine_builder_torch.py
+|           |       optimize_pipeline.py
+|           |       ort_optimizer.py
+|           |       pipeline_stable_diffusion.py
+|           |       trt_utilities.py
+|           |       __init__.py
+|           |       
+|           +---t5
+|           |       convert_to_onnx.py
+|           |       t5_decoder.py
+|           |       t5_encoder.py
+|           |       t5_encoder_decoder_init.py
+|           |       t5_helper.py
+|           |       __init__.py
+|           |       
+|           \---whisper
+|                   benchmark.py
+|                   benchmark_all.py
+|                   convert_to_onnx.py
+|                   whisper_chain.py
+|                   whisper_decoder.py
+|                   whisper_encoder.py
+|                   whisper_encoder_decoder_init.py
+|                   whisper_helper.py
+|                   whisper_inputs.py
+|                   whisper_jump_times.py
+|                   __init__.py
+|                   
++---onnxruntime-1.27.0.dist-info
+|       entry_points.txt
+|       INSTALLER
+|       METADATA
+|       RECORD
+|       top_level.txt
+|       WHEEL
+|       
++---onnxruntime_gpu-1.22.0.dist-info
+|       entry_points.txt
+|       INSTALLER
+|       METADATA
+|       RECORD
+|       REQUESTED
+|       top_level.txt
+|       WHEEL
+|       
++---PIL
+|       _avif.cp313-win_amd64.pyd
+|       _imaging.cp313-win_amd64.pyd
+|       _imagingcms.cp313-win_amd64.pyd
+|       _imagingft.cp313-win_amd64.pyd
+|       _imagingmath.cp313-win_amd64.pyd
+|       _imagingtk.cp313-win_amd64.pyd
+|       _webp.cp313-win_amd64.pyd
+|       
++---propcache
+|       _helpers_c.cp313-win_amd64.pyd
+|       
++---pyclipper
+|       _pyclipper.cp313-win_amd64.pyd
+|       
++---pypinyin
+|   |   compat.py
+|   |   compat.pyi
+|   |   constants.py
+|   |   constants.pyi
+|   |   converter.py
+|   |   converter.pyi
+|   |   core.py
+|   |   core.pyi
+|   |   exceptions.py
+|   |   exceptions.pyi
+|   |   phonetic_symbol.py
+|   |   phonetic_symbol.pyi
+|   |   phrases_dict.json
+|   |   phrases_dict.py
+|   |   phrases_dict.pyi
+|   |   pinyin_dict.json
+|   |   pinyin_dict.py
+|   |   pinyin_dict.pyi
+|   |   py.typed
+|   |   runner.py
+|   |   runner.pyi
+|   |   standard.py
+|   |   standard.pyi
+|   |   utils.py
+|   |   utils.pyi
+|   |   __init__.py
+|   |   __init__.pyi
+|   |   __main__.py
+|   |   
+|   +---contrib
+|   |       mmseg.py
+|   |       mmseg.pyi
+|   |       neutral_tone.py
+|   |       neutral_tone.pyi
+|   |       tone_convert.py
+|   |       tone_convert.pyi
+|   |       tone_sandhi.py
+|   |       tone_sandhi.pyi
+|   |       uv.py
+|   |       uv.pyi
+|   |       _tone_rule.py
+|   |       _tone_rule.pyi
+|   |       __init__.py
+|   |       
+|   +---seg
+|   |       mmseg.py
+|   |       mmseg.pyi
+|   |       simpleseg.py
+|   |       simpleseg.pyi
+|   |       __init__.py
+|   |       
+|   +---style
+|   |       bopomofo.py
+|   |       bopomofo.pyi
+|   |       braille_mainland.py
+|   |       braille_mainland.pyi
+|   |       cyrillic.py
+|   |       cyrillic.pyi
+|   |       finals.py
+|   |       finals.pyi
+|   |       gwoyeu.py
+|   |       gwoyeu.pyi
+|   |       initials.py
+|   |       initials.pyi
+|   |       others.py
+|   |       others.pyi
+|   |       tone.py
+|   |       tone.pyi
+|   |       wadegiles.py
+|   |       wadegiles.pyi
+|   |       _constants.py
+|   |       _constants.pyi
+|   |       _tone_convert.py
+|   |       _tone_convert.pyi
+|   |       _tone_rule.py
+|   |       _tone_rule.pyi
+|   |       _utils.py
+|   |       _utils.pyi
+|   |       __init__.py
+|   |       __init__.pyi
+|   |       
+|   +---tools
+|   |       toneconvert.py
+|   |       toneconvert.pyi
+|   |       __init__.py
+|   |       
+|   \---__pyinstaller
+|           hook-pypinyin.py
+|           __init__.py
+|           __init__.pyi
+|           
++---pypinyin-0.55.0.dist-info
+|   |   entry_points.txt
+|   |   INSTALLER
+|   |   METADATA
+|   |   RECORD
+|   |   REQUESTED
+|   |   top_level.txt
+|   |   WHEEL
+|   |   
+|   \---licenses
+|           LICENSE.txt
+|           
++---PyQt6
+|   |   QtCore.pyd
+|   |   QtGui.pyd
+|   |   QtMultimedia.pyd
+|   |   QtMultimediaWidgets.pyd
+|   |   QtNetwork.pyd
+|   |   QtWidgets.pyd
+|   |   sip.cp313-win_amd64.pyd
+|   |   
+|   \---Qt6
+|       +---bin
+|       |       avcodec-61.dll
+|       |       avformat-61.dll
+|       |       avutil-59.dll
+|       |       MSVCP140.dll
+|       |       MSVCP140_1.dll
+|       |       MSVCP140_2.dll
+|       |       opengl32sw.dll
+|       |       Qt6Core.dll
+|       |       Qt6Gui.dll
+|       |       Qt6Multimedia.dll
+|       |       Qt6MultimediaWidgets.dll
+|       |       Qt6Network.dll
+|       |       Qt6Pdf.dll
+|       |       Qt6Svg.dll
+|       |       Qt6Widgets.dll
+|       |       swresample-5.dll
+|       |       swscale-8.dll
+|       |       VCRUNTIME140.dll
+|       |       VCRUNTIME140_1.dll
+|       |       
+|       +---plugins
+|       |   +---generic
+|       |   |       qtuiotouchplugin.dll
+|       |   |       
+|       |   +---iconengines
+|       |   |       qsvgicon.dll
+|       |   |       
+|       |   +---imageformats
+|       |   |       qgif.dll
+|       |   |       qicns.dll
+|       |   |       qico.dll
+|       |   |       qjpeg.dll
+|       |   |       qpdf.dll
+|       |   |       qsvg.dll
+|       |   |       qtga.dll
+|       |   |       qtiff.dll
+|       |   |       qwbmp.dll
+|       |   |       qwebp.dll
+|       |   |       
+|       |   +---multimedia
+|       |   |       ffmpegmediaplugin.dll
+|       |   |       windowsmediaplugin.dll
+|       |   |       
+|       |   +---networkinformation
+|       |   |       qnetworklistmanager.dll
+|       |   |       
+|       |   +---platforms
+|       |   |       qminimal.dll
+|       |   |       qoffscreen.dll
+|       |   |       qwindows.dll
+|       |   |       
+|       |   +---styles
+|       |   |       qmodernwindowsstyle.dll
+|       |   |       
+|       |   \---tls
+|       |           qcertonlybackend.dll
+|       |           qopensslbackend.dll
+|       |           qschannelbackend.dll
+|       |           
+|       \---translations
+|               qtbase_ar.qm
+|               qtbase_bg.qm
+|               qtbase_ca.qm
+|               qtbase_cs.qm
+|               qtbase_da.qm
+|               qtbase_de.qm
+|               qtbase_en.qm
+|               qtbase_es.qm
+|               qtbase_fa.qm
+|               qtbase_fi.qm
+|               qtbase_fr.qm
+|               qtbase_gd.qm
+|               qtbase_he.qm
+|               qtbase_hr.qm
+|               qtbase_hu.qm
+|               qtbase_it.qm
+|               qtbase_ja.qm
+|               qtbase_ka.qm
+|               qtbase_ko.qm
+|               qtbase_lg.qm
+|               qtbase_lv.qm
+|               qtbase_nl.qm
+|               qtbase_nn.qm
+|               qtbase_pl.qm
+|               qtbase_pt_BR.qm
+|               qtbase_ru.qm
+|               qtbase_sk.qm
+|               qtbase_sv.qm
+|               qtbase_tr.qm
+|               qtbase_uk.qm
+|               qtbase_zh_CN.qm
+|               qtbase_zh_TW.qm
+|               qtmultimedia_ar.qm
+|               qtmultimedia_bg.qm
+|               qtmultimedia_ca.qm
+|               qtmultimedia_cs.qm
+|               qtmultimedia_da.qm
+|               qtmultimedia_de.qm
+|               qtmultimedia_en.qm
+|               qtmultimedia_es.qm
+|               qtmultimedia_fa.qm
+|               qtmultimedia_fi.qm
+|               qtmultimedia_fr.qm
+|               qtmultimedia_hr.qm
+|               qtmultimedia_hu.qm
+|               qtmultimedia_it.qm
+|               qtmultimedia_ja.qm
+|               qtmultimedia_ka.qm
+|               qtmultimedia_ko.qm
+|               qtmultimedia_nl.qm
+|               qtmultimedia_nn.qm
+|               qtmultimedia_pl.qm
+|               qtmultimedia_pt_BR.qm
+|               qtmultimedia_ru.qm
+|               qtmultimedia_sk.qm
+|               qtmultimedia_sv.qm
+|               qtmultimedia_tr.qm
+|               qtmultimedia_uk.qm
+|               qtmultimedia_zh_CN.qm
+|               qtmultimedia_zh_TW.qm
+|               qt_ar.qm
+|               qt_bg.qm
+|               qt_ca.qm
+|               qt_cs.qm
+|               qt_da.qm
+|               qt_de.qm
+|               qt_en.qm
+|               qt_es.qm
+|               qt_fa.qm
+|               qt_fi.qm
+|               qt_fr.qm
+|               qt_gd.qm
+|               qt_gl.qm
+|               qt_he.qm
+|               qt_help_ar.qm
+|               qt_help_bg.qm
+|               qt_help_ca.qm
+|               qt_help_cs.qm
+|               qt_help_da.qm
+|               qt_help_de.qm
+|               qt_help_en.qm
+|               qt_help_es.qm
+|               qt_help_fr.qm
+|               qt_help_gl.qm
+|               qt_help_hr.qm
+|               qt_help_hu.qm
+|               qt_help_it.qm
+|               qt_help_ja.qm
+|               qt_help_ka.qm
+|               qt_help_ko.qm
+|               qt_help_nl.qm
+|               qt_help_nn.qm
+|               qt_help_pl.qm
+|               qt_help_pt_BR.qm
+|               qt_help_ru.qm
+|               qt_help_sk.qm
+|               qt_help_sl.qm
+|               qt_help_sv.qm
+|               qt_help_tr.qm
+|               qt_help_uk.qm
+|               qt_help_zh_CN.qm
+|               qt_help_zh_TW.qm
+|               qt_hr.qm
+|               qt_hu.qm
+|               qt_it.qm
+|               qt_ja.qm
+|               qt_ka.qm
+|               qt_ko.qm
+|               qt_lg.qm
+|               qt_lt.qm
+|               qt_lv.qm
+|               qt_nl.qm
+|               qt_nn.qm
+|               qt_pl.qm
+|               qt_pt_BR.qm
+|               qt_pt_PT.qm
+|               qt_ru.qm
+|               qt_sk.qm
+|               qt_sl.qm
+|               qt_sv.qm
+|               qt_tr.qm
+|               qt_uk.qm
+|               qt_zh_CN.qm
+|               qt_zh_TW.qm
+|               
++---pyreadline3-3.5.6.dist-info
+|   |   INSTALLER
+|   |   METADATA
+|   |   RECORD
+|   |   top_level.txt
+|   |   WHEEL
+|   |   
+|   \---licenses
+|           LICENSE.md
+|           
++---rapidocr_onnxruntime
+|   |   config.yaml
+|   |   config.yaml.bak
+|   |   rapid_ocr_api.py
+|   |   utils.py
+|   |   __init__.py
+|   |   
+|   +---ch_ppocr_v2_cls
+|   |       config.yaml
+|   |       text_cls.py
+|   |       utils.py
+|   |       __init__.py
+|   |       
+|   +---ch_ppocr_v3_det
+|   |       config.yaml
+|   |       text_detect.py
+|   |       utils.py
+|   |       __init__.py
+|   |       
+|   +---ch_ppocr_v3_rec
+|   |       config.yaml
+|   |       text_recognize.py
+|   |       utils.py
+|   |       __init__.py
+|   |       
+|   \---models
+|           ch_PP-OCRv3_det_infer.onnx
+|           ch_PP-OCRv3_rec_infer.onnx
+|           ch_ppocr_mobile_v2.0_cls_infer.onnx
+|           
++---rapidocr_onnxruntime-1.2.3.dist-info
+|       entry_points.txt
+|       INSTALLER
+|       METADATA
+|       RECORD
+|       REQUESTED
+|       top_level.txt
+|       WHEEL
+|       
++---sea_g2p
+|       g2p.py
+|       normalizer.py
+|       pipeline.py
+|       sea_g2p.bin
+|       sea_g2p_rs.pyd
+|       __init__.py
+|       
++---sea_g2p-0.8.4.dist-info
+|   |   INSTALLER
+|   |   METADATA
+|   |   RECORD
+|   |   REQUESTED
+|   |   WHEEL
+|   |   
+|   +---licenses
+|   |       LICENSE
+|   |       
+|   \---sboms
+|           sea-g2p-rs.cyclonedx.json
+|           
++---setuptools
+|   \---_vendor
+|       +---importlib_metadata-8.7.1.dist-info
+|       |   |   INSTALLER
+|       |   |   METADATA
+|       |   |   RECORD
+|       |   |   REQUESTED
+|       |   |   top_level.txt
+|       |   |   WHEEL
+|       |   |   
+|       |   \---licenses
+|       |           LICENSE
+|       |           
+|       \---jaraco
+|           \---text
+|                   Lorem ipsum.txt
+|                   
++---shapely
+|       lib.cp313-win_amd64.pyd
+|       _geometry_helpers.cp313-win_amd64.pyd
+|       _geos.cp313-win_amd64.pyd
+|       
++---Shapely.libs
+|       geos-ae6efa0782962b98e358f10ea539ae5f.dll
+|       geos_c-072b7a9224d16d3e4ab2395bb855b2d3.dll
+|       msvcp140-90bc62d4947a5878f1dc1057312f3be2.dll
+|       
++---tokenizers
+|   |   decoders.pyi
+|   |   models.pyi
+|   |   normalizers.pyi
+|   |   pre_tokenizers.pyi
+|   |   processors.pyi
+|   |   py.typed
+|   |   tokenizers.pyd
+|   |   tokenizers.pyi
+|   |   trainers.pyi
+|   |   __init__.py
+|   |   __init__.pyi
+|   |   
+|   +---decoders
+|   |       __init__.py
+|   |       
+|   +---implementations
+|   |       base_tokenizer.py
+|   |       bert_wordpiece.py
+|   |       byte_level_bpe.py
+|   |       char_level_bpe.py
+|   |       sentencepiece_bpe.py
+|   |       sentencepiece_unigram.py
+|   |       __init__.py
+|   |       
+|   +---models
+|   |       __init__.py
+|   |       
+|   +---normalizers
+|   |       __init__.py
+|   |       
+|   +---pre_tokenizers
+|   |       __init__.py
+|   |       
+|   +---processors
+|   |       __init__.py
+|   |       
+|   +---tools
+|   |       visualizer-styles.css
+|   |       visualizer.py
+|   |       __init__.py
+|   |       
+|   \---trainers
+|           __init__.py
+|           __init__.pyi
+|           
++---tokenizers-0.23.1.dist-info
+|   |   INSTALLER
+|   |   METADATA
+|   |   RECORD
+|   |   WHEEL
+|   |   
+|   \---sboms
+|           tokenizers-python.cyclonedx.json
+|           
++---tqdm-4.68.3.dist-info
+|   |   entry_points.txt
+|   |   INSTALLER
+|   |   METADATA
+|   |   RECORD
+|   |   top_level.txt
+|   |   WHEEL
+|   |   
+|   \---licenses
+|           LICENCE
+|           
++---vieneu
+|   |   base.py
+|   |   core_xpu.py
+|   |   factory.py
+|   |   fast.py
+|   |   remote.py
+|   |   serve.py
+|   |   standard.py
+|   |   turbo.py
+|   |   utils.py
+|   |   v3turbo.py
+|   |   __init__.py
+|   |   
+|   +---assets
+|   |   |   voices.json
+|   |   |   voices_v3_turbo.json
+|   |   |   
+|   |   \---samples
+|   |           Bình (nam mi?n B?c).pt
+|   |           Bình (nam mi?n B?c).txt
+|   |           Bình (nam mi?n B?c).wav
+|   |           Ly (n? mi?n B?c).pt
+|   |           Ly (n? mi?n B?c).txt
+|   |           Ly (n? mi?n B?c).wav
+|   |           Ng?c (n? mi?n B?c).pt
+|   |           Ng?c (n? mi?n B?c).txt
+|   |           Ng?c (n? mi?n B?c).wav
+|   |           Tuyên (nam mi?n B?c).pt
+|   |           Tuyên (nam mi?n B?c).txt
+|   |           Tuyên (nam mi?n B?c).wav
+|   |           Vinh (nam mi?n Nam).pt
+|   |           Vinh (nam mi?n Nam).txt
+|   |           Vinh (nam mi?n Nam).wav
+|   |           Ðoan (n? mi?n Nam).pt
+|   |           Ðoan (n? mi?n Nam).txt
+|   |           Ðoan (n? mi?n Nam).wav
+|   |           
+|   +---v3_turbo_serve
+|   |       batched_acoustic.py
+|   |       batched_backbone.py
+|   |       cudagraph.py
+|   |       engine.py
+|   |       __init__.py
+|   |       
+|   \---_v3_turbo_engine
+|       |   configuration_v3_turbo.py
+|       |   hub_load_v3_turbo.py
+|       |   inference_v3_turbo.py
+|       |   modeling_v3_turbo.py
+|       |   onnx_denoiser.py
+|       |   onnx_runtime_lite.py
+|       |   prompt_v3_turbo.py
+|       |   __init__.py
+|       |   
+|       \---speaker
+|               audio_utils.py
+|               fbank.py
+|               onnx_extractor.py
+|               __init__.py
+|               
++---vieneu-3.2.4.dist-info
+|   |   entry_points.txt
+|   |   INSTALLER
+|   |   METADATA
+|   |   RECORD
+|   |   REQUESTED
+|   |   top_level.txt
+|   |   WHEEL
+|   |   
+|   \---licenses
+|           LICENSE
+|           
++---yaml
+|       _yaml.cp313-win_amd64.pyd
+|       
++---yarl
+|       _quoting_c.cp313-win_amd64.pyd
+|       
++---yt_dlp
+|   |   aes.py
+|   |   cache.py
+|   |   cookies.py
+|   |   globals.py
+|   |   jsinterp.py
+|   |   minicurses.py
+|   |   options.py
+|   |   plugins.py
+|   |   socks.py
+|   |   update.py
+|   |   version.py
+|   |   webvtt.py
+|   |   YoutubeDL.py
+|   |   __init__.py
+|   |   __main__.py
+|   |   
+|   +---compat
+|   |   |   compat_utils.py
+|   |   |   imghdr.py
+|   |   |   shutil.py
+|   |   |   _deprecated.py
+|   |   |   _legacy.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---urllib
+|   |           request.py
+|   |           __init__.py
+|   |           
+|   +---dependencies
+|   |       Cryptodome.py
+|   |       __init__.py
+|   |       
+|   +---downloader
+|   |       bunnycdn.py
+|   |       common.py
+|   |       dash.py
+|   |       external.py
+|   |       f4m.py
+|   |       fc2.py
+|   |       fragment.py
+|   |       hls.py
+|   |       http.py
+|   |       ism.py
+|   |       mhtml.py
+|   |       niconico.py
+|   |       rtmp.py
+|   |       soop.py
+|   |       websocket.py
+|   |       youtube_live_chat.py
+|   |       __init__.py
+|   |       
+|   +---extractor
+|   |   |   abc.py
+|   |   |   abcnews.py
+|   |   |   abcotvs.py
+|   |   |   abematv.py
+|   |   |   academicearth.py
+|   |   |   acast.py
+|   |   |   acfun.py
+|   |   |   adn.py
+|   |   |   adobeconnect.py
+|   |   |   adobepass.py
+|   |   |   adobetv.py
+|   |   |   adultswim.py
+|   |   |   aenetworks.py
+|   |   |   aeonco.py
+|   |   |   afreecatv.py
+|   |   |   agalega.py
+|   |   |   agora.py
+|   |   |   aitube.py
+|   |   |   alibaba.py
+|   |   |   aliexpress.py
+|   |   |   aljazeera.py
+|   |   |   allocine.py
+|   |   |   allstar.py
+|   |   |   alphaporno.py
+|   |   |   altcensored.py
+|   |   |   alura.py
+|   |   |   amadeustv.py
+|   |   |   amara.py
+|   |   |   amazon.py
+|   |   |   amazonminitv.py
+|   |   |   amcnetworks.py
+|   |   |   americastestkitchen.py
+|   |   |   amp.py
+|   |   |   angel.py
+|   |   |   antenna.py
+|   |   |   anvato.py
+|   |   |   aol.py
+|   |   |   apa.py
+|   |   |   aparat.py
+|   |   |   appleconnect.py
+|   |   |   applepodcasts.py
+|   |   |   archiveorg.py
+|   |   |   arcpublishing.py
+|   |   |   ard.py
+|   |   |   arnes.py
+|   |   |   art19.py
+|   |   |   arte.py
+|   |   |   asobichannel.py
+|   |   |   asobistage.py
+|   |   |   atresplayer.py
+|   |   |   atscaleconf.py
+|   |   |   audimedia.py
+|   |   |   audioboom.py
+|   |   |   audiodraft.py
+|   |   |   audiomack.py
+|   |   |   audius.py
+|   |   |   aws.py
+|   |   |   azmedien.py
+|   |   |   baidu.py
+|   |   |   banbye.py
+|   |   |   bandcamp.py
+|   |   |   bandlab.py
+|   |   |   bannedvideo.py
+|   |   |   bbc.py
+|   |   |   beacon.py
+|   |   |   beatport.py
+|   |   |   beeg.py
+|   |   |   behindkink.py
+|   |   |   berufetv.py
+|   |   |   bet.py
+|   |   |   bfi.py
+|   |   |   bfmtv.py
+|   |   |   bibeltv.py
+|   |   |   bigo.py
+|   |   |   bild.py
+|   |   |   bilibili.py
+|   |   |   biobiochiletv.py
+|   |   |   bitchute.py
+|   |   |   bitmovin.py
+|   |   |   blackboardcollaborate.py
+|   |   |   bleacherreport.py
+|   |   |   blerp.py
+|   |   |   blogger.py
+|   |   |   bloomberg.py
+|   |   |   bluesky.py
+|   |   |   bongacams.py
+|   |   |   boosty.py
+|   |   |   bostonglobe.py
+|   |   |   box.py
+|   |   |   boxcast.py
+|   |   |   bpb.py
+|   |   |   br.py
+|   |   |   brainpop.py
+|   |   |   breitbart.py
+|   |   |   brightcove.py
+|   |   |   brilliantpala.py
+|   |   |   btvplus.py
+|   |   |   bundesliga.py
+|   |   |   bundestag.py
+|   |   |   bunnycdn.py
+|   |   |   businessinsider.py
+|   |   |   buzzfeed.py
+|   |   |   byutv.py
+|   |   |   c56.py
+|   |   |   caltrans.py
+|   |   |   cam4.py
+|   |   |   camfm.py
+|   |   |   cammodels.py
+|   |   |   camsoda.py
+|   |   |   camtasia.py
+|   |   |   canal1.py
+|   |   |   canalalpha.py
+|   |   |   canalc2.py
+|   |   |   canalplus.py
+|   |   |   canalsurmas.py
+|   |   |   caracoltv.py
+|   |   |   cbc.py
+|   |   |   cbs.py
+|   |   |   cbsnews.py
+|   |   |   cbssports.py
+|   |   |   ccc.py
+|   |   |   ccma.py
+|   |   |   cctv.py
+|   |   |   cda.py
+|   |   |   cellebrite.py
+|   |   |   ceskatelevize.py
+|   |   |   cgtn.py
+|   |   |   charlierose.py
+|   |   |   chaturbate.py
+|   |   |   chilloutzone.py
+|   |   |   chzzk.py
+|   |   |   cinemax.py
+|   |   |   cinetecamilano.py
+|   |   |   cineverse.py
+|   |   |   ciscolive.py
+|   |   |   ciscowebex.py
+|   |   |   cjsw.py
+|   |   |   clipchamp.py
+|   |   |   cliprs.py
+|   |   |   closertotruth.py
+|   |   |   cloudflarestream.py
+|   |   |   cloudycdn.py
+|   |   |   clubic.py
+|   |   |   clyp.py
+|   |   |   cnbc.py
+|   |   |   cnn.py
+|   |   |   comedycentral.py
+|   |   |   common.py
+|   |   |   commonmistakes.py
+|   |   |   commonprotocols.py
+|   |   |   condenast.py
+|   |   |   corus.py
+|   |   |   coub.py
+|   |   |   cozytv.py
+|   |   |   cpac.py
+|   |   |   cracked.py
+|   |   |   craftsy.py
+|   |   |   croatianfilm.py
+|   |   |   crooksandliars.py
+|   |   |   crowdbunker.py
+|   |   |   crtvg.py
+|   |   |   cspan.py
+|   |   |   ctsnews.py
+|   |   |   ctvnews.py
+|   |   |   cultureunplugged.py
+|   |   |   curiositystream.py
+|   |   |   cybrary.py
+|   |   |   dacast.py
+|   |   |   dailymail.py
+|   |   |   dailymotion.py
+|   |   |   dailywire.py
+|   |   |   damtomo.py
+|   |   |   dangalplay.py
+|   |   |   daum.py
+|   |   |   daystar.py
+|   |   |   dbtv.py
+|   |   |   dctp.py
+|   |   |   democracynow.py
+|   |   |   detik.py
+|   |   |   deuxm.py
+|   |   |   dfb.py
+|   |   |   dhm.py
+|   |   |   digitalconcerthall.py
+|   |   |   digiteka.py
+|   |   |   digiview.py
+|   |   |   discogs.py
+|   |   |   disney.py
+|   |   |   dispeak.py
+|   |   |   dlf.py
+|   |   |   dlive.py
+|   |   |   douyutv.py
+|   |   |   dplay.py
+|   |   |   drbonanza.py
+|   |   |   dreisat.py
+|   |   |   dropbox.py
+|   |   |   dropout.py
+|   |   |   drtalks.py
+|   |   |   drtuber.py
+|   |   |   drtv.py
+|   |   |   dtube.py
+|   |   |   dumpert.py
+|   |   |   duoplay.py
+|   |   |   dvtv.py
+|   |   |   dw.py
+|   |   |   ebaumsworld.py
+|   |   |   ebay.py
+|   |   |   egghead.py
+|   |   |   eggs.py
+|   |   |   elementorembed.py
+|   |   |   elonet.py
+|   |   |   elpais.py
+|   |   |   eltrecetv.py
+|   |   |   embedly.py
+|   |   |   epicon.py
+|   |   |   epidemicsound.py
+|   |   |   eplus.py
+|   |   |   epoch.py
+|   |   |   eporner.py
+|   |   |   erocast.py
+|   |   |   eroprofile.py
+|   |   |   err.py
+|   |   |   ertgr.py
+|   |   |   espn.py
+|   |   |   ettutv.py
+|   |   |   europa.py
+|   |   |   europeantour.py
+|   |   |   eurosport.py
+|   |   |   euscreen.py
+|   |   |   expressen.py
+|   |   |   extractors.py
+|   |   |   facebook.py
+|   |   |   fancode.py
+|   |   |   fathom.py
+|   |   |   faulio.py
+|   |   |   faz.py
+|   |   |   fc2.py
+|   |   |   fczenit.py
+|   |   |   fifa.py
+|   |   |   filmarchiv.py
+|   |   |   filmon.py
+|   |   |   filmweb.py
+|   |   |   firsttv.py
+|   |   |   fivetv.py
+|   |   |   flextv.py
+|   |   |   flickr.py
+|   |   |   floatplane.py
+|   |   |   folketinget.py
+|   |   |   footyroom.py
+|   |   |   formula1.py
+|   |   |   fourtube.py
+|   |   |   fox.py
+|   |   |   fox9.py
+|   |   |   foxnews.py
+|   |   |   foxsports.py
+|   |   |   fptplay.py
+|   |   |   francaisfacile.py
+|   |   |   francetv.py
+|   |   |   freesound.py
+|   |   |   freespeech.py
+|   |   |   freetv.py
+|   |   |   frontendmasters.py
+|   |   |   frontro.py
+|   |   |   funk.py
+|   |   |   funker530.py
+|   |   |   fuyintv.py
+|   |   |   gab.py
+|   |   |   gaia.py
+|   |   |   gamedevtv.py
+|   |   |   gamejolt.py
+|   |   |   gamespot.py
+|   |   |   gamestar.py
+|   |   |   gaskrank.py
+|   |   |   gazeta.py
+|   |   |   gbnews.py
+|   |   |   gdcvault.py
+|   |   |   gedidigital.py
+|   |   |   generic.py
+|   |   |   genericembeds.py
+|   |   |   genius.py
+|   |   |   germanupa.py
+|   |   |   getcourseru.py
+|   |   |   gettr.py
+|   |   |   giantbomb.py
+|   |   |   glide.py
+|   |   |   globalplayer.py
+|   |   |   globo.py
+|   |   |   glomex.py
+|   |   |   gmanetwork.py
+|   |   |   go.py
+|   |   |   godresource.py
+|   |   |   godtube.py
+|   |   |   golem.py
+|   |   |   goodgame.py
+|   |   |   googledrive.py
+|   |   |   googlesearch.py
+|   |   |   goplay.py
+|   |   |   gopro.py
+|   |   |   gotostage.py
+|   |   |   graspop.py
+|   |   |   gronkh.py
+|   |   |   groupon.py
+|   |   |   harpodeon.py
+|   |   |   hbo.py
+|   |   |   hearthisat.py
+|   |   |   heise.py
+|   |   |   hellporno.py
+|   |   |   hgtv.py
+|   |   |   hidive.py
+|   |   |   historicfilms.py
+|   |   |   hitrecord.py
+|   |   |   hollywoodreporter.py
+|   |   |   holodex.py
+|   |   |   hotnewhiphop.py
+|   |   |   hotstar.py
+|   |   |   hrefli.py
+|   |   |   hrfensehen.py
+|   |   |   hrti.py
+|   |   |   hse.py
+|   |   |   huajiao.py
+|   |   |   huffpost.py
+|   |   |   hungama.py
+|   |   |   huya.py
+|   |   |   hypem.py
+|   |   |   hypergryph.py
+|   |   |   hytale.py
+|   |   |   icareus.py
+|   |   |   ichinanalive.py
+|   |   |   idagio.py
+|   |   |   ign.py
+|   |   |   iheart.py
+|   |   |   ilpost.py
+|   |   |   iltalehti.py
+|   |   |   imdb.py
+|   |   |   imggaming.py
+|   |   |   imgur.py
+|   |   |   ina.py
+|   |   |   inc.py
+|   |   |   indavideo.py
+|   |   |   infoq.py
+|   |   |   instagram.py
+|   |   |   internazionale.py
+|   |   |   iprima.py
+|   |   |   iqiyi.py
+|   |   |   islamchannel.py
+|   |   |   israelnationalnews.py
+|   |   |   itprotv.py
+|   |   |   itv.py
+|   |   |   ivi.py
+|   |   |   ivideon.py
+|   |   |   ivoox.py
+|   |   |   iwara.py
+|   |   |   ixigua.py
+|   |   |   jamendo.py
+|   |   |   japandiet.py
+|   |   |   jeuxvideo.py
+|   |   |   jiosaavn.py
+|   |   |   jixie.py
+|   |   |   joj.py
+|   |   |   jove.py
+|   |   |   jstream.py
+|   |   |   jtbc.py
+|   |   |   jwplatform.py
+|   |   |   kakao.py
+|   |   |   kaltura.py
+|   |   |   kankanews.py
+|   |   |   karaoketv.py
+|   |   |   kelbyone.py
+|   |   |   kenh14.py
+|   |   |   khanacademy.py
+|   |   |   kick.py
+|   |   |   kicker.py
+|   |   |   kickstarter.py
+|   |   |   kika.py
+|   |   |   kinopoisk.py
+|   |   |   kommunetv.py
+|   |   |   kompas.py
+|   |   |   krasview.py
+|   |   |   kth.py
+|   |   |   ku6.py
+|   |   |   kukululive.py
+|   |   |   kuwo.py
+|   |   |   la7.py
+|   |   |   laracasts.py
+|   |   |   lastfm.py
+|   |   |   laxarxames.py
+|   |   |   lazy_extractors.py
+|   |   |   lbry.py
+|   |   |   lci.py
+|   |   |   lcp.py
+|   |   |   learningonscreen.py
+|   |   |   lecture2go.py
+|   |   |   lecturio.py
+|   |   |   leeco.py
+|   |   |   lefigaro.py
+|   |   |   lego.py
+|   |   |   lemonde.py
+|   |   |   lenta.py
+|   |   |   libraryofcongress.py
+|   |   |   libsyn.py
+|   |   |   lifenews.py
+|   |   |   likee.py
+|   |   |   linkedin.py
+|   |   |   liputan6.py
+|   |   |   listennotes.py
+|   |   |   litv.py
+|   |   |   livejournal.py
+|   |   |   livestreamfails.py
+|   |   |   lnk.py
+|   |   |   locipo.py
+|   |   |   loco.py
+|   |   |   loom.py
+|   |   |   lovehomeporn.py
+|   |   |   lrt.py
+|   |   |   lsm.py
+|   |   |   lumni.py
+|   |   |   maariv.py
+|   |   |   magellantv.py
+|   |   |   magentamusik.py
+|   |   |   mailru.py
+|   |   |   mainstreaming.py
+|   |   |   mangomolo.py
+|   |   |   manyvids.py
+|   |   |   maoritv.py
+|   |   |   markiza.py
+|   |   |   massengeschmacktv.py
+|   |   |   masters.py
+|   |   |   matchitv.py
+|   |   |   matchtv.py
+|   |   |   mave.py
+|   |   |   mbn.py
+|   |   |   mdr.py
+|   |   |   medaltv.py
+|   |   |   mediaite.py
+|   |   |   mediaklikk.py
+|   |   |   medialaan.py
+|   |   |   mediaset.py
+|   |   |   mediasite.py
+|   |   |   mediastream.py
+|   |   |   mediaworksnz.py
+|   |   |   medici.py
+|   |   |   megaphone.py
+|   |   |   megatvcom.py
+|   |   |   meipai.py
+|   |   |   melonvod.py
+|   |   |   metacritic.py
+|   |   |   mgtv.py
+|   |   |   microsoftembed.py
+|   |   |   minds.py
+|   |   |   mir24tv.py
+|   |   |   mirrativ.py
+|   |   |   mirrorcouk.py
+|   |   |   mit.py
+|   |   |   mixch.py
+|   |   |   mixcloud.py
+|   |   |   mixlr.py
+|   |   |   mlb.py
+|   |   |   mlssoccer.py
+|   |   |   mocha.py
+|   |   |   mojevideo.py
+|   |   |   monstercat.py
+|   |   |   motorsport.py
+|   |   |   moviepilot.py
+|   |   |   movingimage.py
+|   |   |   msn.py
+|   |   |   mtv.py
+|   |   |   muenchentv.py
+|   |   |   murrtube.py
+|   |   |   museai.py
+|   |   |   musescore.py
+|   |   |   mux.py
+|   |   |   mx3.py
+|   |   |   mxplayer.py
+|   |   |   myspace.py
+|   |   |   myspass.py
+|   |   |   myvideoge.py
+|   |   |   myvidster.py
+|   |   |   mzaalo.py
+|   |   |   n1.py
+|   |   |   nascar.py
+|   |   |   nate.py
+|   |   |   nationalgeographic.py
+|   |   |   naver.py
+|   |   |   nba.py
+|   |   |   nbc.py
+|   |   |   ndr.py
+|   |   |   ndtv.py
+|   |   |   nebula.py
+|   |   |   nekohacker.py
+|   |   |   nest.py
+|   |   |   netapp.py
+|   |   |   neteasemusic.py
+|   |   |   netzkino.py
+|   |   |   newgrounds.py
+|   |   |   newspicks.py
+|   |   |   newsy.py
+|   |   |   nexx.py
+|   |   |   nfb.py
+|   |   |   nfhsnetwork.py
+|   |   |   nfl.py
+|   |   |   nhk.py
+|   |   |   nhl.py
+|   |   |   nick.py
+|   |   |   niconico.py
+|   |   |   niconicochannelplus.py
+|   |   |   ninaprotocol.py
+|   |   |   ninecninemedia.py
+|   |   |   ninegag.py
+|   |   |   ninenews.py
+|   |   |   ninenow.py
+|   |   |   nintendo.py
+|   |   |   nitter.py
+|   |   |   nobelprize.py
+|   |   |   noice.py
+|   |   |   nonktube.py
+|   |   |   noodlemagazine.py
+|   |   |   nosnl.py
+|   |   |   nova.py
+|   |   |   novaplay.py
+|   |   |   nowcanal.py
+|   |   |   nowness.py
+|   |   |   noz.py
+|   |   |   npo.py
+|   |   |   npr.py
+|   |   |   nrk.py
+|   |   |   nrl.py
+|   |   |   nts.py
+|   |   |   ntvcojp.py
+|   |   |   ntvde.py
+|   |   |   ntvru.py
+|   |   |   nubilesporn.py
+|   |   |   nuevo.py
+|   |   |   nuvid.py
+|   |   |   nytimes.py
+|   |   |   nzherald.py
+|   |   |   nzonscreen.py
+|   |   |   nzz.py
+|   |   |   odkmedia.py
+|   |   |   odnoklassniki.py
+|   |   |   oftv.py
+|   |   |   oktoberfesttv.py
+|   |   |   olympics.py
+|   |   |   omnyfm.py
+|   |   |   on24.py
+|   |   |   ondemandkorea.py
+|   |   |   onefootball.py
+|   |   |   onenewsnz.py
+|   |   |   oneplace.py
+|   |   |   onet.py
+|   |   |   onsen.py
+|   |   |   opencast.py
+|   |   |   openload.py
+|   |   |   openrec.py
+|   |   |   orf.py
+|   |   |   outsidetv.py
+|   |   |   owncloud.py
+|   |   |   packtpub.py
+|   |   |   palcomp3.py
+|   |   |   pandatv.py
+|   |   |   panopto.py
+|   |   |   parler.py
+|   |   |   parlview.py
+|   |   |   parti.py
+|   |   |   patreon.py
+|   |   |   pbs.py
+|   |   |   pearvideo.py
+|   |   |   peekvids.py
+|   |   |   peertube.py
+|   |   |   peertv.py
+|   |   |   peloton.py
+|   |   |   performgroup.py
+|   |   |   periscope.py
+|   |   |   pgatour.py
+|   |   |   philharmoniedeparis.py
+|   |   |   phoenix.py
+|   |   |   photobucket.py
+|   |   |   pialive.py
+|   |   |   piapro.py
+|   |   |   picarto.py
+|   |   |   piksel.py
+|   |   |   pinkbike.py
+|   |   |   pinterest.py
+|   |   |   platzi.py
+|   |   |   playerfm.py
+|   |   |   playsuisse.py
+|   |   |   playtvak.py
+|   |   |   pluralsight.py
+|   |   |   plutotv.py
+|   |   |   plyr.py
+|   |   |   podbayfm.py
+|   |   |   podchaser.py
+|   |   |   podomatic.py
+|   |   |   pokergo.py
+|   |   |   polsatgo.py
+|   |   |   polskieradio.py
+|   |   |   popcorntimes.py
+|   |   |   popcorntv.py
+|   |   |   pornbox.py
+|   |   |   pornflip.py
+|   |   |   pornhub.py
+|   |   |   pornotube.py
+|   |   |   pornovoisines.py
+|   |   |   pornoxo.py
+|   |   |   pr0gramm.py
+|   |   |   prankcast.py
+|   |   |   premiershiprugby.py
+|   |   |   presstv.py
+|   |   |   projectveritas.py
+|   |   |   prx.py
+|   |   |   puhutv.py
+|   |   |   pyvideo.py
+|   |   |   qdance.py
+|   |   |   qingting.py
+|   |   |   qqmusic.py
+|   |   |   r7.py
+|   |   |   radiko.py
+|   |   |   radiocanada.py
+|   |   |   radiode.py
+|   |   |   radiofrance.py
+|   |   |   radiojavan.py
+|   |   |   radiokapital.py
+|   |   |   radioradicale.py
+|   |   |   radiozet.py
+|   |   |   radlive.py
+|   |   |   rai.py
+|   |   |   raywenderlich.py
+|   |   |   rbgtum.py
+|   |   |   rcs.py
+|   |   |   rcti.py
+|   |   |   rds.py
+|   |   |   redbee.py
+|   |   |   redbulltv.py
+|   |   |   reddit.py
+|   |   |   redgifs.py
+|   |   |   redtube.py
+|   |   |   rentv.py
+|   |   |   restudy.py
+|   |   |   reuters.py
+|   |   |   reverbnation.py
+|   |   |   ridehome.py
+|   |   |   rinsefm.py
+|   |   |   rockstargames.py
+|   |   |   rokfin.py
+|   |   |   roosterteeth.py
+|   |   |   rottentomatoes.py
+|   |   |   roya.py
+|   |   |   rozhlas.py
+|   |   |   rte.py
+|   |   |   rtl2.py
+|   |   |   rtlnl.py
+|   |   |   rtnews.py
+|   |   |   rtp.py
+|   |   |   rtrfm.py
+|   |   |   rts.py
+|   |   |   rtvcplay.py
+|   |   |   rtve.py
+|   |   |   rtvs.py
+|   |   |   rtvslo.py
+|   |   |   rudovideo.py
+|   |   |   rule34video.py
+|   |   |   rumble.py
+|   |   |   rutube.py
+|   |   |   ruutu.py
+|   |   |   ruv.py
+|   |   |   s4c.py
+|   |   |   safari.py
+|   |   |   saitosan.py
+|   |   |   samplefocus.py
+|   |   |   sapo.py
+|   |   |   sauceplus.py
+|   |   |   sbs.py
+|   |   |   sbscokr.py
+|   |   |   screen9.py
+|   |   |   screencast.py
+|   |   |   screencastify.py
+|   |   |   screencastomatic.py
+|   |   |   screenrec.py
+|   |   |   scrippsnetworks.py
+|   |   |   scrolller.py
+|   |   |   sejmpl.py
+|   |   |   sen.py
+|   |   |   senalcolombia.py
+|   |   |   senategov.py
+|   |   |   servus.py
+|   |   |   sevenplus.py
+|   |   |   sexu.py
+|   |   |   seznamzpravy.py
+|   |   |   shahid.py
+|   |   |   sharepoint.py
+|   |   |   shemaroome.py
+|   |   |   shiey.py
+|   |   |   showroomlive.py
+|   |   |   sibnet.py
+|   |   |   simplecast.py
+|   |   |   sina.py
+|   |   |   skeb.py
+|   |   |   sky.py
+|   |   |   skyit.py
+|   |   |   skylinewebcams.py
+|   |   |   skynewsarabia.py
+|   |   |   skynewsau.py
+|   |   |   slideshare.py
+|   |   |   slideslive.py
+|   |   |   slutload.py
+|   |   |   smotrim.py
+|   |   |   snapchat.py
+|   |   |   softwhiteunderbelly.py
+|   |   |   sohu.py
+|   |   |   sonyliv.py
+|   |   |   soundcloud.py
+|   |   |   soundgasm.py
+|   |   |   southpark.py
+|   |   |   sovietscloset.py
+|   |   |   spankbang.py
+|   |   |   spiegel.py
+|   |   |   sport5.py
+|   |   |   sportbox.py
+|   |   |   sportdeutschland.py
+|   |   |   spreaker.py
+|   |   |   sproutvideo.py
+|   |   |   srgssr.py
+|   |   |   srmediathek.py
+|   |   |   stacommu.py
+|   |   |   stageplus.py
+|   |   |   startrek.py
+|   |   |   startv.py
+|   |   |   steam.py
+|   |   |   storyfire.py
+|   |   |   streaks.py
+|   |   |   streamable.py
+|   |   |   streamcz.py
+|   |   |   streetvoice.py
+|   |   |   stripchat.py
+|   |   |   stv.py
+|   |   |   subsplash.py
+|   |   |   substack.py
+|   |   |   sunporno.py
+|   |   |   sverigesradio.py
+|   |   |   svt.py
+|   |   |   sztvhu.py
+|   |   |   tagesschau.py
+|   |   |   taptap.py
+|   |   |   tarangplus.py
+|   |   |   tass.py
+|   |   |   tbs.py
+|   |   |   tbsjp.py
+|   |   |   teachable.py
+|   |   |   teachertube.py
+|   |   |   teachingchannel.py
+|   |   |   teamcoco.py
+|   |   |   teamtreehouse.py
+|   |   |   ted.py
+|   |   |   tele13.py
+|   |   |   tele5.py
+|   |   |   telebruxelles.py
+|   |   |   telecaribe.py
+|   |   |   telecinco.py
+|   |   |   telegraaf.py
+|   |   |   telegram.py
+|   |   |   telemb.py
+|   |   |   telemundo.py
+|   |   |   telequebec.py
+|   |   |   teletask.py
+|   |   |   telewebion.py
+|   |   |   tencent.py
+|   |   |   tennistv.py
+|   |   |   tenplay.py
+|   |   |   testurl.py
+|   |   |   tf1.py
+|   |   |   tfo.py
+|   |   |   thechosen.py
+|   |   |   theguardian.py
+|   |   |   thehighwire.py
+|   |   |   theintercept.py
+|   |   |   theplatform.py
+|   |   |   thestar.py
+|   |   |   thesun.py
+|   |   |   theweatherchannel.py
+|   |   |   thisamericanlife.py
+|   |   |   thisoldhouse.py
+|   |   |   thisvid.py
+|   |   |   threeqsdn.py
+|   |   |   threespeak.py
+|   |   |   tiktok.py
+|   |   |   tmz.py
+|   |   |   tnaflix.py
+|   |   |   toggle.py
+|   |   |   toggo.py
+|   |   |   tonline.py
+|   |   |   toongoggles.py
+|   |   |   toutiao.py
+|   |   |   toutv.py
+|   |   |   toypics.py
+|   |   |   trtcocuk.py
+|   |   |   trtworld.py
+|   |   |   trueid.py
+|   |   |   trunews.py
+|   |   |   truth.py
+|   |   |   tube8.py
+|   |   |   tubetugraz.py
+|   |   |   tubitv.py
+|   |   |   tumblr.py
+|   |   |   tunein.py
+|   |   |   turner.py
+|   |   |   tv2.py
+|   |   |   tv24ua.py
+|   |   |   tv2dk.py
+|   |   |   tv2hu.py
+|   |   |   tv4.py
+|   |   |   tv5mondeplus.py
+|   |   |   tv5unis.py
+|   |   |   tva.py
+|   |   |   tvanouvelles.py
+|   |   |   tvc.py
+|   |   |   tver.py
+|   |   |   tvigle.py
+|   |   |   tviplayer.py
+|   |   |   tvn24.py
+|   |   |   tvnoe.py
+|   |   |   tvo.py
+|   |   |   tvopengr.py
+|   |   |   tvp.py
+|   |   |   tvplay.py
+|   |   |   tvw.py
+|   |   |   tweakers.py
+|   |   |   twentymin.py
+|   |   |   twentythreevideo.py
+|   |   |   twitcasting.py
+|   |   |   twitch.py
+|   |   |   twitter.py
+|   |   |   txxx.py
+|   |   |   udemy.py
+|   |   |   udn.py
+|   |   |   ufctv.py
+|   |   |   ukcolumn.py
+|   |   |   uliza.py
+|   |   |   umg.py
+|   |   |   unistra.py
+|   |   |   unitednations.py
+|   |   |   unity.py
+|   |   |   unsupported.py
+|   |   |   uol.py
+|   |   |   uplynk.py
+|   |   |   urort.py
+|   |   |   urplay.py
+|   |   |   usanetwork.py
+|   |   |   usatoday.py
+|   |   |   ustream.py
+|   |   |   ustudio.py
+|   |   |   varzesh3.py
+|   |   |   vbox7.py
+|   |   |   veo.py
+|   |   |   vevo.py
+|   |   |   vgtv.py
+|   |   |   vh1.py
+|   |   |   vice.py
+|   |   |   viddler.py
+|   |   |   videa.py
+|   |   |   videocampus_sachsen.py
+|   |   |   videoken.py
+|   |   |   videopress.py
+|   |   |   vidflex.py
+|   |   |   vidio.py
+|   |   |   vidlii.py
+|   |   |   vidly.py
+|   |   |   vidyard.py
+|   |   |   viewlift.py
+|   |   |   viidea.py
+|   |   |   vimeo.py
+|   |   |   viously.py
+|   |   |   viqeo.py
+|   |   |   visir.py
+|   |   |   viu.py
+|   |   |   vk.py
+|   |   |   vocaroo.py
+|   |   |   vodplatform.py
+|   |   |   voicy.py
+|   |   |   volejtv.py
+|   |   |   voxmedia.py
+|   |   |   vrsquare.py
+|   |   |   vrt.py
+|   |   |   vtm.py
+|   |   |   vtv.py
+|   |   |   walla.py
+|   |   |   washingtonpost.py
+|   |   |   wat.py
+|   |   |   wdr.py
+|   |   |   webcamerapl.py
+|   |   |   webcaster.py
+|   |   |   webofstories.py
+|   |   |   weibo.py
+|   |   |   weiqitv.py
+|   |   |   weverse.py
+|   |   |   wevidi.py
+|   |   |   whowatch.py
+|   |   |   whyp.py
+|   |   |   wikimedia.py
+|   |   |   wimbledon.py
+|   |   |   wimtv.py
+|   |   |   wistia.py
+|   |   |   wordpress.py
+|   |   |   worldstarhiphop.py
+|   |   |   wppilot.py
+|   |   |   wrestleuniverse.py
+|   |   |   wsj.py
+|   |   |   wwe.py
+|   |   |   wykop.py
+|   |   |   xboxclips.py
+|   |   |   xhamster.py
+|   |   |   xiaohongshu.py
+|   |   |   ximalaya.py
+|   |   |   xinpianchang.py
+|   |   |   xminus.py
+|   |   |   xnxx.py
+|   |   |   xvideos.py
+|   |   |   xxxymovies.py
+|   |   |   yahoo.py
+|   |   |   yandexdisk.py
+|   |   |   yandexmusic.py
+|   |   |   yandexvideo.py
+|   |   |   yapfiles.py
+|   |   |   yappy.py
+|   |   |   yfanefa.py
+|   |   |   yle_areena.py
+|   |   |   youjizz.py
+|   |   |   youku.py
+|   |   |   younow.py
+|   |   |   youporn.py
+|   |   |   zaiko.py
+|   |   |   zan.py
+|   |   |   zapiks.py
+|   |   |   zattoo.py
+|   |   |   zdf.py
+|   |   |   zeenews.py
+|   |   |   zenporn.py
+|   |   |   zetland.py
+|   |   |   zhihu.py
+|   |   |   zingmp3.py
+|   |   |   zoom.py
+|   |   |   zype.py
+|   |   |   _extractors.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---youtube
+|   |       |   _base.py
+|   |       |   _clip.py
+|   |       |   _mistakes.py
+|   |       |   _notifications.py
+|   |       |   _redirect.py
+|   |       |   _search.py
+|   |       |   _tab.py
+|   |       |   _video.py
+|   |       |   __init__.py
+|   |       |   
+|   |       +---jsc
+|   |       |   |   provider.py
+|   |       |   |   _director.py
+|   |       |   |   _registry.py
+|   |       |   |   __init__.py
+|   |       |   |   
+|   |       |   \---_builtin
+|   |       |       |   bun.py
+|   |       |       |   deno.py
+|   |       |       |   ejs.py
+|   |       |       |   node.py
+|   |       |       |   quickjs.py
+|   |       |       |   __init__.py
+|   |       |       |   
+|   |       |       \---vendor
+|   |       |               yt.solver.bun.lib.js
+|   |       |               yt.solver.core.js
+|   |       |               yt.solver.deno.lib.js
+|   |       |               _info.py
+|   |       |               __init__.py
+|   |       |               
+|   |       \---pot
+|   |           |   cache.py
+|   |           |   provider.py
+|   |           |   utils.py
+|   |           |   _director.py
+|   |           |   _provider.py
+|   |           |   _registry.py
+|   |           |   __init__.py
+|   |           |   
+|   |           \---_builtin
+|   |                   memory_cache.py
+|   |                   webpo_cachespec.py
+|   |                   __init__.py
+|   |                   
+|   +---networking
+|   |       common.py
+|   |       exceptions.py
+|   |       impersonate.py
+|   |       websocket.py
+|   |       _curlcffi.py
+|   |       _helper.py
+|   |       _requests.py
+|   |       _urllib.py
+|   |       _websockets.py
+|   |       __init__.py
+|   |       
+|   +---postprocessor
+|   |       common.py
+|   |       embedthumbnail.py
+|   |       exec.py
+|   |       ffmpeg.py
+|   |       metadataparser.py
+|   |       modify_chapters.py
+|   |       movefilesafterdownload.py
+|   |       sponsorblock.py
+|   |       xattrpp.py
+|   |       __init__.py
+|   |       
+|   +---utils
+|   |   |   networking.py
+|   |   |   progress.py
+|   |   |   traversal.py
+|   |   |   _deprecated.py
+|   |   |   _jsruntime.py
+|   |   |   _legacy.py
+|   |   |   _utils.py
+|   |   |   __init__.py
+|   |   |   
+|   |   \---jslib
+|   |           devalue.py
+|   |           __init__.py
+|   |           
+|   \---__pyinstaller
+|           hook-yt_dlp.py
+|           __init__.py
+|           
+\---yt_dlp-2026.7.4.dist-info
+    |   entry_points.txt
+    |   INSTALLER
+    |   METADATA
+    |   RECORD
+    |   REQUESTED
+    |   WHEEL
+    |   
+    \---licenses
+            LICENSE
+            
