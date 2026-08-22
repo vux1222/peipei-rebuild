@@ -5,12 +5,7 @@ import sys
 
 
 def _run_voice_self_test() -> int:
-    """Placeholder for the original optional Vietnamese voice self-test.
-
-    The extracted launcher contains a dedicated self-test path before the GUI starts.
-    This rebuild scaffold keeps the command-line hook but intentionally leaves the
-    implementation separate until the remaining disassembly/runtime assets are added.
-    """
+    """Placeholder for the optional Vietnamese voice self-test."""
     print("Voice self-test scaffold: implementation pending reconstructed runtime code.")
     return 0
 
@@ -21,10 +16,11 @@ def main() -> int:
     if "--tu-kiem-giong" in sys.argv:
         return _run_voice_self_test()
 
-    from bilisub.gui.main_window import main as gui_main
+    # The clean rebuild uses the user's own VuxGM license service. It is kept
+    # separate from the extracted application's original third-party licensing.
+    from bilisub.gui.licensed_main import main as gui_main
 
-    gui_main()
-    return 0
+    return int(gui_main() or 0)
 
 
 if __name__ == "__main__":
