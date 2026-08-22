@@ -76,14 +76,38 @@ def _prepend_env_path(path: Path) -> None:
         os.environ["PATH"] = value + (os.pathsep + current if current else "")
 
 
+def _insert_legacy_sys_paths(paths: LegacyPaths) -> None:
+    """Expose extracted PYZ packages as fallback imports for legacy bytecode.
+
+    PyInstaller stores pure-Python dependencies such as requests/urllib3 inside
+    PYZ.  The restored bilisub package can already see its own legacy path, but
+    top-level imports (for example ``import requests``) still need the PYZ root
+    on ``sys.path``.  Keep rebuild_src first so VuxGM-owned replacement modules
+    remain authoritative, then place PYZ and _internal immediately after it.
+    """
+    source_root = paths.repo_root / "rebuild_src"
+    legacy_entries = [paths.pyz_root, paths.internal_root]
+
+    # Remove duplicate legacy entries first so repeated smoke runs stay stable.
+    legacy_values = {str(p).lower() for p in legacy_entries if p.is_dir()}
+    sys.path[:] = [p for p in sys.path if str(p).lower() not in legacy_values]
+
+    source_value = str(source_root)
+    try:
+        insert_at = next(i for i, p in enumerate(sys.path) if str(p).lower() == source_value.lower()) + 1
+    except StopIteration:
+        insert_at = 0
+
+    for path in reversed([p for p in legacy_entries if p.is_dir()]):
+        sys.path.insert(insert_at, str(path))
+
+
 def _prepare_native_runtime(paths: LegacyPaths) -> None:
+    _insert_legacy_sys_paths(paths)
+
     internal = paths.internal_root
     if not internal.is_dir():
         return
-
-    value = str(internal)
-    if value not in sys.path:
-        sys.path.insert(0, value)
 
     dll_dirs = [
         internal,
