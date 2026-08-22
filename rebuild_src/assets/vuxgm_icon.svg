@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="48" fill="#0b1120"/>
+  <rect x="12" y="12" width="232" height="232" rx="40" fill="url(#g)" opacity=".22"/>
+  <path d="M48 62h34l46 116 46-116h34l-62 146h-36z" fill="url(#g)"/>
+  <text x="128" y="226" text-anchor="middle" font-family="Arial,Segoe UI,sans-serif" font-size="25" font-weight="700" fill="#e2e8f0">VUXGM</text>
+</svg>
