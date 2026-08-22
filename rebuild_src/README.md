@@ -8,14 +8,14 @@ The current rebuild can:
 
 - launch a PyQt6 desktop window;
 - inspect a video with FFprobe;
-- import and clean an existing `.srt` file;
+- import and clean an existing `.srt` file **or run faster-whisper ASR when SRT is blank**;
 - merge very short subtitle cues;
 - export SRT and a basic ASS subtitle track;
 - create a preview clip;
 - render a video with FFmpeg, optionally burning the ASS subtitles;
 - open the project website at `https://vuxgm.site`.
 
-ASR/OCR, AI translation, advanced ASS/art-text layout, TTS and the larger production render pipeline are still being reconstructed. The GUI intentionally disables those incomplete stages instead of pretending they work.
+OCR for burned-in subtitles, AI translation, advanced ASS/art-text layout, TTS and the larger production render pipeline are still being reconstructed. The GUI intentionally disables incomplete translation/TTS stages instead of pretending they work.
 
 ## Website / API
 
@@ -41,7 +41,10 @@ py -3.13 -m pip install -r rebuild_src\requirements-minimal.txt
 py -3.13 rebuild_src\peipei_launch.py
 ```
 
-The easiest first test is to choose a video plus an existing SRT and click **Chạy**.
+First test options:
+
+- choose a video + existing SRT for the lightest test; or
+- choose only a video and leave SRT blank to let faster-whisper create the transcript.
 
 ## FFmpeg
 
@@ -77,9 +80,10 @@ rebuild_src/
     models.py
     ffmpeg_utils.py
     srt.py
+    asr.py
     pipeline.py
     gui/
       main_window.py
 ```
 
-The next reconstruction targets are ASR/OCR, translation, TTS, and the advanced render layer.
+The next reconstruction targets are burned-subtitle OCR, translation, TTS, and the advanced render layer.
