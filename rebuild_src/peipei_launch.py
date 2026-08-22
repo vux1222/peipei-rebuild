@@ -16,13 +16,10 @@ def main() -> int:
     if "--tu-kiem-giong" in sys.argv:
         return _run_voice_self_test()
 
-    # Public product version shown by the app and sent to the VuxGM license API.
-    # Keep legacy internal paths untouched so existing settings/license cache continue to work.
-    from bilisub import config as app_config
-
-    app_config.APP_VERSION = "1.0.0"
-
-    from bilisub.gui.licensed_main import main as gui_main
+    # Use the original Python 3.13 bytecode as the behavioral baseline while the
+    # source is reconstructed module-by-module.  VuxGM license/branding/credit
+    # adapters are injected before any legacy module is imported.
+    from bilisub.gui.legacy_licensed_main import main as gui_main
 
     return int(gui_main() or 0)
 
